@@ -461978,6 +461978,42 @@
   ],
   "equations": [
     {
+      "id": "3bbe5275-7b5c-814d-83e6-ee6df24eacca",
+      "url": "https://app.notion.com/p/Doppler-Effect-3bbe52757b5c814d83e6ee6df24eacca",
+      "lastEdited": "2026-08-13T20:15:00.000Z",
+      "Equation": "f′ = f·(c + vₒ)/(c − vₛ)",
+      "Field": "Acoustics",
+      "Named After": "Christian Doppler",
+      "Symbols": "f emitted frequency · f′ observed frequency · c wave speed · vₒ observer speed toward the source · vₛ source speed toward the observer",
+      "Significance": "Motion squeezes waves ahead and stretches them behind — the siren that drops in pitch as it passes. The same effect, applied to light, is how radar guns catch speeders and how Hubble read the expansion of the universe from galaxy redshifts.",
+      "Year": 1842,
+      "Name": "Doppler Effect"
+    },
+    {
+      "id": "3bbe5275-7b5c-8179-9734-eea3fa4e014c",
+      "url": "https://app.notion.com/p/Newton-Laplace-Speed-of-Sound-3bbe52757b5c81799734eea3fa4e014c",
+      "lastEdited": "2026-08-13T20:15:00.000Z",
+      "Equation": "c = √(γp/ρ)",
+      "Field": "Acoustics",
+      "Named After": "Isaac Newton · Pierre-Simon Laplace",
+      "Symbols": "c speed of sound · p pressure · ρ density · γ adiabatic index (about 1.4 for air) — roughly 343 m/s in room-temperature air",
+      "Significance": "How fast pressure waves travel through a gas. Newton derived it first in 1687 and came out 15% slow by assuming compression at constant temperature; Laplace's adiabatic correction — sound compresses air too fast for heat to escape — made theory match experiment.",
+      "Year": 1816,
+      "Name": "Newton–Laplace Speed of Sound"
+    },
+    {
+      "id": "3bbe5275-7b5c-81d8-b63d-d44990bf2054",
+      "url": "https://app.notion.com/p/Wave-Equation-3bbe52757b5c81d8b63dd44990bf2054",
+      "lastEdited": "2026-08-13T20:15:00.000Z",
+      "Equation": "∂²u/∂t² = c²·∇²u",
+      "Field": "Acoustics",
+      "Named After": "Jean le Rond d'Alembert",
+      "Symbols": "u the disturbance (string displacement, air pressure, field strength) · t time · c wave speed · ∇² Laplacian (spatial curvature of the disturbance)",
+      "Significance": "One equation for everything that waves: a plucked string, sound in air, ripples on water — and, a century later, Maxwell found light obeying the very same form. Derived by d'Alembert for the vibrating string, it is the mathematical definition of what a wave is.",
+      "Year": 1746,
+      "Name": "Wave Equation"
+    },
+    {
       "id": "3bbe5275-7b5c-8197-8da5-de06c7641cc3",
       "url": "https://app.notion.com/p/Navier-Stokes-Equations-3bbe52757b5c81978da5de06c7641cc3",
       "lastEdited": "2026-08-13T20:13:00.000Z",
