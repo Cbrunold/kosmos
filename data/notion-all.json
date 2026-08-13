@@ -461978,6 +461978,42 @@
   ],
   "equations": [
     {
+      "id": "3bbe5275-7b5c-81c8-8eb1-cdc2179de58e",
+      "url": "https://app.notion.com/p/Kepler-s-Third-Law-3bbe52757b5c81c88eb1cdc2179de58e",
+      "lastEdited": "2026-08-13T19:53:00.000Z",
+      "Equation": "T² = 4π²a³ / GM",
+      "Field": "Mechanics",
+      "Named After": "Johannes Kepler",
+      "Symbols": "T orbital period · a semi-major axis of the orbit · G gravitational constant · M mass of the central body",
+      "Significance": "Orbital period squared scales with orbit size cubed — the harmony that let Newton reverse-engineer the inverse-square law, and how we weigh stars, planets, and black holes today.",
+      "Year": 1619,
+      "Name": "Kepler's Third Law"
+    },
+    {
+      "id": "3bbe5275-7b5c-8193-83a5-f551fd37b47c",
+      "url": "https://app.notion.com/p/Kepler-s-Second-Law-3bbe52757b5c819383a5f551fd37b47c",
+      "lastEdited": "2026-08-13T19:53:00.000Z",
+      "Equation": "dA/dt = L/2m = constant",
+      "Field": "Mechanics",
+      "Named After": "Johannes Kepler",
+      "Symbols": "A area swept by the Sun–planet line · t time · L orbital angular momentum · m planet mass",
+      "Significance": "The line to the Sun sweeps equal areas in equal times: planets hurry through closest approach and dawdle far away. Conservation of angular momentum, decades before the concept had a name.",
+      "Year": 1609,
+      "Name": "Kepler's Second Law"
+    },
+    {
+      "id": "3bbe5275-7b5c-81da-b2e6-ed931eca7217",
+      "url": "https://app.notion.com/p/Kepler-s-First-Law-3bbe52757b5c81dab2e6ed931eca7217",
+      "lastEdited": "2026-08-13T19:53:00.000Z",
+      "Equation": "r = p / (1 + e·cos θ)",
+      "Field": "Mechanics",
+      "Named After": "Johannes Kepler",
+      "Symbols": "r distance from the Sun · p semi-latus rectum (size of the orbit) · e eccentricity (0 circle, <1 ellipse) · θ angle from closest approach",
+      "Significance": "Planets travel ellipses with the Sun at one focus — not the perfect circles two millennia of astronomy insisted on. Written as the polar equation of the orbit.",
+      "Year": 1609,
+      "Name": "Kepler's First Law"
+    },
+    {
       "id": "3bbe5275-7b5c-810c-8fb5-f469f876c99a",
       "url": "https://app.notion.com/p/Van-der-Waals-Equation-3bbe52757b5c810c8fb5f469f876c99a",
       "lastEdited": "2026-08-13T19:51:00.000Z",
