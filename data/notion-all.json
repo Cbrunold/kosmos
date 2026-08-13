@@ -461978,6 +461978,18 @@
   ],
   "equations": [
     {
+      "id": "3bbe5275-7b5c-813d-86cf-c29a346fe2f8",
+      "url": "https://app.notion.com/p/Snell-s-Law-3bbe52757b5c813d86cfc29a346fe2f8",
+      "lastEdited": "2026-08-13T20:10:00.000Z",
+      "Equation": "n₁·sin θ₁ = n₂·sin θ₂",
+      "Field": "Optics",
+      "Named After": "Ibn Sahl · Willebrord Snellius",
+      "Symbols": "n₁, n₂ refractive indices of the two media · θ₁, θ₂ angles of the ray from the surface normal on each side",
+      "Significance": "Light bends when it crosses into a new medium — the rule behind every lens, eyeglass, camera, and the total internal reflection that traps light inside optical fibers. First stated by Ibn Sahl in Baghdad in 984, rediscovered by Snellius in 1621, and it's why pools look shallower than they are.",
+      "Year": 984,
+      "Name": "Snell's Law"
+    },
+    {
       "id": "3bbe5275-7b5c-8184-9e26-ff4ad04b3ed8",
       "url": "https://app.notion.com/p/Hubble-s-Law-3bbe52757b5c81849e26ff4ad04b3ed8",
       "lastEdited": "2026-08-13T20:08:00.000Z",
