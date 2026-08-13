@@ -461978,6 +461978,42 @@
   ],
   "equations": [
     {
+      "id": "3bbe5275-7b5c-81d4-81e7-d91b9c8c327c",
+      "url": "https://app.notion.com/p/Kirchhoff-s-Circuit-Laws-3bbe52757b5c81d481e7d91b9c8c327c",
+      "lastEdited": "2026-08-13T20:47:00.000Z",
+      "Equation": "Σ I = 0 at a node · Σ V = 0 around a loop",
+      "Field": "Circuits",
+      "Named After": "Gustav Kirchhoff",
+      "Symbols": "I currents meeting at a junction · V voltage rises and drops around any closed loop · signs by direction",
+      "Significance": "Charge doesn't pile up and energy books balance — conservation laws dressed for circuit analysis, written by Kirchhoff as a 21-year-old student. Together with Ohm's law they solve any network of wires, from a flashlight to a motherboard.",
+      "Year": 1845,
+      "Name": "Kirchhoff's Circuit Laws"
+    },
+    {
+      "id": "3bbe5275-7b5c-816d-9734-c149c749519c",
+      "url": "https://app.notion.com/p/Joule-Heating-3bbe52757b5c816d9734c149c749519c",
+      "lastEdited": "2026-08-13T20:47:00.000Z",
+      "Equation": "P = I²·R",
+      "Field": "Circuits",
+      "Named After": "James Prescott Joule",
+      "Symbols": "P power dissipated as heat · I current · R resistance · equivalently P = V·I",
+      "Significance": "Current forcing its way through resistance sheds energy as heat — toasters, fuses, and incandescent filaments on purpose; warm laptops and power-line losses by accident. The I² is why the grid transmits at high voltage and low current.",
+      "Year": 1841,
+      "Name": "Joule Heating"
+    },
+    {
+      "id": "3bbe5275-7b5c-8154-bcd6-c1cd26ae1a20",
+      "url": "https://app.notion.com/p/Ohm-s-Law-3bbe52757b5c8154bcd6c1cd26ae1a20",
+      "lastEdited": "2026-08-13T20:47:00.000Z",
+      "Equation": "V = I·R",
+      "Field": "Circuits",
+      "Named After": "Georg Simon Ohm",
+      "Symbols": "V voltage across a component · I current through it · R its resistance",
+      "Significance": "Current flows in proportion to the voltage pushing it — the straight line every circuit design starts from. Dismissed as 'a web of naked fancies' when published; now it's the first equation every electronics student learns.",
+      "Year": 1827,
+      "Name": "Ohm's Law"
+    },
+    {
       "id": "3bbe5275-7b5c-81f8-8be6-c617460fd271",
       "url": "https://app.notion.com/p/Shannon-Hartley-Channel-Capacity-3bbe52757b5c81f88be6c617460fd271",
       "lastEdited": "2026-08-13T20:45:00.000Z",
