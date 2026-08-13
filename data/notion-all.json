@@ -461978,6 +461978,30 @@
   ],
   "equations": [
     {
+      "id": "3bbe5275-7b5c-813e-a03e-dacece1e6c35",
+      "url": "https://app.notion.com/p/Half-Life-3bbe52757b5c813ea03edacece1e6c35",
+      "lastEdited": "2026-08-13T20:19:00.000Z",
+      "Equation": "t½ = ln 2 / λ",
+      "Field": "Nuclear Physics",
+      "Named After": "Ernest Rutherford",
+      "Symbols": "t½ time for half of any sample to decay · λ decay constant · ln 2 ≈ 0.693",
+      "Significance": "Every radioactive nuclide has a signature clock: after one half-life, half remains; after ten, a thousandth. Carbon-14's 5,730 years dates archaeology; uranium-238's 4.5 billion years dated the Earth itself.",
+      "Year": 1904,
+      "Name": "Half-Life"
+    },
+    {
+      "id": "3bbe5275-7b5c-8157-a64b-eb73eeb53735",
+      "url": "https://app.notion.com/p/Radioactive-Decay-Law-3bbe52757b5c8157a64beb73eeb53735",
+      "lastEdited": "2026-08-13T20:19:00.000Z",
+      "Equation": "N(t) = N₀·e^(−λt)",
+      "Field": "Nuclear Physics",
+      "Named After": "Ernest Rutherford · Frederick Soddy",
+      "Symbols": "N(t) undecayed nuclei remaining at time t · N₀ the starting number · λ decay constant (each nuclide's characteristic rate) · e base of natural logarithms",
+      "Significance": "Each nucleus decays at random, yet a large collection empties on an exact exponential schedule — perfect statistical order out of pure chance. Discovered by Rutherford and Soddy while unravelling what radioactivity actually is: atoms of one element transmuting into another.",
+      "Year": 1902,
+      "Name": "Radioactive Decay Law"
+    },
+    {
       "id": "3bbe5275-7b5c-814d-83e6-ee6df24eacca",
       "url": "https://app.notion.com/p/Doppler-Effect-3bbe52757b5c814d83e6ee6df24eacca",
       "lastEdited": "2026-08-13T20:15:00.000Z",
