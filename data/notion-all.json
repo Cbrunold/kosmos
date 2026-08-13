@@ -461978,6 +461978,42 @@
   ],
   "equations": [
     {
+      "id": "3bbe5275-7b5c-8174-8c31-eda1293e8fe6",
+      "url": "https://app.notion.com/p/Gaussian-Beam-Divergence-3bbe52757b5c81748c31eda1293e8fe6",
+      "lastEdited": "2026-08-13T21:25:00.000Z",
+      "Equation": "θ = λ / (π·w₀)",
+      "Field": "Photonics",
+      "Named After": "Herwig Kogelnik · Tingye Li",
+      "Symbols": "θ far-field half-angle of spread · λ wavelength · w₀ the beam waist, its narrowest radius · diffraction makes tighter focus mean faster spread",
+      "Significance": "A laser beam cannot stay pencil-thin forever — diffraction spreads it at an angle set by wavelength over waist. The trade is fundamental: focus harder, diverge faster. It's why lunar ranging beams leave Earth centimetres wide and arrive kilometres wide, and still come home with an answer.",
+      "Year": 1966,
+      "Name": "Gaussian Beam Divergence"
+    },
+    {
+      "id": "3bbe5275-7b5c-816e-831d-e184b1a1f659",
+      "url": "https://app.notion.com/p/Laser-Rate-Equations-3bbe52757b5c816e831de184b1a1f659",
+      "lastEdited": "2026-08-13T21:25:00.000Z",
+      "Equation": "dN/dt = P − N/τ − B·N·φ  ·  dφ/dt = B·N·φ − φ/τ_c",
+      "Field": "Photonics",
+      "Named After": "Hermann Statz · George deMars",
+      "Symbols": "N population inversion (excited atoms) · φ photon number in the cavity · P pumping rate · τ excited-state lifetime · τ_c cavity photon lifetime · B stimulated-emission strength",
+      "Significance": "The laser as a ledger: pumping fills the upper level, photons breed photons off the inversion, the cavity leaks. Above a pump threshold the light term runs away and the cavity blazes coherently — written in the very year Maiman's ruby laser first flashed, and still how engineers model everything from laser pointers to fiber amplifiers.",
+      "Year": 1960,
+      "Name": "Laser Rate Equations"
+    },
+    {
+      "id": "3bbe5275-7b5c-818e-8ccf-c5b952277817",
+      "url": "https://app.notion.com/p/Einstein-A-and-B-Coefficients-3bbe52757b5c818e8ccfc5b952277817",
+      "lastEdited": "2026-08-13T21:25:00.000Z",
+      "Equation": "A₂₁/B₂₁ = 8πhν³/c³",
+      "Field": "Photonics",
+      "Named After": "Albert Einstein",
+      "Symbols": "A₂₁ rate of spontaneous emission · B₂₁ rate of stimulated emission per unit radiation density · ν frequency of the transition · h Planck constant · c speed of light",
+      "Significance": "Einstein's thermodynamic bookkeeping of light and atoms demanded a third process nobody had seen: an incoming photon can tickle an excited atom into emitting an identical twin — same direction, same phase. Stimulated emission sat as a curiosity for four decades, then became the L, A, S, E and R of 'laser'.",
+      "Year": 1917,
+      "Name": "Einstein A and B Coefficients"
+    },
+    {
       "id": "3bbe5275-7b5c-812d-b464-f7799b61cce9",
       "url": "https://app.notion.com/p/Thermoelectric-Figure-of-Merit-3bbe52757b5c812db464f7799b61cce9",
       "lastEdited": "2026-08-13T21:23:00.000Z",
