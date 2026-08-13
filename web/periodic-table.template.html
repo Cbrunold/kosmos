@@ -1,0 +1,741 @@
+<title>Kosmos · Periodic Table</title>
+<style>
+  :root {
+    color-scheme: light;
+    --page: #f2f4f5;
+    --panel: #fbfcfc;
+    --ink: #17212b;
+    --ink-2: #4c5a66;
+    --muted: #8595a1;
+    --hairline: #dde4e8;
+    --ring: rgba(23, 33, 43, 0.85);
+    --cat-alkali: #c23434;
+    --cat-alkearth: #e39a00;
+    --cat-transition: #2a78d6;
+    --cat-posttrans: #0f9b9b;
+    --cat-metalloid: #8a5314;
+    --cat-nonmetal: #33a047;
+    --cat-noble: #6b50c8;
+    --cat-lanthanide: #e05e8f;
+    --cat-actinide: #9333b8;
+    --st-gas: #86b6ef;
+    --st-liquid: #3987e5;
+    --st-solid: #184f95;
+    --heat: #2a78d6;
+    --heat-min: 8;
+    --heat-max: 82;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --page: #0e1116;
+      --panel: #14181d;
+      --ink: #e9edf2;
+      --ink-2: #aab8c4;
+      --muted: #74828e;
+      --hairline: #242b33;
+      --ring: rgba(233, 237, 242, 0.9);
+      --cat-alkali: #e75570;
+      --cat-alkearth: #b98800;
+      --cat-transition: #4a90e8;
+      --cat-posttrans: #0aa085;
+      --cat-metalloid: #a4671f;
+      --cat-nonmetal: #46a850;
+      --cat-noble: #8b74e0;
+      --cat-lanthanide: #dc5f83;
+      --cat-actinide: #a94fd0;
+      --st-gas: #9ec5f4;
+      --st-liquid: #5598e7;
+      --st-solid: #2f6fc4;
+      --heat: #5598e7;
+      --heat-min: 10;
+      --heat-max: 78;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --page: #0e1116;
+    --panel: #14181d;
+    --ink: #e9edf2;
+    --ink-2: #aab8c4;
+    --muted: #74828e;
+    --hairline: #242b33;
+    --ring: rgba(233, 237, 242, 0.9);
+    --cat-alkali: #e75570;
+    --cat-alkearth: #b98800;
+    --cat-transition: #4a90e8;
+    --cat-posttrans: #0aa085;
+    --cat-metalloid: #a4671f;
+    --cat-nonmetal: #46a850;
+    --cat-noble: #8b74e0;
+    --cat-lanthanide: #dc5f83;
+    --cat-actinide: #a94fd0;
+    --st-gas: #9ec5f4;
+    --st-liquid: #5598e7;
+    --st-solid: #2f6fc4;
+    --heat: #5598e7;
+    --heat-min: 10;
+    --heat-max: 78;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--page);
+    color: var(--ink);
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    margin: 0;
+    padding: 20px clamp(12px, 2.5vw, 32px) 48px;
+  }
+  .mono { font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; }
+
+  header.top {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 8px 20px;
+    margin-bottom: 14px;
+  }
+  .eyebrow {
+    font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    width: 100%;
+  }
+  h1 {
+    font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    font-size: clamp(20px, 2.6vw, 28px);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin: 0;
+    text-wrap: balance;
+  }
+  .provenance { font-size: 12.5px; color: var(--ink-2); }
+  .provenance a { color: inherit; }
+  .searchbox {
+    margin-left: auto;
+    background: var(--panel);
+    border: 1px solid var(--hairline);
+    border-radius: 6px;
+    padding: 6px 10px;
+    font: 13px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    color: var(--ink);
+    width: 210px;
+  }
+  .searchbox::placeholder { color: var(--muted); }
+
+  .controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 14px;
+    margin-bottom: 12px;
+  }
+  .lenses { display: flex; flex-wrap: wrap; gap: 4px; }
+  .lens {
+    font: 12px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    letter-spacing: 0.02em;
+    color: var(--ink-2);
+    background: transparent;
+    border: 1px solid var(--hairline);
+    border-radius: 6px;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  .lens:hover { background: var(--panel); }
+  .lens[aria-pressed="true"] {
+    background: var(--ink);
+    color: var(--page);
+    border-color: var(--ink);
+  }
+  .slider-wrap {
+    display: none;
+    align-items: center;
+    gap: 10px;
+    font: 12px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    color: var(--ink-2);
+  }
+  .slider-wrap.on { display: flex; }
+  .slider-wrap input[type=range] { width: 200px; accent-color: var(--heat); }
+  .slider-val {
+    min-width: 76px;
+    text-align: right;
+    color: var(--ink);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 300px;
+    gap: 16px;
+    align-items: start;
+  }
+  @media (max-width: 1120px) {
+    .layout { grid-template-columns: 1fr; }
+    aside.detail { position: static; }
+  }
+
+  .tablewrap {
+    overflow-x: auto;
+    background: var(--panel);
+    border: 1px solid var(--hairline);
+    border-radius: 10px;
+    padding: 14px;
+  }
+  .ptable {
+    display: grid;
+    grid-template-columns: 20px repeat(18, minmax(48px, 1fr));
+    gap: 3px;
+    min-width: 1000px;
+  }
+  .glabel, .plabel {
+    font: 9px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-variant-numeric: tabular-nums;
+  }
+  .fgap { height: 10px; }
+
+  .tile {
+    position: relative;
+    border: 1px solid var(--tile-bd, var(--hairline));
+    background: var(--tile-bg, var(--panel));
+    border-radius: 4px;
+    padding: 3px 4px 4px;
+    min-height: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    cursor: pointer;
+    color: var(--ink);
+    font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    text-align: left;
+    transition: opacity 0.15s ease;
+  }
+  .tile.hollow { border-style: dashed; }
+  .tile.ghost { opacity: 0.16; }
+  .tile:hover { filter: brightness(1.06); }
+  .tile:focus-visible, .lens:focus-visible, .searchbox:focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 1px;
+  }
+  .tile.sel { outline: 2px solid var(--ring); outline-offset: 1px; }
+  .tile .z {
+    font-size: 8.5px;
+    color: var(--ink-2);
+    font-variant-numeric: tabular-nums;
+    line-height: 1;
+  }
+  .tile .sym { font-size: 15px; font-weight: 700; line-height: 1.25; }
+  .tile .nm {
+    font-size: 7.5px;
+    color: var(--ink-2);
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    line-height: 1.3;
+  }
+  .marker {
+    border: 1px dashed var(--hairline);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font: 9px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    color: var(--muted);
+    min-height: 50px;
+  }
+
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px 14px;
+    margin-top: 12px;
+    font-size: 11.5px;
+    color: var(--ink-2);
+  }
+  .chip { display: inline-flex; align-items: center; gap: 5px; }
+  .chip .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 3px;
+    display: inline-block;
+    border: 1px solid transparent;
+  }
+  .chip .dot.hollowdot { background: transparent !important; border: 1px dashed var(--muted); }
+  .gradbar {
+    width: 160px;
+    height: 10px;
+    border-radius: 3px;
+    border: 1px solid var(--hairline);
+  }
+  .legend .mono-val { font-variant-numeric: tabular-nums; color: var(--ink); }
+
+  aside.detail {
+    position: sticky;
+    top: 16px;
+    background: var(--panel);
+    border: 1px solid var(--hairline);
+    border-radius: 10px;
+    padding: 16px;
+    font-size: 13px;
+  }
+  .detail .empty { color: var(--muted); font-size: 12.5px; line-height: 1.5; }
+  .dhead { display: flex; gap: 12px; align-items: center; margin-bottom: 12px; }
+  .dsym {
+    width: 58px;
+    height: 58px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    border: 1px solid var(--tile-bd, var(--hairline));
+    background: var(--tile-bg, var(--panel));
+    flex: none;
+  }
+  .dsym .s { font-size: 22px; font-weight: 700; line-height: 1.1; }
+  .dsym .n { font-size: 9px; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+  .dname { font-size: 17px; font-weight: 650; margin: 0 0 2px; }
+  .dcat { font-size: 11.5px; color: var(--ink-2); }
+  .props { display: grid; grid-template-columns: auto 1fr; gap: 5px 14px; margin: 0; }
+  .props dt {
+    color: var(--muted);
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    align-self: baseline;
+    padding-top: 2px;
+  }
+  .props dd {
+    margin: 0;
+    text-align: right;
+    font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    font-size: 12.5px;
+    font-variant-numeric: tabular-nums;
+  }
+  .props dd .u { color: var(--muted); font-size: 10.5px; }
+  .props dd.none { color: var(--muted); }
+  .tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 12px; }
+  .tag {
+    font: 10px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    border: 1px solid var(--hairline);
+    color: var(--ink-2);
+    border-radius: 99px;
+    padding: 2px 8px;
+  }
+  .derived-note { font-size: 10.5px; color: var(--muted); margin-top: 8px; line-height: 1.45; }
+  .dfoot {
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px solid var(--hairline);
+    font-size: 11px;
+    color: var(--muted);
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .dfoot a { color: var(--ink-2); }
+
+  #tip {
+    position: fixed;
+    pointer-events: none;
+    background: var(--ink);
+    color: var(--page);
+    border-radius: 6px;
+    padding: 7px 10px;
+    font: 11.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    z-index: 10;
+    display: none;
+    max-width: 240px;
+    line-height: 1.5;
+  }
+  #tip .t1 { font-weight: 700; }
+  #tip .t2 { opacity: 0.75; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .tile { transition: none; }
+  }
+</style>
+
+<header class="top">
+  <div class="eyebrow">Kosmos · Chemistry · synced live from Notion</div>
+  <h1>Periodic Table</h1>
+  <div class="provenance" id="prov"></div>
+  <input class="searchbox" id="q" type="search" placeholder="find element…" aria-label="Find element by name, symbol or number" />
+</header>
+
+<div class="controls">
+  <div class="lenses" id="lenses" role="group" aria-label="Color lens"></div>
+  <div class="slider-wrap" id="tempwrap">
+    <label for="temp">state at</label>
+    <input type="range" id="temp" min="-273" max="5750" step="1" value="20" />
+    <span class="slider-val" id="tempval">20 °C</span>
+  </div>
+  <div class="slider-wrap" id="yearwrap">
+    <label for="year">known by</label>
+    <input type="range" id="year" min="-9000" max="2026" step="1" value="2026" />
+    <span class="slider-val" id="yearval">2026</span>
+  </div>
+</div>
+
+<div class="layout">
+  <div>
+    <div class="tablewrap">
+      <div class="ptable" id="ptable"></div>
+    </div>
+    <div class="legend" id="legend"></div>
+  </div>
+  <aside class="detail" id="detail" aria-live="polite">
+    <p class="empty">Select an element to inspect it.<br /><br />Every value on this page comes straight from the “All Periodical Elements” database in Notion — including its gaps.</p>
+  </aside>
+</div>
+
+<div id="tip" role="presentation"></div>
+
+<script id="data" type="application/json">__DATA__</script>
+<script>
+  const RAW = JSON.parse(document.getElementById('data').textContent);
+
+  // ---------- derivations ----------
+  const CAT_DEFS = [
+    { key: 'alkali',     label: 'Alkali metal',          match: null },
+    { key: 'alkearth',   label: 'Alkaline earth metal',  match: '#Alkaline Earth Metal' },
+    { key: 'transition', label: 'Transition metal',      match: '#Transition Metal' },
+    { key: 'posttrans',  label: 'Post-transition metal', match: '#Post-Transition Metal' },
+    { key: 'metalloid',  label: 'Metalloid',             match: '#Metalloid' },
+    { key: 'nonmetal',   label: 'Nonmetal',              match: null },
+    { key: 'noble',      label: 'Noble gas',             match: '#Noble Gas' },
+    { key: 'lanthanide', label: 'Lanthanide',            match: '#Lanthanide' },
+    { key: 'actinide',   label: 'Actinide',              match: '#Actinide' },
+  ];
+  const FAMILY_TAGS = ['#Halogens', '#Chalcogens', '#Pnictogens', '#Icosagens', '#Crystallogens', '#Coinage Metals', '#Volatile Metals'];
+
+  const E = RAW.map((r) => {
+    const z = r.atomicNumber;
+    const cats = r.categories || [];
+    const isF = /^f-block/.test(r.group || '');
+    const lanth = z >= 57 && z <= 71;
+    const actin = z >= 89 && z <= 103;
+    const groupNum = isF || lanth || actin ? null : parseInt(r.group, 10) || null;
+    const period = parseInt(r.period, 10) || null;
+
+    let cat = null, catDerived = false;
+    if (cats.includes('#Noble Gas')) cat = 'noble';
+    else if (lanth) cat = 'lanthanide';
+    else if (actin) cat = 'actinide';
+    else if (cats.includes('#Transition Metal')) cat = 'transition';
+    else if (cats.includes('#Post-Transition Metal')) cat = 'posttrans';
+    else if (cats.includes('#Metalloid')) cat = 'metalloid';
+    else if (cats.includes('#Alkaline Earth Metal')) cat = 'alkearth';
+    else if (cats.some((c) => ['#Nonmetal', '#Diatomicnonmetal', '#Polyatomic nonmetal'].includes(c))) cat = 'nonmetal';
+    else if (cats.includes('#Unknown Chemical Properties')) cat = null;
+    else if (groupNum === 1 && z !== 1) { cat = 'alkali'; catDerived = true; }
+
+    let block = 'f';
+    if (!lanth && !actin) {
+      if (groupNum === 1 || groupNum === 2 || z === 2) block = 's';
+      else if (groupNum >= 13) block = 'p';
+      else block = 'd';
+    }
+
+    let row, col;
+    if (lanth) { row = 10; col = 3 + (z - 57); }
+    else if (actin) { row = 11; col = 3 + (z - 89); }
+    else { row = 1 + period; col = groupNum; }
+
+    return { ...r, z, sym: r.notation, groupNum, periodNum: period, cat, catDerived, block, row, col,
+      families: cats.filter((c) => FAMILY_TAGS.includes(c)),
+      unknownProps: cats.includes('#Unknown Chemical Properties') };
+  });
+  const byZ = Object.fromEntries(E.map((e) => [e.z, e]));
+
+  // ---------- helpers ----------
+  const css = (n) => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  const catColor = (k) => `var(--cat-${k})`;
+  const fmtNum = (v, unit) => (v == null ? null : `${+v.toPrecision(6)}${unit ? ` ${unit}` : ''}`);
+  const fmtYear = (y) => (y == null ? null : y < 0 ? `${-y} BCE` : String(y));
+  const stateAt = (e, T) => {
+    if (e.meltingPt == null || e.boilingPt == null) return null;
+    if (T < e.meltingPt) return 'solid';
+    if (T > e.boilingPt) return 'gas';
+    return 'liquid';
+  };
+
+  // ---------- lenses ----------
+  const heat = (t) => {
+    const lo = +css('--heat-min'), hi = +css('--heat-max');
+    const pct = lo + Math.max(0, Math.min(1, t)) * (hi - lo);
+    return `color-mix(in oklab, var(--heat) ${pct.toFixed(1)}%, var(--panel))`;
+  };
+  const seqRange = (vals) => [Math.min(...vals), Math.max(...vals)];
+
+  const massR = seqRange(E.map((e) => e.atomicMass).filter((v) => v != null));
+  const denR = seqRange(E.map((e) => e.density).filter((v) => v != null).map(Math.log10));
+  const mpR = seqRange(E.map((e) => e.meltingPt).filter((v) => v != null));
+  const bpR = seqRange(E.map((e) => e.boilingPt).filter((v) => v != null));
+  const lin = (v, [a, b]) => (v - a) / (b - a);
+  const yearT = (y) => (y <= 1650 ? ((y + 9000) / 10650) * 0.25 : 0.25 + ((y - 1650) / 360) * 0.75);
+
+  const LENSES = {
+    cat: {
+      name: 'Category',
+      color: (e) => (e.cat ? catColor(e.cat) : null),
+      value: (e) => (e.cat ? CAT_DEFS.find((c) => c.key === e.cat).label + (e.catDerived ? ' (derived)' : '') : 'unknown properties'),
+      legend: () => [...CAT_DEFS.map((c) => ({ label: c.label, color: catColor(c.key) })), { label: 'unknown properties', hollow: true }],
+    },
+    state: {
+      name: 'State',
+      color: (e) => { const s = stateAt(e, temp.valueAsNumber); return s ? `var(--st-${s})` : null; },
+      value: (e) => { const s = stateAt(e, temp.valueAsNumber); return s ? `${s} at ${temp.valueAsNumber} °C` : 'melting/boiling point not in Notion'; },
+      legend: () => [
+        { label: 'gas', color: 'var(--st-gas)' }, { label: 'liquid', color: 'var(--st-liquid)' },
+        { label: 'solid', color: 'var(--st-solid)' }, { label: 'no data', hollow: true }],
+      slider: 'temp',
+    },
+    block: {
+      name: 'Block',
+      color: (e) => catColor({ s: 'alkali', p: 'nonmetal', d: 'transition', f: 'noble' }[e.block]),
+      value: (e) => `${e.block}-block`,
+      legend: () => ['s', 'p', 'd', 'f'].map((b) => ({ label: `${b}-block`, color: catColor({ s: 'alkali', p: 'nonmetal', d: 'transition', f: 'noble' }[b]) })),
+    },
+    origin: {
+      name: 'Origin',
+      color: (e) => ({ 'Primordial': catColor('nonmetal'), 'From Decay': catColor('alkearth'), 'Synthetic': catColor('noble') }[e.occurrence] || null),
+      value: (e) => e.occurrence || 'not recorded in Notion',
+      legend: () => [
+        { label: 'primordial', color: catColor('nonmetal') }, { label: 'from decay', color: catColor('alkearth') },
+        { label: 'synthetic', color: catColor('noble') }, { label: 'not recorded', hollow: true }],
+    },
+    mass: { name: 'Mass', seq: true, t: (e) => (e.atomicMass == null ? null : lin(e.atomicMass, massR)),
+      value: (e) => fmtNum(e.atomicMass, 'u') || 'no data', range: () => [`${massR[0]} u`, `${massR[1]} u`] },
+    density: { name: 'Density', seq: true, t: (e) => (e.density == null ? null : lin(Math.log10(e.density), denR)),
+      value: (e) => fmtNum(e.density, 'g/cm³') || 'no data', range: () => ['9×10⁻⁵', '22.6 g/cm³ (log scale)'] },
+    melt: { name: 'Melting', seq: true, t: (e) => (e.meltingPt == null ? null : lin(e.meltingPt, mpR)),
+      value: (e) => fmtNum(e.meltingPt, '°C') || 'no data', range: () => [`${mpR[0]} °C`, `${mpR[1]} °C`] },
+    boil: { name: 'Boiling', seq: true, t: (e) => (e.boilingPt == null ? null : lin(e.boilingPt, bpR)),
+      value: (e) => fmtNum(e.boilingPt, '°C') || 'no data', range: () => [`${bpR[0]} °C`, `${bpR[1]} °C`] },
+    disc: { name: 'Discovery', seq: true, t: (e) => yearT(e.discovered),
+      value: (e) => `discovered ${fmtYear(e.discovered)}`, range: () => ['9000 BCE', '2009'], slider: 'year' },
+  };
+  for (const k of Object.keys(LENSES)) {
+    const L = LENSES[k];
+    if (L.seq) { L.color = (e) => { const t = L.t(e); return t == null ? null : heat(t); }; L.solid = true; }
+  }
+
+  // ---------- build grid ----------
+  const ptable = document.getElementById('ptable');
+  const frag = document.createDocumentFragment();
+  const cell = (cls, txt, r, c) => {
+    const d = document.createElement('div');
+    d.className = cls; d.textContent = txt;
+    d.style.gridRow = r; d.style.gridColumn = c;
+    frag.appendChild(d); return d;
+  };
+  for (let g = 1; g <= 18; g++) cell('glabel', g, 1, g + 1);
+  for (let p = 1; p <= 7; p++) cell('plabel', p, p + 1, 1);
+  cell('marker', '57–71', 7, 4).title = 'Lanthanides — rows below';
+  cell('marker', '89–103', 8, 4).title = 'Actinides — rows below';
+  cell('fgap', '', 9, '1 / -1');
+
+  const tiles = {};
+  for (const e of E) {
+    const b = document.createElement('button');
+    b.className = 'tile';
+    b.style.gridRow = e.row;
+    b.style.gridColumn = e.col + 1;
+    b.innerHTML = `<span class="z">${e.z}</span><span class="sym"></span><span class="nm"></span>`;
+    b.querySelector('.sym').textContent = e.sym;
+    b.querySelector('.nm').textContent = e.name;
+    b.addEventListener('click', () => select(e.z));
+    b.addEventListener('mousemove', (ev) => tipShow(e, ev));
+    b.addEventListener('mouseleave', tipHide);
+    tiles[e.z] = b;
+    frag.appendChild(b);
+  }
+  ptable.appendChild(frag);
+
+  // ---------- painting ----------
+  let lens = 'cat';
+  const temp = document.getElementById('temp');
+  const year = document.getElementById('year');
+  const q = document.getElementById('q');
+
+  function paint() {
+    const L = LENSES[lens];
+    const query = q.value.trim().toLowerCase();
+    for (const e of E) {
+      const el = tiles[e.z];
+      const color = L.color(e);
+      if (color == null) {
+        el.style.setProperty('--tile-bg', 'var(--panel)');
+        el.style.setProperty('--tile-bd', 'var(--hairline)');
+        el.classList.add('hollow');
+      } else {
+        el.classList.remove('hollow');
+        if (L.solid) {
+          el.style.setProperty('--tile-bg', color);
+          el.style.setProperty('--tile-bd', 'color-mix(in oklab, var(--heat) 55%, var(--hairline))');
+        } else {
+          el.style.setProperty('--tile-bg', `color-mix(in oklab, ${color} 30%, var(--panel))`);
+          el.style.setProperty('--tile-bd', `color-mix(in oklab, ${color} 60%, var(--panel))`);
+        }
+      }
+      let ghost = false;
+      if (query) ghost = !(e.name.toLowerCase().includes(query) || e.sym.toLowerCase() === query || String(e.z) === query);
+      if (lens === 'disc' && e.discovered > year.valueAsNumber) ghost = true;
+      el.classList.toggle('ghost', ghost);
+    }
+    paintLegend();
+  }
+
+  function paintLegend() {
+    const L = LENSES[lens];
+    const lg = document.getElementById('legend');
+    lg.innerHTML = '';
+    if (L.seq) {
+      const [lo, hi] = L.range();
+      const bar = document.createElement('div');
+      bar.className = 'gradbar';
+      bar.style.background = `linear-gradient(90deg, ${heat(0)}, ${heat(0.5)}, ${heat(1)})`;
+      const mk = (t) => { const s = document.createElement('span'); s.className = 'mono-val mono'; s.textContent = t; return s; };
+      lg.append(mk(lo), bar, mk(hi));
+      const n = E.filter((e) => L.t(e) == null).length;
+      if (n) { const s = document.createElement('span'); s.innerHTML = `<span class="chip"><span class="dot hollowdot"></span>no data (${n})</span>`; lg.append(s); }
+      if (lens === 'disc') { const s = document.createElement('span'); s.textContent = 'drag the year to travel back in time'; lg.append(s); }
+    } else {
+      for (const item of L.legend()) {
+        const c = document.createElement('span');
+        c.className = 'chip';
+        const dot = document.createElement('span');
+        dot.className = 'dot' + (item.hollow ? ' hollowdot' : '');
+        if (!item.hollow) dot.style.background = `color-mix(in oklab, ${item.color} 30%, var(--panel))`;
+        if (!item.hollow) dot.style.borderColor = `color-mix(in oklab, ${item.color} 60%, var(--panel))`;
+        c.append(dot, document.createTextNode(item.label));
+        lg.appendChild(c);
+      }
+    }
+  }
+
+  // ---------- lens switcher ----------
+  const lensesBox = document.getElementById('lenses');
+  for (const [k, L] of Object.entries(LENSES)) {
+    const b = document.createElement('button');
+    b.className = 'lens';
+    b.textContent = L.name;
+    b.setAttribute('aria-pressed', String(k === lens));
+    b.addEventListener('click', () => {
+      lens = k;
+      for (const x of lensesBox.children) x.setAttribute('aria-pressed', 'false');
+      b.setAttribute('aria-pressed', 'true');
+      document.getElementById('tempwrap').classList.toggle('on', L.slider === 'temp');
+      document.getElementById('yearwrap').classList.toggle('on', L.slider === 'year');
+      paint();
+      if (sel) renderDetail(byZ[sel]);
+    });
+    lensesBox.appendChild(b);
+  }
+
+  temp.addEventListener('input', () => { document.getElementById('tempval').textContent = `${temp.valueAsNumber} °C`; paint(); if (sel) renderDetail(byZ[sel]); });
+  year.addEventListener('input', () => { document.getElementById('yearval').textContent = fmtYear(year.valueAsNumber); paint(); });
+  q.addEventListener('input', paint);
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change', paint);
+
+  // ---------- tooltip ----------
+  const tip = document.getElementById('tip');
+  function tipShow(e, ev) {
+    const L = LENSES[lens];
+    tip.innerHTML = `<div class="t1"></div><div class="t2"></div>`;
+    tip.children[0].textContent = `${e.sym} · ${e.name} · ${e.z}`;
+    tip.children[1].textContent = L.value(e);
+    tip.style.display = 'block';
+    const x = Math.min(ev.clientX + 14, innerWidth - tip.offsetWidth - 8);
+    const y = Math.min(ev.clientY + 16, innerHeight - tip.offsetHeight - 8);
+    tip.style.left = x + 'px'; tip.style.top = y + 'px';
+  }
+  function tipHide() { tip.style.display = 'none'; }
+
+  // ---------- detail panel ----------
+  let sel = null;
+  function select(z) {
+    if (sel) tiles[sel].classList.remove('sel');
+    sel = z;
+    tiles[z].classList.add('sel');
+    renderDetail(byZ[z]);
+  }
+  addEventListener('keydown', (ev) => {
+    if (ev.key === 'Escape' && sel) {
+      tiles[sel].classList.remove('sel');
+      sel = null;
+      document.getElementById('detail').innerHTML = '<p class="empty">Select an element to inspect it.</p>';
+    }
+  });
+
+  function renderDetail(e) {
+    const d = document.getElementById('detail');
+    const catLabel = e.cat ? CAT_DEFS.find((c) => c.key === e.cat).label : 'unknown chemical properties';
+    const color = e.cat ? catColor(e.cat) : null;
+    const rows = [
+      ['atomic mass', fmtNum(e.atomicMass, 'u')],
+      ['group', e.groupNum ?? (e.z >= 89 && e.z <= 103 ? 'f-block · actinide' : 'f-block · lanthanide')],
+      ['period', e.periodNum],
+      ['block', e.block + '-block'],
+      ['state 0 °C', e.state0C],
+      ['state 20 °C', e.state20C === 'Unknown' ? null : e.state20C],
+      ['melting pt', fmtNum(e.meltingPt, '°C')],
+      ['boiling pt', fmtNum(e.boilingPt, '°C')],
+      ['density', fmtNum(e.density, 'g/cm³')],
+      ['origin', e.occurrence],
+      ['discovered', fmtYear(e.discovered)],
+    ];
+    const dl = rows.map(([k, v]) =>
+      `<dt>${k}</dt><dd class="${v == null ? 'none' : ''}">${v == null ? '— not in Notion' : v}</dd>`).join('');
+    const tags = [...e.families, ...(e.unknownProps ? ['#Unknown Chemical Properties'] : [])]
+      .map((t) => `<span class="tag"></span>`);
+    d.innerHTML = `
+      <div class="dhead">
+        <div class="dsym" style="${color ? `--tile-bg: color-mix(in oklab, ${color} 30%, var(--panel)); --tile-bd: color-mix(in oklab, ${color} 60%, var(--panel));` : ''}">
+          <span class="s"></span><span class="n"></span>
+        </div>
+        <div>
+          <p class="dname"></p>
+          <div class="dcat"></div>
+        </div>
+      </div>
+      <dl class="props">${dl}</dl>
+      <div class="tags"></div>
+      <div class="derived-note"></div>
+      <div class="dfoot">
+        <a href="${e.pageUrl}" target="_blank" rel="noopener">open in Notion ↗</a>
+        <span>edited ${new Date(e.lastEdited).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}</span>
+      </div>`;
+    d.querySelector('.dsym .s').textContent = e.sym;
+    d.querySelector('.dsym .n').textContent = e.z;
+    d.querySelector('.dname').textContent = e.name;
+    d.querySelector('.dcat').textContent = catLabel + (e.catDerived ? ' · derived from group 1' : '');
+    const tagbox = d.querySelector('.tags');
+    for (const t of [...e.families, ...(e.unknownProps ? ['#Unknown Chemical Properties'] : [])]) {
+      const s = document.createElement('span'); s.className = 'tag'; s.textContent = t.replace(/^#/, ''); tagbox.appendChild(s);
+    }
+    const notes = [];
+    if (e.catDerived) notes.push('“Alkali metal” is derived from group 1 — the Notion row is tagged only #Metal.');
+    if (rows.some(([, v]) => v == null)) notes.push('Dashes are genuine gaps in the Notion database, not zeros.');
+    d.querySelector('.derived-note').textContent = notes.join(' ');
+  }
+
+  // ---------- provenance ----------
+  const lastEdit = new Date(Math.max(...E.map((e) => Date.parse(e.lastEdited))));
+  const gaps = E.filter((e) => e.meltingPt == null || e.boilingPt == null || e.density == null || e.occurrence == null).length;
+  document.getElementById('prov').textContent =
+    `${E.length} elements · last Notion edit ${lastEdit.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })} · ${gaps} elements have gaps`;
+
+  document.getElementById('tempval').textContent = '20 °C';
+  paint();
+</script>

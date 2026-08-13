@@ -1,0 +1,7 @@
+{
+  "name": "kosmos",
+  "private": true,
+  "type": "module",
+  "scripts": { "start": "node server.js" },
+  "dependencies": { "@anthropic-ai/sdk": "^0.70.0" }
+}

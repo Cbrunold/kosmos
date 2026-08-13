@@ -1,0 +1,15 @@
+[Unit]
+Description=Kosmos science portal (port 3002)
+After=network.target
+
+[Service]
+WorkingDirectory=/opt/kosmos
+ExecStart=/usr/bin/node server.js
+Restart=always
+RestartSec=5
+Environment=NODE_ENV=production
+Environment=PORT=3002
+EnvironmentFile=/opt/kosmos/.env
+
+[Install]
+WantedBy=multi-user.target
