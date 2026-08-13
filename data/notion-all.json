@@ -461978,6 +461978,42 @@
   ],
   "equations": [
     {
+      "id": "3bbe5275-7b5c-8120-a62d-fa870a7c75bb",
+      "url": "https://app.notion.com/p/Logistic-Map-3bbe52757b5c8120a62dfa870a7c75bb",
+      "lastEdited": "2026-08-13T21:33:00.000Z",
+      "Equation": "xₙ₊₁ = r·xₙ·(1 − xₙ)",
+      "Field": "Nonlinear Dynamics",
+      "Named After": "Robert May",
+      "Symbols": "xₙ this year's population, as a fraction of maximum · r the growth rate knob · iterate to get next year, and the next",
+      "Significance": "One line of arithmetic a child could iterate: below r ≈ 3 it settles, then oscillates, then doubles and doubles again — and past 3.5699… it's chaos. May's point, made with an ecology model, was that wild complexity needs no complicated cause; the simplest feedback suffices.",
+      "Year": 1976,
+      "Name": "Logistic Map"
+    },
+    {
+      "id": "3bbe5275-7b5c-813e-af26-d6744c7f4db2",
+      "url": "https://app.notion.com/p/Feigenbaum-Constant-3bbe52757b5c813eaf26d6744c7f4db2",
+      "lastEdited": "2026-08-13T21:33:00.000Z",
+      "Equation": "δ = lim (rₙ − rₙ₋₁)/(rₙ₊₁ − rₙ) ≈ 4.6692…",
+      "Field": "Nonlinear Dynamics",
+      "Named After": "Mitchell Feigenbaum",
+      "Symbols": "rₙ the parameter values where the period doubles again (2, 4, 8, …) · δ the universal ratio at which those doublings accelerate toward chaos",
+      "Significance": "On the road to chaos, the period-doublings arrive geometrically faster — and the ratio is the same number for the logistic map, dripping faucets, and convecting fluids alike. A new universal constant of nature discovered on a programmable calculator.",
+      "Year": 1975,
+      "Name": "Feigenbaum Constant"
+    },
+    {
+      "id": "3bbe5275-7b5c-8132-a437-e09561425c4c",
+      "url": "https://app.notion.com/p/Lorenz-System-3bbe52757b5c8132a437e09561425c4c",
+      "lastEdited": "2026-08-13T21:33:00.000Z",
+      "Equation": "ẋ = σ(y−x) · ẏ = x(ρ−z) − y · ż = xy − βz",
+      "Field": "Nonlinear Dynamics",
+      "Named After": "Edward Lorenz",
+      "Symbols": "x, y, z the state of a drastically simplified convecting atmosphere · σ, ρ, β knobs for the fluid's properties · the dots are time derivatives",
+      "Significance": "Three innocuous-looking equations whose solutions never settle and never repeat, tracing the butterfly-shaped attractor that named an effect: Lorenz found that rounding a starting value in the fourth decimal produced a different weather forecast entirely. Deterministic yet unpredictable — the discovery that killed Laplace's demon.",
+      "Year": 1963,
+      "Name": "Lorenz System"
+    },
+    {
       "id": "3bbe5275-7b5c-81b4-84fa-eccd5252bf7c",
       "url": "https://app.notion.com/p/Goldman-Hodgkin-Katz-Equation-3bbe52757b5c81b484faeccd5252bf7c",
       "lastEdited": "2026-08-13T21:28:00.000Z",
