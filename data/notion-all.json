@@ -461978,6 +461978,42 @@
   ],
   "equations": [
     {
+      "id": "3bbe5275-7b5c-8103-81ff-e3a91328a314",
+      "url": "https://app.notion.com/p/Magnetic-Reynolds-Number-3bbe52757b5c810381ffe3a91328a314",
+      "lastEdited": "2026-08-13T21:18:00.000Z",
+      "Equation": "R_m = v·L / η",
+      "Field": "Magnetohydrodynamics",
+      "Named After": "Walter Elsasser · after Osborne Reynolds",
+      "Symbols": "v flow speed · L size of the system · η magnetic diffusivity · dimensionless — big R_m means the field is frozen into the fluid, small means it slips through",
+      "Significance": "One number that decides the regime: in Earth's core and the Sun (R_m huge) field lines are frozen into the flow and can be wound up into a dynamo — Elsasser's explanation for why Earth is a magnet at all. In the lab (R_m small) the field barely notices the fluid.",
+      "Year": 1946,
+      "Name": "Magnetic Reynolds Number"
+    },
+    {
+      "id": "3bbe5275-7b5c-81c5-abe1-d9f8b479e14f",
+      "url": "https://app.notion.com/p/Alfv-n-Velocity-3bbe52757b5c81c5abe1d9f8b479e14f",
+      "lastEdited": "2026-08-13T21:18:00.000Z",
+      "Equation": "v_A = B / √(μ₀·ρ)",
+      "Field": "Magnetohydrodynamics",
+      "Named After": "Hannes Alfvén",
+      "Symbols": "v_A speed of magnetic waves along the field · B magnetic field strength · μ₀ permeability of free space · ρ fluid density",
+      "Significance": "Magnetic field lines behave like plucked strings under tension, carrying waves at this speed — an idea so strange it was ignored until Fermi nodded at a seminar. Alfvén waves thread the solar wind and corona, and the 1970 Nobel followed.",
+      "Year": 1942,
+      "Name": "Alfvén Velocity"
+    },
+    {
+      "id": "3bbe5275-7b5c-814d-9bc3-ef9ce2d272dc",
+      "url": "https://app.notion.com/p/MHD-Induction-Equation-3bbe52757b5c814d9bc3ef9ce2d272dc",
+      "lastEdited": "2026-08-13T21:18:00.000Z",
+      "Equation": "∂B/∂t = ∇×(v×B) + η·∇²B",
+      "Field": "Magnetohydrodynamics",
+      "Named After": "Hannes Alfvén",
+      "Symbols": "B magnetic field · v velocity of the conducting fluid · η magnetic diffusivity · the first term carries the field with the flow, the second lets it slip and decay",
+      "Significance": "How a magnetic field evolves inside a moving conducting fluid — stirred by the flow, leaking by diffusion. It's Faraday's induction married to fluid dynamics, and it governs the Sun's boiling field, Earth's core, and every fusion plasma.",
+      "Year": 1942,
+      "Name": "MHD Induction Equation"
+    },
+    {
       "id": "3bbe5275-7b5c-81de-99a6-fb82df0033a9",
       "url": "https://app.notion.com/p/Josephson-Effect-3bbe52757b5c81de99a6fb82df0033a9",
       "lastEdited": "2026-08-13T21:16:00.000Z",
