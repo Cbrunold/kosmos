@@ -16,6 +16,7 @@
     --c-pink: #e05e8f;
     --c-bronze: #8a5314;
     --c-cyan: #0b87b8;
+    --c-indigo: #4a58c8;
     --heat: #2a78d6;
   }
   @media (prefers-color-scheme: dark) {
@@ -58,6 +59,7 @@
     --c-pink: #dc5f83;
     --c-bronze: #a4671f;
     --c-cyan: #38a8d8;
+    --c-indigo: #7b87e8;
     --heat: #5598e7;
   }
 

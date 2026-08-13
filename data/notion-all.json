@@ -461978,6 +461978,42 @@
   ],
   "equations": [
     {
+      "id": "3bbe5275-7b5c-8197-8da5-de06c7641cc3",
+      "url": "https://app.notion.com/p/Navier-Stokes-Equations-3bbe52757b5c81978da5de06c7641cc3",
+      "lastEdited": "2026-08-13T20:13:00.000Z",
+      "Equation": "ρ(∂v/∂t + v·∇v) = −∇p + μ∇²v + f",
+      "Field": "Fluid Dynamics",
+      "Named After": "Claude-Louis Navier · George Gabriel Stokes",
+      "Symbols": "ρ density · v velocity field · p pressure · μ viscosity · f body forces such as gravity · v·∇v the nonlinear term that makes turbulence",
+      "Significance": "Newton's second law written for flowing matter — weather, ocean currents, aerodynamics, and blood flow all obey it. Its nonlinear term breeds turbulence, and whether smooth solutions always exist remains a Clay Millennium Problem with a million dollars unclaimed.",
+      "Year": 1822,
+      "Name": "Navier–Stokes Equations"
+    },
+    {
+      "id": "3bbe5275-7b5c-8189-9f06-e3de324e0af4",
+      "url": "https://app.notion.com/p/Continuity-Equation-3bbe52757b5c81899f06e3de324e0af4",
+      "lastEdited": "2026-08-13T20:13:00.000Z",
+      "Equation": "∂ρ/∂t + ∇·(ρv) = 0",
+      "Field": "Fluid Dynamics",
+      "Named After": "Leonhard Euler",
+      "Symbols": "ρ density · v velocity field · t time · ∇· divergence · for incompressible flow it reduces to ∇·v = 0",
+      "Significance": "Mass is neither created nor destroyed as fluid flows — what goes in must come out. Why a river races through its narrows and a thumb over a hose makes the jet fly farther.",
+      "Year": 1757,
+      "Name": "Continuity Equation"
+    },
+    {
+      "id": "3bbe5275-7b5c-819b-ba4e-f3c3031b13f1",
+      "url": "https://app.notion.com/p/Bernoulli-s-Equation-3bbe52757b5c819bba4ef3c3031b13f1",
+      "lastEdited": "2026-08-13T20:12:00.000Z",
+      "Equation": "p + ½ρv² + ρgh = constant",
+      "Field": "Fluid Dynamics",
+      "Named After": "Daniel Bernoulli",
+      "Symbols": "p pressure · ρ density · v flow speed · g gravitational acceleration · h height · holds along a streamline for steady, frictionless, incompressible flow",
+      "Significance": "Where a fluid speeds up, its pressure drops — energy bookkeeping along a streamline. Why airplane wings lift, carburetors draw fuel, and a shower curtain billows inward.",
+      "Year": 1738,
+      "Name": "Bernoulli's Equation"
+    },
+    {
       "id": "3bbe5275-7b5c-813d-86cf-c29a346fe2f8",
       "url": "https://app.notion.com/p/Snell-s-Law-3bbe52757b5c813d86cfc29a346fe2f8",
       "lastEdited": "2026-08-13T20:10:00.000Z",
