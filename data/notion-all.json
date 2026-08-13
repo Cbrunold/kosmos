@@ -461978,6 +461978,42 @@
   ],
   "equations": [
     {
+      "id": "3bbe5275-7b5c-8125-8857-cffce0164fef",
+      "url": "https://app.notion.com/p/Standard-Model-Lagrangian-3bbe52757b5c81258857cffce0164fef",
+      "lastEdited": "2026-08-13T20:27:00.000Z",
+      "Equation": "ℒ = −¼F_μν·F^μν + iψ̄D̸ψ + ψ̄ᵢyᵢⱼψⱼφ + h.c. + |D_μφ|² − V(φ)",
+      "Field": "Particle Physics",
+      "Named After": "Sheldon Glashow · Abdus Salam · Steven Weinberg · and many hands",
+      "Symbols": "line 1: the force fields (photon, W, Z, gluons) · line 2: matter in motion (quarks, leptons) · line 3: matter meeting the Higgs, gaining mass · line 4: the Higgs field itself · compact notation — expanded it runs to pages",
+      "Significance": "Every known particle and every force except gravity, in one (very compressed) expression — the equation on CERN's coffee mugs. Assembled through the 1960s-70s from electroweak unification and quantum chromodynamics; its last missing piece, the Higgs boson, arrived in 2012. Nothing it predicts has yet been caught being wrong.",
+      "Year": 1975,
+      "Name": "Standard Model Lagrangian"
+    },
+    {
+      "id": "3bbe5275-7b5c-8189-b87c-e1e5b2e563de",
+      "url": "https://app.notion.com/p/Higgs-Potential-3bbe52757b5c8189b87ce1e5b2e563de",
+      "lastEdited": "2026-08-13T20:27:00.000Z",
+      "Equation": "V(φ) = −μ²|φ|² + λ|φ|⁴",
+      "Field": "Particle Physics",
+      "Named After": "Peter Higgs · Brout · Englert",
+      "Symbols": "φ the Higgs field · μ², λ parameters shaping the potential · the minus sign puts the minimum away from zero — the 'Mexican hat'",
+      "Significance": "A field whose lowest-energy state is not zero, so all of space sits in it — and particles wading through acquire mass. Proposed in 1964, confirmed at CERN in 2012 when the field's own ripple, the Higgs boson, finally showed itself.",
+      "Year": 1964,
+      "Name": "Higgs Potential"
+    },
+    {
+      "id": "3bbe5275-7b5c-81ce-aa9b-fb9384fc46ee",
+      "url": "https://app.notion.com/p/Dirac-Equation-3bbe52757b5c81ceaa9bfb9384fc46ee",
+      "lastEdited": "2026-08-13T20:27:00.000Z",
+      "Equation": "(iγ^μ·∂_μ − m)ψ = 0",
+      "Field": "Particle Physics",
+      "Named After": "Paul Dirac",
+      "Symbols": "ψ the electron's four-component field · γ^μ the Dirac matrices · ∂_μ spacetime derivatives · m electron mass · units where ℏ = c = 1",
+      "Significance": "Quantum mechanics made compatible with special relativity — and the equation demanded more than it was asked for: electron spin fell out automatically, and its negative-energy solutions predicted antimatter four years before the positron was found.",
+      "Year": 1928,
+      "Name": "Dirac Equation"
+    },
+    {
       "id": "3bbe5275-7b5c-81dd-a75c-d703f0a640b3",
       "url": "https://app.notion.com/p/Chandrasekhar-Limit-3bbe52757b5c81dda75cd703f0a640b3",
       "lastEdited": "2026-08-13T20:25:00.000Z",
