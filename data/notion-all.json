@@ -461978,6 +461978,42 @@
   ],
   "equations": [
     {
+      "id": "3bbe5275-7b5c-8103-8865-faee50cc9c18",
+      "url": "https://app.notion.com/p/Qubit-State-3bbe52757b5c81038865faee50cc9c18",
+      "lastEdited": "2026-08-13T21:03:00.000Z",
+      "Equation": "|ψ⟩ = α|0⟩ + β|1⟩,  |α|² + |β|² = 1",
+      "Field": "Quantum Computing",
+      "Named After": "Benjamin Schumacher (coined 'qubit')",
+      "Symbols": "|0⟩, |1⟩ the two classical answers · α, β complex amplitudes weighting each · measurement yields 0 with probability |α|², 1 with |β|²",
+      "Significance": "A bit that holds both answers at once, in precise proportions, until measured — the unit of quantum information. n qubits span 2ⁿ amplitudes simultaneously, which is the entire bet behind quantum computing; Schumacher named it while proving quantum states can be compressed, Shannon-style.",
+      "Year": 1995,
+      "Name": "Qubit State"
+    },
+    {
+      "id": "3bbe5275-7b5c-810e-a378-ea77aa50d6f6",
+      "url": "https://app.notion.com/p/No-Cloning-Theorem-3bbe52757b5c810ea378ea77aa50d6f6",
+      "lastEdited": "2026-08-13T21:03:00.000Z",
+      "Equation": "no U exists with U(|ψ⟩|0⟩) = |ψ⟩|ψ⟩",
+      "Field": "Quantum Computing",
+      "Named After": "William Wootters · Wojciech Zurek · Dennis Dieks",
+      "Symbols": "|ψ⟩ an arbitrary unknown quantum state · U any allowed (unitary) operation · the theorem: no universal copier is possible",
+      "Significance": "Unknown quantum states cannot be photocopied — linearity forbids it. The apparent handicap is a feature: an eavesdropper can't copy a quantum key without leaving fingerprints, which makes quantum cryptography possible, and it's why quantum error correction had to be invented rather than borrowed.",
+      "Year": 1982,
+      "Name": "No-Cloning Theorem"
+    },
+    {
+      "id": "3bbe5275-7b5c-810f-8c8d-d0d1ca4da44e",
+      "url": "https://app.notion.com/p/Bell-State-3bbe52757b5c810f8c8dd0d1ca4da44e",
+      "lastEdited": "2026-08-13T21:03:00.000Z",
+      "Equation": "|Φ⁺⟩ = (|00⟩ + |11⟩)/√2",
+      "Field": "Quantum Computing",
+      "Named After": "John Stewart Bell",
+      "Symbols": "|00⟩, |11⟩ both qubits reading zero, or both reading one · the superposition holds the pair in perfect correlation with neither value decided",
+      "Significance": "Two qubits sharing one state: measure either and the other's answer is fixed instantly, however far apart. Bell showed no hidden local mechanism can fake these correlations — entanglement is real, and it is the working fuel of quantum computing, teleportation, and quantum cryptography.",
+      "Year": 1964,
+      "Name": "Bell State"
+    },
+    {
       "id": "3bbe5275-7b5c-8113-9b17-e6d7efc091ea",
       "url": "https://app.notion.com/p/Bragg-s-Law-3bbe52757b5c81139b17e6d7efc091ea",
       "lastEdited": "2026-08-13T21:00:00.000Z",
