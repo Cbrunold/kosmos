@@ -461978,6 +461978,42 @@
   ],
   "equations": [
     {
+      "id": "3bbe5275-7b5c-815f-8f49-fde9509c1e77",
+      "url": "https://app.notion.com/p/Einstein-Hilbert-Action-3bbe52757b5c815f8f49fde9509c1e77",
+      "lastEdited": "2026-08-13T20:53:00.000Z",
+      "Equation": "S = (c⁴/16πG)·∫R·√(−g)·d⁴x",
+      "Field": "General Relativity",
+      "Named After": "David Hilbert · Albert Einstein",
+      "Symbols": "R the Ricci scalar, total curvature at each point · g determinant of the metric · the integral runs over all of spacetime · varying S yields the field equations",
+      "Significance": "All of general relativity compressed into one thing to minimize: spacetime arranges itself to extremize total curvature. Hilbert reached the field equations this way days before Einstein's own derivation — and the action form is the doorway every attempt at quantum gravity walks through.",
+      "Year": 1915,
+      "Name": "Einstein–Hilbert Action"
+    },
+    {
+      "id": "3bbe5275-7b5c-813b-aa6c-dd6ce2e33cbf",
+      "url": "https://app.notion.com/p/Geodesic-Equation-3bbe52757b5c813baa6cdd6ce2e33cbf",
+      "lastEdited": "2026-08-13T20:53:00.000Z",
+      "Equation": "d²x^μ/dτ² + Γ^μ_αβ·(dx^α/dτ)(dx^β/dτ) = 0",
+      "Field": "General Relativity",
+      "Named After": "Albert Einstein",
+      "Symbols": "x^μ position in spacetime · τ proper time along the worldline · Γ^μ_αβ Christoffel symbols, the local record of spacetime curvature",
+      "Significance": "There is no force of gravity — falling things simply follow the straightest possible line through curved spacetime. Planetary orbits, the bending of starlight, and your fall off a ladder are all the same statement: mass tells spacetime how to curve, and this equation is how spacetime tells matter to move.",
+      "Year": 1915,
+      "Name": "Geodesic Equation"
+    },
+    {
+      "id": "3bbe5275-7b5c-81ef-b92b-d35cea11b9be",
+      "url": "https://app.notion.com/p/Gravitational-Time-Dilation-3bbe52757b5c81efb92bd35cea11b9be",
+      "lastEdited": "2026-08-13T20:53:00.000Z",
+      "Equation": "Δτ = Δt·√(1 − 2GM/(rc²))",
+      "Field": "General Relativity",
+      "Named After": "Albert Einstein",
+      "Symbols": "Δτ time ticked by a clock at radius r from mass M · Δt time far away · G gravitational constant · c speed of light · the factor under the root hits zero at the event horizon",
+      "Significance": "Clocks deeper in gravity run slower — predicted from the equivalence principle years before the full theory existed. Not an abstraction: GPS satellites' clocks gain 45 microseconds a day over yours, and without this correction positions would drift kilometres per day.",
+      "Year": 1907,
+      "Name": "Gravitational Time Dilation"
+    },
+    {
       "id": "3bbe5275-7b5c-815d-b970-fb2a7877db25",
       "url": "https://app.notion.com/p/Feynman-Path-Integral-3bbe52757b5c815db970fb2a7877db25",
       "lastEdited": "2026-08-13T20:50:00.000Z",

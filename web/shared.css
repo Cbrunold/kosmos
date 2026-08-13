@@ -28,6 +28,7 @@
     --c-lime: #5f9e14;
     --c-yellow: #a89a00;
     --c-aubergine: #702f9e;
+    --c-navy: #24457e;
     --heat: #2a78d6;
   }
   @media (prefers-color-scheme: dark) {
@@ -82,6 +83,7 @@
     --c-lime: #93bf3a;
     --c-yellow: #ccc039;
     --c-aubergine: #a374d6;
+    --c-navy: #7f9bd4;
     --heat: #5598e7;
   }
 
