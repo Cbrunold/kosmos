@@ -35,6 +35,7 @@
     --c-periwinkle: #5e6fd0;
     --c-ice: #2f93bb;
     --c-storm: #5c5a7a;
+    --c-ochre: #96690f;
     --heat: #2a78d6;
   }
   @media (prefers-color-scheme: dark) {
@@ -96,6 +97,7 @@
     --c-periwinkle: #98a5ef;
     --c-ice: #8ed2ea;
     --c-storm: #918fb5;
+    --c-ochre: #bb8f2e;
     --heat: #5598e7;
   }
 

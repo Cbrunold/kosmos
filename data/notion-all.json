@@ -461978,6 +461978,42 @@
   ],
   "equations": [
     {
+      "id": "3bbe5275-7b5c-812d-b464-f7799b61cce9",
+      "url": "https://app.notion.com/p/Thermoelectric-Figure-of-Merit-3bbe52757b5c812db464f7799b61cce9",
+      "lastEdited": "2026-08-13T21:23:00.000Z",
+      "Equation": "zT = S²·σ·T / κ",
+      "Field": "Thermoelectrics",
+      "Named After": "Abram Ioffe",
+      "Symbols": "S Seebeck coefficient · σ electrical conductivity · κ thermal conductivity · T absolute temperature · dimensionless — bigger is better, and above ~1 is device-worthy",
+      "Significance": "The materials-hunt scorecard: a good thermoelectric conducts electricity like a metal but heat like a glass — a contradiction to engineer around. Radioisotope generators score just well enough to power Voyager and the Mars rovers on decay heat, decades from the Sun.",
+      "Year": 1949,
+      "Name": "Thermoelectric Figure of Merit"
+    },
+    {
+      "id": "3bbe5275-7b5c-8110-a092-dab2770885be",
+      "url": "https://app.notion.com/p/Peltier-Effect-3bbe52757b5c8110a092dab2770885be",
+      "lastEdited": "2026-08-13T21:23:00.000Z",
+      "Equation": "Q̇ = Π·I",
+      "Field": "Thermoelectrics",
+      "Named After": "Jean Charles Athanase Peltier",
+      "Symbols": "Q̇ heat absorbed or released at a junction of two materials · I electric current through it · Π the Peltier coefficient, tied to Seebeck's by Π = S·T",
+      "Significance": "Run the Seebeck effect backwards: push current through a junction and it pumps heat from one side to the other — a solid-state refrigerator. Camping coolers, CPU chillers, and laser stabilizers all run on this thirteen-years-later mirror image.",
+      "Year": 1834,
+      "Name": "Peltier Effect"
+    },
+    {
+      "id": "3bbe5275-7b5c-814d-8154-c3d16384df7f",
+      "url": "https://app.notion.com/p/Seebeck-Effect-3bbe52757b5c814d8154c3d16384df7f",
+      "lastEdited": "2026-08-13T21:23:00.000Z",
+      "Equation": "V = −S·ΔT",
+      "Field": "Thermoelectrics",
+      "Named After": "Thomas Johann Seebeck",
+      "Symbols": "V voltage generated · ΔT temperature difference across the material · S the Seebeck coefficient, the material's signature (microvolts per kelvin)",
+      "Significance": "Hold one end of a conductor hot and the other cold, and a voltage appears — heat turned directly into electricity with no moving parts. Seebeck misread his own discovery as 'thermomagnetism'; the thermocouple it spawned is still how most of industry measures temperature.",
+      "Year": 1821,
+      "Name": "Seebeck Effect"
+    },
+    {
       "id": "3bbe5275-7b5c-8103-81ff-e3a91328a314",
       "url": "https://app.notion.com/p/Magnetic-Reynolds-Number-3bbe52757b5c810381ffe3a91328a314",
       "lastEdited": "2026-08-13T21:18:00.000Z",
