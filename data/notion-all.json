@@ -461978,6 +461978,42 @@
   ],
   "equations": [
     {
+      "id": "3bbe5275-7b5c-81dd-a75c-d703f0a640b3",
+      "url": "https://app.notion.com/p/Chandrasekhar-Limit-3bbe52757b5c81dda75cd703f0a640b3",
+      "lastEdited": "2026-08-13T20:25:00.000Z",
+      "Equation": "M_Ch ∝ (ℏc/G)^(3/2)/(μₑmₚ)² ≈ 1.4 M☉",
+      "Field": "Astrophysics",
+      "Named After": "Subrahmanyan Chandrasekhar",
+      "Symbols": "M_Ch the maximum white-dwarf mass · ℏ reduced Planck constant · c speed of light · G gravitational constant · μₑ electrons per nucleon · mₚ proton mass · M☉ solar mass",
+      "Significance": "Above about 1.4 solar masses, quantum electron pressure can no longer hold a dead star up against its own gravity — collapse continues to a neutron star or black hole. Worked out by Chandrasekhar at 19, aboard the ship carrying him to Cambridge; it's why Type Ia supernovae all detonate at the same mass and make trustworthy cosmic distance markers.",
+      "Year": 1931,
+      "Name": "Chandrasekhar Limit"
+    },
+    {
+      "id": "3bbe5275-7b5c-811a-baed-c686bb16bbc3",
+      "url": "https://app.notion.com/p/Schwarzschild-Radius-3bbe52757b5c811abaedc686bb16bbc3",
+      "lastEdited": "2026-08-13T20:25:00.000Z",
+      "Equation": "r_s = 2GM/c²",
+      "Field": "Astrophysics",
+      "Named After": "Karl Schwarzschild",
+      "Symbols": "r_s the event-horizon radius · G gravitational constant · M mass · c speed of light",
+      "Significance": "Squeeze any mass inside this radius and not even light escapes — a black hole. Derived from Einstein's field equations within months of their publication, by an astronomer serving on the Russian front. For the Sun: three kilometres; for Earth: nine millimetres.",
+      "Year": 1916,
+      "Name": "Schwarzschild Radius"
+    },
+    {
+      "id": "3bbe5275-7b5c-8120-863e-cd94384e0239",
+      "url": "https://app.notion.com/p/Stefan-Boltzmann-Law-3bbe52757b5c8120863ecd94384e0239",
+      "lastEdited": "2026-08-13T20:25:00.000Z",
+      "Equation": "L = 4πR²σT⁴",
+      "Field": "Astrophysics",
+      "Named After": "Josef Stefan · Ludwig Boltzmann",
+      "Symbols": "L luminosity (power radiated) · R radius of the star · T surface temperature · σ the Stefan–Boltzmann constant",
+      "Significance": "A star's brightness from its size and temperature alone — radiated power scales with the fourth power of T, so a modestly hotter star blazes enormously brighter. With a spectrum in hand, this is how astronomers weigh a star's output across light-years.",
+      "Year": 1879,
+      "Name": "Stefan–Boltzmann Law"
+    },
+    {
       "id": "3bbe5275-7b5c-813e-a03e-dacece1e6c35",
       "url": "https://app.notion.com/p/Half-Life-3bbe52757b5c813ea03edacece1e6c35",
       "lastEdited": "2026-08-13T20:19:00.000Z",
