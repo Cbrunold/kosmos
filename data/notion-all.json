@@ -461978,6 +461978,30 @@
   ],
   "equations": [
     {
+      "id": "3bbe5275-7b5c-8183-8228-de82d104194f",
+      "url": "https://app.notion.com/p/Seismic-Wave-Speeds-3bbe52757b5c81838228de82d104194f",
+      "lastEdited": "2026-08-13T20:35:00.000Z",
+      "Equation": "v_p = √((K + 4μ/3)/ρ) · v_s = √(μ/ρ)",
+      "Field": "Geophysics",
+      "Named After": "Siméon Denis Poisson",
+      "Symbols": "v_p compressional (P) wave speed · v_s shear (S) wave speed · K bulk modulus (incompressibility) · μ shear modulus (rigidity) · ρ density · liquids have μ = 0, so no S-waves",
+      "Significance": "P-waves arrive first and pass through anything; S-waves arrive second and cannot cross liquid — and their shadow on the far side of earthquakes is how we know Earth's outer core is molten. Timing the two arrivals locates quakes and X-rays the planet's interior, layer by layer.",
+      "Year": 1828,
+      "Name": "Seismic Wave Speeds"
+    },
+    {
+      "id": "3bbe5275-7b5c-818c-81f5-e08330c436f3",
+      "url": "https://app.notion.com/p/Elastic-Wave-Equation-3bbe52757b5c818c81f5e08330c436f3",
+      "lastEdited": "2026-08-13T20:35:00.000Z",
+      "Equation": "ρ·∂²u/∂t² = (λ+μ)∇(∇·u) + μ∇²u",
+      "Field": "Geophysics",
+      "Named After": "Claude-Louis Navier · Augustin-Louis Cauchy · Siméon Poisson",
+      "Symbols": "u displacement of the rock · ρ density · λ, μ the Lamé constants (compressibility and rigidity) · t time · the two terms carry two different wave types",
+      "Significance": "Newton's second law written for solid rock — and Poisson noticed the equation splits into two independent waves: compressional and shear. Every seismogram is this equation's solution, rung through the body of the Earth.",
+      "Year": 1828,
+      "Name": "Elastic Wave Equation"
+    },
+    {
       "id": "3bbe5275-7b5c-813f-974b-c000af0892df",
       "url": "https://app.notion.com/p/Partition-Function-3bbe52757b5c813f974bc000af0892df",
       "lastEdited": "2026-08-13T20:32:00.000Z",
