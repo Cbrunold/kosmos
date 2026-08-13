@@ -461978,6 +461978,18 @@
   ],
   "equations": [
     {
+      "id": "3bbe5275-7b5c-81bf-b306-fdf6fa438de8",
+      "url": "https://app.notion.com/p/Pythagorean-Theorem-3bbe52757b5c81bfb306fdf6fa438de8",
+      "lastEdited": "2026-08-13T20:06:00.000Z",
+      "Equation": "a² + b² = c²",
+      "Field": "Mathematics",
+      "Named After": "Pythagoras",
+      "Symbols": "a, b the two legs of a right triangle · c the hypotenuse",
+      "Significance": "The square on the hypotenuse equals the sum of the squares on the other two sides — how distance itself is measured, from surveying to GPS to the metric of spacetime. Babylonian tablets list its triples a thousand years before Pythagoras; the Greek contribution was proving it must always hold.",
+      "Year": -530,
+      "Name": "Pythagorean Theorem"
+    },
+    {
       "id": "3bbe5275-7b5c-815f-9d30-c0e44b4a7608",
       "url": "https://app.notion.com/p/Lorentz-Factor-3bbe52757b5c815f9d30c0e44b4a7608",
       "lastEdited": "2026-08-13T20:04:00.000Z",

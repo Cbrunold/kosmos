@@ -89,7 +89,7 @@ __SHARED__
       c.append(h, formula, sym, sig);
       const bits = [];
       if (e['Named After']) bits.push(e['Named After']);
-      if (e.Year) bits.push(String(e.Year));
+      if (e.Year) bits.push(e.Year < 0 ? `c. ${-e.Year} BCE` : String(e.Year));
       if (bits.length) { const m = document.createElement('div'); m.className = 'meta'; m.textContent = bits.join(' · '); c.appendChild(m); }
       eqs.appendChild(c);
     }

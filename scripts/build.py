@@ -200,6 +200,8 @@ def build_home(n_min, n_gems, n_classes, n_spectral, n_instr):
     sync = max(dates)[:10] if dates else "?"
     eqs = notion.get("equations", [])
     years = [e["Year"] for e in eqs if e.get("Year")]
+    oldest = min(years) if years else None
+    oldest_str = "?" if oldest is None else (f"{-oldest} BCE" if oldest < 0 else str(oldest))
     write_page("home.template.html", "home.html", extra={
         "__N_GAPS__": gaps,
         "__N_MINERALS__": f"{n_min:,}",
@@ -210,7 +212,7 @@ def build_home(n_min, n_gems, n_classes, n_spectral, n_instr):
         "__N_THEORIES__": len(notion["theories"]),
         "__N_EQ__": len(eqs),
         "__N_EQFIELDS__": len({e.get("Field") for e in eqs if e.get("Field")}),
-        "__EQ_OLDEST__": min(years) if years else "?",
+        "__EQ_OLDEST__": oldest_str,
         "__SYNC_DATE__": sync,
     })
 
