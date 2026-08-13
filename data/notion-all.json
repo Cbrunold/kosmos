@@ -461978,6 +461978,42 @@
   ],
   "equations": [
     {
+      "id": "3bbe5275-7b5c-81b4-84fa-eccd5252bf7c",
+      "url": "https://app.notion.com/p/Goldman-Hodgkin-Katz-Equation-3bbe52757b5c81b484faeccd5252bf7c",
+      "lastEdited": "2026-08-13T21:28:00.000Z",
+      "Equation": "V_m = (RT/F)·ln(ΣP·[ion]ₒᵤₜ / ΣP·[ion]ᵢₙ)",
+      "Field": "Biophysics",
+      "Named After": "David Goldman · Alan Hodgkin · Bernard Katz",
+      "Symbols": "V_m the membrane's resting voltage · P each ion's permeability (weighting its vote) · the sums run over K⁺, Na⁺, Cl⁻ · reduces to Nernst when one ion dominates",
+      "Significance": "Real membranes listen to several ions at once, each weighted by how easily it passes — the ~−70 mV hum of a resting neuron. Flip the sodium permeability and the voltage spikes: that reversal, propagating down the axon, is the nerve impulse reading this sentence.",
+      "Year": 1943,
+      "Name": "Goldman–Hodgkin–Katz Equation"
+    },
+    {
+      "id": "3bbe5275-7b5c-81ee-97dc-c7e65a4e1ad2",
+      "url": "https://app.notion.com/p/Michaelis-Menten-Equation-3bbe52757b5c81ee97dcc7e65a4e1ad2",
+      "lastEdited": "2026-08-13T21:28:00.000Z",
+      "Equation": "v = V_max·[S] / (K_m + [S])",
+      "Field": "Biophysics",
+      "Named After": "Leonor Michaelis · Maud Menten",
+      "Symbols": "v reaction rate · [S] substrate concentration · V_max the enzyme's top speed, all sites busy · K_m the concentration at half speed — the enzyme's affinity signature",
+      "Significance": "How enzymes work: fast when fed, saturating when swamped — a hyperbola that describes digestion, drug metabolism, and nearly every reaction keeping you alive. Menten was one of the first women in medical research; the equation still anchors pharmacology dosing.",
+      "Year": 1913,
+      "Name": "Michaelis–Menten Equation"
+    },
+    {
+      "id": "3bbe5275-7b5c-81b2-9ec2-d967f8695b7e",
+      "url": "https://app.notion.com/p/Nernst-Equation-3bbe52757b5c81b29ec2d967f8695b7e",
+      "lastEdited": "2026-08-13T21:28:00.000Z",
+      "Equation": "E = (RT/zF)·ln([ion]ₒᵤₜ/[ion]ᵢₙ)",
+      "Field": "Biophysics",
+      "Named After": "Walther Nernst",
+      "Symbols": "E equilibrium voltage for one ion species · R gas constant · T absolute temperature · z the ion's charge · F Faraday's constant · the log compares concentrations outside and inside the membrane",
+      "Significance": "A concentration difference across a membrane is a battery — about −90 mV for potassium in your neurons, right now. Born in electrochemistry (it prices every battery's voltage too), it became the foundation stone of electrophysiology: nerves run on Nernst.",
+      "Year": 1889,
+      "Name": "Nernst Equation"
+    },
+    {
       "id": "3bbe5275-7b5c-8174-8c31-eda1293e8fe6",
       "url": "https://app.notion.com/p/Gaussian-Beam-Divergence-3bbe52757b5c81748c31eda1293e8fe6",
       "lastEdited": "2026-08-13T21:25:00.000Z",

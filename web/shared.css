@@ -37,6 +37,7 @@
     --c-storm: #5c5a7a;
     --c-ochre: #96690f;
     --c-tangerine: #d4700a;
+    --c-clay: #9c6249;
     --heat: #2a78d6;
   }
   @media (prefers-color-scheme: dark) {
@@ -100,6 +101,7 @@
     --c-storm: #918fb5;
     --c-ochre: #bb8f2e;
     --c-tangerine: #ee9440;
+    --c-clay: #c9967e;
     --heat: #5598e7;
   }
 
