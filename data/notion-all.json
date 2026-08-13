@@ -461978,6 +461978,42 @@
   ],
   "equations": [
     {
+      "id": "3bbe5275-7b5c-81d1-abad-c2702fa3abb0",
+      "url": "https://app.notion.com/p/Bloch-s-Theorem-3bbe52757b5c81d1abadc2702fa3abb0",
+      "lastEdited": "2026-08-13T21:13:00.000Z",
+      "Equation": "ψ_k(r) = e^(i·k·r)·u_k(r)",
+      "Field": "Condensed Matter",
+      "Named After": "Felix Bloch",
+      "Symbols": "ψ_k electron wavefunction in a crystal · k crystal momentum · u_k a function with the lattice's own periodicity · the plane wave e^(i·k·r) rides the lattice unimpeded",
+      "Significance": "The Schrödinger equation solved in the periodic potential of a crystal: electrons travel as waves shaped by the lattice, scattering only off imperfections — why copper conducts at all. The allowed and forbidden energies this form produces are the band structure, the blueprint of every material's electronic personality.",
+      "Year": 1928,
+      "Name": "Bloch's Theorem"
+    },
+    {
+      "id": "3bbe5275-7b5c-81e1-96c0-c6157aaee509",
+      "url": "https://app.notion.com/p/Fermi-Dirac-Distribution-3bbe52757b5c81e196c0c6157aaee509",
+      "lastEdited": "2026-08-13T21:13:00.000Z",
+      "Equation": "f(E) = 1 / (e^((E−μ)/kT) + 1)",
+      "Field": "Condensed Matter",
+      "Named After": "Enrico Fermi · Paul Dirac",
+      "Symbols": "f(E) probability an electron state of energy E is occupied · μ chemical potential (the Fermi level) · k Boltzmann constant · T temperature · the +1 encodes the exclusion principle",
+      "Significance": "Electrons refuse to share states, so they stack up to a filling line — the Fermi level. Everything electronic follows from where that line sits: metals have it mid-band, insulators in a gap, and semiconductors close enough to a band edge to be persuaded — which is the transistor.",
+      "Year": 1926,
+      "Name": "Fermi–Dirac Distribution"
+    },
+    {
+      "id": "3bbe5275-7b5c-81ee-9b16-dcfba043e1f3",
+      "url": "https://app.notion.com/p/Drude-Conductivity-3bbe52757b5c81ee9b16dcfba043e1f3",
+      "lastEdited": "2026-08-13T21:13:00.000Z",
+      "Equation": "σ = n·e²·τ / mₑ",
+      "Field": "Condensed Matter",
+      "Named After": "Paul Drude",
+      "Symbols": "σ electrical conductivity · n density of free electrons · e electron charge · τ average time between collisions · mₑ electron mass",
+      "Significance": "Metals as a pinball sea of electrons, drifting between collisions — proposed three years after the electron's discovery. Crude but unreasonably effective: it still gives the right form for conductivity, and its failures pointed straight at the quantum theory of solids.",
+      "Year": 1900,
+      "Name": "Drude Conductivity"
+    },
+    {
       "id": "3bbe5275-7b5c-817f-80a4-f6e36ff9d306",
       "url": "https://app.notion.com/p/Lawson-Criterion-3bbe52757b5c817f80a4f6e36ff9d306",
       "lastEdited": "2026-08-13T21:11:00.000Z",
