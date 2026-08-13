@@ -461978,6 +461978,30 @@
   ],
   "equations": [
     {
+      "id": "3bbe5275-7b5c-815f-9d30-c0e44b4a7608",
+      "url": "https://app.notion.com/p/Lorentz-Factor-3bbe52757b5c815f9d30c0e44b4a7608",
+      "lastEdited": "2026-08-13T20:04:00.000Z",
+      "Equation": "γ = 1/√(1 − v²/c²)",
+      "Field": "Relativity",
+      "Named After": "Hendrik Lorentz",
+      "Symbols": "γ the stretch factor · v relative speed · c speed of light · equals 1 at rest, grows without bound as v approaches c",
+      "Significance": "The exchange rate of relativity: moving clocks run slow by γ, moving rulers shrink by γ, and kinetic energy diverges as v nears c — which is why nothing with mass reaches light speed. At everyday speeds γ is 1 to a dozen decimal places, which is why none of this is felt.",
+      "Year": 1904,
+      "Name": "Lorentz Factor"
+    },
+    {
+      "id": "3bbe5275-7b5c-81e7-b649-f021e6e295c6",
+      "url": "https://app.notion.com/p/Lorentz-Transformations-3bbe52757b5c81e7b649f021e6e295c6",
+      "lastEdited": "2026-08-13T20:04:00.000Z",
+      "Equation": "x′ = γ(x − vt) · t′ = γ(t − vx/c²)",
+      "Field": "Relativity",
+      "Named After": "Hendrik Lorentz",
+      "Symbols": "x, t position and time in one frame · x′, t′ the same event seen from a frame moving at speed v · c speed of light · γ the Lorentz factor · y and z pass through unchanged",
+      "Significance": "How space and time coordinates convert between observers in relative motion — and the surprise is that time mixes with position. Written by Lorentz to patch electromagnetism; reinterpreted by Einstein in 1905 as the actual geometry of space and time. Simultaneity has been relative ever since.",
+      "Year": 1904,
+      "Name": "Lorentz Transformations"
+    },
+    {
       "id": "3bbe5275-7b5c-8127-96bd-f72be5a740f4",
       "url": "https://app.notion.com/p/Third-Law-of-Thermodynamics-3bbe52757b5c812796bdf72be5a740f4",
       "lastEdited": "2026-08-13T20:00:00.000Z",
