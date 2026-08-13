@@ -461978,6 +461978,30 @@
   ],
   "equations": [
     {
+      "id": "3bbe5275-7b5c-8113-9b17-e6d7efc091ea",
+      "url": "https://app.notion.com/p/Bragg-s-Law-3bbe52757b5c81139b17e6d7efc091ea",
+      "lastEdited": "2026-08-13T21:00:00.000Z",
+      "Equation": "2d·sin θ = n·λ",
+      "Field": "Waves & Optics",
+      "Named After": "William Henry Bragg · William Lawrence Bragg",
+      "Symbols": "d spacing between atomic planes in a crystal · θ grazing angle of the X-ray beam · n order · λ X-ray wavelength",
+      "Significance": "Crystals diffract X-rays as if their atomic planes were mirrors — measure the angles and you read the atomic architecture itself. A father-son Nobel (the son, at 25, still the youngest science laureate); it revealed the structure of salt, diamond, and eventually DNA.",
+      "Year": 1913,
+      "Name": "Bragg's Law"
+    },
+    {
+      "id": "3bbe5275-7b5c-8130-a1e2-d4d1fefda7d8",
+      "url": "https://app.notion.com/p/Diffraction-Grating-Equation-3bbe52757b5c8130a1e2d4d1fefda7d8",
+      "lastEdited": "2026-08-13T21:00:00.000Z",
+      "Equation": "d·sin θ = m·λ",
+      "Field": "Waves & Optics",
+      "Named After": "Joseph von Fraunhofer",
+      "Symbols": "d spacing between the grating's slits or grooves · θ angle of the bright beam · m order (0, ±1, ±2, …) · λ wavelength of the light",
+      "Significance": "Many slits in lockstep fling each wavelength to its own angle — light sorted by color with ruler-like precision. Fraunhofer used it to map the Sun's dark spectral lines; gratings still sit at the heart of every spectrometer, and a CD's rainbow is the equation at play.",
+      "Year": 1821,
+      "Name": "Diffraction Grating Equation"
+    },
+    {
       "id": "3bbe5275-7b5c-815f-8f49-fde9509c1e77",
       "url": "https://app.notion.com/p/Einstein-Hilbert-Action-3bbe52757b5c815f8f49fde9509c1e77",
       "lastEdited": "2026-08-13T20:53:00.000Z",
@@ -462412,9 +462436,9 @@
     {
       "id": "3bbe5275-7b5c-813d-86cf-c29a346fe2f8",
       "url": "https://app.notion.com/p/Snell-s-Law-3bbe52757b5c813d86cfc29a346fe2f8",
-      "lastEdited": "2026-08-13T20:10:00.000Z",
+      "lastEdited": "2026-08-13T21:00:00.000Z",
       "Equation": "n₁·sin θ₁ = n₂·sin θ₂",
-      "Field": "Optics",
+      "Field": "Waves & Optics",
       "Named After": "Ibn Sahl · Willebrord Snellius",
       "Symbols": "n₁, n₂ refractive indices of the two media · θ₁, θ₂ angles of the ray from the surface normal on each side",
       "Significance": "Light bends when it crosses into a new medium — the rule behind every lens, eyeglass, camera, and the total internal reflection that traps light inside optical fibers. First stated by Ibn Sahl in Baghdad in 984, rediscovered by Snellius in 1621, and it's why pools look shallower than they are.",
