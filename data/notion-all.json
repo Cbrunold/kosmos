@@ -461978,6 +461978,42 @@
   ],
   "equations": [
     {
+      "id": "3bbe5275-7b5c-817f-80a4-f6e36ff9d306",
+      "url": "https://app.notion.com/p/Lawson-Criterion-3bbe52757b5c817f80a4f6e36ff9d306",
+      "lastEdited": "2026-08-13T21:11:00.000Z",
+      "Equation": "n·T·τ_E ≥ 3×10²¹ keV·s/m³",
+      "Field": "Plasma Physics",
+      "Named After": "John D. Lawson",
+      "Symbols": "n fuel density · T temperature · τ_E energy confinement time — how long the heat stays put · the triple product a fusion plasma must exceed to yield net power",
+      "Significance": "The finish line for fusion power: hold a plasma dense enough, hot enough, long enough — achieve any two and the third gets you. Tokamaks chase confinement time, laser fusion chases density; seven decades on, the race against this one inequality continues.",
+      "Year": 1957,
+      "Name": "Lawson Criterion"
+    },
+    {
+      "id": "3bbe5275-7b5c-819d-a258-d3e7dec3b639",
+      "url": "https://app.notion.com/p/Plasma-Frequency-3bbe52757b5c819da258d3e7dec3b639",
+      "lastEdited": "2026-08-13T21:11:00.000Z",
+      "Equation": "ω_p = √(n·e² / (ε₀·mₑ))",
+      "Field": "Plasma Physics",
+      "Named After": "Lewi Tonks · Irving Langmuir",
+      "Symbols": "ω_p natural sloshing frequency of the electrons · n electron density · e electron charge · ε₀ permittivity of free space · mₑ electron mass",
+      "Significance": "Displace a plasma's electrons and they slosh back at this frequency — waves below it bounce off, waves above pass through. It's why shortwave radio skips off the ionosphere to cross oceans, and why metals (a plasma of conduction electrons) are shiny mirrors to visible light.",
+      "Year": 1929,
+      "Name": "Plasma Frequency"
+    },
+    {
+      "id": "3bbe5275-7b5c-816c-8a1d-c37099e0ec76",
+      "url": "https://app.notion.com/p/Debye-Length-3bbe52757b5c816c8a1dc37099e0ec76",
+      "lastEdited": "2026-08-13T21:11:00.000Z",
+      "Equation": "λ_D = √(ε₀·k_B·T / (n·e²))",
+      "Field": "Plasma Physics",
+      "Named After": "Peter Debye · Erich Hückel",
+      "Symbols": "λ_D the screening distance · ε₀ permittivity of free space · k_B Boltzmann constant · T temperature · n electron density · e electron charge",
+      "Significance": "In a soup of free charges, any stray electric field is smothered within this distance — beyond it the plasma looks neutral. It's the definition of the state of matter itself: a gas counts as plasma only when it's much bigger than its own Debye length. Born, oddly, in the chemistry of salt solutions.",
+      "Year": 1923,
+      "Name": "Debye Length"
+    },
+    {
       "id": "3bbe5275-7b5c-813a-84a7-ea08528b3c93",
       "url": "https://app.notion.com/p/Escape-Velocity-3bbe52757b5c813a84a7ea08528b3c93",
       "lastEdited": "2026-08-13T21:08:00.000Z",
