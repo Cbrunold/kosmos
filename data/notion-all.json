@@ -461978,6 +461978,18 @@
   ],
   "equations": [
     {
+      "id": "3bbe5275-7b5c-8184-9e26-ff4ad04b3ed8",
+      "url": "https://app.notion.com/p/Hubble-s-Law-3bbe52757b5c81849e26ff4ad04b3ed8",
+      "lastEdited": "2026-08-13T20:08:00.000Z",
+      "Equation": "v = H₀·d",
+      "Field": "Cosmology",
+      "Named After": "Edwin Hubble · Georges Lemaître",
+      "Symbols": "v recession velocity of a galaxy · d its distance from us · H₀ the Hubble constant (about 70 km/s per megaparsec today)",
+      "Significance": "The farther a galaxy, the faster it recedes — space itself is expanding. Lemaître derived it from general relativity in 1927; Hubble's 1929 measurements made it fact. Run the expansion backwards and you arrive at the Big Bang; H₀ is the first Friedmann equation's ȧ/a measured today — and its exact value is still argued over, a puzzle known as the Hubble tension.",
+      "Year": 1929,
+      "Name": "Hubble's Law"
+    },
+    {
       "id": "3bbe5275-7b5c-81bf-b306-fdf6fa438de8",
       "url": "https://app.notion.com/p/Pythagorean-Theorem-3bbe52757b5c81bfb306fdf6fa438de8",
       "lastEdited": "2026-08-13T20:06:00.000Z",
