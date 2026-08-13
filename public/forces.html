@@ -1,0 +1,200 @@
+<title>Kosmos · Forces</title>
+<style>
+  :root {
+    color-scheme: light;
+    --page: #f2f4f5;
+    --panel: #fbfcfc;
+    --ink: #17212b;
+    --ink-2: #4c5a66;
+    --muted: #8595a1;
+    --hairline: #dde4e8;
+    --ring: rgba(23, 33, 43, 0.85);
+    --c-blue: #2a78d6;
+    --c-teal: #0f9b9b;
+    --c-red: #c23434;
+    --c-amber: #e39a00;
+    --c-green: #33a047;
+    --c-violet: #6b50c8;
+    --c-pink: #e05e8f;
+    --c-bronze: #8a5314;
+    --heat: #2a78d6;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --page: #0e1116;
+      --panel: #14181d;
+      --ink: #e9edf2;
+      --ink-2: #aab8c4;
+      --muted: #74828e;
+      --hairline: #242b33;
+      --ring: rgba(233, 237, 242, 0.9);
+      --c-blue: #4a90e8;
+      --c-teal: #0aa085;
+      --c-red: #e75570;
+      --c-amber: #b98800;
+      --c-green: #46a850;
+      --c-violet: #8b74e0;
+      --c-pink: #dc5f83;
+      --c-bronze: #a4671f;
+      --heat: #5598e7;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --page: #0e1116;
+    --panel: #14181d;
+    --ink: #e9edf2;
+    --ink-2: #aab8c4;
+    --muted: #74828e;
+    --hairline: #242b33;
+    --ring: rgba(233, 237, 242, 0.9);
+    --c-blue: #4a90e8;
+    --c-teal: #0aa085;
+    --c-red: #e75570;
+    --c-amber: #b98800;
+    --c-green: #46a850;
+    --c-violet: #8b74e0;
+    --c-pink: #dc5f83;
+    --c-bronze: #a4671f;
+    --heat: #5598e7;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--page);
+    color: var(--ink);
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    margin: 0;
+    padding: 20px clamp(14px, 3vw, 40px) 56px;
+  }
+  .mono { font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; }
+
+  .knav {
+    font: 11px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 18px;
+    display: flex;
+    gap: 8px;
+    align-items: baseline;
+  }
+  .knav a { color: var(--ink-2); text-decoration: none; }
+  .knav a:hover { color: var(--ink); }
+  .knav .cur { color: var(--ink); }
+
+  h1.ktitle {
+    font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    font-size: clamp(22px, 3vw, 30px);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin: 0 0 6px;
+    text-wrap: balance;
+  }
+  .klede { font-size: 14px; color: var(--ink-2); max-width: 62ch; line-height: 1.55; margin: 0 0 22px; }
+  .klede a { color: inherit; }
+
+  h2.ksec {
+    font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 34px 0 12px;
+    border-bottom: 1px solid var(--hairline);
+    padding-bottom: 7px;
+  }
+
+  .kcard {
+    background: var(--panel);
+    border: 1px solid var(--hairline);
+    border-radius: 10px;
+    padding: 16px;
+  }
+  .kchip {
+    font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    border: 1px solid var(--hairline);
+    color: var(--ink-2);
+    border-radius: 99px;
+    padding: 2px 9px;
+    white-space: nowrap;
+  }
+  .knote { font-size: 11px; color: var(--muted); line-height: 1.5; }
+  .kfoot { margin-top: 42px; font-size: 11px; color: var(--muted); border-top: 1px solid var(--hairline); padding-top: 12px; }
+  .kfoot a { color: inherit; }
+  a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; }
+
+
+  .forces {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    gap: 14px;
+    max-width: 1240px;
+  }
+  .force { border-top: 3px solid var(--fc, var(--hairline)); display: flex; flex-direction: column; gap: 10px; }
+  .force h2 {
+    font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    font-size: 18px;
+    margin: 0;
+  }
+  .force .rank {
+    font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .force dl { display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; margin: 0; font-size: 12px; }
+  .force dt { color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; font-size: 10px; padding-top: 2px; }
+  .force dd { margin: 0; color: var(--ink-2); line-height: 1.45; }
+  .force .desc { font-size: 13px; line-height: 1.55; color: var(--ink); margin: 0; flex: 1; }
+  .sbar { height: 6px; border-radius: 3px; background: color-mix(in oklab, var(--fc) 16%, var(--panel)); overflow: hidden; }
+  .sbar > div { height: 100%; background: var(--fc); border-radius: 3px; }
+</style>
+
+<nav class="knav"><a href="/">KOSMOS</a><span>/</span><span class="cur">Forces</span></nav>
+<h1 class="ktitle">The Four Fundamental Forces</h1>
+<p class="klede">Every push, pull, bond, and orbit in the universe comes down to four interactions. Ordered here from weakest to strongest — note that the weakest one is the only one you can feel right now.</p>
+
+<div class="forces" id="forces"></div>
+
+<p class="kfoot" id="foot"></p>
+
+<script id="data" type="application/json">[{"url":"https://app.notion.com/p/Weak-Nuclear-Force-Weak-Interaction-b3598f7d68344db6bd4968000768e7bc","lastEdited":"2024-07-26T05:13:00.000Z","Force_ID":"4","Relative Strength":"Stronger than gravity but weaker than both the electromagnetic and strong nuclear forces","Range":"Extremely short range (less than a femtometer)","Description":"This force is responsible for processes like beta decay in radioactive atoms. It affects all fermions (quarks and leptons) and plays a crucial role in nuclear reactions, such as those that fuel the sun.","Force Name":"Weak Nuclear Force (Weak Interaction)"},{"url":"https://app.notion.com/p/Strong-Nuclear-Force-Strong-Interaction-d19db5df1bcd429ab59e0370731018b3","lastEdited":"2024-07-26T05:11:00.000Z","Force_ID":"3","Relative Strength":"Strongest of the four forces","Range":"Extremely short range (within atomic nuclei)","Description":"This force binds protons and neutrons together in an atomic nucleus. It is the strongest force but acts only over very short distances, typically on the order of a femtometer (10^-15 meters).","Force Name":"Strong Nuclear Force (Strong Interaction)"},{"url":"https://app.notion.com/p/Electromagnetic-Force-4c8e5b6b824d43a2a7d5d17105fce4ef","lastEdited":"2024-07-26T05:09:00.000Z","Force_ID":"2","Relative Strength":"Stronger than gravity but weaker than the strong nuclear force","Range":"Infinite, but weakens with distance","Description":"This force acts between electrically charged particles. It governs phenomena like electricity, magnetism, and light, and it plays a crucial role in the structure of atoms and molecules.","Force Name":"Electromagnetic Force"},{"url":"https://app.notion.com/p/Gravitational-Force-db0931748a194901a18edd20957dcfc8","lastEdited":"2024-07-26T05:16:00.000Z","Force_ID":"1","Relative Strength":"Weakest of the four forces","Range":"Infinite, but weakens with distance","Description":"This force attracts two bodies with mass toward each other. It is responsible for the structure and dynamics of the cosmos on a large scale, such as the orbits of planets, the formation of stars, and the behavior of galaxies.","Force Name":"Gravitational Force"}]</script>
+<script>
+  const F = JSON.parse(document.getElementById('data').textContent);
+  // Notion rows carry no title — names derived from Force_ID + description.
+  const META = {
+    '1': { name: 'Gravity', color: 'var(--c-blue)', bar: 8 },
+    '4': { name: 'Weak nuclear force', color: 'var(--c-amber)', bar: 35 },
+    '2': { name: 'Electromagnetism', color: 'var(--c-violet)', bar: 78 },
+    '3': { name: 'Strong nuclear force', color: 'var(--c-red)', bar: 100 },
+  };
+  const ORDER = ['1', '4', '2', '3'];
+  const RANK = ['weakest', '2nd weakest', '2nd strongest', 'strongest'];
+  const box = document.getElementById('forces');
+  ORDER.forEach((id, i) => {
+    const f = F.find((x) => x['Force_ID'] === id);
+    if (!f) return;
+    const m = META[id];
+    const card = document.createElement('article');
+    card.className = 'kcard force';
+    card.style.setProperty('--fc', m.color);
+    const h = document.createElement('h2'); h.textContent = m.name;
+    const rank = document.createElement('span'); rank.className = 'rank'; rank.textContent = RANK[i];
+    const bar = document.createElement('div'); bar.className = 'sbar';
+    const fill = document.createElement('div'); fill.style.width = m.bar + '%'; bar.appendChild(fill);
+    const desc = document.createElement('p'); desc.className = 'desc'; desc.textContent = f['Description'] || '';
+    const dl = document.createElement('dl');
+    for (const [k, v] of [['Range', f['Range']], ['Strength', f['Relative Strength']]]) {
+      if (!v) continue;
+      const dt = document.createElement('dt'); dt.textContent = k;
+      const dd = document.createElement('dd'); dd.textContent = v;
+      dl.append(dt, dd);
+    }
+    card.append(h, rank, bar, desc, dl);
+    box.appendChild(card);
+  });
+  document.getElementById('foot').textContent =
+    'Descriptions, ranges, and strength comparisons from the Cosmic Forces database in Notion. The rows are untitled there, so the force names shown are derived from their descriptions. The strength bars are illustrative order, not to scale — the real span covers ~40 orders of magnitude.';
+</script>

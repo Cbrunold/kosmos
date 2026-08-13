@@ -1,0 +1,122 @@
+<title>Kosmos · Cosmic Exploration</title>
+<style>
+__SHARED__
+
+  .sunrow { display: flex; gap: 16px; align-items: center; max-width: 760px; }
+  .sundot {
+    width: 58px; height: 58px; border-radius: 50%; flex: none;
+    background: radial-gradient(circle at 35% 35%, #ffe9a8, #e3a41f 60%, #c97a10);
+    box-shadow: 0 0 24px rgba(227, 164, 31, 0.45);
+  }
+  .sunrow h2 { font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; margin: 0 0 3px; font-size: 17px; }
+  .sunrow p { margin: 0; font-size: 12.5px; color: var(--ink-2); line-height: 1.5; }
+  .sunrow .v { font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; color: var(--ink); font-variant-numeric: tabular-nums; }
+
+  .spectral { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 6px; }
+  .spec { min-width: 168px; flex: 1; display: flex; flex-direction: column; gap: 6px; }
+  .spec .letter {
+    font: 700 26px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    display: flex; align-items: center; gap: 9px;
+  }
+  .spec .sw { width: 16px; height: 16px; border-radius: 50%; border: 1px solid var(--hairline); }
+  .spec .temp { font: 11px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+  .spec .char { font-size: 11.5px; color: var(--ink-2); line-height: 1.45; }
+  .spec .nm { font-size: 10.5px; color: var(--muted); }
+
+  .guide { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; }
+  .gclass h3 { font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; font-size: 13.5px; margin: 0 0 8px; }
+  .gclass ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 4px; }
+  .gclass li { font-size: 12px; color: var(--ink-2); line-height: 1.45; padding-left: 14px; position: relative; }
+  .gclass li::before { content: '·'; position: absolute; left: 2px; color: var(--c-violet); }
+
+  .instr { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
+  .instr .kcard h3 { font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; font-size: 13.5px; margin: 0 0 6px; }
+  .instr .kcard p { font-size: 12.5px; color: var(--ink-2); line-height: 1.5; margin: 0 0 8px; }
+  .instr .chips { display: flex; flex-wrap: wrap; gap: 4px; }
+
+  .people { display: flex; flex-wrap: wrap; gap: 8px; }
+</style>
+
+<nav class="knav"><a href="/">KOSMOS</a><span>/</span><span class="cur">Cosmic Exploration</span></nav>
+<h1 class="ktitle">Cosmic Exploration</h1>
+<p class="klede">A field guide to what the sky contains — the classes of objects out there, the stellar spectral sequence from hottest to coolest, and the instruments humanity points at all of it. The object catalogue itself is just getting started.</p>
+
+<h2 class="ksec">The catalogue so far</h2>
+<div class="kcard sunrow" id="sunrow"></div>
+
+<h2 class="ksec">The stellar spectral sequence — hottest to coolest</h2>
+<div class="spectral" id="spectral"></div>
+
+<h2 class="ksec">Field guide: classes of celestial objects</h2>
+<div class="guide" id="guide"></div>
+
+<h2 class="ksec">Instruments watching the sky</h2>
+<div class="instr" id="instr"></div>
+
+<h2 class="ksec">Researchers on file</h2>
+<div class="people" id="people"></div>
+
+<p class="kfoot">From the Cosmology databases in Notion. The Discoveries, Observatories, and Space Missions tables are still empty — sections for them will appear here once they hold data.</p>
+
+<script id="data" type="application/json">__DATA__</script>
+<script>
+  const D = JSON.parse(document.getElementById('data').textContent);
+
+  // -- the one catalogued object --
+  const sunrow = document.getElementById('sunrow');
+  if (D.sun) {
+    const dot = document.createElement('div'); dot.className = 'sundot';
+    const txt = document.createElement('div');
+    const h = document.createElement('h2'); h.textContent = D.sun.name;
+    const p = document.createElement('p');
+    p.innerHTML = `Objects catalogued: <span class="v">1</span> — a modest start, but a good one. Mass <span class="v">${D.sun.mass}</span> kg · diameter <span class="v">${D.sun.diameter.toLocaleString('en')}</span> km · type: ${D.sun.type}.`;
+    txt.append(h, p);
+    sunrow.append(dot, txt);
+  } else {
+    sunrow.textContent = 'No objects catalogued yet.';
+  }
+
+  // -- spectral sequence --
+  const SWATCH = { Blue: '#7fa7f0', White: '#f2f3f5', Yellow: '#e8c74a', Orange: '#dd8f3d', Red: '#d05c5c', Brown: '#96613a', 'Dark Brown': '#5f3f2c' };
+  const spec = document.getElementById('spectral');
+  for (const s of D.spectral) {
+    const card = document.createElement('div'); card.className = 'kcard spec';
+    const letter = document.createElement('div'); letter.className = 'letter';
+    const sw = document.createElement('span'); sw.className = 'sw';
+    sw.style.background = SWATCH[(s.colors || [])[0]] || 'var(--muted)';
+    letter.append(sw, document.createTextNode(s.letter));
+    const temp = document.createElement('div'); temp.className = 'temp'; temp.textContent = s.temp || '';
+    const ch = document.createElement('div'); ch.className = 'char'; ch.textContent = s.char || '';
+    const nm = document.createElement('div'); nm.className = 'nm'; nm.textContent = s.name;
+    card.append(letter, temp, ch, nm);
+    spec.appendChild(card);
+  }
+
+  // -- field guide --
+  const guide = document.getElementById('guide');
+  for (const g of D.types) {
+    const card = document.createElement('div'); card.className = 'kcard gclass';
+    const h = document.createElement('h3'); h.textContent = g.type;
+    const ul = document.createElement('ul');
+    for (const e of g.entries) { const li = document.createElement('li'); li.textContent = e; ul.appendChild(li); }
+    card.append(h, ul);
+    guide.appendChild(card);
+  }
+
+  // -- instruments --
+  const instr = document.getElementById('instr');
+  for (const it of D.instruments) {
+    const card = document.createElement('div');
+    card.className = 'kcard';
+    card.innerHTML = '<h3></h3><p></p><div class="chips"></div>';
+    card.querySelector('h3').textContent = it.name + (it.type ? ` · ${it.type}` : '');
+    card.querySelector('p').textContent = it.desc || '';
+    const chips = card.querySelector('.chips');
+    for (const w of it.wavelengths || []) { const c = document.createElement('span'); c.className = 'kchip'; c.textContent = w; chips.appendChild(c); }
+    instr.appendChild(card);
+  }
+
+  // -- researchers --
+  const people = document.getElementById('people');
+  for (const r of D.researchers) { const c = document.createElement('span'); c.className = 'kchip'; c.textContent = r; people.appendChild(c); }
+</script>

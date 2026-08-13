@@ -1,0 +1,249 @@
+<title>Kosmos · Minerals & Gemstones</title>
+<style>
+__SHARED__
+
+  .controls { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 10px; }
+  .search {
+    background: var(--panel);
+    border: 1px solid var(--hairline);
+    border-radius: 6px;
+    padding: 7px 11px;
+    font: 13px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    color: var(--ink);
+    width: 240px;
+  }
+  .search::placeholder { color: var(--muted); }
+  select.sort {
+    background: var(--panel);
+    border: 1px solid var(--hairline);
+    border-radius: 6px;
+    padding: 7px 9px;
+    font: 12px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    color: var(--ink-2);
+  }
+  .elchips { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 14px; }
+  .elchip {
+    font: 11px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    border: 1px solid var(--hairline);
+    background: transparent;
+    color: var(--ink-2);
+    border-radius: 99px;
+    padding: 3px 10px;
+    cursor: pointer;
+  }
+  .elchip[aria-pressed="true"] { background: var(--c-teal); border-color: var(--c-teal); color: var(--page); }
+  .elchip .n { opacity: 0.6; font-size: 9.5px; }
+
+  .mtable { background: var(--panel); border: 1px solid var(--hairline); border-radius: 10px; overflow: hidden; }
+  .mrow, .mhead {
+    display: grid;
+    grid-template-columns: minmax(140px, 1.3fr) 64px 70px 84px minmax(140px, 2fr);
+    gap: 10px;
+    padding: 7px 14px;
+    align-items: baseline;
+  }
+  .mhead {
+    font: 10px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border-bottom: 1px solid var(--hairline);
+    position: sticky;
+    top: 0;
+    background: var(--panel);
+  }
+  .mrow { border-bottom: 1px solid color-mix(in oklab, var(--hairline) 45%, var(--panel)); font-size: 12.5px; }
+  .mrow:last-child { border-bottom: none; }
+  .mrow .nm { font-weight: 600; }
+  .mrow .num { font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; font-variant-numeric: tabular-nums; color: var(--ink-2); }
+  .mrow .els { font: 11px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; color: var(--muted); letter-spacing: 0.04em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .mrow .els b { color: var(--c-teal); font-weight: 600; }
+  .count { font: 11.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; color: var(--muted); margin: 8px 2px 24px; }
+
+  .histo { display: flex; align-items: flex-end; gap: 4px; height: 90px; max-width: 560px; padding: 0 2px; }
+  .histo .bin { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; gap: 4px; text-align: center; }
+  .histo .bar { background: var(--c-teal); border-radius: 3px 3px 0 0; min-height: 2px; }
+  .histo .lb { font: 10px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .hnote { font-size: 11px; color: var(--muted); margin: 6px 2px 0; }
+
+  .gems { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 10px; }
+  .gem h3 { font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; font-size: 13.5px; margin: 0 0 4px; display: flex; justify-content: space-between; gap: 8px; }
+  .gem .kind { font-size: 9.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--c-pink); font-weight: 400; align-self: center; }
+  .gem .hrow { display: flex; align-items: center; gap: 8px; font: 11px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; color: var(--ink-2); }
+  .gem .hbar { flex: 1; height: 5px; border-radius: 3px; background: color-mix(in oklab, var(--c-pink) 14%, var(--panel)); overflow: hidden; }
+  .gem .hbar > div { height: 100%; background: var(--c-pink); border-radius: 3px; }
+  .gem .meta { font-size: 11px; color: var(--muted); margin-top: 5px; }
+
+  .duo { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; max-width: 1000px; }
+  .duo h3 { font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; font-size: 13px; margin: 0 0 4px; }
+  .duo p { font-size: 12px; color: var(--ink-2); margin: 0; line-height: 1.5; }
+  .duo .f { font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; font-size: 11px; color: var(--muted); }
+</style>
+
+<nav class="knav"><a href="/">KOSMOS</a><span>/</span><span class="cur">Minerals &amp; Gemstones</span></nav>
+<h1 class="ktitle">Minerals &amp; Gemstones</h1>
+<p class="klede" id="lede"></p>
+
+<h2 class="ksec">Browse the collection</h2>
+<div class="controls">
+  <input class="search" id="q" type="search" placeholder="find a mineral…" aria-label="Find a mineral" />
+  <select class="sort" id="sort" aria-label="Sort by">
+    <option value="name">sort: name</option>
+    <option value="mohs">sort: hardness</option>
+    <option value="sg">sort: density</option>
+    <option value="mass">sort: molar mass</option>
+  </select>
+</div>
+<div class="elchips" id="elchips"></div>
+<div class="mtable">
+  <div class="mhead"><span>mineral</span><span>mohs</span><span>s.g.</span><span>molar g/mol</span><span>elements</span></div>
+  <div id="rows"></div>
+</div>
+<p class="count" id="count"></p>
+
+<h2 class="ksec">Hardness across the collection</h2>
+<div class="histo" id="histo"></div>
+<p class="hnote" id="hnote"></p>
+
+<h2 class="ksec">The gemstone shelf</h2>
+<div class="gems" id="gems"></div>
+
+<h2 class="ksec">Rock families &amp; silicate classes</h2>
+<div class="duo" id="duo"></div>
+
+<p class="kfoot">From the Minerals, Gemstones, Crystal System, Types of Rocks, and Silicate Minerals databases in Notion. Hardness is known for some minerals only; dashes mean the value isn't recorded, not zero. Element makeup is decoded from the per-element columns of the Minerals database.</p>
+
+<script id="data" type="application/json">__DATA__</script>
+<script>
+  const D = JSON.parse(document.getElementById('data').textContent);
+  const M = D.minerals; // [name, mohs, sg, molarMass, "O Si Al ..."]
+  document.getElementById('lede').textContent =
+    `${M.length.toLocaleString('en')} minerals with hardness, density, and elemental makeup — filter them by the elements they contain — plus the gemstone shelf and the taxonomies that organize it all.`;
+
+  // element filter chips
+  const picked = new Set();
+  const chipsBox = document.getElementById('elchips');
+  for (const [sym, n] of D.topElements) {
+    const b = document.createElement('button');
+    b.className = 'elchip';
+    b.setAttribute('aria-pressed', 'false');
+    b.innerHTML = `<b></b> <span class="n"></span>`;
+    b.querySelector('b').textContent = sym;
+    b.querySelector('.n').textContent = n.toLocaleString('en');
+    b.addEventListener('click', () => {
+      if (picked.has(sym)) picked.delete(sym); else picked.add(sym);
+      b.setAttribute('aria-pressed', String(picked.has(sym)));
+      render();
+    });
+    chipsBox.appendChild(b);
+  }
+
+  const rowsBox = document.getElementById('rows');
+  const q = document.getElementById('q');
+  const sortSel = document.getElementById('sort');
+  q.addEventListener('input', render);
+  sortSel.addEventListener('change', render);
+
+  function render() {
+    const needle = q.value.trim().toLowerCase();
+    let list = M.filter((m) => {
+      if (needle && !m[0].toLowerCase().includes(needle)) return false;
+      if (picked.size) {
+        const els = ' ' + m[4] + ' ';
+        for (const s of picked) if (!els.includes(' ' + s + ' ')) return false;
+      }
+      return true;
+    });
+    const s = sortSel.value;
+    if (s === 'name') list.sort((a, b) => a[0].localeCompare(b[0]));
+    else {
+      const i = { mohs: 1, sg: 2, mass: 3 }[s];
+      list.sort((a, b) => (b[i] ?? -1) - (a[i] ?? -1));
+    }
+    rowsBox.innerHTML = '';
+    for (const m of list.slice(0, 250)) {
+      const r = document.createElement('div');
+      r.className = 'mrow';
+      const nm = document.createElement('span'); nm.className = 'nm'; nm.textContent = m[0];
+      const mo = document.createElement('span'); mo.className = 'num'; mo.textContent = m[1] ?? '—';
+      const sg = document.createElement('span'); sg.className = 'num'; sg.textContent = m[2] ?? '—';
+      const ma = document.createElement('span'); ma.className = 'num'; ma.textContent = m[3] != null ? (+m[3]).toFixed(1) : '—';
+      const el = document.createElement('span'); el.className = 'els';
+      el.innerHTML = m[4].split(' ').map((sym) => (picked.has(sym) ? `<b>${sym}</b>` : sym)).join(' ');
+      r.append(nm, mo, sg, ma, el);
+      rowsBox.appendChild(r);
+    }
+    document.getElementById('count').textContent =
+      list.length > 250
+        ? `showing 250 of ${list.length.toLocaleString('en')} matches — refine the search to narrow down`
+        : `${list.length.toLocaleString('en')} match${list.length === 1 ? '' : 'es'}`;
+  }
+  render();
+
+  // hardness histogram (1-10, 9 bins)
+  const withMohs = M.map((m) => m[1]).filter((v) => v != null);
+  const bins = Array.from({ length: 9 }, () => 0);
+  for (const v of withMohs) bins[Math.min(8, Math.max(0, Math.floor(v - 1)))]++;
+  const peak = Math.max(...bins);
+  const histo = document.getElementById('histo');
+  bins.forEach((n, i) => {
+    const bin = document.createElement('div');
+    bin.className = 'bin';
+    bin.title = `${n} minerals with Mohs ${i + 1}–${i + 2}`;
+    const bar = document.createElement('div');
+    bar.className = 'bar';
+    bar.style.height = Math.round((n / peak) * 70) + 'px';
+    const lb = document.createElement('span'); lb.className = 'lb'; lb.textContent = i + 1;
+    bin.append(bar, lb);
+    histo.appendChild(bin);
+  });
+  document.getElementById('hnote').textContent =
+    `Mohs hardness is recorded for ${withMohs.length.toLocaleString('en')} of ${M.length.toLocaleString('en')} minerals. Scale: 1 = talc (scratched by a fingernail) … 10 = diamond.`;
+
+  // gemstones
+  const gems = document.getElementById('gems');
+  D.gems.sort((a, b) => (b.hardness ?? -1) - (a.hardness ?? -1));
+  for (const g of D.gems) {
+    const c = document.createElement('div');
+    c.className = 'kcard gem';
+    const h = document.createElement('h3');
+    const nm = document.createElement('span'); nm.textContent = g.name;
+    h.appendChild(nm);
+    if (g.kind) { const k = document.createElement('span'); k.className = 'kind'; k.textContent = g.kind; h.appendChild(k); }
+    c.appendChild(h);
+    const hr = document.createElement('div'); hr.className = 'hrow';
+    if (g.hardness != null) {
+      const bar = document.createElement('div'); bar.className = 'hbar';
+      const fill = document.createElement('div'); fill.style.width = (g.hardness / 10) * 100 + '%';
+      bar.appendChild(fill);
+      const v = document.createElement('span'); v.textContent = 'Mohs ' + g.hardness;
+      hr.append(bar, v);
+    } else {
+      hr.textContent = 'hardness not recorded';
+    }
+    c.appendChild(hr);
+    const bits = [];
+    if (g.system) bits.push(g.system + ' crystal system');
+    if (g.price != null) bits.push('$' + g.price.toLocaleString('en') + ' / carat');
+    if (bits.length) { const m = document.createElement('div'); m.className = 'meta'; m.textContent = bits.join(' · '); c.appendChild(m); }
+    gems.appendChild(c);
+  }
+
+  // rock families + silicate classes
+  const duo = document.getElementById('duo');
+  for (const r of D.rocks) {
+    const c = document.createElement('div'); c.className = 'kcard';
+    c.innerHTML = '<h3></h3><p></p>';
+    c.querySelector('h3').textContent = r.name;
+    c.querySelector('p').textContent = r.comment || '';
+    duo.appendChild(c);
+  }
+  for (const s of D.silicates) {
+    const c = document.createElement('div'); c.className = 'kcard';
+    c.innerHTML = '<h3></h3><p></p><div class="f"></div>';
+    c.querySelector('h3').textContent = s.name + (s.structure ? ` · ${s.structure}` : '');
+    c.querySelector('p').textContent = s.examples ? `e.g. ${s.examples}` : '';
+    c.querySelector('.f').textContent = s.formula || '';
+    duo.appendChild(c);
+  }
+</script>

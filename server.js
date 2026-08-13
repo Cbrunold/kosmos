@@ -6,7 +6,19 @@ import Anthropic from '@anthropic-ai/sdk';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const PORT = Number(process.env.PORT || 3002);
-const INDEX = readFileSync(join(here, 'public', 'index.html'));
+
+const PAGES = {
+  '/': 'home.html',
+  '/elements': 'index.html',
+  '/index.html': 'index.html',
+  '/minerals': 'minerals.html',
+  '/cosmos': 'cosmos.html',
+  '/forces': 'forces.html',
+  '/theories': 'theories.html',
+};
+const CONTENT = Object.fromEntries(
+  Object.entries(PAGES).map(([route, file]) => [route, readFileSync(join(here, 'public', file))]),
+);
 
 const hasKey = Boolean(process.env.ANTHROPIC_API_KEY);
 const client = hasKey ? new Anthropic() : null;
@@ -113,9 +125,10 @@ async function analyze(imageB64, mediaType) {
 }
 
 const server = http.createServer(async (req, res) => {
-  if ((req.method === 'GET' || req.method === 'HEAD') && (req.url === '/' || req.url === '/index.html')) {
+  const route = (req.url || '/').split('?')[0].replace(/\/$/, '') || '/';
+  if ((req.method === 'GET' || req.method === 'HEAD') && CONTENT[route]) {
     res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
-    return res.end(INDEX);
+    return res.end(CONTENT[route]);
   }
   if (req.method === 'GET' && req.url === '/health') {
     return json(res, 200, { ok: true, analyzer: hasKey });

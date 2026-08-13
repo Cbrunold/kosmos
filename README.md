@@ -1,24 +1,31 @@
 # kosmos
 
-A multi-disciplinary science portal. Live at **https://kosmos.yeahborhood.com**.
-
-Phase one is chemistry: an interactive periodic table built from the
-"All Periodical Elements" database in Notion, plus an AI analyzer that takes a
-photo of any object and breaks it down into the elements it's made of,
-highlighted on the table.
+A multi-disciplinary science portal — a personal atlas of the physical world.
+Live at **https://kosmos.yeahborhood.com**.
 
 Notion is the source of truth for authored content; this repo is the source of
-truth for code and the normalised data snapshot. Sync is one-way, Notion → repo.
+truth for code and the normalised data snapshots. Sync is one-way, Notion → repo.
+
+## Pages
+
+| Route        | What's there |
+|--------------|--------------|
+| `/`          | Tile launcher with live stats per section |
+| `/elements`  | Interactive periodic table (9 lenses, temperature + discovery sliders) and the AI photo analyzer |
+| `/minerals`  | 3,000+ minerals searchable and filterable by contained element; gemstone shelf, rock families, silicate classes |
+| `/cosmos`    | Field guide to celestial object classes, the stellar spectral sequence, instruments, researchers |
+| `/forces`    | The four fundamental interactions |
+| `/theories`  | Theory shelf with status tracking (accepted / speculative / disproved) |
 
 ## Layout
 
 ```
-server.js                     Node server: serves the page + POST /api/analyze
-public/index.html             Built page (generated — see scripts/build.py)
-web/                          Page sources: table template + analyzer css/html/js
-data/chemistry/elements.json  Normalised element data, synced from Notion
-scripts/fetch_elements.py     Notion → elements.json (needs NOTION_TOKEN)
-scripts/build.py              web/ + data → public/index.html
+server.js                     Node server: static pages + POST /api/analyze
+public/                       Built pages (generated — see scripts/build.py)
+web/                          Page sources: templates, shared.css, analyzer parts
+data/chemistry/elements.json  Normalised element data (scripts/fetch_elements.py)
+data/notion-all.json          All other Notion sources (scripts/fetch_all.py)
+scripts/build.py              web/ + data → public/*.html
 deploy/                       systemd unit + nginx site as deployed on the VPS
 ```
 
@@ -59,10 +66,11 @@ npm install
 ANTHROPIC_API_KEY=sk-ant-... node server.js   # http://127.0.0.1:3002
 ```
 
-To refresh data from Notion and rebuild the page:
+To refresh data from Notion and rebuild the pages:
 
 ```
 NOTION_TOKEN=ntn_... python3 scripts/fetch_elements.py
+NOTION_TOKEN=ntn_... python3 scripts/fetch_all.py
 python3 scripts/build.py
 ```
 
@@ -72,5 +80,5 @@ Runs on the yeahborhood VPS as `kosmos.service` (port 3002) behind nginx with
 its own Let's Encrypt cert — configs in `deploy/`. Secrets live in
 `/opt/kosmos/.env` (see `.env.example`), never in this repo.
 
-To ship an update: copy `server.js` and `public/index.html` to `/opt/kosmos/`
+To ship an update: copy `server.js` and `public/*.html` to `/opt/kosmos/`
 and `systemctl restart kosmos`.

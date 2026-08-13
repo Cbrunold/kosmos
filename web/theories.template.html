@@ -1,0 +1,72 @@
+<title>Kosmos · Theories</title>
+<style>
+__SHARED__
+
+  .theories { display: flex; flex-direction: column; gap: 12px; max-width: 760px; }
+  .theory h2 {
+    font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    font-size: 16px;
+    margin: 0 0 6px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .status {
+    font: 10px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-radius: 99px;
+    padding: 2px 9px;
+    border: 1px solid;
+  }
+  .status.Accepted { color: var(--c-green); border-color: var(--c-green); }
+  .status.Disproved { color: var(--c-red); border-color: var(--c-red); }
+  .status.Speculative { color: var(--c-amber); border-color: var(--c-amber); }
+  .status.none { color: var(--muted); border-color: var(--hairline); }
+  .theory p { font-size: 13.5px; color: var(--ink-2); line-height: 1.6; margin: 0; }
+  .theory .meta { font: 11px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; color: var(--muted); margin-top: 8px; }
+  .untitled { color: var(--muted); font-style: italic; }
+</style>
+
+<nav class="knav"><a href="/">KOSMOS</a><span>/</span><span class="cur">Theories</span></nav>
+<h1 class="ktitle">Theories</h1>
+<p class="klede">Frameworks for how the universe fits together, tracked with their standing — accepted, speculative, or disproved — as the evidence comes in. This shelf grows as the Notion database does.</p>
+
+<div class="theories" id="list"></div>
+
+<p class="kfoot">From the Theories database in Notion. Status legend: <span class="status Accepted">accepted</span> <span class="status Speculative">speculative</span> <span class="status Disproved">disproved</span> — entries without a status are shown unlabeled.</p>
+
+<script id="data" type="application/json">__DATA__</script>
+<script>
+  const T = JSON.parse(document.getElementById('data').textContent);
+  const list = document.getElementById('list');
+  const order = { Accepted: 0, Speculative: 1, Disproved: 2 };
+  T.sort((a, b) => (order[a.Status] ?? 3) - (order[b.Status] ?? 3) || (a.Name || 'zzz').localeCompare(b.Name || 'zzz'));
+  for (const t of T) {
+    const card = document.createElement('article');
+    card.className = 'kcard theory';
+    const h = document.createElement('h2');
+    const name = document.createElement('span');
+    if (t.Name) name.textContent = t.Name;
+    else { name.textContent = 'Untitled entry'; name.className = 'untitled'; }
+    h.appendChild(name);
+    const s = document.createElement('span');
+    s.className = 'status ' + (t.Status || 'none');
+    s.textContent = t.Status || 'no status yet';
+    h.appendChild(s);
+    const p = document.createElement('p');
+    p.textContent = t.Summary || '';
+    card.append(h, p);
+    const bits = [];
+    if (t['Date Proposed']) bits.push('proposed ' + t['Date Proposed']);
+    if (!t.Name) bits.push('this row has no title in Notion yet');
+    if (bits.length) {
+      const m = document.createElement('div');
+      m.className = 'meta';
+      m.textContent = bits.join(' · ');
+      card.appendChild(m);
+    }
+    list.appendChild(card);
+  }
+</script>

@@ -1,0 +1,76 @@
+<title>Kosmos · Forces</title>
+<style>
+__SHARED__
+
+  .forces {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    gap: 14px;
+    max-width: 1240px;
+  }
+  .force { border-top: 3px solid var(--fc, var(--hairline)); display: flex; flex-direction: column; gap: 10px; }
+  .force h2 {
+    font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    font-size: 18px;
+    margin: 0;
+  }
+  .force .rank {
+    font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .force dl { display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; margin: 0; font-size: 12px; }
+  .force dt { color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; font-size: 10px; padding-top: 2px; }
+  .force dd { margin: 0; color: var(--ink-2); line-height: 1.45; }
+  .force .desc { font-size: 13px; line-height: 1.55; color: var(--ink); margin: 0; flex: 1; }
+  .sbar { height: 6px; border-radius: 3px; background: color-mix(in oklab, var(--fc) 16%, var(--panel)); overflow: hidden; }
+  .sbar > div { height: 100%; background: var(--fc); border-radius: 3px; }
+</style>
+
+<nav class="knav"><a href="/">KOSMOS</a><span>/</span><span class="cur">Forces</span></nav>
+<h1 class="ktitle">The Four Fundamental Forces</h1>
+<p class="klede">Every push, pull, bond, and orbit in the universe comes down to four interactions. Ordered here from weakest to strongest — note that the weakest one is the only one you can feel right now.</p>
+
+<div class="forces" id="forces"></div>
+
+<p class="kfoot" id="foot"></p>
+
+<script id="data" type="application/json">__DATA__</script>
+<script>
+  const F = JSON.parse(document.getElementById('data').textContent);
+  // Notion rows carry no title — names derived from Force_ID + description.
+  const META = {
+    '1': { name: 'Gravity', color: 'var(--c-blue)', bar: 8 },
+    '4': { name: 'Weak nuclear force', color: 'var(--c-amber)', bar: 35 },
+    '2': { name: 'Electromagnetism', color: 'var(--c-violet)', bar: 78 },
+    '3': { name: 'Strong nuclear force', color: 'var(--c-red)', bar: 100 },
+  };
+  const ORDER = ['1', '4', '2', '3'];
+  const RANK = ['weakest', '2nd weakest', '2nd strongest', 'strongest'];
+  const box = document.getElementById('forces');
+  ORDER.forEach((id, i) => {
+    const f = F.find((x) => x['Force_ID'] === id);
+    if (!f) return;
+    const m = META[id];
+    const card = document.createElement('article');
+    card.className = 'kcard force';
+    card.style.setProperty('--fc', m.color);
+    const h = document.createElement('h2'); h.textContent = m.name;
+    const rank = document.createElement('span'); rank.className = 'rank'; rank.textContent = RANK[i];
+    const bar = document.createElement('div'); bar.className = 'sbar';
+    const fill = document.createElement('div'); fill.style.width = m.bar + '%'; bar.appendChild(fill);
+    const desc = document.createElement('p'); desc.className = 'desc'; desc.textContent = f['Description'] || '';
+    const dl = document.createElement('dl');
+    for (const [k, v] of [['Range', f['Range']], ['Strength', f['Relative Strength']]]) {
+      if (!v) continue;
+      const dt = document.createElement('dt'); dt.textContent = k;
+      const dd = document.createElement('dd'); dd.textContent = v;
+      dl.append(dt, dd);
+    }
+    card.append(h, rank, bar, desc, dl);
+    box.appendChild(card);
+  });
+  document.getElementById('foot').textContent =
+    'Descriptions, ranges, and strength comparisons from the Cosmic Forces database in Notion. The rows are untitled there, so the force names shown are derived from their descriptions. The strength bars are illustrative order, not to scale — the real span covers ~40 orders of magnitude.';
+</script>
