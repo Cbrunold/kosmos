@@ -39,7 +39,7 @@ __SHARED__
 <script id="data" type="application/json">__DATA__</script>
 <script>
   const F = JSON.parse(document.getElementById('data').textContent);
-  // Notion rows carry no title — names derived from Force_ID + description.
+  // Names come from the Notion "Force Name" title; META supplies color + bar order.
   const META = {
     '1': { name: 'Gravity', color: 'var(--c-blue)', bar: 8 },
     '4': { name: 'Weak nuclear force', color: 'var(--c-amber)', bar: 35 },
@@ -56,7 +56,7 @@ __SHARED__
     const card = document.createElement('article');
     card.className = 'kcard force';
     card.style.setProperty('--fc', m.color);
-    const h = document.createElement('h2'); h.textContent = m.name;
+    const h = document.createElement('h2'); h.textContent = f['Force Name'] || m.name;
     const rank = document.createElement('span'); rank.className = 'rank'; rank.textContent = RANK[i];
     const bar = document.createElement('div'); bar.className = 'sbar';
     const fill = document.createElement('div'); fill.style.width = m.bar + '%'; bar.appendChild(fill);
@@ -72,5 +72,5 @@ __SHARED__
     box.appendChild(card);
   });
   document.getElementById('foot').textContent =
-    'Descriptions, ranges, and strength comparisons from the Cosmic Forces database in Notion. The rows are untitled there, so the force names shown are derived from their descriptions. The strength bars are illustrative order, not to scale — the real span covers ~40 orders of magnitude.';
+    'Names, descriptions, ranges, and strength comparisons from the Cosmic Forces database in Notion. The strength bars are illustrative order, not to scale — the real span covers ~40 orders of magnitude.';
 </script>

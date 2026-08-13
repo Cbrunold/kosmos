@@ -163,7 +163,7 @@
 <script id="data" type="application/json">[{"url":"https://app.notion.com/p/Weak-Nuclear-Force-Weak-Interaction-b3598f7d68344db6bd4968000768e7bc","lastEdited":"2024-07-26T05:13:00.000Z","Force_ID":"4","Relative Strength":"Stronger than gravity but weaker than both the electromagnetic and strong nuclear forces","Range":"Extremely short range (less than a femtometer)","Description":"This force is responsible for processes like beta decay in radioactive atoms. It affects all fermions (quarks and leptons) and plays a crucial role in nuclear reactions, such as those that fuel the sun.","Force Name":"Weak Nuclear Force (Weak Interaction)"},{"url":"https://app.notion.com/p/Strong-Nuclear-Force-Strong-Interaction-d19db5df1bcd429ab59e0370731018b3","lastEdited":"2024-07-26T05:11:00.000Z","Force_ID":"3","Relative Strength":"Strongest of the four forces","Range":"Extremely short range (within atomic nuclei)","Description":"This force binds protons and neutrons together in an atomic nucleus. It is the strongest force but acts only over very short distances, typically on the order of a femtometer (10^-15 meters).","Force Name":"Strong Nuclear Force (Strong Interaction)"},{"url":"https://app.notion.com/p/Electromagnetic-Force-4c8e5b6b824d43a2a7d5d17105fce4ef","lastEdited":"2024-07-26T05:09:00.000Z","Force_ID":"2","Relative Strength":"Stronger than gravity but weaker than the strong nuclear force","Range":"Infinite, but weakens with distance","Description":"This force acts between electrically charged particles. It governs phenomena like electricity, magnetism, and light, and it plays a crucial role in the structure of atoms and molecules.","Force Name":"Electromagnetic Force"},{"url":"https://app.notion.com/p/Gravitational-Force-db0931748a194901a18edd20957dcfc8","lastEdited":"2024-07-26T05:16:00.000Z","Force_ID":"1","Relative Strength":"Weakest of the four forces","Range":"Infinite, but weakens with distance","Description":"This force attracts two bodies with mass toward each other. It is responsible for the structure and dynamics of the cosmos on a large scale, such as the orbits of planets, the formation of stars, and the behavior of galaxies.","Force Name":"Gravitational Force"}]</script>
 <script>
   const F = JSON.parse(document.getElementById('data').textContent);
-  // Notion rows carry no title — names derived from Force_ID + description.
+  // Names come from the Notion "Force Name" title; META supplies color + bar order.
   const META = {
     '1': { name: 'Gravity', color: 'var(--c-blue)', bar: 8 },
     '4': { name: 'Weak nuclear force', color: 'var(--c-amber)', bar: 35 },
@@ -180,7 +180,7 @@
     const card = document.createElement('article');
     card.className = 'kcard force';
     card.style.setProperty('--fc', m.color);
-    const h = document.createElement('h2'); h.textContent = m.name;
+    const h = document.createElement('h2'); h.textContent = f['Force Name'] || m.name;
     const rank = document.createElement('span'); rank.className = 'rank'; rank.textContent = RANK[i];
     const bar = document.createElement('div'); bar.className = 'sbar';
     const fill = document.createElement('div'); fill.style.width = m.bar + '%'; bar.appendChild(fill);
@@ -196,5 +196,5 @@
     box.appendChild(card);
   });
   document.getElementById('foot').textContent =
-    'Descriptions, ranges, and strength comparisons from the Cosmic Forces database in Notion. The rows are untitled there, so the force names shown are derived from their descriptions. The strength bars are illustrative order, not to scale — the real span covers ~40 orders of magnitude.';
+    'Names, descriptions, ranges, and strength comparisons from the Cosmic Forces database in Notion. The strength bars are illustrative order, not to scale — the real span covers ~40 orders of magnitude.';
 </script>
