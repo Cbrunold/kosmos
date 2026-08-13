@@ -461978,6 +461978,54 @@
   ],
   "equations": [
     {
+      "id": "3bbe5275-7b5c-8127-96bd-f72be5a740f4",
+      "url": "https://app.notion.com/p/Third-Law-of-Thermodynamics-3bbe52757b5c812796bdf72be5a740f4",
+      "lastEdited": "2026-08-13T20:00:00.000Z",
+      "Equation": "S → 0 as T → 0",
+      "Field": "Thermodynamics",
+      "Named After": "Walther Nernst",
+      "Symbols": "S entropy of a perfect crystal · T absolute temperature",
+      "Significance": "As temperature approaches absolute zero, entropy approaches a constant floor — zero for a perfect crystal. Consequence: absolute zero itself can be approached but never reached, no matter how clever the refrigerator.",
+      "Year": 1906,
+      "Name": "Third Law of Thermodynamics"
+    },
+    {
+      "id": "3bbe5275-7b5c-8147-a393-dbf10b5befde",
+      "url": "https://app.notion.com/p/Second-Law-of-Thermodynamics-3bbe52757b5c8147a393dbf10b5befde",
+      "lastEdited": "2026-08-13T20:00:00.000Z",
+      "Equation": "ΔS ≥ 0",
+      "Field": "Thermodynamics",
+      "Named After": "Sadi Carnot · Rudolf Clausius",
+      "Symbols": "ΔS change in total entropy of an isolated system · equality only for reversible processes",
+      "Significance": "Disorder never decreases on its own: heat flows hot to cold, engines can't be perfect, and time gets its arrow. Born from Carnot's steam-engine analysis, named by Clausius — arguably the most unbreakable law in physics.",
+      "Year": 1865,
+      "Name": "Second Law of Thermodynamics"
+    },
+    {
+      "id": "3bbe5275-7b5c-819a-8209-e94b6436d16a",
+      "url": "https://app.notion.com/p/First-Law-of-Thermodynamics-3bbe52757b5c819a8209e94b6436d16a",
+      "lastEdited": "2026-08-13T20:00:00.000Z",
+      "Equation": "ΔU = Q − W",
+      "Field": "Thermodynamics",
+      "Named After": "Julius Robert von Mayer · James Joule · Rudolf Clausius",
+      "Symbols": "ΔU change in internal energy · Q heat added to the system · W work done by the system",
+      "Significance": "Energy is never created or destroyed, only moved and converted — heat in, work out, the books always balance. The law that retired the perpetual-motion machine.",
+      "Year": 1850,
+      "Name": "First Law of Thermodynamics"
+    },
+    {
+      "id": "3bbe5275-7b5c-8153-8923-ca0655445379",
+      "url": "https://app.notion.com/p/Zeroth-Law-of-Thermodynamics-3bbe52757b5c81538923ca0655445379",
+      "lastEdited": "2026-08-13T20:00:00.000Z",
+      "Equation": "T₁ = T₃ and T₂ = T₃ ⟹ T₁ = T₂",
+      "Field": "Thermodynamics",
+      "Named After": "Ralph H. Fowler (naming)",
+      "Symbols": "T₁, T₂, T₃ temperatures of three systems · systems in thermal equilibrium share a temperature",
+      "Significance": "If two systems each sit in equilibrium with a third, they're in equilibrium with each other — the quiet assumption that makes 'temperature' a well-defined number and thermometers meaningful. So foundational it was named zeroth, after the first and second were taken.",
+      "Year": 1935,
+      "Name": "Zeroth Law of Thermodynamics"
+    },
+    {
       "id": "3bbe5275-7b5c-8109-a4a6-c5b903b6e05f",
       "url": "https://app.notion.com/p/Heisenberg-Uncertainty-Principle-3bbe52757b5c8109a4a6c5b903b6e05f",
       "lastEdited": "2026-08-13T19:58:00.000Z",
