@@ -461978,6 +461978,30 @@
   ],
   "equations": [
     {
+      "id": "3bbe5275-7b5c-81f8-8be6-c617460fd271",
+      "url": "https://app.notion.com/p/Shannon-Hartley-Channel-Capacity-3bbe52757b5c81f88be6c617460fd271",
+      "lastEdited": "2026-08-13T20:45:00.000Z",
+      "Equation": "C = B·log₂(1 + S/N)",
+      "Field": "Information Theory",
+      "Named After": "Claude Shannon · Ralph Hartley",
+      "Symbols": "C maximum error-free data rate (bits per second) · B bandwidth of the channel · S/N signal-to-noise power ratio",
+      "Significance": "Every noisy channel has an exact speed limit — and below it, astonishingly, communication can be made error-free with clever coding. The theorem every modem, Wi-Fi router, 5G mast, and deep-space probe has spent seventy years engineering toward.",
+      "Year": 1948,
+      "Name": "Shannon–Hartley Channel Capacity"
+    },
+    {
+      "id": "3bbe5275-7b5c-81f7-a591-c741011f5a20",
+      "url": "https://app.notion.com/p/Shannon-Entropy-3bbe52757b5c81f7a591c741011f5a20",
+      "lastEdited": "2026-08-13T20:45:00.000Z",
+      "Equation": "H = −Σᵢ pᵢ·log₂ pᵢ",
+      "Field": "Information Theory",
+      "Named After": "Claude Shannon",
+      "Symbols": "H information content in bits · pᵢ probability of each possible message · rare messages carry more information than expected ones",
+      "Significance": "How much surprise a message carries — the definition of the bit, and the hard floor below which no compression can squeeze data. The formula is Boltzmann's entropy in new clothes, a connection Shannon knew: information and thermodynamic disorder are the same mathematics.",
+      "Year": 1948,
+      "Name": "Shannon Entropy"
+    },
+    {
       "id": "3bbe5275-7b5c-81f5-a5b1-f6059d15a3b7",
       "url": "https://app.notion.com/p/Eyring-Equation-3bbe52757b5c81f5a5b1f6059d15a3b7",
       "lastEdited": "2026-08-13T20:42:00.000Z",

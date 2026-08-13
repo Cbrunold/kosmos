@@ -128,7 +128,10 @@ async function analyze(imageB64, mediaType) {
 const server = http.createServer(async (req, res) => {
   const route = (req.url || '/').split('?')[0].replace(/\/$/, '') || '/';
   if ((req.method === 'GET' || req.method === 'HEAD') && CONTENT[route]) {
-    res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+    res.writeHead(200, {
+      'Content-Type': 'text/html; charset=utf-8',
+      'Cache-Control': 'no-cache',   // always revalidate so deploys show up immediately
+    });
     return res.end(CONTENT[route]);
   }
   if (req.method === 'GET' && req.url === '/health') {
