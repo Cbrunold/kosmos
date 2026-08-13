@@ -461978,6 +461978,42 @@
   ],
   "equations": [
     {
+      "id": "3bbe5275-7b5c-81de-99a6-fb82df0033a9",
+      "url": "https://app.notion.com/p/Josephson-Effect-3bbe52757b5c81de99a6fb82df0033a9",
+      "lastEdited": "2026-08-13T21:16:00.000Z",
+      "Equation": "I = I_c·sin(φ₁ − φ₂)",
+      "Field": "Superconductivity",
+      "Named After": "Brian Josephson",
+      "Symbols": "I supercurrent through a thin insulating barrier · I_c the junction's critical current · φ₁, φ₂ quantum phases of the superconductors on each side",
+      "Significance": "Current flows through an insulator with no voltage at all, steered only by quantum phase — predicted by a 22-year-old graduate student. Josephson junctions are the working element of SQUID magnetometers, the definition of the volt, and the superconducting qubits inside today's quantum computers.",
+      "Year": 1962,
+      "Name": "Josephson Effect"
+    },
+    {
+      "id": "3bbe5275-7b5c-8149-a0e6-d2bf67397229",
+      "url": "https://app.notion.com/p/BCS-Energy-Gap-3bbe52757b5c8149a0e6d2bf67397229",
+      "lastEdited": "2026-08-13T21:16:00.000Z",
+      "Equation": "Δ(0) ≈ 1.76·k_B·T_c",
+      "Field": "Superconductivity",
+      "Named After": "John Bardeen · Leon Cooper · Robert Schrieffer",
+      "Symbols": "Δ the energy gap protecting the superconducting state · k_B Boltzmann constant · T_c the critical temperature where superconductivity dies",
+      "Significance": "The mechanism, 46 years after the discovery: electrons pair up (Cooper pairs), glued by lattice vibrations, and condense into one collective quantum state protected by this gap — too costly for stray collisions to break, so current flows forever. Bardeen's second Nobel.",
+      "Year": 1957,
+      "Name": "BCS Energy Gap"
+    },
+    {
+      "id": "3bbe5275-7b5c-81b2-ae34-f800aecd57e1",
+      "url": "https://app.notion.com/p/London-Equations-3bbe52757b5c81b2ae34f800aecd57e1",
+      "lastEdited": "2026-08-13T21:16:00.000Z",
+      "Equation": "∂J/∂t = (n_s·e²/mₑ)·E  ·  ∇×J = −(n_s·e²/mₑ)·B",
+      "Field": "Superconductivity",
+      "Named After": "Fritz London · Heinz London",
+      "Symbols": "J supercurrent density · n_s density of superconducting electrons · E, B electric and magnetic fields · fields penetrate only the London depth λ_L = √(mₑ/(μ₀·n_s·e²))",
+      "Significance": "Two lines that capture superconductivity's twin miracles: current accelerates freely with no resistance, and magnetic fields are expelled from the interior — the Meissner effect, which is why superconductors levitate magnets. Written by refugee brothers two years after the expulsion was discovered.",
+      "Year": 1935,
+      "Name": "London Equations"
+    },
+    {
       "id": "3bbe5275-7b5c-81d1-abad-c2702fa3abb0",
       "url": "https://app.notion.com/p/Bloch-s-Theorem-3bbe52757b5c81d1abadc2702fa3abb0",
       "lastEdited": "2026-08-13T21:13:00.000Z",
