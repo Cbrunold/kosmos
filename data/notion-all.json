@@ -461978,6 +461978,42 @@
   ],
   "equations": [
     {
+      "id": "3bbe5275-7b5c-813f-974b-c000af0892df",
+      "url": "https://app.notion.com/p/Partition-Function-3bbe52757b5c813f974bc000af0892df",
+      "lastEdited": "2026-08-13T20:32:00.000Z",
+      "Equation": "Z = Σᵢ e^(−Eᵢ/kT)",
+      "Field": "Statistical Mechanics",
+      "Named After": "Ludwig Boltzmann · Josiah Willard Gibbs",
+      "Symbols": "Z the sum over every state i the system can occupy · Eᵢ each state's energy · k Boltzmann constant · T absolute temperature · free energy follows as F = −kT·ln Z",
+      "Significance": "One sum that knows everything: energy, entropy, pressure, heat capacity — every thermodynamic quantity is a derivative of ln Z. Statistical mechanics' entire program is 'compute Z, then differentiate', formalized in Gibbs' 1902 treatise.",
+      "Year": 1902,
+      "Name": "Partition Function"
+    },
+    {
+      "id": "3bbe5275-7b5c-816e-b97a-fdbc445f99b7",
+      "url": "https://app.notion.com/p/Boltzmann-Distribution-3bbe52757b5c816eb97afdbc445f99b7",
+      "lastEdited": "2026-08-13T20:32:00.000Z",
+      "Equation": "Pᵢ = e^(−Eᵢ/kT) / Z",
+      "Field": "Statistical Mechanics",
+      "Named After": "Ludwig Boltzmann",
+      "Symbols": "Pᵢ probability of finding the system in state i · Eᵢ that state's energy · k Boltzmann constant · T absolute temperature · Z the partition function, normalizing the sum to 1",
+      "Significance": "At temperature T, higher-energy states are exponentially rarer — the law behind the thinning atmosphere, the rates of chemical reactions, and why glowing objects shift color with temperature. Arguably the most-used formula in all of physical science.",
+      "Year": 1868,
+      "Name": "Boltzmann Distribution"
+    },
+    {
+      "id": "3bbe5275-7b5c-81ea-b557-e046acec2182",
+      "url": "https://app.notion.com/p/Equipartition-Theorem-3bbe52757b5c81eab557e046acec2182",
+      "lastEdited": "2026-08-13T20:32:00.000Z",
+      "Equation": "⟨E⟩ = ½kT per degree of freedom",
+      "Field": "Statistical Mechanics",
+      "Named After": "James Clerk Maxwell",
+      "Symbols": "⟨E⟩ average energy · k Boltzmann constant · T absolute temperature · counts each quadratic way a molecule can hold energy (motion, rotation, vibration)",
+      "Significance": "Heat shares itself equally among all the ways a molecule can move — which predicts heat capacities from pure counting. Its mysterious failures at low temperatures were early cracks that quantum theory eventually explained: frozen-out degrees of freedom.",
+      "Year": 1859,
+      "Name": "Equipartition Theorem"
+    },
+    {
       "id": "3bbe5275-7b5c-8125-8857-cffce0164fef",
       "url": "https://app.notion.com/p/Standard-Model-Lagrangian-3bbe52757b5c81258857cffce0164fef",
       "lastEdited": "2026-08-13T20:27:00.000Z",
