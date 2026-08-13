@@ -461978,6 +461978,30 @@
   ],
   "equations": [
     {
+      "id": "3bbe5275-7b5c-81a1-9543-ed416dd7caa2",
+      "url": "https://app.notion.com/p/Second-Friedmann-Equation-3bbe52757b5c81a19543ed416dd7caa2",
+      "lastEdited": "2026-08-13T19:48:00.000Z",
+      "Equation": "ä/a = −4πG(ρ + 3p/c²)/3 + Λc²/3",
+      "Field": "Cosmology",
+      "Named After": "Alexander Friedmann",
+      "Symbols": "a scale factor of the universe · ȧ, ä its first and second time derivatives · H = ȧ/a Hubble parameter · G gravitational constant · ρ density · p pressure · k spatial curvature (−1, 0, +1) · Λ cosmological constant · c speed of light",
+      "Significance": "Whether the expansion speeds up or slows down. Matter and pressure put on the brakes; the cosmological constant steps on the gas — exactly what the 1998 supernova surveys found the universe doing.",
+      "Year": 1922,
+      "Name": "Second Friedmann Equation"
+    },
+    {
+      "id": "3bbe5275-7b5c-818c-bf76-d40ebcb485e3",
+      "url": "https://app.notion.com/p/First-Friedmann-Equation-3bbe52757b5c818cbf76d40ebcb485e3",
+      "lastEdited": "2026-08-13T19:48:00.000Z",
+      "Equation": "(ȧ/a)² = 8πGρ/3 − kc²/a² + Λc²/3",
+      "Field": "Cosmology",
+      "Named After": "Alexander Friedmann",
+      "Symbols": "a scale factor of the universe · ȧ, ä its first and second time derivatives · H = ȧ/a Hubble parameter · G gravitational constant · ρ density · p pressure · k spatial curvature (−1, 0, +1) · Λ cosmological constant · c speed of light",
+      "Significance": "How fast the universe expands, given what it contains — Einstein's field equations applied to a uniform cosmos. The Hubble parameter, the critical density, and the fate of the universe all fall out of this one line.",
+      "Year": 1922,
+      "Name": "First Friedmann Equation"
+    },
+    {
       "id": "3bbe5275-7b5c-81fb-9558-e243bfa28227",
       "url": "https://app.notion.com/p/Euler-s-Identity-3bbe52757b5c81fb9558e243bfa28227",
       "lastEdited": "2026-08-13T19:29:00.000Z",
