@@ -461978,6 +461978,42 @@
   ],
   "equations": [
     {
+      "id": "3bbe5275-7b5c-81f5-a5b1-f6059d15a3b7",
+      "url": "https://app.notion.com/p/Eyring-Equation-3bbe52757b5c81f5a5b1f6059d15a3b7",
+      "lastEdited": "2026-08-13T20:42:00.000Z",
+      "Equation": "k = (k_B·T/h)·e^(−ΔG‡/RT)",
+      "Field": "Chemical Kinetics",
+      "Named After": "Henry Eyring",
+      "Symbols": "k rate constant · k_B Boltzmann constant · h Planck constant · ΔG‡ free energy of the transition state, the fleeting halfway arrangement · R gas constant · T temperature",
+      "Significance": "Arrhenius's barrier given a physical face: reactions pass through a transition state, and quantum mechanics (there's Planck's h) sets the universal attempt frequency k_BT/h — about six trillion tries per second at room temperature.",
+      "Year": 1935,
+      "Name": "Eyring Equation"
+    },
+    {
+      "id": "3bbe5275-7b5c-8150-9b6b-de88bc1b1910",
+      "url": "https://app.notion.com/p/Arrhenius-Equation-3bbe52757b5c81509b6bde88bc1b1910",
+      "lastEdited": "2026-08-13T20:42:00.000Z",
+      "Equation": "k = A·e^(−Eₐ/RT)",
+      "Field": "Chemical Kinetics",
+      "Named After": "Svante Arrhenius",
+      "Symbols": "k rate constant · A pre-exponential factor (how often molecules collide, well-oriented) · Eₐ activation energy, the barrier to react · R gas constant · T absolute temperature",
+      "Significance": "Reaction rates climb exponentially with temperature, because only the Boltzmann tail of molecules has energy above the barrier — the rule of thumb that rates double per 10 °C. Cooking, food spoilage, battery aging, and firefly flashes all follow it.",
+      "Year": 1889,
+      "Name": "Arrhenius Equation"
+    },
+    {
+      "id": "3bbe5275-7b5c-81e3-87bd-e3fd8345d1e5",
+      "url": "https://app.notion.com/p/Law-of-Mass-Action-3bbe52757b5c81e387bde3fd8345d1e5",
+      "lastEdited": "2026-08-13T20:42:00.000Z",
+      "Equation": "rate = k·[A]^m·[B]^n",
+      "Field": "Chemical Kinetics",
+      "Named After": "Cato Guldberg · Peter Waage",
+      "Symbols": "[A], [B] concentrations of the reactants · k rate constant · m, n reaction orders (found by experiment, not from the balanced equation)",
+      "Significance": "How fast a reaction runs depends on how much of each ingredient is present — the founding statement of chemical kinetics, worked out by two Norwegian brothers-in-law. The exponents hide the reaction's actual mechanism, which is why chemists measure them.",
+      "Year": 1864,
+      "Name": "Law of Mass Action"
+    },
+    {
       "id": "3bbe5275-7b5c-819e-ae2b-d24ec3193fe8",
       "url": "https://app.notion.com/p/Griffith-Fracture-Criterion-3bbe52757b5c819eae2bd24ec3193fe8",
       "lastEdited": "2026-08-13T20:40:00.000Z",

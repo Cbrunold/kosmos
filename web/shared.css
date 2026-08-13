@@ -24,6 +24,7 @@
     --c-wine: #8f2b4e;
     --c-forest: #1f7050;
     --c-steel: #4a6474;
+    --c-fuchsia: #b81f7a;
     --heat: #2a78d6;
   }
   @media (prefers-color-scheme: dark) {
@@ -74,6 +75,7 @@
     --c-wine: #c25572;
     --c-forest: #3f9a72;
     --c-steel: #83a0b2;
+    --c-fuchsia: #d94fa3;
     --heat: #5598e7;
   }
 
