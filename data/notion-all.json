@@ -461978,6 +461978,30 @@
   ],
   "equations": [
     {
+      "id": "3bbe5275-7b5c-8109-a4a6-c5b903b6e05f",
+      "url": "https://app.notion.com/p/Heisenberg-Uncertainty-Principle-3bbe52757b5c8109a4a6c5b903b6e05f",
+      "lastEdited": "2026-08-13T19:58:00.000Z",
+      "Equation": "Δx·Δp ≥ ℏ/2",
+      "Field": "Quantum",
+      "Named After": "Werner Heisenberg",
+      "Symbols": "Δx uncertainty in position · Δp uncertainty in momentum · ℏ reduced Planck constant",
+      "Significance": "Position and momentum cannot both be pinned down — sharpen one and the other blurs. Not a limit of instruments but of nature itself: it keeps electrons from collapsing into nuclei and gives atoms their size.",
+      "Year": 1927,
+      "Name": "Heisenberg Uncertainty Principle"
+    },
+    {
+      "id": "3bbe5275-7b5c-8170-bd5f-c796d7589e08",
+      "url": "https://app.notion.com/p/De-Broglie-Wavelength-3bbe52757b5c8170bd5fc796d7589e08",
+      "lastEdited": "2026-08-13T19:58:00.000Z",
+      "Equation": "λ = h/p",
+      "Field": "Quantum",
+      "Named After": "Louis de Broglie",
+      "Symbols": "λ wavelength associated with a particle · h Planck constant · p momentum",
+      "Significance": "If light can act like particles, matter can act like waves — every moving thing has a wavelength. Electrons diffract like light does, which is why electron microscopes see atoms and why atoms have discrete orbitals at all.",
+      "Year": 1924,
+      "Name": "De Broglie Wavelength"
+    },
+    {
       "id": "3bbe5275-7b5c-817c-96dd-ec4cb629f30c",
       "url": "https://app.notion.com/p/Amp-re-Maxwell-Law-3bbe52757b5c817c96ddec4cb629f30c",
       "lastEdited": "2026-08-13T19:56:00.000Z",
