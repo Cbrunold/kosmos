@@ -461978,6 +461978,42 @@
   ],
   "equations": [
     {
+      "id": "3bbe5275-7b5c-817c-96dd-ec4cb629f30c",
+      "url": "https://app.notion.com/p/Amp-re-Maxwell-Law-3bbe52757b5c817c96ddec4cb629f30c",
+      "lastEdited": "2026-08-13T19:56:00.000Z",
+      "Equation": "∇×B = μ₀J + μ₀ε₀·∂E/∂t",
+      "Field": "Electromagnetism",
+      "Named After": "André-Marie Ampère · James Clerk Maxwell",
+      "Symbols": "B magnetic field · J current density · E electric field · μ₀ permeability of free space · ε₀ permittivity of free space · t time",
+      "Significance": "Currents make magnetic fields — and, Maxwell's crucial addition, so do changing electric fields. That extra term closes the loop: E and B can regenerate each other and race through empty space as light, at exactly c. Fourth of Maxwell's equations, completing the set with Gauss's two laws and Faraday's.",
+      "Year": 1861,
+      "Name": "Ampère–Maxwell Law"
+    },
+    {
+      "id": "3bbe5275-7b5c-81c9-a5d1-eaa911ffb7cd",
+      "url": "https://app.notion.com/p/Faraday-s-Law-of-Induction-3bbe52757b5c81c9a5d1eaa911ffb7cd",
+      "lastEdited": "2026-08-13T19:56:00.000Z",
+      "Equation": "∇×E = −∂B/∂t",
+      "Field": "Electromagnetism",
+      "Named After": "Michael Faraday",
+      "Symbols": "E electric field · B magnetic field · ∇× curl (circulation around a point) · t time",
+      "Significance": "A changing magnetic field stirs up a circulating electric field — the principle inside every generator, transformer, and induction cooktop. Third of Maxwell's four equations.",
+      "Year": 1831,
+      "Name": "Faraday's Law of Induction"
+    },
+    {
+      "id": "3bbe5275-7b5c-81d1-8a3c-df143adffbc5",
+      "url": "https://app.notion.com/p/Gauss-s-Law-for-Magnetism-3bbe52757b5c81d18a3cdf143adffbc5",
+      "lastEdited": "2026-08-13T19:56:00.000Z",
+      "Equation": "∇·B = 0",
+      "Field": "Electromagnetism",
+      "Named After": "Carl Friedrich Gauss",
+      "Symbols": "B magnetic field · ∇· divergence (net outflow from a point)",
+      "Significance": "Magnetic field lines never start or end — there are no magnetic monopoles. Cut a magnet in half and you get two magnets, never a lone north pole. Second of Maxwell's four equations.",
+      "Year": 1835,
+      "Name": "Gauss's Law for Magnetism"
+    },
+    {
       "id": "3bbe5275-7b5c-81c8-8eb1-cdc2179de58e",
       "url": "https://app.notion.com/p/Kepler-s-Third-Law-3bbe52757b5c81c88eb1cdc2179de58e",
       "lastEdited": "2026-08-13T19:53:00.000Z",
