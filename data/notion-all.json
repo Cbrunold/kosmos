@@ -461978,6 +461978,42 @@
   ],
   "equations": [
     {
+      "id": "3bbe5275-7b5c-815d-b970-fb2a7877db25",
+      "url": "https://app.notion.com/p/Feynman-Path-Integral-3bbe52757b5c815db970fb2a7877db25",
+      "lastEdited": "2026-08-13T20:50:00.000Z",
+      "Equation": "⟨x_f|x_i⟩ = ∫Dx·e^(iS[x]/ℏ)",
+      "Field": "Quantum Field Theory",
+      "Named After": "Richard Feynman",
+      "Symbols": "⟨x_f|x_i⟩ amplitude to go from one point to another · ∫Dx a sum over every conceivable path between them · S[x] the classical action along each path · ℏ sets the scale of quantum interference",
+      "Significance": "A particle takes every possible path at once, each contributing a spinning phase — most cancel, and what survives is what we observe. When ℏ is small the stationary-action path wins, which is why classical mechanics' least-action principle works at all. The computational engine of modern QFT, from Feynman diagrams to lattice simulations.",
+      "Year": 1948,
+      "Name": "Feynman Path Integral"
+    },
+    {
+      "id": "3bbe5275-7b5c-812f-8b13-c3f401ee3a47",
+      "url": "https://app.notion.com/p/Klein-Gordon-Equation-3bbe52757b5c812f8b13c3f401ee3a47",
+      "lastEdited": "2026-08-13T20:50:00.000Z",
+      "Equation": "(□ + (mc/ℏ)²)φ = 0",
+      "Field": "Quantum Field Theory",
+      "Named After": "Oskar Klein · Walter Gordon",
+      "Symbols": "φ a scalar field · □ the d'Alembertian, ∂²/c²∂t² − ∇² (the wave operator of spacetime) · m the field quantum's mass · ℏ, c the usual constants",
+      "Significance": "The first relativistic quantum equation — the wave equation and E = mc² fused into one. Set aside when it seemed to misbehave for electrons (Dirac fixed that), it returned as the equation every spinless field obeys, the Higgs included.",
+      "Year": 1926,
+      "Name": "Klein–Gordon Equation"
+    },
+    {
+      "id": "3bbe5275-7b5c-811f-8db4-cc95acf776dd",
+      "url": "https://app.notion.com/p/Fine-Structure-Constant-3bbe52757b5c811f8db4cc95acf776dd",
+      "lastEdited": "2026-08-13T20:50:00.000Z",
+      "Equation": "α = e²/(4πε₀ℏc) ≈ 1/137",
+      "Field": "Quantum Field Theory",
+      "Named After": "Arnold Sommerfeld",
+      "Symbols": "e electron charge · ε₀ permittivity of free space · ℏ reduced Planck constant · c speed of light · dimensionless — the same number for any choice of units",
+      "Significance": "The strength of electromagnetism distilled to one pure number, about 1/137 — small enough that atoms are stable and QED can be computed as a series of corrections. Why 137? Nobody knows; Feynman called it 'one of the greatest damn mysteries of physics'.",
+      "Year": 1916,
+      "Name": "Fine-Structure Constant"
+    },
+    {
       "id": "3bbe5275-7b5c-81d4-81e7-d91b9c8c327c",
       "url": "https://app.notion.com/p/Kirchhoff-s-Circuit-Laws-3bbe52757b5c81d481e7d91b9c8c327c",
       "lastEdited": "2026-08-13T20:47:00.000Z",
