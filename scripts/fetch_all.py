@@ -30,6 +30,7 @@ SOURCES = {
     "crystalSystems": "72a0360b-a17a-42bc-b404-9c3b5cc2ed09",
     "silicateMinerals": "e43f9009-2f39-4aef-94ba-09b3dc3d0ce9",
     "rockTypes": "5680d212-c2dd-4668-be9e-2065b850110b",
+    "equations": "638fda32-4a6d-4d65-8349-433ce4f0b698",
 }
 
 

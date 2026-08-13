@@ -1,0 +1,98 @@
+<title>Kosmos · Equations</title>
+<style>
+__SHARED__
+
+  .fields { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 16px; }
+  .fchip {
+    font: 11px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    border: 1px solid var(--hairline);
+    background: transparent;
+    color: var(--ink-2);
+    border-radius: 99px;
+    padding: 3px 11px;
+    cursor: pointer;
+  }
+  .fchip[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--page); }
+
+  .eqs { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 14px; max-width: 1240px; }
+  .eq { border-top: 3px solid var(--fc, var(--hairline)); display: flex; flex-direction: column; gap: 9px; }
+  .eq .formula {
+    font: 600 clamp(19px, 2.2vw, 24px) ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    letter-spacing: 0.01em;
+    margin: 4px 0 0;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-bottom: 2px;
+  }
+  .eq h2 { font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; font-size: 13.5px; margin: 0; display: flex; justify-content: space-between; gap: 8px; align-items: baseline; }
+  .eq h2 .fld { font-size: 9.5px; letter-spacing: 0.09em; text-transform: uppercase; color: var(--fc); font-weight: 400; white-space: nowrap; }
+  .eq .sym { font: 11px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; color: var(--muted); line-height: 1.55; }
+  .eq .sig { font-size: 12.5px; color: var(--ink-2); line-height: 1.55; margin: 0; flex: 1; }
+  .eq .meta { font: 11px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; color: var(--muted); font-variant-numeric: tabular-nums; }
+</style>
+
+<nav class="knav"><a href="/">KOSMOS</a><span>/</span><span class="cur">Equations</span></nav>
+<h1 class="ktitle">Equations</h1>
+<p class="klede">The physical world, stated exactly. Each entry gives the statement, what every symbol means, and why it matters — from Newton's mechanics to the curvature of spacetime.</p>
+
+<div class="fields" id="fields"></div>
+<div class="eqs" id="eqs"></div>
+
+<p class="kfoot">From the Equations database in Notion — add a row there and it appears here on the next sync.</p>
+
+<script id="data" type="application/json">__DATA__</script>
+<script>
+  const E = JSON.parse(document.getElementById('data').textContent);
+  const COLORS = {
+    Mechanics: 'var(--c-blue)', Electromagnetism: 'var(--c-violet)', Thermodynamics: 'var(--c-amber)',
+    Quantum: 'var(--c-teal)', Relativity: 'var(--c-red)', Mathematics: 'var(--c-pink)',
+    Chemistry: 'var(--c-green)', Cosmology: 'var(--c-bronze)',
+  };
+  E.sort((a, b) => (a.Year ?? 9999) - (b.Year ?? 9999));
+
+  let active = null;
+  const fieldsBox = document.getElementById('fields');
+  const present = [...new Set(E.map((e) => e.Field).filter(Boolean))];
+  const all = document.createElement('button');
+  all.className = 'fchip'; all.textContent = 'all'; all.setAttribute('aria-pressed', 'true');
+  fieldsBox.appendChild(all);
+  all.addEventListener('click', () => { active = null; sync(); });
+  for (const f of present) {
+    const b = document.createElement('button');
+    b.className = 'fchip'; b.textContent = f; b.setAttribute('aria-pressed', 'false');
+    b.dataset.field = f;
+    b.addEventListener('click', () => { active = active === f ? null : f; sync(); });
+    fieldsBox.appendChild(b);
+  }
+  function sync() {
+    for (const b of fieldsBox.children) {
+      b.setAttribute('aria-pressed', String(b.dataset.field ? b.dataset.field === active : active === null));
+    }
+    render();
+  }
+
+  const eqs = document.getElementById('eqs');
+  function render() {
+    eqs.innerHTML = '';
+    for (const e of E) {
+      if (active && e.Field !== active) continue;
+      const c = document.createElement('article');
+      c.className = 'kcard eq';
+      c.style.setProperty('--fc', COLORS[e.Field] || 'var(--muted)');
+      const h = document.createElement('h2');
+      const nm = document.createElement('span'); nm.textContent = e.Name || 'Untitled';
+      h.appendChild(nm);
+      if (e.Field) { const f = document.createElement('span'); f.className = 'fld'; f.textContent = e.Field; h.appendChild(f); }
+      const formula = document.createElement('div'); formula.className = 'formula'; formula.textContent = e.Equation || '';
+      const sym = document.createElement('div'); sym.className = 'sym'; sym.textContent = e.Symbols || '';
+      const sig = document.createElement('p'); sig.className = 'sig'; sig.textContent = e.Significance || '';
+      c.append(h, formula, sym, sig);
+      const bits = [];
+      if (e['Named After']) bits.push(e['Named After']);
+      if (e.Year) bits.push(String(e.Year));
+      if (bits.length) { const m = document.createElement('div'); m.className = 'meta'; m.textContent = bits.join(' · '); c.appendChild(m); }
+      eqs.appendChild(c);
+    }
+  }
+  render();
+</script>

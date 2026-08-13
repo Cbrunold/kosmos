@@ -198,6 +198,8 @@ def build_home(n_min, n_gems, n_classes, n_spectral, n_instr):
     for rows in notion.values():
         dates += [r["lastEdited"] for r in rows if r.get("lastEdited")]
     sync = max(dates)[:10] if dates else "?"
+    eqs = notion.get("equations", [])
+    years = [e["Year"] for e in eqs if e.get("Year")]
     write_page("home.template.html", "home.html", extra={
         "__N_GAPS__": gaps,
         "__N_MINERALS__": f"{n_min:,}",
@@ -206,6 +208,9 @@ def build_home(n_min, n_gems, n_classes, n_spectral, n_instr):
         "__N_SPECTRAL__": n_spectral,
         "__N_INSTR__": n_instr,
         "__N_THEORIES__": len(notion["theories"]),
+        "__N_EQ__": len(eqs),
+        "__N_EQFIELDS__": len({e.get("Field") for e in eqs if e.get("Field")}),
+        "__EQ_OLDEST__": min(years) if years else "?",
         "__SYNC_DATE__": sync,
     })
 
@@ -218,4 +223,6 @@ if __name__ == "__main__":
                [{k: v for k, v in f.items() if k != "id"} for f in notion["forces"]])
     write_page("theories.template.html", "theories.html",
                [{k: v for k, v in t.items() if k != "id"} for t in notion["theories"]])
+    write_page("equations.template.html", "equations.html",
+               [{k: v for k, v in e.items() if k != "id"} for e in notion.get("equations", [])])
     build_home(n_min, n_gems, n_classes, n_spectral, n_instr)

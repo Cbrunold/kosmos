@@ -16,6 +16,7 @@ truth for code and the normalised data snapshots. Sync is one-way, Notion → re
 | `/cosmos`    | Field guide to celestial object classes, the stellar spectral sequence, instruments, researchers |
 | `/forces`    | The four fundamental interactions |
 | `/theories`  | Theory shelf with status tracking (accepted / speculative / disproved) |
+| `/equations` | Canonical equations with symbols decoded, filterable by field |
 
 ## Layout
 
@@ -82,3 +83,27 @@ its own Let's Encrypt cert — configs in `deploy/`. Secrets live in
 
 To ship an update: copy `server.js` and `public/*.html` to `/opt/kosmos/`
 and `systemctl restart kosmos`.
+
+### Recipe: putting an app on a yeahborhood.com subdomain
+
+How kosmos (and musicator) got their subdomains — reusable for the next app:
+
+1. **DNS** — nothing to do: `*.yeahborhood.com` wildcards to the VPS
+   (5.78.43.168), so any new subdomain resolves immediately.
+2. **App** — deploy to `/opt/<name>`, listening on `127.0.0.1:<port>`
+   (pick a free port; kosmos=3002, musicator=3001). Add a systemd unit
+   `/etc/systemd/system/<name>.service` (copy `deploy/kosmos.service`,
+   change paths/port), then `systemctl enable --now <name>`.
+3. **nginx, HTTP first** — `/etc/nginx/sites-available/<name>` with a
+   port-80 block: ACME webroot at `/var/www/acme` + redirect to HTTPS
+   (see the first block of `deploy/nginx-kosmos.conf`). Symlink into
+   `sites-enabled`, `nginx -t`, reload.
+4. **Certificate** — `certbot certonly --nginx -d <name>.yeahborhood.com`.
+5. **nginx, HTTPS** — append the 443 block (second block of
+   `deploy/nginx-kosmos.conf`): `listen 5.78.43.168:443 ssl` — the
+   explicit IP matters, tailscaled holds :443 on the tailnet address —
+   pointing `ssl_certificate` at the new cert and proxying to the app's
+   port. `nginx -t`, reload. Done.
+
+Certbot renews automatically; the nginx blocks and unit files in
+`deploy/` are the living reference.

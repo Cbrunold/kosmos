@@ -15,6 +15,7 @@ const PAGES = {
   '/cosmos': 'cosmos.html',
   '/forces': 'forces.html',
   '/theories': 'theories.html',
+  '/equations': 'equations.html',
 };
 const CONTENT = Object.fromEntries(
   Object.entries(PAGES).map(([route, file]) => [route, readFileSync(join(here, 'public', file))]),

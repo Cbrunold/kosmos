@@ -1,0 +1,222 @@
+<title>Kosmos · Equations</title>
+<style>
+  :root {
+    color-scheme: light;
+    --page: #f2f4f5;
+    --panel: #fbfcfc;
+    --ink: #17212b;
+    --ink-2: #4c5a66;
+    --muted: #8595a1;
+    --hairline: #dde4e8;
+    --ring: rgba(23, 33, 43, 0.85);
+    --c-blue: #2a78d6;
+    --c-teal: #0f9b9b;
+    --c-red: #c23434;
+    --c-amber: #e39a00;
+    --c-green: #33a047;
+    --c-violet: #6b50c8;
+    --c-pink: #e05e8f;
+    --c-bronze: #8a5314;
+    --heat: #2a78d6;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --page: #0e1116;
+      --panel: #14181d;
+      --ink: #e9edf2;
+      --ink-2: #aab8c4;
+      --muted: #74828e;
+      --hairline: #242b33;
+      --ring: rgba(233, 237, 242, 0.9);
+      --c-blue: #4a90e8;
+      --c-teal: #0aa085;
+      --c-red: #e75570;
+      --c-amber: #b98800;
+      --c-green: #46a850;
+      --c-violet: #8b74e0;
+      --c-pink: #dc5f83;
+      --c-bronze: #a4671f;
+      --heat: #5598e7;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --page: #0e1116;
+    --panel: #14181d;
+    --ink: #e9edf2;
+    --ink-2: #aab8c4;
+    --muted: #74828e;
+    --hairline: #242b33;
+    --ring: rgba(233, 237, 242, 0.9);
+    --c-blue: #4a90e8;
+    --c-teal: #0aa085;
+    --c-red: #e75570;
+    --c-amber: #b98800;
+    --c-green: #46a850;
+    --c-violet: #8b74e0;
+    --c-pink: #dc5f83;
+    --c-bronze: #a4671f;
+    --heat: #5598e7;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--page);
+    color: var(--ink);
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    margin: 0;
+    padding: 20px clamp(14px, 3vw, 40px) 56px;
+  }
+  .mono { font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; }
+
+  .knav {
+    font: 11px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 18px;
+    display: flex;
+    gap: 8px;
+    align-items: baseline;
+  }
+  .knav a { color: var(--ink-2); text-decoration: none; }
+  .knav a:hover { color: var(--ink); }
+  .knav .cur { color: var(--ink); }
+
+  h1.ktitle {
+    font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    font-size: clamp(22px, 3vw, 30px);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin: 0 0 6px;
+    text-wrap: balance;
+  }
+  .klede { font-size: 14px; color: var(--ink-2); max-width: 62ch; line-height: 1.55; margin: 0 0 22px; }
+  .klede a { color: inherit; }
+
+  h2.ksec {
+    font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 34px 0 12px;
+    border-bottom: 1px solid var(--hairline);
+    padding-bottom: 7px;
+  }
+
+  .kcard {
+    background: var(--panel);
+    border: 1px solid var(--hairline);
+    border-radius: 10px;
+    padding: 16px;
+  }
+  .kchip {
+    font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    border: 1px solid var(--hairline);
+    color: var(--ink-2);
+    border-radius: 99px;
+    padding: 2px 9px;
+    white-space: nowrap;
+  }
+  .knote { font-size: 11px; color: var(--muted); line-height: 1.5; }
+  .kfoot { margin-top: 42px; font-size: 11px; color: var(--muted); border-top: 1px solid var(--hairline); padding-top: 12px; }
+  .kfoot a { color: inherit; }
+  a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; }
+
+
+  .fields { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 16px; }
+  .fchip {
+    font: 11px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    border: 1px solid var(--hairline);
+    background: transparent;
+    color: var(--ink-2);
+    border-radius: 99px;
+    padding: 3px 11px;
+    cursor: pointer;
+  }
+  .fchip[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--page); }
+
+  .eqs { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 14px; max-width: 1240px; }
+  .eq { border-top: 3px solid var(--fc, var(--hairline)); display: flex; flex-direction: column; gap: 9px; }
+  .eq .formula {
+    font: 600 clamp(19px, 2.2vw, 24px) ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    letter-spacing: 0.01em;
+    margin: 4px 0 0;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-bottom: 2px;
+  }
+  .eq h2 { font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; font-size: 13.5px; margin: 0; display: flex; justify-content: space-between; gap: 8px; align-items: baseline; }
+  .eq h2 .fld { font-size: 9.5px; letter-spacing: 0.09em; text-transform: uppercase; color: var(--fc); font-weight: 400; white-space: nowrap; }
+  .eq .sym { font: 11px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; color: var(--muted); line-height: 1.55; }
+  .eq .sig { font-size: 12.5px; color: var(--ink-2); line-height: 1.55; margin: 0; flex: 1; }
+  .eq .meta { font: 11px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; color: var(--muted); font-variant-numeric: tabular-nums; }
+</style>
+
+<nav class="knav"><a href="/">KOSMOS</a><span>/</span><span class="cur">Equations</span></nav>
+<h1 class="ktitle">Equations</h1>
+<p class="klede">The physical world, stated exactly. Each entry gives the statement, what every symbol means, and why it matters — from Newton's mechanics to the curvature of spacetime.</p>
+
+<div class="fields" id="fields"></div>
+<div class="eqs" id="eqs"></div>
+
+<p class="kfoot">From the Equations database in Notion — add a row there and it appears here on the next sync.</p>
+
+<script id="data" type="application/json">[{"url":"https://app.notion.com/p/Euler-s-Identity-3bbe52757b5c81fb9558e243bfa28227","lastEdited":"2026-08-13T19:29:00.000Z","Equation":"e^(iπ) + 1 = 0","Field":"Mathematics","Named After":"Leonhard Euler","Symbols":"e Euler's number · i imaginary unit · π ratio of circumference to diameter","Significance":"Five fundamental constants in one exact statement — routinely voted the most beautiful equation in mathematics.","Year":1748,"Name":"Euler's Identity"},{"url":"https://app.notion.com/p/Gauss-s-Law-3bbe52757b5c81ebb7d4f57536a2a230","lastEdited":"2026-08-13T19:29:00.000Z","Equation":"∇·E = ρ/ε₀","Field":"Electromagnetism","Named After":"Carl Friedrich Gauss","Symbols":"E electric field · ρ charge density · ε₀ permittivity of free space","Significance":"Electric charge is the source of the electric field. One quarter of Maxwell's equations, and the reason field lines start and end on charges.","Year":1835,"Name":"Gauss's Law"},{"url":"https://app.notion.com/p/Planck-Einstein-Relation-3bbe52757b5c8140a1d4f7bff1df0334","lastEdited":"2026-08-13T19:29:00.000Z","Equation":"E = hν","Field":"Quantum","Named After":"Max Planck","Symbols":"E photon energy · h Planck constant · ν frequency of light","Significance":"Light comes in packets whose energy scales with frequency — the crack in classical physics that opened into quantum theory.","Year":1900,"Name":"Planck–Einstein Relation"},{"url":"https://app.notion.com/p/Boltzmann-Entropy-3bbe52757b5c812295c0f19b5930072e","lastEdited":"2026-08-13T19:29:00.000Z","Equation":"S = k·log W","Field":"Thermodynamics","Named After":"Ludwig Boltzmann","Symbols":"S entropy · k Boltzmann constant · W number of microscopic arrangements","Significance":"Entropy counts the ways. The bridge between the microscopic world of atoms and the macroscopic arrow of time — carved on Boltzmann's gravestone.","Year":1877,"Name":"Boltzmann Entropy"},{"url":"https://app.notion.com/p/Ideal-Gas-Law-3bbe52757b5c81a29653e0a84065d7fa","lastEdited":"2026-08-13T19:29:00.000Z","Equation":"pV = nRT","Field":"Thermodynamics","Named After":"Benoît Paul Émile Clapeyron","Symbols":"p pressure · V volume · n amount of gas (moles) · R gas constant · T absolute temperature","Significance":"The behaviour of dilute gases in one line — weather balloons, engine cylinders, and lung volumes to first approximation.","Year":1834,"Name":"Ideal Gas Law"},{"url":"https://app.notion.com/p/Einstein-Field-Equations-3bbe52757b5c81c7b3a7decb4402d1ab","lastEdited":"2026-08-13T19:29:00.000Z","Equation":"G_μν + Λg_μν = (8πG/c⁴)·T_μν","Field":"Relativity","Named After":"Albert Einstein","Symbols":"G_μν spacetime curvature · Λ cosmological constant · g_μν metric · T_μν energy and momentum content","Significance":"Matter tells spacetime how to curve; curved spacetime tells matter how to move. Black holes, gravitational waves, and the expanding universe live here.","Year":1915,"Name":"Einstein Field Equations"},{"url":"https://app.notion.com/p/Schr-dinger-Equation-3bbe52757b5c811aa60deddf236c3a8c","lastEdited":"2026-08-13T19:29:00.000Z","Equation":"iℏ ∂ψ/∂t = Ĥψ","Field":"Quantum","Named After":"Erwin Schrödinger","Symbols":"ψ wavefunction · ℏ reduced Planck constant · Ĥ Hamiltonian (total energy) operator · i imaginary unit","Significance":"How quantum states evolve in time. Everything from chemistry's periodic trends to semiconductors falls out of solving it.","Year":1926,"Name":"Schrödinger Equation"},{"url":"https://app.notion.com/p/Law-of-Universal-Gravitation-3bbe52757b5c811b8297ce47b2c5d614","lastEdited":"2026-08-13T19:29:00.000Z","Equation":"F = G·m₁m₂ / r²","Field":"Mechanics","Named After":"Isaac Newton","Symbols":"F gravitational force · G gravitational constant · m₁, m₂ the two masses · r distance between them","Significance":"The same rule pulls an apple to the ground and holds the Moon in orbit — the first law to unify heaven and Earth.","Year":1687,"Name":"Law of Universal Gravitation"},{"url":"https://app.notion.com/p/Newton-s-Second-Law-3bbe52757b5c8183bbd5ff733704a984","lastEdited":"2026-08-13T19:29:00.000Z","Equation":"F = ma","Field":"Mechanics","Named After":"Isaac Newton","Symbols":"F net force · m mass · a acceleration","Significance":"The workhorse of classical mechanics: push something, and its motion changes in proportion. Rockets, bridges, and billiards all answer to it.","Year":1687,"Name":"Newton's Second Law"},{"url":"https://app.notion.com/p/Mass-energy-equivalence-3bbe52757b5c819b8730c682ecb3e756","lastEdited":"2026-08-13T19:29:00.000Z","Equation":"E = mc²","Field":"Relativity","Named After":"Albert Einstein","Symbols":"E energy · m rest mass · c speed of light in vacuum","Significance":"A little mass is worth an enormous amount of energy — the bookkeeping behind nuclear power, stellar fusion, and particle physics.","Year":1905,"Name":"Mass–energy equivalence"}]</script>
+<script>
+  const E = JSON.parse(document.getElementById('data').textContent);
+  const COLORS = {
+    Mechanics: 'var(--c-blue)', Electromagnetism: 'var(--c-violet)', Thermodynamics: 'var(--c-amber)',
+    Quantum: 'var(--c-teal)', Relativity: 'var(--c-red)', Mathematics: 'var(--c-pink)',
+    Chemistry: 'var(--c-green)', Cosmology: 'var(--c-bronze)',
+  };
+  E.sort((a, b) => (a.Year ?? 9999) - (b.Year ?? 9999));
+
+  let active = null;
+  const fieldsBox = document.getElementById('fields');
+  const present = [...new Set(E.map((e) => e.Field).filter(Boolean))];
+  const all = document.createElement('button');
+  all.className = 'fchip'; all.textContent = 'all'; all.setAttribute('aria-pressed', 'true');
+  fieldsBox.appendChild(all);
+  all.addEventListener('click', () => { active = null; sync(); });
+  for (const f of present) {
+    const b = document.createElement('button');
+    b.className = 'fchip'; b.textContent = f; b.setAttribute('aria-pressed', 'false');
+    b.dataset.field = f;
+    b.addEventListener('click', () => { active = active === f ? null : f; sync(); });
+    fieldsBox.appendChild(b);
+  }
+  function sync() {
+    for (const b of fieldsBox.children) {
+      b.setAttribute('aria-pressed', String(b.dataset.field ? b.dataset.field === active : active === null));
+    }
+    render();
+  }
+
+  const eqs = document.getElementById('eqs');
+  function render() {
+    eqs.innerHTML = '';
+    for (const e of E) {
+      if (active && e.Field !== active) continue;
+      const c = document.createElement('article');
+      c.className = 'kcard eq';
+      c.style.setProperty('--fc', COLORS[e.Field] || 'var(--muted)');
+      const h = document.createElement('h2');
+      const nm = document.createElement('span'); nm.textContent = e.Name || 'Untitled';
+      h.appendChild(nm);
+      if (e.Field) { const f = document.createElement('span'); f.className = 'fld'; f.textContent = e.Field; h.appendChild(f); }
+      const formula = document.createElement('div'); formula.className = 'formula'; formula.textContent = e.Equation || '';
+      const sym = document.createElement('div'); sym.className = 'sym'; sym.textContent = e.Symbols || '';
+      const sig = document.createElement('p'); sig.className = 'sig'; sig.textContent = e.Significance || '';
+      c.append(h, formula, sym, sig);
+      const bits = [];
+      if (e['Named After']) bits.push(e['Named After']);
+      if (e.Year) bits.push(String(e.Year));
+      if (bits.length) { const m = document.createElement('div'); m.className = 'meta'; m.textContent = bits.join(' · '); c.appendChild(m); }
+      eqs.appendChild(c);
+    }
+  }
+  render();
+</script>
