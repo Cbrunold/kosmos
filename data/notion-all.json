@@ -461978,6 +461978,42 @@
   ],
   "equations": [
     {
+      "id": "3bbe5275-7b5c-819e-ae2b-d24ec3193fe8",
+      "url": "https://app.notion.com/p/Griffith-Fracture-Criterion-3bbe52757b5c819eae2bd24ec3193fe8",
+      "lastEdited": "2026-08-13T20:40:00.000Z",
+      "Equation": "σ_f = √(2Eγ / πa)",
+      "Field": "Materials Science",
+      "Named After": "Alan Arnold Griffith",
+      "Symbols": "σ_f stress at which fracture runs away · E Young's modulus · γ energy to create new surface · a length of the largest existing crack",
+      "Significance": "Things break not because their atoms are weak but because flaws concentrate stress — strength falls with the square root of the biggest crack. Why glass fibres are strong while glass panes shatter, why aircraft windows are round, and the founding equation of fracture mechanics.",
+      "Year": 1921,
+      "Name": "Griffith Fracture Criterion"
+    },
+    {
+      "id": "3bbe5275-7b5c-81f5-bb78-d159340dd03f",
+      "url": "https://app.notion.com/p/Young-s-Modulus-3bbe52757b5c81f5bb78d159340dd03f",
+      "lastEdited": "2026-08-13T20:40:00.000Z",
+      "Equation": "E = σ/ε",
+      "Field": "Materials Science",
+      "Named After": "Thomas Young",
+      "Symbols": "σ stress (force per unit area) · ε strain (fractional stretch) · E the stiffness of the material itself, independent of the object's shape",
+      "Significance": "Hooke's law made a property of matter rather than of a particular spring — rubber's E is measured in megapascals, steel's in hundreds of gigapascals, diamond's beyond a terapascal. The number engineers reach for first when choosing what to build with.",
+      "Year": 1807,
+      "Name": "Young's Modulus"
+    },
+    {
+      "id": "3bbe5275-7b5c-8144-9213-c057e1f3e5ab",
+      "url": "https://app.notion.com/p/Hooke-s-Law-3bbe52757b5c81449213c057e1f3e5ab",
+      "lastEdited": "2026-08-13T20:40:00.000Z",
+      "Equation": "F = −kx",
+      "Field": "Materials Science",
+      "Named After": "Robert Hooke",
+      "Symbols": "F restoring force · k stiffness of the spring or material · x displacement from rest · the minus sign points the force back toward equilibrium",
+      "Significance": "Stretch is proportional to force — announced by Hooke as the anagram 'ceiiinosssttuv' (ut tensio, sic vis) to stake his claim before revealing it. Springs, bonds between atoms, and every small vibration in physics answer to it: the harmonic oscillator is this law in motion.",
+      "Year": 1678,
+      "Name": "Hooke's Law"
+    },
+    {
       "id": "3bbe5275-7b5c-8183-8228-de82d104194f",
       "url": "https://app.notion.com/p/Seismic-Wave-Speeds-3bbe52757b5c81838228de82d104194f",
       "lastEdited": "2026-08-13T20:35:00.000Z",
