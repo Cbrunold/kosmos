@@ -15,7 +15,7 @@ truth for code and the normalised data snapshots. Sync is one-way, Notion → re
 | `/minerals`  | 3,000+ minerals searchable and filterable by contained element; gemstone shelf, rock families, silicate classes |
 | `/cosmos`    | Field guide to celestial object classes, the stellar spectral sequence, instruments, researchers |
 | `/forces`    | The four fundamental interactions |
-| `/theories`  | Theory shelf with status tracking (accepted / speculative / disproved) |
+| `/theories`  | Theory shelf from Ptolemy to the holographic principle — status, proponents, and the equations each rests on; sortable chronologically |
 | `/equations` | Canonical equations with symbols decoded, filterable by field |
 | `/constants` | CODATA constants with uncertainties, SI units, prefixes |
 
@@ -38,6 +38,11 @@ scripts/link_cosmos.py        Equation → spectral types / celestial objects / 
 scripts/seed_constants.py     Creates + seeds the Constants and Units databases (CODATA 2022,
                               IAU nominal, Planck 2018 / SH0ES 2022)
 scripts/link_constants.py     Constant → equation graph ("appears in" chips)
+scripts/seed_theories.py      Fills the Theories and Researchers databases (both already existed
+                              but were near-empty); adds missing schema properties and backfills
+                              blank fields without overwriting anything a human set
+scripts/link_theories.py      Theory → researcher (Proponent) and theory → equation relations,
+                              from the maps in seed_theories.py
 deploy/                       systemd unit + nginx site as deployed on the VPS
 ```
 

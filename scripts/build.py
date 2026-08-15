@@ -229,6 +229,25 @@ def build_cosmos_page():
 
 
 # ---------------- home ----------------
+def theory_span() -> str:
+    """Earliest→latest year across the theory shelf, e.g. '150 CE – 1998'."""
+    years = []
+    for t in notion["theories"]:
+        y = t.get("Year")
+        if y is None and t.get("Date Proposed"):
+            try:
+                y = int(str(t["Date Proposed"])[:4])
+            except ValueError:
+                y = None
+        if isinstance(y, (int, float)):
+            years.append(int(y))
+    if not years:
+        return "—"
+    lo, hi = min(years), max(years)
+    lo_s = f"{-lo} BCE" if lo < 0 else (f"{lo} CE" if lo < 1000 else str(lo))
+    return f"{lo_s}–{hi}"
+
+
 def build_home(n_min, n_gems, n_classes, n_spectral, n_instr):
     gaps = sum(1 for e in elements
                if e["meltingPt"] is None or e["boilingPt"] is None
@@ -249,6 +268,9 @@ def build_home(n_min, n_gems, n_classes, n_spectral, n_instr):
         "__N_SPECTRAL__": n_spectral,
         "__N_INSTR__": n_instr,
         "__N_THEORIES__": len(notion["theories"]),
+        "__N_ACCEPTED__": sum(1 for t in notion["theories"] if t.get("Status") == "Accepted"),
+        "__TH_SPAN__": theory_span(),
+        "__N_PEOPLE__": sum(1 for r in notion["researchers"] if r.get("Name")),
         "__N_EQ__": len(eqs),
         "__N_EQFIELDS__": len({e.get("Field") for e in eqs if e.get("Field")}),
         "__EQ_OLDEST__": oldest_str,
@@ -265,9 +287,15 @@ if __name__ == "__main__":
     n_classes, n_spectral, n_instr = build_cosmos_page()
     write_page("forces.template.html", "forces.html",
                [{k: v for k, v in f.items() if k != "id"} for f in notion["forces"]])
+    # theories carry a Proponent relation into the Researchers DB — resolve it to
+    # names and one-line credentials so the page can show who stood behind each idea
+    people = {r["id"]: {"name": r["Name"], "life": r.get("Lifespan"),
+                        "field": r.get("Field"), "known": r.get("Known For")}
+              for r in notion["researchers"] if r.get("Name")}
     write_page("theories.template.html", "theories.html",
                {"theories": [{k: v for k, v in t.items() if k != "id"} for t in notion["theories"]],
-                "equations": eq_lookup_all()})
+                "equations": eq_lookup_all(),
+                "people": people})
     # equations keep their Notion page id — the Related relation targets it;
     # __ELEMENTS__ is a pageId -> {sym,name} lookup for the Elements relation
     el_lookup = {e["pageId"]: {"sym": e["notation"], "name": e["name"], "z": e["atomicNumber"]}

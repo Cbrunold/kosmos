@@ -2,7 +2,7 @@
 <style>
 __SHARED__
 
-  .theories { display: flex; flex-direction: column; gap: 12px; max-width: 760px; }
+  .theories { display: flex; flex-direction: column; gap: 12px; max-width: 820px; }
   .theory h2 {
     font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
     font-size: 16px;
@@ -21,14 +21,22 @@ __SHARED__
     border: 1px solid;
   }
   .status.Accepted { color: var(--c-green); border-color: var(--c-green); }
-  .status.Disproved { color: var(--c-red); border-color: var(--c-red); }
+  .status.Superseded { color: var(--c-cyan); border-color: var(--c-cyan); }
   .status.Speculative { color: var(--c-amber); border-color: var(--c-amber); }
+  .status.Disproved { color: var(--c-red); border-color: var(--c-red); }
   .status.none { color: var(--muted); border-color: var(--hairline); }
+  .theory .yr {
+    font: 11.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    font-variant-numeric: tabular-nums;
+    color: var(--muted);
+    margin-left: auto;
+  }
   .theory p { font-size: 13.5px; color: var(--ink-2); line-height: 1.6; margin: 0; }
   .theory .meta { font: 11px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; color: var(--muted); margin-top: 8px; }
   .untitled { color: var(--muted); font-style: italic; }
   .theory { scroll-margin-top: 16px; }
   .theory.flash { outline: 2px solid var(--c-pink); outline-offset: 3px; }
+
   .eqrow { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 10px; align-items: baseline; }
   .eqrow .lbl { font: 9.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-right: 3px; }
   .ceq {
@@ -42,65 +50,193 @@ __SHARED__
     white-space: nowrap;
   }
   .ceq:hover { color: var(--ink); border-color: var(--ink-2); }
+  .who {
+    font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    border: 1px solid var(--hairline);
+    border-left: 3px solid var(--c-violet);
+    color: var(--ink-2);
+    border-radius: 4px;
+    padding: 2px 7px 2px 6px;
+    white-space: nowrap;
+    cursor: help;
+  }
+  .who:hover { color: var(--ink); border-color: var(--ink-2); }
+
+  .controls { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin: 0 0 18px; }
+  .fchip {
+    font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    letter-spacing: 0.04em;
+    background: var(--panel);
+    border: 1px solid var(--hairline);
+    border-left: 3px solid var(--fc, var(--muted));
+    color: var(--ink-2);
+    border-radius: 5px;
+    padding: 4px 9px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: baseline;
+    gap: 6px;
+  }
+  .fchip:hover { color: var(--ink); border-color: var(--ink-2); }
+  .fchip .n { font-size: 9px; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .fchip[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--page); }
+  .fchip[aria-pressed="true"] .n { color: color-mix(in oklab, var(--page) 65%, var(--ink)); }
+  .controls .sp { flex: 1; }
+  .controls .sortlbl { font: 9.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+  .empty { font-size: 13px; color: var(--muted); padding: 20px 0; }
+  @media (max-width: 620px) { .controls .sp { flex-basis: 100%; height: 0; } }
 </style>
 
 <nav class="knav"><a href="/">KOSMOS</a><span>/</span><span class="cur">Theories</span></nav>
 <h1 class="ktitle">Theories</h1>
-<p class="klede">Frameworks for how the universe fits together, tracked with their standing — accepted, speculative, or disproved — as the evidence comes in. This shelf grows as the Notion database does.</p>
+<p class="klede">Frameworks for how the universe fits together, each tracked with its standing — accepted, superseded, speculative, or disproved — and with the mathematics it rests on. Read it by standing, or switch to chronological order and watch the picture of the physical world get assembled from Ptolemy onward.</p>
 
+<div class="controls" id="controls"></div>
 <div class="theories" id="list"></div>
+<p class="empty" id="empty" hidden>Nothing matches that filter.</p>
 
-<p class="kfoot">From the Theories database in Notion. Status legend: <span class="status Accepted">accepted</span> <span class="status Speculative">speculative</span> <span class="status Disproved">disproved</span> — entries without a status are shown unlabeled.</p>
+<p class="kfoot">From the Theories and Researchers databases in Notion. <b>Superseded</b> is not the same as <b>disproved</b>: Newtonian mechanics still builds bridges, while the luminiferous aether was looked for and found absent. Entries without a status are shown unlabeled.</p>
 
 <script id="data" type="application/json">__DATA__</script>
 <script>
   const D = JSON.parse(document.getElementById('data').textContent);
-  const T = D.theories, EQ = D.equations || {};
+  const T = D.theories, EQ = D.equations || {}, PEOPLE = D.people || {};
   const slug = (s) => (s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '')
     .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
   const list = document.getElementById('list');
-  const order = { Accepted: 0, Speculative: 1, Disproved: 2 };
-  T.sort((a, b) => (order[a.Status] ?? 3) - (order[b.Status] ?? 3) || (a.Name || 'zzz').localeCompare(b.Name || 'zzz'));
-  for (const t of T) {
-    const card = document.createElement('article');
-    card.className = 'kcard theory';
-    if (t.Name) card.id = slug(t.Name);
-    const h = document.createElement('h2');
-    const name = document.createElement('span');
-    if (t.Name) name.textContent = t.Name;
-    else { name.textContent = 'Untitled entry'; name.className = 'untitled'; }
-    h.appendChild(name);
-    const s = document.createElement('span');
-    s.className = 'status ' + (t.Status || 'none');
-    s.textContent = t.Status || 'no status yet';
-    h.appendChild(s);
-    const p = document.createElement('p');
-    p.textContent = t.Summary || '';
-    card.append(h, p);
-    const bits = [];
-    if (t['Date Proposed']) bits.push('proposed ' + t['Date Proposed']);
-    if (!t.Name) bits.push('this row has no title in Notion yet');
-    if (bits.length) {
-      const m = document.createElement('div');
-      m.className = 'meta';
-      m.textContent = bits.join(' · ');
-      card.appendChild(m);
-    }
-    const eqs = (t.Equations || []).map((id) => EQ[id]).filter(Boolean).sort((a, b) => a.name.localeCompare(b.name));
-    if (eqs.length) {
-      const row = document.createElement('div');
-      row.className = 'eqrow';
-      const l = document.createElement('span'); l.className = 'lbl'; l.textContent = 'the mathematics';
-      row.appendChild(l);
-      for (const q of eqs) {
-        const a = document.createElement('a');
-        a.className = 'ceq'; a.href = '/equations#' + q.slug; a.textContent = q.name; a.title = q.field || '';
-        row.appendChild(a);
+  const empty = document.getElementById('empty');
+  const ORDER = ['Accepted', 'Superseded', 'Speculative', 'Disproved'];
+  const COLOR = { Accepted: 'var(--c-green)', Superseded: 'var(--c-cyan)',
+                  Speculative: 'var(--c-amber)', Disproved: 'var(--c-red)' };
+  const rank = (s) => { const i = ORDER.indexOf(s); return i < 0 ? ORDER.length : i; };
+  const yearOf = (t) => (typeof t.Year === 'number' ? t.Year
+    : t['Date Proposed'] ? parseInt(String(t['Date Proposed']).slice(0, 4), 10) : null);
+  const yearLabel = (y) => y == null ? '' : (y < 0 ? `${-y} BCE` : String(y));
+
+  let sortMode = 'standing';
+  const active = new Set();          // empty = show everything
+
+  function render() {
+    list.textContent = '';
+    const rows = T.filter((t) => !active.size || active.has(t.Status || 'none'));
+    rows.sort((a, b) => sortMode === 'chrono'
+      ? (yearOf(a) ?? 9999) - (yearOf(b) ?? 9999) || (a.Name || 'zzz').localeCompare(b.Name || 'zzz')
+      : rank(a.Status) - rank(b.Status) || (yearOf(a) ?? 9999) - (yearOf(b) ?? 9999)
+        || (a.Name || 'zzz').localeCompare(b.Name || 'zzz'));
+    empty.hidden = rows.length > 0;
+
+    for (const t of rows) {
+      const card = document.createElement('article');
+      card.className = 'kcard theory';
+      if (t.Name) card.id = slug(t.Name);
+
+      const h = document.createElement('h2');
+      const name = document.createElement('span');
+      if (t.Name) name.textContent = t.Name;
+      else { name.textContent = 'Untitled entry'; name.className = 'untitled'; }
+      h.appendChild(name);
+      const s = document.createElement('span');
+      s.className = 'status ' + (t.Status || 'none');
+      s.textContent = t.Status || 'no status yet';
+      h.appendChild(s);
+      const y = yearOf(t);
+      if (y != null) {
+        const yr = document.createElement('span');
+        yr.className = 'yr';
+        yr.textContent = yearLabel(y);
+        h.appendChild(yr);
       }
-      card.appendChild(row);
+
+      const p = document.createElement('p');
+      p.textContent = t.Summary || '';
+      card.append(h, p);
+
+      const who = (t.Proponent || []).map((id) => PEOPLE[id]).filter(Boolean);
+      if (who.length) {
+        const row = document.createElement('div');
+        row.className = 'eqrow';
+        const l = document.createElement('span'); l.className = 'lbl'; l.textContent = 'proposed by';
+        row.appendChild(l);
+        for (const person of who) {
+          const el = document.createElement('span');
+          el.className = 'who';
+          el.textContent = person.name;
+          el.title = [person.life, person.field, person.known].filter(Boolean).join(' · ');
+          row.appendChild(el);
+        }
+        card.appendChild(row);
+      }
+
+      const eqs = (t.Equations || []).map((id) => EQ[id]).filter(Boolean)
+        .sort((a, b) => a.name.localeCompare(b.name));
+      if (eqs.length) {
+        const row = document.createElement('div');
+        row.className = 'eqrow';
+        const l = document.createElement('span'); l.className = 'lbl'; l.textContent = 'the mathematics';
+        row.appendChild(l);
+        for (const q of eqs) {
+          const a = document.createElement('a');
+          a.className = 'ceq'; a.href = '/equations#' + q.slug; a.textContent = q.name; a.title = q.field || '';
+          row.appendChild(a);
+        }
+        card.appendChild(row);
+      }
+
+      if (!t.Name) {
+        const m = document.createElement('div');
+        m.className = 'meta';
+        m.textContent = 'this row has no title in Notion yet';
+        card.appendChild(m);
+      }
+      list.appendChild(card);
     }
-    list.appendChild(card);
   }
+
+  function buildControls() {
+    const c = document.getElementById('controls');
+    const counts = new Map();
+    for (const t of T) {
+      const k = t.Status || 'none';
+      counts.set(k, (counts.get(k) || 0) + 1);
+    }
+    const keys = ORDER.filter((k) => counts.has(k)).concat(counts.has('none') ? ['none'] : []);
+    for (const k of keys) {
+      const b = document.createElement('button');
+      b.className = 'fchip';
+      b.type = 'button';
+      b.setAttribute('aria-pressed', 'false');
+      b.style.setProperty('--fc', COLOR[k] || 'var(--muted)');
+      b.innerHTML = '<span></span><span class="n"></span>';
+      b.firstChild.textContent = k === 'none' ? 'unlabeled' : k.toLowerCase();
+      b.lastChild.textContent = counts.get(k);
+      b.addEventListener('click', () => {
+        if (active.has(k)) active.delete(k); else active.add(k);
+        b.setAttribute('aria-pressed', active.has(k) ? 'true' : 'false');
+        render();
+      });
+      c.appendChild(b);
+    }
+    c.appendChild(Object.assign(document.createElement('span'), { className: 'sp' }));
+    const lbl = document.createElement('span');
+    lbl.className = 'sortlbl';
+    lbl.textContent = 'order';
+    const sort = document.createElement('button');
+    sort.className = 'fchip';
+    sort.type = 'button';
+    sort.style.setProperty('--fc', 'var(--c-violet)');
+    const paint = () => { sort.textContent = sortMode === 'chrono' ? 'chronological' : 'by standing'; };
+    paint();
+    sort.addEventListener('click', () => {
+      sortMode = sortMode === 'chrono' ? 'standing' : 'chrono';
+      paint();
+      render();
+    });
+    c.append(lbl, sort);
+  }
+
+  buildControls();
+  render();
+
   function openHash() {
     const el = location.hash.length > 1 && document.getElementById(location.hash.slice(1));
     if (!el) return;
