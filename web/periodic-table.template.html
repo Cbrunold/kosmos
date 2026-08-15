@@ -331,6 +331,24 @@
     padding: 2px 8px;
   }
   .derived-note { font-size: 10.5px; color: var(--muted); margin-top: 8px; line-height: 1.45; }
+  .deqs-h {
+    font: 10px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 12px 0 6px;
+  }
+  .deqs-list { display: flex; flex-wrap: wrap; gap: 4px; }
+  .deq {
+    font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    border: 1px solid var(--hairline);
+    border-left: 3px solid var(--cat-alkearth);
+    color: var(--ink-2);
+    border-radius: 4px;
+    padding: 2px 7px 2px 6px;
+    text-decoration: none;
+  }
+  .deq:hover { color: var(--ink); border-color: var(--ink-2); }
   .dfoot {
     margin-top: 12px;
     padding-top: 10px;
@@ -401,8 +419,10 @@
 <div id="tip" role="presentation"></div>
 
 <script id="data" type="application/json">__DATA__</script>
+<script id="eqdata" type="application/json">__EQUATIONS__</script>
 <script>
   const RAW = JSON.parse(document.getElementById('data').textContent);
+  const EQ = JSON.parse(document.getElementById('eqdata').textContent);
 
   // ---------- derivations ----------
   const CAT_DEFS = [
@@ -712,6 +732,7 @@
       <dl class="props">${dl}</dl>
       <div class="tags"></div>
       <div class="derived-note"></div>
+      <div class="deqs"></div>
       <div class="dfoot">
         <a href="${e.pageUrl}" target="_blank" rel="noopener">open in Notion ↗</a>
         <span>edited ${new Date(e.lastEdited).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}</span>
@@ -728,7 +749,38 @@
     if (e.catDerived) notes.push('“Alkali metal” is derived from group 1 — the Notion row is tagged only #Metal.');
     if (rows.some(([, v]) => v == null)) notes.push('Dashes are genuine gaps in the Notion database, not zeros.');
     d.querySelector('.derived-note').textContent = notes.join(' ');
+
+    // equations that concern this element (Notion relation, mirrored from the Equations DB)
+    const eqs = (e.equations || []).map((id) => EQ[id]).filter(Boolean)
+      .sort((a, b) => a.name.localeCompare(b.name));
+    if (eqs.length) {
+      const box = d.querySelector('.deqs');
+      const h = document.createElement('div');
+      h.className = 'deqs-h';
+      h.textContent = `equations · ${eqs.length}`;
+      box.appendChild(h);
+      const list = document.createElement('div');
+      list.className = 'deqs-list';
+      for (const q of eqs) {
+        const a = document.createElement('a');
+        a.className = 'deq';
+        a.href = '/equations#' + q.slug;
+        a.title = q.field || '';
+        a.textContent = q.name;
+        list.appendChild(a);
+      }
+      box.appendChild(list);
+    }
   }
+
+  // deep links: /elements#fe opens iron
+  function openHash() {
+    const h = decodeURIComponent(location.hash.slice(1)).toLowerCase();
+    if (!h) return;
+    const hit = E.find((e) => e.sym.toLowerCase() === h || String(e.z) === h);
+    if (hit) { select(hit.z); tiles[hit.z].scrollIntoView({ block: 'center', behavior: 'smooth' }); }
+  }
+  addEventListener('hashchange', openHash);
 
   // ---------- provenance ----------
   const lastEdit = new Date(Math.max(...E.map((e) => Date.parse(e.lastEdited))));
@@ -738,4 +790,5 @@
 
   document.getElementById('tempval').textContent = '20 °C';
   paint();
+  openHash();
 </script>

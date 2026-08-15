@@ -44,6 +44,19 @@ __SHARED__
     white-space: nowrap;
   }
   .rlink:hover { color: var(--ink); border-color: var(--ink-2); border-left-color: var(--rc, var(--ink-2)); }
+  .elink {
+    font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    border: 1px solid color-mix(in oklab, var(--c-blue) 45%, var(--panel));
+    background: color-mix(in oklab, var(--c-blue) 12%, var(--panel));
+    color: var(--ink);
+    border-radius: 4px;
+    padding: 2px 7px;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .elink b { font-weight: 700; }
+  .elink .nm { color: var(--ink-2); font-weight: 400; margin-left: 4px; }
+  .elink:hover { border-color: var(--c-blue); }
   .eq.flash { outline: 2px solid var(--fc, var(--ring)); outline-offset: 3px; }
   @media (prefers-reduced-motion: no-preference) {
     .eq.flash { animation: eqflash 1.6s ease-out; }
@@ -62,8 +75,10 @@ __SHARED__
 <p class="kfoot">From the Equations database in Notion — add a row there and it appears here on the next sync.</p>
 
 <script id="data" type="application/json">__DATA__</script>
+<script id="eldata" type="application/json">__ELEMENTS__</script>
 <script>
   const E = JSON.parse(document.getElementById('data').textContent);
+  const EL = JSON.parse(document.getElementById('eldata').textContent);
   const COLORS = {
     Mechanics: 'var(--c-blue)', Electromagnetism: 'var(--c-violet)', Thermodynamics: 'var(--c-amber)',
     Quantum: 'var(--c-teal)', 'Special Relativity': 'var(--c-red)', Mathematics: 'var(--c-pink)',
@@ -147,6 +162,24 @@ __SHARED__
           a.title = `${r.Field}${r.Year ? ' · ' + (r.Year < 0 ? 'c. ' + (-r.Year) + ' BCE' : r.Year) : ''}`;
           a.style.setProperty('--rc', COLORS[r.Field] || 'var(--muted)');
           a.addEventListener('click', (ev) => { ev.preventDefault(); goTo(r.slug); });
+          row.appendChild(a);
+        }
+        c.appendChild(row);
+      }
+      const els = (e.Elements || []).map((id) => EL[id]).filter(Boolean).sort((a, b) => a.z - b.z);
+      if (els.length) {
+        const row = document.createElement('div');
+        row.className = 'rel';
+        const lbl = document.createElement('span'); lbl.className = 'lbl'; lbl.textContent = 'elements';
+        row.appendChild(lbl);
+        for (const el of els) {
+          const a = document.createElement('a');
+          a.className = 'elink';
+          a.href = '/elements#' + el.sym.toLowerCase();
+          a.title = `${el.name} · open in the periodic table`;
+          a.innerHTML = '<b></b><span class="nm"></span>';
+          a.querySelector('b').textContent = el.sym;
+          a.querySelector('.nm').textContent = el.name;
           row.appendChild(a);
         }
         c.appendChild(row);

@@ -64,6 +64,7 @@ def normalise(results: list) -> list:
             return "".join(x["plain_text"] for x in p.get(k, {}).get("rich_text", [])) or None
 
         formula = p.get("State at 20°C", {}).get("formula", {}) or {}
+        equations = [x["id"] for x in (p.get("Equations", {}).get("relation") or [])]
         out.append({
             "name": "".join(x["plain_text"] for x in p.get("Element", {}).get("title", [])),
             "atomicNumber": num("Atomic Number"),
@@ -79,6 +80,7 @@ def normalise(results: list) -> list:
             "meltingPt": num("Melting Pt"),
             "boilingPt": num("Boiling Pt"),
             "discovered": num("Discovered"),
+            "equations": equations,   # page ids in the Equations [DB] (mirrored relation)
             "pageId": r["id"],
             "pageUrl": r.get("url"),
             "lastEdited": r.get("last_edited_time"),

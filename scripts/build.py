@@ -56,6 +56,15 @@ def build_elements_page():
     head, sep, _ = tpl.rpartition("</script>")
     tpl = head + js + sep + "\n"
     tpl = tpl.replace("__DATA__", compact(elements))
+    # equation lookup for the element detail panel: pageId -> {name, field, slug}
+    import re as _re
+    def _slug(s):
+        import unicodedata
+        s = unicodedata.normalize("NFD", s or "").encode("ascii", "ignore").decode().lower()
+        return _re.sub(r"^-|-$", "", _re.sub(r"[^a-z0-9]+", "-", s))
+    eq_lookup = {e["id"]: {"name": e["Name"], "field": e.get("Field"), "slug": _slug(e["Name"])}
+                 for e in notion.get("equations", [])}
+    tpl = tpl.replace("__EQUATIONS__", compact(eq_lookup))
     (PUB / "index.html").write_text(tpl)
     print(f"wrote {len(tpl):>7} bytes -> public/index.html")
 
@@ -225,8 +234,12 @@ if __name__ == "__main__":
                [{k: v for k, v in f.items() if k != "id"} for f in notion["forces"]])
     write_page("theories.template.html", "theories.html",
                [{k: v for k, v in t.items() if k != "id"} for t in notion["theories"]])
-    # equations keep their Notion page id — the Related relation targets it
+    # equations keep their Notion page id — the Related relation targets it;
+    # __ELEMENTS__ is a pageId -> {sym,name} lookup for the Elements relation
+    el_lookup = {e["pageId"]: {"sym": e["notation"], "name": e["name"], "z": e["atomicNumber"]}
+                 for e in elements}
     write_page("equations.template.html", "equations.html",
                [{k: v for k, v in e.items() if k not in ("url", "lastEdited")}
-                for e in notion.get("equations", [])])
+                for e in notion.get("equations", [])],
+               extra={"__ELEMENTS__": compact(el_lookup)})
     build_home(n_min, n_gems, n_classes, n_spectral, n_instr)

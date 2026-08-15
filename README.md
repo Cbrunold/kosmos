@@ -28,6 +28,8 @@ data/chemistry/elements.json  Normalised element data (scripts/fetch_elements.py
 data/notion-all.json          All other Notion sources (scripts/fetch_all.py)
 scripts/build.py              web/ + data → public/*.html
 scripts/link_equations.py     Curated cross-link graph → the Equations DB "Related" relation
+scripts/link_elements.py      Equation → element graph → the Equations DB "Elements" relation
+                              (dual-property: each element page gets an "Equations" backlink)
 deploy/                       systemd unit + nginx site as deployed on the VPS
 ```
 
