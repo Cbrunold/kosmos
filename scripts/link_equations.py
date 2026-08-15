@@ -101,6 +101,14 @@ LINKS = [
     ("Cosmological Redshift", "Diffraction Grating Equation"),
     ("Critical Density", "Law of Universal Gravitation"),
     ("Critical Density", "Escape Velocity"),
+    # the fluid equation is the first law of thermodynamics for an expanding volume
+    ("Cosmological Fluid Equation", "First Law of Thermodynamics"),
+    ("Cosmological Fluid Equation", "Continuity Equation"),
+    ("Cosmological Fluid Equation", "Noether's Theorem"),
+    ("Cosmological Equation of State", "Ideal Gas Law"),
+    ("Cosmological Equation of State", "Van der Waals Equation"),
+    ("Cosmological Equation of State", "Planck's Law"),
+    ("Cosmological Equation of State", "Stefan–Boltzmann Law"),
 
     # electromagnetism family
     ("Coulomb's Law", "Electric Field"),
@@ -291,6 +299,13 @@ LINKS = [
     ("Critical Density", "First Friedmann Equation"),
     ("Critical Density", "Hubble's Law"),
     ("Critical Density", "Second Friedmann Equation"),
+    ("Cosmological Fluid Equation", "First Friedmann Equation"),
+    ("Cosmological Fluid Equation", "Second Friedmann Equation"),
+    ("Cosmological Fluid Equation", "Cosmological Equation of State"),
+    ("Cosmological Fluid Equation", "FLRW Metric"),
+    ("Cosmological Equation of State", "Second Friedmann Equation"),
+    ("Cosmological Equation of State", "Cosmological Redshift"),
+    ("Cosmological Equation of State", "Critical Density"),
 
     # orphans
     ("Specific Impulse", "Tsiolkovsky Rocket Equation"),
