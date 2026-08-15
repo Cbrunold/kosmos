@@ -461978,6 +461978,42 @@
   ],
   "equations": [
     {
+      "id": "3bde5275-7b5c-81fc-a041-fc08a0416af7",
+      "url": "https://app.notion.com/p/Bohr-Model-Energy-Levels-3bde52757b5c81fca041fc08a0416af7",
+      "lastEdited": "2026-08-15T16:30:00.000Z",
+      "Equation": "Eₙ = −13.6 eV / n²",
+      "Field": "Atomic Physics",
+      "Named After": "Niels Bohr",
+      "Symbols": "Eₙ energy of the electron in the nth orbit · n = 1, 2, 3, … the principal quantum number · 13.6 eV the ionization energy of hydrogen; the differences give Rydberg's lines exactly",
+      "Significance": "Electrons may only occupy certain orbits, and jumping between them emits light of the difference in energy — Bohr's rule reproduced Rydberg's formula and predicted R_H from h, e, and mₑ alone. Wrong in its details, right in its spirit, and the bridge from Planck's quantum to Schrödinger's atom; the periodic table's shell structure follows from n.",
+      "Year": 1913,
+      "Name": "Bohr Model Energy Levels"
+    },
+    {
+      "id": "3bde5275-7b5c-81e2-9c2a-cf03ccc6c865",
+      "url": "https://app.notion.com/p/Rutherford-Scattering-3bde52757b5c81e29c2acf03ccc6c865",
+      "lastEdited": "2026-08-15T16:30:00.000Z",
+      "Equation": "dσ/dΩ = (Z₁Z₂e²/16πε₀E)² / sin⁴(θ/2)",
+      "Field": "Atomic Physics",
+      "Named After": "Ernest Rutherford",
+      "Symbols": "dσ/dΩ how many particles scatter into each direction · Z₁, Z₂ charges of projectile and target nucleus · E projectile energy · θ scattering angle · the sin⁴ makes large-angle bounces rare but real",
+      "Significance": "Fire alpha particles at gold foil and a few come straight back — 'as if you fired a shell at tissue paper and it bounced.' Only a tiny, dense, charged nucleus could do that: the atom is mostly empty space. Coulomb's law, applied one nucleus at a time, and the birth of the nuclear atom.",
+      "Year": 1911,
+      "Name": "Rutherford Scattering"
+    },
+    {
+      "id": "3bde5275-7b5c-81a3-914b-f108cd62b10b",
+      "url": "https://app.notion.com/p/Rydberg-Formula-3bde52757b5c81a3914bf108cd62b10b",
+      "lastEdited": "2026-08-15T16:30:00.000Z",
+      "Equation": "1/λ = R_H·(1/n₁² − 1/n₂²)",
+      "Field": "Atomic Physics",
+      "Named After": "Johannes Rydberg · Johann Balmer",
+      "Symbols": "λ wavelength of an emitted or absorbed line · R_H the Rydberg constant (1.097×10⁷ m⁻¹) · n₁, n₂ whole numbers labelling the lower and upper energy levels",
+      "Significance": "Hydrogen's spectral lines, which looked like a random barcode, obey one formula with two integers in it — pattern found by a schoolteacher (Balmer, 1885) and generalized by Rydberg with no idea why. The integers were a message from inside the atom, waiting twenty-five years for someone to read it.",
+      "Year": 1888,
+      "Name": "Rydberg Formula"
+    },
+    {
       "id": "3bde5275-7b5c-8114-ad1b-ec55a8511049",
       "url": "https://app.notion.com/p/Van-t-Hoff-Equation-3bde52757b5c8114ad1bec55a8511049",
       "lastEdited": "2026-08-15T16:24:00.000Z",
