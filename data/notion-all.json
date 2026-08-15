@@ -2143,6 +2143,12 @@
       "id": "3bde5275-7b5c-8119-b400-f4b64f9b76f4",
       "url": "https://app.notion.com/p/Dark-Energy-3bde52757b5c8119b400f4b64f9b76f4",
       "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Timeline": [
+        "3bde5275-7b5c-8132-859d-da190284c1a9",
+        "3bde5275-7b5c-81f9-8ef6-f13ac29dc596",
+        "3bde5275-7b5c-8159-ada0-cc5af14d257d",
+        "3bde5275-7b5c-81ea-a1d8-efb79b33a2e3"
+      ],
       "Equations": [
         "3bbe5275-7b5c-8184-9e26-ff4ad04b3ed8",
         "3bbe5275-7b5c-81a1-9543-ed416dd7caa2",
@@ -2165,6 +2171,9 @@
       "id": "3bde5275-7b5c-81b1-8212-c31d06505cbc",
       "url": "https://app.notion.com/p/Holographic-Principle-3bde52757b5c81b18212c31d06505cbc",
       "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Timeline": [
+        "3bde5275-7b5c-810f-b07e-d446eba2268f"
+      ],
       "Equations": [
         "3bbe5275-7b5c-811a-baed-c686bb16bbc3",
         "3bbe5275-7b5c-8122-95c0-f19b5930072e",
@@ -2185,6 +2194,9 @@
       "id": "3bde5275-7b5c-81b3-a747-d2e0a75cf5aa",
       "url": "https://app.notion.com/p/Loop-Quantum-Gravity-3bde52757b5c81b3a747d2e0a75cf5aa",
       "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Timeline": [
+        "3bde5275-7b5c-810a-85aa-f3479a371f25"
+      ],
       "Equations": [
         "3bbe5275-7b5c-813b-aa6c-dd6ce2e33cbf",
         "3bbe5275-7b5c-815f-8f49-fde9509c1e77",
@@ -2205,6 +2217,9 @@
       "id": "3bde5275-7b5c-81c8-92c2-e7f2313ec35d",
       "url": "https://app.notion.com/p/String-Theory-3bde52757b5c81c892c2e7f2313ec35d",
       "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Timeline": [
+        "3bde5275-7b5c-810a-85aa-f3479a371f25"
+      ],
       "Equations": [
         "3bbe5275-7b5c-815f-8f49-fde9509c1e77",
         "3bde5275-7b5c-8138-9544-ccde8523931c",
@@ -2227,6 +2242,7 @@
       "id": "3bde5275-7b5c-81b8-9c3e-f0c39aa27da9",
       "url": "https://app.notion.com/p/Modified-Newtonian-Dynamics-3bde52757b5c81b89c3ef0c39aa27da9",
       "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Timeline": [],
       "Equations": [
         "3bbe5275-7b5c-811b-8297-ce47b2c5d614",
         "3bbe5275-7b5c-8183-bbd5-ff733704a984"
@@ -2244,6 +2260,7 @@
       "id": "3bde5275-7b5c-8140-928d-c0aa2466b01f",
       "url": "https://app.notion.com/p/Quantum-Information-Theory-3bde52757b5c8140928dc0aa2466b01f",
       "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Timeline": [],
       "Equations": [
         "3bbe5275-7b5c-8103-8865-faee50cc9c18",
         "3bbe5275-7b5c-810e-a378-ea77aa50d6f6",
@@ -2265,6 +2282,10 @@
       "id": "3bde5275-7b5c-8194-92cc-da98c37e359e",
       "url": "https://app.notion.com/p/Cosmic-Inflation-3bde52757b5c819492ccda98c37e359e",
       "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Timeline": [
+        "3bde5275-7b5c-8194-b6c0-fcf0d1a866ca",
+        "3bde5275-7b5c-8125-95a3-eed7e074a458"
+      ],
       "Equations": [
         "3bbe5275-7b5c-818c-bf76-d40ebcb485e3",
         "3bde5275-7b5c-8197-a885-cf717e19fea0",
@@ -2286,6 +2307,11 @@
       "id": "3bde5275-7b5c-8109-a8c3-f9b6d98cca04",
       "url": "https://app.notion.com/p/The-Standard-Model-3bde52757b5c8109a8c3f9b6d98cca04",
       "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Timeline": [
+        "3bde5275-7b5c-81a9-b4ba-cf86d12e1d5b",
+        "3bde5275-7b5c-817b-a494-db994bf078d8",
+        "3bde5275-7b5c-815d-bc48-e61cf4496428"
+      ],
       "Equations": [
         "3bbe5275-7b5c-811f-8db4-cc95acf776dd",
         "3bbe5275-7b5c-8125-8857-cffce0164fef",
@@ -2308,6 +2334,10 @@
       "id": "3bde5275-7b5c-8183-a9cc-d3532bc342bf",
       "url": "https://app.notion.com/p/Black-Hole-Thermodynamics-3bde52757b5c8183a9ccd3532bc342bf",
       "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Timeline": [
+        "3bde5275-7b5c-8194-968f-e63d78f78726",
+        "3bde5275-7b5c-810f-b07e-d446eba2268f"
+      ],
       "Equations": [
         "3bbe5275-7b5c-811a-baed-c686bb16bbc3",
         "3bbe5275-7b5c-8120-863e-cd94384e0239",
@@ -2330,6 +2360,11 @@
       "id": "3bde5275-7b5c-81c2-a04e-d20bae468120",
       "url": "https://app.notion.com/p/Grand-Unified-Theories-3bde52757b5c81c2a04ed20bae468120",
       "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Timeline": [
+        "3bde5275-7b5c-811f-93a0-c73de104a932",
+        "3bde5275-7b5c-81a9-b4ba-cf86d12e1d5b",
+        "3bde5275-7b5c-815d-bc48-e61cf4496428"
+      ],
       "Equations": [
         "3bbe5275-7b5c-811f-8db4-cc95acf776dd",
         "3bbe5275-7b5c-8125-8857-cffce0164fef",
@@ -2349,6 +2384,10 @@
       "id": "3bde5275-7b5c-8170-8bb5-f403b35dcc5e",
       "url": "https://app.notion.com/p/Quantum-Chromodynamics-3bde52757b5c81708bb5f403b35dcc5e",
       "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Timeline": [
+        "3bde5275-7b5c-817b-a494-db994bf078d8",
+        "3bde5275-7b5c-811a-a3e4-f872b73ea57f"
+      ],
       "Equations": [
         "3bbe5275-7b5c-8125-8857-cffce0164fef",
         "3bbe5275-7b5c-812f-8b13-c3f401ee3a47"
@@ -2368,6 +2407,7 @@
       "id": "3bde5275-7b5c-81b8-af02-f546654f2aec",
       "url": "https://app.notion.com/p/Supersymmetry-3bde52757b5c81b8af02f546654f2aec",
       "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Timeline": [],
       "Equations": [
         "3bbe5275-7b5c-8125-8857-cffce0164fef",
         "3bbe5275-7b5c-8189-b87c-e1e5b2e563de"
@@ -2386,6 +2426,9 @@
       "id": "3bde5275-7b5c-812f-987b-d90fa3fe1038",
       "url": "https://app.notion.com/p/Electroweak-Unification-3bde52757b5c812f987bd90fa3fe1038",
       "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Timeline": [
+        "3bde5275-7b5c-814e-a671-fe7dc1be5fe1"
+      ],
       "Equations": [
         "3bbe5275-7b5c-811f-8db4-cc95acf776dd",
         "3bbe5275-7b5c-8125-8857-cffce0164fef",
@@ -2407,6 +2450,9 @@
       "id": "3bde5275-7b5c-813f-9e30-c040189eb298",
       "url": "https://app.notion.com/p/Higgs-Mechanism-3bde52757b5c813f9e30c040189eb298",
       "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Timeline": [
+        "3bde5275-7b5c-814e-a671-fe7dc1be5fe1"
+      ],
       "Equations": [
         "3bbe5275-7b5c-8125-8857-cffce0164fef",
         "3bbe5275-7b5c-8189-b87c-e1e5b2e563de"
@@ -2425,6 +2471,7 @@
       "id": "3bde5275-7b5c-8151-afe6-e471f9d33f09",
       "url": "https://app.notion.com/p/Chaos-Theory-3bde52757b5c8151afe6e471f9d33f09",
       "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Timeline": [],
       "Equations": [
         "3bbe5275-7b5c-8120-a62d-fa870a7c75bb",
         "3bbe5275-7b5c-8132-a437-e09561425c4c",
@@ -2445,6 +2492,7 @@
       "id": "3bde5275-7b5c-810d-ab95-db5786e7b9e2",
       "url": "https://app.notion.com/p/Many-Worlds-Interpretation-3bde52757b5c810dab95db5786e7b9e2",
       "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Timeline": [],
       "Equations": [
         "3bbe5275-7b5c-8103-8865-faee50cc9c18",
         "3bbe5275-7b5c-811a-a60d-eddf236c3a8c"
@@ -2462,6 +2510,14 @@
       "id": "3bde5275-7b5c-8197-a615-cfd4ff53095e",
       "url": "https://app.notion.com/p/Stellar-Nucleosynthesis-3bde52757b5c8197a615cfd4ff53095e",
       "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Timeline": [
+        "3bde5275-7b5c-8161-b7ce-ed3e2f953c38",
+        "3bde5275-7b5c-818c-9bd0-ce7bb75ea178",
+        "3bde5275-7b5c-8127-933f-d6a9736b3eaf",
+        "3bde5275-7b5c-81e0-a7b8-e95fd31e8fac",
+        "3bde5275-7b5c-8193-843b-c95fe5547acb",
+        "3bde5275-7b5c-81f4-9243-eb103d8b0511"
+      ],
       "Equations": [
         "3bbe5275-7b5c-8120-863e-cd94384e0239",
         "3bbe5275-7b5c-8150-9b6b-de88bc1b1910",
@@ -2484,6 +2540,7 @@
       "id": "3bde5275-7b5c-8173-b1a7-eaec1d496663",
       "url": "https://app.notion.com/p/BCS-Theory-of-Superconductivity-3bde52757b5c8173b1a7eaec1d496663",
       "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Timeline": [],
       "Equations": [
         "3bbe5275-7b5c-8149-a0e6-d2bf67397229",
         "3bbe5275-7b5c-81b2-ae34-f800aecd57e1",
@@ -2505,6 +2562,7 @@
       "id": "3bde5275-7b5c-81cc-8ba3-e8a006fbdce7",
       "url": "https://app.notion.com/p/Nuclear-Shell-Model-3bde52757b5c81cc8ba3e8a006fbdce7",
       "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Timeline": [],
       "Equations": [
         "3bbe5275-7b5c-811a-a60d-eddf236c3a8c",
         "3bbe5275-7b5c-813e-a03e-dacece1e6c35",
@@ -2523,6 +2581,9 @@
       "id": "3bde5275-7b5c-8112-9df5-f96e892e1f88",
       "url": "https://app.notion.com/p/Big-Bang-Nucleosynthesis-3bde52757b5c81129df5f96e892e1f88",
       "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Timeline": [
+        "3bde5275-7b5c-81d4-b2cd-fdcc3add3657"
+      ],
       "Equations": [
         "3bbe5275-7b5c-816e-b97a-fdbc445f99b7",
         "3bbe5275-7b5c-818c-bf76-d40ebcb485e3",
@@ -2542,6 +2603,9 @@
       "id": "3bde5275-7b5c-811b-ac85-fe83a7a852a4",
       "url": "https://app.notion.com/p/Steady-State-Theory-3bde52757b5c811bac85fe83a7a852a4",
       "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Timeline": [
+        "3bde5275-7b5c-8130-966f-ff0ab7d23a91"
+      ],
       "Equations": [
         "3bbe5275-7b5c-8184-9e26-ff4ad04b3ed8",
         "3bbe5275-7b5c-818c-bf76-d40ebcb485e3",
@@ -2562,6 +2626,7 @@
       "id": "3bde5275-7b5c-81e2-845e-f668253c9a4c",
       "url": "https://app.notion.com/p/Information-Theory-3bde52757b5c81e2845ef668253c9a4c",
       "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Timeline": [],
       "Equations": [
         "3bbe5275-7b5c-8122-95c0-f19b5930072e",
         "3bbe5275-7b5c-81f7-a591-c741011f5a20",
@@ -2580,6 +2645,9 @@
       "id": "3bde5275-7b5c-812d-9b11-ec91e612af1b",
       "url": "https://app.notion.com/p/Quantum-Electrodynamics-3bde52757b5c812d9b11ec91e612af1b",
       "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Timeline": [
+        "3bde5275-7b5c-8102-90f1-d13c66d29fa9"
+      ],
       "Equations": [
         "3bbe5275-7b5c-811f-8db4-cc95acf776dd",
         "3bbe5275-7b5c-812f-8b13-c3f401ee3a47",
@@ -2602,6 +2670,7 @@
       "id": "3bde5275-7b5c-8113-aa1c-f0b45b84363d",
       "url": "https://app.notion.com/p/Local-Hidden-Variables-3bde52757b5c8113aa1cf0b45b84363d",
       "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Timeline": [],
       "Equations": [
         "3bbe5275-7b5c-8103-8865-faee50cc9c18",
         "3bbe5275-7b5c-810f-8c8d-d0d1ca4da44e"
@@ -2620,6 +2689,13 @@
       "id": "3bde5275-7b5c-8155-8abe-e1d83b51ecb9",
       "url": "https://app.notion.com/p/Dark-Matter-3bde52757b5c81558abee1d83b51ecb9",
       "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Timeline": [
+        "3bde5275-7b5c-813c-b30b-e1bcbd63c5cf",
+        "3bde5275-7b5c-81dd-8bf4-c41148b14015",
+        "3bde5275-7b5c-812d-a3ec-d0ec40005c6a",
+        "3bde5275-7b5c-81f9-8ef6-f13ac29dc596",
+        "3bde5275-7b5c-8130-9d53-ca576cc193ae"
+      ],
       "Equations": [
         "3bbe5275-7b5c-811b-8297-ce47b2c5d614",
         "3bbe5275-7b5c-81a1-9543-ed416dd7caa2",
@@ -2640,6 +2716,7 @@
       "id": "3bde5275-7b5c-81bb-96ea-f380ca92d0a8",
       "url": "https://app.notion.com/p/Band-Theory-of-Solids-3bde52757b5c81bb96eaf380ca92d0a8",
       "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Timeline": [],
       "Equations": [
         "3bbe5275-7b5c-81d1-abad-c2702fa3abb0",
         "3bbe5275-7b5c-81e1-96c0-c6157aaee509",
@@ -2659,6 +2736,22 @@
       "id": "3bde5275-7b5c-81b0-a714-d53a2345ebdb",
       "url": "https://app.notion.com/p/Big-Bang-Cosmology-3bde52757b5c81b0a714d53a2345ebdb",
       "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Timeline": [
+        "3bde5275-7b5c-8125-95a3-eed7e074a458",
+        "3bde5275-7b5c-8178-aa21-c31f41f3cecd",
+        "3bde5275-7b5c-8102-90f1-d13c66d29fa9",
+        "3bde5275-7b5c-81d4-b2cd-fdcc3add3657",
+        "3bde5275-7b5c-813c-b30b-e1bcbd63c5cf",
+        "3bde5275-7b5c-816a-8519-ca7fd6cd0f4c",
+        "3bde5275-7b5c-8130-966f-ff0ab7d23a91",
+        "3bde5275-7b5c-81dd-8bf4-c41148b14015",
+        "3bde5275-7b5c-812d-a3ec-d0ec40005c6a",
+        "3bde5275-7b5c-818c-9bd0-ce7bb75ea178",
+        "3bde5275-7b5c-8132-859d-da190284c1a9",
+        "3bde5275-7b5c-81f9-8ef6-f13ac29dc596",
+        "3bde5275-7b5c-8159-ada0-cc5af14d257d",
+        "3bde5275-7b5c-81ea-a1d8-efb79b33a2e3"
+      ],
       "Equations": [
         "3bbe5275-7b5c-8184-9e26-ff4ad04b3ed8",
         "3bbe5275-7b5c-818c-bf76-d40ebcb485e3",
@@ -2686,6 +2779,7 @@
       "id": "3bde5275-7b5c-811e-a927-c8b3e1fee423",
       "url": "https://app.notion.com/p/Copenhagen-Interpretation-3bde52757b5c811ea927c8b3e1fee423",
       "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Timeline": [],
       "Equations": [
         "3bbe5275-7b5c-8109-a4a6-c5b903b6e05f",
         "3bbe5275-7b5c-811a-a60d-eddf236c3a8c"
@@ -2704,6 +2798,7 @@
       "id": "3bde5275-7b5c-8193-ae2a-f3d957e88a73",
       "url": "https://app.notion.com/p/Quantum-Mechanics-3bde52757b5c8193ae2af3d957e88a73",
       "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Timeline": [],
       "Equations": [
         "3bbe5275-7b5c-8109-a4a6-c5b903b6e05f",
         "3bbe5275-7b5c-811a-a60d-eddf236c3a8c",
@@ -2727,6 +2822,7 @@
       "id": "3bde5275-7b5c-8132-b647-c4c04158e693",
       "url": "https://app.notion.com/p/Wave-Particle-Duality-3bde52757b5c8132b647c4c04158e693",
       "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Timeline": [],
       "Equations": [
         "3bbe5275-7b5c-8140-a1d4-f7bff1df0334",
         "3bbe5275-7b5c-8170-bd5f-c796d7589e08"
@@ -2745,6 +2841,7 @@
       "id": "3bde5275-7b5c-813a-b77a-c766d8a0e418",
       "url": "https://app.notion.com/p/Continental-Drift-Plate-Tectonics-3bde52757b5c813ab77ac766d8a0e418",
       "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Timeline": [],
       "Equations": [
         "3bbe5275-7b5c-8183-8228-de82d104194f",
         "3bbe5275-7b5c-818c-81f5-e08330c436f3"
@@ -2764,6 +2861,9 @@
       "id": "3bde5275-7b5c-81f8-84d4-ec66c3f8c8eb",
       "url": "https://app.notion.com/p/General-Relativity-3bde52757b5c81f884d4ec66c3f8c8eb",
       "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Timeline": [
+        "3bde5275-7b5c-8194-968f-e63d78f78726"
+      ],
       "Equations": [
         "3bbe5275-7b5c-811a-baed-c686bb16bbc3",
         "3bbe5275-7b5c-813b-aa6c-dd6ce2e33cbf",
@@ -2786,6 +2886,9 @@
       "id": "3bde5275-7b5c-81c6-b1bc-c6ba18f69e39",
       "url": "https://app.notion.com/p/Bohr-Model-of-the-Atom-3bde52757b5c81c6b1bcc6ba18f69e39",
       "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Timeline": [
+        "3bde5275-7b5c-816a-8519-ca7fd6cd0f4c"
+      ],
       "Equations": [
         "3bbe5275-7b5c-8140-a1d4-f7bff1df0334",
         "3bde5275-7b5c-81a3-914b-f108cd62b10b",
@@ -2805,6 +2908,7 @@
       "id": "3bde5275-7b5c-81c8-8ac7-cd61c84271da",
       "url": "https://app.notion.com/p/Special-Relativity-3bde52757b5c81c88ac7cd61c84271da",
       "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Timeline": [],
       "Equations": [
         "3bbe5275-7b5c-815f-9d30-c0e44b4a7608",
         "3bbe5275-7b5c-819b-8730-c682ecb3e756",
@@ -2825,6 +2929,7 @@
       "id": "3bde5275-7b5c-81e4-b44a-f2d634f6f677",
       "url": "https://app.notion.com/p/Rutherford-Model-of-the-Atom-3bde52757b5c81e4b44af2d634f6f677",
       "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Timeline": [],
       "Equations": [
         "3bde5275-7b5c-812a-8607-ff86ea48402d",
         "3bde5275-7b5c-814b-9628-f090f0207a42",
@@ -2843,6 +2948,7 @@
       "id": "3bde5275-7b5c-8119-8dc0-caca83db4a46",
       "url": "https://app.notion.com/p/Plum-Pudding-Model-3bde52757b5c81198dc0caca83db4a46",
       "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Timeline": [],
       "Equations": [
         "3bde5275-7b5c-81e2-9c2a-cf03ccc6c865"
       ],
@@ -2859,6 +2965,7 @@
       "id": "3bde5275-7b5c-810a-ac78-e3684b14acd1",
       "url": "https://app.notion.com/p/Quantum-Hypothesis-3bde52757b5c810aac78e3684b14acd1",
       "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Timeline": [],
       "Equations": [
         "3bbe5275-7b5c-8120-863e-cd94384e0239",
         "3bbe5275-7b5c-8140-a1d4-f7bff1df0334",
@@ -2880,6 +2987,9 @@
       "id": "3bde5275-7b5c-8125-8781-e39471d83726",
       "url": "https://app.notion.com/p/Statistical-Mechanics-3bde52757b5c81258781e39471d83726",
       "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Timeline": [
+        "3bde5275-7b5c-81ea-a1d8-efb79b33a2e3"
+      ],
       "Equations": [
         "3bbe5275-7b5c-8122-95c0-f19b5930072e",
         "3bbe5275-7b5c-813f-974b-c000af0892df",
@@ -2902,6 +3012,7 @@
       "id": "3bde5275-7b5c-8185-85c8-d2d582a91da7",
       "url": "https://app.notion.com/p/Classical-Electromagnetism-3bde52757b5c818585c8d2d582a91da7",
       "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Timeline": [],
       "Equations": [
         "3bbe5275-7b5c-817c-96dd-ec4cb629f30c",
         "3bbe5275-7b5c-81c9-a5d1-eaa911ffb7cd",
@@ -2926,6 +3037,7 @@
       "id": "3bde5275-7b5c-811e-9e2a-ebcbdc4d07cc",
       "url": "https://app.notion.com/p/Kinetic-Theory-of-Gases-3bde52757b5c811e9e2aebcbdc4d07cc",
       "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Timeline": [],
       "Equations": [
         "3bbe5275-7b5c-8101-9ffd-d15e28719c53",
         "3bbe5275-7b5c-810c-8fb5-f469f876c99a",
@@ -2951,6 +3063,7 @@
       "id": "3bde5275-7b5c-81f8-a1bf-fb7455203c64",
       "url": "https://app.notion.com/p/Luminiferous-Aether-3bde52757b5c81f8a1bffb7455203c64",
       "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Timeline": [],
       "Equations": [
         "3bbe5275-7b5c-81d8-b63d-d44990bf2054",
         "3bbe5275-7b5c-81e7-b649-f021e6e295c6"
@@ -2969,6 +3082,7 @@
       "id": "3bde5275-7b5c-81ad-a08c-dba8a668c136",
       "url": "https://app.notion.com/p/Atomic-Theory-3bde52757b5c81ada08cdba8a668c136",
       "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Timeline": [],
       "Equations": [
         "3bbe5275-7b5c-8144-82d8-d6e4bd0f0f2d",
         "3bbe5275-7b5c-819d-afd0-d0876756a85c",
@@ -2987,6 +3101,7 @@
       "id": "3bde5275-7b5c-8190-9fba-cff4da9aa6a2",
       "url": "https://app.notion.com/p/Caloric-Theory-3bde52757b5c81909fbacff4da9aa6a2",
       "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Timeline": [],
       "Equations": [
         "3bbe5275-7b5c-819a-8209-e94b6436d16a",
         "3bde5275-7b5c-8144-b755-d881fbf879cb"
@@ -3004,6 +3119,10 @@
       "id": "3bde5275-7b5c-8162-be54-c9e88fa847d2",
       "url": "https://app.notion.com/p/Newtonian-Mechanics-3bde52757b5c8162be54c9e88fa847d2",
       "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Timeline": [
+        "3bde5275-7b5c-81e0-a7b8-e95fd31e8fac",
+        "3bde5275-7b5c-8130-9d53-ca576cc193ae"
+      ],
       "Equations": [
         "3bbe5275-7b5c-810a-8065-f03f5253cda9",
         "3bbe5275-7b5c-811b-8297-ce47b2c5d614",
@@ -3025,6 +3144,7 @@
       "id": "3bde5275-7b5c-81d3-9d85-fbceed121149",
       "url": "https://app.notion.com/p/Corpuscular-Theory-of-Light-3bde52757b5c81d39d85fbceed121149",
       "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Timeline": [],
       "Equations": [
         "3bbe5275-7b5c-813d-86cf-c29a346fe2f8"
       ],
@@ -3041,6 +3161,7 @@
       "id": "3bde5275-7b5c-81a9-9b1e-f56598a0882a",
       "url": "https://app.notion.com/p/Wave-Theory-of-Light-3bde52757b5c81a99b1ef56598a0882a",
       "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Timeline": [],
       "Equations": [
         "3bbe5275-7b5c-8113-9b17-e6d7efc091ea",
         "3bbe5275-7b5c-8130-a1e2-d4d1fefda7d8",
@@ -3062,6 +3183,7 @@
       "id": "3bde5275-7b5c-8155-ad9b-de63644f9483",
       "url": "https://app.notion.com/p/Phlogiston-Theory-3bde52757b5c8155ad9bde63644f9483",
       "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Timeline": [],
       "Equations": [],
       "Summary": "Combustible bodies were said to contain phlogiston, released as they burned. The theory died when Lavoisier weighed the products and found them heavier — the awkward fix, negative mass, was one step too far.",
       "Status": "Disproved",
@@ -3076,6 +3198,9 @@
       "id": "3bde5275-7b5c-81af-86fd-d2bdae2b8b8c",
       "url": "https://app.notion.com/p/Heliocentrism-3bde52757b5c81af86fdd2bdae2b8b8c",
       "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Timeline": [
+        "3bde5275-7b5c-81e0-a7b8-e95fd31e8fac"
+      ],
       "Equations": [
         "3bbe5275-7b5c-8193-83a5-f551fd37b47c",
         "3bbe5275-7b5c-81c8-8eb1-cdc2179de58e",
@@ -3096,6 +3221,7 @@
       "id": "3bde5275-7b5c-81a9-85f8-d0b50ab5feb5",
       "url": "https://app.notion.com/p/Geocentric-Model-3bde52757b5c81a985f8d0b50ab5feb5",
       "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Timeline": [],
       "Equations": [
         "3bbe5275-7b5c-81da-b2e6-ed931eca7217"
       ],
@@ -3112,6 +3238,10 @@
       "id": "948ffd28-180a-4f7f-8f79-b6a712181262",
       "url": "https://app.notion.com/p/Quantum-Gravity-948ffd28180a4f7f8f79b6a712181262",
       "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Timeline": [
+        "3bde5275-7b5c-810a-85aa-f3479a371f25",
+        "3bde5275-7b5c-810f-b07e-d446eba2268f"
+      ],
       "Equations": [
         "3bbe5275-7b5c-8109-a4a6-c5b903b6e05f",
         "3bbe5275-7b5c-811a-a60d-eddf236c3a8c",
@@ -3139,6 +3269,9 @@
       "id": "e497c8e0-c340-456d-a74c-a8d03962d58a",
       "url": "https://app.notion.com/p/Unification-Theories-e497c8e0c340456da74ca8d03962d58a",
       "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Timeline": [
+        "3bde5275-7b5c-811f-93a0-c73de104a932"
+      ],
       "Equations": [
         "3bbe5275-7b5c-8125-8857-cffce0164fef",
         "3bbe5275-7b5c-8189-b87c-e1e5b2e563de",
@@ -3203,6 +3336,636 @@
     }
   ],
   "cosmologyEvents": [],
+  "cosmicTimeline": [
+    {
+      "id": "3bde5275-7b5c-81ea-a1d8-efb79b33a2e3",
+      "url": "https://app.notion.com/p/Heat-Death-3bde52757b5c81eaa1d8efb79b33a2e3",
+      "lastEdited": "2026-08-15T19:02:00.000Z",
+      "Temperature (K)": 0,
+      "When": "beyond 10¹⁰⁰ years",
+      "Equations": [
+        "3bbe5275-7b5c-8122-95c0-f19b5930072e",
+        "3bbe5275-7b5c-8127-96bd-f72be5a740f4",
+        "3bbe5275-7b5c-8147-a393-dbf10b5befde",
+        "3bde5275-7b5c-8197-a885-cf717e19fea0"
+      ],
+      "Redshift": "—",
+      "Theories": [
+        "3bde5275-7b5c-8119-b400-f4b64f9b76f4",
+        "3bde5275-7b5c-8125-8781-e39471d83726",
+        "3bde5275-7b5c-81b0-a714-d53a2345ebdb"
+      ],
+      "Era": "Far Future",
+      "What Happened": "Maximum entropy: no gradients, no structure, no work possible anywhere. Expansion and cooling continue toward absolute zero forever — unless dark energy turns out to be something other than a constant, in which case this ending is wrong.",
+      "Seconds After Big Bang": 3.155693e+117,
+      "Event": "Heat Death"
+    },
+    {
+      "id": "3bde5275-7b5c-810f-b07e-d446eba2268f",
+      "url": "https://app.notion.com/p/The-Last-Black-Holes-Go-3bde52757b5c810fb07ed446eba2268f",
+      "lastEdited": "2026-08-15T19:02:00.000Z",
+      "Temperature (K)": 1e-29,
+      "When": "≈ 10¹⁰⁰ years",
+      "Equations": [
+        "3bbe5275-7b5c-811a-baed-c686bb16bbc3",
+        "3bbe5275-7b5c-8122-95c0-f19b5930072e",
+        "3bbe5275-7b5c-81f7-a591-c741011f5a20"
+      ],
+      "Redshift": "—",
+      "Theories": [
+        "3bde5275-7b5c-8183-a9cc-d3532bc342bf",
+        "3bde5275-7b5c-81b1-8212-c31d06505cbc",
+        "948ffd28-180a-4f7f-8f79-b6a712181262"
+      ],
+      "Era": "Far Future",
+      "What Happened": "The largest supermassive black holes finally evaporate. Whether the information that fell into them comes back out is still argued over, and is the sharpest clue anyone has about quantum gravity.",
+      "Seconds After Big Bang": 3.155693e+107,
+      "Event": "The Last Black Holes Go"
+    },
+    {
+      "id": "3bde5275-7b5c-8194-968f-e63d78f78726",
+      "url": "https://app.notion.com/p/Black-Holes-Evaporate-3bde52757b5c8194968fe63d78f78726",
+      "lastEdited": "2026-08-15T19:02:00.000Z",
+      "Temperature (K)": 1e-20,
+      "When": "≈ 10⁶⁷ years",
+      "Equations": [
+        "3bbe5275-7b5c-811a-baed-c686bb16bbc3",
+        "3bbe5275-7b5c-8120-863e-cd94384e0239",
+        "3bbe5275-7b5c-8122-95c0-f19b5930072e",
+        "3bde5275-7b5c-811f-9033-f21e2c8a2791"
+      ],
+      "Redshift": "—",
+      "Theories": [
+        "3bde5275-7b5c-8183-a9cc-d3532bc342bf",
+        "3bde5275-7b5c-81f8-84d4-ec66c3f8c8eb"
+      ],
+      "Era": "Far Future",
+      "What Happened": "Stellar-mass black holes finish radiating themselves away. A solar-mass hole is far colder than today's microwave background, so it cannot even begin to shrink until the universe has cooled below its own temperature.",
+      "Seconds After Big Bang": 3.155693e+74,
+      "Event": "Black Holes Evaporate"
+    },
+    {
+      "id": "3bde5275-7b5c-815d-bc48-e61cf4496428",
+      "url": "https://app.notion.com/p/Proton-Decay-If-It-Happens-3bde52757b5c815dbc48e61cf4496428",
+      "lastEdited": "2026-08-15T19:02:00.000Z",
+      "Temperature (K)": 1e-14,
+      "When": "≈ 10³⁶ years, if at all",
+      "Equations": [
+        "3bbe5275-7b5c-8125-8857-cffce0164fef",
+        "3bbe5275-7b5c-813e-a03e-dacece1e6c35",
+        "3bbe5275-7b5c-8157-a64b-eb73eeb53735"
+      ],
+      "Redshift": "—",
+      "Theories": [
+        "3bde5275-7b5c-8109-a8c3-f9b6d98cca04",
+        "3bde5275-7b5c-81c2-a04e-d20bae468120"
+      ],
+      "Era": "Far Future",
+      "What Happened": "Grand unified theories predict the proton decays, with a lifetime now known to exceed 10³⁴ years. Experiments have watched tens of thousands of tonnes of water for decades and seen nothing, so this entry may simply never occur.",
+      "Seconds After Big Bang": 3.155693e+43,
+      "Event": "Proton Decay, If It Happens"
+    },
+    {
+      "id": "3bde5275-7b5c-81f4-9243-eb103d8b0511",
+      "url": "https://app.notion.com/p/Star-Formation-Ends-3bde52757b5c81f49243eb103d8b0511",
+      "lastEdited": "2026-08-15T19:02:00.000Z",
+      "Temperature (K)": 1e-05,
+      "When": "≈ 100 trillion years",
+      "Equations": [
+        "3bbe5275-7b5c-8120-863e-cd94384e0239",
+        "3bbe5275-7b5c-81dd-a75c-d703f0a640b3"
+      ],
+      "Redshift": "—",
+      "Theories": [
+        "3bde5275-7b5c-8197-a615-cfd4ff53095e"
+      ],
+      "Era": "Far Future",
+      "What Happened": "The last gas is spent and the smallest red dwarfs — which burn for ten trillion years — finally go out. The stelliferous era closes; only degenerate remnants are left.",
+      "Seconds After Big Bang": 3.155693e+21,
+      "Event": "Star Formation Ends"
+    },
+    {
+      "id": "3bde5275-7b5c-8159-ada0-cc5af14d257d",
+      "url": "https://app.notion.com/p/The-Local-Group-Is-Alone-3bde52757b5c8159ada0cc5af14d257d",
+      "lastEdited": "2026-08-15T19:02:00.000Z",
+      "Temperature (K)": 0.014,
+      "When": "≈ 100 billion years",
+      "Equations": [
+        "3bbe5275-7b5c-8184-9e26-ff4ad04b3ed8",
+        "3bbe5275-7b5c-81a1-9543-ed416dd7caa2",
+        "3bde5275-7b5c-811c-8470-d8ecfce3c2de",
+        "3bde5275-7b5c-81c4-9445-fc85582c4e1d"
+      ],
+      "Redshift": "—",
+      "Theories": [
+        "3bde5275-7b5c-8119-b400-f4b64f9b76f4",
+        "3bde5275-7b5c-81b0-a714-d53a2345ebdb"
+      ],
+      "Era": "Far Future",
+      "What Happened": "Accelerating expansion carries every other galaxy beyond the horizon. Astronomers then would see one merged galaxy in an empty static void, with no redshifted galaxies and no microwave background — no evidence the Big Bang ever happened.",
+      "Seconds After Big Bang": 3155693000000000000,
+      "Event": "The Local Group Is Alone"
+    },
+    {
+      "id": "3bde5275-7b5c-8193-843b-c95fe5547acb",
+      "url": "https://app.notion.com/p/The-Sun-Dies-3bde52757b5c8193843bc95fe5547acb",
+      "lastEdited": "2026-08-15T19:02:00.000Z",
+      "Temperature (K)": 2.3,
+      "When": "≈ 18.8 billion years — 5 billion years from now",
+      "Equations": [
+        "3bbe5275-7b5c-8120-863e-cd94384e0239",
+        "3bbe5275-7b5c-81dd-a75c-d703f0a640b3",
+        "3bde5275-7b5c-8131-93f6-c15c214946b1"
+      ],
+      "Redshift": "—",
+      "Theories": [
+        "3bde5275-7b5c-8197-a615-cfd4ff53095e"
+      ],
+      "Era": "Far Future",
+      "What Happened": "The Sun exhausts its hydrogen, swells into a red giant reaching roughly Earth's orbit, and collapses into a white dwarf: half its present mass packed into an Earth-sized ball, cooling for the rest of time.",
+      "Seconds After Big Bang": 593270284000000000,
+      "Event": "The Sun Dies"
+    },
+    {
+      "id": "3bde5275-7b5c-8130-9d53-ca576cc193ae",
+      "url": "https://app.notion.com/p/Andromeda-Arrives-3bde52757b5c81309d53ca576cc193ae",
+      "lastEdited": "2026-08-15T19:02:00.000Z",
+      "Temperature (K)": 2.4,
+      "When": "≈ 18 billion years — 4.5 billion years from now",
+      "Equations": [
+        "3bbe5275-7b5c-810a-8065-f03f5253cda9",
+        "3bbe5275-7b5c-811b-8297-ce47b2c5d614",
+        "3bbe5275-7b5c-813a-84a7-ea08528b3c93"
+      ],
+      "Redshift": "—",
+      "Theories": [
+        "3bde5275-7b5c-8155-8abe-e1d83b51ecb9",
+        "3bde5275-7b5c-8162-be54-c9e88fa847d2"
+      ],
+      "Era": "Far Future",
+      "What Happened": "The Milky Way and Andromeda merge into a single elliptical galaxy. Almost no stars collide: galaxies are overwhelmingly empty, and only the spiral structure is destroyed.",
+      "Seconds After Big Bang": 568024740000000000,
+      "Event": "Andromeda Arrives"
+    },
+    {
+      "id": "3bde5275-7b5c-81f9-8ef6-f13ac29dc596",
+      "url": "https://app.notion.com/p/Present-Day-3bde52757b5c81f98ef6f13ac29dc596",
+      "lastEdited": "2026-08-15T19:02:00.000Z",
+      "Temperature (K)": 2.72548,
+      "When": "13.797 billion years",
+      "Equations": [
+        "3bbe5275-7b5c-8184-9e26-ff4ad04b3ed8",
+        "3bbe5275-7b5c-818c-bf76-d40ebcb485e3",
+        "3bde5275-7b5c-8120-9d3f-eb637591139f",
+        "3bde5275-7b5c-81c4-9445-fc85582c4e1d"
+      ],
+      "Redshift": "z = 0",
+      "Theories": [
+        "3bde5275-7b5c-8119-b400-f4b64f9b76f4",
+        "3bde5275-7b5c-8155-8abe-e1d83b51ecb9",
+        "3bde5275-7b5c-81b0-a714-d53a2345ebdb"
+      ],
+      "Era": "Present",
+      "What Happened": "68% dark energy, 27% dark matter, 5% ordinary matter — and of that 5%, only a fraction has ever been seen. The two ways of measuring the expansion rate disagree by 5σ and nobody knows which one is wrong.",
+      "Seconds After Big Bang": 435390963210000000,
+      "Event": "Present Day"
+    },
+    {
+      "id": "3bde5275-7b5c-8132-859d-da190284c1a9",
+      "url": "https://app.notion.com/p/Dark-Energy-Takes-Over-3bde52757b5c8132859dda190284c1a9",
+      "lastEdited": "2026-08-15T19:02:00.000Z",
+      "Temperature (K)": 3.6,
+      "When": "≈ 9.8 billion years",
+      "Equations": [
+        "3bbe5275-7b5c-8184-9e26-ff4ad04b3ed8",
+        "3bbe5275-7b5c-81a1-9543-ed416dd7caa2",
+        "3bde5275-7b5c-8120-9d3f-eb637591139f",
+        "3bde5275-7b5c-8197-a885-cf717e19fea0"
+      ],
+      "Redshift": "z ≈ 0.4",
+      "Theories": [
+        "3bde5275-7b5c-8119-b400-f4b64f9b76f4",
+        "3bde5275-7b5c-81b0-a714-d53a2345ebdb"
+      ],
+      "Era": "Structure Formation",
+      "What Happened": "Matter has thinned enough that the cosmological constant dominates the energy budget, and the expansion stops slowing and starts speeding up. Found in 1998 by noticing that distant supernovae were fainter than they had any right to be.",
+      "Seconds After Big Bang": 309257914000000000,
+      "Event": "Dark Energy Takes Over"
+    },
+    {
+      "id": "3bde5275-7b5c-81e0-a7b8-e95fd31e8fac",
+      "url": "https://app.notion.com/p/The-Solar-System-Forms-3bde52757b5c81e0a7b8e95fd31e8fac",
+      "lastEdited": "2026-08-15T19:02:00.000Z",
+      "Temperature (K)": 3.8,
+      "When": "9.2 billion years — 4.6 billion years ago",
+      "Equations": [
+        "3bbe5275-7b5c-810a-8065-f03f5253cda9",
+        "3bbe5275-7b5c-811b-8297-ce47b2c5d614",
+        "3bbe5275-7b5c-81c8-8eb1-cdc2179de58e",
+        "3bbe5275-7b5c-81dd-a75c-d703f0a640b3"
+      ],
+      "Redshift": "z ≈ 0.4",
+      "Theories": [
+        "3bde5275-7b5c-8162-be54-c9e88fa847d2",
+        "3bde5275-7b5c-8197-a615-cfd4ff53095e",
+        "3bde5275-7b5c-81af-86fd-d2bdae2b8b8c"
+      ],
+      "Era": "Structure Formation",
+      "What Happened": "A molecular cloud enriched by earlier supernovae collapses. Every element in the Earth heavier than helium was manufactured inside a star that died before the Sun existed.",
+      "Seconds After Big Bang": 290323756000000000,
+      "Event": "The Solar System Forms"
+    },
+    {
+      "id": "3bde5275-7b5c-8127-933f-d6a9736b3eaf",
+      "url": "https://app.notion.com/p/Cosmic-Noon-3bde52757b5c8127933fd6a9736b3eaf",
+      "lastEdited": "2026-08-15T19:02:00.000Z",
+      "Temperature (K)": 9,
+      "When": "≈ 3.5 billion years",
+      "Equations": [
+        "3bbe5275-7b5c-8120-863e-cd94384e0239",
+        "3bbe5275-7b5c-81dd-a75c-d703f0a640b3",
+        "3bde5275-7b5c-816d-b136-f19a8ec27287"
+      ],
+      "Redshift": "z ≈ 2",
+      "Theories": [
+        "3bde5275-7b5c-8197-a615-cfd4ff53095e"
+      ],
+      "Era": "Structure Formation",
+      "What Happened": "Star formation peaks: the universe builds stars about ten times faster than it does now. Most stars that have ever existed were born around this time.",
+      "Seconds After Big Bang": 110449255000000000,
+      "Event": "Cosmic Noon"
+    },
+    {
+      "id": "3bde5275-7b5c-818c-9bd0-ce7bb75ea178",
+      "url": "https://app.notion.com/p/Reionization-3bde52757b5c818c9bd0ce7bb75ea178",
+      "lastEdited": "2026-08-15T19:02:00.000Z",
+      "Temperature (K)": 30,
+      "When": "150 million – 1 billion years",
+      "Equations": [
+        "3bbe5275-7b5c-818e-8ccf-c5b952277817",
+        "3bde5275-7b5c-811f-9033-f21e2c8a2791",
+        "3bde5275-7b5c-816d-b136-f19a8ec27287"
+      ],
+      "Redshift": "z ≈ 20 – 6",
+      "Theories": [
+        "3bde5275-7b5c-8197-a615-cfd4ff53095e",
+        "3bde5275-7b5c-81b0-a714-d53a2345ebdb"
+      ],
+      "Era": "Structure Formation",
+      "What Happened": "Ultraviolet light from the first stars and quasars strips the electrons back off the intergalactic hydrogen it took recombination so long to assemble. The universe becomes transparent to ultraviolet for the second and final time.",
+      "Seconds After Big Bang": 15778465000000000,
+      "Event": "Reionization"
+    },
+    {
+      "id": "3bde5275-7b5c-812d-a3ec-d0ec40005c6a",
+      "url": "https://app.notion.com/p/The-First-Galaxies-3bde52757b5c812da3ecd0ec40005c6a",
+      "lastEdited": "2026-08-15T19:02:00.000Z",
+      "Temperature (K)": 33,
+      "When": "≈ 400 million years",
+      "Equations": [
+        "3bbe5275-7b5c-811b-8297-ce47b2c5d614",
+        "3bbe5275-7b5c-8184-9e26-ff4ad04b3ed8",
+        "3bde5275-7b5c-81b6-8a2d-f530d01d6412"
+      ],
+      "Redshift": "z ≈ 11",
+      "Theories": [
+        "3bde5275-7b5c-8155-8abe-e1d83b51ecb9",
+        "3bde5275-7b5c-81b0-a714-d53a2345ebdb"
+      ],
+      "Era": "Structure Formation",
+      "What Happened": "Small, clumpy and furiously star-forming. JWST keeps finding them brighter and earlier than the models allow, which is an open problem rather than a solved one.",
+      "Seconds After Big Bang": 12622772000000000,
+      "Event": "The First Galaxies"
+    },
+    {
+      "id": "3bde5275-7b5c-8161-b7ce-ed3e2f953c38",
+      "url": "https://app.notion.com/p/The-First-Stars-3bde52757b5c8161b7ceed3e2f953c38",
+      "lastEdited": "2026-08-15T19:02:00.000Z",
+      "Temperature (K)": 50,
+      "When": "≈ 180 million years",
+      "Equations": [
+        "3bbe5275-7b5c-8120-863e-cd94384e0239",
+        "3bbe5275-7b5c-81dd-a75c-d703f0a640b3",
+        "3bde5275-7b5c-816d-b136-f19a8ec27287"
+      ],
+      "Redshift": "z ≈ 20",
+      "Theories": [
+        "3bde5275-7b5c-8197-a615-cfd4ff53095e"
+      ],
+      "Era": "Dark Ages",
+      "What Happened": "Metal-free hydrogen and helium collapse into stars hundreds of times the Sun's mass, burning furiously and dying young. Not one has ever been observed — Population III is the great missing chapter of astrophysics.",
+      "Seconds After Big Bang": 5680247400000000,
+      "Event": "The First Stars"
+    },
+    {
+      "id": "3bde5275-7b5c-81dd-8bf4-c41148b14015",
+      "url": "https://app.notion.com/p/The-Dark-Ages-3bde52757b5c81dd8bf4c41148b14015",
+      "lastEdited": "2026-08-15T19:02:00.000Z",
+      "Temperature (K)": 60,
+      "When": "380,000 years – 150 million years",
+      "Equations": [
+        "3bbe5275-7b5c-811b-8297-ce47b2c5d614",
+        "3bde5275-7b5c-81b6-8a2d-f530d01d6412"
+      ],
+      "Redshift": "z ≈ 1100 – 20",
+      "Theories": [
+        "3bde5275-7b5c-8155-8abe-e1d83b51ecb9",
+        "3bde5275-7b5c-81b0-a714-d53a2345ebdb"
+      ],
+      "Era": "Dark Ages",
+      "What Happened": "No stars, and nothing to see but the fading afterglow. Neutral hydrogen fills space while gravity quietly assembles the dark matter halos everything else will later fall into.",
+      "Seconds After Big Bang": 31556930000000,
+      "Event": "The Dark Ages"
+    },
+    {
+      "id": "3bde5275-7b5c-8130-966f-ff0ab7d23a91",
+      "url": "https://app.notion.com/p/Photon-Decoupling-the-CMB-3bde52757b5c8130966fff0ab7d23a91",
+      "lastEdited": "2026-08-15T19:02:00.000Z",
+      "Temperature (K)": 2970,
+      "When": "380,000 years",
+      "Equations": [
+        "3bde5275-7b5c-811c-8470-d8ecfce3c2de",
+        "3bde5275-7b5c-811f-9033-f21e2c8a2791",
+        "3bde5275-7b5c-8131-93f6-c15c214946b1",
+        "3bde5275-7b5c-8183-9b80-de90c00b2fbc"
+      ],
+      "Redshift": "z ≈ 1100",
+      "Theories": [
+        "3bde5275-7b5c-811b-ac85-fe83a7a852a4",
+        "3bde5275-7b5c-81b0-a714-d53a2345ebdb"
+      ],
+      "Era": "Radiation Era",
+      "What Happened": "With the free electrons gone the universe turns transparent and the photons fly free. They are still arriving, stretched by a factor of 1100 into microwaves at 2.725 K: the oldest light there is, and the most perfect black body ever measured.",
+      "Seconds After Big Bang": 11991633400001,
+      "Event": "Photon Decoupling — the CMB"
+    },
+    {
+      "id": "3bde5275-7b5c-816a-8519-ca7fd6cd0f4c",
+      "url": "https://app.notion.com/p/Recombination-3bde52757b5c816a8519ca7fd6cd0f4c",
+      "lastEdited": "2026-08-15T19:02:00.000Z",
+      "Temperature (K)": 3000,
+      "When": "380,000 years",
+      "Equations": [
+        "3bbe5275-7b5c-816e-b97a-fdbc445f99b7",
+        "3bde5275-7b5c-816d-b136-f19a8ec27287",
+        "3bde5275-7b5c-81a3-914b-f108cd62b10b",
+        "3bde5275-7b5c-81fc-a041-fc08a0416af7"
+      ],
+      "Redshift": "z ≈ 1100",
+      "Theories": [
+        "3bde5275-7b5c-81b0-a714-d53a2345ebdb",
+        "3bde5275-7b5c-81c6-b1bc-c6ba18f69e39"
+      ],
+      "Era": "Radiation Era",
+      "What Happened": "Electrons and protons combine into neutral hydrogen. The Saha equation puts this at 3000 K — far below hydrogen's 13.6 eV binding energy — because photons outnumber baryons a billion to one, and the rare energetic ones keep breaking atoms apart long past the naive temperature.",
+      "Seconds After Big Bang": 11991633400000,
+      "Event": "Recombination"
+    },
+    {
+      "id": "3bde5275-7b5c-813c-b30b-e1bcbd63c5cf",
+      "url": "https://app.notion.com/p/Matter-Radiation-Equality-3bde52757b5c813cb30be1bcbd63c5cf",
+      "lastEdited": "2026-08-15T19:02:00.000Z",
+      "Temperature (K)": 9300,
+      "When": "≈ 50,000 years",
+      "Equations": [
+        "3bbe5275-7b5c-818c-bf76-d40ebcb485e3",
+        "3bde5275-7b5c-8197-a885-cf717e19fea0",
+        "3bde5275-7b5c-81b6-8a2d-f530d01d6412",
+        "3bde5275-7b5c-81bc-a558-cbf2f89a2f06"
+      ],
+      "Redshift": "z ≈ 3400",
+      "Theories": [
+        "3bde5275-7b5c-8155-8abe-e1d83b51ecb9",
+        "3bde5275-7b5c-81b0-a714-d53a2345ebdb"
+      ],
+      "Era": "Radiation Era",
+      "What Happened": "Matter density overtakes radiation density. Gravity can finally begin assembling structure, because until now radiation pressure smoothed out every clump as fast as it formed.",
+      "Seconds After Big Bang": 1577846500000,
+      "Event": "Matter–Radiation Equality"
+    },
+    {
+      "id": "3bde5275-7b5c-81d4-b2cd-fdcc3add3657",
+      "url": "https://app.notion.com/p/Big-Bang-Nucleosynthesis-3bde52757b5c81d4b2cdfdcc3add3657",
+      "lastEdited": "2026-08-15T19:02:00.000Z",
+      "Temperature (K)": 1000000000,
+      "When": "10 s – 20 minutes",
+      "Equations": [
+        "3bbe5275-7b5c-8157-a64b-eb73eeb53735",
+        "3bbe5275-7b5c-816e-b97a-fdbc445f99b7",
+        "3bbe5275-7b5c-818c-bf76-d40ebcb485e3",
+        "3bde5275-7b5c-816d-b136-f19a8ec27287"
+      ],
+      "Redshift": "—",
+      "Theories": [
+        "3bde5275-7b5c-8112-9df5-f96e892e1f88",
+        "3bde5275-7b5c-81b0-a714-d53a2345ebdb"
+      ],
+      "Era": "Radiation Era",
+      "What Happened": "Protons and neutrons fuse into deuterium, helium-4 and a trace of lithium-7, then stop as the universe cools below the fusion threshold. It freezes in about 24% helium by mass — a prediction that matches observation to two decimal places, and one of the three pillars.",
+      "Seconds After Big Bang": 180,
+      "Event": "Big Bang Nucleosynthesis"
+    },
+    {
+      "id": "3bde5275-7b5c-8102-90f1-d13c66d29fa9",
+      "url": "https://app.notion.com/p/Electron-Positron-Annihilation-3bde52757b5c810290f1d13c66d29fa9",
+      "lastEdited": "2026-08-15T19:02:00.000Z",
+      "Temperature (K)": 5000000000,
+      "When": "1 – 10 s",
+      "Equations": [
+        "3bbe5275-7b5c-8140-a1d4-f7bff1df0334",
+        "3bbe5275-7b5c-819b-8730-c682ecb3e756"
+      ],
+      "Redshift": "—",
+      "Theories": [
+        "3bde5275-7b5c-812d-9b11-ec91e612af1b",
+        "3bde5275-7b5c-81b0-a714-d53a2345ebdb"
+      ],
+      "Era": "Radiation Era",
+      "What Happened": "Electrons and positrons annihilate, leaving only the one-in-a-billion excess of matter and heating the photons relative to the neutrinos that had already left.",
+      "Seconds After Big Bang": 10,
+      "Event": "Electron–Positron Annihilation"
+    },
+    {
+      "id": "3bde5275-7b5c-8178-aa21-c31f41f3cecd",
+      "url": "https://app.notion.com/p/Neutrino-Decoupling-3bde52757b5c8178aa21c31f41f3cecd",
+      "lastEdited": "2026-08-15T19:02:00.000Z",
+      "Temperature (K)": 10000000000,
+      "When": "1 second",
+      "Equations": [
+        "3bbe5275-7b5c-816e-b97a-fdbc445f99b7",
+        "3bbe5275-7b5c-81e1-96c0-c6157aaee509"
+      ],
+      "Redshift": "—",
+      "Theories": [
+        "3bde5275-7b5c-81b0-a714-d53a2345ebdb"
+      ],
+      "Era": "Very Early Universe",
+      "What Happened": "Neutrinos stop interacting with anything and stream freely. They are still here — a cosmic neutrino background now at 1.95 K, colder than the CMB, and still not detected directly.",
+      "Seconds After Big Bang": 1,
+      "Event": "Neutrino Decoupling"
+    },
+    {
+      "id": "3bde5275-7b5c-817b-a494-db994bf078d8",
+      "url": "https://app.notion.com/p/Quark-Confinement-3bde52757b5c817ba494db994bf078d8",
+      "lastEdited": "2026-08-15T19:02:00.000Z",
+      "Temperature (K)": 10000000000000,
+      "When": "10⁻⁶ s",
+      "Equations": [
+        "3bbe5275-7b5c-8125-8857-cffce0164fef"
+      ],
+      "Redshift": "—",
+      "Theories": [
+        "3bde5275-7b5c-8109-a8c3-f9b6d98cca04",
+        "3bde5275-7b5c-8170-8bb5-f403b35dcc5e"
+      ],
+      "Era": "Very Early Universe",
+      "What Happened": "The plasma cools enough for quarks to bind into protons and neutrons, and they never come apart again. Every proton in your body dates from this moment.",
+      "Seconds After Big Bang": 1e-06,
+      "Event": "Quark Confinement"
+    },
+    {
+      "id": "3bde5275-7b5c-811a-a3e4-f872b73ea57f",
+      "url": "https://app.notion.com/p/Quark-Epoch-3bde52757b5c811aa3e4f872b73ea57f",
+      "lastEdited": "2026-08-15T19:02:00.000Z",
+      "Temperature (K)": 10000000000000,
+      "When": "10⁻¹² – 10⁻⁶ s",
+      "Equations": [
+        "3bbe5275-7b5c-8125-8857-cffce0164fef",
+        "3bbe5275-7b5c-81e1-96c0-c6157aaee509"
+      ],
+      "Redshift": "—",
+      "Theories": [
+        "3bde5275-7b5c-8170-8bb5-f403b35dcc5e"
+      ],
+      "Era": "Very Early Universe",
+      "What Happened": "A quark–gluon plasma too hot for the strong force to hold anything together. Briefly recreated at RHIC and the LHC, which makes this the earliest era ever reproduced in a laboratory.",
+      "Seconds After Big Bang": 1e-09,
+      "Event": "Quark Epoch"
+    },
+    {
+      "id": "3bde5275-7b5c-81a9-b4ba-cf86d12e1d5b",
+      "url": "https://app.notion.com/p/Baryogenesis-3bde52757b5c81a9b4bacf86d12e1d5b",
+      "lastEdited": "2026-08-15T19:02:00.000Z",
+      "Temperature (K)": 1000000000000000,
+      "When": "before 10⁻¹¹ s",
+      "Equations": [
+        "3bbe5275-7b5c-8125-8857-cffce0164fef",
+        "3bbe5275-7b5c-819b-8730-c682ecb3e756"
+      ],
+      "Redshift": "—",
+      "Theories": [
+        "3bde5275-7b5c-8109-a8c3-f9b6d98cca04",
+        "3bde5275-7b5c-81c2-a04e-d20bae468120"
+      ],
+      "Era": "Very Early Universe",
+      "What Happened": "Some process favoured matter over antimatter by about one part in a billion. Everything made of atoms is that leftover; the other billion parts annihilated into the photons now arriving as the microwave background. How it happened is unsolved.",
+      "Seconds After Big Bang": 1e-11,
+      "Event": "Baryogenesis"
+    },
+    {
+      "id": "3bde5275-7b5c-814e-a671-fe7dc1be5fe1",
+      "url": "https://app.notion.com/p/Electroweak-Symmetry-Breaking-3bde52757b5c814ea671fe7dc1be5fe1",
+      "lastEdited": "2026-08-15T19:02:00.000Z",
+      "Temperature (K)": 1000000000000000,
+      "When": "10⁻¹² s",
+      "Equations": [
+        "3bbe5275-7b5c-8125-8857-cffce0164fef",
+        "3bbe5275-7b5c-8189-b87c-e1e5b2e563de"
+      ],
+      "Redshift": "—",
+      "Theories": [
+        "3bde5275-7b5c-812f-987b-d90fa3fe1038",
+        "3bde5275-7b5c-813f-9e30-c040189eb298"
+      ],
+      "Era": "Very Early Universe",
+      "What Happened": "The Higgs field settles into its non-zero value. The W and Z bosons acquire mass, the photon does not, and one force becomes two: the weak force and electromagnetism.",
+      "Seconds After Big Bang": 1e-12,
+      "Event": "Electroweak Symmetry Breaking"
+    },
+    {
+      "id": "3bde5275-7b5c-8125-95a3-eed7e074a458",
+      "url": "https://app.notion.com/p/Reheating-3bde52757b5c812595a3eed7e074a458",
+      "lastEdited": "2026-08-15T19:02:00.000Z",
+      "Temperature (K)": 1e+27,
+      "When": "≈ 10⁻³² s",
+      "Equations": [
+        "3bbe5275-7b5c-8125-8857-cffce0164fef",
+        "3bbe5275-7b5c-819b-8730-c682ecb3e756"
+      ],
+      "Redshift": "—",
+      "Theories": [
+        "3bde5275-7b5c-8194-92cc-da98c37e359e",
+        "3bde5275-7b5c-81b0-a714-d53a2345ebdb"
+      ],
+      "Era": "Very Early Universe",
+      "What Happened": "The inflaton field decays and dumps its energy into a bath of particles. This — not t = 0 — is the actual 'hot' of the hot Big Bang: everything that now exists was created here.",
+      "Seconds After Big Bang": 1e-32,
+      "Event": "Reheating"
+    },
+    {
+      "id": "3bde5275-7b5c-8194-b6c0-fcf0d1a866ca",
+      "url": "https://app.notion.com/p/Inflation-3bde52757b5c8194b6c0fcf0d1a866ca",
+      "lastEdited": "2026-08-15T19:02:00.000Z",
+      "Temperature (K)": 1e+27,
+      "When": "10⁻³⁶ – 10⁻³² s",
+      "Equations": [
+        "3bbe5275-7b5c-818c-bf76-d40ebcb485e3",
+        "3bde5275-7b5c-8197-a885-cf717e19fea0",
+        "3bde5275-7b5c-81b6-8a2d-f530d01d6412",
+        "3bde5275-7b5c-81c4-9445-fc85582c4e1d"
+      ],
+      "Redshift": "—",
+      "Theories": [
+        "3bde5275-7b5c-8194-92cc-da98c37e359e"
+      ],
+      "Era": "Very Early Universe",
+      "What Happened": "Space expands by a factor of at least 10²⁶ in less time than light takes to cross a proton. It flattens the geometry, dilutes away the monopoles nobody can find, and stretches quantum fluctuations to cosmic size — those fluctuations become every galaxy that will ever exist.",
+      "Seconds After Big Bang": 1e-33,
+      "Event": "Inflation"
+    },
+    {
+      "id": "3bde5275-7b5c-811f-93a0-c73de104a932",
+      "url": "https://app.notion.com/p/Grand-Unification-3bde52757b5c811f93a0c73de104a932",
+      "lastEdited": "2026-08-15T19:02:00.000Z",
+      "Temperature (K)": 1e+28,
+      "When": "10⁻⁴³ – 10⁻³⁶ s",
+      "Equations": [
+        "3bbe5275-7b5c-811f-8db4-cc95acf776dd",
+        "3bbe5275-7b5c-8125-8857-cffce0164fef"
+      ],
+      "Redshift": "—",
+      "Theories": [
+        "3bde5275-7b5c-81c2-a04e-d20bae468120",
+        "e497c8e0-c340-456d-a74c-a8d03962d58a"
+      ],
+      "Era": "Very Early Universe",
+      "What Happened": "Gravity has separated; the strong, weak and electromagnetic forces are still a single interaction. The symmetry breaks at the end of this interval, and the energy released may be what drives what happens next.",
+      "Seconds After Big Bang": 1e-36,
+      "Event": "Grand Unification"
+    },
+    {
+      "id": "3bde5275-7b5c-810a-85aa-f3479a371f25",
+      "url": "https://app.notion.com/p/Planck-Epoch-3bde52757b5c810a85aaf3479a371f25",
+      "lastEdited": "2026-08-15T19:02:00.000Z",
+      "Temperature (K)": 1.417e+32,
+      "When": "0 – 10⁻⁴³ s",
+      "Equations": [
+        "3bbe5275-7b5c-8109-a4a6-c5b903b6e05f",
+        "3bbe5275-7b5c-815f-8f49-fde9509c1e77",
+        "3bbe5275-7b5c-81c7-b3a7-decb4402d1ab"
+      ],
+      "Redshift": "—",
+      "Theories": [
+        "3bde5275-7b5c-81b3-a747-d2e0a75cf5aa",
+        "3bde5275-7b5c-81c8-92c2-e7f2313ec35d",
+        "948ffd28-180a-4f7f-8f79-b6a712181262"
+      ],
+      "Era": "Very Early Universe",
+      "What Happened": "The one interval no physics describes. Gravity is as strong as the other three forces and spacetime itself should be quantised, so general relativity and quantum mechanics both apply and neither survives the encounter.",
+      "Seconds After Big Bang": 1e-43,
+      "Event": "Planck Epoch"
+    }
+  ],
   "spectralTypes": [
     {
       "id": "2569ebb2-01ff-41c8-af88-54f50a983757",
@@ -488813,6 +489576,13 @@
       "lastEdited": "2026-08-15T18:01:00.000Z",
       "Equation": "n_{i+1}·n_e / n_i = (2g_{i+1}/g_i)·(2πm_e k_B T / h²)^(3/2)·e^(−χ/k_B T)",
       "Minerals": [],
+      "Timeline": [
+        "3bde5275-7b5c-81d4-b2cd-fdcc3add3657",
+        "3bde5275-7b5c-816a-8519-ca7fd6cd0f4c",
+        "3bde5275-7b5c-8161-b7ce-ed3e2f953c38",
+        "3bde5275-7b5c-818c-9bd0-ce7bb75ea178",
+        "3bde5275-7b5c-8127-933f-d6a9736b3eaf"
+      ],
       "Field": "Astrophysics",
       "Celestial Objects": [],
       "Theories": [
@@ -488868,6 +489638,12 @@
       "lastEdited": "2026-08-15T18:01:00.000Z",
       "Equation": "δ̈ + 2H·δ̇ = 4πG·ρ̄·δ",
       "Minerals": [],
+      "Timeline": [
+        "3bde5275-7b5c-8194-b6c0-fcf0d1a866ca",
+        "3bde5275-7b5c-813c-b30b-e1bcbd63c5cf",
+        "3bde5275-7b5c-81dd-8bf4-c41148b14015",
+        "3bde5275-7b5c-812d-a3ec-d0ec40005c6a"
+      ],
       "Field": "Cosmology",
       "Celestial Objects": [],
       "Theories": [
@@ -488907,6 +489683,12 @@
       "lastEdited": "2026-08-15T17:50:00.000Z",
       "Equation": "w = p/(ρc²),   ρ ∝ a^(−3(1+w))",
       "Minerals": [],
+      "Timeline": [
+        "3bde5275-7b5c-8194-b6c0-fcf0d1a866ca",
+        "3bde5275-7b5c-813c-b30b-e1bcbd63c5cf",
+        "3bde5275-7b5c-8132-859d-da190284c1a9",
+        "3bde5275-7b5c-81ea-a1d8-efb79b33a2e3"
+      ],
       "Field": "Cosmology",
       "Celestial Objects": [],
       "Theories": [
@@ -488943,6 +489725,9 @@
       "lastEdited": "2026-08-15T17:50:00.000Z",
       "Equation": "ρ̇ + 3H(ρ + p/c²) = 0",
       "Minerals": [],
+      "Timeline": [
+        "3bde5275-7b5c-813c-b30b-e1bcbd63c5cf"
+      ],
       "Field": "Cosmology",
       "Celestial Objects": [],
       "Theories": [
@@ -488973,6 +489758,10 @@
       "lastEdited": "2026-08-15T18:00:00.000Z",
       "Equation": "ρ_c = 3H² / (8πG)",
       "Minerals": [],
+      "Timeline": [
+        "3bde5275-7b5c-8132-859d-da190284c1a9",
+        "3bde5275-7b5c-81f9-8ef6-f13ac29dc596"
+      ],
       "Field": "Cosmology",
       "Celestial Objects": [],
       "Theories": [
@@ -489014,6 +489803,11 @@
       "lastEdited": "2026-08-15T18:00:00.000Z",
       "Equation": "ds² = −c²dt² + a(t)²[dr²/(1 − kr²) + r²(dθ² + sin²θ dφ²)]",
       "Minerals": [],
+      "Timeline": [
+        "3bde5275-7b5c-8194-b6c0-fcf0d1a866ca",
+        "3bde5275-7b5c-81f9-8ef6-f13ac29dc596",
+        "3bde5275-7b5c-8159-ada0-cc5af14d257d"
+      ],
       "Field": "Cosmology",
       "Celestial Objects": [],
       "Theories": [
@@ -489053,6 +489847,10 @@
       "lastEdited": "2026-08-15T18:00:00.000Z",
       "Equation": "1 + z = λ_obs/λ_emit = a(t_obs)/a(t_emit)",
       "Minerals": [],
+      "Timeline": [
+        "3bde5275-7b5c-8130-966f-ff0ab7d23a91",
+        "3bde5275-7b5c-8159-ada0-cc5af14d257d"
+      ],
       "Field": "Cosmology",
       "Celestial Objects": [],
       "Theories": [
@@ -489097,6 +489895,9 @@
         "64d6cec8-c6e4-4ba2-bbc6-ed8d0b7cc2c1",
         "86f82f42-7be7-4c05-ac52-2aba030726fa"
       ],
+      "Timeline": [
+        "3bde5275-7b5c-816a-8519-ca7fd6cd0f4c"
+      ],
       "Field": "Atomic Physics",
       "Celestial Objects": [],
       "Theories": [
@@ -489137,6 +489938,7 @@
       "Minerals": [
         "3bde5275-7b5c-81cb-b0e3-f84bd48a4267"
       ],
+      "Timeline": [],
       "Field": "Atomic Physics",
       "Celestial Objects": [],
       "Theories": [
@@ -489169,6 +489971,9 @@
       "Equation": "1/λ = R_H·(1/n₁² − 1/n₂²)",
       "Minerals": [
         "2b803f12-6fb7-46f5-b9ce-144ab46d618f"
+      ],
+      "Timeline": [
+        "3bde5275-7b5c-816a-8519-ca7fd6cd0f4c"
       ],
       "Field": "Atomic Physics",
       "Celestial Objects": [
@@ -489210,6 +490015,7 @@
         "13a34015-1840-4a49-a9a5-b39125b488cd",
         "b94ff1da-eaef-4193-b75c-e97af338ac25"
       ],
+      "Timeline": [],
       "Field": "Chemical Thermodynamics",
       "Celestial Objects": [],
       "Theories": [],
@@ -489241,6 +490047,7 @@
         "b403d0c7-763e-4bc1-8803-8f90b3007a98",
         "b94ff1da-eaef-4193-b75c-e97af338ac25"
       ],
+      "Timeline": [],
       "Field": "Chemical Thermodynamics",
       "Celestial Objects": [],
       "Theories": [],
@@ -489275,6 +490082,7 @@
         "b94ff1da-eaef-4193-b75c-e97af338ac25",
         "db41d7f5-2f18-4f06-91b6-21f9df43006d"
       ],
+      "Timeline": [],
       "Field": "Chemical Thermodynamics",
       "Celestial Objects": [],
       "Theories": [],
@@ -489304,6 +490112,7 @@
       "lastEdited": "2026-08-15T16:33:00.000Z",
       "Equation": "Δv₁ = √(μ/r₁)·(√(2r₂/(r₁+r₂)) − 1)",
       "Minerals": [],
+      "Timeline": [],
       "Field": "Rocketry",
       "Celestial Objects": [],
       "Theories": [],
@@ -489329,6 +490138,7 @@
       "Minerals": [
         "543f52dd-771c-43ed-a945-0f9a10393f6d"
       ],
+      "Timeline": [],
       "Field": "Rocketry",
       "Celestial Objects": [],
       "Theories": [],
@@ -489359,6 +490169,7 @@
       "lastEdited": "2026-08-15T16:38:00.000Z",
       "Equation": "Δv = v_e·ln(m₀/m_f)",
       "Minerals": [],
+      "Timeline": [],
       "Field": "Rocketry",
       "Celestial Objects": [],
       "Theories": [],
@@ -489389,6 +490200,7 @@
         "bc2bfdde-ff74-4929-924d-e50e0a41cf42",
         "e847fc6b-cdf0-4a2d-af2c-6e6d34ecc21c"
       ],
+      "Timeline": [],
       "Field": "Heat Transfer",
       "Celestial Objects": [],
       "Theories": [],
@@ -489419,6 +490231,7 @@
       "lastEdited": "2026-08-15T16:38:00.000Z",
       "Equation": "q = −k·∇T",
       "Minerals": [],
+      "Timeline": [],
       "Field": "Heat Transfer",
       "Celestial Objects": [],
       "Theories": [],
@@ -489447,6 +490260,7 @@
       "lastEdited": "2026-08-15T16:34:00.000Z",
       "Equation": "dT/dt = −k·(T − T_env)",
       "Minerals": [],
+      "Timeline": [],
       "Field": "Heat Transfer",
       "Celestial Objects": [],
       "Theories": [
@@ -489475,6 +490289,7 @@
         "8839cf99-0f29-420c-aeea-e8d4ae225688",
         "e847fc6b-cdf0-4a2d-af2c-6e6d34ecc21c"
       ],
+      "Timeline": [],
       "Field": "Materials Science",
       "Celestial Objects": [],
       "Theories": [],
@@ -489502,6 +490317,11 @@
       "Equation": "B(λ,T) = (2hc²/λ⁵) / (e^(hc/λkT) − 1)",
       "Minerals": [
         "2b803f12-6fb7-46f5-b9ce-144ab46d618f"
+      ],
+      "Timeline": [
+        "3bde5275-7b5c-8130-966f-ff0ab7d23a91",
+        "3bde5275-7b5c-818c-9bd0-ce7bb75ea178",
+        "3bde5275-7b5c-8194-968f-e63d78f78726"
       ],
       "Field": "Radiation",
       "Celestial Objects": [
@@ -489556,6 +490376,10 @@
       "Minerals": [
         "2b803f12-6fb7-46f5-b9ce-144ab46d618f"
       ],
+      "Timeline": [
+        "3bde5275-7b5c-8130-966f-ff0ab7d23a91",
+        "3bde5275-7b5c-8193-843b-c95fe5547acb"
+      ],
       "Field": "Radiation",
       "Celestial Objects": [
         "59917836-94bf-4298-b2c1-62293f9f146c"
@@ -489608,6 +490432,9 @@
       "Minerals": [
         "2b803f12-6fb7-46f5-b9ce-144ab46d618f"
       ],
+      "Timeline": [
+        "3bde5275-7b5c-8130-966f-ff0ab7d23a91"
+      ],
       "Field": "Radiation",
       "Celestial Objects": [
         "59917836-94bf-4298-b2c1-62293f9f146c"
@@ -489639,6 +490466,7 @@
       "lastEdited": "2026-08-15T18:00:00.000Z",
       "Equation": "∇²φ = −ρ/ε₀",
       "Minerals": [],
+      "Timeline": [],
       "Field": "Electrostatics",
       "Celestial Objects": [],
       "Theories": [
@@ -489668,6 +490496,7 @@
       "lastEdited": "2026-08-15T16:33:00.000Z",
       "Equation": "E = F/q = k·Q/r²",
       "Minerals": [],
+      "Timeline": [],
       "Field": "Electrostatics",
       "Celestial Objects": [],
       "Theories": [
@@ -489698,6 +490527,7 @@
         "28cd490f-391d-4432-8d09-631de49cabf5",
         "3bde5275-7b5c-81cb-b0e3-f84bd48a4267"
       ],
+      "Timeline": [],
       "Field": "Electrostatics",
       "Celestial Objects": [],
       "Theories": [
@@ -489733,6 +490563,7 @@
       "lastEdited": "2026-08-15T17:50:00.000Z",
       "Equation": "∂L/∂(∂_μφ)·δφ = J^μ,  ∂_μJ^μ = 0",
       "Minerals": [],
+      "Timeline": [],
       "Field": "Classical Field Theory",
       "Celestial Objects": [],
       "Theories": [
@@ -489763,6 +490594,7 @@
       "lastEdited": "2026-08-15T16:33:00.000Z",
       "Equation": "d/dt (∂L/∂q̇) − ∂L/∂q = 0",
       "Minerals": [],
+      "Timeline": [],
       "Field": "Classical Field Theory",
       "Celestial Objects": [],
       "Theories": [
@@ -489789,6 +490621,7 @@
       "lastEdited": "2026-08-15T16:33:00.000Z",
       "Equation": "δS = 0,  S = ∫L dt",
       "Minerals": [],
+      "Timeline": [],
       "Field": "Classical Field Theory",
       "Celestial Objects": [],
       "Theories": [
@@ -489816,6 +490649,7 @@
       "lastEdited": "2026-08-15T16:49:00.000Z",
       "Equation": "f̂(ω) = ∫ f(t)·e^(−iωt) dt",
       "Minerals": [],
+      "Timeline": [],
       "Field": "Mathematics",
       "Celestial Objects": [],
       "Theories": [],
@@ -489847,6 +490681,7 @@
       "lastEdited": "2026-08-15T18:00:00.000Z",
       "Equation": "f(x) = e^(−(x−μ)²/2σ²) / (σ·√(2π))",
       "Minerals": [],
+      "Timeline": [],
       "Field": "Mathematics",
       "Celestial Objects": [],
       "Theories": [],
@@ -489876,6 +490711,7 @@
       "lastEdited": "2026-08-15T16:49:00.000Z",
       "Equation": "P(A|B) = P(B|A)·P(A) / P(B)",
       "Minerals": [],
+      "Timeline": [],
       "Field": "Mathematics",
       "Celestial Objects": [],
       "Theories": [],
@@ -489900,6 +490736,7 @@
       "lastEdited": "2026-08-15T16:33:00.000Z",
       "Equation": "xₙ₊₁ = r·xₙ·(1 − xₙ)",
       "Minerals": [],
+      "Timeline": [],
       "Field": "Nonlinear Dynamics",
       "Celestial Objects": [],
       "Theories": [
@@ -489926,6 +490763,7 @@
       "lastEdited": "2026-08-15T16:33:00.000Z",
       "Equation": "δ = lim (rₙ − rₙ₋₁)/(rₙ₊₁ − rₙ) ≈ 4.6692…",
       "Minerals": [],
+      "Timeline": [],
       "Field": "Nonlinear Dynamics",
       "Celestial Objects": [],
       "Theories": [
@@ -489951,6 +490789,7 @@
       "lastEdited": "2026-08-15T16:33:00.000Z",
       "Equation": "ẋ = σ(y−x) · ẏ = x(ρ−z) − y · ż = xy − βz",
       "Minerals": [],
+      "Timeline": [],
       "Field": "Nonlinear Dynamics",
       "Celestial Objects": [],
       "Theories": [
@@ -489979,6 +490818,7 @@
         "28cd490f-391d-4432-8d09-631de49cabf5",
         "cb8bf25b-fafe-449a-aee7-d457929c47b7"
       ],
+      "Timeline": [],
       "Field": "Biophysics",
       "Celestial Objects": [],
       "Theories": [],
@@ -490010,6 +490850,7 @@
       "Minerals": [
         "b94ff1da-eaef-4193-b75c-e97af338ac25"
       ],
+      "Timeline": [],
       "Field": "Biophysics",
       "Celestial Objects": [],
       "Theories": [],
@@ -490041,6 +490882,7 @@
         "28cd490f-391d-4432-8d09-631de49cabf5",
         "cb8bf25b-fafe-449a-aee7-d457929c47b7"
       ],
+      "Timeline": [],
       "Field": "Biophysics",
       "Celestial Objects": [],
       "Theories": [],
@@ -490077,6 +490919,7 @@
       "lastEdited": "2026-08-15T16:49:00.000Z",
       "Equation": "θ = λ / (π·w₀)",
       "Minerals": [],
+      "Timeline": [],
       "Field": "Photonics",
       "Celestial Objects": [],
       "Theories": [],
@@ -490112,6 +490955,7 @@
       "Minerals": [
         "2b803f12-6fb7-46f5-b9ce-144ab46d618f"
       ],
+      "Timeline": [],
       "Field": "Photonics",
       "Celestial Objects": [],
       "Theories": [],
@@ -490143,6 +490987,9 @@
       "Minerals": [
         "2b803f12-6fb7-46f5-b9ce-144ab46d618f"
       ],
+      "Timeline": [
+        "3bde5275-7b5c-818c-9bd0-ce7bb75ea178"
+      ],
       "Field": "Photonics",
       "Celestial Objects": [],
       "Theories": [],
@@ -490173,6 +491020,7 @@
       "lastEdited": "2026-08-15T16:38:00.000Z",
       "Equation": "zT = S²·σ·T / κ",
       "Minerals": [],
+      "Timeline": [],
       "Field": "Thermoelectrics",
       "Celestial Objects": [],
       "Theories": [],
@@ -490202,6 +491050,7 @@
       "lastEdited": "2026-08-15T16:38:00.000Z",
       "Equation": "Q̇ = Π·I",
       "Minerals": [],
+      "Timeline": [],
       "Field": "Thermoelectrics",
       "Celestial Objects": [],
       "Theories": [],
@@ -490231,6 +491080,7 @@
       "Minerals": [
         "f7a692b1-6efd-4006-99ae-d5fbc05fd3c3"
       ],
+      "Timeline": [],
       "Field": "Thermoelectrics",
       "Celestial Objects": [],
       "Theories": [],
@@ -490261,6 +491111,7 @@
         "47ddcba5-c8dd-452a-a904-2277c0eaea6f",
         "f7a692b1-6efd-4006-99ae-d5fbc05fd3c3"
       ],
+      "Timeline": [],
       "Field": "Magnetohydrodynamics",
       "Celestial Objects": [
         "59917836-94bf-4298-b2c1-62293f9f146c"
@@ -490290,6 +491141,7 @@
       "Minerals": [
         "f7a692b1-6efd-4006-99ae-d5fbc05fd3c3"
       ],
+      "Timeline": [],
       "Field": "Magnetohydrodynamics",
       "Celestial Objects": [
         "59917836-94bf-4298-b2c1-62293f9f146c"
@@ -490320,6 +491172,7 @@
       "Minerals": [
         "f7a692b1-6efd-4006-99ae-d5fbc05fd3c3"
       ],
+      "Timeline": [],
       "Field": "Magnetohydrodynamics",
       "Celestial Objects": [
         "59917836-94bf-4298-b2c1-62293f9f146c"
@@ -490349,6 +491202,7 @@
       "lastEdited": "2026-08-15T16:38:00.000Z",
       "Equation": "I = I_c·sin(φ₁ − φ₂)",
       "Minerals": [],
+      "Timeline": [],
       "Field": "Superconductivity",
       "Celestial Objects": [],
       "Theories": [
@@ -490381,6 +491235,7 @@
       "lastEdited": "2026-08-15T16:38:00.000Z",
       "Equation": "Δ(0) ≈ 1.76·k_B·T_c",
       "Minerals": [],
+      "Timeline": [],
       "Field": "Superconductivity",
       "Celestial Objects": [],
       "Theories": [
@@ -490415,6 +491270,7 @@
       "lastEdited": "2026-08-15T16:38:00.000Z",
       "Equation": "∂J/∂t = (n_s·e²/mₑ)·E  ·  ∇×J = −(n_s·e²/mₑ)·B",
       "Minerals": [],
+      "Timeline": [],
       "Field": "Superconductivity",
       "Celestial Objects": [],
       "Theories": [
@@ -490456,6 +491312,7 @@
         "3bde5275-7b5c-81d1-9c19-c83ad31d6215",
         "8839cf99-0f29-420c-aeea-e8d4ae225688"
       ],
+      "Timeline": [],
       "Field": "Condensed Matter",
       "Celestial Objects": [],
       "Theories": [
@@ -490490,6 +491347,10 @@
         "3bde5275-7b5c-81d1-9c19-c83ad31d6215",
         "62debcd4-2538-4205-a1a5-5e929bb47f0d",
         "64d6cec8-c6e4-4ba2-bbc6-ed8d0b7cc2c1"
+      ],
+      "Timeline": [
+        "3bde5275-7b5c-8178-aa21-c31f41f3cecd",
+        "3bde5275-7b5c-811a-a3e4-f872b73ea57f"
       ],
       "Field": "Condensed Matter",
       "Celestial Objects": [],
@@ -490532,6 +491393,7 @@
         "3bde5275-7b5c-81cb-b0e3-f84bd48a4267",
         "f7a692b1-6efd-4006-99ae-d5fbc05fd3c3"
       ],
+      "Timeline": [],
       "Field": "Condensed Matter",
       "Celestial Objects": [],
       "Theories": [
@@ -490573,6 +491435,7 @@
         "aa230c00-4ead-4e96-84df-21228d8f30cc",
         "d2d4005d-51eb-4191-af95-16da8404b828"
       ],
+      "Timeline": [],
       "Field": "Plasma Physics",
       "Celestial Objects": [
         "59917836-94bf-4298-b2c1-62293f9f146c"
@@ -490607,6 +491470,7 @@
         "01394b2c-de54-47e2-acee-dec04f843bbd",
         "3bde5275-7b5c-81cb-b0e3-f84bd48a4267"
       ],
+      "Timeline": [],
       "Field": "Plasma Physics",
       "Celestial Objects": [],
       "Theories": [],
@@ -490644,6 +491508,7 @@
         "28cd490f-391d-4432-8d09-631de49cabf5",
         "3886df31-49c3-423c-b72b-7633b7d34fb8"
       ],
+      "Timeline": [],
       "Field": "Plasma Physics",
       "Celestial Objects": [],
       "Theories": [],
@@ -490678,6 +491543,9 @@
       "lastEdited": "2026-08-15T17:47:00.000Z",
       "Equation": "v_esc = √(2GM/r)",
       "Minerals": [],
+      "Timeline": [
+        "3bde5275-7b5c-8130-9d53-ca576cc193ae"
+      ],
       "Field": "Celestial Mechanics",
       "Celestial Objects": [
         "59917836-94bf-4298-b2c1-62293f9f146c"
@@ -490709,6 +491577,10 @@
       "lastEdited": "2026-08-15T16:33:00.000Z",
       "Equation": "v² = GM·(2/r − 1/a)",
       "Minerals": [],
+      "Timeline": [
+        "3bde5275-7b5c-81e0-a7b8-e95fd31e8fac",
+        "3bde5275-7b5c-8130-9d53-ca576cc193ae"
+      ],
       "Field": "Celestial Mechanics",
       "Celestial Objects": [],
       "Theories": [
@@ -490737,6 +491609,7 @@
       "lastEdited": "2026-08-15T16:38:00.000Z",
       "Equation": "|ψ⟩ = α|0⟩ + β|1⟩,  |α|² + |β|² = 1",
       "Minerals": [],
+      "Timeline": [],
       "Field": "Quantum Computing",
       "Celestial Objects": [],
       "Theories": [
@@ -490772,6 +491645,7 @@
       "lastEdited": "2026-08-15T16:38:00.000Z",
       "Equation": "no U exists with U(|ψ⟩|0⟩) = |ψ⟩|ψ⟩",
       "Minerals": [],
+      "Timeline": [],
       "Field": "Quantum Computing",
       "Celestial Objects": [],
       "Theories": [
@@ -490799,6 +491673,7 @@
       "lastEdited": "2026-08-15T16:38:00.000Z",
       "Equation": "|Φ⁺⟩ = (|00⟩ + |11⟩)/√2",
       "Minerals": [],
+      "Timeline": [],
       "Field": "Quantum Computing",
       "Celestial Objects": [],
       "Theories": [
@@ -490835,6 +491710,7 @@
         "b94ff1da-eaef-4193-b75c-e97af338ac25",
         "cb8bf25b-fafe-449a-aee7-d457929c47b7"
       ],
+      "Timeline": [],
       "Field": "Waves & Optics",
       "Celestial Objects": [],
       "Theories": [
@@ -490870,6 +491746,7 @@
       "Minerals": [
         "b94ff1da-eaef-4193-b75c-e97af338ac25"
       ],
+      "Timeline": [],
       "Field": "Waves & Optics",
       "Celestial Objects": [],
       "Theories": [
@@ -490905,6 +491782,9 @@
       "lastEdited": "2026-08-15T16:49:00.000Z",
       "Equation": "S = (c⁴/16πG)·∫R·√(−g)·d⁴x",
       "Minerals": [],
+      "Timeline": [
+        "3bde5275-7b5c-810a-85aa-f3479a371f25"
+      ],
       "Field": "General Relativity",
       "Celestial Objects": [],
       "Theories": [
@@ -490934,6 +491814,7 @@
       "lastEdited": "2026-08-15T17:47:00.000Z",
       "Equation": "d²x^μ/dτ² + Γ^μ_αβ·(dx^α/dτ)(dx^β/dτ) = 0",
       "Minerals": [],
+      "Timeline": [],
       "Field": "General Relativity",
       "Celestial Objects": [],
       "Theories": [
@@ -490963,6 +491844,7 @@
       "lastEdited": "2026-08-15T16:49:00.000Z",
       "Equation": "Δτ = Δt·√(1 − 2GM/(rc²))",
       "Minerals": [],
+      "Timeline": [],
       "Field": "General Relativity",
       "Celestial Objects": [
         "59917836-94bf-4298-b2c1-62293f9f146c"
@@ -490995,6 +491877,7 @@
       "lastEdited": "2026-08-15T16:49:00.000Z",
       "Equation": "⟨x_f|x_i⟩ = ∫Dx·e^(iS[x]/ℏ)",
       "Minerals": [],
+      "Timeline": [],
       "Field": "Quantum Field Theory",
       "Celestial Objects": [],
       "Theories": [
@@ -491025,6 +491908,7 @@
       "lastEdited": "2026-08-15T16:33:00.000Z",
       "Equation": "(□ + (mc/ℏ)²)φ = 0",
       "Minerals": [],
+      "Timeline": [],
       "Field": "Quantum Field Theory",
       "Celestial Objects": [],
       "Theories": [
@@ -491058,6 +491942,9 @@
       "Equation": "α = e²/(4πε₀ℏc) ≈ 1/137",
       "Minerals": [
         "2b803f12-6fb7-46f5-b9ce-144ab46d618f"
+      ],
+      "Timeline": [
+        "3bde5275-7b5c-811f-93a0-c73de104a932"
       ],
       "Field": "Quantum Field Theory",
       "Celestial Objects": [],
@@ -491100,6 +491987,7 @@
       "lastEdited": "2026-08-15T16:33:00.000Z",
       "Equation": "Σ I = 0 at a node · Σ V = 0 around a loop",
       "Minerals": [],
+      "Timeline": [],
       "Field": "Circuits",
       "Celestial Objects": [],
       "Theories": [],
@@ -491123,6 +492011,7 @@
       "lastEdited": "2026-08-15T16:38:00.000Z",
       "Equation": "P = I²·R",
       "Minerals": [],
+      "Timeline": [],
       "Field": "Circuits",
       "Celestial Objects": [],
       "Theories": [],
@@ -491154,6 +492043,7 @@
         "3bde5275-7b5c-81cb-b0e3-f84bd48a4267",
         "3bde5275-7b5c-81d1-9c19-c83ad31d6215"
       ],
+      "Timeline": [],
       "Field": "Circuits",
       "Celestial Objects": [],
       "Theories": [],
@@ -491180,6 +492070,7 @@
       "lastEdited": "2026-08-15T16:33:00.000Z",
       "Equation": "C = B·log₂(1 + S/N)",
       "Minerals": [],
+      "Timeline": [],
       "Field": "Information Theory",
       "Celestial Objects": [],
       "Theories": [
@@ -491206,6 +492097,9 @@
       "lastEdited": "2026-08-15T16:33:00.000Z",
       "Equation": "H = −Σᵢ pᵢ·log₂ pᵢ",
       "Minerals": [],
+      "Timeline": [
+        "3bde5275-7b5c-810f-b07e-d446eba2268f"
+      ],
       "Field": "Information Theory",
       "Celestial Objects": [],
       "Theories": [
@@ -491236,6 +492130,7 @@
       "lastEdited": "2026-08-15T16:38:00.000Z",
       "Equation": "k = (k_B·T/h)·e^(−ΔG‡/RT)",
       "Minerals": [],
+      "Timeline": [],
       "Field": "Chemical Kinetics",
       "Celestial Objects": [],
       "Theories": [],
@@ -491270,6 +492165,7 @@
         "b94ff1da-eaef-4193-b75c-e97af338ac25",
         "bc1ec6b6-fbb1-4266-aa31-3538e1672a5a"
       ],
+      "Timeline": [],
       "Field": "Chemical Kinetics",
       "Celestial Objects": [],
       "Theories": [
@@ -491306,6 +492202,7 @@
         "86f82f42-7be7-4c05-ac52-2aba030726fa",
         "b94ff1da-eaef-4193-b75c-e97af338ac25"
       ],
+      "Timeline": [],
       "Field": "Chemical Kinetics",
       "Celestial Objects": [],
       "Theories": [
@@ -491340,6 +492237,7 @@
         "8839cf99-0f29-420c-aeea-e8d4ae225688",
         "b94ff1da-eaef-4193-b75c-e97af338ac25"
       ],
+      "Timeline": [],
       "Field": "Materials Science",
       "Celestial Objects": [],
       "Theories": [],
@@ -491371,6 +492269,7 @@
         "8839cf99-0f29-420c-aeea-e8d4ae225688",
         "b02037f7-9278-4390-bd3f-abffe17da50b"
       ],
+      "Timeline": [],
       "Field": "Materials Science",
       "Celestial Objects": [],
       "Theories": [],
@@ -491404,6 +492303,7 @@
         "3bde5275-7b5c-818c-b707-d9aa0cae67cb",
         "8839cf99-0f29-420c-aeea-e8d4ae225688"
       ],
+      "Timeline": [],
       "Field": "Materials Science",
       "Celestial Objects": [],
       "Theories": [],
@@ -491437,6 +492337,7 @@
         "bc2bfdde-ff74-4929-924d-e50e0a41cf42",
         "e847fc6b-cdf0-4a2d-af2c-6e6d34ecc21c"
       ],
+      "Timeline": [],
       "Field": "Geophysics",
       "Celestial Objects": [],
       "Theories": [
@@ -491471,6 +492372,7 @@
         "bc2bfdde-ff74-4929-924d-e50e0a41cf42",
         "e847fc6b-cdf0-4a2d-af2c-6e6d34ecc21c"
       ],
+      "Timeline": [],
       "Field": "Geophysics",
       "Celestial Objects": [],
       "Theories": [
@@ -491504,6 +492406,7 @@
         "8839cf99-0f29-420c-aeea-e8d4ae225688",
         "98cf88f8-4e72-4364-9061-cbe22e7ec03d"
       ],
+      "Timeline": [],
       "Field": "Statistical Mechanics",
       "Celestial Objects": [],
       "Theories": [
@@ -491533,6 +492436,11 @@
       "lastEdited": "2026-08-15T18:00:00.000Z",
       "Equation": "Pᵢ = e^(−Eᵢ/kT) / Z",
       "Minerals": [],
+      "Timeline": [
+        "3bde5275-7b5c-8178-aa21-c31f41f3cecd",
+        "3bde5275-7b5c-81d4-b2cd-fdcc3add3657",
+        "3bde5275-7b5c-816a-8519-ca7fd6cd0f4c"
+      ],
       "Field": "Statistical Mechanics",
       "Celestial Objects": [],
       "Theories": [
@@ -491570,6 +492478,7 @@
       "lastEdited": "2026-08-15T16:38:00.000Z",
       "Equation": "⟨E⟩ = ½kT per degree of freedom",
       "Minerals": [],
+      "Timeline": [],
       "Field": "Statistical Mechanics",
       "Celestial Objects": [],
       "Theories": [
@@ -491604,6 +492513,15 @@
       "lastEdited": "2026-08-15T16:49:00.000Z",
       "Equation": "ℒ = −¼F_μν·F^μν + iψ̄D̸ψ + ψ̄ᵢyᵢⱼψⱼφ + h.c. + |D_μφ|² − V(φ)",
       "Minerals": [],
+      "Timeline": [
+        "3bde5275-7b5c-811f-93a0-c73de104a932",
+        "3bde5275-7b5c-8125-95a3-eed7e074a458",
+        "3bde5275-7b5c-814e-a671-fe7dc1be5fe1",
+        "3bde5275-7b5c-81a9-b4ba-cf86d12e1d5b",
+        "3bde5275-7b5c-817b-a494-db994bf078d8",
+        "3bde5275-7b5c-811a-a3e4-f872b73ea57f",
+        "3bde5275-7b5c-815d-bc48-e61cf4496428"
+      ],
       "Field": "Particle Physics",
       "Celestial Objects": [],
       "Theories": [
@@ -491643,6 +492561,9 @@
       "lastEdited": "2026-08-15T16:49:00.000Z",
       "Equation": "V(φ) = −μ²|φ|² + λ|φ|⁴",
       "Minerals": [],
+      "Timeline": [
+        "3bde5275-7b5c-814e-a671-fe7dc1be5fe1"
+      ],
       "Field": "Particle Physics",
       "Celestial Objects": [],
       "Theories": [
@@ -491672,6 +492593,7 @@
       "lastEdited": "2026-08-15T16:49:00.000Z",
       "Equation": "(iγ^μ·∂_μ − m)ψ = 0",
       "Minerals": [],
+      "Timeline": [],
       "Field": "Particle Physics",
       "Celestial Objects": [],
       "Theories": [
@@ -491706,6 +492628,13 @@
       "Minerals": [
         "01394b2c-de54-47e2-acee-dec04f843bbd",
         "e847fc6b-cdf0-4a2d-af2c-6e6d34ecc21c"
+      ],
+      "Timeline": [
+        "3bde5275-7b5c-8161-b7ce-ed3e2f953c38",
+        "3bde5275-7b5c-8127-933f-d6a9736b3eaf",
+        "3bde5275-7b5c-81e0-a7b8-e95fd31e8fac",
+        "3bde5275-7b5c-8193-843b-c95fe5547acb",
+        "3bde5275-7b5c-81f4-9243-eb103d8b0511"
       ],
       "Field": "Astrophysics",
       "Celestial Objects": [
@@ -491756,6 +492685,10 @@
       "lastEdited": "2026-08-15T16:49:00.000Z",
       "Equation": "r_s = 2GM/c²",
       "Minerals": [],
+      "Timeline": [
+        "3bde5275-7b5c-8194-968f-e63d78f78726",
+        "3bde5275-7b5c-810f-b07e-d446eba2268f"
+      ],
       "Field": "Astrophysics",
       "Celestial Objects": [
         "59917836-94bf-4298-b2c1-62293f9f146c"
@@ -491799,6 +492732,13 @@
       "Equation": "L = 4πR²σT⁴",
       "Minerals": [
         "e847fc6b-cdf0-4a2d-af2c-6e6d34ecc21c"
+      ],
+      "Timeline": [
+        "3bde5275-7b5c-8161-b7ce-ed3e2f953c38",
+        "3bde5275-7b5c-8127-933f-d6a9736b3eaf",
+        "3bde5275-7b5c-8193-843b-c95fe5547acb",
+        "3bde5275-7b5c-81f4-9243-eb103d8b0511",
+        "3bde5275-7b5c-8194-968f-e63d78f78726"
       ],
       "Field": "Astrophysics",
       "Celestial Objects": [
@@ -491849,6 +492789,9 @@
         "4e75adb9-c7bc-47dc-82cb-a542c33bab97",
         "e8947ade-85c2-4e77-90a3-885d3d985231"
       ],
+      "Timeline": [
+        "3bde5275-7b5c-815d-bc48-e61cf4496428"
+      ],
       "Field": "Nuclear Physics",
       "Celestial Objects": [],
       "Theories": [
@@ -491887,6 +492830,10 @@
         "d9a47688-285e-41d4-963e-e48e71698629",
         "e8947ade-85c2-4e77-90a3-885d3d985231"
       ],
+      "Timeline": [
+        "3bde5275-7b5c-81d4-b2cd-fdcc3add3657",
+        "3bde5275-7b5c-815d-bc48-e61cf4496428"
+      ],
       "Field": "Nuclear Physics",
       "Celestial Objects": [],
       "Theories": [
@@ -491923,6 +492870,7 @@
       "lastEdited": "2026-08-15T17:47:00.000Z",
       "Equation": "f′ = f·(c + vₒ)/(c − vₛ)",
       "Minerals": [],
+      "Timeline": [],
       "Field": "Acoustics",
       "Celestial Objects": [
         "59917836-94bf-4298-b2c1-62293f9f146c"
@@ -491957,6 +492905,7 @@
       "lastEdited": "2026-08-15T16:38:00.000Z",
       "Equation": "c = √(γp/ρ)",
       "Minerals": [],
+      "Timeline": [],
       "Field": "Acoustics",
       "Celestial Objects": [],
       "Theories": [],
@@ -491984,6 +492933,7 @@
       "lastEdited": "2026-08-15T16:33:00.000Z",
       "Equation": "∂²u/∂t² = c²·∇²u",
       "Minerals": [],
+      "Timeline": [],
       "Field": "Acoustics",
       "Celestial Objects": [],
       "Theories": [
@@ -492016,6 +492966,7 @@
       "lastEdited": "2026-08-15T18:00:00.000Z",
       "Equation": "ρ(∂v/∂t + v·∇v) = −∇p + μ∇²v + f",
       "Minerals": [],
+      "Timeline": [],
       "Field": "Fluid Dynamics",
       "Celestial Objects": [],
       "Theories": [],
@@ -492043,6 +492994,7 @@
       "lastEdited": "2026-08-15T18:00:00.000Z",
       "Equation": "∂ρ/∂t + ∇·(ρv) = 0",
       "Minerals": [],
+      "Timeline": [],
       "Field": "Fluid Dynamics",
       "Celestial Objects": [],
       "Theories": [],
@@ -492070,6 +493022,7 @@
       "lastEdited": "2026-08-15T16:33:00.000Z",
       "Equation": "p + ½ρv² + ρgh = constant",
       "Minerals": [],
+      "Timeline": [],
       "Field": "Fluid Dynamics",
       "Celestial Objects": [],
       "Theories": [],
@@ -492099,6 +493052,7 @@
         "8839cf99-0f29-420c-aeea-e8d4ae225688",
         "b94ff1da-eaef-4193-b75c-e97af338ac25"
       ],
+      "Timeline": [],
       "Field": "Waves & Optics",
       "Celestial Objects": [],
       "Theories": [
@@ -492130,6 +493084,12 @@
       "lastEdited": "2026-08-15T18:00:00.000Z",
       "Equation": "v = H₀·d",
       "Minerals": [],
+      "Timeline": [
+        "3bde5275-7b5c-812d-a3ec-d0ec40005c6a",
+        "3bde5275-7b5c-8132-859d-da190284c1a9",
+        "3bde5275-7b5c-81f9-8ef6-f13ac29dc596",
+        "3bde5275-7b5c-8159-ada0-cc5af14d257d"
+      ],
       "Field": "Cosmology",
       "Celestial Objects": [
         "59917836-94bf-4298-b2c1-62293f9f146c"
@@ -492178,6 +493138,7 @@
       "lastEdited": "2026-08-15T17:47:00.000Z",
       "Equation": "a² + b² = c²",
       "Minerals": [],
+      "Timeline": [],
       "Field": "Mathematics",
       "Celestial Objects": [],
       "Theories": [],
@@ -492202,6 +493163,7 @@
       "lastEdited": "2026-08-15T16:33:00.000Z",
       "Equation": "γ = 1/√(1 − v²/c²)",
       "Minerals": [],
+      "Timeline": [],
       "Field": "Special Relativity",
       "Celestial Objects": [],
       "Theories": [
@@ -492229,6 +493191,7 @@
       "lastEdited": "2026-08-15T16:33:00.000Z",
       "Equation": "x′ = γ(x − vt) · t′ = γ(t − vx/c²)",
       "Minerals": [],
+      "Timeline": [],
       "Field": "Special Relativity",
       "Celestial Objects": [],
       "Theories": [
@@ -492259,6 +493222,9 @@
       "Minerals": [
         "2b803f12-6fb7-46f5-b9ce-144ab46d618f"
       ],
+      "Timeline": [
+        "3bde5275-7b5c-81ea-a1d8-efb79b33a2e3"
+      ],
       "Field": "Thermodynamics",
       "Celestial Objects": [],
       "Theories": [],
@@ -492287,6 +493253,9 @@
         "0fae7d07-0940-49f9-a78a-bb5638089257",
         "b403d0c7-763e-4bc1-8803-8f90b3007a98"
       ],
+      "Timeline": [
+        "3bde5275-7b5c-81ea-a1d8-efb79b33a2e3"
+      ],
       "Field": "Thermodynamics",
       "Celestial Objects": [],
       "Theories": [
@@ -492314,6 +493283,7 @@
       "lastEdited": "2026-08-15T17:50:00.000Z",
       "Equation": "ΔU = Q − W",
       "Minerals": [],
+      "Timeline": [],
       "Field": "Thermodynamics",
       "Celestial Objects": [],
       "Theories": [
@@ -492341,6 +493311,7 @@
       "lastEdited": "2026-08-15T16:34:00.000Z",
       "Equation": "T₁ = T₃ and T₂ = T₃ ⟹ T₁ = T₂",
       "Minerals": [],
+      "Timeline": [],
       "Field": "Thermodynamics",
       "Celestial Objects": [],
       "Theories": [],
@@ -492364,6 +493335,9 @@
       "lastEdited": "2026-08-15T16:49:00.000Z",
       "Equation": "Δx·Δp ≥ ℏ/2",
       "Minerals": [],
+      "Timeline": [
+        "3bde5275-7b5c-810a-85aa-f3479a371f25"
+      ],
       "Field": "Quantum",
       "Celestial Objects": [],
       "Theories": [
@@ -492395,6 +493369,7 @@
       "lastEdited": "2026-08-15T16:37:00.000Z",
       "Equation": "λ = h/p",
       "Minerals": [],
+      "Timeline": [],
       "Field": "Quantum",
       "Celestial Objects": [],
       "Theories": [
@@ -492428,6 +493403,7 @@
       "lastEdited": "2026-08-15T16:49:00.000Z",
       "Equation": "∇×B = μ₀J + μ₀ε₀·∂E/∂t",
       "Minerals": [],
+      "Timeline": [],
       "Field": "Electromagnetism",
       "Celestial Objects": [],
       "Theories": [
@@ -492459,6 +493435,7 @@
       "Minerals": [
         "f7a692b1-6efd-4006-99ae-d5fbc05fd3c3"
       ],
+      "Timeline": [],
       "Field": "Electromagnetism",
       "Celestial Objects": [],
       "Theories": [
@@ -492486,6 +493463,7 @@
       "Minerals": [
         "f7a692b1-6efd-4006-99ae-d5fbc05fd3c3"
       ],
+      "Timeline": [],
       "Field": "Electromagnetism",
       "Celestial Objects": [],
       "Theories": [
@@ -492511,6 +493489,9 @@
       "Equation": "T² = 4π²a³ / GM",
       "Minerals": [
         "e847fc6b-cdf0-4a2d-af2c-6e6d34ecc21c"
+      ],
+      "Timeline": [
+        "3bde5275-7b5c-81e0-a7b8-e95fd31e8fac"
       ],
       "Field": "Celestial Mechanics",
       "Celestial Objects": [
@@ -492546,6 +493527,7 @@
       "lastEdited": "2026-08-15T16:33:00.000Z",
       "Equation": "dA/dt = L/2m = constant",
       "Minerals": [],
+      "Timeline": [],
       "Field": "Celestial Mechanics",
       "Celestial Objects": [],
       "Theories": [
@@ -492570,6 +493552,7 @@
       "lastEdited": "2026-08-15T16:49:00.000Z",
       "Equation": "r = p / (1 + e·cos θ)",
       "Minerals": [],
+      "Timeline": [],
       "Field": "Celestial Mechanics",
       "Celestial Objects": [],
       "Theories": [
@@ -492599,6 +493582,7 @@
       "Minerals": [
         "b02037f7-9278-4390-bd3f-abffe17da50b"
       ],
+      "Timeline": [],
       "Field": "Chemistry",
       "Celestial Objects": [],
       "Theories": [
@@ -492631,6 +493615,7 @@
       "Minerals": [
         "7c311528-4b4f-4f96-9084-6194ade42fda"
       ],
+      "Timeline": [],
       "Field": "Chemistry",
       "Celestial Objects": [],
       "Theories": [
@@ -492659,6 +493644,7 @@
       "lastEdited": "2026-08-15T16:38:00.000Z",
       "Equation": "p = p₁ + p₂ + ⋯",
       "Minerals": [],
+      "Timeline": [],
       "Field": "Chemistry",
       "Celestial Objects": [],
       "Theories": [
@@ -492689,6 +493675,7 @@
       "Minerals": [
         "7d5e0b23-7241-46bb-927b-0a6e710b8b89"
       ],
+      "Timeline": [],
       "Field": "Chemistry",
       "Celestial Objects": [],
       "Theories": [
@@ -492720,6 +493707,7 @@
       "lastEdited": "2026-08-15T16:38:00.000Z",
       "Equation": "p₁/T₁ = p₂/T₂",
       "Minerals": [],
+      "Timeline": [],
       "Field": "Chemistry",
       "Celestial Objects": [],
       "Theories": [
@@ -492747,6 +493735,7 @@
       "lastEdited": "2026-08-15T16:38:00.000Z",
       "Equation": "V₁/T₁ = V₂/T₂",
       "Minerals": [],
+      "Timeline": [],
       "Field": "Chemistry",
       "Celestial Objects": [],
       "Theories": [
@@ -492778,6 +493767,7 @@
         "7459ae5f-5dfb-4a97-9a0a-3232259b0cd2",
         "d11ba5e4-7571-4e31-92ad-09fcfda43c72"
       ],
+      "Timeline": [],
       "Field": "Chemistry",
       "Celestial Objects": [],
       "Theories": [
@@ -492805,6 +493795,10 @@
       "lastEdited": "2026-08-15T17:50:00.000Z",
       "Equation": "ä/a = −4πG(ρ + 3p/c²)/3 + Λc²/3",
       "Minerals": [],
+      "Timeline": [
+        "3bde5275-7b5c-8132-859d-da190284c1a9",
+        "3bde5275-7b5c-8159-ada0-cc5af14d257d"
+      ],
       "Field": "Cosmology",
       "Celestial Objects": [],
       "Theories": [
@@ -492843,6 +493837,12 @@
       "lastEdited": "2026-08-15T18:00:00.000Z",
       "Equation": "(ȧ/a)² = 8πGρ/3 − kc²/a² + Λc²/3",
       "Minerals": [],
+      "Timeline": [
+        "3bde5275-7b5c-8194-b6c0-fcf0d1a866ca",
+        "3bde5275-7b5c-81d4-b2cd-fdcc3add3657",
+        "3bde5275-7b5c-813c-b30b-e1bcbd63c5cf",
+        "3bde5275-7b5c-81f9-8ef6-f13ac29dc596"
+      ],
       "Field": "Cosmology",
       "Celestial Objects": [],
       "Theories": [
@@ -492887,6 +493887,7 @@
       "lastEdited": "2026-08-15T16:33:00.000Z",
       "Equation": "e^(iπ) + 1 = 0",
       "Minerals": [],
+      "Timeline": [],
       "Field": "Mathematics",
       "Celestial Objects": [],
       "Theories": [],
@@ -492913,6 +493914,7 @@
       "lastEdited": "2026-08-15T16:33:00.000Z",
       "Equation": "∇·E = ρ/ε₀",
       "Minerals": [],
+      "Timeline": [],
       "Field": "Electromagnetism",
       "Celestial Objects": [],
       "Theories": [
@@ -492941,6 +493943,9 @@
       "lastEdited": "2026-08-15T16:49:00.000Z",
       "Equation": "E = hν",
       "Minerals": [],
+      "Timeline": [
+        "3bde5275-7b5c-8102-90f1-d13c66d29fa9"
+      ],
       "Field": "Quantum",
       "Celestial Objects": [],
       "Theories": [
@@ -492983,6 +493988,11 @@
         "1ab0a94a-845d-44a5-a150-aa574cd05daf",
         "38c783c4-3758-4f4c-98f8-c0f797a8eb1e"
       ],
+      "Timeline": [
+        "3bde5275-7b5c-8194-968f-e63d78f78726",
+        "3bde5275-7b5c-810f-b07e-d446eba2268f",
+        "3bde5275-7b5c-81ea-a1d8-efb79b33a2e3"
+      ],
       "Field": "Thermodynamics",
       "Celestial Objects": [],
       "Theories": [
@@ -493018,6 +494028,7 @@
       "Minerals": [
         "28cd490f-391d-4432-8d09-631de49cabf5"
       ],
+      "Timeline": [],
       "Field": "Thermodynamics",
       "Celestial Objects": [],
       "Theories": [
@@ -493061,6 +494072,9 @@
       "lastEdited": "2026-08-15T17:47:00.000Z",
       "Equation": "G_μν + Λg_μν = (8πG/c⁴)·T_μν",
       "Minerals": [],
+      "Timeline": [
+        "3bde5275-7b5c-810a-85aa-f3479a371f25"
+      ],
       "Field": "General Relativity",
       "Celestial Objects": [],
       "Theories": [
@@ -493102,6 +494116,7 @@
         "2b803f12-6fb7-46f5-b9ce-144ab46d618f",
         "5fad54f8-5835-4e1a-aecd-532b00d2c04c"
       ],
+      "Timeline": [],
       "Field": "Quantum",
       "Celestial Objects": [],
       "Theories": [
@@ -493140,6 +494155,12 @@
       "lastEdited": "2026-08-15T18:00:00.000Z",
       "Equation": "F = G·m₁m₂ / r²",
       "Minerals": [],
+      "Timeline": [
+        "3bde5275-7b5c-81dd-8bf4-c41148b14015",
+        "3bde5275-7b5c-812d-a3ec-d0ec40005c6a",
+        "3bde5275-7b5c-81e0-a7b8-e95fd31e8fac",
+        "3bde5275-7b5c-8130-9d53-ca576cc193ae"
+      ],
       "Field": "Mechanics",
       "Celestial Objects": [
         "59917836-94bf-4298-b2c1-62293f9f146c"
@@ -493176,6 +494197,7 @@
       "lastEdited": "2026-08-15T16:34:00.000Z",
       "Equation": "F = ma",
       "Minerals": [],
+      "Timeline": [],
       "Field": "Mechanics",
       "Celestial Objects": [],
       "Theories": [
@@ -493206,6 +494228,11 @@
       "lastEdited": "2026-08-15T16:49:00.000Z",
       "Equation": "E = mc²",
       "Minerals": [],
+      "Timeline": [
+        "3bde5275-7b5c-8125-95a3-eed7e074a458",
+        "3bde5275-7b5c-81a9-b4ba-cf86d12e1d5b",
+        "3bde5275-7b5c-8102-90f1-d13c66d29fa9"
+      ],
       "Field": "Special Relativity",
       "Celestial Objects": [
         "59917836-94bf-4298-b2c1-62293f9f146c"
