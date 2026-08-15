@@ -461978,6 +461978,42 @@
   ],
   "equations": [
     {
+      "id": "3bde5275-7b5c-8114-ad1b-ec55a8511049",
+      "url": "https://app.notion.com/p/Van-t-Hoff-Equation-3bde52757b5c8114ad1bec55a8511049",
+      "lastEdited": "2026-08-15T16:24:00.000Z",
+      "Equation": "d(ln K)/dT = ΔH° / (RT²)",
+      "Field": "Chemical Thermodynamics",
+      "Named After": "Jacobus van 't Hoff",
+      "Symbols": "K equilibrium constant · T absolute temperature · ΔH° standard enthalpy of reaction · R gas constant · heat-releasing reactions (ΔH° < 0) lose ground as T rises",
+      "Significance": "Heat a reaction that gives off heat and equilibrium retreats; heat one that absorbs heat and it advances — Le Chatelier's principle made quantitative. It's why the Haber process runs hot for speed but not too hot for yield, feeding half the world's nitrogen. First chemistry Nobel, 1901.",
+      "Year": 1884,
+      "Name": "Van 't Hoff Equation"
+    },
+    {
+      "id": "3bde5275-7b5c-81f9-ae2a-db2af4f7a127",
+      "url": "https://app.notion.com/p/Reaction-Isotherm-3bde52757b5c81f9ae2adb2af4f7a127",
+      "lastEdited": "2026-08-15T16:24:00.000Z",
+      "Equation": "ΔG° = −RT·ln K",
+      "Field": "Chemical Thermodynamics",
+      "Named After": "Jacobus van 't Hoff",
+      "Symbols": "ΔG° standard free-energy change · R gas constant · T absolute temperature · K the equilibrium constant: products over reactants when the reaction has run its course",
+      "Significance": "How far a reaction goes, from how much energy it releases — thermodynamics and equilibrium welded into one line. A modest ΔG° of −40 kJ/mol already means K of ten million; the logarithm is why reactions tend to go nearly to completion or barely at all.",
+      "Year": 1884,
+      "Name": "Reaction Isotherm"
+    },
+    {
+      "id": "3bde5275-7b5c-8166-90de-d0f25022b160",
+      "url": "https://app.notion.com/p/Gibbs-Free-Energy-3bde52757b5c816690ded0f25022b160",
+      "lastEdited": "2026-08-15T16:24:00.000Z",
+      "Equation": "ΔG = ΔH − T·ΔS",
+      "Field": "Chemical Thermodynamics",
+      "Named After": "Josiah Willard Gibbs",
+      "Symbols": "ΔG change in free energy — negative means the process can run on its own · ΔH enthalpy change, heat released or absorbed · T absolute temperature · ΔS entropy change",
+      "Significance": "Will it happen? One number answers: a reaction proceeds spontaneously only if it lowers G, trading released heat against created disorder, with temperature setting the exchange rate. Why ice melts above 0 °C but not below, why ATP powers cells, and the quantity every chemist checks first — from a Yale professor so unassuming he was paid nothing for a decade.",
+      "Year": 1876,
+      "Name": "Gibbs Free Energy"
+    },
+    {
       "id": "3bde5275-7b5c-8170-823e-d1ba85205e8b",
       "url": "https://app.notion.com/p/Hohmann-Transfer-3bde52757b5c8170823ed1ba85205e8b",
       "lastEdited": "2026-08-15T16:22:00.000Z",
