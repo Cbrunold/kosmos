@@ -43,6 +43,7 @@
     --c-gold: #b07d12;
     --c-ember: #c8461a;
     --c-terracotta: #a8502f;
+    --c-silver: #6b7884;
     --heat: #2a78d6;
   }
   @media (prefers-color-scheme: dark) {
@@ -112,6 +113,7 @@
     --c-gold: #d9a441;
     --c-ember: #e8683a;
     --c-terracotta: #d1795a;
+    --c-silver: #a4b0bc;
     --heat: #5598e7;
   }
 

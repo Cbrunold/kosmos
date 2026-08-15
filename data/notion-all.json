@@ -461978,6 +461978,42 @@
   ],
   "equations": [
     {
+      "id": "3bde5275-7b5c-8170-823e-d1ba85205e8b",
+      "url": "https://app.notion.com/p/Hohmann-Transfer-3bde52757b5c8170823ed1ba85205e8b",
+      "lastEdited": "2026-08-15T16:22:00.000Z",
+      "Equation": "Δv₁ = √(μ/r₁)·(√(2r₂/(r₁+r₂)) − 1)",
+      "Field": "Rocketry",
+      "Named After": "Walter Hohmann",
+      "Symbols": "Δv₁ the first burn (a second, at arrival, circularizes) · μ = GM of the central body · r₁ starting orbit radius · r₂ destination orbit radius · the transfer is a half-ellipse touching both",
+      "Significance": "The cheapest way between two circular orbits: two burns joined by half an ellipse. Worked out by a German city architect as a hobby, decades before any rocket could try it; it still sets launch windows to Mars (every 26 months) and lifts satellites to geostationary orbit.",
+      "Year": 1925,
+      "Name": "Hohmann Transfer"
+    },
+    {
+      "id": "3bde5275-7b5c-81b5-b5ba-ef8abb9338cb",
+      "url": "https://app.notion.com/p/Specific-Impulse-3bde52757b5c81b5b5baef8abb9338cb",
+      "lastEdited": "2026-08-15T16:22:00.000Z",
+      "Equation": "I_sp = v_e / g₀ = F / (ṁ·g₀)",
+      "Field": "Rocketry",
+      "Named After": "Robert Goddard · Hermann Oberth",
+      "Symbols": "I_sp engine efficiency in seconds · v_e exhaust velocity · g₀ standard gravity (9.81 m/s²) · F thrust · ṁ propellant mass flow rate",
+      "Significance": "How many seconds one kilogram of propellant can produce one kilogram-force of thrust — the miles-per-gallon of rocket engines. Solid boosters ~250 s, kerosene ~300, hydrogen ~450, ion drives thousands (but a whisper of thrust). Every mission trade-off begins by reading this number off the engine's data sheet.",
+      "Year": 1920,
+      "Name": "Specific Impulse"
+    },
+    {
+      "id": "3bde5275-7b5c-81e1-aac4-cc21b9d77b07",
+      "url": "https://app.notion.com/p/Tsiolkovsky-Rocket-Equation-3bde52757b5c81e1aac4cc21b9d77b07",
+      "lastEdited": "2026-08-15T16:22:00.000Z",
+      "Equation": "Δv = v_e·ln(m₀/m_f)",
+      "Field": "Rocketry",
+      "Named After": "Konstantin Tsiolkovsky",
+      "Symbols": "Δv the change in velocity the burn can deliver · v_e exhaust velocity · m₀ mass at ignition, propellant included · m_f dry mass at burnout · the ratio inside the log is the whole game",
+      "Significance": "A rocket must carry the fuel to push its fuel — so payload shrinks exponentially with the speed you want. Derived by a deaf, self-taught schoolteacher in provincial Russia the year the Wright brothers flew; it is why rockets are staged, why they are 90% propellant on the pad, and why orbit is hard and Mars is harder.",
+      "Year": 1903,
+      "Name": "Tsiolkovsky Rocket Equation"
+    },
+    {
       "id": "3bde5275-7b5c-810f-bed8-fee488db4170",
       "url": "https://app.notion.com/p/Heat-Equation-3bde52757b5c810fbed8fee488db4170",
       "lastEdited": "2026-08-15T16:20:00.000Z",
