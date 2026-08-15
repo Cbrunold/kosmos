@@ -29,11 +29,32 @@ __SHARED__
   .eq .sym { font: 11px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; color: var(--muted); line-height: 1.55; }
   .eq .sig { font-size: 12.5px; color: var(--ink-2); line-height: 1.55; margin: 0; flex: 1; }
   .eq .meta { font: 11px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .eq .rel { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px; margin-top: 2px; }
+  .eq .rel .lbl { font: 9.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-right: 3px; }
+  .rlink {
+    font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    border: 1px solid var(--hairline);
+    border-left: 3px solid var(--rc, var(--hairline));
+    color: var(--ink-2);
+    background: transparent;
+    border-radius: 4px;
+    padding: 2px 7px 2px 6px;
+    cursor: pointer;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .rlink:hover { color: var(--ink); border-color: var(--ink-2); border-left-color: var(--rc, var(--ink-2)); }
+  .eq.flash { outline: 2px solid var(--fc, var(--ring)); outline-offset: 3px; }
+  @media (prefers-reduced-motion: no-preference) {
+    .eq.flash { animation: eqflash 1.6s ease-out; }
+    @keyframes eqflash { 0% { outline-color: var(--fc, var(--ring)); } 100% { outline-color: transparent; } }
+  }
+  .eq:target { scroll-margin-top: 16px; }
 </style>
 
 <nav class="knav"><a href="/">KOSMOS</a><span>/</span><span class="cur">Equations</span></nav>
 <h1 class="ktitle">Equations</h1>
-<p class="klede">The physical world, stated exactly. Each entry gives the statement, what every symbol means, and why it matters — from Newton's mechanics to the curvature of spacetime.</p>
+<p class="klede">The physical world, stated exactly. Each entry gives the statement, what every symbol means, why it matters — and which other equations it leans on. Follow the <em>related</em> links: the shelf is a web.</p>
 
 <div class="fields" id="fields"></div>
 <div class="eqs" id="eqs"></div>
@@ -64,6 +85,10 @@ __SHARED__
     'Chemical Thermodynamics': 'var(--c-moss)', 'Atomic Physics': 'var(--c-lavender)',
   };
   E.sort((a, b) => (a.Year ?? 9999) - (b.Year ?? 9999));
+  const slug = (s) => (s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '')
+    .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+  const byId = Object.fromEntries(E.map((e) => [e.id, e]));
+  for (const e of E) e.slug = slug(e.Name);
 
   let active = null;
   const fieldsBox = document.getElementById('fields');
@@ -93,6 +118,7 @@ __SHARED__
       if (active && e.Field !== active) continue;
       const c = document.createElement('article');
       c.className = 'kcard eq';
+      c.id = e.slug;
       c.style.setProperty('--fc', COLORS[e.Field] || 'var(--muted)');
       const h = document.createElement('h2');
       const nm = document.createElement('span'); nm.textContent = e.Name || 'Untitled';
@@ -106,8 +132,42 @@ __SHARED__
       if (e['Named After']) bits.push(e['Named After']);
       if (e.Year) bits.push(e.Year < 0 ? `c. ${-e.Year} BCE` : String(e.Year));
       if (bits.length) { const m = document.createElement('div'); m.className = 'meta'; m.textContent = bits.join(' · '); c.appendChild(m); }
+      const rel = (e.Related || []).map((id) => byId[id]).filter(Boolean)
+        .sort((a, b) => (a.Year ?? 9999) - (b.Year ?? 9999));
+      if (rel.length) {
+        const row = document.createElement('div');
+        row.className = 'rel';
+        const lbl = document.createElement('span'); lbl.className = 'lbl'; lbl.textContent = 'related';
+        row.appendChild(lbl);
+        for (const r of rel) {
+          const a = document.createElement('a');
+          a.className = 'rlink';
+          a.href = '#' + r.slug;
+          a.textContent = r.Name;
+          a.title = `${r.Field}${r.Year ? ' · ' + (r.Year < 0 ? 'c. ' + (-r.Year) + ' BCE' : r.Year) : ''}`;
+          a.style.setProperty('--rc', COLORS[r.Field] || 'var(--muted)');
+          a.addEventListener('click', (ev) => { ev.preventDefault(); goTo(r.slug); });
+          row.appendChild(a);
+        }
+        c.appendChild(row);
+      }
       eqs.appendChild(c);
     }
   }
   render();
+
+  // navigate to a card: clear any field filter hiding it, scroll, flash, update the hash
+  function goTo(id) {
+    if (active) { active = null; sync(); }
+    const el = document.getElementById(id);
+    if (!el) return;
+    history.replaceState(null, '', '#' + id);
+    el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    el.classList.remove('flash');
+    void el.offsetWidth;
+    el.classList.add('flash');
+    setTimeout(() => el.classList.remove('flash'), 1700);
+  }
+  if (location.hash.length > 1) setTimeout(() => goTo(location.hash.slice(1)), 50);
+  addEventListener('hashchange', () => { if (location.hash.length > 1) goTo(location.hash.slice(1)); });
 </script>

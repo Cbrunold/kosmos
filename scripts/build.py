@@ -225,6 +225,8 @@ if __name__ == "__main__":
                [{k: v for k, v in f.items() if k != "id"} for f in notion["forces"]])
     write_page("theories.template.html", "theories.html",
                [{k: v for k, v in t.items() if k != "id"} for t in notion["theories"]])
+    # equations keep their Notion page id — the Related relation targets it
     write_page("equations.template.html", "equations.html",
-               [{k: v for k, v in e.items() if k != "id"} for e in notion.get("equations", [])])
+               [{k: v for k, v in e.items() if k not in ("url", "lastEdited")}
+                for e in notion.get("equations", [])])
     build_home(n_min, n_gems, n_classes, n_spectral, n_instr)

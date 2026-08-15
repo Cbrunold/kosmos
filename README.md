@@ -27,6 +27,7 @@ web/                          Page sources: templates, shared.css, analyzer part
 data/chemistry/elements.json  Normalised element data (scripts/fetch_elements.py)
 data/notion-all.json          All other Notion sources (scripts/fetch_all.py)
 scripts/build.py              web/ + data → public/*.html
+scripts/link_equations.py     Curated cross-link graph → the Equations DB "Related" relation
 deploy/                       systemd unit + nginx site as deployed on the VPS
 ```
 
