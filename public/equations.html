@@ -264,6 +264,41 @@
   .eq .sym { font: 11px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; color: var(--muted); line-height: 1.55; }
   .eq .sig { font-size: 12.5px; color: var(--ink-2); line-height: 1.55; margin: 0; flex: 1; }
   .eq .meta { font: 11px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; color: var(--muted); font-variant-numeric: tabular-nums; }
+
+  .lutwrap { margin: 2px 0 0; display: flex; flex-direction: column; gap: 7px; }
+  .lutcap { font-size: 11.5px; color: var(--ink-2); line-height: 1.5; }
+  .lutscroll { overflow-x: auto; border: 1px solid var(--hairline); border-radius: 6px; }
+  table.lut { border-collapse: collapse; width: 100%; font-size: 11.5px; }
+  table.lut th {
+    font: 9.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: left;
+    font-weight: 400;
+    padding: 7px 10px;
+    border-bottom: 1px solid var(--hairline);
+    white-space: nowrap;
+  }
+  table.lut td { padding: 6px 10px; color: var(--ink-2); line-height: 1.45; vertical-align: top; }
+  table.lut tbody tr + tr td { border-top: 1px solid color-mix(in oklab, var(--hairline) 60%, transparent); }
+  table.lut td.k { color: var(--ink); white-space: nowrap; }
+  table.lut td.v {
+    font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    font-variant-numeric: tabular-nums;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+  table.lut tr.rule td {
+    font: 9.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--c-amber);
+    background: color-mix(in oklab, var(--c-amber) 9%, transparent);
+    border-top: 1px solid var(--c-amber);
+    padding: 4px 10px;
+  }
+  .lutnote { font-size: 11px; color: var(--muted); line-height: 1.5; }
   .eq .rel { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px; margin-top: 2px; }
   .eq .rel .lbl { font: 9.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-right: 3px; }
   .rlink {
@@ -338,8 +373,65 @@
 <script id="eldata" type="application/json">{"58b43aa4-583e-446a-a0b7-5f0669916b53":{"sym":"H","name":"Hydrogen","z":1},"b3aac4ea-8068-4e58-be44-a07b6ea70663":{"sym":"He","name":"Helium","z":2},"15f2d64f-57f2-4b03-9de5-c3fa0823b6d3":{"sym":"Li","name":"Lithium","z":3},"b6d691e6-8f2a-44b8-8991-b0a45663c269":{"sym":"Be","name":"Beryllium","z":4},"9a302c67-c5b0-47de-81c2-a58346c2b41a":{"sym":"B","name":"Boron","z":5},"2e821e11-1691-4458-bb40-88ae8a24d4e2":{"sym":"C","name":"Carbon","z":6},"4b708650-86c2-4532-b5a2-b9ae2762abb1":{"sym":"N","name":"Nitrogen / Azote","z":7},"cbefbf0f-1f4f-4673-a6f9-bf04e05331b6":{"sym":"O","name":"Oxygen","z":8},"234a06ad-5489-4e20-8673-2c7a515952a4":{"sym":"F","name":"Fluorine","z":9},"52ddb22c-7065-4de1-af2d-ae3b264a08f8":{"sym":"Ne","name":"Neon","z":10},"3eab666d-7f4f-41e3-a816-317f17ca1000":{"sym":"Na","name":"Sodium","z":11},"bcc44249-6656-45db-8986-e17faf75e4d7":{"sym":"Mg","name":"Magnesium","z":12},"d101bae0-3ab9-418c-b020-9005585a1b1b":{"sym":"Al","name":"Aluminum","z":13},"22e34085-1b4d-4f83-96dc-1dac62e1f343":{"sym":"Si","name":"Silicon","z":14},"f85b64bb-5e55-44bf-91c7-99a09f2c5b6f":{"sym":"P","name":"Phosphorus","z":15},"6a8cb9e7-6464-44a0-b28f-fe79c88c995e":{"sym":"S","name":"Sulfur","z":16},"7ccbdf95-28ff-4620-8198-04a5a9adc687":{"sym":"Cl","name":"Chlorine","z":17},"63a01271-863b-4707-8ea5-1e3be2533c8a":{"sym":"Ar","name":"Argon","z":18},"bcc443c1-575c-4170-bc07-9c95249fbdc6":{"sym":"K","name":"Potassium","z":19},"d5c2683f-877a-4ddb-b6bd-1ceaaf592edd":{"sym":"Ca","name":"Calcium","z":20},"ee3f5305-6d61-4068-8db5-f322517fecd8":{"sym":"Sc","name":"Scandium","z":21},"ddc5e592-a135-4804-859e-3b04d8354f5d":{"sym":"Ti","name":"Titanium","z":22},"8c913696-4e3d-4199-9373-22bd7848527f":{"sym":"V","name":"Vanadium","z":23},"afd4a91e-f4d2-496d-8a60-335e32f4a374":{"sym":"Cr","name":"Chromium","z":24},"854ebd58-91a3-4e3e-8d2b-ebbed4e02a42":{"sym":"Mn","name":"Manganese","z":25},"82688dfa-4810-4954-b0ce-bd530b9b56e2":{"sym":"Fe","name":"Iron","z":26},"4db04b1f-6f43-422a-89ad-7cc16ad94e7d":{"sym":"Co","name":"Cobalt","z":27},"a2c287a0-d039-486f-ba2f-5ae1cddbf7cc":{"sym":"Ni","name":"Nickel","z":28},"68542bc4-f631-46b7-99b9-75931965e407":{"sym":"Cu","name":"Copper","z":29},"c7619cab-ce7e-40bc-9f59-dfb46860330b":{"sym":"Zn","name":"Zinc","z":30},"12515eb2-415b-477c-a740-e511bc7ab759":{"sym":"Ga","name":"Gallium","z":31},"94bebc85-8fcc-4205-a034-beb98c2882b9":{"sym":"Ge","name":"Germanium","z":32},"976a482d-20cc-44f4-a1ed-1542fd0ca14c":{"sym":"As","name":"Arsenic","z":33},"85488811-cbef-41fd-b046-92f786bb0093":{"sym":"Se","name":"Selenium","z":34},"11794e99-72a6-4997-ad4e-dfc9ddb895a5":{"sym":"Br","name":"Bromine","z":35},"cfdeb271-042e-4342-bb9c-741a04941adf":{"sym":"Kr","name":"Krypton","z":36},"bc41c623-ad34-4a04-8580-a7a5b948ff98":{"sym":"Rb","name":"Rubidium","z":37},"5c074948-eb63-4d90-93fc-15220207c94c":{"sym":"Sr","name":"Strontium","z":38},"91a31807-166a-4a1d-93cd-513b023cc731":{"sym":"Y","name":"Yttrium","z":39},"a2b5a7bd-a076-4d34-9c63-d084e2199816":{"sym":"Zr","name":"Zirconium","z":40},"c86f7caf-56a9-4c16-a9b2-4884b3709c83":{"sym":"Nb","name":"Niobium","z":41},"06ada303-c443-4523-bc0f-c3aa5061d3f1":{"sym":"Mo","name":"Molybdenum","z":42},"d70d26f3-e988-4d04-8249-0414943bcf9f":{"sym":"Tc","name":"Technetium","z":43},"30c7e1b4-3320-4fcd-bf89-338f28467dd3":{"sym":"Ru","name":"Ruthenium","z":44},"aa699cd4-0314-4894-a386-42a35242af6f":{"sym":"Rh","name":"Rhodium","z":45},"b96dc6a7-c3dc-4fff-a370-8990b649e01f":{"sym":"Pd","name":"Palladium","z":46},"f1cf69c8-f7ba-44ad-a533-7bea8a11300b":{"sym":"Ag","name":"Silver","z":47},"cff89a3b-c490-44b5-bb9e-b5fec6722229":{"sym":"Cd","name":"Cadmium","z":48},"24d4209b-654c-47e9-bad2-7806c9f1dfc9":{"sym":"In","name":"Indium","z":49},"f7098b29-1530-4894-ae72-7450dad8212f":{"sym":"Sn","name":"Tin","z":50},"ea02d98e-3ddd-4deb-acdd-973a156d297c":{"sym":"Sb","name":"Antimony","z":51},"9dd8b3d8-4f68-4dab-9dc5-09d70a0f6f97":{"sym":"Te","name":"Tellurium","z":52},"43de39e9-edc9-42d5-8786-c0f42da16ebc":{"sym":"I","name":"Iodine","z":53},"f2d0035f-02c3-4cc6-b8bc-b21d0ca327ea":{"sym":"Xe","name":"Xenon","z":54},"aed4dd50-e224-4dde-8a8f-6812f3d6b585":{"sym":"Cs","name":"Caesium","z":55},"57a5b197-c936-40db-a07c-1aa735bff1c4":{"sym":"Ba","name":"Barium","z":56},"ea40e9a9-cfe6-42c5-a3d1-1bc2d95f772f":{"sym":"La","name":"Lanthanum","z":57},"545901e5-34d0-462e-8ec4-f82a5a40ec44":{"sym":"Ce","name":"Cerium","z":58},"83bb64d3-4f8b-453d-a223-3f86476b8254":{"sym":"Pr","name":"Praseodymium","z":59},"29dd1a49-47e7-408e-99ef-e2895d39921f":{"sym":"Nd","name":"Neodymium","z":60},"88175334-2c8e-4089-9816-1141f2b249f1":{"sym":"Pm","name":"Promethium","z":61},"b70cb1b9-f78b-4581-aa02-cd379e78ca5a":{"sym":"Sm","name":"Samarium","z":62},"7c533a7e-17d6-4c7b-97e5-463c83b2fd25":{"sym":"Eu","name":"Europium","z":63},"34217f7b-c135-4ca7-ac6a-4033b693e182":{"sym":"Gd","name":"Gadolinium","z":64},"3d5b1ef0-e239-4b7c-8721-44d1602c0875":{"sym":"Tb","name":"Terbium","z":65},"9ea898c7-67ec-425e-b938-2ce9bfd57670":{"sym":"Dy","name":"Dysprosium","z":66},"bc1e1aa6-dc53-48cd-9b0d-2cfba76a056b":{"sym":"Ho","name":"Holmium","z":67},"d1047e30-474b-49f5-bfa1-e6488a31307c":{"sym":"Er","name":"Erbium","z":68},"98c8b674-59cf-4fe1-ba2c-896617bd1dbe":{"sym":"Tm","name":"Thulium","z":69},"69a4ecc9-f899-4367-a8de-b0370843520a":{"sym":"Yb","name":"Ytterbium","z":70},"bd93dd2b-e3b6-4e47-9b4c-4230f133191e":{"sym":"Lu","name":"Lutetium","z":71},"a1ab7aa0-f87b-4db7-8ecc-c339bbd4e55a":{"sym":"Hf","name":"Hafnium","z":72},"950fb097-88e3-4470-b9ac-a963ae9a50e8":{"sym":"Ta","name":"Tantalum","z":73},"b2fccfd9-5205-4010-9c0c-d2419e9bd645":{"sym":"W","name":"Tungsten","z":74},"b70b562d-1165-40d1-9e27-8e415696fd2b":{"sym":"Re","name":"Rhenium","z":75},"252d5b5d-caaa-40ad-9dfe-1e5eae9ed272":{"sym":"Os","name":"Osmium","z":76},"c995e2e4-3427-49d8-acee-b9595c4874ad":{"sym":"Ir","name":"Iridium","z":77},"a9130bca-ba76-4682-ac49-cc10bb1b7a5f":{"sym":"Pt","name":"Platinum","z":78},"1865d016-9b94-46c1-aeff-64eda5805f38":{"sym":"Au","name":"Gold","z":79},"7c9371f0-231a-4801-b6ad-d7d3bf2e0a14":{"sym":"Hg","name":"Mercury","z":80},"4eba4f31-6df6-4218-9f39-53eeb3750e24":{"sym":"Tl","name":"Thallium","z":81},"f756d62b-beb5-431c-a721-743de83c5326":{"sym":"Pb","name":"Lead","z":82},"0082f958-39de-40e7-8290-c08190c85c22":{"sym":"Bi","name":"Bismuth","z":83},"ffd11096-b926-4ff9-985e-41c7aa35efc4":{"sym":"Po","name":"Polonium","z":84},"b79c72f7-a274-4509-94ab-92f62a333e59":{"sym":"At","name":"Astatine","z":85},"af052ce8-08c8-4238-9142-bca6aa4e030e":{"sym":"Rn","name":"Radon","z":86},"3015b2a8-512f-40c1-b1a5-d7a1b7be1037":{"sym":"Fr","name":"Francium","z":87},"b46c06cc-e657-411b-bbc0-0a33f02c8b76":{"sym":"Ra","name":"Radium","z":88},"ccf3f41c-fa3a-4dba-8c8b-46ab727cc5a0":{"sym":"Ac","name":"Actinium","z":89},"8fd275ae-15ae-4007-a2be-f3eea170eceb":{"sym":"Th","name":"Thorium","z":90},"7c07c65b-627c-467a-9ea6-5a2883f91276":{"sym":"Pa","name":"Protactinium","z":91},"87459a14-155f-47c2-b8b1-b63015fa4d30":{"sym":"U","name":"Uranium","z":92},"5acb944a-c604-49a5-b743-a8e93a7d3554":{"sym":"Np","name":"Neptunium","z":93},"eed43a4b-b952-4d7c-94ae-28cd0753687e":{"sym":"Pu","name":"Plutonium","z":94},"526c4fdc-e0ff-4eb9-ae91-9621aa26e198":{"sym":"Am","name":"Americium","z":95},"ef38fb54-6eec-4686-a53c-8e8613e981f9":{"sym":"Cm","name":"Curium","z":96},"263497a0-c44c-4fe8-805d-ae478dfd15a9":{"sym":"Bk","name":"Berkelium","z":97},"01abe943-8124-444f-b563-9904be6034e8":{"sym":"Cf","name":"Californium","z":98},"f34cc37d-12a1-4a5a-b9f9-663388207ca5":{"sym":"Es","name":"Einsteinium","z":99},"e184f122-23b5-48c3-96c7-ceebe0c880f0":{"sym":"Fm","name":"Fermium","z":100},"2a3713fc-04e4-4f39-9f5a-a7fd7459b122":{"sym":"Md","name":"Mendelevium","z":101},"6aaad9db-b051-4580-a28e-a7845738317e":{"sym":"No","name":"Nobelium","z":102},"976d09b0-c975-45d6-85b8-7008db9594b6":{"sym":"Lr","name":"Lawrencium","z":103},"e37c33df-9ea7-414f-8450-e0fd062d96b1":{"sym":"Rf","name":"Rutherfordium","z":104},"63da8ef3-cf72-4447-9f7b-dbce5aef55fd":{"sym":"Db","name":"Dubnium","z":105},"b422ac7e-f089-4e79-ad59-188c62e49c6a":{"sym":"Sg","name":"Seaborgium","z":106},"2a99e29d-c5c5-466d-b2dd-f04ca1339476":{"sym":"Bh","name":"Bohrium","z":107},"0f6109a0-b359-44c0-9f06-9de8a1dc35a5":{"sym":"Hs","name":"Hassium","z":108},"ae21b10f-46ee-452f-b5c4-e8296667f755":{"sym":"Mt","name":"Meitnerium","z":109},"83ac8257-43f7-427e-ad1e-31947531dd09":{"sym":"Ds","name":"Darmstadtium","z":110},"33238488-78b2-41ea-b7d7-8c13fc7438b6":{"sym":"Rg","name":"Roentgenium","z":111},"a441aa30-a459-4fa0-8575-2b4a97d3a1bc":{"sym":"Cn","name":"Copernicium","z":112},"3613b8c2-3029-4dae-b773-884f74300f3c":{"sym":"Nh","name":"Nihonium","z":113},"1b2b6074-64e2-4dec-af00-9229385b61bf":{"sym":"Fl","name":"Flerovium","z":114},"722a7ba0-666d-4036-a88e-db15b881bba9":{"sym":"Mc","name":"Moscovium","z":115},"31f6a6a4-a2d6-48ac-b203-5603d0cf0f6e":{"sym":"Lv","name":"Livermorium","z":116},"1e3acfc8-1c6a-4727-87ed-56fc692bd276":{"sym":"Ts","name":"Tennessine","z":117},"4bdf60d2-1ac7-4bf7-af67-2739d933864c":{"sym":"Og","name":"Oganesson","z":118}}</script>
 <script id="mindata" type="application/json">{"3bde5275-7b5c-81d1-9c19-c83ad31d6215":"Galena","3bde5275-7b5c-8174-ac61-e4295a1a138a":"Pyrite","3bde5275-7b5c-818c-b707-d9aa0cae67cb":"Diamond","3bde5275-7b5c-81cb-b0e3-f84bd48a4267":"Gold","01394b2c-de54-47e2-acee-dec04f843bbd":"Nickel","014021be-a0a7-40ee-a5b8-6a9b2e383f13":"Albite","084cdfa5-4566-4444-8fdc-874677351f27":"Petalite","08d8bd51-d122-4004-ad86-6e0c514e0697":"Carnotite","0fae7d07-0940-49f9-a78a-bb5638089257":"Anhydrite","10a43853-3dc7-4890-b083-36e26254ffd8":"Muscovite","120a874a-7e86-4f86-b8c4-fc2f7349df1d":"Monazite","13a34015-1840-4a49-a9a5-b39125b488cd":"Aragonite","183f51b7-ab8c-4eb1-920e-a944ce21b06a":"Cristobalite","1ab0a94a-845d-44a5-a150-aa574cd05daf":"Feldspar","27cc1d21-1ea5-45f3-a293-df5a768f52a7":"Azurite","28cd490f-391d-4432-8d09-631de49cabf5":"Halite","2b803f12-6fb7-46f5-b9ce-144ab46d618f":"Corundum","2f507576-0064-4a4e-b43d-4193dac1d6d0":"Periclase","3886df31-49c3-423c-b72b-7633b7d34fb8":"Montmorillonite","38c783c4-3758-4f4c-98f8-c0f797a8eb1e":"Orthoclase","38efc672-34b5-43eb-b46c-a90c6c4a230b":"Fluorite","3c83b8eb-8556-40bd-a2f6-f488c0052731":"Wadsleyite","3fae9982-6c0f-436c-9919-074f3d88c7e7":"Sillimanite","47ddcba5-c8dd-452a-a904-2277c0eaea6f":"Hematite","4c47a552-63e1-4250-ab1c-2af6a9fc54a6":"Ringwoodite","4e75adb9-c7bc-47dc-82cb-a542c33bab97":"Biotite","543f52dd-771c-43ed-a945-0f9a10393f6d":"Spodumene","547185b4-edc6-4d3a-9afe-76ac71b1e8df":"Kyanite","5fad54f8-5835-4e1a-aecd-532b00d2c04c":"Spinel","62debcd4-2538-4205-a1a5-5e929bb47f0d":"Cassiterite","64d6cec8-c6e4-4ba2-bbc6-ed8d0b7cc2c1":"Cuprite","7459ae5f-5dfb-4a97-9a0a-3232259b0cd2":"Coesite","7c311528-4b4f-4f96-9084-6194ade42fda":"Cryolite","7d5e0b23-7241-46bb-927b-0a6e710b8b89":"Borax","86f82f42-7be7-4c05-ac52-2aba030726fa":"Malachite","8839cf99-0f29-420c-aeea-e8d4ae225688":"Quartz","98cf88f8-4e72-4364-9061-cbe22e7ec03d":"Tridymite","a792fdc9-81dc-49b0-a289-54da8251c322":"Forsterite","aa230c00-4ead-4e96-84df-21228d8f30cc":"Amblygonite","b02037f7-9278-4390-bd3f-abffe17da50b":"Talc","b403d0c7-763e-4bc1-8803-8f90b3007a98":"Gypsum","b934609f-4f8f-4ae3-9307-8a73480c51f9":"Torbernite","b94ff1da-eaef-4193-b75c-e97af338ac25":"Calcite","bc1ec6b6-fbb1-4266-aa31-3538e1672a5a":"Kaolinite","bc2bfdde-ff74-4929-924d-e50e0a41cf42":"Bridgmanite","cb8bf25b-fafe-449a-aee7-d457929c47b7":"Sylvite","d11ba5e4-7571-4e31-92ad-09fcfda43c72":"Stishovite","d2d4005d-51eb-4191-af95-16da8404b828":"Lepidolite","d9a47688-285e-41d4-963e-e48e71698629":"Autunite","db41d7f5-2f18-4f06-91b6-21f9df43006d":"Andalusite","e847fc6b-cdf0-4a2d-af2c-6e6d34ecc21c":"Olivine","e8947ade-85c2-4e77-90a3-885d3d985231":"Zircon","f7a692b1-6efd-4006-99ae-d5fbc05fd3c3":"Magnetite"}</script>
 <script id="cosdata" type="application/json">{"2569ebb2-01ff-41c8-af88-54f50a983757":{"name":"Y-type Stars (Y Dwarfs)","kind":"spectral","href":"/cosmos#spectral"},"3e612da8-9d62-43d2-8596-97f41d0648d2":{"name":"T-type Stars (T Dwarfs)","kind":"spectral","href":"/cosmos#spectral"},"c68315d6-f203-4556-acf1-d2ddcc118da1":{"name":"L-type Stars (L Dwarfs)","kind":"spectral","href":"/cosmos#spectral"},"ab7bd7c6-343e-452b-a637-3ab633d86b34":{"name":"M-type Stars","kind":"spectral","href":"/cosmos#spectral"},"53d890a6-54be-4b11-bfeb-76804e4fab79":{"name":"K-type Stars","kind":"spectral","href":"/cosmos#spectral"},"b2652565-709b-468a-a616-b84ae2120764":{"name":"G-type Stars","kind":"spectral","href":"/cosmos#spectral"},"d0e4f6cb-72b8-4394-8147-6d679b719682":{"name":"F-type Stars","kind":"spectral","href":"/cosmos#spectral"},"7740ec4a-0143-465a-8830-04b10edad57b":{"name":"B-type Stars","kind":"spectral","href":"/cosmos#spectral"},"c185512d-753a-4dc0-9818-42091ca06062":{"name":"A-type Stars","kind":"spectral","href":"/cosmos#spectral"},"fbbb7d85-a746-4aa6-9045-622d68637585":{"name":"O-type Stars","kind":"spectral","href":"/cosmos#spectral"},"59917836-94bf-4298-b2c1-62293f9f146c":{"name":"Sun","kind":"object","href":"/cosmos#catalogue"},"b2c375af-6ea5-48a8-95f1-982fa7682f8a":{"name":"Large Synoptic Survey Telescope (LSST)","kind":"instrument","href":"/cosmos#instruments"},"0b70c66b-6919-455c-9e18-12c12c5ae418":{"name":"Planck Satellite","kind":"instrument","href":"/cosmos#instruments"},"5e727e67-154e-4d29-b5cc-0f8edfb0413f":{"name":"Chandra X-ray Observatory","kind":"instrument","href":"/cosmos#instruments"},"5bba6cc7-55f5-45dc-b91b-3d9f0d37f5a7":{"name":"Keck Observatory","kind":"instrument","href":"/cosmos#instruments"},"41dff11c-b8f7-482d-bb9a-458fe9f2e922":{"name":"Atacama Large Millimeter/submillimeter Array (ALMA)","kind":"instrument","href":"/cosmos#instruments"},"a3c867b3-aa5e-4eef-badd-aa3510c2d8df":{"name":"James Webb Space Telescope (JWST)","kind":"instrument","href":"/cosmos#instruments"},"bf3acea0-668c-4c49-bbd1-8dec3d49af72":{"name":"Hubble Space Telescope (HST)","kind":"instrument","href":"/cosmos#instruments"},"ed6ca018-7aab-42e4-be3d-9be5eb30d100":{"name":"Very Large Telescope (VLT)","kind":"instrument","href":"/cosmos#instruments"},"948ffd28-180a-4f7f-8f79-b6a712181262":{"name":"Quantum Gravity","kind":"theory","href":"/theories#quantum-gravity"},"e497c8e0-c340-456d-a74c-a8d03962d58a":{"name":"Unification Theories","kind":"theory","href":"/theories#unification-theories"}}</script>
+<script id="tabdata" type="application/json">{"cosmological-equation-of-state":{"caption":"Every ingredient of the universe is one number, w. It fixes how that ingredient dilutes as space expands, and so which era it dominates.","columns":["Component","w","ρ ∝","Why"],"rows":[["Stiff fluid","1","a⁻⁶","The causal limit — sound travels at c. Hypothetical, and only ever in the first instants."],["Radiation","1/3","a⁻⁴","Photons and neutrinos. Volume dilution, plus one more factor of a as every wavelength is stretched."],["Matter","0","a⁻³","Baryons and cold dark matter. Pressureless, so it thins by volume alone."],["Curvature","−1/3","a⁻²","Not a fluid at all, but it enters the Friedmann equation as though it were one."],["Cosmological constant","−1","a⁰","Dark energy. Does not thin at all: the energy density of space itself, unchanged as more space appears."],["Phantom energy","< −1","grows","Density rises as the universe expands. Ends in a Big Rip, and is not excluded by the data."]],"rule_after":3,"rule_text":"expansion accelerates below w = −1/3","note":"Measured for dark energy: w = −1.03 ± 0.03 — maddeningly consistent with a plain cosmological constant. Radiation dominated until roughly 50,000 years, matter until about 9 billion; the constant has the upper hand from here."}}</script>
 <script>
   const E = JSON.parse(document.getElementById('data').textContent);
+  const TABLES = JSON.parse(document.getElementById('tabdata').textContent);
+
+  // some equations are only usable with a table of values beside them
+  function buildTable(lut) {
+    const wrap = document.createElement('div');
+    wrap.className = 'lutwrap';
+    if (lut.caption) {
+      const cap = document.createElement('div');
+      cap.className = 'lutcap';
+      cap.textContent = lut.caption;
+      wrap.appendChild(cap);
+    }
+    const scroll = document.createElement('div');
+    scroll.className = 'lutscroll';
+    const t = document.createElement('table');
+    t.className = 'lut';
+    const thead = document.createElement('thead');
+    const hr = document.createElement('tr');
+    for (const col of lut.columns) {
+      const th = document.createElement('th');
+      th.textContent = col;
+      hr.appendChild(th);
+    }
+    thead.appendChild(hr);
+    const tb = document.createElement('tbody');
+    lut.rows.forEach((row, i) => {
+      const tr = document.createElement('tr');
+      row.forEach((cell, j) => {
+        const td = document.createElement('td');
+        td.textContent = cell;
+        if (j === 0) td.className = 'k';
+        else if (j < row.length - 1) td.className = 'v';
+        tr.appendChild(td);
+      });
+      tb.appendChild(tr);
+      if (lut.rule_after === i) {
+        const rr = document.createElement('tr');
+        rr.className = 'rule';
+        const td = document.createElement('td');
+        td.colSpan = lut.columns.length;
+        td.textContent = lut.rule_text || '';
+        rr.appendChild(td);
+        tb.appendChild(rr);
+      }
+    });
+    t.append(thead, tb);
+    scroll.appendChild(t);
+    wrap.appendChild(scroll);
+    if (lut.note) {
+      const n = document.createElement('div');
+      n.className = 'lutnote';
+      n.textContent = lut.note;
+      wrap.appendChild(n);
+    }
+    return wrap;
+  }
   const EL = JSON.parse(document.getElementById('eldata').textContent);
   const MIN = JSON.parse(document.getElementById('mindata').textContent);
   const COS = JSON.parse(document.getElementById('cosdata').textContent);
@@ -512,6 +604,8 @@
       const sym = document.createElement('div'); sym.className = 'sym'; sym.textContent = e.Symbols || '';
       const sig = document.createElement('p'); sig.className = 'sig'; sig.textContent = e.Significance || '';
       c.append(h, formula, sym, sig);
+      const lut = TABLES[e.slug];
+      if (lut) c.appendChild(buildTable(lut));
       const bits = [];
       if (e['Named After']) bits.push(e['Named After']);
       if (e.Year) bits.push(e.Year < 0 ? `c. ${-e.Year} BCE` : String(e.Year));

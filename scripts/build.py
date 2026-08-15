@@ -180,6 +180,47 @@ def eq_lookup_all():
             for e in notion.get("equations", [])}
 
 
+# ---------------- per-equation lookup tables ----------------
+# Some equations are only usable with a table of values beside them. Keyed by
+# equation name; rendered under the significance text on the equations page.
+# "rule" marks a row after which a labelled divider is drawn.
+EQUATION_TABLES = {
+    "Cosmological Equation of State": {
+        "caption": "Every ingredient of the universe is one number, w. It fixes how that "
+                   "ingredient dilutes as space expands, and so which era it dominates.",
+        "columns": ["Component", "w", "ρ ∝", "Why"],
+        "rows": [
+            ["Stiff fluid", "1", "a⁻⁶", "The causal limit — sound travels at c. Hypothetical, "
+                                        "and only ever in the first instants."],
+            ["Radiation", "1/3", "a⁻⁴", "Photons and neutrinos. Volume dilution, plus one more "
+                                        "factor of a as every wavelength is stretched."],
+            ["Matter", "0", "a⁻³", "Baryons and cold dark matter. Pressureless, so it thins by "
+                                   "volume alone."],
+            ["Curvature", "−1/3", "a⁻²", "Not a fluid at all, but it enters the Friedmann equation "
+                                         "as though it were one."],
+            ["Cosmological constant", "−1", "a⁰", "Dark energy. Does not thin at all: the energy "
+                                                  "density of space itself, unchanged as more space appears."],
+            ["Phantom energy", "< −1", "grows", "Density rises as the universe expands. Ends in a "
+                                                "Big Rip, and is not excluded by the data."],
+        ],
+        "rule_after": 3,
+        "rule_text": "expansion accelerates below w = −1/3",
+        "note": "Measured for dark energy: w = −1.03 ± 0.03 — maddeningly consistent with a plain "
+                "cosmological constant. Radiation dominated until roughly 50,000 years, matter until "
+                "about 9 billion; the constant has the upper hand from here.",
+    },
+}
+
+
+def equation_tables():
+    """Keyed by slug, so the page can look a table up from the card it belongs to."""
+    names = {e["Name"] for e in notion.get("equations", [])}
+    missing = sorted(set(EQUATION_TABLES) - names)
+    if missing:
+        print("  warning: lookup tables for unknown equations:", missing)
+    return {slugify(n): t for n, t in EQUATION_TABLES.items() if n in names}
+
+
 def build_cosmos_page():
     sun = None
     for o in notion["celestialObjects"]:
@@ -333,5 +374,5 @@ if __name__ == "__main__":
                [{k: v for k, v in e.items() if k not in ("url", "lastEdited")}
                 for e in notion.get("equations", [])],
                extra={"__ELEMENTS__": compact(el_lookup), "__MINERALS__": compact(min_lookup),
-                      "__COSMOS__": compact(cosmos_lookup)})
+                      "__COSMOS__": compact(cosmos_lookup), "__TABLES__": compact(equation_tables())})
     build_home(n_min, n_gems, n_classes, n_spectral, n_instr)

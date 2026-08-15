@@ -77,6 +77,41 @@ __SHARED__
   .eq .sym { font: 11px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; color: var(--muted); line-height: 1.55; }
   .eq .sig { font-size: 12.5px; color: var(--ink-2); line-height: 1.55; margin: 0; flex: 1; }
   .eq .meta { font: 11px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; color: var(--muted); font-variant-numeric: tabular-nums; }
+
+  .lutwrap { margin: 2px 0 0; display: flex; flex-direction: column; gap: 7px; }
+  .lutcap { font-size: 11.5px; color: var(--ink-2); line-height: 1.5; }
+  .lutscroll { overflow-x: auto; border: 1px solid var(--hairline); border-radius: 6px; }
+  table.lut { border-collapse: collapse; width: 100%; font-size: 11.5px; }
+  table.lut th {
+    font: 9.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: left;
+    font-weight: 400;
+    padding: 7px 10px;
+    border-bottom: 1px solid var(--hairline);
+    white-space: nowrap;
+  }
+  table.lut td { padding: 6px 10px; color: var(--ink-2); line-height: 1.45; vertical-align: top; }
+  table.lut tbody tr + tr td { border-top: 1px solid color-mix(in oklab, var(--hairline) 60%, transparent); }
+  table.lut td.k { color: var(--ink); white-space: nowrap; }
+  table.lut td.v {
+    font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    font-variant-numeric: tabular-nums;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+  table.lut tr.rule td {
+    font: 9.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--c-amber);
+    background: color-mix(in oklab, var(--c-amber) 9%, transparent);
+    border-top: 1px solid var(--c-amber);
+    padding: 4px 10px;
+  }
+  .lutnote { font-size: 11px; color: var(--muted); line-height: 1.5; }
   .eq .rel { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px; margin-top: 2px; }
   .eq .rel .lbl { font: 9.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-right: 3px; }
   .rlink {
@@ -151,8 +186,65 @@ __SHARED__
 <script id="eldata" type="application/json">__ELEMENTS__</script>
 <script id="mindata" type="application/json">__MINERALS__</script>
 <script id="cosdata" type="application/json">__COSMOS__</script>
+<script id="tabdata" type="application/json">__TABLES__</script>
 <script>
   const E = JSON.parse(document.getElementById('data').textContent);
+  const TABLES = JSON.parse(document.getElementById('tabdata').textContent);
+
+  // some equations are only usable with a table of values beside them
+  function buildTable(lut) {
+    const wrap = document.createElement('div');
+    wrap.className = 'lutwrap';
+    if (lut.caption) {
+      const cap = document.createElement('div');
+      cap.className = 'lutcap';
+      cap.textContent = lut.caption;
+      wrap.appendChild(cap);
+    }
+    const scroll = document.createElement('div');
+    scroll.className = 'lutscroll';
+    const t = document.createElement('table');
+    t.className = 'lut';
+    const thead = document.createElement('thead');
+    const hr = document.createElement('tr');
+    for (const col of lut.columns) {
+      const th = document.createElement('th');
+      th.textContent = col;
+      hr.appendChild(th);
+    }
+    thead.appendChild(hr);
+    const tb = document.createElement('tbody');
+    lut.rows.forEach((row, i) => {
+      const tr = document.createElement('tr');
+      row.forEach((cell, j) => {
+        const td = document.createElement('td');
+        td.textContent = cell;
+        if (j === 0) td.className = 'k';
+        else if (j < row.length - 1) td.className = 'v';
+        tr.appendChild(td);
+      });
+      tb.appendChild(tr);
+      if (lut.rule_after === i) {
+        const rr = document.createElement('tr');
+        rr.className = 'rule';
+        const td = document.createElement('td');
+        td.colSpan = lut.columns.length;
+        td.textContent = lut.rule_text || '';
+        rr.appendChild(td);
+        tb.appendChild(rr);
+      }
+    });
+    t.append(thead, tb);
+    scroll.appendChild(t);
+    wrap.appendChild(scroll);
+    if (lut.note) {
+      const n = document.createElement('div');
+      n.className = 'lutnote';
+      n.textContent = lut.note;
+      wrap.appendChild(n);
+    }
+    return wrap;
+  }
   const EL = JSON.parse(document.getElementById('eldata').textContent);
   const MIN = JSON.parse(document.getElementById('mindata').textContent);
   const COS = JSON.parse(document.getElementById('cosdata').textContent);
@@ -325,6 +417,8 @@ __SHARED__
       const sym = document.createElement('div'); sym.className = 'sym'; sym.textContent = e.Symbols || '';
       const sig = document.createElement('p'); sig.className = 'sig'; sig.textContent = e.Significance || '';
       c.append(h, formula, sym, sig);
+      const lut = TABLES[e.slug];
+      if (lut) c.appendChild(buildTable(lut));
       const bits = [];
       if (e['Named After']) bits.push(e['Named After']);
       if (e.Year) bits.push(e.Year < 0 ? `c. ${-e.Year} BCE` : String(e.Year));
