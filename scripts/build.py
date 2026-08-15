@@ -110,7 +110,10 @@ def build_minerals_page():
                 unmapped.add(col)
         syms = [s for s, _ in sorted(weights.items(), key=lambda kv: -kv[1])]
         name = m.get("Name") or "?"
-        for s in set(syms):
+        # sorted, not set order: string hashing is randomised per process, so an
+        # unsorted set here makes the mineral lookups shuffle on every rebuild and
+        # public/index.html churn with a diff that means nothing
+        for s in sorted(set(syms)):
             contains[s] += 1
             by_symbol[s].append((m.get("Mohs Hardness") or 0, name))
         sg = m.get("Specific Gravity")
