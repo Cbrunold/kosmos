@@ -17,6 +17,7 @@
     "meltingPt": -259.14,
     "boilingPt": -252.87,
     "discovered": 1766,
+    "abundance": 1400,
     "equations": [
       "3bde5275-7b5c-81a3-914b-f108cd62b10b",
       "3bde5275-7b5c-81fc-a041-fc08a0416af7",
@@ -46,7 +47,7 @@
     ],
     "pageId": "58b43aa4-583e-446a-a0b7-5f0669916b53",
     "pageUrl": "https://app.notion.com/p/Hydrogen-58b43aa4583e446aa0b75f0669916b53",
-    "lastEdited": "2026-08-13T16:14:00.000Z"
+    "lastEdited": "2026-08-15T18:49:00.000Z"
   },
   {
     "name": "Helium",
@@ -66,6 +67,7 @@
     "meltingPt": -272.2,
     "boilingPt": -268.93,
     "discovered": 1868,
+    "abundance": 0.008,
     "equations": [
       "3bbe5275-7b5c-811a-a60d-eddf236c3a8c",
       "3bde5275-7b5c-81e2-9c2a-cf03ccc6c865",
@@ -84,7 +86,7 @@
     ],
     "pageId": "b3aac4ea-8068-4e58-be44-a07b6ea70663",
     "pageUrl": "https://app.notion.com/p/Helium-b3aac4ea80684e58be44a07b6ea70663",
-    "lastEdited": "2026-08-13T16:14:00.000Z"
+    "lastEdited": "2026-08-15T18:49:00.000Z"
   },
   {
     "name": "Lithium",
@@ -103,12 +105,13 @@
     "meltingPt": 180.54,
     "boilingPt": 1342,
     "discovered": 1817,
+    "abundance": 20,
     "equations": [
       "3bbe5275-7b5c-817f-80a4-f6e36ff9d306"
     ],
     "pageId": "15f2d64f-57f2-4b03-9de5-c3fa0823b6d3",
     "pageUrl": "https://app.notion.com/p/Lithium-15f2d64f57f24b039de5c3fa0823b6d3",
-    "lastEdited": "2026-08-13T16:14:00.000Z"
+    "lastEdited": "2026-08-15T18:49:00.000Z"
   },
   {
     "name": "Beryllium",
@@ -128,10 +131,11 @@
     "meltingPt": 1278,
     "boilingPt": 2469,
     "discovered": 1798,
+    "abundance": 2.8,
     "equations": [],
     "pageId": "b6d691e6-8f2a-44b8-8991-b0a45663c269",
     "pageUrl": "https://app.notion.com/p/Beryllium-b6d691e68f2a44b88991b0a45663c269",
-    "lastEdited": "2026-08-13T16:14:00.000Z"
+    "lastEdited": "2026-08-15T18:50:00.000Z"
   },
   {
     "name": "Boron",
@@ -151,10 +155,11 @@
     "meltingPt": 2075,
     "boilingPt": 3927,
     "discovered": 1808,
+    "abundance": 10,
     "equations": [],
     "pageId": "9a302c67-c5b0-47de-81c2-a58346c2b41a",
     "pageUrl": "https://app.notion.com/p/Boron-9a302c67c5b047de81c2a58346c2b41a",
-    "lastEdited": "2026-08-13T16:14:00.000Z"
+    "lastEdited": "2026-08-15T18:49:00.000Z"
   },
   {
     "name": "Carbon",
@@ -175,6 +180,7 @@
     "meltingPt": 3550,
     "boilingPt": 4027,
     "discovered": -3750,
+    "abundance": 200,
     "equations": [
       "3bbe5275-7b5c-813e-a03e-dacece1e6c35",
       "3bbe5275-7b5c-810c-8fb5-f469f876c99a",
@@ -188,7 +194,7 @@
     ],
     "pageId": "2e821e11-1691-4458-bb40-88ae8a24d4e2",
     "pageUrl": "https://app.notion.com/p/Carbon-2e821e1116914458bb4088ae8a24d4e2",
-    "lastEdited": "2026-08-13T16:14:00.000Z"
+    "lastEdited": "2026-08-15T18:50:00.000Z"
   },
   {
     "name": "Nitrogen / Azote",
@@ -209,6 +215,7 @@
     "meltingPt": -210.1,
     "boilingPt": -195.79,
     "discovered": 1772,
+    "abundance": 19,
     "equations": [
       "3bbe5275-7b5c-81a2-9653-e0a84065d7fa",
       "3bbe5275-7b5c-8186-884a-ed5996715fc4",
@@ -227,7 +234,7 @@
     ],
     "pageId": "4b708650-86c2-4532-b5a2-b9ae2762abb1",
     "pageUrl": "https://app.notion.com/p/Nitrogen-Azote-4b70865086c24532b5a2b9ae2762abb1",
-    "lastEdited": "2026-08-13T16:14:00.000Z"
+    "lastEdited": "2026-08-15T18:49:00.000Z"
   },
   {
     "name": "Oxygen",
@@ -248,6 +255,7 @@
     "meltingPt": -218.3,
     "boilingPt": -182.95,
     "discovered": 1771,
+    "abundance": 461000,
     "equations": [
       "3bbe5275-7b5c-81a2-9653-e0a84065d7fa",
       "3bbe5275-7b5c-8186-884a-ed5996715fc4",
@@ -270,7 +278,7 @@
     ],
     "pageId": "cbefbf0f-1f4f-4673-a6f9-bf04e05331b6",
     "pageUrl": "https://app.notion.com/p/Oxygen-cbefbf0f1f4f4673a6f9bf04e05331b6",
-    "lastEdited": "2026-08-13T16:14:00.000Z"
+    "lastEdited": "2026-08-15T18:49:00.000Z"
   },
   {
     "name": "Fluorine",
@@ -291,10 +299,11 @@
     "meltingPt": -219.6,
     "boilingPt": -188.12,
     "discovered": 1810,
+    "abundance": 585,
     "equations": [],
     "pageId": "234a06ad-5489-4e20-8673-2c7a515952a4",
     "pageUrl": "https://app.notion.com/p/Fluorine-234a06ad54894e2086732c7a515952a4",
-    "lastEdited": "2026-08-13T16:14:00.000Z"
+    "lastEdited": "2026-08-15T18:49:00.000Z"
   },
   {
     "name": "Neon",
@@ -314,6 +323,7 @@
     "meltingPt": -248.5,
     "boilingPt": -246.08,
     "discovered": 1898,
+    "abundance": 0.005,
     "equations": [
       "3bbe5275-7b5c-81a2-9653-e0a84065d7fa",
       "3bbe5275-7b5c-818e-8ccf-c5b952277817",
@@ -322,7 +332,7 @@
     ],
     "pageId": "52ddb22c-7065-4de1-af2d-ae3b264a08f8",
     "pageUrl": "https://app.notion.com/p/Neon-52ddb22c70654de1af2dae3b264a08f8",
-    "lastEdited": "2026-08-13T16:14:00.000Z"
+    "lastEdited": "2026-08-15T18:49:00.000Z"
   },
   {
     "name": "Sodium",
@@ -341,6 +351,7 @@
     "meltingPt": 97.72,
     "boilingPt": 883,
     "discovered": 1807,
+    "abundance": 23600,
     "equations": [
       "3bbe5275-7b5c-8113-9b17-e6d7efc091ea",
       "3bbe5275-7b5c-8130-a1e2-d4d1fefda7d8",
@@ -352,7 +363,7 @@
     ],
     "pageId": "3eab666d-7f4f-41e3-a816-317f17ca1000",
     "pageUrl": "https://app.notion.com/p/Sodium-3eab666d7f4f41e3a816317f17ca1000",
-    "lastEdited": "2026-08-13T16:14:00.000Z"
+    "lastEdited": "2026-08-15T18:50:00.000Z"
   },
   {
     "name": "Magnesium",
@@ -372,12 +383,13 @@
     "meltingPt": 650,
     "boilingPt": 1090,
     "discovered": 1755,
+    "abundance": 23300,
     "equations": [
       "3bbe5275-7b5c-8183-8228-de82d104194f"
     ],
     "pageId": "bcc44249-6656-45db-8986-e17faf75e4d7",
     "pageUrl": "https://app.notion.com/p/Magnesium-bcc44249665645db8986e17faf75e4d7",
-    "lastEdited": "2026-08-13T16:14:00.000Z"
+    "lastEdited": "2026-08-15T18:49:00.000Z"
   },
   {
     "name": "Aluminum",
@@ -398,6 +410,7 @@
     "meltingPt": 660.32,
     "boilingPt": 2519,
     "discovered": 1825,
+    "abundance": 82300,
     "equations": [
       "3bbe5275-7b5c-81ee-9b16-dcfba043e1f3",
       "3bbe5275-7b5c-8149-a0e6-d2bf67397229",
@@ -408,7 +421,7 @@
     ],
     "pageId": "d101bae0-3ab9-418c-b020-9005585a1b1b",
     "pageUrl": "https://app.notion.com/p/Aluminum-d101bae03ab9418cb0209005585a1b1b",
-    "lastEdited": "2026-08-13T16:14:00.000Z"
+    "lastEdited": "2026-08-15T18:49:00.000Z"
   },
   {
     "name": "Silicon",
@@ -428,6 +441,7 @@
     "meltingPt": 1414,
     "boilingPt": 3265,
     "discovered": 1823,
+    "abundance": 282000,
     "equations": [
       "3bbe5275-7b5c-81d1-abad-c2702fa3abb0",
       "3bbe5275-7b5c-81e1-96c0-c6157aaee509",
@@ -438,7 +452,7 @@
     ],
     "pageId": "22e34085-1b4d-4f83-96dc-1dac62e1f343",
     "pageUrl": "https://app.notion.com/p/Silicon-22e340851b4d4f8396dc1dac62e1f343",
-    "lastEdited": "2026-08-13T16:14:00.000Z"
+    "lastEdited": "2026-08-15T18:50:00.000Z"
   },
   {
     "name": "Phosphorus",
@@ -459,10 +473,11 @@
     "meltingPt": 44.2,
     "boilingPt": 280,
     "discovered": 1669,
+    "abundance": 1050,
     "equations": [],
     "pageId": "f85b64bb-5e55-44bf-91c7-99a09f2c5b6f",
     "pageUrl": "https://app.notion.com/p/Phosphorus-f85b64bb5e5544bf91c799a09f2c5b6f",
-    "lastEdited": "2026-08-13T16:14:00.000Z"
+    "lastEdited": "2026-08-15T18:49:00.000Z"
   },
   {
     "name": "Sulfur",
@@ -483,10 +498,11 @@
     "meltingPt": 115.2,
     "boilingPt": 444.6,
     "discovered": -2000,
+    "abundance": 350,
     "equations": [],
     "pageId": "6a8cb9e7-6464-44a0-b28f-fe79c88c995e",
     "pageUrl": "https://app.notion.com/p/Sulfur-6a8cb9e7646444a0b28ffe79c88c995e",
-    "lastEdited": "2026-08-13T16:14:00.000Z"
+    "lastEdited": "2026-08-15T18:49:00.000Z"
   },
   {
     "name": "Chlorine",
@@ -507,6 +523,7 @@
     "meltingPt": -101,
     "boilingPt": -34.04,
     "discovered": 1774,
+    "abundance": 145,
     "equations": [
       "3bbe5275-7b5c-819d-afd0-d0876756a85c",
       "3bbe5275-7b5c-8113-9b17-e6d7efc091ea",
@@ -516,7 +533,7 @@
     ],
     "pageId": "7ccbdf95-28ff-4620-8198-04a5a9adc687",
     "pageUrl": "https://app.notion.com/p/Chlorine-7ccbdf9528ff4620819804a5a9adc687",
-    "lastEdited": "2026-08-13T16:14:00.000Z"
+    "lastEdited": "2026-08-15T18:49:00.000Z"
   },
   {
     "name": "Argon",
@@ -536,6 +553,7 @@
     "meltingPt": -189.3,
     "boilingPt": -185.85,
     "discovered": 1894,
+    "abundance": 3.5,
     "equations": [
       "3bbe5275-7b5c-81a2-9653-e0a84065d7fa",
       "3bbe5275-7b5c-8144-82d8-d6e4bd0f0f2d",
@@ -544,7 +562,7 @@
     ],
     "pageId": "63a01271-863b-4707-8ea5-1e3be2533c8a",
     "pageUrl": "https://app.notion.com/p/Argon-63a01271863b47078ea51e3be2533c8a",
-    "lastEdited": "2026-08-13T16:14:00.000Z"
+    "lastEdited": "2026-08-15T18:49:00.000Z"
   },
   {
     "name": "Potassium",
@@ -563,6 +581,7 @@
     "meltingPt": 63.4,
     "boilingPt": 759,
     "discovered": 1807,
+    "abundance": 20900,
     "equations": [
       "3bbe5275-7b5c-813e-a03e-dacece1e6c35",
       "3bbe5275-7b5c-81b2-9ec2-d967f8695b7e",
@@ -570,7 +589,7 @@
     ],
     "pageId": "bcc443c1-575c-4170-bc07-9c95249fbdc6",
     "pageUrl": "https://app.notion.com/p/Potassium-bcc443c1575c4170bc079c95249fbdc6",
-    "lastEdited": "2026-08-13T16:14:00.000Z"
+    "lastEdited": "2026-08-15T18:49:00.000Z"
   },
   {
     "name": "Calcium",
@@ -590,6 +609,7 @@
     "meltingPt": 842,
     "boilingPt": 1484,
     "discovered": 1808,
+    "abundance": 41500,
     "equations": [
       "3bbe5275-7b5c-8184-9e26-ff4ad04b3ed8",
       "3bbe5275-7b5c-814d-83e6-ee6df24eacca",
@@ -600,7 +620,7 @@
     ],
     "pageId": "d5c2683f-877a-4ddb-b6bd-1ceaaf592edd",
     "pageUrl": "https://app.notion.com/p/Calcium-d5c2683f877a4ddbb6bd1ceaaf592edd",
-    "lastEdited": "2026-08-13T16:14:00.000Z"
+    "lastEdited": "2026-08-15T18:49:00.000Z"
   },
   {
     "name": "Scandium",
@@ -620,10 +640,11 @@
     "meltingPt": 1540,
     "boilingPt": 2836,
     "discovered": 1879,
+    "abundance": 22,
     "equations": [],
     "pageId": "ee3f5305-6d61-4068-8db5-f322517fecd8",
     "pageUrl": "https://app.notion.com/p/Scandium-ee3f53056d6140688db5f322517fecd8",
-    "lastEdited": "2026-08-13T16:14:00.000Z"
+    "lastEdited": "2026-08-15T18:50:00.000Z"
   },
   {
     "name": "Titanium",
@@ -643,10 +664,11 @@
     "meltingPt": 1668,
     "boilingPt": 3287,
     "discovered": 1791,
+    "abundance": 5650,
     "equations": [],
     "pageId": "ddc5e592-a135-4804-859e-3b04d8354f5d",
     "pageUrl": "https://app.notion.com/p/Titanium-ddc5e592a1354804859e3b04d8354f5d",
-    "lastEdited": "2026-08-13T16:14:00.000Z"
+    "lastEdited": "2026-08-15T18:50:00.000Z"
   },
   {
     "name": "Vanadium",
@@ -666,10 +688,11 @@
     "meltingPt": 1920,
     "boilingPt": 3407,
     "discovered": 1801,
+    "abundance": 120,
     "equations": [],
     "pageId": "8c913696-4e3d-4199-9373-22bd7848527f",
     "pageUrl": "https://app.notion.com/p/Vanadium-8c9136964e3d4199937322bd7848527f",
-    "lastEdited": "2026-08-13T16:14:00.000Z"
+    "lastEdited": "2026-08-15T18:49:00.000Z"
   },
   {
     "name": "Chromium",
@@ -689,6 +712,7 @@
     "meltingPt": 1907,
     "boilingPt": 2671,
     "discovered": 1794,
+    "abundance": 102,
     "equations": [
       "3bbe5275-7b5c-816d-9734-c149c749519c",
       "3bbe5275-7b5c-818e-8ccf-c5b952277817",
@@ -696,7 +720,7 @@
     ],
     "pageId": "afd4a91e-f4d2-496d-8a60-335e32f4a374",
     "pageUrl": "https://app.notion.com/p/Chromium-afd4a91ef4d2496d8a60335e32f4a374",
-    "lastEdited": "2026-08-13T16:14:00.000Z"
+    "lastEdited": "2026-08-15T18:50:00.000Z"
   },
   {
     "name": "Manganese",
@@ -716,10 +740,11 @@
     "meltingPt": 1250,
     "boilingPt": 2061,
     "discovered": 1774,
+    "abundance": 950,
     "equations": [],
     "pageId": "854ebd58-91a3-4e3e-8d2b-ebbed4e02a42",
     "pageUrl": "https://app.notion.com/p/Manganese-854ebd5891a34e3e8d2bebbed4e02a42",
-    "lastEdited": "2026-08-13T16:14:00.000Z"
+    "lastEdited": "2026-08-15T18:49:00.000Z"
   },
   {
     "name": "Iron",
@@ -739,6 +764,7 @@
     "meltingPt": 1535.1,
     "boilingPt": 2861,
     "discovered": -5000,
+    "abundance": 56300,
     "equations": [
       "3bbe5275-7b5c-81f5-bb78-d159340dd03f",
       "3bbe5275-7b5c-8144-9213-c057e1f3e5ab",
@@ -753,7 +779,7 @@
     ],
     "pageId": "82688dfa-4810-4954-b0ce-bd530b9b56e2",
     "pageUrl": "https://app.notion.com/p/Iron-82688dfa48104954b0cebd530b9b56e2",
-    "lastEdited": "2026-08-13T16:14:00.000Z"
+    "lastEdited": "2026-08-15T18:49:00.000Z"
   },
   {
     "name": "Cobalt",
@@ -773,10 +799,11 @@
     "meltingPt": 1495,
     "boilingPt": 2927,
     "discovered": 1735,
+    "abundance": 25,
     "equations": [],
     "pageId": "4db04b1f-6f43-422a-89ad-7cc16ad94e7d",
     "pageUrl": "https://app.notion.com/p/Cobalt-4db04b1f6f43422a89ad7cc16ad94e7d",
-    "lastEdited": "2026-08-13T16:14:00.000Z"
+    "lastEdited": "2026-08-15T18:49:00.000Z"
   },
   {
     "name": "Nickel",
@@ -796,6 +823,7 @@
     "meltingPt": 1455,
     "boilingPt": 2913,
     "discovered": 1751,
+    "abundance": 84,
     "equations": [
       "3bbe5275-7b5c-8170-bd5f-c796d7589e08",
       "3bbe5275-7b5c-816d-9734-c149c749519c",
@@ -805,7 +833,7 @@
     ],
     "pageId": "a2c287a0-d039-486f-ba2f-5ae1cddbf7cc",
     "pageUrl": "https://app.notion.com/p/Nickel-a2c287a0d039486fba2f5ae1cddbf7cc",
-    "lastEdited": "2026-08-13T16:14:00.000Z"
+    "lastEdited": "2026-08-15T18:49:00.000Z"
   },
   {
     "name": "Copper",
@@ -825,6 +853,7 @@
     "meltingPt": 1084.62,
     "boilingPt": 2562,
     "discovered": -9000,
+    "abundance": 60,
     "equations": [
       "3bbe5275-7b5c-81ee-9b16-dcfba043e1f3",
       "3bbe5275-7b5c-8154-bcd6-c1cd26ae1a20",
@@ -838,7 +867,7 @@
     ],
     "pageId": "68542bc4-f631-46b7-99b9-75931965e407",
     "pageUrl": "https://app.notion.com/p/Copper-68542bc4f63146b799b975931965e407",
-    "lastEdited": "2026-08-13T16:14:00.000Z"
+    "lastEdited": "2026-08-15T18:50:00.000Z"
   },
   {
     "name": "Zinc",
@@ -859,12 +888,13 @@
     "meltingPt": 419.53,
     "boilingPt": 907,
     "discovered": -1000,
+    "abundance": 70,
     "equations": [
       "3bbe5275-7b5c-81b2-9ec2-d967f8695b7e"
     ],
     "pageId": "c7619cab-ce7e-40bc-9f59-dfb46860330b",
     "pageUrl": "https://app.notion.com/p/Zinc-c7619cabce7e40bc9f59dfb46860330b",
-    "lastEdited": "2026-08-13T16:14:00.000Z"
+    "lastEdited": "2026-08-15T18:49:00.000Z"
   },
   {
     "name": "Gallium",
@@ -885,10 +915,11 @@
     "meltingPt": 29.76,
     "boilingPt": 2204,
     "discovered": 1875,
+    "abundance": 19,
     "equations": [],
     "pageId": "12515eb2-415b-477c-a740-e511bc7ab759",
     "pageUrl": "https://app.notion.com/p/Gallium-12515eb2415b477ca740e511bc7ab759",
-    "lastEdited": "2026-08-13T16:14:00.000Z"
+    "lastEdited": "2026-08-15T18:49:00.000Z"
   },
   {
     "name": "Germanium",
@@ -908,12 +939,13 @@
     "meltingPt": 938,
     "boilingPt": 2833,
     "discovered": 1886,
+    "abundance": 1.5,
     "equations": [
       "3bbe5275-7b5c-81e1-96c0-c6157aaee509"
     ],
     "pageId": "94bebc85-8fcc-4205-a034-beb98c2882b9",
     "pageUrl": "https://app.notion.com/p/Germanium-94bebc858fcc4205a034beb98c2882b9",
-    "lastEdited": "2026-08-13T16:14:00.000Z"
+    "lastEdited": "2026-08-15T18:49:00.000Z"
   },
   {
     "name": "Arsenic",
@@ -933,10 +965,11 @@
     "meltingPt": 817,
     "boilingPt": 614,
     "discovered": -815,
+    "abundance": 1.8,
     "equations": [],
     "pageId": "976a482d-20cc-44f4-a1ed-1542fd0ca14c",
     "pageUrl": "https://app.notion.com/p/Arsenic-976a482d20cc44f4a1ed1542fd0ca14c",
-    "lastEdited": "2026-08-13T16:14:00.000Z"
+    "lastEdited": "2026-08-15T18:49:00.000Z"
   },
   {
     "name": "Selenium",
@@ -957,10 +990,11 @@
     "meltingPt": 220,
     "boilingPt": 685,
     "discovered": 1817,
+    "abundance": 0.05,
     "equations": [],
     "pageId": "85488811-cbef-41fd-b046-92f786bb0093",
     "pageUrl": "https://app.notion.com/p/Selenium-85488811cbef41fdb04692f786bb0093",
-    "lastEdited": "2026-08-13T16:14:00.000Z"
+    "lastEdited": "2026-08-15T18:50:00.000Z"
   },
   {
     "name": "Bromine",
@@ -981,10 +1015,11 @@
     "meltingPt": -7,
     "boilingPt": 58.8,
     "discovered": 1825,
+    "abundance": 2.4,
     "equations": [],
     "pageId": "11794e99-72a6-4997-ad4e-dfc9ddb895a5",
     "pageUrl": "https://app.notion.com/p/Bromine-11794e9972a64997ad4edfc9ddb895a5",
-    "lastEdited": "2026-08-13T16:14:00.000Z"
+    "lastEdited": "2026-08-15T18:49:00.000Z"
   },
   {
     "name": "Krypton",
@@ -1004,10 +1039,11 @@
     "meltingPt": -157.3,
     "boilingPt": -153.22,
     "discovered": 1898,
+    "abundance": 0.0001,
     "equations": [],
     "pageId": "cfdeb271-042e-4342-bb9c-741a04941adf",
     "pageUrl": "https://app.notion.com/p/Krypton-cfdeb271042e4342bb9c741a04941adf",
-    "lastEdited": "2026-08-13T16:14:00.000Z"
+    "lastEdited": "2026-08-15T18:50:00.000Z"
   },
   {
     "name": "Rubidium",
@@ -1026,12 +1062,13 @@
     "meltingPt": 39.3,
     "boilingPt": 688,
     "discovered": 1861,
+    "abundance": 90,
     "equations": [
       "3bbe5275-7b5c-813e-a03e-dacece1e6c35"
     ],
     "pageId": "bc41c623-ad34-4a04-8580-a7a5b948ff98",
     "pageUrl": "https://app.notion.com/p/Rubidium-bc41c623ad344a048580a7a5b948ff98",
-    "lastEdited": "2026-08-13T16:15:00.000Z"
+    "lastEdited": "2026-08-15T18:49:00.000Z"
   },
   {
     "name": "Strontium",
@@ -1051,10 +1088,11 @@
     "meltingPt": 777,
     "boilingPt": 1382,
     "discovered": 1787,
+    "abundance": 370,
     "equations": [],
     "pageId": "5c074948-eb63-4d90-93fc-15220207c94c",
     "pageUrl": "https://app.notion.com/p/Strontium-5c074948eb634d9093fc15220207c94c",
-    "lastEdited": "2026-08-13T16:15:00.000Z"
+    "lastEdited": "2026-08-15T18:50:00.000Z"
   },
   {
     "name": "Yttrium",
@@ -1074,10 +1112,11 @@
     "meltingPt": 1525,
     "boilingPt": 3336,
     "discovered": 1794,
+    "abundance": 33,
     "equations": [],
     "pageId": "91a31807-166a-4a1d-93cd-513b023cc731",
     "pageUrl": "https://app.notion.com/p/Yttrium-91a31807166a4a1d93cd513b023cc731",
-    "lastEdited": "2026-08-13T16:15:00.000Z"
+    "lastEdited": "2026-08-15T18:50:00.000Z"
   },
   {
     "name": "Zirconium",
@@ -1097,10 +1136,11 @@
     "meltingPt": 1850,
     "boilingPt": 4409,
     "discovered": 1789,
+    "abundance": 165,
     "equations": [],
     "pageId": "a2b5a7bd-a076-4d34-9c63-d084e2199816",
     "pageUrl": "https://app.notion.com/p/Zirconium-a2b5a7bda0764d349c63d084e2199816",
-    "lastEdited": "2026-08-13T16:15:00.000Z"
+    "lastEdited": "2026-08-15T18:49:00.000Z"
   },
   {
     "name": "Niobium",
@@ -1120,6 +1160,7 @@
     "meltingPt": 2477,
     "boilingPt": 4744,
     "discovered": 1801,
+    "abundance": 20,
     "equations": [
       "3bbe5275-7b5c-81b2-ae34-f800aecd57e1",
       "3bbe5275-7b5c-8149-a0e6-d2bf67397229",
@@ -1128,7 +1169,7 @@
     ],
     "pageId": "c86f7caf-56a9-4c16-a9b2-4884b3709c83",
     "pageUrl": "https://app.notion.com/p/Niobium-c86f7caf56a94c16a9b24884b3709c83",
-    "lastEdited": "2026-08-13T16:15:00.000Z"
+    "lastEdited": "2026-08-15T18:49:00.000Z"
   },
   {
     "name": "Molybdenum",
@@ -1148,10 +1189,11 @@
     "meltingPt": 2623,
     "boilingPt": 4639,
     "discovered": 1778,
+    "abundance": 1.2,
     "equations": [],
     "pageId": "06ada303-c443-4523-bc0f-c3aa5061d3f1",
     "pageUrl": "https://app.notion.com/p/Molybdenum-06ada303c4434523bc0fc3aa5061d3f1",
-    "lastEdited": "2026-08-13T16:15:00.000Z"
+    "lastEdited": "2026-08-15T18:49:00.000Z"
   },
   {
     "name": "Technetium",
@@ -1171,10 +1213,11 @@
     "meltingPt": 2160,
     "boilingPt": 4265,
     "discovered": 1937,
+    "abundance": 1e-13,
     "equations": [],
     "pageId": "d70d26f3-e988-4d04-8249-0414943bcf9f",
     "pageUrl": "https://app.notion.com/p/Technetium-d70d26f3e9884d0482490414943bcf9f",
-    "lastEdited": "2026-08-13T16:15:00.000Z"
+    "lastEdited": "2026-08-15T18:49:00.000Z"
   },
   {
     "name": "Ruthenium",
@@ -1194,10 +1237,11 @@
     "meltingPt": 2330,
     "boilingPt": 4150,
     "discovered": 1844,
+    "abundance": 0.001,
     "equations": [],
     "pageId": "30c7e1b4-3320-4fcd-bf89-338f28467dd3",
     "pageUrl": "https://app.notion.com/p/Ruthenium-30c7e1b433204fcdbf89338f28467dd3",
-    "lastEdited": "2026-08-13T16:15:00.000Z"
+    "lastEdited": "2026-08-15T18:49:00.000Z"
   },
   {
     "name": "Rhodium",
@@ -1217,10 +1261,11 @@
     "meltingPt": 1963,
     "boilingPt": 3695,
     "discovered": 1804,
+    "abundance": 0.001,
     "equations": [],
     "pageId": "aa699cd4-0314-4894-a386-42a35242af6f",
     "pageUrl": "https://app.notion.com/p/Rhodium-aa699cd403144894a38642a35242af6f",
-    "lastEdited": "2026-08-13T16:15:00.000Z"
+    "lastEdited": "2026-08-15T18:49:00.000Z"
   },
   {
     "name": "Palladium",
@@ -1240,10 +1285,11 @@
     "meltingPt": 1555,
     "boilingPt": 2963,
     "discovered": 1802,
+    "abundance": 0.015,
     "equations": [],
     "pageId": "b96dc6a7-c3dc-4fff-a370-8990b649e01f",
     "pageUrl": "https://app.notion.com/p/Palladium-b96dc6a7c3dc4fffa3708990b649e01f",
-    "lastEdited": "2026-08-13T16:15:00.000Z"
+    "lastEdited": "2026-08-15T18:49:00.000Z"
   },
   {
     "name": "Silver",
@@ -1263,6 +1309,7 @@
     "meltingPt": 961.95,
     "boilingPt": 2162,
     "discovered": -5000,
+    "abundance": 0.075,
     "equations": [
       "3bbe5275-7b5c-81ee-9b16-dcfba043e1f3",
       "3bbe5275-7b5c-819d-a258-d3e7dec3b639",
@@ -1270,7 +1317,7 @@
     ],
     "pageId": "f1cf69c8-f7ba-44ad-a533-7bea8a11300b",
     "pageUrl": "https://app.notion.com/p/Silver-f1cf69c8f7ba44ada5337bea8a11300b",
-    "lastEdited": "2026-08-13T16:15:00.000Z"
+    "lastEdited": "2026-08-15T18:49:00.000Z"
   },
   {
     "name": "Cadmium",
@@ -1291,10 +1338,11 @@
     "meltingPt": 321.1,
     "boilingPt": 767,
     "discovered": 1817,
+    "abundance": 0.15,
     "equations": [],
     "pageId": "cff89a3b-c490-44b5-bb9e-b5fec6722229",
     "pageUrl": "https://app.notion.com/p/Cadmium-cff89a3bc49044b5bb9eb5fec6722229",
-    "lastEdited": "2026-08-13T16:15:00.000Z"
+    "lastEdited": "2026-08-15T18:50:00.000Z"
   },
   {
     "name": "Indium",
@@ -1315,10 +1363,11 @@
     "meltingPt": 156.6,
     "boilingPt": 2072,
     "discovered": 1863,
+    "abundance": 0.25,
     "equations": [],
     "pageId": "24d4209b-654c-47e9-bad2-7806c9f1dfc9",
     "pageUrl": "https://app.notion.com/p/Indium-24d4209b654c47e9bad27806c9f1dfc9",
-    "lastEdited": "2026-08-13T16:15:00.000Z"
+    "lastEdited": "2026-08-15T18:49:00.000Z"
   },
   {
     "name": "Tin",
@@ -1339,10 +1388,11 @@
     "meltingPt": 231.928,
     "boilingPt": 2602,
     "discovered": -3500,
+    "abundance": 2.3,
     "equations": [],
     "pageId": "f7098b29-1530-4894-ae72-7450dad8212f",
     "pageUrl": "https://app.notion.com/p/Tin-f7098b2915304894ae727450dad8212f",
-    "lastEdited": "2026-08-13T16:15:00.000Z"
+    "lastEdited": "2026-08-15T18:50:00.000Z"
   },
   {
     "name": "Antimony",
@@ -1362,12 +1412,13 @@
     "meltingPt": 630.79,
     "boilingPt": 1587,
     "discovered": -815,
+    "abundance": 0.2,
     "equations": [
       "3bbe5275-7b5c-814d-8154-c3d16384df7f"
     ],
     "pageId": "ea02d98e-3ddd-4deb-acdd-973a156d297c",
     "pageUrl": "https://app.notion.com/p/Antimony-ea02d98e3ddd4debacdd973a156d297c",
-    "lastEdited": "2026-08-13T16:15:00.000Z"
+    "lastEdited": "2026-08-15T18:49:00.000Z"
   },
   {
     "name": "Tellurium",
@@ -1387,6 +1438,7 @@
     "meltingPt": 450,
     "boilingPt": 988,
     "discovered": 1782,
+    "abundance": 0.001,
     "equations": [
       "3bbe5275-7b5c-814d-8154-c3d16384df7f",
       "3bbe5275-7b5c-8110-a092-dab2770885be",
@@ -1394,7 +1446,7 @@
     ],
     "pageId": "9dd8b3d8-4f68-4dab-9dc5-09d70a0f6f97",
     "pageUrl": "https://app.notion.com/p/Tellurium-9dd8b3d84f684dab9dc509d70a0f6f97",
-    "lastEdited": "2026-08-13T16:15:00.000Z"
+    "lastEdited": "2026-08-15T18:49:00.000Z"
   },
   {
     "name": "Iodine",
@@ -1415,10 +1467,11 @@
     "meltingPt": 113.5,
     "boilingPt": 184.3,
     "discovered": 1811,
+    "abundance": 0.45,
     "equations": [],
     "pageId": "43de39e9-edc9-42d5-8786-c0f42da16ebc",
     "pageUrl": "https://app.notion.com/p/Iodine-43de39e9edc942d58786c0f42da16ebc",
-    "lastEdited": "2026-08-13T16:15:00.000Z"
+    "lastEdited": "2026-08-15T18:50:00.000Z"
   },
   {
     "name": "Xenon",
@@ -1438,12 +1491,13 @@
     "meltingPt": -118.8,
     "boilingPt": -108.12,
     "discovered": 1898,
+    "abundance": 3e-05,
     "equations": [
       "3bde5275-7b5c-81b5-b5ba-ef8abb9338cb"
     ],
     "pageId": "f2d0035f-02c3-4cc6-b8bc-b21d0ca327ea",
     "pageUrl": "https://app.notion.com/p/Xenon-f2d0035f02c34cc6b8bcb21d0ca327ea",
-    "lastEdited": "2026-08-13T16:15:00.000Z"
+    "lastEdited": "2026-08-15T18:49:00.000Z"
   },
   {
     "name": "Caesium",
@@ -1462,10 +1516,11 @@
     "meltingPt": 28.4,
     "boilingPt": 671,
     "discovered": 1860,
+    "abundance": 3,
     "equations": [],
     "pageId": "aed4dd50-e224-4dde-8a8f-6812f3d6b585",
     "pageUrl": "https://app.notion.com/p/Caesium-aed4dd50e2244dde8a8f6812f3d6b585",
-    "lastEdited": "2026-08-13T16:15:00.000Z"
+    "lastEdited": "2026-08-15T18:49:00.000Z"
   },
   {
     "name": "Barium",
@@ -1485,10 +1540,11 @@
     "meltingPt": 725,
     "boilingPt": 1897,
     "discovered": 1772,
+    "abundance": 425,
     "equations": [],
     "pageId": "57a5b197-c936-40db-a07c-1aa735bff1c4",
     "pageUrl": "https://app.notion.com/p/Barium-57a5b197c93640dba07c1aa735bff1c4",
-    "lastEdited": "2026-08-13T16:15:00.000Z"
+    "lastEdited": "2026-08-15T18:49:00.000Z"
   },
   {
     "name": "Lanthanum",
@@ -1508,10 +1564,11 @@
     "meltingPt": 1540,
     "boilingPt": 3464,
     "discovered": 1838,
+    "abundance": 39,
     "equations": [],
     "pageId": "ea40e9a9-cfe6-42c5-a3d1-1bc2d95f772f",
     "pageUrl": "https://app.notion.com/p/Lanthanum-ea40e9a9cfe642c5a3d11bc2d95f772f",
-    "lastEdited": "2026-08-13T16:15:00.000Z"
+    "lastEdited": "2026-08-15T18:49:00.000Z"
   },
   {
     "name": "Cerium",
@@ -1531,10 +1588,11 @@
     "meltingPt": 798,
     "boilingPt": 3443,
     "discovered": 1803,
+    "abundance": 66.5,
     "equations": [],
     "pageId": "545901e5-34d0-462e-8ec4-f82a5a40ec44",
     "pageUrl": "https://app.notion.com/p/Cerium-545901e534d0462e8ec4f82a5a40ec44",
-    "lastEdited": "2026-08-13T16:15:00.000Z"
+    "lastEdited": "2026-08-15T18:49:00.000Z"
   },
   {
     "name": "Praseodymium",
@@ -1554,10 +1612,11 @@
     "meltingPt": 931,
     "boilingPt": 3520,
     "discovered": 1885,
+    "abundance": 9.2,
     "equations": [],
     "pageId": "83bb64d3-4f8b-453d-a223-3f86476b8254",
     "pageUrl": "https://app.notion.com/p/Praseodymium-83bb64d34f8b453da2233f86476b8254",
-    "lastEdited": "2026-08-13T16:15:00.000Z"
+    "lastEdited": "2026-08-15T18:50:00.000Z"
   },
   {
     "name": "Neodymium",
@@ -1577,13 +1636,14 @@
     "meltingPt": 1016,
     "boilingPt": 3074,
     "discovered": 1885,
+    "abundance": 41.5,
     "equations": [
       "3bbe5275-7b5c-818e-8ccf-c5b952277817",
       "3bbe5275-7b5c-816e-831d-e184b1a1f659"
     ],
     "pageId": "29dd1a49-47e7-408e-99ef-e2895d39921f",
     "pageUrl": "https://app.notion.com/p/Neodymium-29dd1a4947e7408e99efe2895d39921f",
-    "lastEdited": "2026-08-13T16:15:00.000Z"
+    "lastEdited": "2026-08-15T18:50:00.000Z"
   },
   {
     "name": "Promethium",
@@ -1603,10 +1663,11 @@
     "meltingPt": 1142,
     "boilingPt": 3000,
     "discovered": 1942,
+    "abundance": 2e-19,
     "equations": [],
     "pageId": "88175334-2c8e-4089-9816-1141f2b249f1",
     "pageUrl": "https://app.notion.com/p/Promethium-881753342c8e408998161141f2b249f1",
-    "lastEdited": "2026-08-13T16:15:00.000Z"
+    "lastEdited": "2026-08-15T18:49:00.000Z"
   },
   {
     "name": "Samarium",
@@ -1626,10 +1687,11 @@
     "meltingPt": 1170,
     "boilingPt": 1794,
     "discovered": 1879,
+    "abundance": 7.05,
     "equations": [],
     "pageId": "b70cb1b9-f78b-4581-aa02-cd379e78ca5a",
     "pageUrl": "https://app.notion.com/p/Samarium-b70cb1b9f78b4581aa02cd379e78ca5a",
-    "lastEdited": "2026-08-13T16:15:00.000Z"
+    "lastEdited": "2026-08-15T18:49:00.000Z"
   },
   {
     "name": "Europium",
@@ -1649,10 +1711,11 @@
     "meltingPt": 822,
     "boilingPt": 1529,
     "discovered": 1896,
+    "abundance": 2,
     "equations": [],
     "pageId": "7c533a7e-17d6-4c7b-97e5-463c83b2fd25",
     "pageUrl": "https://app.notion.com/p/Europium-7c533a7e17d64c7b97e5463c83b2fd25",
-    "lastEdited": "2026-08-13T16:15:00.000Z"
+    "lastEdited": "2026-08-15T18:50:00.000Z"
   },
   {
     "name": "Gadolinium",
@@ -1672,10 +1735,11 @@
     "meltingPt": 1314,
     "boilingPt": 3273,
     "discovered": 1880,
+    "abundance": 6.2,
     "equations": [],
     "pageId": "34217f7b-c135-4ca7-ac6a-4033b693e182",
     "pageUrl": "https://app.notion.com/p/Gadolinium-34217f7bc1354ca7ac6a4033b693e182",
-    "lastEdited": "2026-08-13T16:15:00.000Z"
+    "lastEdited": "2026-08-15T18:50:00.000Z"
   },
   {
     "name": "Terbium",
@@ -1695,10 +1759,11 @@
     "meltingPt": 1360,
     "boilingPt": 3230,
     "discovered": 1843,
+    "abundance": 1.2,
     "equations": [],
     "pageId": "3d5b1ef0-e239-4b7c-8721-44d1602c0875",
     "pageUrl": "https://app.notion.com/p/Terbium-3d5b1ef0e2394b7c872144d1602c0875",
-    "lastEdited": "2026-08-13T16:15:00.000Z"
+    "lastEdited": "2026-08-15T18:49:00.000Z"
   },
   {
     "name": "Dysprosium",
@@ -1718,10 +1783,11 @@
     "meltingPt": 1410,
     "boilingPt": 2567,
     "discovered": 1886,
+    "abundance": 5.2,
     "equations": [],
     "pageId": "9ea898c7-67ec-425e-b938-2ce9bfd57670",
     "pageUrl": "https://app.notion.com/p/Dysprosium-9ea898c767ec425eb9382ce9bfd57670",
-    "lastEdited": "2026-08-13T16:15:00.000Z"
+    "lastEdited": "2026-08-15T18:50:00.000Z"
   },
   {
     "name": "Holmium",
@@ -1741,10 +1807,11 @@
     "meltingPt": 1470,
     "boilingPt": 2720,
     "discovered": 1878,
+    "abundance": 1.3,
     "equations": [],
     "pageId": "bc1e1aa6-dc53-48cd-9b0d-2cfba76a056b",
     "pageUrl": "https://app.notion.com/p/Holmium-bc1e1aa6dc5348cd9b0d2cfba76a056b",
-    "lastEdited": "2026-08-13T16:15:00.000Z"
+    "lastEdited": "2026-08-15T18:49:00.000Z"
   },
   {
     "name": "Erbium",
@@ -1764,10 +1831,11 @@
     "meltingPt": 1530,
     "boilingPt": 3230,
     "discovered": 1843,
+    "abundance": 3.5,
     "equations": [],
     "pageId": "d1047e30-474b-49f5-bfa1-e6488a31307c",
     "pageUrl": "https://app.notion.com/p/Erbium-d1047e30474b49f5bfa1e6488a31307c",
-    "lastEdited": "2026-08-13T16:15:00.000Z"
+    "lastEdited": "2026-08-15T18:50:00.000Z"
   },
   {
     "name": "Thulium",
@@ -1787,10 +1855,11 @@
     "meltingPt": 1550,
     "boilingPt": 1950,
     "discovered": 1879,
+    "abundance": 0.52,
     "equations": [],
     "pageId": "98c8b674-59cf-4fe1-ba2c-896617bd1dbe",
     "pageUrl": "https://app.notion.com/p/Thulium-98c8b67459cf4fe1ba2c896617bd1dbe",
-    "lastEdited": "2026-08-13T16:15:00.000Z"
+    "lastEdited": "2026-08-15T18:49:00.000Z"
   },
   {
     "name": "Ytterbium",
@@ -1810,13 +1879,14 @@
     "meltingPt": 824,
     "boilingPt": 1196,
     "discovered": 1878,
+    "abundance": 3.2,
     "equations": [
       "3bbe5275-7b5c-8103-8865-faee50cc9c18",
       "3bbe5275-7b5c-810f-8c8d-d0d1ca4da44e"
     ],
     "pageId": "69a4ecc9-f899-4367-a8de-b0370843520a",
     "pageUrl": "https://app.notion.com/p/Ytterbium-69a4ecc9f8994367a8deb0370843520a",
-    "lastEdited": "2026-08-13T16:15:00.000Z"
+    "lastEdited": "2026-08-15T18:50:00.000Z"
   },
   {
     "name": "Lutetium",
@@ -1836,10 +1906,11 @@
     "meltingPt": 1660,
     "boilingPt": 3402,
     "discovered": 1906,
+    "abundance": 0.8,
     "equations": [],
     "pageId": "bd93dd2b-e3b6-4e47-9b4c-4230f133191e",
     "pageUrl": "https://app.notion.com/p/Lutetium-bd93dd2be3b64e479b4c4230f133191e",
-    "lastEdited": "2026-08-13T16:15:00.000Z"
+    "lastEdited": "2026-08-15T18:49:00.000Z"
   },
   {
     "name": "Hafnium",
@@ -1859,10 +1930,11 @@
     "meltingPt": 2230,
     "boilingPt": 4603,
     "discovered": 1922,
+    "abundance": 3,
     "equations": [],
     "pageId": "a1ab7aa0-f87b-4db7-8ecc-c339bbd4e55a",
     "pageUrl": "https://app.notion.com/p/Hafnium-a1ab7aa0f87b4db78eccc339bbd4e55a",
-    "lastEdited": "2026-08-13T16:15:00.000Z"
+    "lastEdited": "2026-08-15T18:49:00.000Z"
   },
   {
     "name": "Tantalum",
@@ -1882,10 +1954,11 @@
     "meltingPt": 3020,
     "boilingPt": 5458,
     "discovered": 1802,
+    "abundance": 2,
     "equations": [],
     "pageId": "950fb097-88e3-4470-b9ac-a963ae9a50e8",
     "pageUrl": "https://app.notion.com/p/Tantalum-950fb09788e34470b9aca963ae9a50e8",
-    "lastEdited": "2026-08-13T16:15:00.000Z"
+    "lastEdited": "2026-08-15T18:49:00.000Z"
   },
   {
     "name": "Tungsten",
@@ -1905,13 +1978,14 @@
     "meltingPt": 3422,
     "boilingPt": 5555,
     "discovered": 1781,
+    "abundance": 1.25,
     "equations": [
       "3bbe5275-7b5c-816d-9734-c149c749519c",
       "3bbe5275-7b5c-81f5-bb78-d159340dd03f"
     ],
     "pageId": "b2fccfd9-5205-4010-9c0c-d2419e9bd645",
     "pageUrl": "https://app.notion.com/p/Tungsten-b2fccfd9520540109c0cd2419e9bd645",
-    "lastEdited": "2026-08-13T16:15:00.000Z"
+    "lastEdited": "2026-08-15T18:50:00.000Z"
   },
   {
     "name": "Rhenium",
@@ -1931,10 +2005,11 @@
     "meltingPt": 3186,
     "boilingPt": 5596,
     "discovered": 1908,
+    "abundance": 0.0007,
     "equations": [],
     "pageId": "b70b562d-1165-40d1-9e27-8e415696fd2b",
     "pageUrl": "https://app.notion.com/p/Rhenium-b70b562d116540d19e278e415696fd2b",
-    "lastEdited": "2026-08-13T16:15:00.000Z"
+    "lastEdited": "2026-08-15T18:49:00.000Z"
   },
   {
     "name": "Osmium",
@@ -1954,10 +2029,11 @@
     "meltingPt": 3030,
     "boilingPt": 5012,
     "discovered": 1803,
+    "abundance": 0.0015,
     "equations": [],
     "pageId": "252d5b5d-caaa-40ad-9dfe-1e5eae9ed272",
     "pageUrl": "https://app.notion.com/p/Osmium-252d5b5dcaaa40ad9dfe1e5eae9ed272",
-    "lastEdited": "2026-08-13T16:15:00.000Z"
+    "lastEdited": "2026-08-15T18:49:00.000Z"
   },
   {
     "name": "Iridium",
@@ -1977,10 +2053,11 @@
     "meltingPt": 2447,
     "boilingPt": 4428,
     "discovered": 1803,
+    "abundance": 0.001,
     "equations": [],
     "pageId": "c995e2e4-3427-49d8-acee-b9595c4874ad",
     "pageUrl": "https://app.notion.com/p/Iridium-c995e2e4342749d8aceeb9595c4874ad",
-    "lastEdited": "2026-08-13T16:15:00.000Z"
+    "lastEdited": "2026-08-15T18:50:00.000Z"
   },
   {
     "name": "Platinum",
@@ -2000,10 +2077,11 @@
     "meltingPt": 1768,
     "boilingPt": 3825,
     "discovered": 1735,
+    "abundance": 0.005,
     "equations": [],
     "pageId": "a9130bca-ba76-4682-ac49-cc10bb1b7a5f",
     "pageUrl": "https://app.notion.com/p/Platinum-a9130bcaba764682ac49cc10bb1b7a5f",
-    "lastEdited": "2026-08-13T16:15:00.000Z"
+    "lastEdited": "2026-08-15T18:49:00.000Z"
   },
   {
     "name": "Gold",
@@ -2023,6 +2101,7 @@
     "meltingPt": 1064.18,
     "boilingPt": 2856,
     "discovered": -6000,
+    "abundance": 0.004,
     "equations": [
       "3bde5275-7b5c-81e2-9c2a-cf03ccc6c865",
       "3bbe5275-7b5c-81ee-9b16-dcfba043e1f3",
@@ -2030,7 +2109,7 @@
     ],
     "pageId": "1865d016-9b94-46c1-aeff-64eda5805f38",
     "pageUrl": "https://app.notion.com/p/Gold-1865d0169b9446c1aeff64eda5805f38",
-    "lastEdited": "2026-08-13T16:15:00.000Z"
+    "lastEdited": "2026-08-15T18:49:00.000Z"
   },
   {
     "name": "Mercury",
@@ -2051,13 +2130,14 @@
     "meltingPt": -38.83,
     "boilingPt": 357,
     "discovered": -1500,
+    "abundance": 0.085,
     "equations": [
       "3bbe5275-7b5c-81b2-ae34-f800aecd57e1",
       "3bbe5275-7b5c-8149-a0e6-d2bf67397229"
     ],
     "pageId": "7c9371f0-231a-4801-b6ad-d7d3bf2e0a14",
     "pageUrl": "https://app.notion.com/p/Mercury-7c9371f0231a4801b6add7d3bf2e0a14",
-    "lastEdited": "2026-08-13T16:15:00.000Z"
+    "lastEdited": "2026-08-15T18:49:00.000Z"
   },
   {
     "name": "Thallium",
@@ -2078,10 +2158,11 @@
     "meltingPt": 304,
     "boilingPt": 1473,
     "discovered": 1861,
+    "abundance": 0.85,
     "equations": [],
     "pageId": "4eba4f31-6df6-4218-9f39-53eeb3750e24",
     "pageUrl": "https://app.notion.com/p/Thallium-4eba4f316df642189f3953eeb3750e24",
-    "lastEdited": "2026-08-13T16:15:00.000Z"
+    "lastEdited": "2026-08-15T18:49:00.000Z"
   },
   {
     "name": "Lead",
@@ -2102,6 +2183,7 @@
     "meltingPt": 327.46,
     "boilingPt": 1749,
     "discovered": -7000,
+    "abundance": 14,
     "equations": [
       "3bbe5275-7b5c-812d-b464-f7799b61cce9",
       "3bbe5275-7b5c-81b2-ae34-f800aecd57e1",
@@ -2109,7 +2191,7 @@
     ],
     "pageId": "f756d62b-beb5-431c-a721-743de83c5326",
     "pageUrl": "https://app.notion.com/p/Lead-f756d62bbeb5431ca721743de83c5326",
-    "lastEdited": "2026-08-13T16:15:00.000Z"
+    "lastEdited": "2026-08-15T18:49:00.000Z"
   },
   {
     "name": "Bismuth",
@@ -2130,6 +2212,7 @@
     "meltingPt": 271.4,
     "boilingPt": 1564,
     "discovered": -1000,
+    "abundance": 0.0085,
     "equations": [
       "3bbe5275-7b5c-814d-8154-c3d16384df7f",
       "3bbe5275-7b5c-8110-a092-dab2770885be",
@@ -2137,7 +2220,7 @@
     ],
     "pageId": "0082f958-39de-40e7-8290-c08190c85c22",
     "pageUrl": "https://app.notion.com/p/Bismuth-0082f95839de40e78290c08190c85c22",
-    "lastEdited": "2026-08-13T16:15:00.000Z"
+    "lastEdited": "2026-08-15T18:50:00.000Z"
   },
   {
     "name": "Polonium",
@@ -2159,12 +2242,13 @@
     "meltingPt": 254,
     "boilingPt": 962,
     "discovered": 1898,
+    "abundance": 2e-10,
     "equations": [
       "3bbe5275-7b5c-8157-a64b-eb73eeb53735"
     ],
     "pageId": "ffd11096-b926-4ff9-985e-41c7aa35efc4",
     "pageUrl": "https://app.notion.com/p/Polonium-ffd11096b9264ff9985e41c7aa35efc4",
-    "lastEdited": "2026-08-13T16:15:00.000Z"
+    "lastEdited": "2026-08-15T18:50:00.000Z"
   },
   {
     "name": "Astatine",
@@ -2184,10 +2268,11 @@
     "meltingPt": 302,
     "boilingPt": 337,
     "discovered": 1940,
+    "abundance": 3e-20,
     "equations": [],
     "pageId": "b79c72f7-a274-4509-94ab-92f62a333e59",
     "pageUrl": "https://app.notion.com/p/Astatine-b79c72f7a274450994ab92f62a333e59",
-    "lastEdited": "2026-08-13T16:15:00.000Z"
+    "lastEdited": "2026-08-15T18:49:00.000Z"
   },
   {
     "name": "Radon",
@@ -2207,12 +2292,13 @@
     "meltingPt": -71,
     "boilingPt": -61.7,
     "discovered": 1899,
+    "abundance": 4e-13,
     "equations": [
       "3bbe5275-7b5c-8157-a64b-eb73eeb53735"
     ],
     "pageId": "af052ce8-08c8-4238-9142-bca6aa4e030e",
     "pageUrl": "https://app.notion.com/p/Radon-af052ce808c842389142bca6aa4e030e",
-    "lastEdited": "2026-08-13T16:15:00.000Z"
+    "lastEdited": "2026-08-15T18:49:00.000Z"
   },
   {
     "name": "Francium",
@@ -2231,10 +2317,11 @@
     "meltingPt": 27,
     "boilingPt": 677,
     "discovered": 1939,
+    "abundance": 1e-18,
     "equations": [],
     "pageId": "3015b2a8-512f-40c1-b1a5-d7a1b7be1037",
     "pageUrl": "https://app.notion.com/p/Francium-3015b2a8512f40c1b1a5d7a1b7be1037",
-    "lastEdited": "2026-08-13T16:15:00.000Z"
+    "lastEdited": "2026-08-15T18:49:00.000Z"
   },
   {
     "name": "Radium",
@@ -2254,12 +2341,13 @@
     "meltingPt": 700,
     "boilingPt": 1737,
     "discovered": 1898,
+    "abundance": 9e-07,
     "equations": [
       "3bbe5275-7b5c-8157-a64b-eb73eeb53735"
     ],
     "pageId": "b46c06cc-e657-411b-bbc0-0a33f02c8b76",
     "pageUrl": "https://app.notion.com/p/Radium-b46c06cce657411bbbc00a33f02c8b76",
-    "lastEdited": "2026-08-13T16:15:00.000Z"
+    "lastEdited": "2026-08-15T18:49:00.000Z"
   },
   {
     "name": "Actinium",
@@ -2279,10 +2367,11 @@
     "meltingPt": 1050,
     "boilingPt": 3198,
     "discovered": 1902,
+    "abundance": 5.5e-10,
     "equations": [],
     "pageId": "ccf3f41c-fa3a-4dba-8c8b-46ab727cc5a0",
     "pageUrl": "https://app.notion.com/p/Actinium-ccf3f41cfa3a4dba8c8b46ab727cc5a0",
-    "lastEdited": "2026-08-13T16:15:00.000Z"
+    "lastEdited": "2026-08-15T18:50:00.000Z"
   },
   {
     "name": "Thorium",
@@ -2302,12 +2391,13 @@
     "meltingPt": 1750,
     "boilingPt": 4788,
     "discovered": 1829,
+    "abundance": 9.6,
     "equations": [
       "3bbe5275-7b5c-8157-a64b-eb73eeb53735"
     ],
     "pageId": "8fd275ae-15ae-4007-a2be-f3eea170eceb",
     "pageUrl": "https://app.notion.com/p/Thorium-8fd275ae15ae4007a2bef3eea170eceb",
-    "lastEdited": "2026-08-13T16:15:00.000Z"
+    "lastEdited": "2026-08-15T18:50:00.000Z"
   },
   {
     "name": "Protactinium",
@@ -2327,10 +2417,11 @@
     "meltingPt": 1570,
     "boilingPt": 4027,
     "discovered": 1913,
+    "abundance": 1.4e-06,
     "equations": [],
     "pageId": "7c07c65b-627c-467a-9ea6-5a2883f91276",
     "pageUrl": "https://app.notion.com/p/Protactinium-7c07c65b627c467a9ea65a2883f91276",
-    "lastEdited": "2026-08-13T16:15:00.000Z"
+    "lastEdited": "2026-08-15T18:49:00.000Z"
   },
   {
     "name": "Uranium",
@@ -2350,6 +2441,7 @@
     "meltingPt": 1135,
     "boilingPt": 4131,
     "discovered": 1789,
+    "abundance": 2.7,
     "equations": [
       "3bbe5275-7b5c-8157-a64b-eb73eeb53735",
       "3bbe5275-7b5c-813e-a03e-dacece1e6c35",
@@ -2358,7 +2450,7 @@
     ],
     "pageId": "87459a14-155f-47c2-b8b1-b63015fa4d30",
     "pageUrl": "https://app.notion.com/p/Uranium-87459a14155f47c2b8b1b63015fa4d30",
-    "lastEdited": "2026-08-13T16:15:00.000Z"
+    "lastEdited": "2026-08-15T18:49:00.000Z"
   },
   {
     "name": "Neptunium",
@@ -2378,10 +2470,11 @@
     "meltingPt": 640,
     "boilingPt": 4000,
     "discovered": 1940,
+    "abundance": 3e-12,
     "equations": [],
     "pageId": "5acb944a-c604-49a5-b743-a8e93a7d3554",
     "pageUrl": "https://app.notion.com/p/Neptunium-5acb944ac60449a5b743a8e93a7d3554",
-    "lastEdited": "2026-08-13T16:15:00.000Z"
+    "lastEdited": "2026-08-15T18:49:00.000Z"
   },
   {
     "name": "Plutonium",
@@ -2401,13 +2494,14 @@
     "meltingPt": 639.4,
     "boilingPt": 3228,
     "discovered": 1941,
+    "abundance": 3e-11,
     "equations": [
       "3bbe5275-7b5c-813e-a03e-dacece1e6c35",
       "3bbe5275-7b5c-812d-b464-f7799b61cce9"
     ],
     "pageId": "eed43a4b-b952-4d7c-94ae-28cd0753687e",
     "pageUrl": "https://app.notion.com/p/Plutonium-eed43a4bb9524d7c94ae28cd0753687e",
-    "lastEdited": "2026-08-13T16:15:00.000Z"
+    "lastEdited": "2026-08-15T18:49:00.000Z"
   },
   {
     "name": "Americium",
@@ -2427,6 +2521,7 @@
     "meltingPt": 1176,
     "boilingPt": 2607,
     "discovered": 1944,
+    "abundance": null,
     "equations": [],
     "pageId": "526c4fdc-e0ff-4eb9-ae91-9621aa26e198",
     "pageUrl": "https://app.notion.com/p/Americium-526c4fdce0ff4eb9ae919621aa26e198",
@@ -2450,6 +2545,7 @@
     "meltingPt": 1340,
     "boilingPt": 3110,
     "discovered": 1944,
+    "abundance": null,
     "equations": [],
     "pageId": "ef38fb54-6eec-4686-a53c-8e8613e981f9",
     "pageUrl": "https://app.notion.com/p/Curium-ef38fb546eec4686a53c8e8613e981f9",
@@ -2473,6 +2569,7 @@
     "meltingPt": 986,
     "boilingPt": 710,
     "discovered": 1949,
+    "abundance": null,
     "equations": [],
     "pageId": "263497a0-c44c-4fe8-805d-ae478dfd15a9",
     "pageUrl": "https://app.notion.com/p/Berkelium-263497a0c44c4fe8805dae478dfd15a9",
@@ -2496,6 +2593,7 @@
     "meltingPt": 900,
     "boilingPt": 1470,
     "discovered": 1950,
+    "abundance": null,
     "equations": [],
     "pageId": "01abe943-8124-444f-b563-9904be6034e8",
     "pageUrl": "https://app.notion.com/p/Californium-01abe9438124444fb5639904be6034e8",
@@ -2519,6 +2617,7 @@
     "meltingPt": 860,
     "boilingPt": null,
     "discovered": 1952,
+    "abundance": null,
     "equations": [],
     "pageId": "f34cc37d-12a1-4a5a-b9f9-663388207ca5",
     "pageUrl": "https://app.notion.com/p/Einsteinium-f34cc37d12a14a5ab9f9663388207ca5",
@@ -2542,6 +2641,7 @@
     "meltingPt": 1527,
     "boilingPt": null,
     "discovered": 1952,
+    "abundance": null,
     "equations": [],
     "pageId": "e184f122-23b5-48c3-96c7-ceebe0c880f0",
     "pageUrl": "https://app.notion.com/p/Fermium-e184f12223b548c396c7ceebe0c880f0",
@@ -2565,6 +2665,7 @@
     "meltingPt": 827,
     "boilingPt": null,
     "discovered": 1955,
+    "abundance": null,
     "equations": [],
     "pageId": "2a3713fc-04e4-4f39-9f5a-a7fd7459b122",
     "pageUrl": "https://app.notion.com/p/Mendelevium-2a3713fc04e44f399f5aa7fd7459b122",
@@ -2588,6 +2689,7 @@
     "meltingPt": null,
     "boilingPt": null,
     "discovered": 1966,
+    "abundance": null,
     "equations": [],
     "pageId": "6aaad9db-b051-4580-a28e-a7845738317e",
     "pageUrl": "https://app.notion.com/p/Nobelium-6aaad9dbb0514580a28ea7845738317e",
@@ -2611,6 +2713,7 @@
     "meltingPt": null,
     "boilingPt": null,
     "discovered": 1961,
+    "abundance": null,
     "equations": [],
     "pageId": "976d09b0-c975-45d6-85b8-7008db9594b6",
     "pageUrl": "https://app.notion.com/p/Lawrencium-976d09b0c97545d685b87008db9594b6",
@@ -2634,6 +2737,7 @@
     "meltingPt": null,
     "boilingPt": null,
     "discovered": 1969,
+    "abundance": null,
     "equations": [],
     "pageId": "e37c33df-9ea7-414f-8450-e0fd062d96b1",
     "pageUrl": "https://app.notion.com/p/Rutherfordium-e37c33df9ea7414f8450e0fd062d96b1",
@@ -2657,6 +2761,7 @@
     "meltingPt": null,
     "boilingPt": null,
     "discovered": 1970,
+    "abundance": null,
     "equations": [],
     "pageId": "63da8ef3-cf72-4447-9f7b-dbce5aef55fd",
     "pageUrl": "https://app.notion.com/p/Dubnium-63da8ef3cf7244479f7bdbce5aef55fd",
@@ -2680,6 +2785,7 @@
     "meltingPt": null,
     "boilingPt": null,
     "discovered": 1974,
+    "abundance": null,
     "equations": [],
     "pageId": "b422ac7e-f089-4e79-ad59-188c62e49c6a",
     "pageUrl": "https://app.notion.com/p/Seaborgium-b422ac7ef0894e79ad59188c62e49c6a",
@@ -2703,6 +2809,7 @@
     "meltingPt": null,
     "boilingPt": null,
     "discovered": 1981,
+    "abundance": null,
     "equations": [],
     "pageId": "2a99e29d-c5c5-466d-b2dd-f04ca1339476",
     "pageUrl": "https://app.notion.com/p/Bohrium-2a99e29dc5c5466db2ddf04ca1339476",
@@ -2726,6 +2833,7 @@
     "meltingPt": null,
     "boilingPt": null,
     "discovered": 1984,
+    "abundance": null,
     "equations": [],
     "pageId": "0f6109a0-b359-44c0-9f06-9de8a1dc35a5",
     "pageUrl": "https://app.notion.com/p/Hassium-0f6109a0b35944c09f069de8a1dc35a5",
@@ -2748,6 +2856,7 @@
     "meltingPt": null,
     "boilingPt": null,
     "discovered": 1982,
+    "abundance": null,
     "equations": [],
     "pageId": "ae21b10f-46ee-452f-b5c4-e8296667f755",
     "pageUrl": "https://app.notion.com/p/Meitnerium-ae21b10f46ee452fb5c4e8296667f755",
@@ -2770,6 +2879,7 @@
     "meltingPt": null,
     "boilingPt": null,
     "discovered": 1994,
+    "abundance": null,
     "equations": [],
     "pageId": "83ac8257-43f7-427e-ad1e-31947531dd09",
     "pageUrl": "https://app.notion.com/p/Darmstadtium-83ac825743f7427ead1e31947531dd09",
@@ -2792,6 +2902,7 @@
     "meltingPt": null,
     "boilingPt": null,
     "discovered": 1994,
+    "abundance": null,
     "equations": [],
     "pageId": "33238488-78b2-41ea-b7d7-8c13fc7438b6",
     "pageUrl": "https://app.notion.com/p/Roentgenium-3323848878b241eab7d78c13fc7438b6",
@@ -2816,6 +2927,7 @@
     "meltingPt": null,
     "boilingPt": null,
     "discovered": 1996,
+    "abundance": null,
     "equations": [],
     "pageId": "a441aa30-a459-4fa0-8575-2b4a97d3a1bc",
     "pageUrl": "https://app.notion.com/p/Copernicium-a441aa30a4594fa085752b4a97d3a1bc",
@@ -2839,6 +2951,7 @@
     "meltingPt": null,
     "boilingPt": null,
     "discovered": 2003,
+    "abundance": null,
     "equations": [],
     "pageId": "3613b8c2-3029-4dae-b773-884f74300f3c",
     "pageUrl": "https://app.notion.com/p/Nihonium-3613b8c230294daeb773884f74300f3c",
@@ -2863,6 +2976,7 @@
     "meltingPt": null,
     "boilingPt": null,
     "discovered": 1999,
+    "abundance": null,
     "equations": [],
     "pageId": "1b2b6074-64e2-4dec-af00-9229385b61bf",
     "pageUrl": "https://app.notion.com/p/Flerovium-1b2b607464e24decaf009229385b61bf",
@@ -2886,6 +3000,7 @@
     "meltingPt": null,
     "boilingPt": null,
     "discovered": 2003,
+    "abundance": null,
     "equations": [],
     "pageId": "722a7ba0-666d-4036-a88e-db15b881bba9",
     "pageUrl": "https://app.notion.com/p/Moscovium-722a7ba0666d4036a88edb15b881bba9",
@@ -2909,6 +3024,7 @@
     "meltingPt": null,
     "boilingPt": null,
     "discovered": 2000,
+    "abundance": null,
     "equations": [],
     "pageId": "31f6a6a4-a2d6-48ac-b203-5603d0cf0f6e",
     "pageUrl": "https://app.notion.com/p/Livermorium-31f6a6a4a2d648acb2035603d0cf0f6e",
@@ -2931,6 +3047,7 @@
     "meltingPt": null,
     "boilingPt": null,
     "discovered": 2009,
+    "abundance": null,
     "equations": [],
     "pageId": "1e3acfc8-1c6a-4727-87ed-56fc692bd276",
     "pageUrl": "https://app.notion.com/p/Tennessine-1e3acfc81c6a472787ed56fc692bd276",
@@ -2953,6 +3070,7 @@
     "meltingPt": null,
     "boilingPt": null,
     "discovered": 2002,
+    "abundance": null,
     "equations": [],
     "pageId": "4bdf60d2-1ac7-4bf7-af67-2739d933864c",
     "pageUrl": "https://app.notion.com/p/Oganesson-4bdf60d21ac74bf7af672739d933864c",
