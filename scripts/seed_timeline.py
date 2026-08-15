@@ -1,13 +1,16 @@
 """Seed the Cosmic Timeline [DB] in Notion — the history of the universe.
 
-The existing Cosmology Events [DB] could not hold this: its title property is
-`Force ID` (a leftover from the Forces DB), its `Type` select offers Collision
-and Supernova, and its time field is a calendar `Date`. That schema describes
-observed transients — a supernova, at an object, on a date — which is a
-different kind of thing from an epoch of cosmic history. Recombination happened
-380,000 years after the Big Bang; inflation ended at 10⁻³² seconds. Neither is
-a date, so this database sorts on `Seconds After Big Bang`, a number spanning
-1e-43 to 1e110.
+The existing Cosmology Events [DB] could not hold this: its `Type` select offers
+Collision and Supernova, and its time field is a calendar `Date`. That schema
+describes observed transients — a supernova, at an object, on a date — which is
+a different kind of thing from an epoch of cosmic history. Recombination
+happened 380,000 years after the Big Bang; inflation ended at 10⁻³² seconds.
+Neither is a date, so this database sorts on `Seconds After Big Bang`, a number
+spanning 1e-43 to 1e110.
+
+(That database's title property was also called `Force ID`, copied from the
+Forces DB. Renamed to `Event` on 2026-08-15 — it is still empty, and still
+meant for transients rather than epochs.)
 
 Times and temperatures follow the standard ΛCDM chronology (Planck 2018
 parameters). The far-future entries are order-of-magnitude projections from
