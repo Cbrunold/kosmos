@@ -798,70 +798,2347 @@
   ],
   "researchers": [
     {
+      "id": "3bde5275-7b5c-8168-88af-c066eda15c16",
+      "url": "https://app.notion.com/p/Peter-Shor-3bde52757b5c816888afc066eda15c16",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1959–",
+      "Theories [DB]": [
+        "3bde5275-7b5c-8140-928d-c0aa2466b01f"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "Quantum Computing",
+      "Known For": "The factoring algorithm that made everyone take quantum computing seriously.",
+      "Nationality": "American",
+      "Name": "Peter Shor"
+    },
+    {
+      "id": "3bde5275-7b5c-8138-a1cd-db105d8facb9",
+      "url": "https://app.notion.com/p/David-Deutsch-3bde52757b5c8138a1cddb105d8facb9",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1953–",
+      "Theories [DB]": [
+        "3bde5275-7b5c-8140-928d-c0aa2466b01f"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "Quantum Computing",
+      "Known For": "Defined the universal quantum computer.",
+      "Nationality": "British",
+      "Name": "David Deutsch"
+    },
+    {
+      "id": "3bde5275-7b5c-8177-aada-daff0c20dfde",
+      "url": "https://app.notion.com/p/John-Stewart-Bell-3bde52757b5c8177aadadaff0c20dfde",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1928–1990",
+      "Theories [DB]": [
+        "3bde5275-7b5c-8113-aa1c-f0b45b84363d"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "Quantum Foundations",
+      "Known For": "Turned a philosophical argument into an inequality that experiments could — and did — violate.",
+      "Nationality": "Northern Irish",
+      "Name": "John Stewart Bell"
+    },
+    {
+      "id": "3bde5275-7b5c-819e-a4d4-f35dbe9b17b9",
+      "url": "https://app.notion.com/p/Hugh-Everett-III-3bde52757b5c819ea4d4f35dbe9b17b9",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1930–1982",
+      "Theories [DB]": [
+        "3bde5275-7b5c-810d-ab95-db5786e7b9e2"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "Quantum Mechanics",
+      "Known For": "Proposed the many-worlds interpretation, was ignored, and left physics for defence analysis.",
+      "Nationality": "American",
+      "Name": "Hugh Everett III"
+    },
+    {
+      "id": "3bde5275-7b5c-8122-a96d-cea083c4e011",
+      "url": "https://app.notion.com/p/Mitchell-Feigenbaum-3bde52757b5c8122a96dcea083c4e011",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1944–2019",
+      "Theories [DB]": [
+        "3bde5275-7b5c-8151-afe6-e471f9d33f09"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "Nonlinear Dynamics",
+      "Known For": "Found a universal constant hiding in the route from order to chaos.",
+      "Nationality": "American",
+      "Name": "Mitchell Feigenbaum"
+    },
+    {
+      "id": "3bde5275-7b5c-812a-8bc0-e6e5d15b6642",
+      "url": "https://app.notion.com/p/Edward-Lorenz-3bde52757b5c812a8bc0e6e5d15b6642",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1917–2008",
+      "Theories [DB]": [
+        "3bde5275-7b5c-8151-afe6-e471f9d33f09"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "Meteorology",
+      "Known For": "Rounded a number from six digits to three, got a different forecast, and founded chaos theory.",
+      "Nationality": "American",
+      "Name": "Edward Lorenz"
+    },
+    {
+      "id": "3bde5275-7b5c-81f6-b2f7-c165b4ffef6a",
+      "url": "https://app.notion.com/p/J-Tuzo-Wilson-3bde52757b5c81f6b2f7c165b4ffef6a",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1908–1993",
+      "Theories [DB]": [
+        "3bde5275-7b5c-813a-b77a-c766d8a0e418"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "Geophysics",
+      "Known For": "Transform faults and hotspots; assembled the pieces into plate tectonics.",
+      "Nationality": "Canadian",
+      "Name": "J. Tuzo Wilson"
+    },
+    {
+      "id": "3bde5275-7b5c-8165-aa32-c11f749ad113",
+      "url": "https://app.notion.com/p/Harry-Hess-3bde52757b5c8165aa32c11f749ad113",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1906–1969",
+      "Theories [DB]": [
+        "3bde5275-7b5c-813a-b77a-c766d8a0e418"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "Geology",
+      "Known For": "Seafloor spreading — the mechanism that made continental drift respectable.",
+      "Nationality": "American",
+      "Name": "Harry Hess"
+    },
+    {
+      "id": "3bde5275-7b5c-815a-a104-e3f2cdc21557",
+      "url": "https://app.notion.com/p/Mordehai-Milgrom-3bde52757b5c815aa104e3f2cdc21557",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1946–",
+      "Theories [DB]": [
+        "3bde5275-7b5c-81b8-9c3e-f0c39aa27da9"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "Astrophysics",
+      "Known For": "Proposed modifying gravity instead of adding dark matter — a minority view that refuses to die.",
+      "Nationality": "Israeli",
+      "Name": "Mordehai Milgrom"
+    },
+    {
+      "id": "3bde5275-7b5c-81f7-9127-eed4aada4070",
+      "url": "https://app.notion.com/p/Adam-Riess-3bde52757b5c81f79127eed4aada4070",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1969–",
+      "Theories [DB]": [
+        "3bde5275-7b5c-8119-b400-f4b64f9b76f4"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "Cosmology",
+      "Known For": "Wrote up the accelerating-universe result, and now leads the distance-ladder side of the Hubble tension.",
+      "Nationality": "American",
+      "Name": "Adam Riess"
+    },
+    {
+      "id": "3bde5275-7b5c-810f-815d-feab1486c2c3",
+      "url": "https://app.notion.com/p/Brian-Schmidt-3bde52757b5c810f815dfeab1486c2c3",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1967–",
+      "Theories [DB]": [
+        "3bde5275-7b5c-8119-b400-f4b64f9b76f4"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "Cosmology",
+      "Known For": "Led the other one, and got the same unwelcome answer.",
+      "Nationality": "American-Australian",
+      "Name": "Brian Schmidt"
+    },
+    {
+      "id": "3bde5275-7b5c-81e7-9fdd-fc601314ede3",
+      "url": "https://app.notion.com/p/Saul-Perlmutter-3bde52757b5c81e79fddfc601314ede3",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1959–",
+      "Theories [DB]": [
+        "3bde5275-7b5c-8119-b400-f4b64f9b76f4"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "Cosmology",
+      "Known For": "Led one of the two supernova teams that found the expansion is speeding up.",
+      "Nationality": "American",
+      "Name": "Saul Perlmutter"
+    },
+    {
+      "id": "3bde5275-7b5c-815a-b9ba-f5e3b84368f6",
+      "url": "https://app.notion.com/p/Vera-Rubin-3bde52757b5c815ab9baf5e3b84368f6",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1928–2016",
+      "Theories [DB]": [
+        "3bde5275-7b5c-8155-8abe-e1d83b51ecb9"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "Astronomy",
+      "Known For": "Measured flat galaxy rotation curves and turned dark matter from a curiosity into a crisis.",
+      "Nationality": "American",
+      "Name": "Vera Rubin"
+    },
+    {
+      "id": "3bde5275-7b5c-818e-a2c6-d4102e048893",
+      "url": "https://app.notion.com/p/Alexei-Starobinsky-3bde52757b5c818ea2c6d4102e048893",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1948–2023",
+      "Theories [DB]": [
+        "3bde5275-7b5c-8194-92cc-da98c37e359e"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "Cosmology",
+      "Known For": "Proposed an inflationary model in 1980 that current CMB data still fits best.",
+      "Nationality": "Russian",
+      "Name": "Alexei Starobinsky"
+    },
+    {
+      "id": "3bde5275-7b5c-8174-8b56-d90ca02f80d8",
+      "url": "https://app.notion.com/p/Andrei-Linde-3bde52757b5c81748b56d90ca02f80d8",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1948–",
+      "Theories [DB]": [
+        "3bde5275-7b5c-8194-92cc-da98c37e359e"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "Cosmology",
+      "Known For": "Chaotic and eternal inflation, in which our universe is one bubble among endlessly many.",
+      "Nationality": "Russian-American",
+      "Name": "Andrei Linde"
+    },
+    {
+      "id": "3bde5275-7b5c-81a4-b503-cfd2bf7d3305",
+      "url": "https://app.notion.com/p/Alan-Guth-3bde52757b5c81a4b503cfd2bf7d3305",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1947–",
+      "Theories [DB]": [
+        "3bde5275-7b5c-8194-92cc-da98c37e359e"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "Cosmology",
+      "Known For": "Inflation — a fraction of a second of exponential expansion that explains why the sky looks so uniform.",
+      "Nationality": "American",
+      "Name": "Alan Guth"
+    },
+    {
+      "id": "3bde5275-7b5c-8101-bf51-eb1b21e06ba0",
+      "url": "https://app.notion.com/p/Abhay-Ashtekar-3bde52757b5c8101bf51eb1b21e06ba0",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1949–",
+      "Theories [DB]": [
+        "3bde5275-7b5c-81b3-a747-d2e0a75cf5aa"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "Quantum Gravity",
+      "Known For": "The variables that made loop quantum gravity tractable.",
+      "Nationality": "Indian-American",
+      "Name": "Abhay Ashtekar"
+    },
+    {
+      "id": "3bde5275-7b5c-81c0-8a92-e9152ccde825",
+      "url": "https://app.notion.com/p/Lee-Smolin-3bde52757b5c81c08a92e9152ccde825",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1955–",
+      "Theories [DB]": [
+        "3bde5275-7b5c-81b3-a747-d2e0a75cf5aa",
+        "948ffd28-180a-4f7f-8f79-b6a712181262"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "Quantum Gravity",
+      "Known For": "Loop quantum gravity, and a book-length case against string theory.",
+      "Nationality": "American",
+      "Name": "Lee Smolin"
+    },
+    {
+      "id": "3bde5275-7b5c-816b-bb69-dbce98c3060c",
+      "url": "https://app.notion.com/p/Carlo-Rovelli-3bde52757b5c816bbb69dbce98c3060c",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1956–",
+      "Theories [DB]": [
+        "3bde5275-7b5c-81b3-a747-d2e0a75cf5aa",
+        "948ffd28-180a-4f7f-8f79-b6a712181262"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "Quantum Gravity",
+      "Known For": "Loop quantum gravity, and the argument that time is not fundamental.",
+      "Nationality": "Italian",
+      "Name": "Carlo Rovelli"
+    },
+    {
+      "id": "3bde5275-7b5c-8149-ab91-cb6c656f25f5",
+      "url": "https://app.notion.com/p/Juan-Maldacena-3bde52757b5c8149ab91cb6c656f25f5",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1968–",
+      "Theories [DB]": [
+        "3bde5275-7b5c-81b1-8212-c31d06505cbc"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "String Theory",
+      "Known For": "The AdS/CFT correspondence — the most-cited idea in theoretical physics this century.",
+      "Nationality": "Argentine",
+      "Name": "Juan Maldacena"
+    },
+    {
+      "id": "3bde5275-7b5c-810e-aff6-c621f0f92a4d",
+      "url": "https://app.notion.com/p/Edward-Witten-3bde52757b5c810eaff6c621f0f92a4d",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1951–",
+      "Theories [DB]": [
+        "3bde5275-7b5c-81c8-92c2-e7f2313ec35d"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "String Theory",
+      "Known For": "Unified five string theories into M-theory; the only physicist to win a Fields Medal.",
+      "Nationality": "American",
+      "Name": "Edward Witten"
+    },
+    {
+      "id": "3bde5275-7b5c-81a3-b7cb-c7249ae9e8ae",
+      "url": "https://app.notion.com/p/John-Schwarz-3bde52757b5c81a3b7cbc7249ae9e8ae",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1941–",
+      "Theories [DB]": [
+        "3bde5275-7b5c-81c8-92c2-e7f2313ec35d"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "String Theory",
+      "Known For": "Kept string theory alive through the decade nobody was listening.",
+      "Nationality": "American",
+      "Name": "John Schwarz"
+    },
+    {
+      "id": "3bde5275-7b5c-81c6-a7aa-c14745903c8d",
+      "url": "https://app.notion.com/p/Michael-Green-3bde52757b5c81c6a7aac14745903c8d",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1946–",
+      "Theories [DB]": [
+        "3bde5275-7b5c-81c8-92c2-e7f2313ec35d"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "String Theory",
+      "Known For": "The 1984 anomaly cancellation that triggered the first superstring revolution.",
+      "Nationality": "British",
+      "Name": "Michael Green"
+    },
+    {
+      "id": "3bde5275-7b5c-81ae-96eb-e3dbd02ea9f6",
+      "url": "https://app.notion.com/p/Leonard-Susskind-3bde52757b5c81ae96ebe3dbd02ea9f6",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1940–",
+      "Theories [DB]": [
+        "3bde5275-7b5c-81b1-8212-c31d06505cbc",
+        "3bde5275-7b5c-81c8-92c2-e7f2313ec35d"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "String Theory",
+      "Known For": "String theory from the start, the holographic principle, and the black hole war with Hawking.",
+      "Nationality": "American",
+      "Name": "Leonard Susskind"
+    },
+    {
+      "id": "3bde5275-7b5c-81fc-9aa8-c89cd17f8f71",
+      "url": "https://app.notion.com/p/Jacob-Bekenstein-3bde52757b5c81fc9aa8c89cd17f8f71",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1947–2015",
+      "Theories [DB]": [
+        "3bde5275-7b5c-8183-a9cc-d3532bc342bf"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "Gravitation",
+      "Known For": "Argued a black hole has entropy proportional to its area, and was disbelieved until Hawking proved it.",
+      "Nationality": "Israeli-American",
+      "Name": "Jacob Bekenstein"
+    },
+    {
+      "id": "3bde5275-7b5c-8148-b3a9-cd497f7b5af5",
+      "url": "https://app.notion.com/p/Stephen-Hawking-3bde52757b5c8148b3a9cd497f7b5af5",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1942–2018",
+      "Theories [DB]": [
+        "3bde5275-7b5c-8183-a9cc-d3532bc342bf",
+        "948ffd28-180a-4f7f-8f79-b6a712181262"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "Cosmology",
+      "Known For": "Showed black holes evaporate, which is still the sharpest clue we have about quantum gravity.",
+      "Nationality": "British",
+      "Name": "Stephen Hawking"
+    },
+    {
+      "id": "3bde5275-7b5c-8159-ada5-e0ada4600c48",
+      "url": "https://app.notion.com/p/Bruno-Zumino-3bde52757b5c8159ada5e0ada4600c48",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1923–2014",
+      "Theories [DB]": [
+        "3bde5275-7b5c-81b8-af02-f546654f2aec"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "Particle Physics",
+      "Known For": "The other half of the Wess–Zumino model.",
+      "Nationality": "Italian",
+      "Name": "Bruno Zumino"
+    },
+    {
+      "id": "3bde5275-7b5c-81cb-a404-c3d526dfaa36",
+      "url": "https://app.notion.com/p/Julius-Wess-3bde52757b5c81cba404c3d526dfaa36",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1934–2007",
+      "Theories [DB]": [
+        "3bde5275-7b5c-81b8-af02-f546654f2aec"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "Particle Physics",
+      "Known For": "Co-founded supersymmetry, still the best-motivated idea with no experimental support.",
+      "Nationality": "Austrian",
+      "Name": "Julius Wess"
+    },
+    {
+      "id": "3bde5275-7b5c-81c2-a5eb-d42bcf472d03",
+      "url": "https://app.notion.com/p/Howard-Georgi-3bde52757b5c81c2a5ebd42bcf472d03",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1947–",
+      "Theories [DB]": [
+        "3bde5275-7b5c-81c2-a04e-d20bae468120",
+        "e497c8e0-c340-456d-a74c-a8d03962d58a"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "Particle Physics",
+      "Known For": "The first grand unified theory, whose predicted proton decay has stubbornly failed to appear.",
+      "Nationality": "American",
+      "Name": "Howard Georgi"
+    },
+    {
+      "id": "3bde5275-7b5c-81eb-b1e7-dafaa0eef10e",
+      "url": "https://app.notion.com/p/Frank-Wilczek-3bde52757b5c81ebb1e7dafaa0eef10e",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1951–",
+      "Theories [DB]": [
+        "3bde5275-7b5c-8170-8bb5-f403b35dcc5e"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "Particle Physics",
+      "Known For": "Asymptotic freedom as a graduate student; later, the axion.",
+      "Nationality": "American",
+      "Name": "Frank Wilczek"
+    },
+    {
+      "id": "3bde5275-7b5c-8181-b6fd-fd535dca5e44",
+      "url": "https://app.notion.com/p/David-Gross-3bde52757b5c8181b6fdfd535dca5e44",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1941–",
+      "Theories [DB]": [
+        "3bde5275-7b5c-8170-8bb5-f403b35dcc5e"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "Particle Physics",
+      "Known For": "Asymptotic freedom — why quarks rattle around loosely inside a proton and can never leave.",
+      "Nationality": "American",
+      "Name": "David Gross"
+    },
+    {
+      "id": "3bde5275-7b5c-815e-ad97-f920948728b3",
+      "url": "https://app.notion.com/p/Gerard-t-Hooft-3bde52757b5c815ead97f920948728b3",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1946–",
+      "Theories [DB]": [
+        "3bde5275-7b5c-81b1-8212-c31d06505cbc",
+        "3bde5275-7b5c-812f-987b-d90fa3fe1038"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "Quantum Field Theory",
+      "Known For": "Proved electroweak theory renormalisable, making it physics rather than speculation.",
+      "Nationality": "Dutch",
+      "Name": "Gerard 't Hooft"
+    },
+    {
+      "id": "3bde5275-7b5c-81cf-b8f5-c9b849eacbb6",
+      "url": "https://app.notion.com/p/Fran-ois-Englert-3bde52757b5c81cfb8f5c9b849eacbb6",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1932–",
+      "Theories [DB]": [
+        "3bde5275-7b5c-813f-9e30-c040189eb298"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "Particle Physics",
+      "Known For": "Published the Brout–Englert mechanism weeks before Higgs, and shared the prize.",
+      "Nationality": "Belgian",
+      "Name": "François Englert"
+    },
+    {
+      "id": "3bde5275-7b5c-81d1-b165-fdd3ef972296",
+      "url": "https://app.notion.com/p/Peter-Higgs-3bde52757b5c81d1b165fdd3ef972296",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1929–2024",
+      "Theories [DB]": [
+        "3bde5275-7b5c-813f-9e30-c040189eb298"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "Particle Physics",
+      "Known For": "Predicted the boson in 1964 and waited forty-eight years for CERN to find it.",
+      "Nationality": "British",
+      "Name": "Peter Higgs"
+    },
+    {
+      "id": "3bde5275-7b5c-81a8-b6d8-f8e627e862cf",
+      "url": "https://app.notion.com/p/Steven-Weinberg-3bde52757b5c81a8b6d8f8e627e862cf",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1933–2021",
+      "Theories [DB]": [
+        "3bde5275-7b5c-8109-a8c3-f9b6d98cca04",
+        "3bde5275-7b5c-812f-987b-d90fa3fe1038",
+        "e497c8e0-c340-456d-a74c-a8d03962d58a"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "Particle Physics",
+      "Known For": "'A Model of Leptons' — three pages that became the Standard Model.",
+      "Nationality": "American",
+      "Name": "Steven Weinberg"
+    },
+    {
+      "id": "3bde5275-7b5c-81c1-b1c5-c6ee1e1a800e",
+      "url": "https://app.notion.com/p/Abdus-Salam-3bde52757b5c81c1b1c5c6ee1e1a800e",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1926–1996",
+      "Theories [DB]": [
+        "3bde5275-7b5c-812f-987b-d90fa3fe1038",
+        "e497c8e0-c340-456d-a74c-a8d03962d58a"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "Particle Physics",
+      "Known For": "Electroweak unification, and a lifetime spent building physics in the developing world.",
+      "Nationality": "Pakistani",
+      "Name": "Abdus Salam"
+    },
+    {
+      "id": "3bde5275-7b5c-81aa-9f3f-f0d27ac09ed7",
+      "url": "https://app.notion.com/p/Sheldon-Glashow-3bde52757b5c81aa9f3ff0d27ac09ed7",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1932–",
+      "Theories [DB]": [
+        "3bde5275-7b5c-8109-a8c3-f9b6d98cca04",
+        "3bde5275-7b5c-81c2-a04e-d20bae468120",
+        "3bde5275-7b5c-812f-987b-d90fa3fe1038",
+        "e497c8e0-c340-456d-a74c-a8d03962d58a"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "Particle Physics",
+      "Known For": "The first electroweak gauge theory, and a long-running scepticism about string theory.",
+      "Nationality": "American",
+      "Name": "Sheldon Glashow"
+    },
+    {
+      "id": "3bde5275-7b5c-81e0-aa03-dd0566b7c71d",
+      "url": "https://app.notion.com/p/Murray-Gell-Mann-3bde52757b5c81e0aa03dd0566b7c71d",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1929–2019",
+      "Theories [DB]": [
+        "3bde5275-7b5c-8109-a8c3-f9b6d98cca04",
+        "3bde5275-7b5c-8170-8bb5-f403b35dcc5e"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "Particle Physics",
+      "Known For": "Quarks, the eightfold way, and the name 'quark' lifted from Finnegans Wake.",
+      "Nationality": "American",
+      "Name": "Murray Gell-Mann"
+    },
+    {
+      "id": "3bde5275-7b5c-81b3-ad0f-f06d4fac0585",
+      "url": "https://app.notion.com/p/Geoffrey-Burbidge-3bde52757b5c81b3ad0ff06d4fac0585",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1925–2010",
+      "Theories [DB]": [
+        "3bde5275-7b5c-8197-a615-cfd4ff53095e"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "Astrophysics",
+      "Known For": "Co-author of B²FH; remained a Big Bang sceptic to the end.",
+      "Nationality": "British-American",
+      "Name": "Geoffrey Burbidge"
+    },
+    {
+      "id": "3bde5275-7b5c-8160-808f-fd0c75e2d0fc",
+      "url": "https://app.notion.com/p/Margaret-Burbidge-3bde52757b5c8160808ffd0c75e2d0fc",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1919–2020",
+      "Theories [DB]": [
+        "3bde5275-7b5c-8197-a615-cfd4ff53095e"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "Astrophysics",
+      "Known For": "Lead author of B²FH, the paper that explained where every element heavier than helium comes from.",
+      "Nationality": "British-American",
+      "Name": "Margaret Burbidge"
+    },
+    {
+      "id": "3bde5275-7b5c-814d-be6c-f3596e4eb04e",
+      "url": "https://app.notion.com/p/William-Fowler-3bde52757b5c814dbe6cf3596e4eb04e",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1911–1995",
+      "Theories [DB]": [
+        "3bde5275-7b5c-8197-a615-cfd4ff53095e"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "Nuclear Astrophysics",
+      "Known For": "Measured the nuclear reaction rates that make stellar nucleosynthesis quantitative.",
+      "Nationality": "American",
+      "Name": "William Fowler"
+    },
+    {
+      "id": "3bde5275-7b5c-814a-a143-cc06316872a2",
+      "url": "https://app.notion.com/p/Freeman-Dyson-3bde52757b5c814aa143cc06316872a2",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1923–2020",
+      "Theories [DB]": [
+        "3bde5275-7b5c-812d-9b11-ec91e612af1b"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "Quantum Field Theory",
+      "Known For": "Proved the three formulations of QED were the same theory.",
+      "Nationality": "British-American",
+      "Name": "Freeman Dyson"
+    },
+    {
+      "id": "3bde5275-7b5c-81df-a88f-e0311c90f9df",
+      "url": "https://app.notion.com/p/Sin-Itiro-Tomonaga-3bde52757b5c81dfa88fe0311c90f9df",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1906–1979",
+      "Theories [DB]": [
+        "3bde5275-7b5c-812d-9b11-ec91e612af1b"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "Quantum Field Theory",
+      "Known For": "Developed QED independently in wartime Japan, in near-total isolation.",
+      "Nationality": "Japanese",
+      "Name": "Sin-Itiro Tomonaga"
+    },
+    {
+      "id": "3bde5275-7b5c-8153-8856-cc1587748647",
+      "url": "https://app.notion.com/p/Julian-Schwinger-3bde52757b5c81538856cc1587748647",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1918–1994",
+      "Theories [DB]": [
+        "3bde5275-7b5c-812d-9b11-ec91e612af1b"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "Quantum Field Theory",
+      "Known For": "Built QED by a formalism so dense that Feynman's pictures won the popularity contest.",
+      "Nationality": "American",
+      "Name": "Julian Schwinger"
+    },
+    {
+      "id": "3bde5275-7b5c-815f-9a2b-c0fb364ad894",
+      "url": "https://app.notion.com/p/Richard-Feynman-3bde52757b5c815f9a2bc0fb364ad894",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1918–1988",
+      "Theories [DB]": [
+        "3bde5275-7b5c-8140-928d-c0aa2466b01f",
+        "3bde5275-7b5c-812d-9b11-ec91e612af1b"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "Quantum Field Theory",
+      "Known For": "Path integrals, diagrams, and the first serious proposal for a quantum computer.",
+      "Nationality": "American",
+      "Name": "Richard Feynman"
+    },
+    {
+      "id": "3bde5275-7b5c-81f3-9b38-c50e8ee92c0f",
+      "url": "https://app.notion.com/p/Claude-Shannon-3bde52757b5c81f39b38c50e8ee92c0f",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1916–2001",
+      "Theories [DB]": [
+        "3bde5275-7b5c-81e2-845e-f668253c9a4c"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "Information Theory",
+      "Known For": "Invented information as a measurable quantity, and juggled while riding a unicycle.",
+      "Nationality": "American",
+      "Name": "Claude Shannon"
+    },
+    {
+      "id": "3bde5275-7b5c-81fd-968a-c818c62e9897",
+      "url": "https://app.notion.com/p/Robert-Schrieffer-3bde52757b5c81fd968ac818c62e9897",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1931–2019",
+      "Theories [DB]": [
+        "3bde5275-7b5c-8173-b1a7-eaec1d496663"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "Superconductivity",
+      "Known For": "Wrote down the many-body wavefunction that completed BCS theory.",
+      "Nationality": "American",
+      "Name": "Robert Schrieffer"
+    },
+    {
+      "id": "3bde5275-7b5c-815c-b263-d6eebe138be2",
+      "url": "https://app.notion.com/p/Leon-Cooper-3bde52757b5c815cb263d6eebe138be2",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1930–2024",
+      "Theories [DB]": [
+        "3bde5275-7b5c-8173-b1a7-eaec1d496663"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "Superconductivity",
+      "Known For": "Cooper pairs — the bound electrons that carry a supercurrent.",
+      "Nationality": "American",
+      "Name": "Leon Cooper"
+    },
+    {
+      "id": "3bde5275-7b5c-81c4-9ab9-c19b6570b3eb",
+      "url": "https://app.notion.com/p/John-Bardeen-3bde52757b5c81c49ab9c19b6570b3eb",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1908–1991",
+      "Theories [DB]": [
+        "3bde5275-7b5c-8173-b1a7-eaec1d496663"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "Condensed Matter",
+      "Known For": "The only person with two Nobel Prizes in physics: the transistor, then superconductivity.",
+      "Nationality": "American",
+      "Name": "John Bardeen"
+    },
+    {
+      "id": "3bde5275-7b5c-814f-9122-feb2331ef7f9",
+      "url": "https://app.notion.com/p/Felix-Bloch-3bde52757b5c814f9122feb2331ef7f9",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1905–1983",
+      "Theories [DB]": [
+        "3bde5275-7b5c-81bb-96ea-f380ca92d0a8"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "Condensed Matter",
+      "Known For": "Bloch's theorem — why electrons move through a crystal lattice at all.",
+      "Nationality": "Swiss-American",
+      "Name": "Felix Bloch"
+    },
+    {
+      "id": "3bde5275-7b5c-818e-b9b5-f33f8961f523",
+      "url": "https://app.notion.com/p/Maria-Goeppert-Mayer-3bde52757b5c818eb9b5f33f8961f523",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1906–1972",
+      "Theories [DB]": [
+        "3bde5275-7b5c-81cc-8ba3-e8a006fbdce7"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "Nuclear Physics",
+      "Known For": "The nuclear shell model and its magic numbers, worked out unpaid for most of her career.",
+      "Nationality": "German-American",
+      "Name": "Maria Goeppert Mayer"
+    },
+    {
+      "id": "3bde5275-7b5c-8193-a0f0-ebd0cbdd775f",
+      "url": "https://app.notion.com/p/Ralph-Alpher-3bde52757b5c8193a0f0ebd0cbdd775f",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1921–2007",
+      "Theories [DB]": [
+        "3bde5275-7b5c-8112-9df5-f96e892e1f88"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "Cosmology",
+      "Known For": "Calculated Big Bang nucleosynthesis for his PhD; the prediction of the CMB was in it.",
+      "Nationality": "American",
+      "Name": "Ralph Alpher"
+    },
+    {
+      "id": "3bde5275-7b5c-8137-9034-e8704a8769d7",
+      "url": "https://app.notion.com/p/George-Gamow-3bde52757b5c81379034e8704a8769d7",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1904–1968",
+      "Theories [DB]": [
+        "3bde5275-7b5c-8112-9df5-f96e892e1f88",
+        "3bde5275-7b5c-81b0-a714-d53a2345ebdb"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "Cosmology",
+      "Known For": "Predicted the microwave background, and wrote the physics books people actually finished.",
+      "Nationality": "Russian-American",
+      "Name": "George Gamow"
+    },
+    {
+      "id": "3bde5275-7b5c-8166-a56a-da669ac42a7e",
+      "url": "https://app.notion.com/p/Fred-Hoyle-3bde52757b5c8166a56ada669ac42a7e",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1915–2001",
+      "Theories [DB]": [
+        "3bde5275-7b5c-8197-a615-cfd4ff53095e",
+        "3bde5275-7b5c-811b-ac85-fe83a7a852a4"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "Astrophysics",
+      "Known For": "Explained where the elements come from, coined 'Big Bang' as an insult, and never believed it.",
+      "Nationality": "English",
+      "Name": "Fred Hoyle"
+    },
+    {
+      "id": "3bde5275-7b5c-8108-923b-fc08fe4d5271",
+      "url": "https://app.notion.com/p/Thomas-Gold-3bde52757b5c8108923bfc08fe4d5271",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1920–2004",
+      "Theories [DB]": [
+        "3bde5275-7b5c-811b-ac85-fe83a7a852a4"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "Astrophysics",
+      "Known For": "Steady state cosmology, and the correct identification of pulsars as neutron stars.",
+      "Nationality": "Austrian-American",
+      "Name": "Thomas Gold"
+    },
+    {
+      "id": "3bde5275-7b5c-8104-b3cf-ec0824cc5fe7",
+      "url": "https://app.notion.com/p/Hermann-Bondi-3bde52757b5c8104b3cfec0824cc5fe7",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1919–2005",
+      "Theories [DB]": [
+        "3bde5275-7b5c-811b-ac85-fe83a7a852a4"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "Cosmology",
+      "Known For": "Co-authored the steady state theory, the most elegant cosmology that turned out to be wrong.",
+      "Nationality": "Austrian-British",
+      "Name": "Hermann Bondi"
+    },
+    {
+      "id": "3bde5275-7b5c-819a-8ba9-c39d54846d6c",
+      "url": "https://app.notion.com/p/Werner-Heisenberg-3bde52757b5c819a8ba9c39d54846d6c",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1901–1976",
+      "Theories [DB]": [
+        "3bde5275-7b5c-811e-a927-c8b3e1fee423",
+        "3bde5275-7b5c-8193-ae2a-f3d957e88a73"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "Quantum Mechanics",
+      "Known For": "Matrix mechanics and the uncertainty principle — the end of the classical trajectory.",
+      "Nationality": "German",
+      "Name": "Werner Heisenberg"
+    },
+    {
+      "id": "3bde5275-7b5c-81e1-b5f4-f96fc2650a52",
+      "url": "https://app.notion.com/p/Paul-Dirac-3bde52757b5c81e1b5f4f96fc2650a52",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1902–1984",
+      "Theories [DB]": [
+        "3bde5275-7b5c-8193-ae2a-f3d957e88a73"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "Quantum Field Theory",
+      "Known For": "Married relativity to quantum mechanics and got antimatter as an unavoidable side effect.",
+      "Nationality": "English",
+      "Name": "Paul Dirac"
+    },
+    {
+      "id": "3bde5275-7b5c-815d-a4d0-cece91e123b4",
+      "url": "https://app.notion.com/p/Georges-Lema-tre-3bde52757b5c815da4d0cece91e123b4",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1894–1966",
+      "Theories [DB]": [
+        "3bde5275-7b5c-81b0-a714-d53a2345ebdb"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "Cosmology",
+      "Known For": "A priest who derived the expanding universe from Einstein's equations two years before Hubble measured it.",
+      "Nationality": "Belgian",
+      "Name": "Georges Lemaître"
+    },
+    {
+      "id": "3bde5275-7b5c-8145-b939-d7d5691f84c5",
+      "url": "https://app.notion.com/p/Fritz-Zwicky-3bde52757b5c8145b939d7d5691f84c5",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1898–1974",
+      "Theories [DB]": [
+        "3bde5275-7b5c-8155-8abe-e1d83b51ecb9"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "Astrophysics",
+      "Known For": "Weighed the Coma cluster in 1933, found most of it missing, and named dark matter.",
+      "Nationality": "Swiss",
+      "Name": "Fritz Zwicky"
+    },
+    {
+      "id": "3bde5275-7b5c-81df-994e-c64bee10dcc4",
+      "url": "https://app.notion.com/p/Alfred-Wegener-3bde52757b5c81df994ec64bee10dcc4",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1880–1930",
+      "Theories [DB]": [
+        "3bde5275-7b5c-813a-b77a-c766d8a0e418"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "Geophysics",
+      "Known For": "Saw that the continents fit together and was ridiculed for fifty years.",
+      "Nationality": "German",
+      "Name": "Alfred Wegener"
+    },
+    {
+      "id": "3bde5275-7b5c-8198-98e7-dda822d303c2",
+      "url": "https://app.notion.com/p/Louis-de-Broglie-3bde52757b5c819898e7dda822d303c2",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1892–1987",
+      "Theories [DB]": [
+        "3bde5275-7b5c-8132-b647-c4c04158e693"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "Quantum Mechanics",
+      "Known For": "Proposed that matter has a wavelength, in a doctoral thesis, and was right.",
+      "Nationality": "French",
+      "Name": "Louis de Broglie"
+    },
+    {
+      "id": "3bde5275-7b5c-81ff-b052-cf8ff59a2096",
+      "url": "https://app.notion.com/p/Arnold-Sommerfeld-3bde52757b5c81ffb052cf8ff59a2096",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1868–1951",
+      "Theories [DB]": [
+        "3bde5275-7b5c-81bb-96ea-f380ca92d0a8",
+        "3bde5275-7b5c-81c6-b1bc-c6ba18f69e39"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "Atomic Physics",
+      "Known For": "Refined the Bohr model and introduced the fine-structure constant; taught more Nobel laureates than anyone.",
+      "Nationality": "German",
+      "Name": "Arnold Sommerfeld"
+    },
+    {
+      "id": "3bde5275-7b5c-81f6-8c96-c687aed99185",
+      "url": "https://app.notion.com/p/Erwin-Schr-dinger-3bde52757b5c81f68c96c687aed99185",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1887–1961",
+      "Theories [DB]": [
+        "3bde5275-7b5c-8193-ae2a-f3d957e88a73"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "Quantum Mechanics",
+      "Known For": "One wave equation for all of chemistry, and one very famous hypothetical cat.",
+      "Nationality": "Austrian",
+      "Name": "Erwin Schrödinger"
+    },
+    {
+      "id": "3bde5275-7b5c-8123-a039-d72f241c4e79",
+      "url": "https://app.notion.com/p/Niels-Bohr-3bde52757b5c8123a039d72f241c4e79",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1885–1962",
+      "Theories [DB]": [
+        "3bde5275-7b5c-811e-a927-c8b3e1fee423",
+        "3bde5275-7b5c-81c6-b1bc-c6ba18f69e39"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "Quantum Mechanics",
+      "Known For": "Quantised the atom, then spent thirty years arguing with Einstein about what it meant.",
+      "Nationality": "Danish",
+      "Name": "Niels Bohr"
+    },
+    {
+      "id": "3bde5275-7b5c-8125-b13c-c6c497c077c3",
+      "url": "https://app.notion.com/p/Max-Born-3bde52757b5c8125b13cc6c497c077c3",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1882–1970",
+      "Theories [DB]": [
+        "3bde5275-7b5c-8193-ae2a-f3d957e88a73"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "Quantum Mechanics",
+      "Known For": "Interpreted the wavefunction as probability, which is the part Einstein never accepted.",
+      "Nationality": "German-British",
+      "Name": "Max Born"
+    },
+    {
+      "id": "3bde5275-7b5c-81df-b823-c861e2b439e8",
+      "url": "https://app.notion.com/p/Albert-Einstein-3bde52757b5c81dfb823c861e2b439e8",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1879–1955",
+      "Theories [DB]": [
+        "3bde5275-7b5c-8113-aa1c-f0b45b84363d",
+        "3bde5275-7b5c-8132-b647-c4c04158e693",
+        "3bde5275-7b5c-81f8-84d4-ec66c3f8c8eb",
+        "3bde5275-7b5c-81c8-8ac7-cd61c84271da",
+        "3bde5275-7b5c-810a-ac78-e3684b14acd1"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "Theoretical Physics",
+      "Known For": "Special relativity, general relativity, the photoelectric effect — and a lifelong quarrel with quantum mechanics.",
+      "Nationality": "German-American",
+      "Name": "Albert Einstein"
+    },
+    {
+      "id": "3bde5275-7b5c-8198-abbd-fb88875d4ee1",
+      "url": "https://app.notion.com/p/Ernest-Rutherford-3bde52757b5c8198abbdfb88875d4ee1",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1871–1937",
+      "Theories [DB]": [
+        "3bde5275-7b5c-81e4-b44a-f2d634f6f677"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "Nuclear Physics",
+      "Known For": "Fired alpha particles at gold foil and discovered the nucleus in the ricochet.",
+      "Nationality": "New Zealander",
+      "Name": "Ernest Rutherford"
+    },
+    {
+      "id": "3bde5275-7b5c-81b8-b1de-ca8946d18a62",
+      "url": "https://app.notion.com/p/David-Hilbert-3bde52757b5c81b8b1deca8946d18a62",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1862–1943",
+      "Theories [DB]": [
+        "3bde5275-7b5c-81f8-84d4-ec66c3f8c8eb"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "Mathematics",
+      "Known For": "Derived the field equations of general relativity within days of Einstein, by a different route.",
+      "Nationality": "German",
+      "Name": "David Hilbert"
+    },
+    {
+      "id": "3bde5275-7b5c-8134-b7bc-ec35ba6ac34e",
+      "url": "https://app.notion.com/p/Henri-Poincar-3bde52757b5c8134b7bcec35ba6ac34e",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1854–1912",
+      "Theories [DB]": [
+        "3bde5275-7b5c-8151-afe6-e471f9d33f09",
+        "3bde5275-7b5c-81c8-8ac7-cd61c84271da"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "Mathematics & Physics",
+      "Known For": "Found chaos in the three-body problem and came within a hair of special relativity.",
+      "Nationality": "French",
+      "Name": "Henri Poincaré"
+    },
+    {
+      "id": "3bde5275-7b5c-8194-86d5-df287efa5d3f",
+      "url": "https://app.notion.com/p/Max-Planck-3bde52757b5c819486d5df287efa5d3f",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1858–1947",
+      "Theories [DB]": [
+        "3bde5275-7b5c-810a-ac78-e3684b14acd1"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "Quantum Theory",
+      "Known For": "Quantised energy as a desperate fix for the black-body spectrum, and started everything.",
+      "Nationality": "German",
+      "Name": "Max Planck"
+    },
+    {
+      "id": "3bde5275-7b5c-81b5-bd0b-d555a2965da3",
+      "url": "https://app.notion.com/p/J-J-Thomson-3bde52757b5c81b5bd0bd555a2965da3",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1856–1940",
+      "Theories [DB]": [
+        "3bde5275-7b5c-8119-8dc0-caca83db4a46"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "Atomic Physics",
+      "Known For": "Discovered the electron and proposed the plum pudding his student would demolish.",
+      "Nationality": "English",
+      "Name": "J. J. Thomson"
+    },
+    {
+      "id": "3bde5275-7b5c-8125-b482-d7d95529b56f",
+      "url": "https://app.notion.com/p/Hendrik-Lorentz-3bde52757b5c8125b482d7d95529b56f",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1853–1928",
+      "Theories [DB]": [
+        "3bde5275-7b5c-81c8-8ac7-cd61c84271da",
+        "3bde5275-7b5c-81f8-a1bf-fb7455203c64"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "Theoretical Physics",
+      "Known For": "Wrote down the transformations of special relativity before anyone knew what they meant.",
+      "Nationality": "Dutch",
+      "Name": "Hendrik Lorentz"
+    },
+    {
+      "id": "3bde5275-7b5c-8174-af30-c8e5250de801",
+      "url": "https://app.notion.com/p/Ludwig-Boltzmann-3bde52757b5c8174af30c8e5250de801",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1844–1906",
+      "Theories [DB]": [
+        "3bde5275-7b5c-8125-8781-e39471d83726",
+        "3bde5275-7b5c-811e-9e2a-ebcbdc4d07cc"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "Statistical Mechanics",
+      "Known For": "S = k log W, carved on his gravestone — he did not live to see atoms accepted.",
+      "Nationality": "Austrian",
+      "Name": "Ludwig Boltzmann"
+    },
+    {
+      "id": "3bde5275-7b5c-81fd-a77b-d3a39bcec446",
+      "url": "https://app.notion.com/p/Josiah-Willard-Gibbs-3bde52757b5c81fda77bd3a39bcec446",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1839–1903",
+      "Theories [DB]": [
+        "3bde5275-7b5c-8125-8781-e39471d83726"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "Thermodynamics",
+      "Known For": "Built statistical mechanics and chemical thermodynamics, quietly, at Yale.",
+      "Nationality": "American",
+      "Name": "Josiah Willard Gibbs"
+    },
+    {
+      "id": "3bde5275-7b5c-8168-94e4-c6c6caac69fd",
+      "url": "https://app.notion.com/p/James-Clerk-Maxwell-3bde52757b5c816894e4c6c6caac69fd",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1831–1879",
+      "Theories [DB]": [
+        "3bde5275-7b5c-8185-85c8-d2d582a91da7",
+        "3bde5275-7b5c-811e-9e2a-ebcbdc4d07cc"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "Electromagnetism",
+      "Known For": "Four equations that turned electricity, magnetism, and light into one subject.",
+      "Nationality": "Scottish",
+      "Name": "James Clerk Maxwell"
+    },
+    {
+      "id": "3bde5275-7b5c-81e9-bb86-f066a45f1deb",
+      "url": "https://app.notion.com/p/Rudolf-Clausius-3bde52757b5c81e9bb86f066a45f1deb",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1822–1888",
+      "Theories [DB]": [
+        "3bde5275-7b5c-811e-9e2a-ebcbdc4d07cc"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "Thermodynamics",
+      "Known For": "Named entropy and stated the second law in the form everyone still quotes.",
+      "Nationality": "German",
+      "Name": "Rudolf Clausius"
+    },
+    {
+      "id": "3bde5275-7b5c-81de-9b82-ee16edc3faba",
+      "url": "https://app.notion.com/p/Michael-Faraday-3bde52757b5c81de9b82ee16edc3faba",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1791–1867",
+      "Theories [DB]": [
+        "3bde5275-7b5c-8185-85c8-d2d582a91da7"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "Electromagnetism",
+      "Known For": "Discovered induction with almost no mathematics — the field concept was his.",
+      "Nationality": "English",
+      "Name": "Michael Faraday"
+    },
+    {
+      "id": "3bde5275-7b5c-81fa-bfe2-d00255dc6d3e",
+      "url": "https://app.notion.com/p/Augustin-Jean-Fresnel-3bde52757b5c81fabfe2d00255dc6d3e",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1788–1827",
+      "Theories [DB]": [
+        "3bde5275-7b5c-81f8-a1bf-fb7455203c64",
+        "3bde5275-7b5c-81a9-9b1e-f56598a0882a"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "Optics",
+      "Known For": "Made the wave theory of light quantitative, and left it needing an aether to wave in.",
+      "Nationality": "French",
+      "Name": "Augustin-Jean Fresnel"
+    },
+    {
+      "id": "3bde5275-7b5c-81fb-ae5d-e972491b3cc7",
+      "url": "https://app.notion.com/p/Thomas-Young-3bde52757b5c81fbae5de972491b3cc7",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1773–1829",
+      "Theories [DB]": [
+        "3bde5275-7b5c-81a9-9b1e-f56598a0882a"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "Optics",
+      "Known For": "The double-slit experiment, and a decent stab at the Rosetta Stone in his spare time.",
+      "Nationality": "English",
+      "Name": "Thomas Young"
+    },
+    {
+      "id": "3bde5275-7b5c-81d8-855f-cff204c52324",
+      "url": "https://app.notion.com/p/John-Dalton-3bde52757b5c81d8855fcff204c52324",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1766–1844",
+      "Theories [DB]": [
+        "3bde5275-7b5c-81ad-a08c-dba8a668c136"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "Chemistry",
+      "Known For": "Atoms with fixed weights — the idea that made chemistry quantitative.",
+      "Nationality": "English",
+      "Name": "John Dalton"
+    },
+    {
+      "id": "3bde5275-7b5c-819e-895f-de76d0f9c506",
+      "url": "https://app.notion.com/p/Antoine-Lavoisier-3bde52757b5c819e895fde76d0f9c506",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1743–1794",
+      "Theories [DB]": [
+        "3bde5275-7b5c-8190-9fba-cff4da9aa6a2"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "Chemistry",
+      "Known For": "Killed phlogiston with a balance, named oxygen, and was guillotined anyway.",
+      "Nationality": "French",
+      "Name": "Antoine Lavoisier"
+    },
+    {
+      "id": "3bde5275-7b5c-818e-aeae-e70e61464add",
+      "url": "https://app.notion.com/p/Georg-Ernst-Stahl-3bde52757b5c818eaeaee70e61464add",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1659–1734",
+      "Theories [DB]": [
+        "3bde5275-7b5c-8155-ad9b-de63644f9483"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "Chemistry",
+      "Known For": "Systematised phlogiston, the most productive wrong idea in the history of chemistry.",
+      "Nationality": "German",
+      "Name": "Georg Ernst Stahl"
+    },
+    {
+      "id": "3bde5275-7b5c-8163-b1d7-f61d9b760273",
+      "url": "https://app.notion.com/p/Isaac-Newton-3bde52757b5c8163b1d7f61d9b760273",
+      "lastEdited": "2026-08-15T18:39:00.000Z",
+      "Lifespan": "1642–1727",
+      "Theories [DB]": [
+        "3bde5275-7b5c-8162-be54-c9e88fa847d2",
+        "3bde5275-7b5c-81d3-9d85-fbceed121149"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "Mechanics & Optics",
+      "Known For": "One law of gravitation for apples and planets alike — and the calculus to work it out.",
+      "Nationality": "English",
+      "Name": "Isaac Newton"
+    },
+    {
+      "id": "3bde5275-7b5c-8144-a383-d9eabfc3dc5d",
+      "url": "https://app.notion.com/p/Christiaan-Huygens-3bde52757b5c8144a383d9eabfc3dc5d",
+      "lastEdited": "2026-08-15T18:39:00.000Z",
+      "Lifespan": "1629–1695",
+      "Theories [DB]": [
+        "3bde5275-7b5c-81a9-9b1e-f56598a0882a"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "Optics",
+      "Known For": "The wave theory of light, the pendulum clock, and Saturn's rings correctly explained.",
+      "Nationality": "Dutch",
+      "Name": "Christiaan Huygens"
+    },
+    {
+      "id": "3bde5275-7b5c-812c-b725-df4753846575",
+      "url": "https://app.notion.com/p/Galileo-Galilei-3bde52757b5c812cb725df4753846575",
+      "lastEdited": "2026-08-15T18:39:00.000Z",
+      "Lifespan": "1564–1642",
+      "Theories [DB]": [
+        "3bde5275-7b5c-81af-86fd-d2bdae2b8b8c"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "Astronomy & Mechanics",
+      "Known For": "Turned the telescope upward and found moons, phases, and trouble.",
+      "Nationality": "Italian",
+      "Name": "Galileo Galilei"
+    },
+    {
+      "id": "3bde5275-7b5c-81ea-af88-cf056278060b",
+      "url": "https://app.notion.com/p/Johannes-Kepler-3bde52757b5c81eaaf88cf056278060b",
+      "lastEdited": "2026-08-15T18:39:00.000Z",
+      "Lifespan": "1571–1630",
+      "Theories [DB]": [
+        "3bde5275-7b5c-81af-86fd-d2bdae2b8b8c"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "Astronomy",
+      "Known For": "Three laws of planetary motion, extracted from Tycho Brahe's data by sheer arithmetic stubbornness.",
+      "Nationality": "German",
+      "Name": "Johannes Kepler"
+    },
+    {
+      "id": "3bde5275-7b5c-8183-ab87-fb31b7c5dc2d",
+      "url": "https://app.notion.com/p/Nicolaus-Copernicus-3bde52757b5c8183ab87fb31b7c5dc2d",
+      "lastEdited": "2026-08-15T18:39:00.000Z",
+      "Lifespan": "1473–1543",
+      "Theories [DB]": [
+        "3bde5275-7b5c-81af-86fd-d2bdae2b8b8c"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "Astronomy",
+      "Known For": "Put the Sun at the centre and published it the year he died, which may have been wise.",
+      "Nationality": "Polish",
+      "Name": "Nicolaus Copernicus"
+    },
+    {
+      "id": "3bde5275-7b5c-8158-8c83-dcabdb77e3a8",
+      "url": "https://app.notion.com/p/Claudius-Ptolemy-3bde52757b5c81588c83dcabdb77e3a8",
+      "lastEdited": "2026-08-15T18:39:00.000Z",
+      "Lifespan": "c. 100–170",
+      "Theories [DB]": [
+        "3bde5275-7b5c-81a9-85f8-d0b50ab5feb5"
+      ],
+      "Discoveries [DB]": [],
+      "Field": "Astronomy",
+      "Known For": "The Almagest — the geocentric model that organised the sky for fourteen centuries.",
+      "Nationality": "Roman Egyptian",
+      "Name": "Claudius Ptolemy"
+    },
+    {
       "id": "f3a708d9-63ec-4a86-9f4a-c82690ef9f29",
       "url": "https://app.notion.com/p/Roger-Penrose-f3a708d963ec4a869f4ac82690ef9f29",
-      "lastEdited": "2024-07-26T06:15:00.000Z",
-      "Theories [DB]": [],
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1931–",
+      "Theories [DB]": [
+        "3bde5275-7b5c-8183-a9cc-d3532bc342bf",
+        "948ffd28-180a-4f7f-8f79-b6a712181262"
+      ],
       "Discoveries [DB]": [],
+      "Field": "Mathematical Physics",
+      "Known For": "Proved that general relativity predicts its own breakdown: singularities are unavoidable.",
+      "Nationality": "British",
       "Name": "Roger Penrose"
     },
     {
       "id": "eb5e7181-08ea-45c5-8318-6495db3e671f",
       "url": "https://app.notion.com/p/George-Smoot-eb5e718108ea45c583186495db3e671f",
-      "lastEdited": "2024-07-26T06:15:00.000Z",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1945–",
       "Theories [DB]": [],
       "Discoveries [DB]": [],
+      "Field": "Cosmology",
+      "Known For": "COBE's map of the microwave background — the first picture of structure in the infant universe.",
+      "Nationality": "American",
       "Name": "George Smoot"
     },
     {
       "id": "504e6604-1942-46af-b10e-5778b77d2218",
       "url": "https://app.notion.com/p/Didier-Queloz-504e6604194246afb10e5778b77d2218",
-      "lastEdited": "2024-07-26T06:15:00.000Z",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1966–",
       "Theories [DB]": [],
       "Discoveries [DB]": [],
+      "Field": "Astronomy",
+      "Known For": "The graduate student on the other end of that discovery.",
+      "Nationality": "Swiss",
       "Name": "Didier Queloz"
     },
     {
       "id": "f9b3c66a-cb98-4e1c-8252-8d79a3125de0",
       "url": "https://app.notion.com/p/Michel-Mayor-f9b3c66acb984e1c82528d79a3125de0",
-      "lastEdited": "2024-07-26T06:15:00.000Z",
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1942–",
       "Theories [DB]": [],
       "Discoveries [DB]": [],
+      "Field": "Astronomy",
+      "Known For": "Co-discovered 51 Pegasi b, the first planet found around a Sun-like star.",
+      "Nationality": "Swiss",
       "Name": "Michel Mayor"
     },
     {
       "id": "e4387cff-b2e4-4511-ba9a-228dd1052f5e",
       "url": "https://app.notion.com/p/James-Peebles-e4387cffb2e44511ba9a228dd1052f5e",
-      "lastEdited": "2024-07-26T06:14:00.000Z",
-      "Theories [DB]": [],
+      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Lifespan": "1935–",
+      "Theories [DB]": [
+        "3bde5275-7b5c-81b0-a714-d53a2345ebdb"
+      ],
       "Discoveries [DB]": [],
+      "Field": "Cosmology",
+      "Known For": "Built most of the theoretical scaffolding of modern physical cosmology.",
+      "Nationality": "Canadian-American",
       "Name": "James Peebles"
     }
   ],
   "theories": [
     {
-      "id": "948ffd28-180a-4f7f-8f79-b6a712181262",
-      "url": "https://app.notion.com/p/Quantum-Gravity-948ffd28180a4f7f8f79b6a712181262",
-      "lastEdited": "2024-07-26T05:04:00.000Z",
+      "id": "3bde5275-7b5c-8119-b400-f4b64f9b76f4",
+      "url": "https://app.notion.com/p/Dark-Energy-3bde52757b5c8119b400f4b64f9b76f4",
+      "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Equations": [
+        "3bbe5275-7b5c-8184-9e26-ff4ad04b3ed8",
+        "3bbe5275-7b5c-81a1-9543-ed416dd7caa2",
+        "3bbe5275-7b5c-81c7-b3a7-decb4402d1ab",
+        "3bde5275-7b5c-8120-9d3f-eb637591139f",
+        "3bde5275-7b5c-8197-a885-cf717e19fea0"
+      ],
+      "Summary": "The expansion of the universe is accelerating, driven by something with negative pressure that makes up about seven tenths of everything. A cosmological constant fits — at a value 120 orders of magnitude off theory.",
+      "Status": "Accepted",
+      "Proponent": [
+        "3bde5275-7b5c-810f-815d-feab1486c2c3",
+        "3bde5275-7b5c-81e7-9fdd-fc601314ede3",
+        "3bde5275-7b5c-81f7-9127-eed4aada4070"
+      ],
+      "Date Proposed": null,
+      "Year": 1998,
+      "Name": "Dark Energy"
+    },
+    {
+      "id": "3bde5275-7b5c-81b1-8212-c31d06505cbc",
+      "url": "https://app.notion.com/p/Holographic-Principle-3bde52757b5c81b18212c31d06505cbc",
+      "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Equations": [
+        "3bbe5275-7b5c-811a-baed-c686bb16bbc3",
+        "3bbe5275-7b5c-8122-95c0-f19b5930072e",
+        "3bbe5275-7b5c-81f7-a591-c741011f5a20"
+      ],
+      "Summary": "Everything inside a region can be encoded on its boundary, one bit per four Planck areas. Suggested by black hole entropy, made concrete by AdS/CFT, and still without a formulation for our own universe.",
+      "Status": "Speculative",
+      "Proponent": [
+        "3bde5275-7b5c-8149-ab91-cb6c656f25f5",
+        "3bde5275-7b5c-815e-ad97-f920948728b3",
+        "3bde5275-7b5c-81ae-96eb-e3dbd02ea9f6"
+      ],
+      "Date Proposed": null,
+      "Year": 1993,
+      "Name": "Holographic Principle"
+    },
+    {
+      "id": "3bde5275-7b5c-81b3-a747-d2e0a75cf5aa",
+      "url": "https://app.notion.com/p/Loop-Quantum-Gravity-3bde52757b5c81b3a747d2e0a75cf5aa",
+      "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Equations": [
+        "3bbe5275-7b5c-813b-aa6c-dd6ce2e33cbf",
+        "3bbe5275-7b5c-815f-8f49-fde9509c1e77",
+        "3bbe5275-7b5c-81c7-b3a7-decb4402d1ab"
+      ],
+      "Summary": "Quantise spacetime itself, giving area and volume discrete spectra with no background geometry assumed. The main rival to strings; it takes general relativity more seriously and particle physics less.",
+      "Status": "Speculative",
+      "Proponent": [
+        "3bde5275-7b5c-8101-bf51-eb1b21e06ba0",
+        "3bde5275-7b5c-816b-bb69-dbce98c3060c",
+        "3bde5275-7b5c-81c0-8a92-e9152ccde825"
+      ],
+      "Date Proposed": null,
+      "Year": 1988,
+      "Name": "Loop Quantum Gravity"
+    },
+    {
+      "id": "3bde5275-7b5c-81c8-92c2-e7f2313ec35d",
+      "url": "https://app.notion.com/p/String-Theory-3bde52757b5c81c892c2e7f2313ec35d",
+      "lastEdited": "2026-08-15T18:41:00.000Z",
       "Equations": [
         "3bbe5275-7b5c-815f-8f49-fde9509c1e77",
-        "3bbe5275-7b5c-81c7-b3a7-decb4402d1ab",
-        "3bbe5275-7b5c-815d-b970-fb2a7877db25",
-        "3bbe5275-7b5c-811a-baed-c686bb16bbc3",
-        "3bbe5275-7b5c-8109-a4a6-c5b903b6e05f",
+        "3bde5275-7b5c-8138-9544-ccde8523931c",
+        "3bde5275-7b5c-814b-b847-fa3b302cf50e",
+        "3bde5275-7b5c-814c-82d8-d3e6acd9cfda"
+      ],
+      "Summary": "Particles as vibrating strings in ten dimensions, with gravity falling out unavoidably rather than being inserted. Forty years of beautiful mathematics and not one testable prediction at reachable energies.",
+      "Status": "Speculative",
+      "Proponent": [
+        "3bde5275-7b5c-810e-aff6-c621f0f92a4d",
+        "3bde5275-7b5c-81a3-b7cb-c7249ae9e8ae",
+        "3bde5275-7b5c-81ae-96eb-e3dbd02ea9f6",
+        "3bde5275-7b5c-81c6-a7aa-c14745903c8d"
+      ],
+      "Date Proposed": null,
+      "Year": 1984,
+      "Name": "String Theory"
+    },
+    {
+      "id": "3bde5275-7b5c-81b8-9c3e-f0c39aa27da9",
+      "url": "https://app.notion.com/p/Modified-Newtonian-Dynamics-3bde52757b5c81b89c3ef0c39aa27da9",
+      "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Equations": [
+        "3bbe5275-7b5c-811b-8297-ce47b2c5d614",
+        "3bbe5275-7b5c-8183-bbd5-ff733704a984"
+      ],
+      "Summary": "Change the law of gravity at very low accelerations instead of adding invisible matter. It fits galaxy rotation curves remarkably well and clusters and the microwave background remarkably badly.",
+      "Status": "Speculative",
+      "Proponent": [
+        "3bde5275-7b5c-815a-a104-e3f2cdc21557"
+      ],
+      "Date Proposed": null,
+      "Year": 1983,
+      "Name": "Modified Newtonian Dynamics"
+    },
+    {
+      "id": "3bde5275-7b5c-8140-928d-c0aa2466b01f",
+      "url": "https://app.notion.com/p/Quantum-Information-Theory-3bde52757b5c8140928dc0aa2466b01f",
+      "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Equations": [
+        "3bbe5275-7b5c-8103-8865-faee50cc9c18",
+        "3bbe5275-7b5c-810e-a378-ea77aa50d6f6",
+        "3bbe5275-7b5c-810f-8c8d-d0d1ca4da44e",
+        "3bbe5275-7b5c-81f7-a591-c741011f5a20"
+      ],
+      "Summary": "Information stored in quantum states, where it can be superposed and entangled but never copied. Shor's algorithm showed the payoff, and started the race to build a machine that can run it.",
+      "Status": "Accepted",
+      "Proponent": [
+        "3bde5275-7b5c-8138-a1cd-db105d8facb9",
+        "3bde5275-7b5c-815f-9a2b-c0fb364ad894",
+        "3bde5275-7b5c-8168-88af-c066eda15c16"
+      ],
+      "Date Proposed": null,
+      "Year": 1982,
+      "Name": "Quantum Information Theory"
+    },
+    {
+      "id": "3bde5275-7b5c-8194-92cc-da98c37e359e",
+      "url": "https://app.notion.com/p/Cosmic-Inflation-3bde52757b5c819492ccda98c37e359e",
+      "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Equations": [
+        "3bbe5275-7b5c-818c-bf76-d40ebcb485e3",
+        "3bde5275-7b5c-8197-a885-cf717e19fea0",
+        "3bde5275-7b5c-81b6-8a2d-f530d01d6412",
+        "3bde5275-7b5c-81c4-9445-fc85582c4e1d"
+      ],
+      "Summary": "A burst of exponential expansion in the first fraction of a second, smoothing the universe and stretching quantum fluctuations into the seeds of galaxies. It fits the data well; the mechanism is still guesswork.",
+      "Status": "Speculative",
+      "Proponent": [
+        "3bde5275-7b5c-8174-8b56-d90ca02f80d8",
+        "3bde5275-7b5c-818e-a2c6-d4102e048893",
+        "3bde5275-7b5c-81a4-b503-cfd2bf7d3305"
+      ],
+      "Date Proposed": null,
+      "Year": 1980,
+      "Name": "Cosmic Inflation"
+    },
+    {
+      "id": "3bde5275-7b5c-8109-a8c3-f9b6d98cca04",
+      "url": "https://app.notion.com/p/The-Standard-Model-3bde52757b5c8109a8c3f9b6d98cca04",
+      "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Equations": [
+        "3bbe5275-7b5c-811f-8db4-cc95acf776dd",
         "3bbe5275-7b5c-8125-8857-cffce0164fef",
+        "3bbe5275-7b5c-812f-8b13-c3f401ee3a47",
+        "3bbe5275-7b5c-8189-b87c-e1e5b2e563de",
+        "3bbe5275-7b5c-81ce-aa9b-fb9384fc46ee"
+      ],
+      "Summary": "Twelve matter particles, four force carriers, one Higgs, and about nineteen numbers nobody can derive. It has survived every experiment for fifty years while explaining neither gravity nor dark matter.",
+      "Status": "Accepted",
+      "Proponent": [
+        "3bde5275-7b5c-81a8-b6d8-f8e627e862cf",
+        "3bde5275-7b5c-81aa-9f3f-f0d27ac09ed7",
+        "3bde5275-7b5c-81e0-aa03-dd0566b7c71d"
+      ],
+      "Date Proposed": null,
+      "Year": 1975,
+      "Name": "The Standard Model"
+    },
+    {
+      "id": "3bde5275-7b5c-8183-a9cc-d3532bc342bf",
+      "url": "https://app.notion.com/p/Black-Hole-Thermodynamics-3bde52757b5c8183a9ccd3532bc342bf",
+      "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Equations": [
+        "3bbe5275-7b5c-811a-baed-c686bb16bbc3",
+        "3bbe5275-7b5c-8120-863e-cd94384e0239",
+        "3bbe5275-7b5c-8122-95c0-f19b5930072e",
+        "3bbe5275-7b5c-81c7-b3a7-decb4402d1ab",
+        "3bde5275-7b5c-811f-9033-f21e2c8a2791"
+      ],
+      "Summary": "Black holes have entropy proportional to their surface area and radiate at a temperature set by their mass. It ties gravity, quantum mechanics, and thermodynamics together, and nobody fully understands why.",
+      "Status": "Accepted",
+      "Proponent": [
+        "3bde5275-7b5c-8148-b3a9-cd497f7b5af5",
+        "3bde5275-7b5c-81fc-9aa8-c89cd17f8f71",
+        "f3a708d9-63ec-4a86-9f4a-c82690ef9f29"
+      ],
+      "Date Proposed": null,
+      "Year": 1974,
+      "Name": "Black Hole Thermodynamics"
+    },
+    {
+      "id": "3bde5275-7b5c-81c2-a04e-d20bae468120",
+      "url": "https://app.notion.com/p/Grand-Unified-Theories-3bde52757b5c81c2a04ed20bae468120",
+      "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Equations": [
+        "3bbe5275-7b5c-811f-8db4-cc95acf776dd",
+        "3bbe5275-7b5c-8125-8857-cffce0164fef",
+        "3bbe5275-7b5c-813e-a03e-dacece1e6c35"
+      ],
+      "Summary": "One gauge group at high energy, splitting into the strong, weak, and electromagnetic forces as things cool. The simplest versions predict the proton decays; forty years of watching tanks of water say it does not.",
+      "Status": "Speculative",
+      "Proponent": [
+        "3bde5275-7b5c-81aa-9f3f-f0d27ac09ed7",
+        "3bde5275-7b5c-81c2-a5eb-d42bcf472d03"
+      ],
+      "Date Proposed": null,
+      "Year": 1974,
+      "Name": "Grand Unified Theories"
+    },
+    {
+      "id": "3bde5275-7b5c-8170-8bb5-f403b35dcc5e",
+      "url": "https://app.notion.com/p/Quantum-Chromodynamics-3bde52757b5c81708bb5f403b35dcc5e",
+      "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Equations": [
+        "3bbe5275-7b5c-8125-8857-cffce0164fef",
+        "3bbe5275-7b5c-812f-8b13-c3f401ee3a47"
+      ],
+      "Summary": "The strong force, carried by gluons between colour-charged quarks. Its strange signature is that the force grows with distance, so a quark can never be pulled out on its own.",
+      "Status": "Accepted",
+      "Proponent": [
+        "3bde5275-7b5c-8181-b6fd-fd535dca5e44",
+        "3bde5275-7b5c-81e0-aa03-dd0566b7c71d",
+        "3bde5275-7b5c-81eb-b1e7-dafaa0eef10e"
+      ],
+      "Date Proposed": null,
+      "Year": 1973,
+      "Name": "Quantum Chromodynamics"
+    },
+    {
+      "id": "3bde5275-7b5c-81b8-af02-f546654f2aec",
+      "url": "https://app.notion.com/p/Supersymmetry-3bde52757b5c81b8af02f546654f2aec",
+      "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Equations": [
+        "3bbe5275-7b5c-8125-8857-cffce0164fef",
+        "3bbe5275-7b5c-8189-b87c-e1e5b2e563de"
+      ],
+      "Summary": "A symmetry pairing every fermion with a boson, which would tidy up the Higgs mass and supply a dark matter candidate. The LHC has found none of the partners, and the simplest versions are now excluded.",
+      "Status": "Speculative",
+      "Proponent": [
+        "3bde5275-7b5c-8159-ada5-e0ada4600c48",
+        "3bde5275-7b5c-81cb-a404-c3d526dfaa36"
+      ],
+      "Date Proposed": null,
+      "Year": 1971,
+      "Name": "Supersymmetry"
+    },
+    {
+      "id": "3bde5275-7b5c-812f-987b-d90fa3fe1038",
+      "url": "https://app.notion.com/p/Electroweak-Unification-3bde52757b5c812f987bd90fa3fe1038",
+      "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Equations": [
+        "3bbe5275-7b5c-811f-8db4-cc95acf776dd",
+        "3bbe5275-7b5c-8125-8857-cffce0164fef",
+        "3bbe5275-7b5c-8189-b87c-e1e5b2e563de"
+      ],
+      "Summary": "Electromagnetism and the weak nuclear force as two aspects of one interaction, split apart as the early universe cooled. The predicted W and Z bosons turned up at CERN in 1983, at the predicted masses.",
+      "Status": "Accepted",
+      "Proponent": [
+        "3bde5275-7b5c-815e-ad97-f920948728b3",
+        "3bde5275-7b5c-81a8-b6d8-f8e627e862cf",
+        "3bde5275-7b5c-81aa-9f3f-f0d27ac09ed7",
+        "3bde5275-7b5c-81c1-b1c5-c6ee1e1a800e"
+      ],
+      "Date Proposed": null,
+      "Year": 1967,
+      "Name": "Electroweak Unification"
+    },
+    {
+      "id": "3bde5275-7b5c-813f-9e30-c040189eb298",
+      "url": "https://app.notion.com/p/Higgs-Mechanism-3bde52757b5c813f9e30c040189eb298",
+      "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Equations": [
+        "3bbe5275-7b5c-8125-8857-cffce0164fef",
+        "3bbe5275-7b5c-8189-b87c-e1e5b2e563de"
+      ],
+      "Summary": "A field filling all of space that gives the weak force carriers their mass while leaving the photon massless. Predicted in 1964, confirmed at the LHC in 2012 — one of the longest waits in physics.",
+      "Status": "Accepted",
+      "Proponent": [
+        "3bde5275-7b5c-81cf-b8f5-c9b849eacbb6",
+        "3bde5275-7b5c-81d1-b165-fdd3ef972296"
+      ],
+      "Date Proposed": null,
+      "Year": 1964,
+      "Name": "Higgs Mechanism"
+    },
+    {
+      "id": "3bde5275-7b5c-8151-afe6-e471f9d33f09",
+      "url": "https://app.notion.com/p/Chaos-Theory-3bde52757b5c8151afe6e471f9d33f09",
+      "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Equations": [
+        "3bbe5275-7b5c-8120-a62d-fa870a7c75bb",
+        "3bbe5275-7b5c-8132-a437-e09561425c4c",
+        "3bbe5275-7b5c-813e-af26-d6744c7f4db2"
+      ],
+      "Summary": "Deterministic systems can be unpredictable, because arbitrarily small differences in the starting state grow exponentially. Lorenz found it in a truncated weather simulation; the constants turn out to be universal.",
+      "Status": "Accepted",
+      "Proponent": [
+        "3bde5275-7b5c-8122-a96d-cea083c4e011",
+        "3bde5275-7b5c-812a-8bc0-e6e5d15b6642",
+        "3bde5275-7b5c-8134-b7bc-ec35ba6ac34e"
+      ],
+      "Date Proposed": null,
+      "Year": 1963,
+      "Name": "Chaos Theory"
+    },
+    {
+      "id": "3bde5275-7b5c-810d-ab95-db5786e7b9e2",
+      "url": "https://app.notion.com/p/Many-Worlds-Interpretation-3bde52757b5c810dab95db5786e7b9e2",
+      "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Equations": [
+        "3bbe5275-7b5c-8103-8865-faee50cc9c18",
+        "3bbe5275-7b5c-811a-a60d-eddf236c3a8c"
+      ],
+      "Summary": "There is no collapse: the wavefunction just keeps evolving, and every outcome happens in its own branch. Mathematically the leanest interpretation, and the hardest to believe before breakfast.",
+      "Status": "Speculative",
+      "Proponent": [
+        "3bde5275-7b5c-819e-a4d4-f35dbe9b17b9"
+      ],
+      "Date Proposed": null,
+      "Year": 1957,
+      "Name": "Many-Worlds Interpretation"
+    },
+    {
+      "id": "3bde5275-7b5c-8197-a615-cfd4ff53095e",
+      "url": "https://app.notion.com/p/Stellar-Nucleosynthesis-3bde52757b5c8197a615cfd4ff53095e",
+      "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Equations": [
+        "3bbe5275-7b5c-8120-863e-cd94384e0239",
+        "3bbe5275-7b5c-8150-9b6b-de88bc1b1910",
+        "3bbe5275-7b5c-81dd-a75c-d703f0a640b3",
+        "3bde5275-7b5c-816d-b136-f19a8ec27287"
+      ],
+      "Summary": "Every element heavier than lithium was cooked inside a star or in the explosion that ended it. The B²FH paper worked out the whole chain — the carbon in your body was assembled in a red giant.",
+      "Status": "Accepted",
+      "Proponent": [
+        "3bde5275-7b5c-814d-be6c-f3596e4eb04e",
+        "3bde5275-7b5c-8160-808f-fd0c75e2d0fc",
+        "3bde5275-7b5c-8166-a56a-da669ac42a7e",
+        "3bde5275-7b5c-81b3-ad0f-f06d4fac0585"
+      ],
+      "Date Proposed": null,
+      "Year": 1957,
+      "Name": "Stellar Nucleosynthesis"
+    },
+    {
+      "id": "3bde5275-7b5c-8173-b1a7-eaec1d496663",
+      "url": "https://app.notion.com/p/BCS-Theory-of-Superconductivity-3bde52757b5c8173b1a7eaec1d496663",
+      "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Equations": [
+        "3bbe5275-7b5c-8149-a0e6-d2bf67397229",
+        "3bbe5275-7b5c-81b2-ae34-f800aecd57e1",
+        "3bbe5275-7b5c-81de-99a6-fb82df0033a9",
+        "3bbe5275-7b5c-81e1-96c0-c6157aaee509"
+      ],
+      "Summary": "Electrons pair up through lattice vibrations and condense into a single quantum state that flows without resistance. It took forty-six years after the discovery of superconductivity to explain it.",
+      "Status": "Accepted",
+      "Proponent": [
+        "3bde5275-7b5c-815c-b263-d6eebe138be2",
+        "3bde5275-7b5c-81c4-9ab9-c19b6570b3eb",
+        "3bde5275-7b5c-81fd-968a-c818c62e9897"
+      ],
+      "Date Proposed": null,
+      "Year": 1957,
+      "Name": "BCS Theory of Superconductivity"
+    },
+    {
+      "id": "3bde5275-7b5c-81cc-8ba3-e8a006fbdce7",
+      "url": "https://app.notion.com/p/Nuclear-Shell-Model-3bde52757b5c81cc8ba3e8a006fbdce7",
+      "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Equations": [
+        "3bbe5275-7b5c-811a-a60d-eddf236c3a8c",
+        "3bbe5275-7b5c-813e-a03e-dacece1e6c35",
+        "3bbe5275-7b5c-8157-a64b-eb73eeb53735"
+      ],
+      "Summary": "Protons and neutrons fill quantised shells much as electrons do, with closed shells at the 'magic numbers'. It explains which nuclei are unusually stable, and which are the ones that fission.",
+      "Status": "Accepted",
+      "Proponent": [
+        "3bde5275-7b5c-818e-b9b5-f33f8961f523"
+      ],
+      "Date Proposed": null,
+      "Year": 1949,
+      "Name": "Nuclear Shell Model"
+    },
+    {
+      "id": "3bde5275-7b5c-8112-9df5-f96e892e1f88",
+      "url": "https://app.notion.com/p/Big-Bang-Nucleosynthesis-3bde52757b5c81129df5f96e892e1f88",
+      "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Equations": [
+        "3bbe5275-7b5c-816e-b97a-fdbc445f99b7",
+        "3bbe5275-7b5c-818c-bf76-d40ebcb485e3",
+        "3bde5275-7b5c-816d-b136-f19a8ec27287"
+      ],
+      "Summary": "The first three minutes made hydrogen, helium, and a trace of lithium, in ratios fixed by the neutron-proton balance. The predicted helium fraction of about a quarter by mass is what we observe.",
+      "Status": "Accepted",
+      "Proponent": [
+        "3bde5275-7b5c-8137-9034-e8704a8769d7",
+        "3bde5275-7b5c-8193-a0f0-ebd0cbdd775f"
+      ],
+      "Date Proposed": null,
+      "Year": 1948,
+      "Name": "Big Bang Nucleosynthesis"
+    },
+    {
+      "id": "3bde5275-7b5c-811b-ac85-fe83a7a852a4",
+      "url": "https://app.notion.com/p/Steady-State-Theory-3bde52757b5c811bac85fe83a7a852a4",
+      "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Equations": [
+        "3bbe5275-7b5c-8184-9e26-ff4ad04b3ed8",
+        "3bbe5275-7b5c-818c-bf76-d40ebcb485e3",
+        "3bde5275-7b5c-81c4-9445-fc85582c4e1d"
+      ],
+      "Summary": "An eternal, unchanging universe that expands while new matter appears to keep the density constant. Elegant, serious, and finished off by the microwave background in 1965 — Hoyle never conceded.",
+      "Status": "Disproved",
+      "Proponent": [
+        "3bde5275-7b5c-8104-b3cf-ec0824cc5fe7",
+        "3bde5275-7b5c-8108-923b-fc08fe4d5271",
+        "3bde5275-7b5c-8166-a56a-da669ac42a7e"
+      ],
+      "Date Proposed": null,
+      "Year": 1948,
+      "Name": "Steady State Theory"
+    },
+    {
+      "id": "3bde5275-7b5c-81e2-845e-f668253c9a4c",
+      "url": "https://app.notion.com/p/Information-Theory-3bde52757b5c81e2845ef668253c9a4c",
+      "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Equations": [
+        "3bbe5275-7b5c-8122-95c0-f19b5930072e",
+        "3bbe5275-7b5c-81f7-a591-c741011f5a20",
+        "3bbe5275-7b5c-81f8-8be6-c617460fd271"
+      ],
+      "Summary": "Information measured in bits, with a hard limit on how fast any noisy channel can carry it. Written for telephone engineers; now underneath every disk, modem, and compression format in existence.",
+      "Status": "Accepted",
+      "Proponent": [
+        "3bde5275-7b5c-81f3-9b38-c50e8ee92c0f"
+      ],
+      "Date Proposed": null,
+      "Year": 1948,
+      "Name": "Information Theory"
+    },
+    {
+      "id": "3bde5275-7b5c-812d-9b11-ec91e612af1b",
+      "url": "https://app.notion.com/p/Quantum-Electrodynamics-3bde52757b5c812d9b11ec91e612af1b",
+      "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Equations": [
+        "3bbe5275-7b5c-811f-8db4-cc95acf776dd",
+        "3bbe5275-7b5c-812f-8b13-c3f401ee3a47",
+        "3bbe5275-7b5c-815d-b970-fb2a7877db25",
+        "3bbe5275-7b5c-81ce-aa9b-fb9384fc46ee"
+      ],
+      "Summary": "Electrons and photons as a relativistic quantum field theory. Its prediction of the electron's magnetic moment matches experiment to twelve digits — the most accurate agreement in all of science.",
+      "Status": "Accepted",
+      "Proponent": [
+        "3bde5275-7b5c-814a-a143-cc06316872a2",
+        "3bde5275-7b5c-8153-8856-cc1587748647",
+        "3bde5275-7b5c-815f-9a2b-c0fb364ad894",
+        "3bde5275-7b5c-81df-a88f-e0311c90f9df"
+      ],
+      "Date Proposed": null,
+      "Year": 1948,
+      "Name": "Quantum Electrodynamics"
+    },
+    {
+      "id": "3bde5275-7b5c-8113-aa1c-f0b45b84363d",
+      "url": "https://app.notion.com/p/Local-Hidden-Variables-3bde52757b5c8113aa1cf0b45b84363d",
+      "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Equations": [
+        "3bbe5275-7b5c-8103-8865-faee50cc9c18",
+        "3bbe5275-7b5c-810f-8c8d-d0d1ca4da44e"
+      ],
+      "Summary": "Einstein's position: quantum randomness reflects missing information, not genuine indeterminacy. Bell turned it into a testable inequality; every experiment since has violated it. Nature really is non-local.",
+      "Status": "Disproved",
+      "Proponent": [
+        "3bde5275-7b5c-8177-aada-daff0c20dfde",
+        "3bde5275-7b5c-81df-b823-c861e2b439e8"
+      ],
+      "Date Proposed": null,
+      "Year": 1935,
+      "Name": "Local Hidden Variables"
+    },
+    {
+      "id": "3bde5275-7b5c-8155-8abe-e1d83b51ecb9",
+      "url": "https://app.notion.com/p/Dark-Matter-3bde52757b5c81558abee1d83b51ecb9",
+      "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Equations": [
+        "3bbe5275-7b5c-811b-8297-ce47b2c5d614",
+        "3bbe5275-7b5c-81a1-9543-ed416dd7caa2",
+        "3bde5275-7b5c-8120-9d3f-eb637591139f",
+        "3bde5275-7b5c-81b6-8a2d-f530d01d6412"
+      ],
+      "Summary": "Galaxies and clusters move as though they hold five times the mass we can see. Zwicky found it and was ignored; Rubin's rotation curves made it undeniable. Its identity remains completely unknown.",
+      "Status": "Accepted",
+      "Proponent": [
+        "3bde5275-7b5c-8145-b939-d7d5691f84c5",
+        "3bde5275-7b5c-815a-b9ba-f5e3b84368f6"
+      ],
+      "Date Proposed": null,
+      "Year": 1933,
+      "Name": "Dark Matter"
+    },
+    {
+      "id": "3bde5275-7b5c-81bb-96ea-f380ca92d0a8",
+      "url": "https://app.notion.com/p/Band-Theory-of-Solids-3bde52757b5c81bb96eaf380ca92d0a8",
+      "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Equations": [
+        "3bbe5275-7b5c-81d1-abad-c2702fa3abb0",
+        "3bbe5275-7b5c-81e1-96c0-c6157aaee509",
+        "3bbe5275-7b5c-81ee-9b16-dcfba043e1f3"
+      ],
+      "Summary": "Electrons in a periodic lattice occupy continuous bands with gaps between them. The width of the gap is the whole difference between a copper wire, a silicon chip, and a pane of glass.",
+      "Status": "Accepted",
+      "Proponent": [
+        "3bde5275-7b5c-814f-9122-feb2331ef7f9",
+        "3bde5275-7b5c-81ff-b052-cf8ff59a2096"
+      ],
+      "Date Proposed": null,
+      "Year": 1928,
+      "Name": "Band Theory of Solids"
+    },
+    {
+      "id": "3bde5275-7b5c-81b0-a714-d53a2345ebdb",
+      "url": "https://app.notion.com/p/Big-Bang-Cosmology-3bde52757b5c81b0a714d53a2345ebdb",
+      "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Equations": [
+        "3bbe5275-7b5c-8184-9e26-ff4ad04b3ed8",
+        "3bbe5275-7b5c-818c-bf76-d40ebcb485e3",
+        "3bbe5275-7b5c-81a1-9543-ed416dd7caa2",
+        "3bde5275-7b5c-811c-8470-d8ecfce3c2de",
+        "3bde5275-7b5c-8120-9d3f-eb637591139f",
+        "3bde5275-7b5c-816d-b136-f19a8ec27287",
+        "3bde5275-7b5c-8197-a885-cf717e19fea0",
+        "3bde5275-7b5c-81b6-8a2d-f530d01d6412",
+        "3bde5275-7b5c-81bc-a558-cbf2f89a2f06",
+        "3bde5275-7b5c-81c4-9445-fc85582c4e1d"
+      ],
+      "Summary": "The universe was hot and dense and has been expanding ever since. Lemaître derived it from Einstein's equations; the microwave background, the light-element abundances, and the redshifts all agree.",
+      "Status": "Accepted",
+      "Proponent": [
+        "3bde5275-7b5c-8137-9034-e8704a8769d7",
+        "3bde5275-7b5c-815d-a4d0-cece91e123b4",
+        "e4387cff-b2e4-4511-ba9a-228dd1052f5e"
+      ],
+      "Date Proposed": null,
+      "Year": 1927,
+      "Name": "Big Bang Cosmology"
+    },
+    {
+      "id": "3bde5275-7b5c-811e-a927-c8b3e1fee423",
+      "url": "https://app.notion.com/p/Copenhagen-Interpretation-3bde52757b5c811ea927c8b3e1fee423",
+      "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Equations": [
+        "3bbe5275-7b5c-8109-a4a6-c5b903b6e05f",
+        "3bbe5275-7b5c-811a-a60d-eddf236c3a8c"
+      ],
+      "Summary": "The wavefunction is knowledge, not substance, and measurement collapses it. The default taught in textbooks, though it never says what counts as a measurement — which is exactly the objection that will not go away.",
+      "Status": "Speculative",
+      "Proponent": [
+        "3bde5275-7b5c-8123-a039-d72f241c4e79",
+        "3bde5275-7b5c-819a-8ba9-c39d54846d6c"
+      ],
+      "Date Proposed": null,
+      "Year": 1927,
+      "Name": "Copenhagen Interpretation"
+    },
+    {
+      "id": "3bde5275-7b5c-8193-ae2a-f3d957e88a73",
+      "url": "https://app.notion.com/p/Quantum-Mechanics-3bde52757b5c8193ae2af3d957e88a73",
+      "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Equations": [
+        "3bbe5275-7b5c-8109-a4a6-c5b903b6e05f",
+        "3bbe5275-7b5c-811a-a60d-eddf236c3a8c",
+        "3bbe5275-7b5c-8140-a1d4-f7bff1df0334",
+        "3bbe5275-7b5c-8170-bd5f-c796d7589e08",
+        "3bbe5275-7b5c-81ce-aa9b-fb9384fc46ee"
+      ],
+      "Summary": "States as vectors, observables as operators, outcomes as probabilities. The most precisely tested theory ever written, and the one whose meaning is still argued about a century on.",
+      "Status": "Accepted",
+      "Proponent": [
+        "3bde5275-7b5c-8125-b13c-c6c497c077c3",
+        "3bde5275-7b5c-819a-8ba9-c39d54846d6c",
+        "3bde5275-7b5c-81e1-b5f4-f96fc2650a52",
+        "3bde5275-7b5c-81f6-8c96-c687aed99185"
+      ],
+      "Date Proposed": null,
+      "Year": 1925,
+      "Name": "Quantum Mechanics"
+    },
+    {
+      "id": "3bde5275-7b5c-8132-b647-c4c04158e693",
+      "url": "https://app.notion.com/p/Wave-Particle-Duality-3bde52757b5c8132b647c4c04158e693",
+      "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Equations": [
+        "3bbe5275-7b5c-8140-a1d4-f7bff1df0334",
+        "3bbe5275-7b5c-8170-bd5f-c796d7589e08"
+      ],
+      "Summary": "Not just light — everything. De Broglie assigned a wavelength to matter, and electrons duly diffracted. The wavelength of anything larger than a molecule is far too small to notice, which is why the world looks solid.",
+      "Status": "Accepted",
+      "Proponent": [
+        "3bde5275-7b5c-8198-98e7-dda822d303c2",
+        "3bde5275-7b5c-81df-b823-c861e2b439e8"
+      ],
+      "Date Proposed": null,
+      "Year": 1924,
+      "Name": "Wave–Particle Duality"
+    },
+    {
+      "id": "3bde5275-7b5c-813a-b77a-c766d8a0e418",
+      "url": "https://app.notion.com/p/Continental-Drift-Plate-Tectonics-3bde52757b5c813ab77ac766d8a0e418",
+      "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Equations": [
+        "3bbe5275-7b5c-8183-8228-de82d104194f",
+        "3bbe5275-7b5c-818c-81f5-e08330c436f3"
+      ],
+      "Summary": "The continents move, riding rigid plates on a convecting mantle. Wegener saw the fit of the coastlines and was dismissed for lack of a mechanism; seafloor spreading supplied one fifty years later.",
+      "Status": "Accepted",
+      "Proponent": [
+        "3bde5275-7b5c-8165-aa32-c11f749ad113",
+        "3bde5275-7b5c-81df-994e-c64bee10dcc4",
+        "3bde5275-7b5c-81f6-b2f7-c165b4ffef6a"
+      ],
+      "Date Proposed": null,
+      "Year": 1912,
+      "Name": "Continental Drift & Plate Tectonics"
+    },
+    {
+      "id": "3bde5275-7b5c-81f8-84d4-ec66c3f8c8eb",
+      "url": "https://app.notion.com/p/General-Relativity-3bde52757b5c81f884d4ec66c3f8c8eb",
+      "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Equations": [
+        "3bbe5275-7b5c-811a-baed-c686bb16bbc3",
+        "3bbe5275-7b5c-813b-aa6c-dd6ce2e33cbf",
+        "3bbe5275-7b5c-815f-8f49-fde9509c1e77",
+        "3bbe5275-7b5c-81c7-b3a7-decb4402d1ab",
+        "3bbe5275-7b5c-81ef-b92b-d35cea11b9be",
+        "3bde5275-7b5c-81c4-9445-fc85582c4e1d"
+      ],
+      "Summary": "Gravity is not a force but the curvature of spacetime, with matter telling space how to bend and space telling matter how to move. It predicted light bending, Mercury's orbit, black holes, and gravitational waves.",
+      "Status": "Accepted",
+      "Proponent": [
+        "3bde5275-7b5c-81b8-b1de-ca8946d18a62",
+        "3bde5275-7b5c-81df-b823-c861e2b439e8"
+      ],
+      "Date Proposed": null,
+      "Year": 1915,
+      "Name": "General Relativity"
+    },
+    {
+      "id": "3bde5275-7b5c-81c6-b1bc-c6ba18f69e39",
+      "url": "https://app.notion.com/p/Bohr-Model-of-the-Atom-3bde52757b5c81c6b1bcc6ba18f69e39",
+      "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Equations": [
+        "3bbe5275-7b5c-8140-a1d4-f7bff1df0334",
+        "3bde5275-7b5c-81a3-914b-f108cd62b10b",
+        "3bde5275-7b5c-81fc-a041-fc08a0416af7"
+      ],
+      "Summary": "Electrons in fixed orbits, jumping between them and emitting a photon for the difference. It got hydrogen's spectrum exactly right and every other atom wrong, which was the clue that something deeper was needed.",
+      "Status": "Superseded",
+      "Proponent": [
+        "3bde5275-7b5c-8123-a039-d72f241c4e79",
+        "3bde5275-7b5c-81ff-b052-cf8ff59a2096"
+      ],
+      "Date Proposed": null,
+      "Year": 1913,
+      "Name": "Bohr Model of the Atom"
+    },
+    {
+      "id": "3bde5275-7b5c-81c8-8ac7-cd61c84271da",
+      "url": "https://app.notion.com/p/Special-Relativity-3bde52757b5c81c88ac7cd61c84271da",
+      "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Equations": [
+        "3bbe5275-7b5c-815f-9d30-c0e44b4a7608",
+        "3bbe5275-7b5c-819b-8730-c682ecb3e756",
+        "3bbe5275-7b5c-81e7-b649-f021e6e295c6"
+      ],
+      "Summary": "Drop the aether, keep the speed of light constant for everyone, and space and time have to bend to comply. Simultaneity becomes relative, and mass and energy turn out to be the same quantity.",
+      "Status": "Accepted",
+      "Proponent": [
+        "3bde5275-7b5c-8125-b482-d7d95529b56f",
+        "3bde5275-7b5c-8134-b7bc-ec35ba6ac34e",
+        "3bde5275-7b5c-81df-b823-c861e2b439e8"
+      ],
+      "Date Proposed": null,
+      "Year": 1905,
+      "Name": "Special Relativity"
+    },
+    {
+      "id": "3bde5275-7b5c-81e4-b44a-f2d634f6f677",
+      "url": "https://app.notion.com/p/Rutherford-Model-of-the-Atom-3bde52757b5c81e4b44af2d634f6f677",
+      "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Equations": [
+        "3bde5275-7b5c-812a-8607-ff86ea48402d",
+        "3bde5275-7b5c-814b-9628-f090f0207a42",
+        "3bde5275-7b5c-81e2-9c2a-cf03ccc6c865"
+      ],
+      "Summary": "A tiny dense nucleus with electrons somewhere around it — almost entirely empty space. Correct about the nucleus and fatally wrong about the orbits: classical electrons would radiate and spiral in within nanoseconds.",
+      "Status": "Superseded",
+      "Proponent": [
+        "3bde5275-7b5c-8198-abbd-fb88875d4ee1"
+      ],
+      "Date Proposed": null,
+      "Year": 1911,
+      "Name": "Rutherford Model of the Atom"
+    },
+    {
+      "id": "3bde5275-7b5c-8119-8dc0-caca83db4a46",
+      "url": "https://app.notion.com/p/Plum-Pudding-Model-3bde52757b5c81198dc0caca83db4a46",
+      "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Equations": [
+        "3bde5275-7b5c-81e2-9c2a-cf03ccc6c865"
+      ],
+      "Summary": "Electrons embedded in a diffuse sphere of positive charge. Rutherford's foil experiment killed it in one afternoon: alpha particles bounced straight back, which meant the positive charge was concentrated in a point.",
+      "Status": "Disproved",
+      "Proponent": [
+        "3bde5275-7b5c-81b5-bd0b-d555a2965da3"
+      ],
+      "Date Proposed": null,
+      "Year": 1904,
+      "Name": "Plum Pudding Model"
+    },
+    {
+      "id": "3bde5275-7b5c-810a-ac78-e3684b14acd1",
+      "url": "https://app.notion.com/p/Quantum-Hypothesis-3bde52757b5c810aac78e3684b14acd1",
+      "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Equations": [
+        "3bbe5275-7b5c-8120-863e-cd94384e0239",
+        "3bbe5275-7b5c-8140-a1d4-f7bff1df0334",
+        "3bde5275-7b5c-811f-9033-f21e2c8a2791",
+        "3bde5275-7b5c-8131-93f6-c15c214946b1",
+        "3bde5275-7b5c-8183-9b80-de90c00b2fbc"
+      ],
+      "Summary": "Energy exchanged only in discrete packets, hf at a time. Planck introduced it as an act of desperation to fit the black-body curve and spent years trying to explain it away; Einstein took it literally instead.",
+      "Status": "Superseded",
+      "Proponent": [
+        "3bde5275-7b5c-8194-86d5-df287efa5d3f",
+        "3bde5275-7b5c-81df-b823-c861e2b439e8"
+      ],
+      "Date Proposed": null,
+      "Year": 1900,
+      "Name": "Quantum Hypothesis"
+    },
+    {
+      "id": "3bde5275-7b5c-8125-8781-e39471d83726",
+      "url": "https://app.notion.com/p/Statistical-Mechanics-3bde52757b5c81258781e39471d83726",
+      "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Equations": [
+        "3bbe5275-7b5c-8122-95c0-f19b5930072e",
+        "3bbe5275-7b5c-813f-974b-c000af0892df",
+        "3bbe5275-7b5c-8147-a393-dbf10b5befde",
+        "3bbe5275-7b5c-816e-b97a-fdbc445f99b7",
+        "3bbe5275-7b5c-81e1-96c0-c6157aaee509",
+        "3bbe5275-7b5c-81ea-b557-e046acec2182"
+      ],
+      "Summary": "Thermodynamics derived from counting microstates. It explains why entropy increases without any law saying it must: there are simply overwhelmingly more disordered arrangements than ordered ones.",
+      "Status": "Accepted",
+      "Proponent": [
+        "3bde5275-7b5c-8174-af30-c8e5250de801",
+        "3bde5275-7b5c-81fd-a77b-d3a39bcec446"
+      ],
+      "Date Proposed": null,
+      "Year": 1902,
+      "Name": "Statistical Mechanics"
+    },
+    {
+      "id": "3bde5275-7b5c-8185-85c8-d2d582a91da7",
+      "url": "https://app.notion.com/p/Classical-Electromagnetism-3bde52757b5c818585c8d2d582a91da7",
+      "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Equations": [
+        "3bbe5275-7b5c-817c-96dd-ec4cb629f30c",
+        "3bbe5275-7b5c-81c9-a5d1-eaa911ffb7cd",
+        "3bbe5275-7b5c-81d1-8a3c-df143adffbc5",
+        "3bbe5275-7b5c-81d8-b63d-d44990bf2054",
+        "3bbe5275-7b5c-81eb-b7d4-f57536a2a230",
+        "3bde5275-7b5c-812a-8607-ff86ea48402d",
+        "3bde5275-7b5c-814b-9628-f090f0207a42",
+        "3bde5275-7b5c-81eb-8234-c87a6700bc0d"
+      ],
+      "Summary": "Four equations tying electricity, magnetism, and light into a single field theory — and predicting that light is an electromagnetic wave travelling at a speed built from two laboratory constants.",
+      "Status": "Accepted",
+      "Proponent": [
+        "3bde5275-7b5c-8168-94e4-c6c6caac69fd",
+        "3bde5275-7b5c-81de-9b82-ee16edc3faba"
+      ],
+      "Date Proposed": null,
+      "Year": 1865,
+      "Name": "Classical Electromagnetism"
+    },
+    {
+      "id": "3bde5275-7b5c-811e-9e2a-ebcbdc4d07cc",
+      "url": "https://app.notion.com/p/Kinetic-Theory-of-Gases-3bde52757b5c811e9e2aebcbdc4d07cc",
+      "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Equations": [
+        "3bbe5275-7b5c-8101-9ffd-d15e28719c53",
+        "3bbe5275-7b5c-810c-8fb5-f469f876c99a",
+        "3bbe5275-7b5c-812a-9168-d2a25b3fe20f",
+        "3bbe5275-7b5c-815b-8970-f54f46005b20",
+        "3bbe5275-7b5c-816e-b97a-fdbc445f99b7",
+        "3bbe5275-7b5c-8186-884a-ed5996715fc4",
+        "3bbe5275-7b5c-81a2-9653-e0a84065d7fa",
+        "3bbe5275-7b5c-81ea-b557-e046acec2182"
+      ],
+      "Summary": "Pressure and temperature as bookkeeping for molecules in flight. It derived the gas laws from mechanics and statistics alone, and gave the first real evidence that molecules were more than a convenient fiction.",
+      "Status": "Accepted",
+      "Proponent": [
+        "3bde5275-7b5c-8168-94e4-c6c6caac69fd",
+        "3bde5275-7b5c-8174-af30-c8e5250de801",
+        "3bde5275-7b5c-81e9-bb86-f066a45f1deb"
+      ],
+      "Date Proposed": null,
+      "Year": 1857,
+      "Name": "Kinetic Theory of Gases"
+    },
+    {
+      "id": "3bde5275-7b5c-81f8-a1bf-fb7455203c64",
+      "url": "https://app.notion.com/p/Luminiferous-Aether-3bde52757b5c81f8a1bffb7455203c64",
+      "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Equations": [
+        "3bbe5275-7b5c-81d8-b63d-d44990bf2054",
+        "3bbe5275-7b5c-81e7-b649-f021e6e295c6"
+      ],
+      "Summary": "If light is a wave, something must be waving — so space was filled with an invisible, frictionless, rigid medium. Michelson and Morley looked for the Earth's motion through it in 1887 and found precisely nothing.",
+      "Status": "Disproved",
+      "Proponent": [
+        "3bde5275-7b5c-8125-b482-d7d95529b56f",
+        "3bde5275-7b5c-81fa-bfe2-d00255dc6d3e"
+      ],
+      "Date Proposed": null,
+      "Year": 1818,
+      "Name": "Luminiferous Aether"
+    },
+    {
+      "id": "3bde5275-7b5c-81ad-a08c-dba8a668c136",
+      "url": "https://app.notion.com/p/Atomic-Theory-3bde52757b5c81ada08cdba8a668c136",
+      "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Equations": [
+        "3bbe5275-7b5c-8144-82d8-d6e4bd0f0f2d",
+        "3bbe5275-7b5c-819d-afd0-d0876756a85c",
+        "3bbe5275-7b5c-81e3-87bd-e3fd8345d1e5"
+      ],
+      "Summary": "Matter as discrete atoms with fixed weights, combining in whole-number ratios. Dalton made chemistry quantitative; atoms were not directly confirmed until Einstein explained Brownian motion a century later.",
+      "Status": "Accepted",
+      "Proponent": [
+        "3bde5275-7b5c-81d8-855f-cff204c52324"
+      ],
+      "Date Proposed": null,
+      "Year": 1803,
+      "Name": "Atomic Theory"
+    },
+    {
+      "id": "3bde5275-7b5c-8190-9fba-cff4da9aa6a2",
+      "url": "https://app.notion.com/p/Caloric-Theory-3bde52757b5c81909fbacff4da9aa6a2",
+      "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Equations": [
+        "3bbe5275-7b5c-819a-8209-e94b6436d16a",
+        "3bde5275-7b5c-8144-b755-d881fbf879cb"
+      ],
+      "Summary": "Heat as a weightless, conserved fluid flowing from hot to cold. It explained thermal expansion and got the gas laws right, and it was undone by cannon boring: friction made heat without limit, so nothing was conserved.",
+      "Status": "Disproved",
+      "Proponent": [
+        "3bde5275-7b5c-819e-895f-de76d0f9c506"
+      ],
+      "Date Proposed": null,
+      "Year": 1783,
+      "Name": "Caloric Theory"
+    },
+    {
+      "id": "3bde5275-7b5c-8162-be54-c9e88fa847d2",
+      "url": "https://app.notion.com/p/Newtonian-Mechanics-3bde52757b5c8162be54c9e88fa847d2",
+      "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Equations": [
+        "3bbe5275-7b5c-810a-8065-f03f5253cda9",
+        "3bbe5275-7b5c-811b-8297-ce47b2c5d614",
+        "3bbe5275-7b5c-813a-84a7-ea08528b3c93",
+        "3bbe5275-7b5c-8183-bbd5-ff733704a984",
+        "3bbe5275-7b5c-81c8-8eb1-cdc2179de58e",
+        "3bde5275-7b5c-814b-b847-fa3b302cf50e"
+      ],
+      "Summary": "Three laws of motion and one of gravitation, covering everything from a dropped apple to the orbit of Neptune. Still how every bridge is built; simply not exact at high speed or strong gravity.",
+      "Status": "Superseded",
+      "Proponent": [
+        "3bde5275-7b5c-8163-b1d7-f61d9b760273"
+      ],
+      "Date Proposed": null,
+      "Year": 1687,
+      "Name": "Newtonian Mechanics"
+    },
+    {
+      "id": "3bde5275-7b5c-81d3-9d85-fbceed121149",
+      "url": "https://app.notion.com/p/Corpuscular-Theory-of-Light-3bde52757b5c81d39d85fbceed121149",
+      "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Equations": [
+        "3bbe5275-7b5c-813d-86cf-c29a346fe2f8"
+      ],
+      "Summary": "Newton's competing account: light as a stream of particles. Dismissed for a century after Young's double slit, then partly vindicated by the photon — though not in any form Newton would recognise.",
+      "Status": "Superseded",
+      "Proponent": [
+        "3bde5275-7b5c-8163-b1d7-f61d9b760273"
+      ],
+      "Date Proposed": null,
+      "Year": 1704,
+      "Name": "Corpuscular Theory of Light"
+    },
+    {
+      "id": "3bde5275-7b5c-81a9-9b1e-f56598a0882a",
+      "url": "https://app.notion.com/p/Wave-Theory-of-Light-3bde52757b5c81a99b1ef56598a0882a",
+      "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Equations": [
+        "3bbe5275-7b5c-8113-9b17-e6d7efc091ea",
+        "3bbe5275-7b5c-8130-a1e2-d4d1fefda7d8",
+        "3bbe5275-7b5c-813d-86cf-c29a346fe2f8",
+        "3bbe5275-7b5c-81d8-b63d-d44990bf2054"
+      ],
+      "Summary": "Light as a wave in a medium, which explained diffraction and interference that particles could not. Correct about the wave, wrong about the medium, and eventually absorbed into quantum electrodynamics.",
+      "Status": "Superseded",
+      "Proponent": [
+        "3bde5275-7b5c-8144-a383-d9eabfc3dc5d",
+        "3bde5275-7b5c-81fa-bfe2-d00255dc6d3e",
+        "3bde5275-7b5c-81fb-ae5d-e972491b3cc7"
+      ],
+      "Date Proposed": null,
+      "Year": 1690,
+      "Name": "Wave Theory of Light"
+    },
+    {
+      "id": "3bde5275-7b5c-8155-ad9b-de63644f9483",
+      "url": "https://app.notion.com/p/Phlogiston-Theory-3bde52757b5c8155ad9bde63644f9483",
+      "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Equations": [],
+      "Summary": "Combustible bodies were said to contain phlogiston, released as they burned. The theory died when Lavoisier weighed the products and found them heavier — the awkward fix, negative mass, was one step too far.",
+      "Status": "Disproved",
+      "Proponent": [
+        "3bde5275-7b5c-818e-aeae-e70e61464add"
+      ],
+      "Date Proposed": null,
+      "Year": 1667,
+      "Name": "Phlogiston Theory"
+    },
+    {
+      "id": "3bde5275-7b5c-81af-86fd-d2bdae2b8b8c",
+      "url": "https://app.notion.com/p/Heliocentrism-3bde52757b5c81af86fdd2bdae2b8b8c",
+      "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Equations": [
+        "3bbe5275-7b5c-8193-83a5-f551fd37b47c",
+        "3bbe5275-7b5c-81c8-8eb1-cdc2179de58e",
+        "3bbe5275-7b5c-81da-b2e6-ed931eca7217"
+      ],
+      "Summary": "The Sun at the centre, the Earth a planet like any other. Copernicus's version still used circles and was no more accurate than Ptolemy's; Kepler's ellipses are what finally made it win.",
+      "Status": "Accepted",
+      "Proponent": [
+        "3bde5275-7b5c-812c-b725-df4753846575",
+        "3bde5275-7b5c-8183-ab87-fb31b7c5dc2d",
+        "3bde5275-7b5c-81ea-af88-cf056278060b"
+      ],
+      "Date Proposed": null,
+      "Year": 1543,
+      "Name": "Heliocentrism"
+    },
+    {
+      "id": "3bde5275-7b5c-81a9-85f8-d0b50ab5feb5",
+      "url": "https://app.notion.com/p/Geocentric-Model-3bde52757b5c81a985f8d0b50ab5feb5",
+      "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Equations": [
+        "3bbe5275-7b5c-81da-b2e6-ed931eca7217"
+      ],
+      "Summary": "Earth at rest in the centre, everything else on nested spheres. It survived fourteen centuries because it worked: with enough epicycles Ptolemy's system predicted planetary positions to within a degree.",
+      "Status": "Disproved",
+      "Proponent": [
+        "3bde5275-7b5c-8158-8c83-dcabdb77e3a8"
+      ],
+      "Date Proposed": null,
+      "Year": 150,
+      "Name": "Geocentric Model"
+    },
+    {
+      "id": "948ffd28-180a-4f7f-8f79-b6a712181262",
+      "url": "https://app.notion.com/p/Quantum-Gravity-948ffd28180a4f7f8f79b6a712181262",
+      "lastEdited": "2026-08-15T18:41:00.000Z",
+      "Equations": [
+        "3bbe5275-7b5c-8109-a4a6-c5b903b6e05f",
+        "3bbe5275-7b5c-811a-a60d-eddf236c3a8c",
+        "3bbe5275-7b5c-811a-baed-c686bb16bbc3",
+        "3bbe5275-7b5c-8125-8857-cffce0164fef",
+        "3bbe5275-7b5c-813b-aa6c-dd6ce2e33cbf",
+        "3bbe5275-7b5c-815d-b970-fb2a7877db25",
+        "3bbe5275-7b5c-815f-8f49-fde9509c1e77",
+        "3bbe5275-7b5c-81c7-b3a7-decb4402d1ab",
         "3bde5275-7b5c-81c4-9445-fc85582c4e1d"
       ],
       "Summary": "This theoretical framework aims to reconcile general relativity (describing gravity) with quantum mechanics, potentially leading to a unified description of all forces at very high energies or small scales.",
-      "Status": null,
-      "Proponent": [],
+      "Status": "Speculative",
+      "Proponent": [
+        "3bde5275-7b5c-8148-b3a9-cd497f7b5af5",
+        "3bde5275-7b5c-816b-bb69-dbce98c3060c",
+        "3bde5275-7b5c-81c0-8a92-e9152ccde825",
+        "f3a708d9-63ec-4a86-9f4a-c82690ef9f29"
+      ],
       "Date Proposed": null,
+      "Year": 1930,
       "Name": "Quantum Gravity"
     },
     {
       "id": "e497c8e0-c340-456d-a74c-a8d03962d58a",
       "url": "https://app.notion.com/p/Unification-Theories-e497c8e0c340456da74ca8d03962d58a",
-      "lastEdited": "2024-07-26T05:18:00.000Z",
+      "lastEdited": "2026-08-15T18:41:00.000Z",
       "Equations": [
         "3bbe5275-7b5c-8125-8857-cffce0164fef",
         "3bbe5275-7b5c-8189-b87c-e1e5b2e563de",
@@ -872,8 +3149,14 @@
       ],
       "Summary": "Scientists have proposed theories to unify these forces. The electroweak theory successfully unifies the electromagnetic and weak nuclear forces. Efforts to unify all four forces, such as Grand Unified Theories (GUTs) and string theory, are still under development.",
       "Status": "Speculative",
-      "Proponent": [],
+      "Proponent": [
+        "3bde5275-7b5c-81a8-b6d8-f8e627e862cf",
+        "3bde5275-7b5c-81aa-9f3f-f0d27ac09ed7",
+        "3bde5275-7b5c-81c1-b1c5-c6ee1e1a800e",
+        "3bde5275-7b5c-81c2-a5eb-d42bcf472d03"
+      ],
       "Date Proposed": null,
+      "Year": 1974,
       "Name": "Unification Theories"
     }
   ],
@@ -486532,7 +488815,11 @@
       "Minerals": [],
       "Field": "Astrophysics",
       "Celestial Objects": [],
-      "Theories": [],
+      "Theories": [
+        "3bde5275-7b5c-8197-a615-cfd4ff53095e",
+        "3bde5275-7b5c-8112-9df5-f96e892e1f88",
+        "3bde5275-7b5c-81b0-a714-d53a2345ebdb"
+      ],
       "Named After": "Meghnad Saha",
       "Related": [
         "3bbe5275-7b5c-8120-863e-cd94384e0239",
@@ -486583,7 +488870,11 @@
       "Minerals": [],
       "Field": "Cosmology",
       "Celestial Objects": [],
-      "Theories": [],
+      "Theories": [
+        "3bde5275-7b5c-8194-92cc-da98c37e359e",
+        "3bde5275-7b5c-8155-8abe-e1d83b51ecb9",
+        "3bde5275-7b5c-81b0-a714-d53a2345ebdb"
+      ],
       "Named After": "Evgeny Lifshitz",
       "Related": [
         "3bbe5275-7b5c-811b-8297-ce47b2c5d614",
@@ -486618,7 +488909,11 @@
       "Minerals": [],
       "Field": "Cosmology",
       "Celestial Objects": [],
-      "Theories": [],
+      "Theories": [
+        "3bde5275-7b5c-8119-b400-f4b64f9b76f4",
+        "3bde5275-7b5c-8194-92cc-da98c37e359e",
+        "3bde5275-7b5c-81b0-a714-d53a2345ebdb"
+      ],
       "Named After": "Georges Lemaître · Howard Robertson",
       "Related": [
         "3bbe5275-7b5c-810c-8fb5-f469f876c99a",
@@ -486650,7 +488945,9 @@
       "Minerals": [],
       "Field": "Cosmology",
       "Celestial Objects": [],
-      "Theories": [],
+      "Theories": [
+        "3bde5275-7b5c-81b0-a714-d53a2345ebdb"
+      ],
       "Named After": "Georges Lemaître",
       "Related": [
         "3bbe5275-7b5c-8189-9f06-e3de324e0af4",
@@ -486678,7 +488975,11 @@
       "Minerals": [],
       "Field": "Cosmology",
       "Celestial Objects": [],
-      "Theories": [],
+      "Theories": [
+        "3bde5275-7b5c-8119-b400-f4b64f9b76f4",
+        "3bde5275-7b5c-8155-8abe-e1d83b51ecb9",
+        "3bde5275-7b5c-81b0-a714-d53a2345ebdb"
+      ],
       "Named After": "Georges Lemaître · Howard Robertson",
       "Related": [
         "3bbe5275-7b5c-811b-8297-ce47b2c5d614",
@@ -486716,7 +489017,11 @@
       "Field": "Cosmology",
       "Celestial Objects": [],
       "Theories": [
-        "948ffd28-180a-4f7f-8f79-b6a712181262"
+        "948ffd28-180a-4f7f-8f79-b6a712181262",
+        "3bde5275-7b5c-8194-92cc-da98c37e359e",
+        "3bde5275-7b5c-811b-ac85-fe83a7a852a4",
+        "3bde5275-7b5c-81b0-a714-d53a2345ebdb",
+        "3bde5275-7b5c-81f8-84d4-ec66c3f8c8eb"
       ],
       "Named After": "Friedmann · Lemaître · Robertson · Walker",
       "Related": [
@@ -486750,7 +489055,9 @@
       "Minerals": [],
       "Field": "Cosmology",
       "Celestial Objects": [],
-      "Theories": [],
+      "Theories": [
+        "3bde5275-7b5c-81b0-a714-d53a2345ebdb"
+      ],
       "Named After": "Vesto Slipher · Georges Lemaître",
       "Related": [
         "3bbe5275-7b5c-8130-a1e2-d4d1fefda7d8",
@@ -486792,7 +489099,9 @@
       ],
       "Field": "Atomic Physics",
       "Celestial Objects": [],
-      "Theories": [],
+      "Theories": [
+        "3bde5275-7b5c-81c6-b1bc-c6ba18f69e39"
+      ],
       "Named After": "Niels Bohr",
       "Related": [
         "3bbe5275-7b5c-811a-a60d-eddf236c3a8c",
@@ -486830,7 +489139,10 @@
       ],
       "Field": "Atomic Physics",
       "Celestial Objects": [],
-      "Theories": [],
+      "Theories": [
+        "3bde5275-7b5c-81e4-b44a-f2d634f6f677",
+        "3bde5275-7b5c-8119-8dc0-caca83db4a46"
+      ],
       "Named After": "Ernest Rutherford",
       "Related": [
         "3bde5275-7b5c-814b-9628-f090f0207a42",
@@ -486862,7 +489174,9 @@
       "Celestial Objects": [
         "59917836-94bf-4298-b2c1-62293f9f146c"
       ],
-      "Theories": [],
+      "Theories": [
+        "3bde5275-7b5c-81c6-b1bc-c6ba18f69e39"
+      ],
       "Named After": "Johannes Rydberg · Johann Balmer",
       "Related": [
         "3bbe5275-7b5c-8130-a1e2-d4d1fefda7d8",
@@ -487135,7 +489449,9 @@
       "Minerals": [],
       "Field": "Heat Transfer",
       "Celestial Objects": [],
-      "Theories": [],
+      "Theories": [
+        "3bde5275-7b5c-8190-9fba-cff4da9aa6a2"
+      ],
       "Named After": "Isaac Newton",
       "Related": [
         "3bbe5275-7b5c-8153-8923-ca0655445379",
@@ -487191,7 +489507,10 @@
       "Celestial Objects": [
         "59917836-94bf-4298-b2c1-62293f9f146c"
       ],
-      "Theories": [],
+      "Theories": [
+        "3bde5275-7b5c-8183-a9cc-d3532bc342bf",
+        "3bde5275-7b5c-810a-ac78-e3684b14acd1"
+      ],
       "Named After": "Max Planck",
       "Related": [
         "3bbe5275-7b5c-8120-863e-cd94384e0239",
@@ -487241,7 +489560,9 @@
       "Celestial Objects": [
         "59917836-94bf-4298-b2c1-62293f9f146c"
       ],
-      "Theories": [],
+      "Theories": [
+        "3bde5275-7b5c-810a-ac78-e3684b14acd1"
+      ],
       "Named After": "Wilhelm Wien",
       "Related": [
         "3bbe5275-7b5c-8120-863e-cd94384e0239",
@@ -487291,7 +489612,9 @@
       "Celestial Objects": [
         "59917836-94bf-4298-b2c1-62293f9f146c"
       ],
-      "Theories": [],
+      "Theories": [
+        "3bde5275-7b5c-810a-ac78-e3684b14acd1"
+      ],
       "Named After": "Gustav Kirchhoff",
       "Related": [
         "3bbe5275-7b5c-8120-863e-cd94384e0239"
@@ -487318,7 +489641,9 @@
       "Minerals": [],
       "Field": "Electrostatics",
       "Celestial Objects": [],
-      "Theories": [],
+      "Theories": [
+        "3bde5275-7b5c-8185-85c8-d2d582a91da7"
+      ],
       "Named After": "Siméon Denis Poisson",
       "Related": [
         "3bbe5275-7b5c-811b-8297-ce47b2c5d614",
@@ -487345,7 +489670,10 @@
       "Minerals": [],
       "Field": "Electrostatics",
       "Celestial Objects": [],
-      "Theories": [],
+      "Theories": [
+        "3bde5275-7b5c-81e4-b44a-f2d634f6f677",
+        "3bde5275-7b5c-8185-85c8-d2d582a91da7"
+      ],
       "Named After": "Michael Faraday",
       "Related": [
         "3bbe5275-7b5c-81c9-a5d1-eaa911ffb7cd",
@@ -487372,7 +489700,10 @@
       ],
       "Field": "Electrostatics",
       "Celestial Objects": [],
-      "Theories": [],
+      "Theories": [
+        "3bde5275-7b5c-81e4-b44a-f2d634f6f677",
+        "3bde5275-7b5c-8185-85c8-d2d582a91da7"
+      ],
       "Named After": "Charles-Augustin de Coulomb",
       "Related": [
         "3bbe5275-7b5c-811b-8297-ce47b2c5d614",
@@ -487405,7 +489736,8 @@
       "Field": "Classical Field Theory",
       "Celestial Objects": [],
       "Theories": [
-        "e497c8e0-c340-456d-a74c-a8d03962d58a"
+        "e497c8e0-c340-456d-a74c-a8d03962d58a",
+        "3bde5275-7b5c-81c8-92c2-e7f2313ec35d"
       ],
       "Named After": "Emmy Noether",
       "Related": [
@@ -487433,7 +489765,9 @@
       "Minerals": [],
       "Field": "Classical Field Theory",
       "Celestial Objects": [],
-      "Theories": [],
+      "Theories": [
+        "3bde5275-7b5c-81c8-92c2-e7f2313ec35d"
+      ],
       "Named After": "Leonhard Euler · Joseph-Louis Lagrange",
       "Related": [
         "3bbe5275-7b5c-8125-8857-cffce0164fef",
@@ -487457,7 +489791,10 @@
       "Minerals": [],
       "Field": "Classical Field Theory",
       "Celestial Objects": [],
-      "Theories": [],
+      "Theories": [
+        "3bde5275-7b5c-81c8-92c2-e7f2313ec35d",
+        "3bde5275-7b5c-8162-be54-c9e88fa847d2"
+      ],
       "Named After": "Pierre Louis Maupertuis · Leonhard Euler · Joseph-Louis Lagrange",
       "Related": [
         "3bbe5275-7b5c-8125-8857-cffce0164fef",
@@ -487565,7 +489902,9 @@
       "Minerals": [],
       "Field": "Nonlinear Dynamics",
       "Celestial Objects": [],
-      "Theories": [],
+      "Theories": [
+        "3bde5275-7b5c-8151-afe6-e471f9d33f09"
+      ],
       "Named After": "Robert May",
       "Related": [
         "3bbe5275-7b5c-8132-a437-e09561425c4c",
@@ -487589,7 +489928,9 @@
       "Minerals": [],
       "Field": "Nonlinear Dynamics",
       "Celestial Objects": [],
-      "Theories": [],
+      "Theories": [
+        "3bde5275-7b5c-8151-afe6-e471f9d33f09"
+      ],
       "Named After": "Mitchell Feigenbaum",
       "Related": [
         "3bbe5275-7b5c-811f-8db4-cc95acf776dd",
@@ -487612,7 +489953,9 @@
       "Minerals": [],
       "Field": "Nonlinear Dynamics",
       "Celestial Objects": [],
-      "Theories": [],
+      "Theories": [
+        "3bde5275-7b5c-8151-afe6-e471f9d33f09"
+      ],
       "Named After": "Edward Lorenz",
       "Related": [
         "3bbe5275-7b5c-8120-a62d-fa870a7c75bb",
@@ -488008,7 +490351,9 @@
       "Minerals": [],
       "Field": "Superconductivity",
       "Celestial Objects": [],
-      "Theories": [],
+      "Theories": [
+        "3bde5275-7b5c-8173-b1a7-eaec1d496663"
+      ],
       "Named After": "Brian Josephson",
       "Related": [
         "3bbe5275-7b5c-8103-8865-faee50cc9c18",
@@ -488038,7 +490383,9 @@
       "Minerals": [],
       "Field": "Superconductivity",
       "Celestial Objects": [],
-      "Theories": [],
+      "Theories": [
+        "3bde5275-7b5c-8173-b1a7-eaec1d496663"
+      ],
       "Named After": "John Bardeen · Leon Cooper · Robert Schrieffer",
       "Related": [
         "3bbe5275-7b5c-8127-96bd-f72be5a740f4",
@@ -488070,7 +490417,9 @@
       "Minerals": [],
       "Field": "Superconductivity",
       "Celestial Objects": [],
-      "Theories": [],
+      "Theories": [
+        "3bde5275-7b5c-8173-b1a7-eaec1d496663"
+      ],
       "Named After": "Fritz London · Heinz London",
       "Related": [
         "3bbe5275-7b5c-8149-a0e6-d2bf67397229",
@@ -488109,7 +490458,9 @@
       ],
       "Field": "Condensed Matter",
       "Celestial Objects": [],
-      "Theories": [],
+      "Theories": [
+        "3bde5275-7b5c-81bb-96ea-f380ca92d0a8"
+      ],
       "Named After": "Felix Bloch",
       "Related": [
         "3bbe5275-7b5c-8113-9b17-e6d7efc091ea",
@@ -488142,7 +490493,11 @@
       ],
       "Field": "Condensed Matter",
       "Celestial Objects": [],
-      "Theories": [],
+      "Theories": [
+        "3bde5275-7b5c-8173-b1a7-eaec1d496663",
+        "3bde5275-7b5c-81bb-96ea-f380ca92d0a8",
+        "3bde5275-7b5c-8125-8781-e39471d83726"
+      ],
       "Named After": "Enrico Fermi · Paul Dirac",
       "Related": [
         "3bbe5275-7b5c-8127-96bd-f72be5a740f4",
@@ -488179,7 +490534,9 @@
       ],
       "Field": "Condensed Matter",
       "Celestial Objects": [],
-      "Theories": [],
+      "Theories": [
+        "3bde5275-7b5c-81bb-96ea-f380ca92d0a8"
+      ],
       "Named After": "Paul Drude",
       "Related": [
         "3bbe5275-7b5c-812d-b464-f7799b61cce9",
@@ -488325,7 +490682,9 @@
       "Celestial Objects": [
         "59917836-94bf-4298-b2c1-62293f9f146c"
       ],
-      "Theories": [],
+      "Theories": [
+        "3bde5275-7b5c-8162-be54-c9e88fa847d2"
+      ],
       "Named After": "Isaac Newton",
       "Related": [
         "3bbe5275-7b5c-811a-baed-c686bb16bbc3",
@@ -488352,7 +490711,9 @@
       "Minerals": [],
       "Field": "Celestial Mechanics",
       "Celestial Objects": [],
-      "Theories": [],
+      "Theories": [
+        "3bde5275-7b5c-8162-be54-c9e88fa847d2"
+      ],
       "Named After": "Isaac Newton",
       "Related": [
         "3bbe5275-7b5c-811b-8297-ce47b2c5d614",
@@ -488378,7 +490739,11 @@
       "Minerals": [],
       "Field": "Quantum Computing",
       "Celestial Objects": [],
-      "Theories": [],
+      "Theories": [
+        "3bde5275-7b5c-8140-928d-c0aa2466b01f",
+        "3bde5275-7b5c-810d-ab95-db5786e7b9e2",
+        "3bde5275-7b5c-8113-aa1c-f0b45b84363d"
+      ],
       "Named After": "Benjamin Schumacher (coined 'qubit')",
       "Related": [
         "3bbe5275-7b5c-810f-8c8d-d0d1ca4da44e",
@@ -488409,7 +490774,9 @@
       "Minerals": [],
       "Field": "Quantum Computing",
       "Celestial Objects": [],
-      "Theories": [],
+      "Theories": [
+        "3bde5275-7b5c-8140-928d-c0aa2466b01f"
+      ],
       "Named After": "William Wootters · Wojciech Zurek · Dennis Dieks",
       "Related": [
         "3bbe5275-7b5c-8109-a4a6-c5b903b6e05f",
@@ -488434,7 +490801,10 @@
       "Minerals": [],
       "Field": "Quantum Computing",
       "Celestial Objects": [],
-      "Theories": [],
+      "Theories": [
+        "3bde5275-7b5c-8140-928d-c0aa2466b01f",
+        "3bde5275-7b5c-8113-aa1c-f0b45b84363d"
+      ],
       "Named After": "John Stewart Bell",
       "Related": [
         "3bbe5275-7b5c-8103-8865-faee50cc9c18"
@@ -488467,7 +490837,9 @@
       ],
       "Field": "Waves & Optics",
       "Celestial Objects": [],
-      "Theories": [],
+      "Theories": [
+        "3bde5275-7b5c-81a9-9b1e-f56598a0882a"
+      ],
       "Named After": "William Henry Bragg · William Lawrence Bragg",
       "Related": [
         "3bbe5275-7b5c-8130-a1e2-d4d1fefda7d8",
@@ -488500,7 +490872,9 @@
       ],
       "Field": "Waves & Optics",
       "Celestial Objects": [],
-      "Theories": [],
+      "Theories": [
+        "3bde5275-7b5c-81a9-9b1e-f56598a0882a"
+      ],
       "Named After": "Joseph von Fraunhofer",
       "Related": [
         "3bbe5275-7b5c-8113-9b17-e6d7efc091ea",
@@ -488534,7 +490908,10 @@
       "Field": "General Relativity",
       "Celestial Objects": [],
       "Theories": [
-        "948ffd28-180a-4f7f-8f79-b6a712181262"
+        "948ffd28-180a-4f7f-8f79-b6a712181262",
+        "3bde5275-7b5c-81b3-a747-d2e0a75cf5aa",
+        "3bde5275-7b5c-81c8-92c2-e7f2313ec35d",
+        "3bde5275-7b5c-81f8-84d4-ec66c3f8c8eb"
       ],
       "Named After": "David Hilbert · Albert Einstein",
       "Related": [
@@ -488559,7 +490936,11 @@
       "Minerals": [],
       "Field": "General Relativity",
       "Celestial Objects": [],
-      "Theories": [],
+      "Theories": [
+        "3bde5275-7b5c-81b3-a747-d2e0a75cf5aa",
+        "3bde5275-7b5c-81f8-84d4-ec66c3f8c8eb",
+        "948ffd28-180a-4f7f-8f79-b6a712181262"
+      ],
       "Named After": "Albert Einstein",
       "Related": [
         "3bbe5275-7b5c-81bf-b306-fdf6fa438de8",
@@ -488586,7 +490967,9 @@
       "Celestial Objects": [
         "59917836-94bf-4298-b2c1-62293f9f146c"
       ],
-      "Theories": [],
+      "Theories": [
+        "3bde5275-7b5c-81f8-84d4-ec66c3f8c8eb"
+      ],
       "Named After": "Albert Einstein",
       "Related": [
         "3bbe5275-7b5c-811a-baed-c686bb16bbc3",
@@ -488615,7 +490998,8 @@
       "Field": "Quantum Field Theory",
       "Celestial Objects": [],
       "Theories": [
-        "948ffd28-180a-4f7f-8f79-b6a712181262"
+        "948ffd28-180a-4f7f-8f79-b6a712181262",
+        "3bde5275-7b5c-812d-9b11-ec91e612af1b"
       ],
       "Named After": "Richard Feynman",
       "Related": [
@@ -488643,7 +491027,11 @@
       "Minerals": [],
       "Field": "Quantum Field Theory",
       "Celestial Objects": [],
-      "Theories": [],
+      "Theories": [
+        "3bde5275-7b5c-8109-a8c3-f9b6d98cca04",
+        "3bde5275-7b5c-8170-8bb5-f403b35dcc5e",
+        "3bde5275-7b5c-812d-9b11-ec91e612af1b"
+      ],
       "Named After": "Oskar Klein · Walter Gordon",
       "Related": [
         "3bbe5275-7b5c-811a-a60d-eddf236c3a8c",
@@ -488674,7 +491062,11 @@
       "Field": "Quantum Field Theory",
       "Celestial Objects": [],
       "Theories": [
-        "e497c8e0-c340-456d-a74c-a8d03962d58a"
+        "e497c8e0-c340-456d-a74c-a8d03962d58a",
+        "3bde5275-7b5c-8109-a8c3-f9b6d98cca04",
+        "3bde5275-7b5c-81c2-a04e-d20bae468120",
+        "3bde5275-7b5c-812f-987b-d90fa3fe1038",
+        "3bde5275-7b5c-812d-9b11-ec91e612af1b"
       ],
       "Named After": "Arnold Sommerfeld",
       "Related": [
@@ -488790,7 +491182,9 @@
       "Minerals": [],
       "Field": "Information Theory",
       "Celestial Objects": [],
-      "Theories": [],
+      "Theories": [
+        "3bde5275-7b5c-81e2-845e-f668253c9a4c"
+      ],
       "Named After": "Claude Shannon · Ralph Hartley",
       "Related": [
         "3bbe5275-7b5c-810e-a378-ea77aa50d6f6",
@@ -488814,7 +491208,11 @@
       "Minerals": [],
       "Field": "Information Theory",
       "Celestial Objects": [],
-      "Theories": [],
+      "Theories": [
+        "3bde5275-7b5c-81b1-8212-c31d06505cbc",
+        "3bde5275-7b5c-8140-928d-c0aa2466b01f",
+        "3bde5275-7b5c-81e2-845e-f668253c9a4c"
+      ],
       "Named After": "Claude Shannon",
       "Related": [
         "3bbe5275-7b5c-8103-8865-faee50cc9c18",
@@ -488874,7 +491272,9 @@
       ],
       "Field": "Chemical Kinetics",
       "Celestial Objects": [],
-      "Theories": [],
+      "Theories": [
+        "3bde5275-7b5c-8197-a615-cfd4ff53095e"
+      ],
       "Named After": "Svante Arrhenius",
       "Related": [
         "3bbe5275-7b5c-816e-831d-e184b1a1f659",
@@ -488908,7 +491308,9 @@
       ],
       "Field": "Chemical Kinetics",
       "Celestial Objects": [],
-      "Theories": [],
+      "Theories": [
+        "3bde5275-7b5c-81ad-a08c-dba8a668c136"
+      ],
       "Named After": "Cato Guldberg · Peter Waage",
       "Related": [
         "3bbe5275-7b5c-8120-a62d-fa870a7c75bb",
@@ -489037,7 +491439,9 @@
       ],
       "Field": "Geophysics",
       "Celestial Objects": [],
-      "Theories": [],
+      "Theories": [
+        "3bde5275-7b5c-813a-b77a-c766d8a0e418"
+      ],
       "Named After": "Siméon Denis Poisson",
       "Related": [
         "3bbe5275-7b5c-81f5-bb78-d159340dd03f",
@@ -489069,7 +491473,9 @@
       ],
       "Field": "Geophysics",
       "Celestial Objects": [],
-      "Theories": [],
+      "Theories": [
+        "3bde5275-7b5c-813a-b77a-c766d8a0e418"
+      ],
       "Named After": "Claude-Louis Navier · Augustin-Louis Cauchy · Siméon Poisson",
       "Related": [
         "3bbe5275-7b5c-8183-bbd5-ff733704a984",
@@ -489100,7 +491506,9 @@
       ],
       "Field": "Statistical Mechanics",
       "Celestial Objects": [],
-      "Theories": [],
+      "Theories": [
+        "3bde5275-7b5c-8125-8781-e39471d83726"
+      ],
       "Named After": "Ludwig Boltzmann · Josiah Willard Gibbs",
       "Related": [
         "3bbe5275-7b5c-8122-95c0-f19b5930072e",
@@ -489127,7 +491535,11 @@
       "Minerals": [],
       "Field": "Statistical Mechanics",
       "Celestial Objects": [],
-      "Theories": [],
+      "Theories": [
+        "3bde5275-7b5c-8112-9df5-f96e892e1f88",
+        "3bde5275-7b5c-8125-8781-e39471d83726",
+        "3bde5275-7b5c-811e-9e2a-ebcbdc4d07cc"
+      ],
       "Named After": "Ludwig Boltzmann",
       "Related": [
         "3bbe5275-7b5c-8150-9b6b-de88bc1b1910",
@@ -489160,7 +491572,10 @@
       "Minerals": [],
       "Field": "Statistical Mechanics",
       "Celestial Objects": [],
-      "Theories": [],
+      "Theories": [
+        "3bde5275-7b5c-8125-8781-e39471d83726",
+        "3bde5275-7b5c-811e-9e2a-ebcbdc4d07cc"
+      ],
       "Named After": "James Clerk Maxwell",
       "Related": [
         "3bbe5275-7b5c-815b-8970-f54f46005b20",
@@ -489193,7 +491608,13 @@
       "Celestial Objects": [],
       "Theories": [
         "948ffd28-180a-4f7f-8f79-b6a712181262",
-        "e497c8e0-c340-456d-a74c-a8d03962d58a"
+        "e497c8e0-c340-456d-a74c-a8d03962d58a",
+        "3bde5275-7b5c-8109-a8c3-f9b6d98cca04",
+        "3bde5275-7b5c-81c2-a04e-d20bae468120",
+        "3bde5275-7b5c-8170-8bb5-f403b35dcc5e",
+        "3bde5275-7b5c-81b8-af02-f546654f2aec",
+        "3bde5275-7b5c-812f-987b-d90fa3fe1038",
+        "3bde5275-7b5c-813f-9e30-c040189eb298"
       ],
       "Named After": "Sheldon Glashow · Abdus Salam · Steven Weinberg · and many hands",
       "Related": [
@@ -489225,7 +491646,11 @@
       "Field": "Particle Physics",
       "Celestial Objects": [],
       "Theories": [
-        "e497c8e0-c340-456d-a74c-a8d03962d58a"
+        "e497c8e0-c340-456d-a74c-a8d03962d58a",
+        "3bde5275-7b5c-8109-a8c3-f9b6d98cca04",
+        "3bde5275-7b5c-81b8-af02-f546654f2aec",
+        "3bde5275-7b5c-812f-987b-d90fa3fe1038",
+        "3bde5275-7b5c-813f-9e30-c040189eb298"
       ],
       "Named After": "Peter Higgs · Brout · Englert",
       "Related": [
@@ -489250,7 +491675,10 @@
       "Field": "Particle Physics",
       "Celestial Objects": [],
       "Theories": [
-        "e497c8e0-c340-456d-a74c-a8d03962d58a"
+        "e497c8e0-c340-456d-a74c-a8d03962d58a",
+        "3bde5275-7b5c-8109-a8c3-f9b6d98cca04",
+        "3bde5275-7b5c-812d-9b11-ec91e612af1b",
+        "3bde5275-7b5c-8193-ae2a-f3d957e88a73"
       ],
       "Named After": "Paul Dirac",
       "Related": [
@@ -489283,7 +491711,9 @@
       "Celestial Objects": [
         "59917836-94bf-4298-b2c1-62293f9f146c"
       ],
-      "Theories": [],
+      "Theories": [
+        "3bde5275-7b5c-8197-a615-cfd4ff53095e"
+      ],
       "Named After": "Subrahmanyan Chandrasekhar",
       "Related": [
         "3bbe5275-7b5c-8109-a4a6-c5b903b6e05f",
@@ -489331,7 +491761,10 @@
         "59917836-94bf-4298-b2c1-62293f9f146c"
       ],
       "Theories": [
-        "948ffd28-180a-4f7f-8f79-b6a712181262"
+        "948ffd28-180a-4f7f-8f79-b6a712181262",
+        "3bde5275-7b5c-81b1-8212-c31d06505cbc",
+        "3bde5275-7b5c-8183-a9cc-d3532bc342bf",
+        "3bde5275-7b5c-81f8-84d4-ec66c3f8c8eb"
       ],
       "Named After": "Karl Schwarzschild",
       "Related": [
@@ -489371,7 +491804,11 @@
       "Celestial Objects": [
         "59917836-94bf-4298-b2c1-62293f9f146c"
       ],
-      "Theories": [],
+      "Theories": [
+        "3bde5275-7b5c-8183-a9cc-d3532bc342bf",
+        "3bde5275-7b5c-8197-a615-cfd4ff53095e",
+        "3bde5275-7b5c-810a-ac78-e3684b14acd1"
+      ],
       "Named After": "Josef Stefan · Ludwig Boltzmann",
       "Related": [
         "3bbe5275-7b5c-817f-80a4-f6e36ff9d306",
@@ -489414,7 +491851,10 @@
       ],
       "Field": "Nuclear Physics",
       "Celestial Objects": [],
-      "Theories": [],
+      "Theories": [
+        "3bde5275-7b5c-81c2-a04e-d20bae468120",
+        "3bde5275-7b5c-81cc-8ba3-e8a006fbdce7"
+      ],
       "Named After": "Ernest Rutherford",
       "Related": [
         "3bbe5275-7b5c-8157-a64b-eb73eeb53735",
@@ -489449,7 +491889,9 @@
       ],
       "Field": "Nuclear Physics",
       "Celestial Objects": [],
-      "Theories": [],
+      "Theories": [
+        "3bde5275-7b5c-81cc-8ba3-e8a006fbdce7"
+      ],
       "Named After": "Ernest Rutherford · Frederick Soddy",
       "Related": [
         "3bbe5275-7b5c-813e-a03e-dacece1e6c35",
@@ -489544,7 +491986,11 @@
       "Minerals": [],
       "Field": "Acoustics",
       "Celestial Objects": [],
-      "Theories": [],
+      "Theories": [
+        "3bde5275-7b5c-8185-85c8-d2d582a91da7",
+        "3bde5275-7b5c-81f8-a1bf-fb7455203c64",
+        "3bde5275-7b5c-81a9-9b1e-f56598a0882a"
+      ],
       "Named After": "Jean le Rond d'Alembert",
       "Related": [
         "3bbe5275-7b5c-811a-a60d-eddf236c3a8c",
@@ -489655,7 +492101,10 @@
       ],
       "Field": "Waves & Optics",
       "Celestial Objects": [],
-      "Theories": [],
+      "Theories": [
+        "3bde5275-7b5c-81d3-9d85-fbceed121149",
+        "3bde5275-7b5c-81a9-9b1e-f56598a0882a"
+      ],
       "Named After": "Ibn Sahl · Willebrord Snellius",
       "Related": [
         "3bbe5275-7b5c-8174-8c31-eda1293e8fe6",
@@ -489685,7 +492134,11 @@
       "Celestial Objects": [
         "59917836-94bf-4298-b2c1-62293f9f146c"
       ],
-      "Theories": [],
+      "Theories": [
+        "3bde5275-7b5c-8119-b400-f4b64f9b76f4",
+        "3bde5275-7b5c-811b-ac85-fe83a7a852a4",
+        "3bde5275-7b5c-81b0-a714-d53a2345ebdb"
+      ],
       "Named After": "Edwin Hubble · Georges Lemaître",
       "Related": [
         "3bbe5275-7b5c-814d-83e6-ee6df24eacca",
@@ -489751,7 +492204,9 @@
       "Minerals": [],
       "Field": "Special Relativity",
       "Celestial Objects": [],
-      "Theories": [],
+      "Theories": [
+        "3bde5275-7b5c-81c8-8ac7-cd61c84271da"
+      ],
       "Named After": "Hendrik Lorentz",
       "Related": [
         "3bbe5275-7b5c-814d-83e6-ee6df24eacca",
@@ -489776,7 +492231,10 @@
       "Minerals": [],
       "Field": "Special Relativity",
       "Celestial Objects": [],
-      "Theories": [],
+      "Theories": [
+        "3bde5275-7b5c-81c8-8ac7-cd61c84271da",
+        "3bde5275-7b5c-81f8-a1bf-fb7455203c64"
+      ],
       "Named After": "Hendrik Lorentz",
       "Related": [
         "3bbe5275-7b5c-819b-8730-c682ecb3e756",
@@ -489831,7 +492289,9 @@
       ],
       "Field": "Thermodynamics",
       "Celestial Objects": [],
-      "Theories": [],
+      "Theories": [
+        "3bde5275-7b5c-8125-8781-e39471d83726"
+      ],
       "Named After": "Sadi Carnot · Rudolf Clausius",
       "Related": [
         "3bbe5275-7b5c-8122-95c0-f19b5930072e",
@@ -489856,7 +492316,9 @@
       "Minerals": [],
       "Field": "Thermodynamics",
       "Celestial Objects": [],
-      "Theories": [],
+      "Theories": [
+        "3bde5275-7b5c-8190-9fba-cff4da9aa6a2"
+      ],
       "Named After": "Julius Robert von Mayer · James Joule · Rudolf Clausius",
       "Related": [
         "3bbe5275-7b5c-816d-9734-c149c749519c",
@@ -489905,7 +492367,9 @@
       "Field": "Quantum",
       "Celestial Objects": [],
       "Theories": [
-        "948ffd28-180a-4f7f-8f79-b6a712181262"
+        "948ffd28-180a-4f7f-8f79-b6a712181262",
+        "3bde5275-7b5c-811e-a927-c8b3e1fee423",
+        "3bde5275-7b5c-8193-ae2a-f3d957e88a73"
       ],
       "Named After": "Werner Heisenberg",
       "Related": [
@@ -489933,7 +492397,10 @@
       "Minerals": [],
       "Field": "Quantum",
       "Celestial Objects": [],
-      "Theories": [],
+      "Theories": [
+        "3bde5275-7b5c-8193-ae2a-f3d957e88a73",
+        "3bde5275-7b5c-8132-b647-c4c04158e693"
+      ],
       "Named After": "Louis de Broglie",
       "Related": [
         "3bbe5275-7b5c-8113-9b17-e6d7efc091ea",
@@ -489964,7 +492431,8 @@
       "Field": "Electromagnetism",
       "Celestial Objects": [],
       "Theories": [
-        "e497c8e0-c340-456d-a74c-a8d03962d58a"
+        "e497c8e0-c340-456d-a74c-a8d03962d58a",
+        "3bde5275-7b5c-8185-85c8-d2d582a91da7"
       ],
       "Named After": "André-Marie Ampère · James Clerk Maxwell",
       "Related": [
@@ -489993,7 +492461,9 @@
       ],
       "Field": "Electromagnetism",
       "Celestial Objects": [],
-      "Theories": [],
+      "Theories": [
+        "3bde5275-7b5c-8185-85c8-d2d582a91da7"
+      ],
       "Named After": "Michael Faraday",
       "Related": [
         "3bbe5275-7b5c-814d-9bc3-ef9ce2d272dc",
@@ -490018,7 +492488,9 @@
       ],
       "Field": "Electromagnetism",
       "Celestial Objects": [],
-      "Theories": [],
+      "Theories": [
+        "3bde5275-7b5c-8185-85c8-d2d582a91da7"
+      ],
       "Named After": "Carl Friedrich Gauss",
       "Related": [
         "3bbe5275-7b5c-81b2-ae34-f800aecd57e1"
@@ -490044,7 +492516,10 @@
       "Celestial Objects": [
         "59917836-94bf-4298-b2c1-62293f9f146c"
       ],
-      "Theories": [],
+      "Theories": [
+        "3bde5275-7b5c-8162-be54-c9e88fa847d2",
+        "3bde5275-7b5c-81af-86fd-d2bdae2b8b8c"
+      ],
       "Named After": "Johannes Kepler",
       "Related": [
         "3bbe5275-7b5c-811b-8297-ce47b2c5d614",
@@ -490073,7 +492548,9 @@
       "Minerals": [],
       "Field": "Celestial Mechanics",
       "Celestial Objects": [],
-      "Theories": [],
+      "Theories": [
+        "3bde5275-7b5c-81af-86fd-d2bdae2b8b8c"
+      ],
       "Named After": "Johannes Kepler",
       "Related": [
         "3bde5275-7b5c-8138-9544-ccde8523931c"
@@ -490095,7 +492572,10 @@
       "Minerals": [],
       "Field": "Celestial Mechanics",
       "Celestial Objects": [],
-      "Theories": [],
+      "Theories": [
+        "3bde5275-7b5c-81af-86fd-d2bdae2b8b8c",
+        "3bde5275-7b5c-81a9-85f8-d0b50ab5feb5"
+      ],
       "Named After": "Johannes Kepler",
       "Related": [
         "3bbe5275-7b5c-813b-aa6c-dd6ce2e33cbf"
@@ -490121,7 +492601,9 @@
       ],
       "Field": "Chemistry",
       "Celestial Objects": [],
-      "Theories": [],
+      "Theories": [
+        "3bde5275-7b5c-811e-9e2a-ebcbdc4d07cc"
+      ],
       "Named After": "Johannes Diderik van der Waals",
       "Related": [
         "3bbe5275-7b5c-81a2-9653-e0a84065d7fa",
@@ -490151,7 +492633,9 @@
       ],
       "Field": "Chemistry",
       "Celestial Objects": [],
-      "Theories": [],
+      "Theories": [
+        "3bde5275-7b5c-811e-9e2a-ebcbdc4d07cc"
+      ],
       "Named After": "Thomas Graham",
       "Related": [
         "3bbe5275-7b5c-81ea-b557-e046acec2182"
@@ -490177,7 +492661,9 @@
       "Minerals": [],
       "Field": "Chemistry",
       "Celestial Objects": [],
-      "Theories": [],
+      "Theories": [
+        "3bde5275-7b5c-81ad-a08c-dba8a668c136"
+      ],
       "Named After": "John Dalton",
       "Related": [
         "3bbe5275-7b5c-81b2-9ec2-d967f8695b7e"
@@ -490205,7 +492691,9 @@
       ],
       "Field": "Chemistry",
       "Celestial Objects": [],
-      "Theories": [],
+      "Theories": [
+        "3bde5275-7b5c-81ad-a08c-dba8a668c136"
+      ],
       "Named After": "Amedeo Avogadro",
       "Related": [
         "3bbe5275-7b5c-81a2-9653-e0a84065d7fa"
@@ -490234,7 +492722,9 @@
       "Minerals": [],
       "Field": "Chemistry",
       "Celestial Objects": [],
-      "Theories": [],
+      "Theories": [
+        "3bde5275-7b5c-811e-9e2a-ebcbdc4d07cc"
+      ],
       "Named After": "Joseph Louis Gay-Lussac",
       "Related": [
         "3bbe5275-7b5c-81a2-9653-e0a84065d7fa"
@@ -490259,7 +492749,9 @@
       "Minerals": [],
       "Field": "Chemistry",
       "Celestial Objects": [],
-      "Theories": [],
+      "Theories": [
+        "3bde5275-7b5c-811e-9e2a-ebcbdc4d07cc"
+      ],
       "Named After": "Jacques Charles",
       "Related": [
         "3bbe5275-7b5c-81a2-9653-e0a84065d7fa"
@@ -490288,7 +492780,9 @@
       ],
       "Field": "Chemistry",
       "Celestial Objects": [],
-      "Theories": [],
+      "Theories": [
+        "3bde5275-7b5c-811e-9e2a-ebcbdc4d07cc"
+      ],
       "Named After": "Robert Boyle",
       "Related": [
         "3bbe5275-7b5c-81a2-9653-e0a84065d7fa"
@@ -490313,7 +492807,11 @@
       "Minerals": [],
       "Field": "Cosmology",
       "Celestial Objects": [],
-      "Theories": [],
+      "Theories": [
+        "3bde5275-7b5c-8119-b400-f4b64f9b76f4",
+        "3bde5275-7b5c-8155-8abe-e1d83b51ecb9",
+        "3bde5275-7b5c-81b0-a714-d53a2345ebdb"
+      ],
       "Named After": "Alexander Friedmann",
       "Related": [
         "3bbe5275-7b5c-8184-9e26-ff4ad04b3ed8",
@@ -490347,7 +492845,12 @@
       "Minerals": [],
       "Field": "Cosmology",
       "Celestial Objects": [],
-      "Theories": [],
+      "Theories": [
+        "3bde5275-7b5c-8194-92cc-da98c37e359e",
+        "3bde5275-7b5c-8112-9df5-f96e892e1f88",
+        "3bde5275-7b5c-811b-ac85-fe83a7a852a4",
+        "3bde5275-7b5c-81b0-a714-d53a2345ebdb"
+      ],
       "Named After": "Alexander Friedmann",
       "Related": [
         "3bbe5275-7b5c-8184-9e26-ff4ad04b3ed8",
@@ -490412,7 +492915,9 @@
       "Minerals": [],
       "Field": "Electromagnetism",
       "Celestial Objects": [],
-      "Theories": [],
+      "Theories": [
+        "3bde5275-7b5c-8185-85c8-d2d582a91da7"
+      ],
       "Named After": "Carl Friedrich Gauss",
       "Related": [
         "3bde5275-7b5c-812a-8607-ff86ea48402d",
@@ -490438,7 +492943,12 @@
       "Minerals": [],
       "Field": "Quantum",
       "Celestial Objects": [],
-      "Theories": [],
+      "Theories": [
+        "3bde5275-7b5c-8193-ae2a-f3d957e88a73",
+        "3bde5275-7b5c-8132-b647-c4c04158e693",
+        "3bde5275-7b5c-81c6-b1bc-c6ba18f69e39",
+        "3bde5275-7b5c-810a-ac78-e3684b14acd1"
+      ],
       "Named After": "Max Planck",
       "Related": [
         "3bbe5275-7b5c-8170-bd5f-c796d7589e08",
@@ -490475,7 +492985,12 @@
       ],
       "Field": "Thermodynamics",
       "Celestial Objects": [],
-      "Theories": [],
+      "Theories": [
+        "3bde5275-7b5c-81b1-8212-c31d06505cbc",
+        "3bde5275-7b5c-8183-a9cc-d3532bc342bf",
+        "3bde5275-7b5c-81e2-845e-f668253c9a4c",
+        "3bde5275-7b5c-8125-8781-e39471d83726"
+      ],
       "Named After": "Ludwig Boltzmann",
       "Related": [
         "3bbe5275-7b5c-813f-974b-c000af0892df",
@@ -490505,7 +493020,9 @@
       ],
       "Field": "Thermodynamics",
       "Celestial Objects": [],
-      "Theories": [],
+      "Theories": [
+        "3bde5275-7b5c-811e-9e2a-ebcbdc4d07cc"
+      ],
       "Named After": "Benoît Paul Émile Clapeyron",
       "Related": [
         "3bbe5275-7b5c-8101-9ffd-d15e28719c53",
@@ -490547,7 +493064,11 @@
       "Field": "General Relativity",
       "Celestial Objects": [],
       "Theories": [
-        "948ffd28-180a-4f7f-8f79-b6a712181262"
+        "948ffd28-180a-4f7f-8f79-b6a712181262",
+        "3bde5275-7b5c-8119-b400-f4b64f9b76f4",
+        "3bde5275-7b5c-81b3-a747-d2e0a75cf5aa",
+        "3bde5275-7b5c-8183-a9cc-d3532bc342bf",
+        "3bde5275-7b5c-81f8-84d4-ec66c3f8c8eb"
       ],
       "Named After": "Albert Einstein",
       "Related": [
@@ -490583,7 +493104,13 @@
       ],
       "Field": "Quantum",
       "Celestial Objects": [],
-      "Theories": [],
+      "Theories": [
+        "3bde5275-7b5c-810d-ab95-db5786e7b9e2",
+        "3bde5275-7b5c-81cc-8ba3-e8a006fbdce7",
+        "3bde5275-7b5c-811e-a927-c8b3e1fee423",
+        "3bde5275-7b5c-8193-ae2a-f3d957e88a73",
+        "948ffd28-180a-4f7f-8f79-b6a712181262"
+      ],
       "Named After": "Erwin Schrödinger",
       "Related": [
         "3bbe5275-7b5c-8103-8865-faee50cc9c18",
@@ -490617,7 +493144,11 @@
       "Celestial Objects": [
         "59917836-94bf-4298-b2c1-62293f9f146c"
       ],
-      "Theories": [],
+      "Theories": [
+        "3bde5275-7b5c-81b8-9c3e-f0c39aa27da9",
+        "3bde5275-7b5c-8155-8abe-e1d83b51ecb9",
+        "3bde5275-7b5c-8162-be54-c9e88fa847d2"
+      ],
       "Named After": "Isaac Newton",
       "Related": [
         "3bbe5275-7b5c-810a-8065-f03f5253cda9",
@@ -490647,7 +493178,10 @@
       "Minerals": [],
       "Field": "Mechanics",
       "Celestial Objects": [],
-      "Theories": [],
+      "Theories": [
+        "3bde5275-7b5c-81b8-9c3e-f0c39aa27da9",
+        "3bde5275-7b5c-8162-be54-c9e88fa847d2"
+      ],
       "Named After": "Isaac Newton",
       "Related": [
         "3bbe5275-7b5c-8144-9213-c057e1f3e5ab",
@@ -490676,7 +493210,9 @@
       "Celestial Objects": [
         "59917836-94bf-4298-b2c1-62293f9f146c"
       ],
-      "Theories": [],
+      "Theories": [
+        "3bde5275-7b5c-81c8-8ac7-cd61c84271da"
+      ],
       "Named After": "Albert Einstein",
       "Related": [
         "3bbe5275-7b5c-812f-8b13-c3f401ee3a47",
