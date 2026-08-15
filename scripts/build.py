@@ -176,6 +176,11 @@ TYPE_ORDER = [
 ]
 
 
+def obj_name(o) -> str | None:
+    """Celestial object title. Renamed Object ID -> Name in Notion; read both."""
+    return o.get("Name") or o.get("Object ID")
+
+
 def eq_lookup_all():
     return {e["id"]: {"name": e["Name"], "field": e.get("Field"), "slug": slugify(e["Name"])}
             for e in notion.get("equations", [])}
@@ -225,13 +230,15 @@ def equation_tables():
 def build_cosmos_page():
     sun = None
     for o in notion["celestialObjects"]:
-        if o.get("Object ID"):
+        # "Object ID" was the title property until it was renamed to "Name" on
+        # 2026-08-15; accept either so a stale data snapshot still builds
+        if obj_name(o):
             mass = o.get("Mass")
             exp = int(f"{mass:e}".split("e")[1]) if mass else None
             mant = mass / 10 ** exp if mass else None
             sup = str(exp).translate(str.maketrans("0123456789", "⁰¹²³⁴⁵⁶⁷⁸⁹")) if exp else ""
             sun = {
-                "name": o["Object ID"],
+                "name": obj_name(o),
                 "mass": f"{mant:g} × 10{sup}" if mass else "?",
                 "diameter": o.get("Diameter (km)") or 0,
                 "type": o.get("Type") or "?",
@@ -425,8 +432,8 @@ if __name__ == "__main__":
         if s.get("Name"):
             cosmos_lookup[s["id"]] = {"name": s["Name"], "kind": "spectral", "href": "/cosmos#spectral"}
     for o in notion["celestialObjects"]:
-        if o.get("Object ID"):
-            cosmos_lookup[o["id"]] = {"name": o["Object ID"], "kind": "object", "href": "/cosmos#catalogue"}
+        if obj_name(o):
+            cosmos_lookup[o["id"]] = {"name": obj_name(o), "kind": "object", "href": "/cosmos#catalogue"}
     for i in notion["instruments"]:
         if i.get("Name"):
             cosmos_lookup[i["id"]] = {"name": i["Name"], "kind": "instrument", "href": "/cosmos#instruments"}
