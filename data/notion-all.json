@@ -461978,6 +461978,42 @@
   ],
   "equations": [
     {
+      "id": "3bde5275-7b5c-810f-bed8-fee488db4170",
+      "url": "https://app.notion.com/p/Heat-Equation-3bde52757b5c810fbed8fee488db4170",
+      "lastEdited": "2026-08-15T16:20:00.000Z",
+      "Equation": "∂T/∂t = α·∇²T",
+      "Field": "Heat Transfer",
+      "Named After": "Joseph Fourier",
+      "Symbols": "T temperature field · t time · ∇² Laplacian, the local curvature of temperature · α thermal diffusivity = k/(ρ·c_p): how fast heat evens out",
+      "Significance": "Temperature smooths itself out: peaks flatten, dips fill, at a rate set by the local curvature. Fourier invented his transform to solve exactly this, and the same equation wearing other names governs diffusion, option prices (Black–Scholes), and image blurring. Kelvin used it to date the Earth — and got it wrong only because he didn't know about radioactivity.",
+      "Year": 1822,
+      "Name": "Heat Equation"
+    },
+    {
+      "id": "3bde5275-7b5c-81af-b4b4-ef52a39887e9",
+      "url": "https://app.notion.com/p/Fourier-s-Law-of-Heat-Conduction-3bde52757b5c81afb4b4ef52a39887e9",
+      "lastEdited": "2026-08-15T16:20:00.000Z",
+      "Equation": "q = −k·∇T",
+      "Field": "Heat Transfer",
+      "Named After": "Joseph Fourier",
+      "Symbols": "q heat flux, energy crossing unit area per second · k thermal conductivity of the material · ∇T the temperature gradient · the minus sign: heat runs downhill",
+      "Significance": "Heat flows from hot to cold at a rate set by the steepness of the temperature slope and the material's conductivity — copper's k is 400, wool's 0.04. The constitutive law of conduction; combined with energy conservation it yields the heat equation, and it's the template Fick copied for diffusion and Ohm for current.",
+      "Year": 1822,
+      "Name": "Fourier's Law of Heat Conduction"
+    },
+    {
+      "id": "3bde5275-7b5c-8144-b755-d881fbf879cb",
+      "url": "https://app.notion.com/p/Newton-s-Law-of-Cooling-3bde52757b5c8144b755d881fbf879cb",
+      "lastEdited": "2026-08-15T16:20:00.000Z",
+      "Equation": "dT/dt = −k·(T − T_env)",
+      "Field": "Heat Transfer",
+      "Named After": "Isaac Newton",
+      "Symbols": "T temperature of the object · T_env temperature of its surroundings · k a rate constant set by surface, material, and airflow · t time",
+      "Significance": "A hot object cools in proportion to how much hotter it is than the room — so temperature decays exponentially toward the ambient. Published anonymously; still how coroners estimate time of death and how your coffee's temperature curve actually looks.",
+      "Year": 1701,
+      "Name": "Newton's Law of Cooling"
+    },
+    {
       "id": "3bde5275-7b5c-81a4-b00c-d76959634aaf",
       "url": "https://app.notion.com/p/Cauchy-s-Stress-Theorem-3bde52757b5c81a4b00cd76959634aaf",
       "lastEdited": "2026-08-15T16:01:00.000Z",
