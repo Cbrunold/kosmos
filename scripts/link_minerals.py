@@ -63,15 +63,17 @@ def query_all(ds):
 # --------------------------------------------------------------------------
 LINKS = {
     # crystallography & diffraction
-    "Bragg's Law": ["Halite", "Sylvite", "Calcite", "Fluorite", "Quartz"],
+    "Bragg's Law": ["Halite", "Sylvite", "Calcite", "Fluorite", "Quartz", "Diamond", "Pyrite"],
     "Diffraction Grating Equation": ["Calcite"],
     "Snell's Law": ["Calcite", "Fluorite", "Quartz", "Cryolite"],
     "Bloch's Theorem": ["Quartz", "Halite"],
     # hardness, stiffness, fracture
-    "Griffith Fracture Criterion": ["Quartz", "Calcite", "Halite"],
-    "Young's Modulus": ["Corundum", "Quartz", "Talc"],
+    "Griffith Fracture Criterion": ["Quartz", "Calcite", "Halite", "Diamond"],
+    "Rutherford Scattering": ["Gold"],
+    "Coulomb's Law": ["Gold", "Halite"],
+    "Young's Modulus": ["Corundum", "Quartz", "Talc", "Diamond"],
+    "Hooke's Law": ["Quartz", "Muscovite", "Diamond"],
     "Cauchy's Stress Theorem": ["Olivine", "Quartz"],
-    "Hooke's Law": ["Quartz", "Muscovite"],
     # seismology & the mantle
     "Seismic Wave Speeds": ["Olivine", "Forsterite", "Bridgmanite", "Ringwoodite", "Wadsleyite", "Periclase"],
     "Elastic Wave Equation": ["Olivine", "Bridgmanite"],
@@ -100,10 +102,12 @@ LINKS = {
     "Einstein A and B Coefficients": ["Corundum"],
     "Laser Rate Equations": ["Corundum"],           # ruby is chromium-doped corundum
     "Rydberg Formula": ["Corundum"],
-    "Fermi–Dirac Distribution": ["Cassiterite", "Cuprite"],
-    "Drude Conductivity": ["Nickel", "Magnetite"],
-    "Plasma Frequency": ["Nickel"],
-    "Ohm's Law": ["Nickel"],
+    "Fermi–Dirac Distribution": ["Cassiterite", "Cuprite", "Galena", "Diamond", "Pyrite"],
+    "Bloch's Theorem": ["Quartz", "Halite", "Diamond", "Galena"],
+    "Drude Conductivity": ["Nickel", "Magnetite", "Gold"],
+    "Plasma Frequency": ["Nickel", "Gold"],
+    "Ohm's Law": ["Nickel", "Galena", "Gold"],
+    "Snell's Law": ["Calcite", "Fluorite", "Quartz", "Cryolite", "Diamond"],
     # pressure & high-pressure phases
     "Ideal Gas Law": ["Halite"],
     "Van der Waals Equation": ["Talc"],
