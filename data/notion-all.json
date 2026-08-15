@@ -461978,6 +461978,42 @@
   ],
   "equations": [
     {
+      "id": "3bde5275-7b5c-8138-9544-ccde8523931c",
+      "url": "https://app.notion.com/p/Noether-s-Theorem-3bde52757b5c81389544ccde8523931c",
+      "lastEdited": "2026-08-15T15:45:00.000Z",
+      "Equation": "∂L/∂(∂_μφ)·δφ = J^μ,  ∂_μJ^μ = 0",
+      "Field": "Classical Field Theory",
+      "Named After": "Emmy Noether",
+      "Symbols": "L the Lagrangian density · φ the field · δφ a symmetry: a change that leaves L alone · J^μ the resulting current, whose flow ∂_μJ^μ vanishes — the conserved charge",
+      "Significance": "Every continuous symmetry produces a conserved quantity — physics' deepest theorem. Time looks the same tomorrow, so energy is conserved; space is the same over there, so momentum is; turn around and angular momentum is; rotate a quantum phase and electric charge is. Proved by a woman Göttingen wouldn't pay; Einstein called her a creative mathematical genius.",
+      "Year": 1918,
+      "Name": "Noether's Theorem"
+    },
+    {
+      "id": "3bde5275-7b5c-814c-82d8-d3e6acd9cfda",
+      "url": "https://app.notion.com/p/Euler-Lagrange-Equation-3bde52757b5c814c82d8d3e6acd9cfda",
+      "lastEdited": "2026-08-15T15:45:00.000Z",
+      "Equation": "d/dt (∂L/∂q̇) − ∂L/∂q = 0",
+      "Field": "Classical Field Theory",
+      "Named After": "Leonhard Euler · Joseph-Louis Lagrange",
+      "Symbols": "L the Lagrangian · q a generalized coordinate (any convenient variable) · q̇ its rate of change · one equation per coordinate, whatever the coordinates",
+      "Significance": "Least action turned into a machine: write down L, turn the crank, out come the equations of motion — in any coordinates, no forces to draw. Newton's F = ma falls out as a special case; so do pendulums on carts, orbits, and (with L a field density) Maxwell and Einstein.",
+      "Year": 1788,
+      "Name": "Euler–Lagrange Equation"
+    },
+    {
+      "id": "3bde5275-7b5c-814b-b847-fa3b302cf50e",
+      "url": "https://app.notion.com/p/Principle-of-Least-Action-3bde52757b5c814bb847fa3b302cf50e",
+      "lastEdited": "2026-08-15T15:45:00.000Z",
+      "Equation": "δS = 0,  S = ∫L dt",
+      "Field": "Classical Field Theory",
+      "Named After": "Pierre Louis Maupertuis · Leonhard Euler · Joseph-Louis Lagrange",
+      "Symbols": "S the action, a single number scoring an entire history · L the Lagrangian, kinetic minus potential energy · δS = 0: the true path is the one small changes can't improve",
+      "Significance": "Nature doesn't push things step by step — it picks, among all conceivable histories, the one that makes the action stationary. Every classical law on this shelf can be rewritten as a choice of L; Feynman's path integral later explained why: all paths are tried, and this one is where the phases agree.",
+      "Year": 1744,
+      "Name": "Principle of Least Action"
+    },
+    {
       "id": "3bde5275-7b5c-8134-baec-df28e10bc16c",
       "url": "https://app.notion.com/p/Fourier-Transform-3bde52757b5c8134baecdf28e10bc16c",
       "lastEdited": "2026-08-15T02:49:00.000Z",
