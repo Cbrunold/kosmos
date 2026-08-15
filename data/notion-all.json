@@ -461978,6 +461978,42 @@
   ],
   "equations": [
     {
+      "id": "3bde5275-7b5c-8134-baec-df28e10bc16c",
+      "url": "https://app.notion.com/p/Fourier-Transform-3bde52757b5c8134baecdf28e10bc16c",
+      "lastEdited": "2026-08-15T02:49:00.000Z",
+      "Equation": "f̂(ω) = ∫ f(t)·e^(−iωt) dt",
+      "Field": "Mathematics",
+      "Named After": "Joseph Fourier",
+      "Symbols": "f(t) a signal in time (or space) · f̂(ω) the same signal as a recipe of pure frequencies · e^(−iωt) the probe oscillation · the transform runs both ways",
+      "Significance": "Any signal — a chord, a heartbeat, an image — is a sum of pure waves, and this integral finds the recipe. Fourier invented it to solve heat flow; today it is spectroscopy, MRI, JPEG and MP3, and the reason position and momentum can't both be sharp: Heisenberg's uncertainty is a Fourier fact wearing physics clothes.",
+      "Year": 1822,
+      "Name": "Fourier Transform"
+    },
+    {
+      "id": "3bde5275-7b5c-8157-88dd-ea46b41f1776",
+      "url": "https://app.notion.com/p/Normal-Distribution-3bde52757b5c815788ddea46b41f1776",
+      "lastEdited": "2026-08-15T02:49:00.000Z",
+      "Equation": "f(x) = e^(−(x−μ)²/2σ²) / (σ·√(2π))",
+      "Field": "Mathematics",
+      "Named After": "Abraham de Moivre · Carl Friedrich Gauss",
+      "Symbols": "μ the mean, where the bell centres · σ the standard deviation, its width · the curve's total area is exactly 1",
+      "Significance": "Pile up enough independent small causes and their sum falls on this bell — the central limit theorem makes it the default shape of noise, from measurement error (Gauss derived it fitting asteroid orbits) to heights, IQ scores, and the static in every instrument on this site's shelves.",
+      "Year": 1809,
+      "Name": "Normal Distribution"
+    },
+    {
+      "id": "3bde5275-7b5c-810f-908a-e09a4a0699e1",
+      "url": "https://app.notion.com/p/Bayes-Theorem-3bde52757b5c810f908ae09a4a0699e1",
+      "lastEdited": "2026-08-15T02:49:00.000Z",
+      "Equation": "P(A|B) = P(B|A)·P(A) / P(B)",
+      "Field": "Mathematics",
+      "Named After": "Thomas Bayes · Richard Price",
+      "Symbols": "P(A|B) belief in A after seeing evidence B · P(B|A) how likely the evidence is if A holds · P(A) belief before the evidence · P(B) how likely the evidence is overall",
+      "Significance": "How to change your mind, made arithmetic: prior belief times the weight of evidence gives updated belief. Published posthumously by Bayes' friend Price, it now runs spam filters, medical diagnostics, spacecraft navigation — and explains why a positive test for a rare disease is usually a false alarm.",
+      "Year": 1763,
+      "Name": "Bayes' Theorem"
+    },
+    {
       "id": "3bbe5275-7b5c-8120-a62d-fa870a7c75bb",
       "url": "https://app.notion.com/p/Logistic-Map-3bbe52757b5c8120a62dfa870a7c75bb",
       "lastEdited": "2026-08-13T21:33:00.000Z",
