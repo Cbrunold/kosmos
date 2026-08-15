@@ -461978,6 +461978,42 @@
   ],
   "equations": [
     {
+      "id": "3bde5275-7b5c-81eb-8234-c87a6700bc0d",
+      "url": "https://app.notion.com/p/Poisson-s-Equation-3bde52757b5c81eb8234c87a6700bc0d",
+      "lastEdited": "2026-08-15T15:52:00.000Z",
+      "Equation": "∇²φ = −ρ/ε₀",
+      "Field": "Electrostatics",
+      "Named After": "Siméon Denis Poisson",
+      "Symbols": "φ the electric potential (voltage landscape) · ∇² Laplacian, its curvature · ρ charge density · ε₀ permittivity of free space · with ρ = 0 it is Laplace's equation",
+      "Significance": "Given where the charge is, find the voltage everywhere — Gauss's law rewritten for the potential, and the workhorse behind capacitor design, semiconductor junctions, and molecular electrostatics. Swap ε₀ for G and it's Newtonian gravity's potential too.",
+      "Year": 1813,
+      "Name": "Poisson's Equation"
+    },
+    {
+      "id": "3bde5275-7b5c-812a-8607-ff86ea48402d",
+      "url": "https://app.notion.com/p/Electric-Field-3bde52757b5c812a8607ff86ea48402d",
+      "lastEdited": "2026-08-15T15:52:00.000Z",
+      "Equation": "E = F/q = k·Q/r²",
+      "Field": "Electrostatics",
+      "Named After": "Michael Faraday",
+      "Symbols": "E the field: force per unit test charge · F force felt by a small probe charge q · Q the source charge · r distance from it",
+      "Significance": "Faraday's great reframing: a charge doesn't reach across empty space to grab another — it fills space with a condition, and the other charge responds to the field where it sits. The idea that turned action-at-a-distance into field theory, and gave Maxwell something to write equations about.",
+      "Year": 1845,
+      "Name": "Electric Field"
+    },
+    {
+      "id": "3bde5275-7b5c-814b-9628-f090f0207a42",
+      "url": "https://app.notion.com/p/Coulomb-s-Law-3bde52757b5c814b9628f090f0207a42",
+      "lastEdited": "2026-08-15T15:52:00.000Z",
+      "Equation": "F = k·q₁q₂ / r²",
+      "Field": "Electrostatics",
+      "Named After": "Charles-Augustin de Coulomb",
+      "Symbols": "F force between two charges · q₁, q₂ the charges · r their separation · k = 1/(4πε₀) the Coulomb constant · like charges repel, opposite attract",
+      "Significance": "Charges push and pull with the same inverse-square shape as Newton's gravity — but a staggering 10³⁶ times stronger between two protons, and in both signs. Measured with a torsion balance so delicate Coulomb could feel forces of a billionth of a newton; it holds atoms, molecules, and you together.",
+      "Year": 1785,
+      "Name": "Coulomb's Law"
+    },
+    {
       "id": "3bde5275-7b5c-8138-9544-ccde8523931c",
       "url": "https://app.notion.com/p/Noether-s-Theorem-3bde52757b5c81389544ccde8523931c",
       "lastEdited": "2026-08-15T15:45:00.000Z",
