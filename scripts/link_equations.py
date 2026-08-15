@@ -90,6 +90,17 @@ LINKS = [
     ("Hubble's Law", "Doppler Effect"),
     ("Hubble's Law", "Chandrasekhar Limit"),
     ("Wien's Displacement Law", "Hubble's Law"),
+    # the FLRW spine: geometry -> dynamics -> observables
+    ("FLRW Metric", "Einstein Field Equations"),
+    ("FLRW Metric", "Geodesic Equation"),
+    ("FLRW Metric", "Pythagorean Theorem"),
+    ("Cosmological Redshift", "Doppler Effect"),
+    ("Cosmological Redshift", "Wien's Displacement Law"),
+    ("Cosmological Redshift", "Planck's Law"),
+    ("Cosmological Redshift", "Rydberg Formula"),
+    ("Cosmological Redshift", "Diffraction Grating Equation"),
+    ("Critical Density", "Law of Universal Gravitation"),
+    ("Critical Density", "Escape Velocity"),
 
     # electromagnetism family
     ("Coulomb's Law", "Electric Field"),
@@ -270,6 +281,16 @@ LINKS = [
     # thermoelectrics
     ("Seebeck Effect", "Peltier Effect"),
     ("Peltier Effect", "Thermoelectric Figure of Merit"),
+
+    # within-field cosmology spine (same chip, but the dependency is worth stating)
+    ("FLRW Metric", "First Friedmann Equation"),
+    ("FLRW Metric", "Second Friedmann Equation"),
+    ("FLRW Metric", "Cosmological Redshift"),
+    ("Cosmological Redshift", "Hubble's Law"),
+    ("Cosmological Redshift", "First Friedmann Equation"),
+    ("Critical Density", "First Friedmann Equation"),
+    ("Critical Density", "Hubble's Law"),
+    ("Critical Density", "Second Friedmann Equation"),
 
     # orphans
     ("Specific Impulse", "Tsiolkovsky Rocket Equation"),

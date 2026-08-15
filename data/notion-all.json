@@ -665,7 +665,10 @@
         "3bde5275-7b5c-8131-93f6-c15c214946b1",
         "3bbe5275-7b5c-818c-bf76-d40ebcb485e3",
         "3bbe5275-7b5c-81a1-9543-ed416dd7caa2",
-        "3bbe5275-7b5c-8184-9e26-ff4ad04b3ed8"
+        "3bbe5275-7b5c-8184-9e26-ff4ad04b3ed8",
+        "3bde5275-7b5c-811c-8470-d8ecfce3c2de",
+        "3bde5275-7b5c-8120-9d3f-eb637591139f",
+        "3bde5275-7b5c-81c4-9445-fc85582c4e1d"
       ],
       "Description": "A space-based observatory that measured the cosmic microwave background radiation across the entire sky.",
       "Wavelength_Range": [
@@ -739,7 +742,8 @@
         "3bde5275-7b5c-811f-9033-f21e2c8a2791",
         "3bde5275-7b5c-8131-93f6-c15c214946b1",
         "3bbe5275-7b5c-8184-9e26-ff4ad04b3ed8",
-        "3bbe5275-7b5c-8130-a1e2-d4d1fefda7d8"
+        "3bbe5275-7b5c-8130-a1e2-d4d1fefda7d8",
+        "3bde5275-7b5c-811c-8470-d8ecfce3c2de"
       ],
       "Description": "A large, space-based observatory designed to observe the universe in the infrared spectrum.",
       "Wavelength_Range": [
@@ -757,7 +761,8 @@
         "3bbe5275-7b5c-8184-9e26-ff4ad04b3ed8",
         "3bbe5275-7b5c-81dd-a75c-d703f0a640b3",
         "3bbe5275-7b5c-814d-83e6-ee6df24eacca",
-        "3bbe5275-7b5c-8174-8c31-eda1293e8fe6"
+        "3bbe5275-7b5c-8174-8c31-eda1293e8fe6",
+        "3bde5275-7b5c-811c-8470-d8ecfce3c2de"
       ],
       "Description": "A space-based observatory that has provided high-resolution images and data of space objects.",
       "Wavelength_Range": [
@@ -841,7 +846,8 @@
         "3bbe5275-7b5c-815d-b970-fb2a7877db25",
         "3bbe5275-7b5c-811a-baed-c686bb16bbc3",
         "3bbe5275-7b5c-8109-a4a6-c5b903b6e05f",
-        "3bbe5275-7b5c-8125-8857-cffce0164fef"
+        "3bbe5275-7b5c-8125-8857-cffce0164fef",
+        "3bde5275-7b5c-81c4-9445-fc85582c4e1d"
       ],
       "Summary": "This theoretical framework aims to reconcile general relativity (describing gravity) with quantum mechanics, potentially leading to a unified description of all forces at very high energies or small scales.",
       "Status": null,
@@ -486506,6 +486512,109 @@
   ],
   "equations": [
     {
+      "id": "3bde5275-7b5c-8120-9d3f-eb637591139f",
+      "url": "https://app.notion.com/p/Critical-Density-3bde52757b5c81209d3feb637591139f",
+      "lastEdited": "2026-08-15T17:47:00.000Z",
+      "Equation": "ρ_c = 3H² / (8πG)",
+      "Minerals": [],
+      "Field": "Cosmology",
+      "Celestial Objects": [],
+      "Theories": [],
+      "Named After": "Georges Lemaître · Howard Robertson",
+      "Related": [
+        "3bbe5275-7b5c-811b-8297-ce47b2c5d614",
+        "3bbe5275-7b5c-813a-84a7-ea08528b3c93",
+        "3bbe5275-7b5c-8184-9e26-ff4ad04b3ed8",
+        "3bbe5275-7b5c-818c-bf76-d40ebcb485e3",
+        "3bbe5275-7b5c-81a1-9543-ed416dd7caa2"
+      ],
+      "Instruments": [
+        "0b70c66b-6919-455c-9e18-12c12c5ae418"
+      ],
+      "Constants": [
+        "3bde5275-7b5c-81e1-95e9-d1abd565136e",
+        "3bde5275-7b5c-8126-9e39-d5ecfc5220cd",
+        "3bde5275-7b5c-8187-801b-f8736c17b5d3",
+        "3bde5275-7b5c-8157-8026-dbb044233fc8",
+        "3bde5275-7b5c-81f5-bf3e-f107dc4d1c6b",
+        "3bde5275-7b5c-8148-b8bc-c45aa881ee13"
+      ],
+      "Symbols": "ρ_c the density that makes space exactly flat · H the Hubble parameter at that epoch · G gravitational constant · densities are quoted against it as Ω = ρ/ρ_c",
+      "Spectral Types": [],
+      "Significance": "The tipping-point density: above it space curves closed, below it open, exactly at it flat. Today it is about 8.5 × 10⁻²⁷ kg/m³ — five hydrogen atoms per cubic metre, a better vacuum than any laboratory can make, and yet it is the density that decides the shape of the cosmos. Measurements put the total at Ω = 1.000 ± 0.002, flat to a fifth of a percent, which is the observation inflation was invented to explain.",
+      "Year": 1932,
+      "Elements": [],
+      "Name": "Critical Density"
+    },
+    {
+      "id": "3bde5275-7b5c-81c4-9445-fc85582c4e1d",
+      "url": "https://app.notion.com/p/FLRW-Metric-3bde52757b5c81c49445fc85582c4e1d",
+      "lastEdited": "2026-08-15T17:47:00.000Z",
+      "Equation": "ds² = −c²dt² + a(t)²[dr²/(1 − kr²) + r²(dθ² + sin²θ dφ²)]",
+      "Minerals": [],
+      "Field": "Cosmology",
+      "Celestial Objects": [],
+      "Theories": [
+        "948ffd28-180a-4f7f-8f79-b6a712181262"
+      ],
+      "Named After": "Friedmann · Lemaître · Robertson · Walker",
+      "Related": [
+        "3bbe5275-7b5c-813b-aa6c-dd6ce2e33cbf",
+        "3bbe5275-7b5c-818c-bf76-d40ebcb485e3",
+        "3bbe5275-7b5c-81a1-9543-ed416dd7caa2",
+        "3bbe5275-7b5c-81bf-b306-fdf6fa438de8",
+        "3bbe5275-7b5c-81c7-b3a7-decb4402d1ab",
+        "3bde5275-7b5c-811c-8470-d8ecfce3c2de"
+      ],
+      "Instruments": [
+        "0b70c66b-6919-455c-9e18-12c12c5ae418"
+      ],
+      "Constants": [
+        "3bde5275-7b5c-81d6-a084-f77a4c868d4f"
+      ],
+      "Symbols": "ds the spacetime interval · t cosmic time · r, θ, φ comoving coordinates that expand with space · a(t) the scale factor · k spatial curvature (−1 open, 0 flat, +1 closed) · c speed of light",
+      "Spectral Types": [],
+      "Significance": "The shape of the universe, written down. Assume only that space is homogeneous and isotropic — the same everywhere, the same in every direction — and this is the *only* geometry allowed; that uniqueness is a theorem, not a modelling choice. Everything else in cosmology follows: feed this metric to Einstein's field equations and the Friedmann equations fall out, and the redshift-distance relation with them. All the physics hides in one function of time, a(t), and one number, k.",
+      "Year": 1935,
+      "Elements": [],
+      "Name": "FLRW Metric"
+    },
+    {
+      "id": "3bde5275-7b5c-811c-8470-d8ecfce3c2de",
+      "url": "https://app.notion.com/p/Cosmological-Redshift-3bde52757b5c811c8470d8ecfce3c2de",
+      "lastEdited": "2026-08-15T17:47:00.000Z",
+      "Equation": "1 + z = λ_obs/λ_emit = a(t_obs)/a(t_emit)",
+      "Minerals": [],
+      "Field": "Cosmology",
+      "Celestial Objects": [],
+      "Theories": [],
+      "Named After": "Vesto Slipher · Georges Lemaître",
+      "Related": [
+        "3bbe5275-7b5c-8130-a1e2-d4d1fefda7d8",
+        "3bbe5275-7b5c-814d-83e6-ee6df24eacca",
+        "3bbe5275-7b5c-8184-9e26-ff4ad04b3ed8",
+        "3bbe5275-7b5c-818c-bf76-d40ebcb485e3",
+        "3bde5275-7b5c-811f-9033-f21e2c8a2791",
+        "3bde5275-7b5c-8131-93f6-c15c214946b1",
+        "3bde5275-7b5c-81a3-914b-f108cd62b10b",
+        "3bde5275-7b5c-81c4-9445-fc85582c4e1d"
+      ],
+      "Instruments": [
+        "0b70c66b-6919-455c-9e18-12c12c5ae418",
+        "a3c867b3-aa5e-4eef-badd-aa3510c2d8df",
+        "bf3acea0-668c-4c49-bbd1-8dec3d49af72"
+      ],
+      "Constants": [
+        "3bde5275-7b5c-8150-b5ab-eed848d071ed"
+      ],
+      "Symbols": "z redshift · λ_emit wavelength when the light left · λ_obs wavelength when it arrives · a(t) scale factor of the universe at each moment · z = 0 is here and now",
+      "Spectral Types": [],
+      "Significance": "The single most-used number in observational cosmology. Light is not merely Doppler-shifted by galaxies rushing away — the wavelength is stretched by the expansion of space itself while the photon is in flight, so redshift measures how much smaller the universe was when the light set out. The microwave background left at z ≈ 1100, when everything was a thousand times more compact and 3000 K hot; the most distant galaxies JWST sees sit near z ≈ 14. Redshift is the closest thing cosmology has to a clock.",
+      "Year": 1927,
+      "Elements": [],
+      "Name": "Cosmological Redshift"
+    },
+    {
       "id": "3bde5275-7b5c-81fc-a041-fc08a0416af7",
       "url": "https://app.notion.com/p/Bohr-Model-Energy-Levels-3bde52757b5c81fca041fc08a0416af7",
       "lastEdited": "2026-08-15T16:49:00.000Z",
@@ -486577,7 +486686,7 @@
     {
       "id": "3bde5275-7b5c-81a3-914b-f108cd62b10b",
       "url": "https://app.notion.com/p/Rydberg-Formula-3bde52757b5c81a3914bf108cd62b10b",
-      "lastEdited": "2026-08-15T16:49:00.000Z",
+      "lastEdited": "2026-08-15T17:47:00.000Z",
       "Equation": "1/λ = R_H·(1/n₁² − 1/n₂²)",
       "Minerals": [
         "2b803f12-6fb7-46f5-b9ce-144ab46d618f"
@@ -486591,6 +486700,7 @@
       "Related": [
         "3bbe5275-7b5c-8130-a1e2-d4d1fefda7d8",
         "3bbe5275-7b5c-8140-a1d4-f7bff1df0334",
+        "3bde5275-7b5c-811c-8470-d8ecfce3c2de",
         "3bde5275-7b5c-81fc-a041-fc08a0416af7"
       ],
       "Instruments": [],
@@ -486904,7 +487014,7 @@
     {
       "id": "3bde5275-7b5c-811f-9033-f21e2c8a2791",
       "url": "https://app.notion.com/p/Planck-s-Law-3bde52757b5c811f9033f21e2c8a2791",
-      "lastEdited": "2026-08-15T16:49:00.000Z",
+      "lastEdited": "2026-08-15T17:47:00.000Z",
       "Equation": "B(λ,T) = (2hc²/λ⁵) / (e^(hc/λkT) − 1)",
       "Minerals": [
         "2b803f12-6fb7-46f5-b9ce-144ab46d618f"
@@ -486921,6 +487031,7 @@
         "3bbe5275-7b5c-816e-b97a-fdbc445f99b7",
         "3bbe5275-7b5c-818e-8ccf-c5b952277817",
         "3bbe5275-7b5c-81ea-b557-e046acec2182",
+        "3bde5275-7b5c-811c-8470-d8ecfce3c2de",
         "3bde5275-7b5c-8131-93f6-c15c214946b1"
       ],
       "Instruments": [
@@ -486951,7 +487062,7 @@
     {
       "id": "3bde5275-7b5c-8131-93f6-c15c214946b1",
       "url": "https://app.notion.com/p/Wien-s-Displacement-Law-3bde52757b5c813193f6c15c214946b1",
-      "lastEdited": "2026-08-15T16:49:00.000Z",
+      "lastEdited": "2026-08-15T17:47:00.000Z",
       "Equation": "λ_max·T = 2.898×10⁻³ m·K",
       "Minerals": [
         "2b803f12-6fb7-46f5-b9ce-144ab46d618f"
@@ -486965,6 +487076,7 @@
       "Related": [
         "3bbe5275-7b5c-8120-863e-cd94384e0239",
         "3bbe5275-7b5c-8184-9e26-ff4ad04b3ed8",
+        "3bde5275-7b5c-811c-8470-d8ecfce3c2de",
         "3bde5275-7b5c-811f-9033-f21e2c8a2791"
       ],
       "Instruments": [
@@ -488030,7 +488142,7 @@
     {
       "id": "3bbe5275-7b5c-813a-84a7-ea08528b3c93",
       "url": "https://app.notion.com/p/Escape-Velocity-3bbe52757b5c813a84a7ea08528b3c93",
-      "lastEdited": "2026-08-15T16:49:00.000Z",
+      "lastEdited": "2026-08-15T17:47:00.000Z",
       "Equation": "v_esc = √(2GM/r)",
       "Minerals": [],
       "Field": "Celestial Mechanics",
@@ -488041,6 +488153,7 @@
       "Named After": "Isaac Newton",
       "Related": [
         "3bbe5275-7b5c-811a-baed-c686bb16bbc3",
+        "3bde5275-7b5c-8120-9d3f-eb637591139f",
         "3bde5275-7b5c-81e1-aac4-cc21b9d77b07"
       ],
       "Instruments": [],
@@ -488204,7 +488317,7 @@
     {
       "id": "3bbe5275-7b5c-8130-a1e2-d4d1fefda7d8",
       "url": "https://app.notion.com/p/Diffraction-Grating-Equation-3bbe52757b5c8130a1e2d4d1fefda7d8",
-      "lastEdited": "2026-08-15T16:49:00.000Z",
+      "lastEdited": "2026-08-15T17:47:00.000Z",
       "Equation": "d·sin θ = m·λ",
       "Minerals": [
         "b94ff1da-eaef-4193-b75c-e97af338ac25"
@@ -488216,6 +488329,7 @@
       "Related": [
         "3bbe5275-7b5c-8113-9b17-e6d7efc091ea",
         "3bbe5275-7b5c-8174-8c31-eda1293e8fe6",
+        "3bde5275-7b5c-811c-8470-d8ecfce3c2de",
         "3bde5275-7b5c-8134-baec-df28e10bc16c",
         "3bde5275-7b5c-81a3-914b-f108cd62b10b"
       ],
@@ -488264,7 +488378,7 @@
     {
       "id": "3bbe5275-7b5c-813b-aa6c-dd6ce2e33cbf",
       "url": "https://app.notion.com/p/Geodesic-Equation-3bbe52757b5c813baa6cdd6ce2e33cbf",
-      "lastEdited": "2026-08-15T16:33:00.000Z",
+      "lastEdited": "2026-08-15T17:47:00.000Z",
       "Equation": "d²x^μ/dτ² + Γ^μ_αβ·(dx^α/dτ)(dx^β/dτ) = 0",
       "Minerals": [],
       "Field": "General Relativity",
@@ -488274,7 +488388,8 @@
       "Related": [
         "3bbe5275-7b5c-81bf-b306-fdf6fa438de8",
         "3bbe5275-7b5c-81c7-b3a7-decb4402d1ab",
-        "3bbe5275-7b5c-81da-b2e6-ed931eca7217"
+        "3bbe5275-7b5c-81da-b2e6-ed931eca7217",
+        "3bde5275-7b5c-81c4-9445-fc85582c4e1d"
       ],
       "Instruments": [],
       "Constants": [],
@@ -489182,7 +489297,7 @@
     {
       "id": "3bbe5275-7b5c-814d-83e6-ee6df24eacca",
       "url": "https://app.notion.com/p/Doppler-Effect-3bbe52757b5c814d83e6ee6df24eacca",
-      "lastEdited": "2026-08-15T16:49:00.000Z",
+      "lastEdited": "2026-08-15T17:47:00.000Z",
       "Equation": "f′ = f·(c + vₒ)/(c − vₛ)",
       "Minerals": [],
       "Field": "Acoustics",
@@ -489193,7 +489308,8 @@
       "Named After": "Christian Doppler",
       "Related": [
         "3bbe5275-7b5c-815f-9d30-c0e44b4a7608",
-        "3bbe5275-7b5c-8184-9e26-ff4ad04b3ed8"
+        "3bbe5275-7b5c-8184-9e26-ff4ad04b3ed8",
+        "3bde5275-7b5c-811c-8470-d8ecfce3c2de"
       ],
       "Instruments": [
         "41dff11c-b8f7-482d-bb9a-458fe9f2e922",
@@ -489378,7 +489494,7 @@
     {
       "id": "3bbe5275-7b5c-8184-9e26-ff4ad04b3ed8",
       "url": "https://app.notion.com/p/Hubble-s-Law-3bbe52757b5c81849e26ff4ad04b3ed8",
-      "lastEdited": "2026-08-15T16:49:00.000Z",
+      "lastEdited": "2026-08-15T17:47:00.000Z",
       "Equation": "v = H₀·d",
       "Minerals": [],
       "Field": "Cosmology",
@@ -489392,6 +489508,8 @@
         "3bbe5275-7b5c-818c-bf76-d40ebcb485e3",
         "3bbe5275-7b5c-81a1-9543-ed416dd7caa2",
         "3bbe5275-7b5c-81dd-a75c-d703f0a640b3",
+        "3bde5275-7b5c-811c-8470-d8ecfce3c2de",
+        "3bde5275-7b5c-8120-9d3f-eb637591139f",
         "3bde5275-7b5c-8131-93f6-c15c214946b1"
       ],
       "Instruments": [
@@ -489403,7 +489521,8 @@
       "Constants": [
         "3bde5275-7b5c-8187-801b-f8736c17b5d3",
         "3bde5275-7b5c-81f5-bf3e-f107dc4d1c6b",
-        "3bde5275-7b5c-8169-80b5-cf721082faab"
+        "3bde5275-7b5c-8169-80b5-cf721082faab",
+        "3bde5275-7b5c-8113-abea-d0038e9513f0"
       ],
       "Symbols": "v recession velocity of a galaxy · d its distance from us · H₀ the Hubble constant (about 70 km/s per megaparsec today)",
       "Spectral Types": [],
@@ -489418,7 +489537,7 @@
     {
       "id": "3bbe5275-7b5c-81bf-b306-fdf6fa438de8",
       "url": "https://app.notion.com/p/Pythagorean-Theorem-3bbe52757b5c81bfb306fdf6fa438de8",
-      "lastEdited": "2026-08-15T16:33:00.000Z",
+      "lastEdited": "2026-08-15T17:47:00.000Z",
       "Equation": "a² + b² = c²",
       "Minerals": [],
       "Field": "Mathematics",
@@ -489427,7 +489546,8 @@
       "Named After": "Pythagoras",
       "Related": [
         "3bbe5275-7b5c-813b-aa6c-dd6ce2e33cbf",
-        "3bbe5275-7b5c-81e7-b649-f021e6e295c6"
+        "3bbe5275-7b5c-81e7-b649-f021e6e295c6",
+        "3bde5275-7b5c-81c4-9445-fc85582c4e1d"
       ],
       "Instruments": [],
       "Constants": [],
@@ -490001,7 +490121,7 @@
     {
       "id": "3bbe5275-7b5c-81a1-9543-ed416dd7caa2",
       "url": "https://app.notion.com/p/Second-Friedmann-Equation-3bbe52757b5c81a19543ed416dd7caa2",
-      "lastEdited": "2026-08-15T16:49:00.000Z",
+      "lastEdited": "2026-08-15T17:47:00.000Z",
       "Equation": "ä/a = −4πG(ρ + 3p/c²)/3 + Λc²/3",
       "Minerals": [],
       "Field": "Cosmology",
@@ -490009,7 +490129,9 @@
       "Theories": [],
       "Named After": "Alexander Friedmann",
       "Related": [
-        "3bbe5275-7b5c-8184-9e26-ff4ad04b3ed8"
+        "3bbe5275-7b5c-8184-9e26-ff4ad04b3ed8",
+        "3bde5275-7b5c-8120-9d3f-eb637591139f",
+        "3bde5275-7b5c-81c4-9445-fc85582c4e1d"
       ],
       "Instruments": [
         "0b70c66b-6919-455c-9e18-12c12c5ae418"
@@ -490017,7 +490139,9 @@
       "Constants": [
         "3bde5275-7b5c-8187-801b-f8736c17b5d3",
         "3bde5275-7b5c-81f5-bf3e-f107dc4d1c6b",
-        "3bde5275-7b5c-8157-8026-dbb044233fc8"
+        "3bde5275-7b5c-8157-8026-dbb044233fc8",
+        "3bde5275-7b5c-8126-9e39-d5ecfc5220cd",
+        "3bde5275-7b5c-8148-b8bc-c45aa881ee13"
       ],
       "Symbols": "a scale factor of the universe · ȧ, ä its first and second time derivatives · H = ȧ/a Hubble parameter · G gravitational constant · ρ density · p pressure · k spatial curvature (−1, 0, +1) · Λ cosmological constant · c speed of light",
       "Spectral Types": [],
@@ -490029,7 +490153,7 @@
     {
       "id": "3bbe5275-7b5c-818c-bf76-d40ebcb485e3",
       "url": "https://app.notion.com/p/First-Friedmann-Equation-3bbe52757b5c818cbf76d40ebcb485e3",
-      "lastEdited": "2026-08-15T16:49:00.000Z",
+      "lastEdited": "2026-08-15T17:47:00.000Z",
       "Equation": "(ȧ/a)² = 8πGρ/3 − kc²/a² + Λc²/3",
       "Minerals": [],
       "Field": "Cosmology",
@@ -490038,7 +490162,10 @@
       "Named After": "Alexander Friedmann",
       "Related": [
         "3bbe5275-7b5c-8184-9e26-ff4ad04b3ed8",
-        "3bbe5275-7b5c-81c7-b3a7-decb4402d1ab"
+        "3bbe5275-7b5c-81c7-b3a7-decb4402d1ab",
+        "3bde5275-7b5c-811c-8470-d8ecfce3c2de",
+        "3bde5275-7b5c-8120-9d3f-eb637591139f",
+        "3bde5275-7b5c-81c4-9445-fc85582c4e1d"
       ],
       "Instruments": [
         "0b70c66b-6919-455c-9e18-12c12c5ae418"
@@ -490047,7 +490174,8 @@
         "3bde5275-7b5c-81e1-95e9-d1abd565136e",
         "3bde5275-7b5c-8187-801b-f8736c17b5d3",
         "3bde5275-7b5c-81f5-bf3e-f107dc4d1c6b",
-        "3bde5275-7b5c-8157-8026-dbb044233fc8"
+        "3bde5275-7b5c-8157-8026-dbb044233fc8",
+        "3bde5275-7b5c-8113-abea-d0038e9513f0"
       ],
       "Symbols": "a scale factor of the universe · ȧ, ä its first and second time derivatives · H = ȧ/a Hubble parameter · G gravitational constant · ρ density · p pressure · k spatial curvature (−1, 0, +1) · Λ cosmological constant · c speed of light",
       "Spectral Types": [],
@@ -490220,7 +490348,7 @@
     {
       "id": "3bbe5275-7b5c-81c7-b3a7-decb4402d1ab",
       "url": "https://app.notion.com/p/Einstein-Field-Equations-3bbe52757b5c81c7b3a7decb4402d1ab",
-      "lastEdited": "2026-08-15T16:49:00.000Z",
+      "lastEdited": "2026-08-15T17:47:00.000Z",
       "Equation": "G_μν + Λg_μν = (8πG/c⁴)·T_μν",
       "Minerals": [],
       "Field": "General Relativity",
@@ -490235,7 +490363,8 @@
         "3bbe5275-7b5c-813b-aa6c-dd6ce2e33cbf",
         "3bbe5275-7b5c-818c-bf76-d40ebcb485e3",
         "3bbe5275-7b5c-819b-8730-c682ecb3e756",
-        "3bde5275-7b5c-814c-82d8-d3e6acd9cfda"
+        "3bde5275-7b5c-814c-82d8-d3e6acd9cfda",
+        "3bde5275-7b5c-81c4-9445-fc85582c4e1d"
       ],
       "Instruments": [],
       "Constants": [
@@ -490288,7 +490417,7 @@
     {
       "id": "3bbe5275-7b5c-811b-8297-ce47b2c5d614",
       "url": "https://app.notion.com/p/Law-of-Universal-Gravitation-3bbe52757b5c811b8297ce47b2c5d614",
-      "lastEdited": "2026-08-15T16:49:00.000Z",
+      "lastEdited": "2026-08-15T17:47:00.000Z",
       "Equation": "F = G·m₁m₂ / r²",
       "Minerals": [],
       "Field": "Mechanics",
@@ -490301,6 +490430,7 @@
         "3bbe5275-7b5c-810a-8065-f03f5253cda9",
         "3bbe5275-7b5c-81c7-b3a7-decb4402d1ab",
         "3bbe5275-7b5c-81c8-8eb1-cdc2179de58e",
+        "3bde5275-7b5c-8120-9d3f-eb637591139f",
         "3bde5275-7b5c-814b-9628-f090f0207a42",
         "3bde5275-7b5c-81eb-8234-c87a6700bc0d"
       ],
@@ -490428,14 +490558,17 @@
     {
       "id": "3bde5275-7b5c-8113-abea-d0038e9513f0",
       "url": "https://app.notion.com/p/Age-of-the-universe-3bde52757b5c8113abead0038e9513f0",
-      "lastEdited": "2026-08-15T17:40:00.000Z",
+      "lastEdited": "2026-08-15T17:47:00.000Z",
       "Unit": "Gyr",
       "Value": "13.797 ± 0.023",
       "Exact": false,
       "Note": "Derived from the Friedmann equations given the densities above — not observed directly.",
       "Symbol": "t₀",
       "Category": "Cosmological",
-      "Equations": [],
+      "Equations": [
+        "3bbe5275-7b5c-8184-9e26-ff4ad04b3ed8",
+        "3bbe5275-7b5c-818c-bf76-d40ebcb485e3"
+      ],
       "Numeric": 13.797,
       "Uncertainty": "±0.023 (Planck 2018)",
       "Name": "Age of the universe"
@@ -490443,7 +490576,7 @@
     {
       "id": "3bde5275-7b5c-81e1-95e9-d1abd565136e",
       "url": "https://app.notion.com/p/Critical-density-3bde52757b5c81e195e9d1abd565136e",
-      "lastEdited": "2026-08-15T17:41:00.000Z",
+      "lastEdited": "2026-08-15T17:47:00.000Z",
       "Unit": "kg m⁻³",
       "Value": "8.5 × 10⁻²⁷",
       "Exact": false,
@@ -490451,7 +490584,8 @@
       "Symbol": "ρ_c",
       "Category": "Cosmological",
       "Equations": [
-        "3bbe5275-7b5c-818c-bf76-d40ebcb485e3"
+        "3bbe5275-7b5c-818c-bf76-d40ebcb485e3",
+        "3bde5275-7b5c-8120-9d3f-eb637591139f"
       ],
       "Numeric": 8.5e-27,
       "Uncertainty": "±3% (tracks H₀)",
@@ -490475,14 +490609,17 @@
     {
       "id": "3bde5275-7b5c-8148-b8bc-c45aa881ee13",
       "url": "https://app.notion.com/p/Dark-energy-density-parameter-3bde52757b5c8148b8bcc45aa881ee13",
-      "lastEdited": "2026-08-15T17:40:00.000Z",
+      "lastEdited": "2026-08-15T17:47:00.000Z",
       "Unit": "—",
       "Value": "0.685 ± 0.007",
       "Exact": false,
       "Note": "Two thirds of the universe's energy budget, and nobody knows what it is.",
       "Symbol": "Ω_Λ",
       "Category": "Cosmological",
-      "Equations": [],
+      "Equations": [
+        "3bbe5275-7b5c-81a1-9543-ed416dd7caa2",
+        "3bde5275-7b5c-8120-9d3f-eb637591139f"
+      ],
       "Numeric": 0.685,
       "Uncertainty": "±0.007 (Planck 2018)",
       "Name": "Dark energy density parameter"
@@ -490490,14 +490627,17 @@
     {
       "id": "3bde5275-7b5c-8126-9e39-d5ecfc5220cd",
       "url": "https://app.notion.com/p/Matter-density-parameter-3bde52757b5c81269e39d5ecfc5220cd",
-      "lastEdited": "2026-08-15T17:40:00.000Z",
+      "lastEdited": "2026-08-15T17:47:00.000Z",
       "Unit": "—",
       "Value": "0.315 ± 0.007",
       "Exact": false,
       "Note": "All matter, of which only about one sixth is the ordinary kind.",
       "Symbol": "Ω_m",
       "Category": "Cosmological",
-      "Equations": [],
+      "Equations": [
+        "3bbe5275-7b5c-81a1-9543-ed416dd7caa2",
+        "3bde5275-7b5c-8120-9d3f-eb637591139f"
+      ],
       "Numeric": 0.315,
       "Uncertainty": "±0.007 (Planck 2018)",
       "Name": "Matter density parameter"
@@ -490505,7 +490645,7 @@
     {
       "id": "3bde5275-7b5c-8150-b5ab-eed848d071ed",
       "url": "https://app.notion.com/p/CMB-temperature-3bde52757b5c8150b5abeed848d071ed",
-      "lastEdited": "2026-08-15T17:41:00.000Z",
+      "lastEdited": "2026-08-15T17:47:00.000Z",
       "Unit": "K",
       "Value": "2.725 48 ± 0.000 57",
       "Exact": false,
@@ -490513,6 +490653,7 @@
       "Symbol": "T₀",
       "Category": "Cosmological",
       "Equations": [
+        "3bde5275-7b5c-811c-8470-d8ecfce3c2de",
         "3bde5275-7b5c-811f-9033-f21e2c8a2791",
         "3bde5275-7b5c-8131-93f6-c15c214946b1"
       ],
@@ -490523,7 +490664,7 @@
     {
       "id": "3bde5275-7b5c-8187-801b-f8736c17b5d3",
       "url": "https://app.notion.com/p/Hubble-constant-SH0ES-2022-distance-ladder-3bde52757b5c8187801bf8736c17b5d3",
-      "lastEdited": "2026-08-15T17:41:00.000Z",
+      "lastEdited": "2026-08-15T17:47:00.000Z",
       "Unit": "km s⁻¹ Mpc⁻¹",
       "Value": "73.04 ± 1.04",
       "Exact": false,
@@ -490533,7 +490674,8 @@
       "Equations": [
         "3bbe5275-7b5c-8184-9e26-ff4ad04b3ed8",
         "3bbe5275-7b5c-818c-bf76-d40ebcb485e3",
-        "3bbe5275-7b5c-81a1-9543-ed416dd7caa2"
+        "3bbe5275-7b5c-81a1-9543-ed416dd7caa2",
+        "3bde5275-7b5c-8120-9d3f-eb637591139f"
       ],
       "Numeric": 73.04,
       "Uncertainty": "±1.04 (late-universe route)",
@@ -490542,7 +490684,7 @@
     {
       "id": "3bde5275-7b5c-81f5-bf3e-f107dc4d1c6b",
       "url": "https://app.notion.com/p/Hubble-constant-Planck-2018-CMB-3bde52757b5c81f5bf3ef107dc4d1c6b",
-      "lastEdited": "2026-08-15T17:41:00.000Z",
+      "lastEdited": "2026-08-15T17:47:00.000Z",
       "Unit": "km s⁻¹ Mpc⁻¹",
       "Value": "67.4 ± 0.5",
       "Exact": false,
@@ -490552,7 +490694,8 @@
       "Equations": [
         "3bbe5275-7b5c-8184-9e26-ff4ad04b3ed8",
         "3bbe5275-7b5c-818c-bf76-d40ebcb485e3",
-        "3bbe5275-7b5c-81a1-9543-ed416dd7caa2"
+        "3bbe5275-7b5c-81a1-9543-ed416dd7caa2",
+        "3bde5275-7b5c-8120-9d3f-eb637591139f"
       ],
       "Numeric": 67.4,
       "Uncertainty": "±0.5 (early-universe route)",
@@ -491078,7 +491221,7 @@
     {
       "id": "3bde5275-7b5c-8157-8026-dbb044233fc8",
       "url": "https://app.notion.com/p/Newtonian-constant-of-gravitation-3bde52757b5c81578026dbb044233fc8",
-      "lastEdited": "2026-08-15T17:42:00.000Z",
+      "lastEdited": "2026-08-15T17:47:00.000Z",
       "Unit": "m³ kg⁻¹ s⁻²",
       "Value": "6.674 30(15) × 10⁻¹¹",
       "Exact": false,
@@ -491096,7 +491239,8 @@
         "3bbe5275-7b5c-81c7-b3a7-decb4402d1ab",
         "3bbe5275-7b5c-81c8-8eb1-cdc2179de58e",
         "3bbe5275-7b5c-81dd-a75c-d703f0a640b3",
-        "3bbe5275-7b5c-81ef-b92b-d35cea11b9be"
+        "3bbe5275-7b5c-81ef-b92b-d35cea11b9be",
+        "3bde5275-7b5c-8120-9d3f-eb637591139f"
       ],
       "Numeric": 6.6743e-11,
       "Uncertainty": "±0.000 15 × 10⁻¹¹ (2.2 × 10⁻⁵ relative)",
@@ -491246,7 +491390,7 @@
     {
       "id": "3bde5275-7b5c-81d6-a084-f77a4c868d4f",
       "url": "https://app.notion.com/p/Speed-of-light-in-vacuum-3bde52757b5c81d6a084f77a4c868d4f",
-      "lastEdited": "2026-08-15T17:42:00.000Z",
+      "lastEdited": "2026-08-15T17:47:00.000Z",
       "Unit": "m s⁻¹",
       "Value": "299 792 458",
       "Exact": true,
@@ -491264,7 +491408,8 @@
         "3bbe5275-7b5c-81dd-a75c-d703f0a640b3",
         "3bbe5275-7b5c-81e7-b649-f021e6e295c6",
         "3bbe5275-7b5c-81ef-b92b-d35cea11b9be",
-        "3bde5275-7b5c-811f-9033-f21e2c8a2791"
+        "3bde5275-7b5c-811f-9033-f21e2c8a2791",
+        "3bde5275-7b5c-81c4-9445-fc85582c4e1d"
       ],
       "Numeric": 299792458,
       "Uncertainty": "exact",
