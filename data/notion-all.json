@@ -461978,6 +461978,18 @@
   ],
   "equations": [
     {
+      "id": "3bde5275-7b5c-81a4-b00c-d76959634aaf",
+      "url": "https://app.notion.com/p/Cauchy-s-Stress-Theorem-3bde52757b5c81a4b00cd76959634aaf",
+      "lastEdited": "2026-08-15T16:01:00.000Z",
+      "Equation": "t = σ·n",
+      "Field": "Materials Science",
+      "Named After": "Augustin-Louis Cauchy",
+      "Symbols": "t the traction — force per unit area on an imaginary cut through the material · n the unit normal to that cut · σ the stress tensor, a 3×3 array holding the whole state of stress at a point",
+      "Significance": "The force on any surface inside a solid follows from one object — the stress tensor — by a single multiplication, whatever the surface's orientation. Cauchy's insight made 'stress' a proper mathematical quantity and founded continuum mechanics: Young's modulus, Griffith's cracks, and the elastic waves of seismology all live downstream of this line.",
+      "Year": 1822,
+      "Name": "Cauchy's Stress Theorem"
+    },
+    {
       "id": "3bde5275-7b5c-811f-9033-f21e2c8a2791",
       "url": "https://app.notion.com/p/Planck-s-Law-3bde52757b5c811f9033f21e2c8a2791",
       "lastEdited": "2026-08-15T15:56:00.000Z",
