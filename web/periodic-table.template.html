@@ -349,6 +349,17 @@
     text-decoration: none;
   }
   .deq:hover { color: var(--ink); border-color: var(--ink-2); }
+  .dmin {
+    font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    border: 1px solid var(--hairline);
+    border-left: 3px solid var(--cat-posttrans);
+    color: var(--ink-2);
+    border-radius: 4px;
+    padding: 2px 7px 2px 6px;
+    text-decoration: none;
+  }
+  .dmin:hover { color: var(--ink); border-color: var(--ink-2); }
+  .dmin.all { border-left-color: var(--heat); color: var(--ink); }
   .dfoot {
     margin-top: 12px;
     padding-top: 10px;
@@ -420,9 +431,11 @@
 
 <script id="data" type="application/json">__DATA__</script>
 <script id="eqdata" type="application/json">__EQUATIONS__</script>
+<script id="mindata" type="application/json">__MINERALS__</script>
 <script>
   const RAW = JSON.parse(document.getElementById('data').textContent);
   const EQ = JSON.parse(document.getElementById('eqdata').textContent);
+  const MIN = JSON.parse(document.getElementById('mindata').textContent);
 
   // ---------- derivations ----------
   const CAT_DEFS = [
@@ -732,6 +745,7 @@
       <dl class="props">${dl}</dl>
       <div class="tags"></div>
       <div class="derived-note"></div>
+      <div class="dmins"></div>
       <div class="deqs"></div>
       <div class="dfoot">
         <a href="${e.pageUrl}" target="_blank" rel="noopener">open in Notion ↗</a>
@@ -749,6 +763,32 @@
     if (e.catDerived) notes.push('“Alkali metal” is derived from group 1 — the Notion row is tagged only #Metal.');
     if (rows.some(([, v]) => v == null)) notes.push('Dashes are genuine gaps in the Notion database, not zeros.');
     d.querySelector('.derived-note').textContent = notes.join(' ');
+
+    // minerals that contain this element (decoded from the Minerals database)
+    const mi = MIN[e.sym];
+    if (mi) {
+      const box = d.querySelector('.dmins');
+      const h2 = document.createElement('div');
+      h2.className = 'deqs-h';
+      h2.textContent = `minerals · ${mi.n.toLocaleString('en')}`;
+      box.appendChild(h2);
+      const list = document.createElement('div');
+      list.className = 'deqs-list';
+      for (const nm of mi.examples) {
+        const a = document.createElement('a');
+        a.className = 'dmin';
+        a.href = '/minerals#' + encodeURIComponent(nm.toLowerCase());
+        a.textContent = nm;
+        list.appendChild(a);
+      }
+      const all = document.createElement('a');
+      all.className = 'dmin all';
+      all.href = '/minerals?el=' + e.sym;
+      all.textContent = mi.n > mi.examples.length ? `all ${mi.n.toLocaleString('en')} →` : 'browse →';
+      all.title = `Filter the minerals collection to ${e.name}-bearing minerals`;
+      list.appendChild(all);
+      box.appendChild(list);
+    }
 
     // equations that concern this element (Notion relation, mirrored from the Equations DB)
     const eqs = (e.equations || []).map((id) => EQ[id]).filter(Boolean)

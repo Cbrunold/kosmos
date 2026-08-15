@@ -244,7 +244,9 @@
   .mrow .nm { font-weight: 600; }
   .mrow .num { font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; font-variant-numeric: tabular-nums; color: var(--ink-2); }
   .mrow .els { font: 11px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; color: var(--muted); letter-spacing: 0.04em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .mrow .els b { color: var(--c-teal); font-weight: 600; }
+  .mrow .els a { color: inherit; text-decoration: none; border-bottom: 1px dotted transparent; }
+  .mrow .els a:hover { color: var(--ink); border-bottom-color: var(--c-blue); }
+  .mrow .els a.on { color: var(--c-teal); font-weight: 600; }
   .mrow .nmcell { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
   .mrow .eqs { display: flex; flex-wrap: wrap; gap: 3px; }
   .meq {
@@ -328,6 +330,7 @@
   const picked = new Set();
   let onlyEq = false;
   const chipsBox = document.getElementById('elchips');
+  const chipBySym = {};
   if (nWithEq) {
     const b = document.createElement('button');
     b.className = 'elchip eqfilter';
@@ -338,20 +341,24 @@
     b.addEventListener('click', () => { onlyEq = !onlyEq; b.setAttribute('aria-pressed', String(onlyEq)); render(); });
     chipsBox.appendChild(b);
   }
-  for (const [sym, n] of D.topElements) {
+  function addChip(sym, n) {
+    if (chipBySym[sym]) return chipBySym[sym];
     const b = document.createElement('button');
     b.className = 'elchip';
     b.setAttribute('aria-pressed', 'false');
     b.innerHTML = `<b></b> <span class="n"></span>`;
     b.querySelector('b').textContent = sym;
-    b.querySelector('.n').textContent = n.toLocaleString('en');
+    if (n != null) b.querySelector('.n').textContent = n.toLocaleString('en');
     b.addEventListener('click', () => {
       if (picked.has(sym)) picked.delete(sym); else picked.add(sym);
       b.setAttribute('aria-pressed', String(picked.has(sym)));
       render();
     });
     chipsBox.appendChild(b);
+    chipBySym[sym] = b;
+    return b;
   }
+  for (const [sym, n] of D.topElements) addChip(sym, n);
 
   const rowsBox = document.getElementById('rows');
   const q = document.getElementById('q');
@@ -398,7 +405,15 @@
       const sg = document.createElement('span'); sg.className = 'num'; sg.textContent = m[2] ?? '—';
       const ma = document.createElement('span'); ma.className = 'num'; ma.textContent = m[3] != null ? (+m[3]).toFixed(1) : '—';
       const el = document.createElement('span'); el.className = 'els';
-      el.innerHTML = m[4].split(' ').map((sym) => (picked.has(sym) ? `<b>${sym}</b>` : sym)).join(' ');
+      for (const sym of m[4].split(' ')) {
+        if (el.childNodes.length) el.appendChild(document.createTextNode(' '));
+        const a = document.createElement('a');
+        a.href = '/elements#' + sym.toLowerCase();
+        a.textContent = sym;
+        a.title = `${sym} · open in the periodic table`;
+        if (picked.has(sym)) a.className = 'on';
+        el.appendChild(a);
+      }
       r.append(nm, mo, sg, ma, el);
       rowsBox.appendChild(r);
     }
@@ -419,6 +434,21 @@
     if (row) { row.classList.add('hit'); row.scrollIntoView({ block: 'center', behavior: 'smooth' }); }
   }
   addEventListener('hashchange', openHash);
+
+  // /minerals?el=Fe — arrive filtered to an element (from the periodic table)
+  (function fromQuery() {
+    const want = (new URLSearchParams(location.search).get('el') || '').trim();
+    if (!want) return;
+    const syms = new Set(M.flatMap((m) => m[4].split(' ')));
+    const sym = [...syms].find((s) => s.toLowerCase() === want.toLowerCase());
+    if (!sym) return;
+    const n = M.filter((m) => m[4].split(' ').includes(sym)).length;
+    const chip = addChip(sym, n);
+    picked.add(sym);
+    chip.setAttribute('aria-pressed', 'true');
+    chip.scrollIntoView({ block: 'nearest', inline: 'center' });
+    render();
+  })();
   openHash();
 
   // hardness histogram (1-10, 9 bins)

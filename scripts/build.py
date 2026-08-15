@@ -10,7 +10,6 @@ Outputs: public/index.html   (periodic table, served at /elements)
          public/{minerals,cosmos,forces,theories}.html
 """
 import json
-import re
 from collections import Counter, defaultdict
 from pathlib import Path
 
@@ -68,6 +67,7 @@ def build_elements_page():
     eq_lookup = {e["id"]: {"name": e["Name"], "field": e.get("Field"), "slug": slugify(e["Name"])}
                  for e in notion.get("equations", [])}
     tpl = tpl.replace("__EQUATIONS__", compact(eq_lookup))
+    tpl = tpl.replace("__MINERALS__", compact(ELEMENT_MINERALS))
     (PUB / "index.html").write_text(tpl)
     print(f"wrote {len(tpl):>7} bytes -> public/index.html")
 
@@ -88,8 +88,12 @@ NON_ELEMENT = {
 }
 
 
+ELEMENT_MINERALS = {}   # symbol -> {"n": count, "examples": [names]} — filled by build_minerals_page
+
+
 def build_minerals_page():
     rows, contains = [], Counter()
+    by_symbol = defaultdict(list)
     unmapped = set()
     for m in notion["minerals"]:
         weights = {}
@@ -105,8 +109,10 @@ def build_minerals_page():
             else:
                 unmapped.add(col)
         syms = [s for s, _ in sorted(weights.items(), key=lambda kv: -kv[1])]
+        name = m.get("Name") or "?"
         for s in set(syms):
             contains[s] += 1
+            by_symbol[s].append((m.get("Mohs Hardness") or 0, name))
         sg = m.get("Specific Gravity")
         if sg is None and m.get("Calculated Density"):
             sg = round(m["Calculated Density"], 2)
@@ -121,6 +127,11 @@ def build_minerals_page():
     if unmapped:
         print("  note: unmapped mineral columns ignored:", sorted(unmapped))
     rows.sort(key=lambda r: r[0])
+    # per-element mineral summary for the periodic table's detail panel:
+    # count plus a few examples (hardest first — the recognizable ones)
+    for sym, entries in by_symbol.items():
+        entries.sort(key=lambda t: (-t[0], t[1]))
+        ELEMENT_MINERALS[sym] = {"n": len(entries), "examples": [n for _, n in entries[:6]]}
 
     sys_name = {r["id"]: r.get("Name") for r in notion["crystalSystems"]}
     gems = [{
@@ -243,8 +254,8 @@ def build_home(n_min, n_gems, n_classes, n_spectral, n_instr):
 
 
 if __name__ == "__main__":
+    n_min, n_gems = build_minerals_page()   # fills ELEMENT_MINERALS
     build_elements_page()
-    n_min, n_gems = build_minerals_page()
     n_classes, n_spectral, n_instr = build_cosmos_page()
     write_page("forces.template.html", "forces.html",
                [{k: v for k, v in f.items() if k != "id"} for f in notion["forces"]])
