@@ -7,9 +7,10 @@ Inputs:  web/*.template.html + web/shared.css + web/analyzer.{css,html,js}
          data/notion-all.json           (scripts/fetch_all.py)
 Outputs: public/index.html   (periodic table, served at /elements)
          public/home.html    (tile launcher, served at /)
-         public/{minerals,cosmos,forces,theories}.html
+         public/{minerals,cosmos,forces,theories,timeline}.html
 """
 import json
+import math
 from collections import Counter, defaultdict
 from pathlib import Path
 
@@ -269,6 +270,41 @@ def build_cosmos_page():
     return len(types), len(spectral), len(instruments)
 
 
+# ---------------- cosmic timeline ----------------
+ERA_ORDER = ["Very Early Universe", "Radiation Era", "Dark Ages",
+             "Structure Formation", "Present", "Far Future"]
+
+
+def build_timeline_page():
+    """The history of the universe, ordered on a log axis of seconds after t = 0."""
+    rows = notion.get("cosmicTimeline", [])
+    th_lookup = {t["id"]: {"name": t["Name"], "slug": slugify(t["Name"]), "status": t.get("Status")}
+                 for t in notion["theories"] if t.get("Name")}
+    events = []
+    for r in rows:
+        if not r.get("Event"):
+            continue
+        events.append({
+            "event": r["Event"],
+            "era": r.get("Era"),
+            "secs": r.get("Seconds After Big Bang"),
+            "when": r.get("When"),
+            "temp": r.get("Temperature (K)"),
+            "z": r.get("Redshift"),
+            "what": r.get("What Happened"),
+            "equations": r.get("Equations") or [],
+            "theories": r.get("Theories") or [],
+        })
+    # sort on the number, not the prose — that is what the column is for
+    events.sort(key=lambda e: (e["secs"] is None, e["secs"] if e["secs"] is not None else 0))
+    data = {"events": events, "equations": eq_lookup_all(), "theories": th_lookup,
+            "eras": [e for e in ERA_ORDER if any(x["era"] == e for x in events)]}
+    write_page("timeline.template.html", "timeline.html", data)
+    secs = [e["secs"] for e in events if isinstance(e["secs"], (int, float)) and e["secs"] > 0]
+    decades = (math.ceil(math.log10(max(secs))) - math.floor(math.log10(min(secs)))) if len(secs) > 1 else 0
+    return len(events), decades
+
+
 # ---------------- home ----------------
 def theory_span() -> str:
     """Earliest→latest year across the theory shelf, e.g. '150 CE – 1998'."""
@@ -289,7 +325,7 @@ def theory_span() -> str:
     return f"{lo_s}–{hi}"
 
 
-def build_home(n_min, n_gems, n_classes, n_spectral, n_instr):
+def build_home(n_min, n_gems, n_classes, n_spectral, n_instr, n_timeline, tl_decades):
     gaps = sum(1 for e in elements
                if e["meltingPt"] is None or e["boilingPt"] is None
                or e["density"] is None or e["occurrence"] is None)
@@ -312,6 +348,8 @@ def build_home(n_min, n_gems, n_classes, n_spectral, n_instr):
         "__N_ACCEPTED__": sum(1 for t in notion["theories"] if t.get("Status") == "Accepted"),
         "__TH_SPAN__": theory_span(),
         "__N_PEOPLE__": sum(1 for r in notion["researchers"] if r.get("Name")),
+        "__N_TIMELINE__": n_timeline,
+        "__TL_DECADES__": tl_decades,
         "__N_EQ__": len(eqs),
         "__N_EQFIELDS__": len({e.get("Field") for e in eqs if e.get("Field")}),
         "__EQ_OLDEST__": oldest_str,
@@ -375,4 +413,5 @@ if __name__ == "__main__":
                 for e in notion.get("equations", [])],
                extra={"__ELEMENTS__": compact(el_lookup), "__MINERALS__": compact(min_lookup),
                       "__COSMOS__": compact(cosmos_lookup), "__TABLES__": compact(equation_tables())})
-    build_home(n_min, n_gems, n_classes, n_spectral, n_instr)
+    n_timeline, tl_decades = build_timeline_page()
+    build_home(n_min, n_gems, n_classes, n_spectral, n_instr, n_timeline, tl_decades)

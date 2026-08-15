@@ -15,6 +15,7 @@ const PAGES = {
   '/cosmos': 'cosmos.html',
   '/forces': 'forces.html',
   '/theories': 'theories.html',
+  '/timeline': 'timeline.html',
   '/equations': 'equations.html',
   '/constants': 'constants.html',
 };

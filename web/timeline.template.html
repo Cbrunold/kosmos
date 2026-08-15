@@ -1,0 +1,300 @@
+<title>Kosmos · Timeline of the Universe</title>
+<style>
+__SHARED__
+
+  .wrap { max-width: 860px; }
+
+  /* ---- log axis ---- */
+  .axis { margin: 0 0 26px; }
+  .axisbar {
+    position: relative;
+    height: 46px;
+    border: 1px solid var(--hairline);
+    border-radius: 6px;
+    background: var(--panel);
+    overflow: hidden;
+  }
+  .tick { position: absolute; top: 0; bottom: 0; width: 1px; background: var(--hairline); }
+  .ticklbl {
+    position: absolute; bottom: 2px; transform: translateX(-50%);
+    font: 8.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    color: var(--muted); white-space: nowrap;
+  }
+  .pin {
+    position: absolute; top: 9px;
+    width: 7px; height: 7px; margin-left: -3.5px;
+    border-radius: 50%;
+    background: var(--pc, var(--muted));
+    border: none; padding: 0; cursor: pointer;
+  }
+  .pin:hover, .pin:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+  .axisnote { font-size: 11px; color: var(--muted); margin: 7px 0 0; line-height: 1.5; }
+
+  /* ---- era filter ---- */
+  .eras { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 18px; }
+  .echip {
+    font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    background: var(--panel);
+    border: 1px solid var(--hairline);
+    border-left: 3px solid var(--ec, var(--muted));
+    color: var(--ink-2);
+    border-radius: 5px; padding: 4px 9px; cursor: pointer;
+    display: inline-flex; align-items: baseline; gap: 6px;
+  }
+  .echip:hover { color: var(--ink); border-color: var(--ink-2); }
+  .echip .n { font-size: 9px; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .echip[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--page); }
+  .echip[aria-pressed="true"] .n { color: color-mix(in oklab, var(--page) 65%, var(--ink)); }
+
+  /* ---- events ---- */
+  .events { display: flex; flex-direction: column; gap: 0; }
+  .ev {
+    position: relative;
+    padding: 0 0 22px 26px;
+    border-left: 1px solid var(--hairline);
+    margin-left: 6px;
+  }
+  .ev:last-child { border-left-color: transparent; padding-bottom: 0; }
+  .ev::before {
+    content: ''; position: absolute; left: -5.5px; top: 5px;
+    width: 10px; height: 10px; border-radius: 50%;
+    background: var(--page); border: 2px solid var(--ec, var(--muted));
+  }
+  .ev.flash > .evcard { outline: 2px solid var(--c-pink); outline-offset: 3px; }
+  .evhead { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; margin-bottom: 5px; }
+  .evwhen {
+    font: 11px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    font-variant-numeric: tabular-nums;
+    color: var(--ec, var(--muted));
+    letter-spacing: 0.02em;
+  }
+  .evname {
+    font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    font-size: 15px; font-weight: 700; color: var(--ink); margin: 0;
+  }
+  .evcard { background: var(--panel); border: 1px solid var(--hairline); border-radius: 8px; padding: 13px 15px; }
+  .evwhat { font-size: 13px; color: var(--ink-2); line-height: 1.6; margin: 0; }
+  .cond {
+    display: flex; flex-wrap: wrap; gap: 12px; margin-top: 9px;
+    font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    font-variant-numeric: tabular-nums; color: var(--muted);
+  }
+  .cond b { color: var(--ink-2); font-weight: 400; }
+  .lrow { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 9px; align-items: baseline; }
+  .lrow .lbl {
+    font: 9.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-right: 3px;
+  }
+  .lnk {
+    font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    border: 1px solid var(--hairline); border-left: 3px solid var(--lc, var(--muted));
+    color: var(--ink-2); border-radius: 4px; padding: 2px 7px 2px 6px;
+    text-decoration: none; white-space: nowrap;
+  }
+  .lnk:hover { color: var(--ink); border-color: var(--ink-2); }
+  .empty { font-size: 13px; color: var(--muted); padding: 18px 0; }
+  @media (max-width: 560px) { .axisbar { height: 40px; } }
+</style>
+
+<nav class="knav"><a href="/">KOSMOS</a><span>/</span><span class="cur">Timeline</span></nav>
+<h1 class="ktitle">Timeline of the Universe</h1>
+<p class="klede">From the Planck epoch to the heat death, ordered on the only axis that can hold it: the logarithm of seconds since the beginning. The first second gets nine entries and the following hundred trillion years get one, because that is genuinely where the action is.</p>
+
+<div class="wrap">
+  <div class="axis">
+    <div class="axisbar" id="axis"></div>
+    <p class="axisnote" id="axisnote"></p>
+  </div>
+  <div class="eras" id="eras"></div>
+  <div class="events" id="events"></div>
+  <p class="empty" id="empty" hidden>Nothing matches that filter.</p>
+</div>
+
+<p class="kfoot">From the Cosmic Timeline database in Notion. Times and temperatures follow the standard ΛCDM chronology on Planck 2018 parameters. Everything past the present day is a projection, not a measurement — the far-future entries are order-of-magnitude estimates, and at least one of them (proton decay) may never happen at all.</p>
+
+<script id="data" type="application/json">__DATA__</script>
+<script>
+  const D = JSON.parse(document.getElementById('data').textContent);
+  const EV = D.events, EQ = D.equations || {}, TH = D.theories || {}, ERAS = D.eras || [];
+  const ERA_COLOR = {
+    'Very Early Universe': 'var(--c-violet)',
+    'Radiation Era': 'var(--c-amber)',
+    'Dark Ages': 'var(--c-slate)',
+    'Structure Formation': 'var(--c-blue)',
+    'Present': 'var(--c-green)',
+    'Far Future': 'var(--c-bronze)',
+  };
+  const slug = (s) => (s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '')
+    .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+  const box = document.getElementById('events');
+  const empty = document.getElementById('empty');
+  const active = new Set();
+
+  const timed = EV.filter((e) => typeof e.secs === 'number' && e.secs > 0);
+  const L = timed.map((e) => Math.log10(e.secs));
+  // guard the empty case: Math.min() of nothing is Infinity, which would put
+  // "10^Infinity seconds" on the axis before the database has been seeded
+  const HAS_AXIS = L.length > 1;
+  const LO = HAS_AXIS ? Math.floor(Math.min(...L)) : 0;
+  const HI = HAS_AXIS ? Math.ceil(Math.max(...L)) : 1;
+  const pos = (s) => ((Math.log10(s) - LO) / (HI - LO)) * 100;
+  const sup = (n) => String(n).replace('-', '⁻').replace(/\d/g, (c) => '⁰¹²³⁴⁵⁶⁷⁸⁹'[+c]);
+
+  const fmtTemp = (t) => {
+    if (t == null) return null;
+    if (t === 0) return '→ 0 K';
+    if (t >= 1e4 || t < 0.01) {
+      const exp = Math.floor(Math.log10(t));
+      const mant = +(t / 10 ** exp).toPrecision(3);
+      return `${mant === 1 ? '' : mant + '×'}10${sup(exp)} K`;
+    }
+    return `${+t.toPrecision(4)} K`;
+  };
+
+  // ---------- log axis ----------
+  function buildAxis() {
+    const ax = document.getElementById('axis');
+    if (!HAS_AXIS) { document.querySelector('.axis').hidden = true; return; }
+    for (let d = LO; d <= HI; d += 20) {
+      const x = ((d - LO) / (HI - LO)) * 100;
+      const t = document.createElement('div');
+      t.className = 'tick'; t.style.left = x + '%';
+      const l = document.createElement('span');
+      l.className = 'ticklbl'; l.style.left = x + '%';
+      l.textContent = d === 0 ? '1 s' : `10${sup(d)} s`;
+      ax.append(t, l);
+    }
+    for (const e of timed) {
+      const b = document.createElement('button');
+      b.className = 'pin';
+      b.type = 'button';
+      b.style.left = pos(e.secs) + '%';
+      b.style.setProperty('--pc', ERA_COLOR[e.era] || 'var(--muted)');
+      b.title = `${e.event} — ${e.when || ''}`;
+      b.setAttribute('aria-label', `Jump to ${e.event}`);
+      b.addEventListener('click', () => goTo(slug(e.event)));
+      ax.appendChild(b);
+    }
+    document.getElementById('axisnote').textContent =
+      `${HI - LO} orders of magnitude, from 10${sup(LO)} seconds to the heat death. `
+      + 'Each dot is an event — click one to jump to it. Note how much of the story fits before the first second.';
+  }
+
+  // ---------- events ----------
+  function chipRow(label, items, color) {
+    const row = document.createElement('div');
+    row.className = 'lrow';
+    const l = document.createElement('span');
+    l.className = 'lbl'; l.textContent = label;
+    row.appendChild(l);
+    for (const it of items) {
+      const a = document.createElement('a');
+      a.className = 'lnk';
+      a.href = it.href;
+      a.textContent = it.name;
+      if (it.title) a.title = it.title;
+      a.style.setProperty('--lc', color);
+      row.appendChild(a);
+    }
+    return row;
+  }
+
+  function render() {
+    box.textContent = '';
+    const rows = EV.filter((e) => !active.size || active.has(e.era));
+    empty.hidden = rows.length > 0;
+    for (const e of rows) {
+      const wrap = document.createElement('div');
+      wrap.className = 'ev';
+      wrap.id = slug(e.event);
+      wrap.style.setProperty('--ec', ERA_COLOR[e.era] || 'var(--muted)');
+
+      const head = document.createElement('div');
+      head.className = 'evhead';
+      if (e.when) {
+        const w = document.createElement('span');
+        w.className = 'evwhen'; w.textContent = e.when;
+        head.appendChild(w);
+      }
+      const h = document.createElement('h2');
+      h.className = 'evname'; h.textContent = e.event;
+      head.appendChild(h);
+
+      const card = document.createElement('div');
+      card.className = 'evcard';
+      const p = document.createElement('p');
+      p.className = 'evwhat'; p.textContent = e.what || '';
+      card.appendChild(p);
+
+      const bits = [];
+      if (e.temp != null) bits.push(['temperature', fmtTemp(e.temp)]);
+      if (e.z && e.z !== '—') bits.push(['redshift', e.z]);
+      if (e.era) bits.push(['era', e.era.toLowerCase()]);
+      if (bits.length) {
+        const c = document.createElement('div');
+        c.className = 'cond';
+        for (const [k, v] of bits) {
+          const s = document.createElement('span');
+          s.innerHTML = '<b></b> ';
+          s.firstChild.textContent = k;
+          s.appendChild(document.createTextNode(v));
+          c.appendChild(s);
+        }
+        card.appendChild(c);
+      }
+
+      const eqs = (e.equations || []).map((id) => EQ[id]).filter(Boolean)
+        .sort((a, b) => a.name.localeCompare(b.name))
+        .map((q) => ({ name: q.name, href: '/equations#' + q.slug, title: q.field || '' }));
+      if (eqs.length) card.appendChild(chipRow('the mathematics', eqs, 'var(--c-amber)'));
+
+      const ths = (e.theories || []).map((id) => TH[id]).filter(Boolean)
+        .sort((a, b) => a.name.localeCompare(b.name))
+        .map((t) => ({ name: t.name, href: '/theories#' + t.slug, title: t.status || '' }));
+      if (ths.length) card.appendChild(chipRow('the theory', ths, 'var(--c-pink)'));
+
+      wrap.append(head, card);
+      box.appendChild(wrap);
+    }
+  }
+
+  function buildEras() {
+    const c = document.getElementById('eras');
+    const counts = new Map();
+    for (const e of EV) counts.set(e.era, (counts.get(e.era) || 0) + 1);
+    for (const era of ERAS) {
+      const b = document.createElement('button');
+      b.className = 'echip';
+      b.type = 'button';
+      b.setAttribute('aria-pressed', 'false');
+      b.style.setProperty('--ec', ERA_COLOR[era] || 'var(--muted)');
+      b.innerHTML = '<span></span><span class="n"></span>';
+      b.firstChild.textContent = era.toLowerCase();
+      b.lastChild.textContent = counts.get(era) || 0;
+      b.addEventListener('click', () => {
+        if (active.has(era)) active.delete(era); else active.add(era);
+        b.setAttribute('aria-pressed', active.has(era) ? 'true' : 'false');
+        render();
+      });
+      c.appendChild(b);
+    }
+  }
+
+  function goTo(id) {
+    active.clear();                       // a filter must never hide the thing being jumped to
+    for (const b of document.getElementById('eras').children) b.setAttribute('aria-pressed', 'false');
+    render();
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.scrollIntoView({ block: 'center', behavior: 'smooth' });
+    el.classList.add('flash');
+    setTimeout(() => el.classList.remove('flash'), 1700);
+    history.replaceState(null, '', '#' + id);
+  }
+
+  buildAxis();
+  buildEras();
+  render();
+  if (location.hash.length > 1) goTo(location.hash.slice(1));
+  addEventListener('hashchange', () => goTo(location.hash.slice(1)));
+</script>

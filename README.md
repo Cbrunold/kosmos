@@ -15,6 +15,7 @@ truth for code and the normalised data snapshots. Sync is one-way, Notion → re
 | `/minerals`  | 3,000+ minerals searchable and filterable by contained element; gemstone shelf, rock families, silicate classes |
 | `/cosmos`    | Field guide to celestial object classes, the stellar spectral sequence, instruments, researchers |
 | `/forces`    | The four fundamental interactions |
+| `/timeline`  | The universe's history on a log axis of seconds — Planck epoch to heat death, cross-linked to the equations and theories |
 | `/theories`  | Theory shelf from Ptolemy to the holographic principle — status, proponents, and the equations each rests on; sortable chronologically |
 | `/equations` | Canonical equations with symbols decoded, filterable by field |
 | `/constants` | CODATA constants with uncertainties, SI units, prefixes |
@@ -45,6 +46,9 @@ scripts/link_theories.py      Theory → researcher (Proponent) and theory → e
                               from the maps in seed_theories.py
 scripts/seed_abundance.py     Adds "Crustal Abundance" (ppm by mass) to the Elements DB and
                               fills all 118 rows — the data behind the Rarity lens
+scripts/seed_timeline.py      Creates + seeds the Cosmic Timeline DB (30 events, Planck epoch to
+                              heat death) and links each to its equations and theories. Sorted on
+                              "Seconds After Big Bang" — cosmic time is a number, not a date
 deploy/                       systemd unit + nginx site as deployed on the VPS
 ```
 
