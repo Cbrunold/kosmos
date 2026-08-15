@@ -34,7 +34,28 @@ __SHARED__
   .instr .kcard p { font-size: 12.5px; color: var(--ink-2); line-height: 1.5; margin: 0 0 8px; }
   .instr .chips { display: flex; flex-wrap: wrap; gap: 4px; }
 
-  .people { display: flex; flex-wrap: wrap; gap: 8px; }
+  .people { display: grid; grid-template-columns: repeat(auto-fill, minmax(255px, 1fr)); gap: 10px; }
+  .person { padding: 10px 12px; }
+  .person .pn { font: 700 12.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; color: var(--ink); }
+  .person .pm { font: 10px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; color: var(--muted); margin: 2px 0 5px; font-variant-numeric: tabular-nums; }
+  .person .pk { font-size: 11.5px; color: var(--ink-2); line-height: 1.45; }
+
+  .obs { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; }
+  .obs .kcard { border-left: 3px solid var(--oc, var(--muted)); }
+  .obs h3 { font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; font-size: 13.5px; margin: 0 0 3px; }
+  .obs .meta { font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; color: var(--muted); font-variant-numeric: tabular-nums; margin-bottom: 7px; }
+  .obs p { font-size: 12.5px; color: var(--ink-2); line-height: 1.5; margin: 0; }
+  .obs .chips { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px; }
+
+  .disc { display: flex; flex-direction: column; gap: 0; max-width: 800px; }
+  .drow { display: flex; gap: 14px; padding: 0 0 16px; position: relative; border-left: 1px solid var(--hairline); margin-left: 5px; padding-left: 22px; }
+  .drow:last-child { border-left-color: transparent; padding-bottom: 0; }
+  .drow::before { content: ''; position: absolute; left: -4.5px; top: 6px; width: 9px; height: 9px; border-radius: 50%; background: var(--page); border: 2px solid var(--c-cyan); }
+  .dyear { font: 700 12px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; color: var(--c-cyan); font-variant-numeric: tabular-nums; flex: none; width: 42px; padding-top: 1px; }
+  .dbody h3 { font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; font-size: 13.5px; margin: 0 0 4px; }
+  .dbody p { font-size: 12.5px; color: var(--ink-2); line-height: 1.55; margin: 0; }
+  .dbody .by { font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; color: var(--muted); margin-top: 6px; }
+  @media (max-width: 520px) { .drow { flex-direction: column; gap: 3px; } .dyear { width: auto; } }
 
   .eqrow { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 8px; align-items: baseline; }
   .eqrow .lbl { font: 9px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-right: 3px; }
@@ -68,10 +89,16 @@ __SHARED__
 <h2 class="ksec" id="instruments">Instruments watching the sky</h2>
 <div class="instr" id="instr"></div>
 
-<h2 class="ksec">Researchers on file</h2>
+<h2 class="ksec" id="observatories">Observatories</h2>
+<div class="obs" id="obs"></div>
+
+<h2 class="ksec" id="discoveries">Discoveries, in order</h2>
+<div class="disc" id="disc"></div>
+
+<h2 class="ksec" id="people-h">Researchers on file</h2>
 <div class="people" id="people"></div>
 
-<p class="kfoot">From the Cosmology databases in Notion. The Discoveries, Observatories, and Space Missions tables are still empty — sections for them will appear here once they hold data.</p>
+<p class="kfoot">From the Cosmology databases in Notion. Observatory founding years and discovery years are stored as numbers rather than dates: ground sites are known to the year and space telescopes to the day, and one date column would have to either invent the former or discard the latter. The Space Missions table is still empty — a section for it will appear here once it holds data.</p>
 
 <script id="data" type="application/json">__DATA__</script>
 <script>
@@ -154,7 +181,63 @@ __SHARED__
     instr.appendChild(card);
   }
 
+  // -- observatories, oldest first --
+  const obs = document.getElementById('obs');
+  const OBS_COLOR = { 'Ground-based': 'var(--c-bronze)', 'Space-based': 'var(--c-blue)' };
+  for (const o of D.observatories || []) {
+    const card = document.createElement('div');
+    card.className = 'kcard';
+    card.style.setProperty('--oc', OBS_COLOR[o.type] || 'var(--muted)');
+    const h = document.createElement('h3'); h.textContent = o.name;
+    const meta = document.createElement('div');
+    meta.className = 'meta';
+    meta.textContent = [
+      o.founded, o.where,
+      o.alt != null ? `${o.alt.toLocaleString('en')} m` : (o.type === 'Space-based' ? 'in orbit' : null),
+    ].filter(Boolean).join(' · ');
+    const p = document.createElement('p'); p.textContent = o.notes || '';
+    card.append(h, meta, p);
+    if ((o.instruments || []).length) {
+      const chips = document.createElement('div');
+      chips.className = 'chips';
+      for (const i of o.instruments) {
+        const c = document.createElement('span'); c.className = 'kchip'; c.textContent = i;
+        chips.appendChild(c);
+      }
+      card.appendChild(chips);
+    }
+    obs.appendChild(card);
+  }
+
+  // -- discoveries, oldest first --
+  const disc = document.getElementById('disc');
+  for (const x of D.discoveries || []) {
+    const row = document.createElement('div');
+    row.className = 'drow';
+    const y = document.createElement('div'); y.className = 'dyear'; y.textContent = x.year ?? '—';
+    const body = document.createElement('div'); body.className = 'dbody';
+    const h = document.createElement('h3'); h.textContent = x.name;
+    const p = document.createElement('p'); p.textContent = x.what || '';
+    body.append(h, p);
+    const credit = [x.who.join(' · '), x.where].filter(Boolean).join(' — ');
+    if (credit) {
+      const b = document.createElement('div'); b.className = 'by'; b.textContent = credit;
+      body.appendChild(b);
+    }
+    row.append(y, body);
+    disc.appendChild(row);
+  }
+
   // -- researchers --
   const people = document.getElementById('people');
-  for (const r of D.researchers) { const c = document.createElement('span'); c.className = 'kchip'; c.textContent = r; people.appendChild(c); }
+  for (const r of D.researchers) {
+    const card = document.createElement('div');
+    card.className = 'kcard person';
+    const n = document.createElement('div'); n.className = 'pn'; n.textContent = r.name;
+    card.appendChild(n);
+    const meta = [r.life, r.field].filter(Boolean).join(' · ');
+    if (meta) { const m = document.createElement('div'); m.className = 'pm'; m.textContent = meta; card.appendChild(m); }
+    if (r.known) { const k = document.createElement('div'); k.className = 'pk'; k.textContent = r.known; card.appendChild(k); }
+    people.appendChild(card);
+  }
 </script>

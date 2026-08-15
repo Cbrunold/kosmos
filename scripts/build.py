@@ -261,13 +261,48 @@ def build_cosmos_page():
         "equations": i.get("Equations") or [],
     } for i in notion["instruments"] if i.get("Name")]
 
-    researchers = sorted(r["Name"] for r in notion["researchers"] if r.get("Name"))
+    researchers = sorted(
+        ({"name": r["Name"], "life": r.get("Lifespan"), "field": r.get("Field"),
+          "known": r.get("Known For")} for r in notion["researchers"] if r.get("Name")),
+        key=lambda r: r["name"].split()[-1])   # by surname, as a card index would be
+
+    obs_by_id = {}
+    observatories = []
+    for o in notion.get("observatories", []):
+        if not o.get("Name"):
+            continue
+        row = {"name": o["Name"], "type": o.get("Type"), "founded": o.get("Founded"),
+               "where": o.get("Location"), "alt": o.get("Altitude (m)"),
+               "notes": o.get("Notes"),
+               "instruments": o.get("Primary_Instruments [DB]") or []}
+        obs_by_id[o["id"]] = o["Name"]
+        observatories.append(row)
+    observatories.sort(key=lambda o: (o["founded"] is None, o["founded"] or 0))
+
+    people_by_id = {r["id"]: r["Name"] for r in notion["researchers"] if r.get("Name")}
+    instr_by_id = {i["id"]: i["Name"] for i in notion["instruments"] if i.get("Name")}
+    for o in observatories:
+        o["instruments"] = sorted(filter(None, (instr_by_id.get(i) for i in o["instruments"])))
+
+    discoveries = []
+    for x in notion.get("discoveries", []):
+        if not x.get("Name"):
+            continue
+        discoveries.append({
+            "name": x["Name"],
+            "year": x.get("Year"),
+            "what": x.get("Description"),
+            "who": sorted(filter(None, (people_by_id.get(i) for i in (x.get("Discoverer") or [])))),
+            "where": next((obs_by_id[i] for i in (x.get("Observatory") or []) if i in obs_by_id), None),
+        })
+    discoveries.sort(key=lambda d: (d["year"] is None, d["year"] or 0))
 
     data = {"sun": sun, "spectral": spectral, "types": types,
             "instruments": instruments, "researchers": researchers,
+            "observatories": observatories, "discoveries": discoveries,
             "equations": eq_lookup_all()}
     write_page("cosmos.template.html", "cosmos.html", data)
-    return len(types), len(spectral), len(instruments)
+    return len(types), len(spectral), len(instruments), len(observatories), len(discoveries)
 
 
 # ---------------- cosmic timeline ----------------
@@ -325,7 +360,8 @@ def theory_span() -> str:
     return f"{lo_s}–{hi}"
 
 
-def build_home(n_min, n_gems, n_classes, n_spectral, n_instr, n_timeline, tl_decades):
+def build_home(n_min, n_gems, n_classes, n_spectral, n_instr, n_timeline, tl_decades,
+               n_obs, n_disc):
     gaps = sum(1 for e in elements
                if e["meltingPt"] is None or e["boilingPt"] is None
                or e["density"] is None or e["occurrence"] is None)
@@ -349,6 +385,8 @@ def build_home(n_min, n_gems, n_classes, n_spectral, n_instr, n_timeline, tl_dec
         "__TH_SPAN__": theory_span(),
         "__N_PEOPLE__": sum(1 for r in notion["researchers"] if r.get("Name")),
         "__N_TIMELINE__": n_timeline,
+        "__N_OBS__": n_obs,
+        "__N_DISC__": n_disc,
         "__TL_DECADES__": tl_decades,
         "__N_EQ__": len(eqs),
         "__N_EQFIELDS__": len({e.get("Field") for e in eqs if e.get("Field")}),
@@ -363,7 +401,7 @@ def build_home(n_min, n_gems, n_classes, n_spectral, n_instr, n_timeline, tl_dec
 if __name__ == "__main__":
     n_min, n_gems = build_minerals_page()   # fills ELEMENT_MINERALS
     build_elements_page()
-    n_classes, n_spectral, n_instr = build_cosmos_page()
+    n_classes, n_spectral, n_instr, n_obs, n_disc = build_cosmos_page()
     write_page("forces.template.html", "forces.html",
                [{k: v for k, v in f.items() if k != "id"} for f in notion["forces"]])
     # theories carry a Proponent relation into the Researchers DB — resolve it to
@@ -414,4 +452,5 @@ if __name__ == "__main__":
                extra={"__ELEMENTS__": compact(el_lookup), "__MINERALS__": compact(min_lookup),
                       "__COSMOS__": compact(cosmos_lookup), "__TABLES__": compact(equation_tables())})
     n_timeline, tl_decades = build_timeline_page()
-    build_home(n_min, n_gems, n_classes, n_spectral, n_instr, n_timeline, tl_decades)
+    build_home(n_min, n_gems, n_classes, n_spectral, n_instr, n_timeline, tl_decades,
+               n_obs, n_disc)

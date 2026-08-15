@@ -13,7 +13,7 @@ truth for code and the normalised data snapshots. Sync is one-way, Notion → re
 | `/`          | Tile launcher with live stats per section |
 | `/elements`  | Interactive periodic table (10 lenses incl. crustal rarity, temperature + discovery sliders) and the AI photo analyzer |
 | `/minerals`  | 3,000+ minerals searchable and filterable by contained element; gemstone shelf, rock families, silicate classes |
-| `/cosmos`    | Field guide to celestial object classes, the stellar spectral sequence, instruments, researchers |
+| `/cosmos`    | Field guide to celestial object classes, the stellar spectral sequence, observatories, a discovery timeline, instruments and researchers |
 | `/forces`    | The four fundamental interactions |
 | `/timeline`  | The universe's history on a log axis of seconds — Planck epoch to heat death, cross-linked to the equations and theories |
 | `/theories`  | Theory shelf from Ptolemy to the holographic principle — status, proponents, and the equations each rests on; sortable chronologically |
@@ -49,6 +49,9 @@ scripts/seed_abundance.py     Adds "Crustal Abundance" (ppm by mass) to the Elem
 scripts/seed_timeline.py      Creates + seeds the Cosmic Timeline DB (30 events, Planck epoch to
                               heat death) and links each to its equations and theories. Sorted on
                               "Seconds After Big Bang" — cosmic time is a number, not a date
+scripts/seed_discoveries.py   Seeds the Observatories and Discoveries DBs, adds the observers the
+                              Researchers DB was missing, and wires discoverer / observatory /
+                              instrument relations. Reuses the helpers in seed_theories.py
 deploy/                       systemd unit + nginx site as deployed on the VPS
 ```
 
