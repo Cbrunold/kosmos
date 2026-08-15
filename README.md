@@ -52,6 +52,9 @@ scripts/seed_timeline.py      Creates + seeds the Cosmic Timeline DB (30 events,
 scripts/seed_discoveries.py   Seeds the Observatories and Discoveries DBs, adds the observers the
                               Researchers DB was missing, and wires discoverer / observatory /
                               instrument relations. Reuses the helpers in seed_theories.py
+scripts/seed_missions.py      Seeds the Space Missions DB (37, Sputnik to Europa Clipper). The one
+                              table that keeps real dates: a launch is a recorded instant, unlike a
+                              founding year. Mission_ID left empty — see the docstring
 deploy/                       systemd unit + nginx site as deployed on the VPS
 ```
 

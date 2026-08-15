@@ -304,12 +304,24 @@ def build_cosmos_page():
         })
     discoveries.sort(key=lambda d: (d["year"] is None, d["year"] or 0))
 
+    missions = [{
+        "name": m["Name"],
+        "launch": m.get("Launch Date"),
+        "end": m.get("End Date"),
+        "status": m.get("Status"),
+        "agency": m.get("Agency"),
+        "dest": m.get("Destination"),
+        "objective": m.get("Objective"),
+    } for m in notion.get("missions", []) if m.get("Name")]
+    missions.sort(key=lambda m: (m["launch"] is None, m["launch"] or ""))
+
     data = {"sun": sun, "spectral": spectral, "types": types,
             "instruments": instruments, "researchers": researchers,
             "observatories": observatories, "discoveries": discoveries,
-            "equations": eq_lookup_all()}
+            "missions": missions, "equations": eq_lookup_all()}
     write_page("cosmos.template.html", "cosmos.html", data)
-    return len(types), len(spectral), len(instruments), len(observatories), len(discoveries)
+    return (len(types), len(spectral), len(instruments), len(observatories),
+            len(discoveries), len(missions))
 
 
 # ---------------- cosmic timeline ----------------
@@ -368,7 +380,7 @@ def theory_span() -> str:
 
 
 def build_home(n_min, n_gems, n_classes, n_spectral, n_instr, n_timeline, tl_decades,
-               n_obs, n_disc):
+               n_obs, n_disc, n_miss):
     gaps = sum(1 for e in elements
                if e["meltingPt"] is None or e["boilingPt"] is None
                or e["density"] is None or e["occurrence"] is None)
@@ -394,6 +406,7 @@ def build_home(n_min, n_gems, n_classes, n_spectral, n_instr, n_timeline, tl_dec
         "__N_TIMELINE__": n_timeline,
         "__N_OBS__": n_obs,
         "__N_DISC__": n_disc,
+        "__N_MISS__": n_miss,
         "__TL_DECADES__": tl_decades,
         "__N_EQ__": len(eqs),
         "__N_EQFIELDS__": len({e.get("Field") for e in eqs if e.get("Field")}),
@@ -408,7 +421,7 @@ def build_home(n_min, n_gems, n_classes, n_spectral, n_instr, n_timeline, tl_dec
 if __name__ == "__main__":
     n_min, n_gems = build_minerals_page()   # fills ELEMENT_MINERALS
     build_elements_page()
-    n_classes, n_spectral, n_instr, n_obs, n_disc = build_cosmos_page()
+    n_classes, n_spectral, n_instr, n_obs, n_disc, n_miss = build_cosmos_page()
     write_page("forces.template.html", "forces.html",
                [{k: v for k, v in f.items() if k != "id"} for f in notion["forces"]])
     # theories carry a Proponent relation into the Researchers DB — resolve it to
@@ -460,4 +473,4 @@ if __name__ == "__main__":
                       "__COSMOS__": compact(cosmos_lookup), "__TABLES__": compact(equation_tables())})
     n_timeline, tl_decades = build_timeline_page()
     build_home(n_min, n_gems, n_classes, n_spectral, n_instr, n_timeline, tl_decades,
-               n_obs, n_disc)
+               n_obs, n_disc, n_miss)

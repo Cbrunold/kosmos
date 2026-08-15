@@ -57,6 +57,13 @@ __SHARED__
   .dbody .by { font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; color: var(--muted); margin-top: 6px; }
   @media (max-width: 520px) { .drow { flex-direction: column; gap: 3px; } .dyear { width: auto; } }
 
+  .miss { display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 12px; }
+  .miss .kcard { border-left: 3px solid var(--mc, var(--muted)); }
+  .miss h3 { font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; font-size: 13.5px; margin: 0 0 3px; display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+  .miss .st { font: 9px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; letter-spacing: 0.08em; text-transform: uppercase; border: 1px solid var(--mc, var(--muted)); color: var(--mc, var(--muted)); border-radius: 99px; padding: 1px 7px; }
+  .miss .meta { font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; color: var(--muted); font-variant-numeric: tabular-nums; margin-bottom: 7px; }
+  .miss p { font-size: 12.5px; color: var(--ink-2); line-height: 1.5; margin: 0; }
+
   .eqrow { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 8px; align-items: baseline; }
   .eqrow .lbl { font: 9px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-right: 3px; }
   .ceq {
@@ -95,10 +102,13 @@ __SHARED__
 <h2 class="ksec" id="discoveries">Discoveries, in order</h2>
 <div class="disc" id="disc"></div>
 
+<h2 class="ksec" id="missions">Space missions</h2>
+<div class="miss" id="miss"></div>
+
 <h2 class="ksec" id="people-h">Researchers on file</h2>
 <div class="people" id="people"></div>
 
-<p class="kfoot">From the Cosmology databases in Notion. Observatory founding years and discovery years are stored as numbers rather than dates: ground sites are known to the year and space telescopes to the day, and one date column would have to either invent the former or discard the latter. The Space Missions table is still empty — a section for it will appear here once it holds data.</p>
+<p class="kfoot">From the Cosmology databases in Notion. Observatory founding years and discovery years are stored as numbers rather than dates: ground sites are known to the year and space telescopes to the day, and one date column would have to either invent the former or discard the latter. Missions are the exception and keep real dates, because a launch is an instant somebody recorded — Apollo 11 left at 13:32 UTC on 16 July 1969. A mission with no end date is still running.</p>
 
 <script id="data" type="application/json">__DATA__</script>
 <script>
@@ -226,6 +236,32 @@ __SHARED__
     }
     row.append(y, body);
     disc.appendChild(row);
+  }
+
+  // -- space missions, by launch date --
+  const miss = document.getElementById('miss');
+  const MISS_COLOR = { 'Completed': 'var(--c-green)', 'On-going': 'var(--c-blue)',
+                       'Failed': 'var(--c-red)', 'Planned': 'var(--muted)' };
+  const yr = (d) => (d ? String(d).slice(0, 4) : null);
+  for (const m of D.missions || []) {
+    const card = document.createElement('div');
+    card.className = 'kcard';
+    card.style.setProperty('--mc', MISS_COLOR[m.status] || 'var(--muted)');
+    const h = document.createElement('h3');
+    const nm = document.createElement('span'); nm.textContent = m.name;
+    h.appendChild(nm);
+    if (m.status) {
+      const s = document.createElement('span'); s.className = 'st'; s.textContent = m.status;
+      h.appendChild(s);
+    }
+    const span = m.end ? (yr(m.launch) === yr(m.end) ? yr(m.launch) : `${yr(m.launch)}–${yr(m.end)}`)
+                       : `${yr(m.launch)}–`;
+    const meta = document.createElement('div');
+    meta.className = 'meta';
+    meta.textContent = [span, m.agency, m.dest].filter(Boolean).join(' · ');
+    const p = document.createElement('p'); p.textContent = m.objective || '';
+    card.append(h, meta, p);
+    miss.appendChild(card);
   }
 
   // -- researchers --
