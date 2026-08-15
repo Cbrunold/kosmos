@@ -11,7 +11,7 @@ truth for code and the normalised data snapshots. Sync is one-way, Notion → re
 | Route        | What's there |
 |--------------|--------------|
 | `/`          | Tile launcher with live stats per section |
-| `/elements`  | Interactive periodic table (9 lenses, temperature + discovery sliders) and the AI photo analyzer |
+| `/elements`  | Interactive periodic table (10 lenses incl. crustal rarity, temperature + discovery sliders) and the AI photo analyzer |
 | `/minerals`  | 3,000+ minerals searchable and filterable by contained element; gemstone shelf, rock families, silicate classes |
 | `/cosmos`    | Field guide to celestial object classes, the stellar spectral sequence, instruments, researchers |
 | `/forces`    | The four fundamental interactions |
@@ -43,6 +43,8 @@ scripts/seed_theories.py      Fills the Theories and Researchers databases (both
                               blank fields without overwriting anything a human set
 scripts/link_theories.py      Theory → researcher (Proponent) and theory → equation relations,
                               from the maps in seed_theories.py
+scripts/seed_abundance.py     Adds "Crustal Abundance" (ppm by mass) to the Elements DB and
+                              fills all 118 rows — the data behind the Rarity lens
 deploy/                       systemd unit + nginx site as deployed on the VPS
 ```
 

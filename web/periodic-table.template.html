@@ -515,6 +515,30 @@
   const mpR = seqRange(E.map((e) => e.meltingPt).filter((v) => v != null));
   const bpR = seqRange(E.map((e) => e.boilingPt).filter((v) => v != null));
   const lin = (v, [a, b]) => (v - a) / (b - a);
+
+  // Crustal abundance spans 25 orders of magnitude, and the bottom decades are
+  // all decay-chain traces that are "vanishingly rare" alike. Flooring at
+  // 10⁻⁶ ppm keeps the precious metals distinguishable instead of crushing
+  // gold, silver and copper into one shade at the top of the scale.
+  const ABU_FLOOR = 1e-6;
+  const abuVals = E.map((e) => e.abundance).filter((v) => v != null);
+  const abuR = abuVals.length
+    ? [Math.log10(ABU_FLOOR), Math.log10(Math.max(...abuVals))] : [0, 1];
+  const abuRank = new Map();   // z -> 1 = rarest, among elements that occur naturally
+  E.filter((e) => e.abundance != null).sort((a, b) => a.abundance - b.abundance)
+    .forEach((e, i) => abuRank.set(e.z, i + 1));
+  const ordinal = (n) => (n % 100 >= 11 && n % 100 <= 13 ? 'th'
+    : ({ 1: 'st', 2: 'nd', 3: 'rd' })[n % 10] || 'th');
+  const fmtPpm = (v) => {
+    if (v == null) return null;
+    if (v >= 10000) return `${(v / 10000).toFixed(v >= 100000 ? 1 : 2)}%`;
+    if (v >= 1) return `${(+v.toPrecision(3)).toLocaleString('en-GB')} ppm`;
+    if (v >= 1e-3) return `${+v.toPrecision(2)} ppm`;
+    const exp = Math.floor(Math.log10(v));
+    const mant = +(v / 10 ** exp).toPrecision(2);
+    const sup = String(exp).replace('-', '⁻').replace(/\d/g, (d) => '⁰¹²³⁴⁵⁶⁷⁸⁹'[+d]);
+    return `${mant === 1 ? '' : mant + '×'}10${sup} ppm`;
+  };
   const yearT = (y) => (y <= 1650 ? ((y + 9000) / 10650) * 0.25 : 0.25 + ((y - 1650) / 360) * 0.75);
 
   const LENSES = {
@@ -558,6 +582,17 @@
     disc: { name: 'Discovery', seq: true, t: (e) => yearT(e.discovered),
       value: (e) => `discovered ${fmtYear(e.discovered)}`, range: () => ['9000 BCE', '2009'], slider: 'year' },
   };
+  // Rarity, not abundance: the scale runs hot for the scarce ones, which is the
+  // question people actually ask of a periodic table. Only offered if the data
+  // is there — it arrives from Notion via scripts/seed_abundance.py.
+  if (E.some((e) => e.abundance != null)) {
+    LENSES.rarity = {
+      name: 'Rarity', seq: true,
+      t: (e) => (e.abundance == null ? null : 1 - lin(Math.log10(Math.max(e.abundance, ABU_FLOOR)), abuR)),
+      value: (e) => (e.abundance == null ? 'does not occur naturally' : `${fmtPpm(e.abundance)} of the crust${abuRank.get(e.z) ? ` · ${abuRank.get(e.z)}${ordinal(abuRank.get(e.z))} rarest of ${abuRank.size}` : ''}`),
+      range: () => ['46% by mass', '≤10⁻⁶ ppm (log)'],
+    };
+  }
   for (const k of Object.keys(LENSES)) {
     const L = LENSES[k];
     if (L.seq) { L.color = (e) => { const t = L.t(e); return t == null ? null : heat(t); }; L.solid = true; }
@@ -727,6 +762,9 @@
       ['density', fmtNum(e.density, 'g/cm³')],
       ['origin', e.occurrence],
       ['discovered', fmtYear(e.discovered)],
+      ['in the crust', e.abundance == null
+        ? (e.occurrence === 'Synthetic' ? 'none — synthetic only' : null)
+        : `${fmtPpm(e.abundance)} · ${abuRank.get(e.z)}${ordinal(abuRank.get(e.z))} rarest of ${abuRank.size}`],
     ];
     const dl = rows.map(([k, v]) =>
       `<dt>${k}</dt><dd class="${v == null ? 'none' : ''}">${v == null ? '— not in Notion' : v}</dd>`).join('');

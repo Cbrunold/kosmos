@@ -80,6 +80,7 @@ def normalise(results: list) -> list:
             "meltingPt": num("Melting Pt"),
             "boilingPt": num("Boiling Pt"),
             "discovered": num("Discovered"),
+            "abundance": num("Crustal Abundance"),   # ppm by mass (scripts/seed_abundance.py)
             "equations": equations,   # page ids in the Equations [DB] (mirrored relation)
             "pageId": r["id"],
             "pageUrl": r.get("url"),
