@@ -106,8 +106,21 @@ Runs on the yeahborhood VPS as `kosmos.service` (port 3002) behind nginx with
 its own Let's Encrypt cert — configs in `deploy/`. Secrets live in
 `/opt/kosmos/.env` (see `.env.example`), never in this repo.
 
-To ship an update: copy `server.js` and `public/*.html` to `/opt/kosmos/`
-and `systemctl restart kosmos`.
+To ship an update, from the VPS clone at `/srv/kosmos`:
+
+```
+cp public/*.html /opt/kosmos/public/     # NOT /opt/kosmos — server.js reads public/
+cp server.js /opt/kosmos/                # only when routes or the API changed
+systemctl restart kosmos
+curl -s localhost:3002/health            # {"ok":true,...,"missing":[]}
+```
+
+The pages live in `/opt/kosmos/public/`, beside `server.js` at `/opt/kosmos/`.
+Copying the HTML flat into `/opt/kosmos/` silently deploys nothing: the files
+land where nothing reads them and the old pages keep being served. That is
+exactly what happened on 2026-08-15, and it only surfaced as an outage once a
+new route was added for a page that had never arrived. `/health` now reports
+which pages are missing, so check it after every deploy.
 
 ### Recipe: putting an app on a yeahborhood.com subdomain
 

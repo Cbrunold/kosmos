@@ -19,9 +19,19 @@ const PAGES = {
   '/equations': 'equations.html',
   '/constants': 'constants.html',
 };
-const CONTENT = Object.fromEntries(
-  Object.entries(PAGES).map(([route, file]) => [route, readFileSync(join(here, 'public', file))]),
-);
+// A page that failed to deploy should 404, not take the whole site down with it.
+// This used to be an unguarded readFileSync inside a map: adding /timeline to
+// PAGES and deploying the HTML to the wrong directory put the process into a
+// crash loop, and every other page went with it.
+const CONTENT = {};
+const missing = [];
+for (const [route, file] of Object.entries(PAGES)) {
+  try {
+    CONTENT[route] = readFileSync(join(here, 'public', file));
+  } catch (e) {
+    missing.push(`${route} (${file}: ${e.code || e.message})`);
+  }
+}
 
 const hasKey = Boolean(process.env.ANTHROPIC_API_KEY);
 const client = hasKey ? new Anthropic() : null;
@@ -137,7 +147,12 @@ const server = http.createServer(async (req, res) => {
     return res.end(CONTENT[route]);
   }
   if (req.method === 'GET' && req.url === '/health') {
-    return json(res, 200, { ok: true, analyzer: hasKey });
+    return json(res, 200, {
+      ok: missing.length === 0,
+      analyzer: hasKey,
+      pages: Object.keys(CONTENT).length,
+      missing,           // empty on a good deploy; names the files on a bad one
+    });
   }
   if (req.method === 'POST' && req.url === '/api/analyze') {
     if (!hasKey) return json(res, 503, { error: 'The analyzer is not configured yet (missing API key on the server).' });
@@ -172,5 +187,6 @@ const server = http.createServer(async (req, res) => {
 });
 
 server.listen(PORT, '127.0.0.1', () => {
-  console.log(`kosmos listening on 127.0.0.1:${PORT} (analyzer: ${hasKey ? 'enabled' : 'DISABLED — set ANTHROPIC_API_KEY'})`);
+  console.log(`kosmos listening on 127.0.0.1:${PORT} — ${Object.keys(CONTENT).length}/${Object.keys(PAGES).length} pages (analyzer: ${hasKey ? 'enabled' : 'DISABLED — set ANTHROPIC_API_KEY'})`);
+  if (missing.length) console.error(`MISSING PAGES, serving 404 for: ${missing.join(', ')}`);
 });
