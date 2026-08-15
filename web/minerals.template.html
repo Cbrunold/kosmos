@@ -58,6 +58,21 @@ __SHARED__
   .mrow .num { font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; font-variant-numeric: tabular-nums; color: var(--ink-2); }
   .mrow .els { font: 11px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; color: var(--muted); letter-spacing: 0.04em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .mrow .els b { color: var(--c-teal); font-weight: 600; }
+  .mrow .nmcell { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+  .mrow .eqs { display: flex; flex-wrap: wrap; gap: 3px; }
+  .meq {
+    font: 9.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    border: 1px solid var(--hairline);
+    border-left: 3px solid var(--c-amber);
+    color: var(--ink-2);
+    border-radius: 3px;
+    padding: 1px 6px 1px 5px;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .meq:hover { color: var(--ink); border-color: var(--ink-2); }
+  .mrow.hit { outline: 2px solid var(--c-teal); outline-offset: -2px; }
+  .elchip.eqfilter[aria-pressed="true"] { background: var(--c-amber); border-color: var(--c-amber); }
   .count { font: 11.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; color: var(--muted); margin: 8px 2px 24px; }
 
   .histo { display: flex; align-items: flex-end; gap: 4px; height: 90px; max-width: 560px; padding: 0 2px; }
@@ -116,13 +131,26 @@ __SHARED__
 <script id="data" type="application/json">__DATA__</script>
 <script>
   const D = JSON.parse(document.getElementById('data').textContent);
-  const M = D.minerals; // [name, mohs, sg, molarMass, "O Si Al ..."]
+  const M = D.minerals; // [name, mohs, sg, molarMass, "O Si Al ...", [equationIds]]
+  const EQ = D.equations || {};
+  const nWithEq = M.filter((m) => (m[5] || []).length).length;
   document.getElementById('lede').textContent =
     `${M.length.toLocaleString('en')} minerals with hardness, density, and elemental makeup — filter them by the elements they contain — plus the gemstone shelf and the taxonomies that organize it all.`;
 
-  // element filter chips
+  // element filter chips (+ an "has equations" filter first)
   const picked = new Set();
+  let onlyEq = false;
   const chipsBox = document.getElementById('elchips');
+  if (nWithEq) {
+    const b = document.createElement('button');
+    b.className = 'elchip eqfilter';
+    b.setAttribute('aria-pressed', 'false');
+    b.innerHTML = `⚛ with equations <span class="n"></span>`;
+    b.querySelector('.n').textContent = nWithEq;
+    b.title = 'Only minerals linked to equations on the Equations shelf';
+    b.addEventListener('click', () => { onlyEq = !onlyEq; b.setAttribute('aria-pressed', String(onlyEq)); render(); });
+    chipsBox.appendChild(b);
+  }
   for (const [sym, n] of D.topElements) {
     const b = document.createElement('button');
     b.className = 'elchip';
@@ -148,6 +176,7 @@ __SHARED__
     const needle = q.value.trim().toLowerCase();
     let list = M.filter((m) => {
       if (needle && !m[0].toLowerCase().includes(needle)) return false;
+      if (onlyEq && !(m[5] || []).length) return false;
       if (picked.size) {
         const els = ' ' + m[4] + ' ';
         for (const s of picked) if (!els.includes(' ' + s + ' ')) return false;
@@ -164,7 +193,20 @@ __SHARED__
     for (const m of list.slice(0, 250)) {
       const r = document.createElement('div');
       r.className = 'mrow';
-      const nm = document.createElement('span'); nm.className = 'nm'; nm.textContent = m[0];
+      r.dataset.name = m[0].toLowerCase();
+      const nm = document.createElement('span'); nm.className = 'nmcell';
+      const nmt = document.createElement('span'); nmt.className = 'nm'; nmt.textContent = m[0];
+      nm.appendChild(nmt);
+      const eqIds = (m[5] || []).map((id) => EQ[id]).filter(Boolean).sort((a, b) => a.name.localeCompare(b.name));
+      if (eqIds.length) {
+        const box = document.createElement('span'); box.className = 'eqs';
+        for (const q of eqIds) {
+          const a = document.createElement('a'); a.className = 'meq';
+          a.href = '/equations#' + q.slug; a.textContent = q.name; a.title = q.field || '';
+          box.appendChild(a);
+        }
+        nm.appendChild(box);
+      }
       const mo = document.createElement('span'); mo.className = 'num'; mo.textContent = m[1] ?? '—';
       const sg = document.createElement('span'); sg.className = 'num'; sg.textContent = m[2] ?? '—';
       const ma = document.createElement('span'); ma.className = 'num'; ma.textContent = m[3] != null ? (+m[3]).toFixed(1) : '—';
@@ -179,6 +221,18 @@ __SHARED__
         : `${list.length.toLocaleString('en')} match${list.length === 1 ? '' : 'es'}`;
   }
   render();
+
+  // deep links: /minerals#halite pre-fills the search and highlights the row
+  function openHash() {
+    const h = decodeURIComponent(location.hash.slice(1)).toLowerCase();
+    if (!h) return;
+    q.value = h;
+    render();
+    const row = rowsBox.querySelector(`.mrow[data-name="${CSS.escape(h)}"]`) || rowsBox.querySelector('.mrow');
+    if (row) { row.classList.add('hit'); row.scrollIntoView({ block: 'center', behavior: 'smooth' }); }
+  }
+  addEventListener('hashchange', openHash);
+  openHash();
 
   // hardness histogram (1-10, 9 bins)
   const withMohs = M.map((m) => m[1]).filter((v) => v != null);

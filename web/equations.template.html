@@ -57,6 +57,17 @@ __SHARED__
   .elink b { font-weight: 700; }
   .elink .nm { color: var(--ink-2); font-weight: 400; margin-left: 4px; }
   .elink:hover { border-color: var(--c-blue); }
+  .mlink {
+    font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    border: 1px solid color-mix(in oklab, var(--c-teal) 45%, var(--panel));
+    background: color-mix(in oklab, var(--c-teal) 12%, var(--panel));
+    color: var(--ink);
+    border-radius: 4px;
+    padding: 2px 7px;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .mlink:hover { border-color: var(--c-teal); }
   .eq.flash { outline: 2px solid var(--fc, var(--ring)); outline-offset: 3px; }
   @media (prefers-reduced-motion: no-preference) {
     .eq.flash { animation: eqflash 1.6s ease-out; }
@@ -76,9 +87,11 @@ __SHARED__
 
 <script id="data" type="application/json">__DATA__</script>
 <script id="eldata" type="application/json">__ELEMENTS__</script>
+<script id="mindata" type="application/json">__MINERALS__</script>
 <script>
   const E = JSON.parse(document.getElementById('data').textContent);
   const EL = JSON.parse(document.getElementById('eldata').textContent);
+  const MIN = JSON.parse(document.getElementById('mindata').textContent);
   const COLORS = {
     Mechanics: 'var(--c-blue)', Electromagnetism: 'var(--c-violet)', Thermodynamics: 'var(--c-amber)',
     Quantum: 'var(--c-teal)', 'Special Relativity': 'var(--c-red)', Mathematics: 'var(--c-pink)',
@@ -180,6 +193,22 @@ __SHARED__
           a.innerHTML = '<b></b><span class="nm"></span>';
           a.querySelector('b').textContent = el.sym;
           a.querySelector('.nm').textContent = el.name;
+          row.appendChild(a);
+        }
+        c.appendChild(row);
+      }
+      const mins = (e.Minerals || []).map((id) => MIN[id]).filter(Boolean).sort();
+      if (mins.length) {
+        const row = document.createElement('div');
+        row.className = 'rel';
+        const lbl = document.createElement('span'); lbl.className = 'lbl'; lbl.textContent = 'minerals';
+        row.appendChild(lbl);
+        for (const name of mins) {
+          const a = document.createElement('a');
+          a.className = 'mlink';
+          a.href = '/minerals#' + encodeURIComponent(name.toLowerCase());
+          a.title = `${name} · open in the minerals collection`;
+          a.textContent = name;
           row.appendChild(a);
         }
         c.appendChild(row);

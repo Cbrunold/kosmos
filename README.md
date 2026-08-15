@@ -30,6 +30,8 @@ scripts/build.py              web/ + data → public/*.html
 scripts/link_equations.py     Curated cross-link graph → the Equations DB "Related" relation
 scripts/link_elements.py      Equation → element graph → the Equations DB "Elements" relation
                               (dual-property: each element page gets an "Equations" backlink)
+scripts/link_minerals.py      Equation → mineral graph → the Equations DB "Minerals" relation
+                              (dual-property; only minerals present in the Minerals DB)
 deploy/                       systemd unit + nginx site as deployed on the VPS
 ```
 

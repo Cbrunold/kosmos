@@ -27,6 +27,14 @@ def compact(obj) -> str:
     return json.dumps(obj, separators=(",", ":"), ensure_ascii=False).replace("</", "<\\/")
 
 
+def slugify(s: str) -> str:
+    """Same slug rule as the equations page (card anchors) — keep in sync."""
+    import re
+    import unicodedata
+    s = unicodedata.normalize("NFD", s or "").encode("ascii", "ignore").decode().lower()
+    return re.sub(r"^-|-$", "", re.sub(r"[^a-z0-9]+", "-", s))
+
+
 def write_page(template: str, out: str, data=None, extra: dict | None = None):
     tpl = (WEB / template).read_text()
     tpl = tpl.replace("__SHARED__", SHARED)
@@ -57,12 +65,7 @@ def build_elements_page():
     tpl = head + js + sep + "\n"
     tpl = tpl.replace("__DATA__", compact(elements))
     # equation lookup for the element detail panel: pageId -> {name, field, slug}
-    import re as _re
-    def _slug(s):
-        import unicodedata
-        s = unicodedata.normalize("NFD", s or "").encode("ascii", "ignore").decode().lower()
-        return _re.sub(r"^-|-$", "", _re.sub(r"[^a-z0-9]+", "-", s))
-    eq_lookup = {e["id"]: {"name": e["Name"], "field": e.get("Field"), "slug": _slug(e["Name"])}
+    eq_lookup = {e["id"]: {"name": e["Name"], "field": e.get("Field"), "slug": slugify(e["Name"])}
                  for e in notion.get("equations", [])}
     tpl = tpl.replace("__EQUATIONS__", compact(eq_lookup))
     (PUB / "index.html").write_text(tpl)
@@ -113,6 +116,7 @@ def build_minerals_page():
             round(sg, 2) if sg is not None else None,
             round(m["Molar Mass"], 1) if m.get("Molar Mass") else None,
             " ".join(syms),
+            m.get("Equations") or [],   # equation page ids (mirrored relation)
         ])
     if unmapped:
         print("  note: unmapped mineral columns ignored:", sorted(unmapped))
@@ -127,8 +131,11 @@ def build_minerals_page():
         "system": sys_name.get((g.get("Crystal System") or [None])[0]),
     } for g in notion["gemstones"] if g.get("Name")]
 
+    eq_lookup = {e["id"]: {"name": e["Name"], "field": e.get("Field"), "slug": slugify(e["Name"])}
+                 for e in notion.get("equations", [])}
     data = {
         "minerals": rows,
+        "equations": eq_lookup,
         "topElements": contains.most_common(24),
         "gems": gems,
         "rocks": [{"name": r.get("Name"), "comment": r.get("Comment")} for r in notion["rockTypes"]],
@@ -238,8 +245,10 @@ if __name__ == "__main__":
     # __ELEMENTS__ is a pageId -> {sym,name} lookup for the Elements relation
     el_lookup = {e["pageId"]: {"sym": e["notation"], "name": e["name"], "z": e["atomicNumber"]}
                  for e in elements}
+    linked = {mid for e in notion.get("equations", []) for mid in (e.get("Minerals") or [])}
+    min_lookup = {m["id"]: m["Name"] for m in notion["minerals"] if m.get("Name") and m["id"] in linked}
     write_page("equations.template.html", "equations.html",
                [{k: v for k, v in e.items() if k not in ("url", "lastEdited")}
                 for e in notion.get("equations", [])],
-               extra={"__ELEMENTS__": compact(el_lookup)})
+               extra={"__ELEMENTS__": compact(el_lookup), "__MINERALS__": compact(min_lookup)})
     build_home(n_min, n_gems, n_classes, n_spectral, n_instr)
