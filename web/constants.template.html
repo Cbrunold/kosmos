@@ -1,0 +1,291 @@
+<title>Kosmos · Constants & Units</title>
+<style>
+__SHARED__
+
+  .controls { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 14px; }
+  .search {
+    background: var(--panel);
+    border: 1px solid var(--hairline);
+    border-radius: 6px;
+    padding: 7px 11px;
+    font: 13px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    color: var(--ink);
+    width: 230px;
+  }
+  .search::placeholder { color: var(--muted); }
+  .cchip {
+    font: 11px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    border: 1px solid var(--hairline);
+    background: transparent;
+    color: var(--ink-2);
+    border-radius: 99px;
+    padding: 3px 11px;
+    cursor: pointer;
+  }
+  .cchip[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--page); }
+
+  .defining {
+    background: color-mix(in oklab, var(--c-amber) 8%, var(--panel));
+    border: 1px solid color-mix(in oklab, var(--c-amber) 35%, var(--hairline));
+    border-radius: 10px;
+    padding: 16px 18px;
+    margin-bottom: 8px;
+  }
+  .defining p { margin: 0 0 12px; font-size: 12.5px; color: var(--ink-2); line-height: 1.55; max-width: 70ch; }
+
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 12px; }
+  .konst {
+    border-top: 3px solid var(--cc, var(--hairline));
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    scroll-margin-top: 16px;
+  }
+  .konst.flash { outline: 2px solid var(--cc, var(--ring)); outline-offset: 3px; }
+  .konst .top { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
+  .konst .sym {
+    font: 700 21px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+  .konst .nm { font-size: 12.5px; color: var(--ink-2); text-align: right; line-height: 1.35; }
+  .konst .val {
+    font: 15px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    font-variant-numeric: tabular-nums;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-bottom: 2px;
+  }
+  .konst .val .u { color: var(--ink-2); font-size: 12.5px; margin-left: 5px; }
+  .konst .unc { font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; color: var(--muted); }
+  .konst .unc .exact {
+    color: var(--c-green);
+    border: 1px solid color-mix(in oklab, var(--c-green) 45%, var(--panel));
+    border-radius: 99px;
+    padding: 1px 7px;
+    margin-right: 5px;
+    font-size: 9.5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .konst .note { font-size: 12px; color: var(--ink-2); line-height: 1.5; margin: 0; flex: 1; }
+  .konst .eqs { display: flex; flex-wrap: wrap; gap: 3px; align-items: baseline; }
+  .konst .eqs .lbl { font: 9px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-right: 3px; }
+  .keq {
+    font: 9.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    border: 1px solid var(--hairline);
+    border-left: 3px solid var(--c-amber);
+    color: var(--ink-2);
+    border-radius: 3px;
+    padding: 1px 6px 1px 5px;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .keq:hover { color: var(--ink); border-color: var(--ink-2); }
+
+  table.units { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+  table.units th {
+    text-align: left;
+    font: 10px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border-bottom: 1px solid var(--hairline);
+    padding: 6px 10px 6px 0;
+    font-weight: 400;
+  }
+  table.units td { padding: 6px 10px 6px 0; border-bottom: 1px solid color-mix(in oklab, var(--hairline) 45%, var(--panel)); vertical-align: baseline; }
+  table.units td.sym { font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; font-weight: 700; white-space: nowrap; width: 58px; }
+  table.units td.nm { white-space: nowrap; }
+  table.units td.q { color: var(--ink-2); white-space: nowrap; }
+  table.units td.def { color: var(--muted); font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; font-size: 11.5px; }
+  .tablewrap { background: var(--panel); border: 1px solid var(--hairline); border-radius: 10px; padding: 4px 16px 8px; overflow-x: auto; }
+
+  .prefixes { display: grid; grid-template-columns: repeat(auto-fill, minmax(128px, 1fr)); gap: 6px; }
+  .pfx {
+    background: var(--panel);
+    border: 1px solid var(--hairline);
+    border-radius: 6px;
+    padding: 6px 9px;
+    font: 11.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    display: flex;
+    justify-content: space-between;
+    gap: 6px;
+  }
+  .pfx b { font-size: 13px; }
+  .pfx .f { color: var(--muted); font-variant-numeric: tabular-nums; }
+  .count { font: 11.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; color: var(--muted); margin: 10px 2px 0; }
+</style>
+
+<nav class="knav"><a href="/">KOSMOS</a><span>/</span><span class="cur">Constants &amp; Units</span></nav>
+<h1 class="ktitle">Constants &amp; Units</h1>
+<p class="klede">The numbers the rest of this site is written in — with their uncertainties, and an honest note where physics disagrees with itself. Values are CODATA 2022, IAU nominal for solar quantities, and Planck 2018 / SH0ES 2022 for cosmology.</p>
+
+<div class="controls">
+  <input class="search" id="q" type="search" placeholder="find a constant…" aria-label="Find a constant" />
+  <div id="cats" style="display:flex;flex-wrap:wrap;gap:5px"></div>
+</div>
+
+<h2 class="ksec" id="defining">The seven that define everything else</h2>
+<div class="defining">
+  <p>Since 2019 the SI has no artefacts and no measured base units. Seven constants are <em>fixed by decree</em> — assigned exact values with zero uncertainty — and every unit follows from them. The kilogram is no longer a cylinder in Paris; it is whatever makes Planck's constant come out right.</p>
+  <div class="grid" id="defgrid"></div>
+</div>
+
+<h2 class="ksec" id="constants">Constants</h2>
+<div class="grid" id="grid"></div>
+<p class="count" id="count"></p>
+
+<h2 class="ksec" id="units">SI base units</h2>
+<div class="tablewrap"><table class="units" id="base"></table></div>
+
+<h2 class="ksec">Derived and accepted units</h2>
+<div class="tablewrap"><table class="units" id="derived"></table></div>
+
+<h2 class="ksec">Astronomy and other units in use here</h2>
+<div class="tablewrap"><table class="units" id="other"></table></div>
+
+<h2 class="ksec" id="prefixes">SI prefixes</h2>
+<div class="prefixes" id="pfx"></div>
+
+<p class="kfoot">From the Constants and Units databases in Notion. Uncertainties are the standard (1σ) values; “exact” means fixed by definition, not merely well measured. The two Hubble constants are both listed on purpose — that disagreement is the Hubble tension, and pretending it away would be dishonest.</p>
+
+<script id="data" type="application/json">__DATA__</script>
+<script>
+  const D = JSON.parse(document.getElementById('data').textContent);
+  const EQ = D.equations || {};
+  const COLORS = {
+    'Defining (SI)': 'var(--c-amber)', Universal: 'var(--c-blue)', Electromagnetic: 'var(--c-violet)',
+    'Atomic & nuclear': 'var(--c-teal)', Thermodynamic: 'var(--c-red)', Astronomical: 'var(--c-bronze)',
+    Cosmological: 'var(--c-pink)', Mathematical: 'var(--c-green)',
+  };
+  const slug = (s) => (s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '')
+    .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+
+  function card(c) {
+    const el = document.createElement('article');
+    el.className = 'kcard konst';
+    el.id = slug(c.Symbol && c.Symbol !== '—' ? c.Symbol + '-' + c.Name : c.Name);
+    el.style.setProperty('--cc', COLORS[c.Category] || 'var(--muted)');
+    const top = document.createElement('div'); top.className = 'top';
+    const sym = document.createElement('span'); sym.className = 'sym'; sym.textContent = c.Symbol || '';
+    const nm = document.createElement('span'); nm.className = 'nm'; nm.textContent = c.Name;
+    top.append(sym, nm);
+    const val = document.createElement('div'); val.className = 'val';
+    val.textContent = c.Value || '';
+    if (c.Unit && c.Unit !== '—') { const u = document.createElement('span'); u.className = 'u'; u.textContent = c.Unit; val.appendChild(u); }
+    const unc = document.createElement('div'); unc.className = 'unc';
+    if (c.Exact) { const b = document.createElement('span'); b.className = 'exact'; b.textContent = 'exact'; unc.appendChild(b); }
+    unc.appendChild(document.createTextNode(c.Uncertainty || ''));
+    const note = document.createElement('p'); note.className = 'note'; note.textContent = c.Note || '';
+    el.append(top, val, unc, note);
+    const eqs = (c.Equations || []).map((id) => EQ[id]).filter(Boolean).sort((a, b) => a.name.localeCompare(b.name));
+    if (eqs.length) {
+      const row = document.createElement('div'); row.className = 'eqs';
+      const l = document.createElement('span'); l.className = 'lbl'; l.textContent = 'appears in';
+      row.appendChild(l);
+      for (const q of eqs) {
+        const a = document.createElement('a');
+        a.className = 'keq'; a.href = '/equations#' + q.slug; a.textContent = q.name; a.title = q.field || '';
+        row.appendChild(a);
+      }
+      el.appendChild(row);
+    }
+    return el;
+  }
+
+  // defining seven
+  const defining = D.constants.filter((c) => c.Category === 'Defining (SI)');
+  const defgrid = document.getElementById('defgrid');
+  for (const c of defining) defgrid.appendChild(card(c));
+
+  // the rest, filterable
+  const rest = D.constants.filter((c) => c.Category !== 'Defining (SI)');
+  const cats = [...new Set(rest.map((c) => c.Category).filter(Boolean))];
+  let active = null;
+  const catsBox = document.getElementById('cats');
+  const all = document.createElement('button');
+  all.className = 'cchip'; all.textContent = 'all'; all.setAttribute('aria-pressed', 'true');
+  all.addEventListener('click', () => { active = null; sync(); });
+  catsBox.appendChild(all);
+  for (const c of cats) {
+    const b = document.createElement('button');
+    b.className = 'cchip'; b.textContent = c; b.dataset.cat = c; b.setAttribute('aria-pressed', 'false');
+    b.addEventListener('click', () => { active = active === c ? null : c; sync(); });
+    catsBox.appendChild(b);
+  }
+  function sync() {
+    for (const b of catsBox.children) {
+      b.setAttribute('aria-pressed', String(b.dataset.cat ? b.dataset.cat === active : active === null));
+    }
+    render();
+  }
+  const grid = document.getElementById('grid');
+  const q = document.getElementById('q');
+  q.addEventListener('input', render);
+  function render() {
+    const needle = q.value.trim().toLowerCase();
+    grid.innerHTML = '';
+    let n = 0;
+    for (const c of rest) {
+      if (active && c.Category !== active) continue;
+      if (needle && !(`${c.Name} ${c.Symbol} ${c.Unit} ${c.Note}`.toLowerCase().includes(needle))) continue;
+      grid.appendChild(card(c));
+      n++;
+    }
+    document.getElementById('count').textContent =
+      `${n} of ${rest.length} constants shown · ${defining.length} defining constants above`;
+  }
+  render();
+
+  // units tables
+  function table(el, rows, cols) {
+    const thead = document.createElement('thead');
+    const tr = document.createElement('tr');
+    for (const c of cols) { const th = document.createElement('th'); th.textContent = c; tr.appendChild(th); }
+    thead.appendChild(tr);
+    const tbody = document.createElement('tbody');
+    for (const r of rows) {
+      const row = document.createElement('tr');
+      for (const [cls, txt] of r) {
+        const td = document.createElement('td'); td.className = cls; td.textContent = txt || '';
+        row.appendChild(td);
+      }
+      tbody.appendChild(row);
+    }
+    el.append(thead, tbody);
+  }
+  const U = D.units;
+  const pick = (kind) => U.filter((u) => u.Kind === kind);
+  table(document.getElementById('base'),
+    pick('SI base').map((u) => [['sym', u.Symbol], ['nm', u.Name], ['q', u.Quantity], ['def', u.Definition]]),
+    ['symbol', 'unit', 'quantity', 'definition since 2019']);
+  table(document.getElementById('derived'),
+    [...pick('SI derived'), ...pick('Accepted with SI')].map((u) => [['sym', u.Symbol], ['nm', u.Name], ['q', u.Quantity], ['def', u.Definition]]),
+    ['symbol', 'unit', 'quantity', 'in SI terms']);
+  table(document.getElementById('other'),
+    [...pick('Astronomy'), ...pick('Other')].map((u) => [['sym', u.Symbol], ['nm', u.Name], ['q', u.Quantity], ['def', u.Definition]]),
+    ['symbol', 'unit', 'quantity', 'value']);
+
+  const pfxBox = document.getElementById('pfx');
+  for (const u of pick('SI prefix')) {
+    const d = document.createElement('div'); d.className = 'pfx';
+    const l = document.createElement('span');
+    l.innerHTML = '<b></b> ';
+    l.querySelector('b').textContent = u.Symbol;
+    l.appendChild(document.createTextNode(u.Name));
+    const f = document.createElement('span'); f.className = 'f'; f.textContent = u.Definition;
+    d.append(l, f);
+    pfxBox.appendChild(d);
+  }
+
+  function openHash() {
+    const el = location.hash.length > 1 && document.getElementById(decodeURIComponent(location.hash.slice(1)));
+    if (!el) return;
+    el.scrollIntoView({ block: 'center', behavior: 'smooth' });
+    el.classList.add('flash');
+    setTimeout(() => el.classList.remove('flash'), 1700);
+  }
+  addEventListener('hashchange', openHash);
+  openHash();
+</script>

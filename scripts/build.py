@@ -249,6 +249,9 @@ def build_home(n_min, n_gems, n_classes, n_spectral, n_instr):
         "__N_EQ__": len(eqs),
         "__N_EQFIELDS__": len({e.get("Field") for e in eqs if e.get("Field")}),
         "__EQ_OLDEST__": oldest_str,
+        "__N_CONST__": len(notion.get("constants", [])),
+        "__N_EXACT__": sum(1 for c in notion.get("constants", []) if c.get("Exact")),
+        "__N_UNITS__": sum(1 for u in notion.get("units", []) if u.get("Kind") != "SI prefix"),
         "__SYNC_DATE__": sync,
     })
 
@@ -282,6 +285,19 @@ if __name__ == "__main__":
     for t in notion["theories"]:
         if t.get("Name"):
             cosmos_lookup[t["id"]] = {"name": t["Name"], "kind": "theory", "href": "/theories#" + slugify(t["Name"])}
+    # constants & units
+    order = ["Defining (SI)", "Universal", "Electromagnetic", "Atomic & nuclear",
+             "Thermodynamic", "Astronomical", "Cosmological", "Mathematical"]
+    consts = sorted(
+        [{k: v for k, v in c.items() if k not in ("url", "lastEdited", "id")} | {"Equations": c.get("Equations") or []}
+         for c in notion.get("constants", [])],
+        key=lambda c: (order.index(c["Category"]) if c.get("Category") in order else 99, c.get("Name") or ""))
+    write_page("constants.template.html", "constants.html",
+               {"constants": consts,
+                "units": [{k: v for k, v in u.items() if k not in ("url", "lastEdited", "id")}
+                          for u in notion.get("units", [])],
+                "equations": eq_lookup_all()})
+
     write_page("equations.template.html", "equations.html",
                [{k: v for k, v in e.items() if k not in ("url", "lastEdited")}
                 for e in notion.get("equations", [])],

@@ -17,6 +17,7 @@ truth for code and the normalised data snapshots. Sync is one-way, Notion → re
 | `/forces`    | The four fundamental interactions |
 | `/theories`  | Theory shelf with status tracking (accepted / speculative / disproved) |
 | `/equations` | Canonical equations with symbols decoded, filterable by field |
+| `/constants` | CODATA constants with uncertainties, SI units, prefixes |
 
 ## Layout
 
@@ -34,6 +35,9 @@ scripts/link_minerals.py      Equation → mineral graph → the Equations DB "M
                               (dual-property; only minerals present in the Minerals DB)
 scripts/link_cosmos.py        Equation → spectral types / celestial objects / instruments /
                               theories — four dual-property relations, one script
+scripts/seed_constants.py     Creates + seeds the Constants and Units databases (CODATA 2022,
+                              IAU nominal, Planck 2018 / SH0ES 2022)
+scripts/link_constants.py     Constant → equation graph ("appears in" chips)
 deploy/                       systemd unit + nginx site as deployed on the VPS
 ```
 

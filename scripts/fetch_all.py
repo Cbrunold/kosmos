@@ -31,6 +31,8 @@ SOURCES = {
     "silicateMinerals": "e43f9009-2f39-4aef-94ba-09b3dc3d0ce9",
     "rockTypes": "5680d212-c2dd-4668-be9e-2065b850110b",
     "equations": "638fda32-4a6d-4d65-8349-433ce4f0b698",
+    "constants": "22e47e69-84c2-44e7-ae04-f1bf3dc80ebe",
+    "units": "a18aa2b7-8300-4ea0-9da4-04f39b3afcc8",
 }
 
 

@@ -1,0 +1,478 @@
+<title>Kosmos · Constants & Units</title>
+<style>
+  :root {
+    color-scheme: light;
+    --page: #f2f4f5;
+    --panel: #fbfcfc;
+    --ink: #17212b;
+    --ink-2: #4c5a66;
+    --muted: #8595a1;
+    --hairline: #dde4e8;
+    --ring: rgba(23, 33, 43, 0.85);
+    --c-blue: #2a78d6;
+    --c-teal: #0f9b9b;
+    --c-red: #c23434;
+    --c-amber: #e39a00;
+    --c-green: #33a047;
+    --c-violet: #6b50c8;
+    --c-pink: #e05e8f;
+    --c-bronze: #8a5314;
+    --c-cyan: #0b87b8;
+    --c-indigo: #4a58c8;
+    --c-olive: #737a16;
+    --c-rust: #bd5b1c;
+    --c-plum: #a23a9a;
+    --c-slate: #52688a;
+    --c-wine: #8f2b4e;
+    --c-forest: #1f7050;
+    --c-steel: #4a6474;
+    --c-fuchsia: #b81f7a;
+    --c-lime: #5f9e14;
+    --c-yellow: #a89a00;
+    --c-aubergine: #702f9e;
+    --c-navy: #24457e;
+    --c-mint: #0c8f66;
+    --c-mauve: #8d5765;
+    --c-coral: #c14f36;
+    --c-periwinkle: #5e6fd0;
+    --c-ice: #2f93bb;
+    --c-storm: #5c5a7a;
+    --c-ochre: #96690f;
+    --c-tangerine: #d4700a;
+    --c-clay: #9c6249;
+    --c-deepsea: #14586e;
+    --c-cerulean: #1a7fc4;
+    --c-gold: #b07d12;
+    --c-ember: #c8461a;
+    --c-terracotta: #a8502f;
+    --c-silver: #6b7884;
+    --c-moss: #4f7a1e;
+    --c-lavender: #7d5fc0;
+    --heat: #2a78d6;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --page: #0e1116;
+      --panel: #14181d;
+      --ink: #e9edf2;
+      --ink-2: #aab8c4;
+      --muted: #74828e;
+      --hairline: #242b33;
+      --ring: rgba(233, 237, 242, 0.9);
+      --c-blue: #4a90e8;
+      --c-teal: #0aa085;
+      --c-red: #e75570;
+      --c-amber: #b98800;
+      --c-green: #46a850;
+      --c-violet: #8b74e0;
+      --c-pink: #dc5f83;
+      --c-bronze: #a4671f;
+      --c-cyan: #38a8d8;
+      --heat: #5598e7;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --page: #0e1116;
+    --panel: #14181d;
+    --ink: #e9edf2;
+    --ink-2: #aab8c4;
+    --muted: #74828e;
+    --hairline: #242b33;
+    --ring: rgba(233, 237, 242, 0.9);
+    --c-blue: #4a90e8;
+    --c-teal: #0aa085;
+    --c-red: #e75570;
+    --c-amber: #b98800;
+    --c-green: #46a850;
+    --c-violet: #8b74e0;
+    --c-pink: #dc5f83;
+    --c-bronze: #a4671f;
+    --c-cyan: #38a8d8;
+    --c-indigo: #7b87e8;
+    --c-olive: #9aa32e;
+    --c-rust: #d97a3c;
+    --c-plum: #c85fc0;
+    --c-slate: #8ca3c0;
+    --c-wine: #c25572;
+    --c-forest: #3f9a72;
+    --c-steel: #83a0b2;
+    --c-fuchsia: #d94fa3;
+    --c-lime: #93bf3a;
+    --c-yellow: #ccc039;
+    --c-aubergine: #a374d6;
+    --c-navy: #7f9bd4;
+    --c-mint: #3fbd92;
+    --c-mauve: #bd8a98;
+    --c-coral: #e58a76;
+    --c-periwinkle: #98a5ef;
+    --c-ice: #8ed2ea;
+    --c-storm: #918fb5;
+    --c-ochre: #bb8f2e;
+    --c-tangerine: #ee9440;
+    --c-clay: #c9967e;
+    --c-deepsea: #4c9cb4;
+    --c-cerulean: #5fb0f0;
+    --c-gold: #d9a441;
+    --c-ember: #e8683a;
+    --c-terracotta: #d1795a;
+    --c-silver: #a4b0bc;
+    --c-moss: #7fa84a;
+    --c-lavender: #b49ae6;
+    --heat: #5598e7;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--page);
+    color: var(--ink);
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    margin: 0;
+    padding: 20px clamp(14px, 3vw, 40px) 56px;
+  }
+  .mono { font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; }
+
+  .knav {
+    font: 11px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 18px;
+    display: flex;
+    gap: 8px;
+    align-items: baseline;
+  }
+  .knav a { color: var(--ink-2); text-decoration: none; }
+  .knav a:hover { color: var(--ink); }
+  .knav .cur { color: var(--ink); }
+
+  h1.ktitle {
+    font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    font-size: clamp(22px, 3vw, 30px);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin: 0 0 6px;
+    text-wrap: balance;
+  }
+  .klede { font-size: 14px; color: var(--ink-2); max-width: 62ch; line-height: 1.55; margin: 0 0 22px; }
+  .klede a { color: inherit; }
+
+  h2.ksec {
+    font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 34px 0 12px;
+    border-bottom: 1px solid var(--hairline);
+    padding-bottom: 7px;
+  }
+
+  .kcard {
+    background: var(--panel);
+    border: 1px solid var(--hairline);
+    border-radius: 10px;
+    padding: 16px;
+  }
+  .kchip {
+    font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    border: 1px solid var(--hairline);
+    color: var(--ink-2);
+    border-radius: 99px;
+    padding: 2px 9px;
+    white-space: nowrap;
+  }
+  .knote { font-size: 11px; color: var(--muted); line-height: 1.5; }
+  .kfoot { margin-top: 42px; font-size: 11px; color: var(--muted); border-top: 1px solid var(--hairline); padding-top: 12px; }
+  .kfoot a { color: inherit; }
+  a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; }
+
+
+  .controls { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 14px; }
+  .search {
+    background: var(--panel);
+    border: 1px solid var(--hairline);
+    border-radius: 6px;
+    padding: 7px 11px;
+    font: 13px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    color: var(--ink);
+    width: 230px;
+  }
+  .search::placeholder { color: var(--muted); }
+  .cchip {
+    font: 11px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    border: 1px solid var(--hairline);
+    background: transparent;
+    color: var(--ink-2);
+    border-radius: 99px;
+    padding: 3px 11px;
+    cursor: pointer;
+  }
+  .cchip[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--page); }
+
+  .defining {
+    background: color-mix(in oklab, var(--c-amber) 8%, var(--panel));
+    border: 1px solid color-mix(in oklab, var(--c-amber) 35%, var(--hairline));
+    border-radius: 10px;
+    padding: 16px 18px;
+    margin-bottom: 8px;
+  }
+  .defining p { margin: 0 0 12px; font-size: 12.5px; color: var(--ink-2); line-height: 1.55; max-width: 70ch; }
+
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 12px; }
+  .konst {
+    border-top: 3px solid var(--cc, var(--hairline));
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    scroll-margin-top: 16px;
+  }
+  .konst.flash { outline: 2px solid var(--cc, var(--ring)); outline-offset: 3px; }
+  .konst .top { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
+  .konst .sym {
+    font: 700 21px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+  .konst .nm { font-size: 12.5px; color: var(--ink-2); text-align: right; line-height: 1.35; }
+  .konst .val {
+    font: 15px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    font-variant-numeric: tabular-nums;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-bottom: 2px;
+  }
+  .konst .val .u { color: var(--ink-2); font-size: 12.5px; margin-left: 5px; }
+  .konst .unc { font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; color: var(--muted); }
+  .konst .unc .exact {
+    color: var(--c-green);
+    border: 1px solid color-mix(in oklab, var(--c-green) 45%, var(--panel));
+    border-radius: 99px;
+    padding: 1px 7px;
+    margin-right: 5px;
+    font-size: 9.5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .konst .note { font-size: 12px; color: var(--ink-2); line-height: 1.5; margin: 0; flex: 1; }
+  .konst .eqs { display: flex; flex-wrap: wrap; gap: 3px; align-items: baseline; }
+  .konst .eqs .lbl { font: 9px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-right: 3px; }
+  .keq {
+    font: 9.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    border: 1px solid var(--hairline);
+    border-left: 3px solid var(--c-amber);
+    color: var(--ink-2);
+    border-radius: 3px;
+    padding: 1px 6px 1px 5px;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .keq:hover { color: var(--ink); border-color: var(--ink-2); }
+
+  table.units { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+  table.units th {
+    text-align: left;
+    font: 10px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border-bottom: 1px solid var(--hairline);
+    padding: 6px 10px 6px 0;
+    font-weight: 400;
+  }
+  table.units td { padding: 6px 10px 6px 0; border-bottom: 1px solid color-mix(in oklab, var(--hairline) 45%, var(--panel)); vertical-align: baseline; }
+  table.units td.sym { font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; font-weight: 700; white-space: nowrap; width: 58px; }
+  table.units td.nm { white-space: nowrap; }
+  table.units td.q { color: var(--ink-2); white-space: nowrap; }
+  table.units td.def { color: var(--muted); font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; font-size: 11.5px; }
+  .tablewrap { background: var(--panel); border: 1px solid var(--hairline); border-radius: 10px; padding: 4px 16px 8px; overflow-x: auto; }
+
+  .prefixes { display: grid; grid-template-columns: repeat(auto-fill, minmax(128px, 1fr)); gap: 6px; }
+  .pfx {
+    background: var(--panel);
+    border: 1px solid var(--hairline);
+    border-radius: 6px;
+    padding: 6px 9px;
+    font: 11.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    display: flex;
+    justify-content: space-between;
+    gap: 6px;
+  }
+  .pfx b { font-size: 13px; }
+  .pfx .f { color: var(--muted); font-variant-numeric: tabular-nums; }
+  .count { font: 11.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; color: var(--muted); margin: 10px 2px 0; }
+</style>
+
+<nav class="knav"><a href="/">KOSMOS</a><span>/</span><span class="cur">Constants &amp; Units</span></nav>
+<h1 class="ktitle">Constants &amp; Units</h1>
+<p class="klede">The numbers the rest of this site is written in — with their uncertainties, and an honest note where physics disagrees with itself. Values are CODATA 2022, IAU nominal for solar quantities, and Planck 2018 / SH0ES 2022 for cosmology.</p>
+
+<div class="controls">
+  <input class="search" id="q" type="search" placeholder="find a constant…" aria-label="Find a constant" />
+  <div id="cats" style="display:flex;flex-wrap:wrap;gap:5px"></div>
+</div>
+
+<h2 class="ksec" id="defining">The seven that define everything else</h2>
+<div class="defining">
+  <p>Since 2019 the SI has no artefacts and no measured base units. Seven constants are <em>fixed by decree</em> — assigned exact values with zero uncertainty — and every unit follows from them. The kilogram is no longer a cylinder in Paris; it is whatever makes Planck's constant come out right.</p>
+  <div class="grid" id="defgrid"></div>
+</div>
+
+<h2 class="ksec" id="constants">Constants</h2>
+<div class="grid" id="grid"></div>
+<p class="count" id="count"></p>
+
+<h2 class="ksec" id="units">SI base units</h2>
+<div class="tablewrap"><table class="units" id="base"></table></div>
+
+<h2 class="ksec">Derived and accepted units</h2>
+<div class="tablewrap"><table class="units" id="derived"></table></div>
+
+<h2 class="ksec">Astronomy and other units in use here</h2>
+<div class="tablewrap"><table class="units" id="other"></table></div>
+
+<h2 class="ksec" id="prefixes">SI prefixes</h2>
+<div class="prefixes" id="pfx"></div>
+
+<p class="kfoot">From the Constants and Units databases in Notion. Uncertainties are the standard (1σ) values; “exact” means fixed by definition, not merely well measured. The two Hubble constants are both listed on purpose — that disagreement is the Hubble tension, and pretending it away would be dishonest.</p>
+
+<script id="data" type="application/json">{"constants":[{"Unit":"mol⁻¹","Value":"6.022 140 76 × 10²³","Exact":true,"Note":"Fixes the mole. How many entities are in a mole — now a defined count, not a measurement.","Symbol":"N_A","Category":"Defining (SI)","Equations":["3bbe5275-7b5c-819d-afd0-d0876756a85c","3bbe5275-7b5c-81a2-9653-e0a84065d7fa"],"Numeric":6.02214076e+23,"Uncertainty":"exact","Name":"Avogadro constant"},{"Unit":"J K⁻¹","Value":"1.380 649 × 10⁻²³","Exact":true,"Note":"Fixes the kelvin. The exchange rate between temperature and energy per degree of freedom.","Symbol":"k_B","Category":"Defining (SI)","Equations":["3bbe5275-7b5c-8122-95c0-f19b5930072e","3bbe5275-7b5c-813f-974b-c000af0892df","3bbe5275-7b5c-8149-a0e6-d2bf67397229","3bbe5275-7b5c-816c-8a1d-c37099e0ec76","3bbe5275-7b5c-816e-b97a-fdbc445f99b7","3bbe5275-7b5c-81e1-96c0-c6157aaee509","3bbe5275-7b5c-81ea-b557-e046acec2182","3bbe5275-7b5c-81f5-a5b1-f6059d15a3b7","3bde5275-7b5c-811f-9033-f21e2c8a2791"],"Numeric":1.380649e-23,"Uncertainty":"exact","Name":"Boltzmann constant"},{"Unit":"Hz","Value":"9 192 631 770","Exact":true,"Note":"Fixes the second: the tick of the caesium atomic clock every other unit is built on.","Symbol":"Δν_Cs","Category":"Defining (SI)","Equations":[],"Numeric":9192631770,"Uncertainty":"exact","Name":"Caesium hyperfine frequency"},{"Unit":"C","Value":"1.602 176 634 × 10⁻¹⁹","Exact":true,"Note":"Fixes the ampere. The charge of a proton; quarks carry thirds of it.","Symbol":"e","Category":"Defining (SI)","Equations":["3bbe5275-7b5c-811f-8db4-cc95acf776dd","3bbe5275-7b5c-816c-8a1d-c37099e0ec76","3bbe5275-7b5c-819d-a258-d3e7dec3b639","3bbe5275-7b5c-81b2-ae34-f800aecd57e1","3bbe5275-7b5c-81de-99a6-fb82df0033a9","3bbe5275-7b5c-81ee-9b16-dcfba043e1f3","3bde5275-7b5c-814b-9628-f090f0207a42"],"Numeric":1.602176634e-19,"Uncertainty":"exact","Name":"Elementary charge"},{"Unit":"lm W⁻¹","Value":"683","Exact":true,"Note":"Fixes the candela — the one SI base unit defined with human eyes in mind (555 nm green).","Symbol":"K_cd","Category":"Defining (SI)","Equations":[],"Numeric":683,"Uncertainty":"exact","Name":"Luminous efficacy"},{"Unit":"J s","Value":"6.626 070 15 × 10⁻³⁴","Exact":true,"Note":"Fixes the kilogram since 2019. The quantum of action — the size of the graininess in nature.","Symbol":"h","Category":"Defining (SI)","Equations":["3bbe5275-7b5c-8140-a1d4-f7bff1df0334","3bbe5275-7b5c-8170-bd5f-c796d7589e08","3bbe5275-7b5c-818e-8ccf-c5b952277817","3bbe5275-7b5c-81f5-a5b1-f6059d15a3b7","3bde5275-7b5c-811f-9033-f21e2c8a2791","3bde5275-7b5c-8131-93f6-c15c214946b1"],"Numeric":6.62607015e-34,"Uncertainty":"exact","Name":"Planck constant"},{"Unit":"m s⁻¹","Value":"299 792 458","Exact":true,"Note":"Fixes the metre. The universal speed limit and the conversion factor between space and time.","Symbol":"c","Category":"Defining (SI)","Equations":["3bbe5275-7b5c-811a-baed-c686bb16bbc3","3bbe5275-7b5c-811f-8db4-cc95acf776dd","3bbe5275-7b5c-812f-8b13-c3f401ee3a47","3bbe5275-7b5c-815f-9d30-c0e44b4a7608","3bbe5275-7b5c-817c-96dd-ec4cb629f30c","3bbe5275-7b5c-819b-8730-c682ecb3e756","3bbe5275-7b5c-81c7-b3a7-decb4402d1ab","3bbe5275-7b5c-81dd-a75c-d703f0a640b3","3bbe5275-7b5c-81e7-b649-f021e6e295c6","3bbe5275-7b5c-81ef-b92b-d35cea11b9be","3bde5275-7b5c-811f-9033-f21e2c8a2791"],"Numeric":299792458,"Uncertainty":"exact","Name":"Speed of light in vacuum"},{"Unit":"m³ kg⁻¹ s⁻²","Value":"6.674 30(15) × 10⁻¹¹","Exact":false,"Note":"The worst-measured fundamental constant by far — gravity is too weak to pin down precisely.","Symbol":"G","Category":"Universal","Equations":["3bbe5275-7b5c-810a-8065-f03f5253cda9","3bbe5275-7b5c-811a-baed-c686bb16bbc3","3bbe5275-7b5c-811b-8297-ce47b2c5d614","3bbe5275-7b5c-813a-84a7-ea08528b3c93","3bbe5275-7b5c-815f-8f49-fde9509c1e77","3bbe5275-7b5c-818c-bf76-d40ebcb485e3","3bbe5275-7b5c-81a1-9543-ed416dd7caa2","3bbe5275-7b5c-81c7-b3a7-decb4402d1ab","3bbe5275-7b5c-81c8-8eb1-cdc2179de58e","3bbe5275-7b5c-81dd-a75c-d703f0a640b3","3bbe5275-7b5c-81ef-b92b-d35cea11b9be"],"Numeric":6.6743e-11,"Uncertainty":"±0.000 15 × 10⁻¹¹ (2.2 × 10⁻⁵ relative)","Name":"Newtonian constant of gravitation"},{"Unit":"m","Value":"1.616 255(18) × 10⁻³⁵","Exact":false,"Note":"Where quantum mechanics and gravity must merge; ~10²⁰ times smaller than a proton.","Symbol":"l_P","Category":"Universal","Equations":[],"Numeric":1.616255e-35,"Uncertainty":"±1.1 × 10⁻⁵ relative","Name":"Planck length"},{"Unit":"kg","Value":"2.176 434(24) × 10⁻⁸","Exact":false,"Note":"Surprisingly macroscopic — about the mass of a flea's egg, or 10¹⁹ protons.","Symbol":"m_P","Category":"Universal","Equations":[],"Numeric":2.176434e-08,"Uncertainty":"±1.1 × 10⁻⁵ relative","Name":"Planck mass"},{"Unit":"K","Value":"1.416 784(16) × 10³²","Exact":false,"Note":"The hottest meaningful temperature; reached, if ever, at the first instant of the Big Bang.","Symbol":"T_P","Category":"Universal","Equations":[],"Numeric":1.416784e+32,"Uncertainty":"±1.1 × 10⁻⁵ relative","Name":"Planck temperature"},{"Unit":"s","Value":"5.391 247(60) × 10⁻⁴⁴","Exact":false,"Note":"Light crossing a Planck length. No theory describes the universe before one of these.","Symbol":"t_P","Category":"Universal","Equations":[],"Numeric":5.391247e-44,"Uncertainty":"±1.1 × 10⁻⁵ relative","Name":"Planck time"},{"Unit":"J s","Value":"1.054 571 817… × 10⁻³⁴","Exact":true,"Note":"Planck's constant per radian. The natural unit of angular momentum and the ℏ in every quantum equation.","Symbol":"ℏ","Category":"Universal","Equations":["3bbe5275-7b5c-8109-a4a6-c5b903b6e05f","3bbe5275-7b5c-811a-a60d-eddf236c3a8c","3bbe5275-7b5c-811f-8db4-cc95acf776dd","3bbe5275-7b5c-812f-8b13-c3f401ee3a47","3bbe5275-7b5c-815d-b970-fb2a7877db25","3bbe5275-7b5c-81ce-aa9b-fb9384fc46ee","3bbe5275-7b5c-81dd-a75c-d703f0a640b3"],"Numeric":1.054571817e-34,"Uncertainty":"exact (h/2π)","Name":"Reduced Planck constant"},{"Unit":"m s⁻²","Value":"9.806 65","Exact":true,"Note":"The conventional surface gravity of Earth — a definition, not a measurement; real values vary by ~0.5%.","Symbol":"g₀","Category":"Universal","Equations":["3bde5275-7b5c-81b5-b5ba-ef8abb9338cb"],"Numeric":9.80665,"Uncertainty":"exact (defined)","Name":"Standard gravity"},{"Unit":"Ω","Value":"376.730 313 412(59)","Exact":false,"Note":"The vacuum's resistance to electromagnetic waves — why antennas are matched to ~377 Ω.","Symbol":"Z₀","Category":"Electromagnetic","Equations":[],"Numeric":376.730313412,"Uncertainty":"±1.6 × 10⁻¹⁰ relative","Name":"Characteristic impedance of vacuum"},{"Unit":"—","Value":"7.297 352 5643(11) × 10⁻³  (1/137.035 999 177)","Exact":false,"Note":"Dimensionless, so every civilization measures the same number. Nobody knows why it is 1/137.","Symbol":"α","Category":"Electromagnetic","Equations":["3bbe5275-7b5c-811f-8db4-cc95acf776dd","3bbe5275-7b5c-8125-8857-cffce0164fef"],"Numeric":0.0072973525643,"Uncertainty":"±1.6 × 10⁻¹⁰ relative","Name":"Fine-structure constant"},{"Unit":"F m⁻¹","Value":"8.854 187 8188(14) × 10⁻¹²","Exact":false,"Note":"How strongly the vacuum resists an electric field. Exact before 2019; now measured, via α.","Symbol":"ε₀","Category":"Electromagnetic","Equations":["3bbe5275-7b5c-811f-8db4-cc95acf776dd","3bbe5275-7b5c-816c-8a1d-c37099e0ec76","3bbe5275-7b5c-819d-a258-d3e7dec3b639","3bbe5275-7b5c-81eb-b7d4-f57536a2a230","3bde5275-7b5c-814b-9628-f090f0207a42","3bde5275-7b5c-81e2-9c2a-cf03ccc6c865","3bde5275-7b5c-81eb-8234-c87a6700bc0d"],"Numeric":8.8541878188e-12,"Uncertainty":"±1.6 × 10⁻¹⁰ relative","Name":"Vacuum electric permittivity"},{"Unit":"N A⁻²","Value":"1.256 637 061 27(20) × 10⁻⁶","Exact":false,"Note":"The magnetic counterpart of ε₀; together they give c = 1/√(ε₀μ₀), Maxwell's great discovery.","Symbol":"μ₀","Category":"Electromagnetic","Equations":["3bbe5275-7b5c-817c-96dd-ec4cb629f30c","3bbe5275-7b5c-81b2-ae34-f800aecd57e1","3bbe5275-7b5c-81c5-abe1-d9f8b479e14f"],"Numeric":1.25663706127e-06,"Uncertainty":"±1.6 × 10⁻¹⁰ relative","Name":"Vacuum magnetic permeability"},{"Unit":"kg","Value":"1.660 539 068 92(52) × 10⁻²⁷","Exact":false,"Note":"One twelfth of a carbon-12 atom — the unit every atomic mass on the periodic table is quoted in.","Symbol":"u","Category":"Atomic & nuclear","Equations":[],"Numeric":1.66053906892e-27,"Uncertainty":"±3.1 × 10⁻¹⁰ relative","Name":"Atomic mass constant"},{"Unit":"J T⁻¹","Value":"9.274 010 0657(29) × 10⁻²⁴","Exact":false,"Note":"The magnetic moment of one electron spin — the quantum of magnetism in matter.","Symbol":"μ_B","Category":"Atomic & nuclear","Equations":[],"Numeric":9.2740100657e-24,"Uncertainty":"±3.1 × 10⁻¹⁰ relative","Name":"Bohr magneton"},{"Unit":"m","Value":"5.291 772 105 44(82) × 10⁻¹¹","Exact":false,"Note":"The size of a hydrogen atom in its ground state — the natural ruler of chemistry.","Symbol":"a₀","Category":"Atomic & nuclear","Equations":["3bde5275-7b5c-81fc-a041-fc08a0416af7"],"Numeric":5.29177210544e-11,"Uncertainty":"±1.6 × 10⁻¹⁰ relative","Name":"Bohr radius"},{"Unit":"m","Value":"2.426 310 235 38(76) × 10⁻¹²","Exact":false,"Note":"Confine an electron tighter than this and pair production begins — the edge of single-particle quantum mechanics.","Symbol":"λ_C","Category":"Atomic & nuclear","Equations":[],"Numeric":2.42631023538e-12,"Uncertainty":"±3.1 × 10⁻¹⁰ relative","Name":"Compton wavelength"},{"Unit":"kg","Value":"9.109 383 7139(28) × 10⁻³¹","Exact":false,"Note":"1/1836 of the proton — light enough to be quantum-mechanically smeared across an atom.","Symbol":"m_e","Category":"Atomic & nuclear","Equations":["3bbe5275-7b5c-8170-bd5f-c796d7589e08","3bbe5275-7b5c-819d-a258-d3e7dec3b639","3bbe5275-7b5c-81b2-ae34-f800aecd57e1","3bbe5275-7b5c-81ee-9b16-dcfba043e1f3","3bde5275-7b5c-81fc-a041-fc08a0416af7"],"Numeric":9.1093837139e-31,"Uncertainty":"±3.1 × 10⁻¹⁰ relative","Name":"Electron mass"},{"Unit":"kg","Value":"1.674 927 500 56(85) × 10⁻²⁷","Exact":false,"Note":"Heavier than the proton by 0.14% — which is why free neutrons decay in ~15 minutes.","Symbol":"m_n","Category":"Atomic & nuclear","Equations":[],"Numeric":1.67492750056e-27,"Uncertainty":"±5.1 × 10⁻¹⁰ relative","Name":"Neutron mass"},{"Unit":"kg","Value":"1.672 621 925 95(52) × 10⁻²⁷","Exact":false,"Note":"Only ~1% of it is the quark masses; the rest is the binding energy of the strong force.","Symbol":"m_p","Category":"Atomic & nuclear","Equations":["3bbe5275-7b5c-81dd-a75c-d703f0a640b3"],"Numeric":1.67262192595e-27,"Uncertainty":"±3.1 × 10⁻¹⁰ relative","Name":"Proton mass"},{"Unit":"m⁻¹","Value":"1.097 373 156 8157(12) × 10⁷","Exact":false,"Note":"The most precisely measured constant of all, to twelve digits — hydrogen's spectrum is that sharp.","Symbol":"R_∞","Category":"Atomic & nuclear","Equations":["3bde5275-7b5c-81a3-914b-f108cd62b10b","3bde5275-7b5c-81fc-a041-fc08a0416af7"],"Numeric":10973731.568157,"Uncertainty":"±1.1 × 10⁻¹² relative","Name":"Rydberg constant"},{"Unit":"C mol⁻¹","Value":"96 485.332 12…","Exact":true,"Note":"Charge per mole of electrons — the bridge between chemistry's moles and electricity's coulombs.","Symbol":"F","Category":"Thermodynamic","Equations":["3bbe5275-7b5c-81b2-9ec2-d967f8695b7e","3bbe5275-7b5c-81b4-84fa-eccd5252bf7c"],"Numeric":96485.33212,"Uncertainty":"exact (N_A·e)","Name":"Faraday constant"},{"Unit":"J mol⁻¹ K⁻¹","Value":"8.314 462 618…","Exact":true,"Note":"Boltzmann's constant per mole. The R in pV = nRT, Arrhenius, van 't Hoff, and Nernst.","Symbol":"R","Category":"Thermodynamic","Equations":["3bbe5275-7b5c-8150-9b6b-de88bc1b1910","3bbe5275-7b5c-81a2-9653-e0a84065d7fa","3bbe5275-7b5c-81b2-9ec2-d967f8695b7e","3bbe5275-7b5c-81b4-84fa-eccd5252bf7c","3bbe5275-7b5c-81f5-a5b1-f6059d15a3b7","3bde5275-7b5c-8114-ad1b-ec55a8511049","3bde5275-7b5c-81f9-ae2a-db2af4f7a127"],"Numeric":8.314462618,"Uncertainty":"exact (N_A·k_B)","Name":"Molar gas constant"},{"Unit":"m³ mol⁻¹","Value":"22.413 969 54… × 10⁻³","Exact":true,"Note":"22.4 litres per mole at STP — the number every chemistry student memorises.","Symbol":"V_m","Category":"Thermodynamic","Equations":[],"Numeric":0.02241396954,"Uncertainty":"exact (at 273.15 K, 101.325 kPa)","Name":"Molar volume of an ideal gas"},{"Unit":"W m⁻² K⁻⁴","Value":"5.670 374 419… × 10⁻⁸","Exact":true,"Note":"How brightly a hot body glows. Exact since 2019 because its ingredients are.","Symbol":"σ","Category":"Thermodynamic","Equations":["3bbe5275-7b5c-8120-863e-cd94384e0239"],"Numeric":5.670374419e-08,"Uncertainty":"exact (from h, c, k_B)","Name":"Stefan–Boltzmann constant"},{"Unit":"m K","Value":"2.897 771 955… × 10⁻³","Exact":true,"Note":"Peak wavelength × temperature. Divide by a star's temperature to get its colour.","Symbol":"b","Category":"Thermodynamic","Equations":["3bde5275-7b5c-8131-93f6-c15c214946b1"],"Numeric":0.002897771955,"Uncertainty":"exact (from h, c, k_B)","Name":"Wien displacement constant"},{"Unit":"m","Value":"1.495 978 707 × 10¹¹","Exact":true,"Note":"The Earth–Sun distance, fixed by definition since 2012 rather than measured.","Symbol":"au","Category":"Astronomical","Equations":[],"Numeric":149597870700,"Uncertainty":"exact (defined)","Name":"Astronomical unit"},{"Unit":"m","Value":"6.378 137 × 10⁶","Exact":true,"Note":"The reference ellipsoid GPS uses; the poles are 21 km closer to the centre.","Symbol":"R_⊕","Category":"Astronomical","Equations":[],"Numeric":6378137,"Uncertainty":"exact (WGS 84)","Name":"Earth equatorial radius"},{"Unit":"kg","Value":"5.972 2(6) × 10²⁴","Exact":false,"Note":"Also limited by G: Cavendish weighed the Earth in 1798 and we have only refined it since.","Symbol":"M_⊕","Category":"Astronomical","Equations":[],"Numeric":5.9722e+24,"Uncertainty":"±1.0 × 10⁻⁴ relative","Name":"Earth mass"},{"Unit":"m","Value":"9.460 730 472 5808 × 10¹⁵","Exact":true,"Note":"How far light travels in a Julian year — a unit of distance, despite the name.","Symbol":"ly","Category":"Astronomical","Equations":[],"Numeric":9460730472580800,"Uncertainty":"exact (365.25 d × c)","Name":"Light-year"},{"Unit":"m","Value":"3.085 677 581 49 × 10¹⁶","Exact":true,"Note":"The distance at which 1 au subtends one arcsecond — parallax made into a unit. 3.26 light-years.","Symbol":"pc","Category":"Astronomical","Equations":["3bbe5275-7b5c-8184-9e26-ff4ad04b3ed8"],"Numeric":30856775814913670,"Uncertainty":"exact (648000/π au)","Name":"Parsec"},{"Unit":"W","Value":"3.828 × 10²⁶","Exact":true,"Note":"The Sun's total power output — the yardstick every other star is measured against.","Symbol":"L_☉","Category":"Astronomical","Equations":[],"Numeric":3.828e+26,"Uncertainty":"adopted (IAU nominal)","Name":"Solar luminosity"},{"Unit":"kg","Value":"1.988 41 × 10³⁰","Exact":false,"Note":"The Sun's mass is known far less precisely than GM_☉, because G is the weak link.","Symbol":"M_☉","Category":"Astronomical","Equations":["3bbe5275-7b5c-811a-baed-c686bb16bbc3","3bbe5275-7b5c-813a-84a7-ea08528b3c93","3bbe5275-7b5c-81c8-8eb1-cdc2179de58e","3bbe5275-7b5c-81dd-a75c-d703f0a640b3"],"Numeric":1.98841e+30,"Uncertainty":"±6 × 10⁻⁵ relative (via G)","Name":"Solar mass"},{"Unit":"m³ s⁻²","Value":"1.327 124 400 18 × 10²⁰","Exact":true,"Note":"Known to ten digits from orbits — which is why celestial mechanics uses GM, never G and M separately.","Symbol":"GM_☉","Category":"Astronomical","Equations":[],"Numeric":132712440018000000000,"Uncertainty":"adopted (IAU nominal)","Name":"Solar mass parameter"},{"Unit":"m","Value":"6.957 × 10⁸","Exact":true,"Note":"The photosphere's radius; the Sun has no solid surface, so this is a convention.","Symbol":"R_☉","Category":"Astronomical","Equations":[],"Numeric":695700000,"Uncertainty":"adopted (IAU nominal)","Name":"Solar radius"},{"Unit":"Gyr","Value":"13.797 ± 0.023","Exact":false,"Note":"Derived from the Friedmann equations given the densities above — not observed directly.","Symbol":"t₀","Category":"Cosmological","Equations":[],"Numeric":13.797,"Uncertainty":"±0.023 (Planck 2018)","Name":"Age of the universe"},{"Unit":"—","Value":"0.022 37 ± 0.000 15","Exact":false,"Note":"Ordinary matter — atoms — comes to under 5% of the total.","Symbol":"Ω_b h²","Category":"Cosmological","Equations":[],"Numeric":0.02237,"Uncertainty":"±0.000 15 (Planck 2018)","Name":"Baryon density"},{"Unit":"K","Value":"2.725 48 ± 0.000 57","Exact":false,"Note":"The most perfect black body ever measured, and the coldest thing in nature outside a laboratory.","Symbol":"T₀","Category":"Cosmological","Equations":["3bde5275-7b5c-811f-9033-f21e2c8a2791","3bde5275-7b5c-8131-93f6-c15c214946b1"],"Numeric":2.72548,"Uncertainty":"±0.000 57","Name":"CMB temperature"},{"Unit":"kg m⁻³","Value":"8.5 × 10⁻²⁷","Exact":false,"Note":"The density that makes space flat: about five hydrogen atoms per cubic metre.","Symbol":"ρ_c","Category":"Cosmological","Equations":["3bbe5275-7b5c-818c-bf76-d40ebcb485e3"],"Numeric":8.5e-27,"Uncertainty":"±3% (tracks H₀)","Name":"Critical density"},{"Unit":"—","Value":"0.685 ± 0.007","Exact":false,"Note":"Two thirds of the universe's energy budget, and nobody knows what it is.","Symbol":"Ω_Λ","Category":"Cosmological","Equations":[],"Numeric":0.685,"Uncertainty":"±0.007 (Planck 2018)","Name":"Dark energy density parameter"},{"Unit":"km s⁻¹ Mpc⁻¹","Value":"67.4 ± 0.5","Exact":false,"Note":"Inferred from the microwave background assuming ΛCDM. Disagrees with the distance-ladder value below by ~5σ — the Hubble tension.","Symbol":"H₀","Category":"Cosmological","Equations":["3bbe5275-7b5c-8184-9e26-ff4ad04b3ed8","3bbe5275-7b5c-818c-bf76-d40ebcb485e3","3bbe5275-7b5c-81a1-9543-ed416dd7caa2"],"Numeric":67.4,"Uncertainty":"±0.5 (early-universe route)","Name":"Hubble constant (Planck 2018, CMB)"},{"Unit":"km s⁻¹ Mpc⁻¹","Value":"73.04 ± 1.04","Exact":false,"Note":"Measured directly from Cepheids and Type Ia supernovae. Both measurements are careful; something is missing.","Symbol":"H₀","Category":"Cosmological","Equations":["3bbe5275-7b5c-8184-9e26-ff4ad04b3ed8","3bbe5275-7b5c-818c-bf76-d40ebcb485e3","3bbe5275-7b5c-81a1-9543-ed416dd7caa2"],"Numeric":73.04,"Uncertainty":"±1.04 (late-universe route)","Name":"Hubble constant (SH0ES 2022, distance ladder)"},{"Unit":"—","Value":"0.315 ± 0.007","Exact":false,"Note":"All matter, of which only about one sixth is the ordinary kind.","Symbol":"Ω_m","Category":"Cosmological","Equations":[],"Numeric":0.315,"Uncertainty":"±0.007 (Planck 2018)","Name":"Matter density parameter"},{"Unit":"—","Value":"2.718 281 828 459 045…","Exact":true,"Note":"The base of natural growth and decay — and of every exponential on the shelf.","Symbol":"e","Category":"Mathematical","Equations":["3bbe5275-7b5c-811f-8db4-cc95acf776dd","3bbe5275-7b5c-816c-8a1d-c37099e0ec76","3bbe5275-7b5c-819d-a258-d3e7dec3b639","3bbe5275-7b5c-81b2-ae34-f800aecd57e1","3bbe5275-7b5c-81de-99a6-fb82df0033a9","3bbe5275-7b5c-81ee-9b16-dcfba043e1f3","3bde5275-7b5c-814b-9628-f090f0207a42"],"Numeric":2.718281828459045,"Uncertainty":"exact (irrational)","Name":"Euler's number"},{"Unit":"—","Value":"3.141 592 653 589 793…","Exact":true,"Note":"Circumference over diameter. Appears in half the equations on this site, most of them not about circles.","Symbol":"π","Category":"Mathematical","Equations":["3bbe5275-7b5c-8174-8c31-eda1293e8fe6","3bbe5275-7b5c-81c7-b3a7-decb4402d1ab","3bbe5275-7b5c-81fb-9558-e243bfa28227","3bde5275-7b5c-8134-baec-df28e10bc16c","3bde5275-7b5c-814b-9628-f090f0207a42","3bde5275-7b5c-8157-88dd-ea46b41f1776"],"Numeric":3.141592653589793,"Uncertainty":"exact (irrational)","Name":"Pi"}],"units":[{"Symbol":"q","Quantity":"10⁻³⁰","Kind":"SI prefix","Definition":"10⁻³⁰","Name":"quecto"},{"Symbol":"r","Quantity":"10⁻²⁷","Kind":"SI prefix","Definition":"10⁻²⁷","Name":"ronto"},{"Symbol":"y","Quantity":"10⁻²⁴","Kind":"SI prefix","Definition":"10⁻²⁴","Name":"yocto"},{"Symbol":"z","Quantity":"10⁻²¹","Kind":"SI prefix","Definition":"10⁻²¹","Name":"zepto"},{"Symbol":"a","Quantity":"10⁻¹⁸","Kind":"SI prefix","Definition":"10⁻¹⁸","Name":"atto"},{"Symbol":"f","Quantity":"10⁻¹⁵","Kind":"SI prefix","Definition":"10⁻¹⁵","Name":"femto"},{"Symbol":"p","Quantity":"10⁻¹²","Kind":"SI prefix","Definition":"10⁻¹²","Name":"pico"},{"Symbol":"n","Quantity":"10⁻⁹","Kind":"SI prefix","Definition":"10⁻⁹","Name":"nano"},{"Symbol":"µ","Quantity":"10⁻⁶","Kind":"SI prefix","Definition":"10⁻⁶","Name":"micro"},{"Symbol":"m","Quantity":"10⁻³","Kind":"SI prefix","Definition":"10⁻³","Name":"milli"},{"Symbol":"c","Quantity":"10⁻²","Kind":"SI prefix","Definition":"10⁻²","Name":"centi"},{"Symbol":"d","Quantity":"10⁻¹","Kind":"SI prefix","Definition":"10⁻¹","Name":"deci"},{"Symbol":"da","Quantity":"10¹","Kind":"SI prefix","Definition":"10¹","Name":"deca"},{"Symbol":"h","Quantity":"10²","Kind":"SI prefix","Definition":"10²","Name":"hecto"},{"Symbol":"k","Quantity":"10³","Kind":"SI prefix","Definition":"10³","Name":"kilo"},{"Symbol":"M","Quantity":"10⁶","Kind":"SI prefix","Definition":"10⁶","Name":"mega"},{"Symbol":"G","Quantity":"10⁹","Kind":"SI prefix","Definition":"10⁹","Name":"giga"},{"Symbol":"T","Quantity":"10¹²","Kind":"SI prefix","Definition":"10¹²","Name":"tera"},{"Symbol":"P","Quantity":"10¹⁵","Kind":"SI prefix","Definition":"10¹⁵","Name":"peta"},{"Symbol":"E","Quantity":"10¹⁸","Kind":"SI prefix","Definition":"10¹⁸","Name":"exa"},{"Symbol":"Z","Quantity":"10²¹","Kind":"SI prefix","Definition":"10²¹","Name":"zetta"},{"Symbol":"Y","Quantity":"10²⁴","Kind":"SI prefix","Definition":"10²⁴","Name":"yotta"},{"Symbol":"R","Quantity":"10²⁷","Kind":"SI prefix","Definition":"10²⁷","Name":"ronna"},{"Symbol":"Q","Quantity":"10³⁰","Kind":"SI prefix","Definition":"10³⁰","Name":"quetta"},{"Symbol":"atm","Quantity":"pressure","Kind":"Other","Definition":"101 325 Pa (exact)","Name":"standard atmosphere"},{"Symbol":"bar","Quantity":"pressure","Kind":"Other","Definition":"10⁵ Pa ≈ one atmosphere","Name":"bar"},{"Symbol":"b","Quantity":"cross section","Kind":"Other","Definition":"10⁻²⁸ m² — nuclear cross sections, named for 'big as a barn'","Name":"barn"},{"Symbol":"Å","Quantity":"length","Kind":"Other","Definition":"10⁻¹⁰ m — roughly one atom across; the unit of crystallography","Name":"ångström"},{"Symbol":"Jy","Quantity":"spectral flux density","Kind":"Astronomy","Definition":"10⁻²⁶ W m⁻² Hz⁻¹ — radio astronomy's unit","Name":"jansky"},{"Symbol":"M_☉","Quantity":"mass","Kind":"Astronomy","Definition":"1.988 41 × 10³⁰ kg — the standard stellar yardstick","Name":"solar mass"},{"Symbol":"ly","Quantity":"length","Kind":"Astronomy","Definition":"9.460 730 473 × 10¹⁵ m","Name":"light-year"},{"Symbol":"pc","Quantity":"length","Kind":"Astronomy","Definition":"3.085 677 581 × 10¹⁶ m ≈ 3.26 ly","Name":"parsec"},{"Symbol":"au","Quantity":"length","Kind":"Astronomy","Definition":"1.495 978 707 × 10¹¹ m (exact) — the Earth–Sun distance","Name":"astronomical unit"},{"Symbol":"Da","Quantity":"mass","Kind":"Accepted with SI","Definition":"1.660 539 068 92 × 10⁻²⁷ kg — one twelfth of carbon-12","Name":"dalton"},{"Symbol":"eV","Quantity":"energy","Kind":"Accepted with SI","Definition":"1.602 176 634 × 10⁻¹⁹ J (exact) — the currency of particle physics","Name":"electronvolt"},{"Symbol":"t","Quantity":"mass","Kind":"Accepted with SI","Definition":"10³ kg","Name":"tonne"},{"Symbol":"L","Quantity":"volume","Kind":"Accepted with SI","Definition":"10⁻³ m³","Name":"litre"},{"Symbol":"°","Quantity":"plane angle","Kind":"Accepted with SI","Definition":"π/180 rad","Name":"degree"},{"Symbol":"d","Quantity":"time","Kind":"Accepted with SI","Definition":"86 400 s","Name":"day"},{"Symbol":"h","Quantity":"time","Kind":"Accepted with SI","Definition":"3600 s","Name":"hour"},{"Symbol":"min","Quantity":"time","Kind":"Accepted with SI","Definition":"60 s","Name":"minute"},{"Symbol":"sr","Quantity":"solid angle","Kind":"SI derived","Definition":"m²/m² — 4π over a whole sphere","Name":"steradian"},{"Symbol":"rad","Quantity":"plane angle","Kind":"SI derived","Definition":"m/m — dimensionless; 2π in a full turn","Name":"radian"},{"Symbol":"Sv","Quantity":"equivalent radiation dose","Kind":"SI derived","Definition":"J kg⁻¹, weighted by biological effect","Name":"sievert"},{"Symbol":"Gy","Quantity":"absorbed radiation dose","Kind":"SI derived","Definition":"J kg⁻¹","Name":"gray"},{"Symbol":"Bq","Quantity":"radioactivity","Kind":"SI derived","Definition":"s⁻¹ (one decay per second)","Name":"becquerel"},{"Symbol":"°C","Quantity":"temperature relative to 273.15 K","Kind":"SI derived","Definition":"K − 273.15","Name":"degree Celsius"},{"Symbol":"H","Quantity":"inductance","Kind":"SI derived","Definition":"Wb A⁻¹","Name":"henry"},{"Symbol":"T","Quantity":"magnetic flux density","Kind":"SI derived","Definition":"Wb m⁻² = kg s⁻² A⁻¹","Name":"tesla"},{"Symbol":"Wb","Quantity":"magnetic flux","Kind":"SI derived","Definition":"V s","Name":"weber"},{"Symbol":"S","Quantity":"electrical conductance","Kind":"SI derived","Definition":"A V⁻¹ = Ω⁻¹","Name":"siemens"},{"Symbol":"Ω","Quantity":"electrical resistance","Kind":"SI derived","Definition":"V A⁻¹","Name":"ohm"},{"Symbol":"F","Quantity":"capacitance","Kind":"SI derived","Definition":"C V⁻¹","Name":"farad"},{"Symbol":"V","Quantity":"electric potential","Kind":"SI derived","Definition":"W A⁻¹ = kg m² s⁻³ A⁻¹","Name":"volt"},{"Symbol":"C","Quantity":"electric charge","Kind":"SI derived","Definition":"A s","Name":"coulomb"},{"Symbol":"W","Quantity":"power","Kind":"SI derived","Definition":"J s⁻¹ = kg m² s⁻³","Name":"watt"},{"Symbol":"J","Quantity":"energy, work, heat","Kind":"SI derived","Definition":"N m = kg m² s⁻²","Name":"joule"},{"Symbol":"Pa","Quantity":"pressure, stress","Kind":"SI derived","Definition":"N m⁻² = kg m⁻¹ s⁻²","Name":"pascal"},{"Symbol":"N","Quantity":"force","Kind":"SI derived","Definition":"kg m s⁻²","Name":"newton"},{"Symbol":"Hz","Quantity":"frequency","Kind":"SI derived","Definition":"s⁻¹","Name":"hertz"},{"Symbol":"cd","Quantity":"luminous intensity","Kind":"SI base","Definition":"Fixed by K_cd = 683 lm W⁻¹ at 540 THz — the only unit tied to human vision.","Name":"candela"},{"Symbol":"mol","Quantity":"amount of substance","Kind":"SI base","Definition":"Exactly 6.022 140 76 × 10²³ elementary entities.","Name":"mole"},{"Symbol":"K","Quantity":"thermodynamic temperature","Kind":"SI base","Definition":"Fixed by k_B = 1.380 649 × 10⁻²³ J K⁻¹.","Name":"kelvin"},{"Symbol":"A","Quantity":"electric current","Kind":"SI base","Definition":"Fixed by e = 1.602 176 634 × 10⁻¹⁹ C — a flow of 1/e elementary charges per second.","Name":"ampere"},{"Symbol":"s","Quantity":"time","Kind":"SI base","Definition":"9 192 631 770 periods of the caesium-133 hyperfine transition.","Name":"second"},{"Symbol":"kg","Quantity":"mass","Kind":"SI base","Definition":"Fixed by h = 6.626 070 15 × 10⁻³⁴ J s. Since 2019 no physical artefact defines it.","Name":"kilogram"},{"Symbol":"m","Quantity":"length","Kind":"SI base","Definition":"Fixed by c = 299 792 458 m s⁻¹ — the distance light travels in 1/299 792 458 s.","Name":"metre"}],"equations":{"3bde5275-7b5c-81fc-a041-fc08a0416af7":{"name":"Bohr Model Energy Levels","field":"Atomic Physics","slug":"bohr-model-energy-levels"},"3bde5275-7b5c-81e2-9c2a-cf03ccc6c865":{"name":"Rutherford Scattering","field":"Atomic Physics","slug":"rutherford-scattering"},"3bde5275-7b5c-81a3-914b-f108cd62b10b":{"name":"Rydberg Formula","field":"Atomic Physics","slug":"rydberg-formula"},"3bde5275-7b5c-8114-ad1b-ec55a8511049":{"name":"Van 't Hoff Equation","field":"Chemical Thermodynamics","slug":"van-t-hoff-equation"},"3bde5275-7b5c-81f9-ae2a-db2af4f7a127":{"name":"Reaction Isotherm","field":"Chemical Thermodynamics","slug":"reaction-isotherm"},"3bde5275-7b5c-8166-90de-d0f25022b160":{"name":"Gibbs Free Energy","field":"Chemical Thermodynamics","slug":"gibbs-free-energy"},"3bde5275-7b5c-8170-823e-d1ba85205e8b":{"name":"Hohmann Transfer","field":"Rocketry","slug":"hohmann-transfer"},"3bde5275-7b5c-81b5-b5ba-ef8abb9338cb":{"name":"Specific Impulse","field":"Rocketry","slug":"specific-impulse"},"3bde5275-7b5c-81e1-aac4-cc21b9d77b07":{"name":"Tsiolkovsky Rocket Equation","field":"Rocketry","slug":"tsiolkovsky-rocket-equation"},"3bde5275-7b5c-810f-bed8-fee488db4170":{"name":"Heat Equation","field":"Heat Transfer","slug":"heat-equation"},"3bde5275-7b5c-81af-b4b4-ef52a39887e9":{"name":"Fourier's Law of Heat Conduction","field":"Heat Transfer","slug":"fourier-s-law-of-heat-conduction"},"3bde5275-7b5c-8144-b755-d881fbf879cb":{"name":"Newton's Law of Cooling","field":"Heat Transfer","slug":"newton-s-law-of-cooling"},"3bde5275-7b5c-81a4-b00c-d76959634aaf":{"name":"Cauchy's Stress Theorem","field":"Materials Science","slug":"cauchy-s-stress-theorem"},"3bde5275-7b5c-811f-9033-f21e2c8a2791":{"name":"Planck's Law","field":"Radiation","slug":"planck-s-law"},"3bde5275-7b5c-8131-93f6-c15c214946b1":{"name":"Wien's Displacement Law","field":"Radiation","slug":"wien-s-displacement-law"},"3bde5275-7b5c-8183-9b80-de90c00b2fbc":{"name":"Kirchhoff's Law of Thermal Radiation","field":"Radiation","slug":"kirchhoff-s-law-of-thermal-radiation"},"3bde5275-7b5c-81eb-8234-c87a6700bc0d":{"name":"Poisson's Equation","field":"Electrostatics","slug":"poisson-s-equation"},"3bde5275-7b5c-812a-8607-ff86ea48402d":{"name":"Electric Field","field":"Electrostatics","slug":"electric-field"},"3bde5275-7b5c-814b-9628-f090f0207a42":{"name":"Coulomb's Law","field":"Electrostatics","slug":"coulomb-s-law"},"3bde5275-7b5c-8138-9544-ccde8523931c":{"name":"Noether's Theorem","field":"Classical Field Theory","slug":"noether-s-theorem"},"3bde5275-7b5c-814c-82d8-d3e6acd9cfda":{"name":"Euler–Lagrange Equation","field":"Classical Field Theory","slug":"eulerlagrange-equation"},"3bde5275-7b5c-814b-b847-fa3b302cf50e":{"name":"Principle of Least Action","field":"Classical Field Theory","slug":"principle-of-least-action"},"3bde5275-7b5c-8134-baec-df28e10bc16c":{"name":"Fourier Transform","field":"Mathematics","slug":"fourier-transform"},"3bde5275-7b5c-8157-88dd-ea46b41f1776":{"name":"Normal Distribution","field":"Mathematics","slug":"normal-distribution"},"3bde5275-7b5c-810f-908a-e09a4a0699e1":{"name":"Bayes' Theorem","field":"Mathematics","slug":"bayes-theorem"},"3bbe5275-7b5c-8120-a62d-fa870a7c75bb":{"name":"Logistic Map","field":"Nonlinear Dynamics","slug":"logistic-map"},"3bbe5275-7b5c-813e-af26-d6744c7f4db2":{"name":"Feigenbaum Constant","field":"Nonlinear Dynamics","slug":"feigenbaum-constant"},"3bbe5275-7b5c-8132-a437-e09561425c4c":{"name":"Lorenz System","field":"Nonlinear Dynamics","slug":"lorenz-system"},"3bbe5275-7b5c-81b4-84fa-eccd5252bf7c":{"name":"Goldman–Hodgkin–Katz Equation","field":"Biophysics","slug":"goldmanhodgkinkatz-equation"},"3bbe5275-7b5c-81ee-97dc-c7e65a4e1ad2":{"name":"Michaelis–Menten Equation","field":"Biophysics","slug":"michaelismenten-equation"},"3bbe5275-7b5c-81b2-9ec2-d967f8695b7e":{"name":"Nernst Equation","field":"Biophysics","slug":"nernst-equation"},"3bbe5275-7b5c-8174-8c31-eda1293e8fe6":{"name":"Gaussian Beam Divergence","field":"Photonics","slug":"gaussian-beam-divergence"},"3bbe5275-7b5c-816e-831d-e184b1a1f659":{"name":"Laser Rate Equations","field":"Photonics","slug":"laser-rate-equations"},"3bbe5275-7b5c-818e-8ccf-c5b952277817":{"name":"Einstein A and B Coefficients","field":"Photonics","slug":"einstein-a-and-b-coefficients"},"3bbe5275-7b5c-812d-b464-f7799b61cce9":{"name":"Thermoelectric Figure of Merit","field":"Thermoelectrics","slug":"thermoelectric-figure-of-merit"},"3bbe5275-7b5c-8110-a092-dab2770885be":{"name":"Peltier Effect","field":"Thermoelectrics","slug":"peltier-effect"},"3bbe5275-7b5c-814d-8154-c3d16384df7f":{"name":"Seebeck Effect","field":"Thermoelectrics","slug":"seebeck-effect"},"3bbe5275-7b5c-8103-81ff-e3a91328a314":{"name":"Magnetic Reynolds Number","field":"Magnetohydrodynamics","slug":"magnetic-reynolds-number"},"3bbe5275-7b5c-81c5-abe1-d9f8b479e14f":{"name":"Alfvén Velocity","field":"Magnetohydrodynamics","slug":"alfven-velocity"},"3bbe5275-7b5c-814d-9bc3-ef9ce2d272dc":{"name":"MHD Induction Equation","field":"Magnetohydrodynamics","slug":"mhd-induction-equation"},"3bbe5275-7b5c-81de-99a6-fb82df0033a9":{"name":"Josephson Effect","field":"Superconductivity","slug":"josephson-effect"},"3bbe5275-7b5c-8149-a0e6-d2bf67397229":{"name":"BCS Energy Gap","field":"Superconductivity","slug":"bcs-energy-gap"},"3bbe5275-7b5c-81b2-ae34-f800aecd57e1":{"name":"London Equations","field":"Superconductivity","slug":"london-equations"},"3bbe5275-7b5c-81d1-abad-c2702fa3abb0":{"name":"Bloch's Theorem","field":"Condensed Matter","slug":"bloch-s-theorem"},"3bbe5275-7b5c-81e1-96c0-c6157aaee509":{"name":"Fermi–Dirac Distribution","field":"Condensed Matter","slug":"fermidirac-distribution"},"3bbe5275-7b5c-81ee-9b16-dcfba043e1f3":{"name":"Drude Conductivity","field":"Condensed Matter","slug":"drude-conductivity"},"3bbe5275-7b5c-817f-80a4-f6e36ff9d306":{"name":"Lawson Criterion","field":"Plasma Physics","slug":"lawson-criterion"},"3bbe5275-7b5c-819d-a258-d3e7dec3b639":{"name":"Plasma Frequency","field":"Plasma Physics","slug":"plasma-frequency"},"3bbe5275-7b5c-816c-8a1d-c37099e0ec76":{"name":"Debye Length","field":"Plasma Physics","slug":"debye-length"},"3bbe5275-7b5c-813a-84a7-ea08528b3c93":{"name":"Escape Velocity","field":"Celestial Mechanics","slug":"escape-velocity"},"3bbe5275-7b5c-810a-8065-f03f5253cda9":{"name":"Vis-Viva Equation","field":"Celestial Mechanics","slug":"vis-viva-equation"},"3bbe5275-7b5c-8103-8865-faee50cc9c18":{"name":"Qubit State","field":"Quantum Computing","slug":"qubit-state"},"3bbe5275-7b5c-810e-a378-ea77aa50d6f6":{"name":"No-Cloning Theorem","field":"Quantum Computing","slug":"no-cloning-theorem"},"3bbe5275-7b5c-810f-8c8d-d0d1ca4da44e":{"name":"Bell State","field":"Quantum Computing","slug":"bell-state"},"3bbe5275-7b5c-8113-9b17-e6d7efc091ea":{"name":"Bragg's Law","field":"Waves & Optics","slug":"bragg-s-law"},"3bbe5275-7b5c-8130-a1e2-d4d1fefda7d8":{"name":"Diffraction Grating Equation","field":"Waves & Optics","slug":"diffraction-grating-equation"},"3bbe5275-7b5c-815f-8f49-fde9509c1e77":{"name":"Einstein–Hilbert Action","field":"General Relativity","slug":"einsteinhilbert-action"},"3bbe5275-7b5c-813b-aa6c-dd6ce2e33cbf":{"name":"Geodesic Equation","field":"General Relativity","slug":"geodesic-equation"},"3bbe5275-7b5c-81ef-b92b-d35cea11b9be":{"name":"Gravitational Time Dilation","field":"General Relativity","slug":"gravitational-time-dilation"},"3bbe5275-7b5c-815d-b970-fb2a7877db25":{"name":"Feynman Path Integral","field":"Quantum Field Theory","slug":"feynman-path-integral"},"3bbe5275-7b5c-812f-8b13-c3f401ee3a47":{"name":"Klein–Gordon Equation","field":"Quantum Field Theory","slug":"kleingordon-equation"},"3bbe5275-7b5c-811f-8db4-cc95acf776dd":{"name":"Fine-Structure Constant","field":"Quantum Field Theory","slug":"fine-structure-constant"},"3bbe5275-7b5c-81d4-81e7-d91b9c8c327c":{"name":"Kirchhoff's Circuit Laws","field":"Circuits","slug":"kirchhoff-s-circuit-laws"},"3bbe5275-7b5c-816d-9734-c149c749519c":{"name":"Joule Heating","field":"Circuits","slug":"joule-heating"},"3bbe5275-7b5c-8154-bcd6-c1cd26ae1a20":{"name":"Ohm's Law","field":"Circuits","slug":"ohm-s-law"},"3bbe5275-7b5c-81f8-8be6-c617460fd271":{"name":"Shannon–Hartley Channel Capacity","field":"Information Theory","slug":"shannonhartley-channel-capacity"},"3bbe5275-7b5c-81f7-a591-c741011f5a20":{"name":"Shannon Entropy","field":"Information Theory","slug":"shannon-entropy"},"3bbe5275-7b5c-81f5-a5b1-f6059d15a3b7":{"name":"Eyring Equation","field":"Chemical Kinetics","slug":"eyring-equation"},"3bbe5275-7b5c-8150-9b6b-de88bc1b1910":{"name":"Arrhenius Equation","field":"Chemical Kinetics","slug":"arrhenius-equation"},"3bbe5275-7b5c-81e3-87bd-e3fd8345d1e5":{"name":"Law of Mass Action","field":"Chemical Kinetics","slug":"law-of-mass-action"},"3bbe5275-7b5c-819e-ae2b-d24ec3193fe8":{"name":"Griffith Fracture Criterion","field":"Materials Science","slug":"griffith-fracture-criterion"},"3bbe5275-7b5c-81f5-bb78-d159340dd03f":{"name":"Young's Modulus","field":"Materials Science","slug":"young-s-modulus"},"3bbe5275-7b5c-8144-9213-c057e1f3e5ab":{"name":"Hooke's Law","field":"Materials Science","slug":"hooke-s-law"},"3bbe5275-7b5c-8183-8228-de82d104194f":{"name":"Seismic Wave Speeds","field":"Geophysics","slug":"seismic-wave-speeds"},"3bbe5275-7b5c-818c-81f5-e08330c436f3":{"name":"Elastic Wave Equation","field":"Geophysics","slug":"elastic-wave-equation"},"3bbe5275-7b5c-813f-974b-c000af0892df":{"name":"Partition Function","field":"Statistical Mechanics","slug":"partition-function"},"3bbe5275-7b5c-816e-b97a-fdbc445f99b7":{"name":"Boltzmann Distribution","field":"Statistical Mechanics","slug":"boltzmann-distribution"},"3bbe5275-7b5c-81ea-b557-e046acec2182":{"name":"Equipartition Theorem","field":"Statistical Mechanics","slug":"equipartition-theorem"},"3bbe5275-7b5c-8125-8857-cffce0164fef":{"name":"Standard Model Lagrangian","field":"Particle Physics","slug":"standard-model-lagrangian"},"3bbe5275-7b5c-8189-b87c-e1e5b2e563de":{"name":"Higgs Potential","field":"Particle Physics","slug":"higgs-potential"},"3bbe5275-7b5c-81ce-aa9b-fb9384fc46ee":{"name":"Dirac Equation","field":"Particle Physics","slug":"dirac-equation"},"3bbe5275-7b5c-81dd-a75c-d703f0a640b3":{"name":"Chandrasekhar Limit","field":"Astrophysics","slug":"chandrasekhar-limit"},"3bbe5275-7b5c-811a-baed-c686bb16bbc3":{"name":"Schwarzschild Radius","field":"Astrophysics","slug":"schwarzschild-radius"},"3bbe5275-7b5c-8120-863e-cd94384e0239":{"name":"Stefan–Boltzmann Law","field":"Astrophysics","slug":"stefanboltzmann-law"},"3bbe5275-7b5c-813e-a03e-dacece1e6c35":{"name":"Half-Life","field":"Nuclear Physics","slug":"half-life"},"3bbe5275-7b5c-8157-a64b-eb73eeb53735":{"name":"Radioactive Decay Law","field":"Nuclear Physics","slug":"radioactive-decay-law"},"3bbe5275-7b5c-814d-83e6-ee6df24eacca":{"name":"Doppler Effect","field":"Acoustics","slug":"doppler-effect"},"3bbe5275-7b5c-8179-9734-eea3fa4e014c":{"name":"Newton–Laplace Speed of Sound","field":"Acoustics","slug":"newtonlaplace-speed-of-sound"},"3bbe5275-7b5c-81d8-b63d-d44990bf2054":{"name":"Wave Equation","field":"Acoustics","slug":"wave-equation"},"3bbe5275-7b5c-8197-8da5-de06c7641cc3":{"name":"Navier–Stokes Equations","field":"Fluid Dynamics","slug":"navierstokes-equations"},"3bbe5275-7b5c-8189-9f06-e3de324e0af4":{"name":"Continuity Equation","field":"Fluid Dynamics","slug":"continuity-equation"},"3bbe5275-7b5c-819b-ba4e-f3c3031b13f1":{"name":"Bernoulli's Equation","field":"Fluid Dynamics","slug":"bernoulli-s-equation"},"3bbe5275-7b5c-813d-86cf-c29a346fe2f8":{"name":"Snell's Law","field":"Waves & Optics","slug":"snell-s-law"},"3bbe5275-7b5c-8184-9e26-ff4ad04b3ed8":{"name":"Hubble's Law","field":"Cosmology","slug":"hubble-s-law"},"3bbe5275-7b5c-81bf-b306-fdf6fa438de8":{"name":"Pythagorean Theorem","field":"Mathematics","slug":"pythagorean-theorem"},"3bbe5275-7b5c-815f-9d30-c0e44b4a7608":{"name":"Lorentz Factor","field":"Special Relativity","slug":"lorentz-factor"},"3bbe5275-7b5c-81e7-b649-f021e6e295c6":{"name":"Lorentz Transformations","field":"Special Relativity","slug":"lorentz-transformations"},"3bbe5275-7b5c-8127-96bd-f72be5a740f4":{"name":"Third Law of Thermodynamics","field":"Thermodynamics","slug":"third-law-of-thermodynamics"},"3bbe5275-7b5c-8147-a393-dbf10b5befde":{"name":"Second Law of Thermodynamics","field":"Thermodynamics","slug":"second-law-of-thermodynamics"},"3bbe5275-7b5c-819a-8209-e94b6436d16a":{"name":"First Law of Thermodynamics","field":"Thermodynamics","slug":"first-law-of-thermodynamics"},"3bbe5275-7b5c-8153-8923-ca0655445379":{"name":"Zeroth Law of Thermodynamics","field":"Thermodynamics","slug":"zeroth-law-of-thermodynamics"},"3bbe5275-7b5c-8109-a4a6-c5b903b6e05f":{"name":"Heisenberg Uncertainty Principle","field":"Quantum","slug":"heisenberg-uncertainty-principle"},"3bbe5275-7b5c-8170-bd5f-c796d7589e08":{"name":"De Broglie Wavelength","field":"Quantum","slug":"de-broglie-wavelength"},"3bbe5275-7b5c-817c-96dd-ec4cb629f30c":{"name":"Ampère–Maxwell Law","field":"Electromagnetism","slug":"amperemaxwell-law"},"3bbe5275-7b5c-81c9-a5d1-eaa911ffb7cd":{"name":"Faraday's Law of Induction","field":"Electromagnetism","slug":"faraday-s-law-of-induction"},"3bbe5275-7b5c-81d1-8a3c-df143adffbc5":{"name":"Gauss's Law for Magnetism","field":"Electromagnetism","slug":"gauss-s-law-for-magnetism"},"3bbe5275-7b5c-81c8-8eb1-cdc2179de58e":{"name":"Kepler's Third Law","field":"Celestial Mechanics","slug":"kepler-s-third-law"},"3bbe5275-7b5c-8193-83a5-f551fd37b47c":{"name":"Kepler's Second Law","field":"Celestial Mechanics","slug":"kepler-s-second-law"},"3bbe5275-7b5c-81da-b2e6-ed931eca7217":{"name":"Kepler's First Law","field":"Celestial Mechanics","slug":"kepler-s-first-law"},"3bbe5275-7b5c-810c-8fb5-f469f876c99a":{"name":"Van der Waals Equation","field":"Chemistry","slug":"van-der-waals-equation"},"3bbe5275-7b5c-815b-8970-f54f46005b20":{"name":"Graham's Law of Effusion","field":"Chemistry","slug":"graham-s-law-of-effusion"},"3bbe5275-7b5c-8144-82d8-d6e4bd0f0f2d":{"name":"Dalton's Law of Partial Pressures","field":"Chemistry","slug":"dalton-s-law-of-partial-pressures"},"3bbe5275-7b5c-819d-afd0-d0876756a85c":{"name":"Avogadro's Law","field":"Chemistry","slug":"avogadro-s-law"},"3bbe5275-7b5c-812a-9168-d2a25b3fe20f":{"name":"Gay-Lussac's Law","field":"Chemistry","slug":"gay-lussac-s-law"},"3bbe5275-7b5c-8101-9ffd-d15e28719c53":{"name":"Charles's Law","field":"Chemistry","slug":"charles-s-law"},"3bbe5275-7b5c-8186-884a-ed5996715fc4":{"name":"Boyle's Law","field":"Chemistry","slug":"boyle-s-law"},"3bbe5275-7b5c-81a1-9543-ed416dd7caa2":{"name":"Second Friedmann Equation","field":"Cosmology","slug":"second-friedmann-equation"},"3bbe5275-7b5c-818c-bf76-d40ebcb485e3":{"name":"First Friedmann Equation","field":"Cosmology","slug":"first-friedmann-equation"},"3bbe5275-7b5c-81fb-9558-e243bfa28227":{"name":"Euler's Identity","field":"Mathematics","slug":"euler-s-identity"},"3bbe5275-7b5c-81eb-b7d4-f57536a2a230":{"name":"Gauss's Law","field":"Electromagnetism","slug":"gauss-s-law"},"3bbe5275-7b5c-8140-a1d4-f7bff1df0334":{"name":"Planck–Einstein Relation","field":"Quantum","slug":"planckeinstein-relation"},"3bbe5275-7b5c-8122-95c0-f19b5930072e":{"name":"Boltzmann Entropy","field":"Thermodynamics","slug":"boltzmann-entropy"},"3bbe5275-7b5c-81a2-9653-e0a84065d7fa":{"name":"Ideal Gas Law","field":"Thermodynamics","slug":"ideal-gas-law"},"3bbe5275-7b5c-81c7-b3a7-decb4402d1ab":{"name":"Einstein Field Equations","field":"General Relativity","slug":"einstein-field-equations"},"3bbe5275-7b5c-811a-a60d-eddf236c3a8c":{"name":"Schrödinger Equation","field":"Quantum","slug":"schrodinger-equation"},"3bbe5275-7b5c-811b-8297-ce47b2c5d614":{"name":"Law of Universal Gravitation","field":"Mechanics","slug":"law-of-universal-gravitation"},"3bbe5275-7b5c-8183-bbd5-ff733704a984":{"name":"Newton's Second Law","field":"Mechanics","slug":"newton-s-second-law"},"3bbe5275-7b5c-819b-8730-c682ecb3e756":{"name":"Mass–energy equivalence","field":"Special Relativity","slug":"massenergy-equivalence"}}}</script>
+<script>
+  const D = JSON.parse(document.getElementById('data').textContent);
+  const EQ = D.equations || {};
+  const COLORS = {
+    'Defining (SI)': 'var(--c-amber)', Universal: 'var(--c-blue)', Electromagnetic: 'var(--c-violet)',
+    'Atomic & nuclear': 'var(--c-teal)', Thermodynamic: 'var(--c-red)', Astronomical: 'var(--c-bronze)',
+    Cosmological: 'var(--c-pink)', Mathematical: 'var(--c-green)',
+  };
+  const slug = (s) => (s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '')
+    .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+
+  function card(c) {
+    const el = document.createElement('article');
+    el.className = 'kcard konst';
+    el.id = slug(c.Symbol && c.Symbol !== '—' ? c.Symbol + '-' + c.Name : c.Name);
+    el.style.setProperty('--cc', COLORS[c.Category] || 'var(--muted)');
+    const top = document.createElement('div'); top.className = 'top';
+    const sym = document.createElement('span'); sym.className = 'sym'; sym.textContent = c.Symbol || '';
+    const nm = document.createElement('span'); nm.className = 'nm'; nm.textContent = c.Name;
+    top.append(sym, nm);
+    const val = document.createElement('div'); val.className = 'val';
+    val.textContent = c.Value || '';
+    if (c.Unit && c.Unit !== '—') { const u = document.createElement('span'); u.className = 'u'; u.textContent = c.Unit; val.appendChild(u); }
+    const unc = document.createElement('div'); unc.className = 'unc';
+    if (c.Exact) { const b = document.createElement('span'); b.className = 'exact'; b.textContent = 'exact'; unc.appendChild(b); }
+    unc.appendChild(document.createTextNode(c.Uncertainty || ''));
+    const note = document.createElement('p'); note.className = 'note'; note.textContent = c.Note || '';
+    el.append(top, val, unc, note);
+    const eqs = (c.Equations || []).map((id) => EQ[id]).filter(Boolean).sort((a, b) => a.name.localeCompare(b.name));
+    if (eqs.length) {
+      const row = document.createElement('div'); row.className = 'eqs';
+      const l = document.createElement('span'); l.className = 'lbl'; l.textContent = 'appears in';
+      row.appendChild(l);
+      for (const q of eqs) {
+        const a = document.createElement('a');
+        a.className = 'keq'; a.href = '/equations#' + q.slug; a.textContent = q.name; a.title = q.field || '';
+        row.appendChild(a);
+      }
+      el.appendChild(row);
+    }
+    return el;
+  }
+
+  // defining seven
+  const defining = D.constants.filter((c) => c.Category === 'Defining (SI)');
+  const defgrid = document.getElementById('defgrid');
+  for (const c of defining) defgrid.appendChild(card(c));
+
+  // the rest, filterable
+  const rest = D.constants.filter((c) => c.Category !== 'Defining (SI)');
+  const cats = [...new Set(rest.map((c) => c.Category).filter(Boolean))];
+  let active = null;
+  const catsBox = document.getElementById('cats');
+  const all = document.createElement('button');
+  all.className = 'cchip'; all.textContent = 'all'; all.setAttribute('aria-pressed', 'true');
+  all.addEventListener('click', () => { active = null; sync(); });
+  catsBox.appendChild(all);
+  for (const c of cats) {
+    const b = document.createElement('button');
+    b.className = 'cchip'; b.textContent = c; b.dataset.cat = c; b.setAttribute('aria-pressed', 'false');
+    b.addEventListener('click', () => { active = active === c ? null : c; sync(); });
+    catsBox.appendChild(b);
+  }
+  function sync() {
+    for (const b of catsBox.children) {
+      b.setAttribute('aria-pressed', String(b.dataset.cat ? b.dataset.cat === active : active === null));
+    }
+    render();
+  }
+  const grid = document.getElementById('grid');
+  const q = document.getElementById('q');
+  q.addEventListener('input', render);
+  function render() {
+    const needle = q.value.trim().toLowerCase();
+    grid.innerHTML = '';
+    let n = 0;
+    for (const c of rest) {
+      if (active && c.Category !== active) continue;
+      if (needle && !(`${c.Name} ${c.Symbol} ${c.Unit} ${c.Note}`.toLowerCase().includes(needle))) continue;
+      grid.appendChild(card(c));
+      n++;
+    }
+    document.getElementById('count').textContent =
+      `${n} of ${rest.length} constants shown · ${defining.length} defining constants above`;
+  }
+  render();
+
+  // units tables
+  function table(el, rows, cols) {
+    const thead = document.createElement('thead');
+    const tr = document.createElement('tr');
+    for (const c of cols) { const th = document.createElement('th'); th.textContent = c; tr.appendChild(th); }
+    thead.appendChild(tr);
+    const tbody = document.createElement('tbody');
+    for (const r of rows) {
+      const row = document.createElement('tr');
+      for (const [cls, txt] of r) {
+        const td = document.createElement('td'); td.className = cls; td.textContent = txt || '';
+        row.appendChild(td);
+      }
+      tbody.appendChild(row);
+    }
+    el.append(thead, tbody);
+  }
+  const U = D.units;
+  const pick = (kind) => U.filter((u) => u.Kind === kind);
+  table(document.getElementById('base'),
+    pick('SI base').map((u) => [['sym', u.Symbol], ['nm', u.Name], ['q', u.Quantity], ['def', u.Definition]]),
+    ['symbol', 'unit', 'quantity', 'definition since 2019']);
+  table(document.getElementById('derived'),
+    [...pick('SI derived'), ...pick('Accepted with SI')].map((u) => [['sym', u.Symbol], ['nm', u.Name], ['q', u.Quantity], ['def', u.Definition]]),
+    ['symbol', 'unit', 'quantity', 'in SI terms']);
+  table(document.getElementById('other'),
+    [...pick('Astronomy'), ...pick('Other')].map((u) => [['sym', u.Symbol], ['nm', u.Name], ['q', u.Quantity], ['def', u.Definition]]),
+    ['symbol', 'unit', 'quantity', 'value']);
+
+  const pfxBox = document.getElementById('pfx');
+  for (const u of pick('SI prefix')) {
+    const d = document.createElement('div'); d.className = 'pfx';
+    const l = document.createElement('span');
+    l.innerHTML = '<b></b> ';
+    l.querySelector('b').textContent = u.Symbol;
+    l.appendChild(document.createTextNode(u.Name));
+    const f = document.createElement('span'); f.className = 'f'; f.textContent = u.Definition;
+    d.append(l, f);
+    pfxBox.appendChild(d);
+  }
+
+  function openHash() {
+    const el = location.hash.length > 1 && document.getElementById(decodeURIComponent(location.hash.slice(1)));
+    if (!el) return;
+    el.scrollIntoView({ block: 'center', behavior: 'smooth' });
+    el.classList.add('flash');
+    setTimeout(() => el.classList.remove('flash'), 1700);
+  }
+  addEventListener('hashchange', openHash);
+  openHash();
+</script>
