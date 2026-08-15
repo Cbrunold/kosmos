@@ -32,6 +32,8 @@ scripts/link_elements.py      Equation → element graph → the Equations DB "E
                               (dual-property: each element page gets an "Equations" backlink)
 scripts/link_minerals.py      Equation → mineral graph → the Equations DB "Minerals" relation
                               (dual-property; only minerals present in the Minerals DB)
+scripts/link_cosmos.py        Equation → spectral types / celestial objects / instruments /
+                              theories — four dual-property relations, one script
 deploy/                       systemd unit + nginx site as deployed on the VPS
 ```
 

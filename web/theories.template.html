@@ -27,6 +27,21 @@ __SHARED__
   .theory p { font-size: 13.5px; color: var(--ink-2); line-height: 1.6; margin: 0; }
   .theory .meta { font: 11px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; color: var(--muted); margin-top: 8px; }
   .untitled { color: var(--muted); font-style: italic; }
+  .theory { scroll-margin-top: 16px; }
+  .theory.flash { outline: 2px solid var(--c-pink); outline-offset: 3px; }
+  .eqrow { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 10px; align-items: baseline; }
+  .eqrow .lbl { font: 9.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-right: 3px; }
+  .ceq {
+    font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    border: 1px solid var(--hairline);
+    border-left: 3px solid var(--c-amber);
+    color: var(--ink-2);
+    border-radius: 4px;
+    padding: 2px 7px 2px 6px;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .ceq:hover { color: var(--ink); border-color: var(--ink-2); }
 </style>
 
 <nav class="knav"><a href="/">KOSMOS</a><span>/</span><span class="cur">Theories</span></nav>
@@ -39,13 +54,17 @@ __SHARED__
 
 <script id="data" type="application/json">__DATA__</script>
 <script>
-  const T = JSON.parse(document.getElementById('data').textContent);
+  const D = JSON.parse(document.getElementById('data').textContent);
+  const T = D.theories, EQ = D.equations || {};
+  const slug = (s) => (s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '')
+    .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
   const list = document.getElementById('list');
   const order = { Accepted: 0, Speculative: 1, Disproved: 2 };
   T.sort((a, b) => (order[a.Status] ?? 3) - (order[b.Status] ?? 3) || (a.Name || 'zzz').localeCompare(b.Name || 'zzz'));
   for (const t of T) {
     const card = document.createElement('article');
     card.className = 'kcard theory';
+    if (t.Name) card.id = slug(t.Name);
     const h = document.createElement('h2');
     const name = document.createElement('span');
     if (t.Name) name.textContent = t.Name;
@@ -67,6 +86,28 @@ __SHARED__
       m.textContent = bits.join(' · ');
       card.appendChild(m);
     }
+    const eqs = (t.Equations || []).map((id) => EQ[id]).filter(Boolean).sort((a, b) => a.name.localeCompare(b.name));
+    if (eqs.length) {
+      const row = document.createElement('div');
+      row.className = 'eqrow';
+      const l = document.createElement('span'); l.className = 'lbl'; l.textContent = 'the mathematics';
+      row.appendChild(l);
+      for (const q of eqs) {
+        const a = document.createElement('a');
+        a.className = 'ceq'; a.href = '/equations#' + q.slug; a.textContent = q.name; a.title = q.field || '';
+        row.appendChild(a);
+      }
+      card.appendChild(row);
+    }
     list.appendChild(card);
   }
+  function openHash() {
+    const el = location.hash.length > 1 && document.getElementById(location.hash.slice(1));
+    if (!el) return;
+    el.scrollIntoView({ block: 'center', behavior: 'smooth' });
+    el.classList.add('flash');
+    setTimeout(() => el.classList.remove('flash'), 1700);
+  }
+  addEventListener('hashchange', openHash);
+  openHash();
 </script>

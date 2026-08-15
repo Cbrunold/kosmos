@@ -68,6 +68,18 @@ __SHARED__
     white-space: nowrap;
   }
   .mlink:hover { border-color: var(--c-teal); }
+  .clink {
+    font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    border: 1px solid color-mix(in oklab, var(--c-violet) 45%, var(--panel));
+    background: color-mix(in oklab, var(--c-violet) 12%, var(--panel));
+    color: var(--ink);
+    border-radius: 4px;
+    padding: 2px 7px;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .clink .k { color: var(--ink-2); font-size: 9px; letter-spacing: 0.06em; text-transform: uppercase; margin-right: 4px; }
+  .clink:hover { border-color: var(--c-violet); }
   .eq.flash { outline: 2px solid var(--fc, var(--ring)); outline-offset: 3px; }
   @media (prefers-reduced-motion: no-preference) {
     .eq.flash { animation: eqflash 1.6s ease-out; }
@@ -88,10 +100,14 @@ __SHARED__
 <script id="data" type="application/json">__DATA__</script>
 <script id="eldata" type="application/json">__ELEMENTS__</script>
 <script id="mindata" type="application/json">__MINERALS__</script>
+<script id="cosdata" type="application/json">__COSMOS__</script>
 <script>
   const E = JSON.parse(document.getElementById('data').textContent);
   const EL = JSON.parse(document.getElementById('eldata').textContent);
   const MIN = JSON.parse(document.getElementById('mindata').textContent);
+  const COS = JSON.parse(document.getElementById('cosdata').textContent);
+  const KIND_ORDER = { object: 0, spectral: 1, instrument: 2, theory: 3 };
+  const KIND_LABEL = { object: 'object', spectral: 'stars', instrument: 'instrument', theory: 'theory' };
   const COLORS = {
     Mechanics: 'var(--c-blue)', Electromagnetism: 'var(--c-violet)', Thermodynamics: 'var(--c-amber)',
     Quantum: 'var(--c-teal)', 'Special Relativity': 'var(--c-red)', Mathematics: 'var(--c-pink)',
@@ -209,6 +225,27 @@ __SHARED__
           a.href = '/minerals#' + encodeURIComponent(name.toLowerCase());
           a.title = `${name} · open in the minerals collection`;
           a.textContent = name;
+          row.appendChild(a);
+        }
+        c.appendChild(row);
+      }
+      const cos = [...(e['Spectral Types'] || []), ...(e['Celestial Objects'] || []),
+                   ...(e.Instruments || []), ...(e.Theories || [])]
+        .map((id) => COS[id]).filter(Boolean)
+        .sort((a, b) => (KIND_ORDER[a.kind] - KIND_ORDER[b.kind]) || a.name.localeCompare(b.name));
+      if (cos.length) {
+        const row = document.createElement('div');
+        row.className = 'rel';
+        const lbl = document.createElement('span'); lbl.className = 'lbl'; lbl.textContent = 'cosmos';
+        row.appendChild(lbl);
+        for (const x of cos) {
+          const a = document.createElement('a');
+          a.className = 'clink';
+          a.href = x.href;
+          a.title = `${x.name} · ${x.kind} · open on the ${x.kind === 'theory' ? 'theories' : 'cosmos'} page`;
+          a.innerHTML = '<span class="k"></span><span class="n"></span>';
+          a.querySelector('.k').textContent = KIND_LABEL[x.kind] || x.kind;
+          a.querySelector('.n').textContent = x.name.replace(/ \(.*\)$/, '').replace(/-type Stars$/, '');
           row.appendChild(a);
         }
         c.appendChild(row);

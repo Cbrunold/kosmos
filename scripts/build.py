@@ -161,6 +161,11 @@ TYPE_ORDER = [
 ]
 
 
+def eq_lookup_all():
+    return {e["id"]: {"name": e["Name"], "field": e.get("Field"), "slug": slugify(e["Name"])}
+            for e in notion.get("equations", [])}
+
+
 def build_cosmos_page():
     sun = None
     for o in notion["celestialObjects"]:
@@ -174,6 +179,7 @@ def build_cosmos_page():
                 "mass": f"{mant:g} × 10{sup}" if mass else "?",
                 "diameter": o.get("Diameter (km)") or 0,
                 "type": o.get("Type") or "?",
+                "equations": o.get("Equations") or [],
             }
     spectral = []
     for s in notion["spectralTypes"]:
@@ -182,6 +188,7 @@ def build_cosmos_page():
         spectral.append({
             "letter": letter, "name": name, "temp": s.get("Temperature"),
             "char": s.get("Characteristics"), "colors": s.get("Color") or [],
+            "equations": s.get("Equations") or [],
         })
     spectral.sort(key=lambda s: SPECTRAL_ORDER.index(s["letter"]) if s["letter"] in SPECTRAL_ORDER else 99)
 
@@ -195,12 +202,14 @@ def build_cosmos_page():
     instruments = [{
         "name": i.get("Name"), "type": i.get("Type"), "desc": i.get("Description"),
         "wavelengths": i.get("Wavelength_Range") or [],
+        "equations": i.get("Equations") or [],
     } for i in notion["instruments"] if i.get("Name")]
 
     researchers = sorted(r["Name"] for r in notion["researchers"] if r.get("Name"))
 
     data = {"sun": sun, "spectral": spectral, "types": types,
-            "instruments": instruments, "researchers": researchers}
+            "instruments": instruments, "researchers": researchers,
+            "equations": eq_lookup_all()}
     write_page("cosmos.template.html", "cosmos.html", data)
     return len(types), len(spectral), len(instruments)
 
@@ -240,15 +249,31 @@ if __name__ == "__main__":
     write_page("forces.template.html", "forces.html",
                [{k: v for k, v in f.items() if k != "id"} for f in notion["forces"]])
     write_page("theories.template.html", "theories.html",
-               [{k: v for k, v in t.items() if k != "id"} for t in notion["theories"]])
+               {"theories": [{k: v for k, v in t.items() if k != "id"} for t in notion["theories"]],
+                "equations": eq_lookup_all()})
     # equations keep their Notion page id — the Related relation targets it;
     # __ELEMENTS__ is a pageId -> {sym,name} lookup for the Elements relation
     el_lookup = {e["pageId"]: {"sym": e["notation"], "name": e["name"], "z": e["atomicNumber"]}
                  for e in elements}
     linked = {mid for e in notion.get("equations", []) for mid in (e.get("Minerals") or [])}
     min_lookup = {m["id"]: m["Name"] for m in notion["minerals"] if m.get("Name") and m["id"] in linked}
+    # cosmos lookup: page id -> {name, kind, anchor} across spectral types, objects, instruments, theories
+    cosmos_lookup = {}
+    for s in notion["spectralTypes"]:
+        if s.get("Name"):
+            cosmos_lookup[s["id"]] = {"name": s["Name"], "kind": "spectral", "href": "/cosmos#spectral"}
+    for o in notion["celestialObjects"]:
+        if o.get("Object ID"):
+            cosmos_lookup[o["id"]] = {"name": o["Object ID"], "kind": "object", "href": "/cosmos#catalogue"}
+    for i in notion["instruments"]:
+        if i.get("Name"):
+            cosmos_lookup[i["id"]] = {"name": i["Name"], "kind": "instrument", "href": "/cosmos#instruments"}
+    for t in notion["theories"]:
+        if t.get("Name"):
+            cosmos_lookup[t["id"]] = {"name": t["Name"], "kind": "theory", "href": "/theories#" + slugify(t["Name"])}
     write_page("equations.template.html", "equations.html",
                [{k: v for k, v in e.items() if k not in ("url", "lastEdited")}
                 for e in notion.get("equations", [])],
-               extra={"__ELEMENTS__": compact(el_lookup), "__MINERALS__": compact(min_lookup)})
+               extra={"__ELEMENTS__": compact(el_lookup), "__MINERALS__": compact(min_lookup),
+                      "__COSMOS__": compact(cosmos_lookup)})
     build_home(n_min, n_gems, n_classes, n_spectral, n_instr)
