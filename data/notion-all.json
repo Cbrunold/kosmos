@@ -461978,6 +461978,42 @@
   ],
   "equations": [
     {
+      "id": "3bde5275-7b5c-811f-9033-f21e2c8a2791",
+      "url": "https://app.notion.com/p/Planck-s-Law-3bde52757b5c811f9033f21e2c8a2791",
+      "lastEdited": "2026-08-15T15:56:00.000Z",
+      "Equation": "B(λ,T) = (2hc²/λ⁵) / (e^(hc/λkT) − 1)",
+      "Field": "Radiation",
+      "Named After": "Max Planck",
+      "Symbols": "B spectral radiance — brightness at each wavelength · λ wavelength · T temperature · h Planck constant · c speed of light · k Boltzmann constant",
+      "Significance": "The full glow curve of a hot body, exact at every wavelength — and to get it Planck had to assume light is emitted in discrete lumps of hν, an 'act of desperation' that founded quantum theory. Both Wien's peak and the Stefan–Boltzmann total are buried inside it; the CMB matches it to a part in ten thousand, the most perfect black body ever measured.",
+      "Year": 1900,
+      "Name": "Planck's Law"
+    },
+    {
+      "id": "3bde5275-7b5c-8131-93f6-c15c214946b1",
+      "url": "https://app.notion.com/p/Wien-s-Displacement-Law-3bde52757b5c813193f6c15c214946b1",
+      "lastEdited": "2026-08-15T15:56:00.000Z",
+      "Equation": "λ_max·T = 2.898×10⁻³ m·K",
+      "Field": "Radiation",
+      "Named After": "Wilhelm Wien",
+      "Symbols": "λ_max wavelength where a hot body glows brightest · T its absolute temperature · the product is a constant",
+      "Significance": "Hotter things glow bluer: peak wavelength slides inversely with temperature. A 5,800 K Sun peaks in the green-yellow, a 3,000 K ember in the infrared, and the 2.7 K afterglow of the Big Bang peaks at a millimetre — the cosmic microwave background, read straight off this law.",
+      "Year": 1893,
+      "Name": "Wien's Displacement Law"
+    },
+    {
+      "id": "3bde5275-7b5c-8183-9b80-de90c00b2fbc",
+      "url": "https://app.notion.com/p/Kirchhoff-s-Law-of-Thermal-Radiation-3bde52757b5c81839b80de90c00b2fbc",
+      "lastEdited": "2026-08-15T15:56:00.000Z",
+      "Equation": "ε(λ,T) = α(λ,T)",
+      "Field": "Radiation",
+      "Named After": "Gustav Kirchhoff",
+      "Symbols": "ε emissivity — how well a body radiates at each wavelength · α absorptivity — how well it absorbs the same wavelength · equal for any body in thermal equilibrium",
+      "Significance": "Good absorbers are good emitters, wavelength by wavelength — a perfect absorber (a 'black body', Kirchhoff's coinage) must radiate a universal spectrum depending on temperature alone. Finding that spectrum's formula became the problem that broke classical physics.",
+      "Year": 1859,
+      "Name": "Kirchhoff's Law of Thermal Radiation"
+    },
+    {
       "id": "3bde5275-7b5c-81eb-8234-c87a6700bc0d",
       "url": "https://app.notion.com/p/Poisson-s-Equation-3bde52757b5c81eb8234c87a6700bc0d",
       "lastEdited": "2026-08-15T15:52:00.000Z",
