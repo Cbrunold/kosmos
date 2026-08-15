@@ -2,7 +2,47 @@
 <style>
 __SHARED__
 
-  .fields { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 16px; }
+  .domains { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
+  .dchip {
+    font: 11.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    border: 1px solid var(--hairline);
+    background: var(--panel);
+    color: var(--ink-2);
+    border-radius: 7px;
+    padding: 5px 12px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    border-left: 3px solid var(--dc, var(--hairline));
+  }
+  .dchip:hover { color: var(--ink); border-color: var(--ink-2); border-left-color: var(--dc, var(--ink-2)); }
+  .dchip .n { font-size: 9.5px; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .dchip .caret { font-size: 8px; color: var(--muted); }
+  .dchip[aria-expanded="true"] { color: var(--ink); border-color: var(--ink-2); background: color-mix(in oklab, var(--dc) 10%, var(--panel)); }
+  .dchip[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--page); }
+  .dchip[aria-pressed="true"] .n, .dchip[aria-pressed="true"] .caret { color: color-mix(in oklab, var(--page) 65%, var(--ink)); }
+  .dchip.allchip { border-left-color: var(--muted); }
+
+  .fields {
+    display: none;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin: 0 0 16px;
+    padding: 10px 12px;
+    background: var(--panel);
+    border: 1px solid var(--hairline);
+    border-radius: 8px;
+  }
+  .fields.on { display: flex; }
+  .fields .ftitle {
+    font: 9.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    width: 100%;
+    margin-bottom: 2px;
+  }
   .fchip {
     font: 11px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
     border: 1px solid var(--hairline);
@@ -11,8 +51,16 @@ __SHARED__
     border-radius: 99px;
     padding: 3px 11px;
     cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border-left: 3px solid var(--fc2, transparent);
   }
+  .fchip:hover { color: var(--ink); border-color: var(--ink-2); }
+  .fchip .n { font-size: 9px; color: var(--muted); font-variant-numeric: tabular-nums; }
   .fchip[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--page); }
+  .fchip[aria-pressed="true"] .n { color: color-mix(in oklab, var(--page) 65%, var(--ink)); }
+  .fcount { font: 11px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; color: var(--muted); margin: 0 2px 16px; }
 
   .eqs { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 14px; max-width: 1240px; }
   .eq { border-top: 3px solid var(--fc, var(--hairline)); display: flex; flex-direction: column; gap: 9px; }
@@ -92,7 +140,9 @@ __SHARED__
 <h1 class="ktitle">Equations</h1>
 <p class="klede">The physical world, stated exactly. Each entry gives the statement, what every symbol means, why it matters — and which other equations it leans on. Follow the <em>related</em> links: the shelf is a web.</p>
 
+<div class="domains" id="domains"></div>
 <div class="fields" id="fields"></div>
+<p class="fcount" id="fcount"></p>
 <div class="eqs" id="eqs"></div>
 
 <p class="kfoot">From the Equations database in Notion — add a row there and it appears here on the next sync.</p>
@@ -134,32 +184,135 @@ __SHARED__
   const byId = Object.fromEntries(E.map((e) => [e.id, e]));
   for (const e of E) e.slug = slug(e.Name);
 
-  let active = null;
-  const fieldsBox = document.getElementById('fields');
+  // ---- filters: six physical domains, fields collapsed underneath ----
+  const DOMAINS = [
+    { name: 'Foundations', color: 'var(--c-pink)',
+      blurb: 'the mathematics and principles the rest is written in',
+      fields: ['Mathematics', 'Classical Field Theory', 'Information Theory', 'Nonlinear Dynamics'] },
+    { name: 'Matter & Motion', color: 'var(--c-blue)',
+      blurb: 'things that move, flow, vibrate and break',
+      fields: ['Mechanics', 'Celestial Mechanics', 'Rocketry', 'Fluid Dynamics', 'Acoustics',
+               'Materials Science', 'Geophysics'] },
+    { name: 'Heat, Chemistry & Life', color: 'var(--c-amber)',
+      blurb: 'energy, entropy, reactions and the cell',
+      fields: ['Thermodynamics', 'Statistical Mechanics', 'Heat Transfer', 'Chemistry',
+               'Chemical Kinetics', 'Chemical Thermodynamics', 'Biophysics'] },
+    { name: 'Fields, Light & Plasma', color: 'var(--c-violet)',
+      blurb: 'charge, current, radiation and the fourth state of matter',
+      fields: ['Electrostatics', 'Electromagnetism', 'Circuits', 'Waves & Optics', 'Photonics',
+               'Radiation', 'Thermoelectrics', 'Plasma Physics', 'Magnetohydrodynamics'] },
+    { name: 'Quantum & Structure of Matter', color: 'var(--c-teal)',
+      blurb: 'from the qubit to the atom to the Standard Model',
+      fields: ['Quantum', 'Atomic Physics', 'Nuclear Physics', 'Particle Physics',
+               'Quantum Field Theory', 'Condensed Matter', 'Superconductivity', 'Quantum Computing'] },
+    { name: 'Relativity & Cosmos', color: 'var(--c-navy)',
+      blurb: 'spacetime, stars and the universe at large',
+      fields: ['Special Relativity', 'General Relativity', 'Astrophysics', 'Cosmology'] },
+  ];
+
   const present = [...new Set(E.map((e) => e.Field).filter(Boolean))];
-  const all = document.createElement('button');
-  all.className = 'fchip'; all.textContent = 'all'; all.setAttribute('aria-pressed', 'true');
-  fieldsBox.appendChild(all);
-  all.addEventListener('click', () => { active = null; sync(); });
-  for (const f of present) {
-    const b = document.createElement('button');
-    b.className = 'fchip'; b.textContent = f; b.setAttribute('aria-pressed', 'false');
-    b.dataset.field = f;
-    b.addEventListener('click', () => { active = active === f ? null : f; sync(); });
-    fieldsBox.appendChild(b);
+  const counts = present.reduce((m, f) => (m[f] = E.filter((e) => e.Field === f).length, m), {});
+  const grouped = new Set(DOMAINS.flatMap((d) => d.fields));
+  const orphans = present.filter((f) => !grouped.has(f));
+  if (orphans.length) {   // any field added in Notion later still reachable
+    DOMAINS.push({ name: 'Other', color: 'var(--muted)', blurb: 'not yet grouped', fields: orphans });
   }
-  function sync() {
-    for (const b of fieldsBox.children) {
-      b.setAttribute('aria-pressed', String(b.dataset.field ? b.dataset.field === active : active === null));
+  for (const d of DOMAINS) {
+    d.fields = d.fields.filter((f) => present.includes(f));
+    d.count = d.fields.reduce((n, f) => n + counts[f], 0);
+  }
+
+  let openDomain = null;      // which domain's fields are shown
+  let activeDomain = null;    // filtering by a whole domain
+  let activeField = null;     // filtering by one field
+
+  const domainsBox = document.getElementById('domains');
+  const fieldsBox = document.getElementById('fields');
+
+  const allBtn = document.createElement('button');
+  allBtn.className = 'dchip allchip';
+  allBtn.innerHTML = 'all <span class="n"></span>';
+  allBtn.querySelector('.n').textContent = E.length;
+  allBtn.setAttribute('aria-pressed', 'true');
+  allBtn.addEventListener('click', () => { openDomain = activeDomain = activeField = null; sync(); });
+  domainsBox.appendChild(allBtn);
+
+  for (const d of DOMAINS) {
+    const b = document.createElement('button');
+    b.className = 'dchip';
+    b.style.setProperty('--dc', d.color);
+    b.dataset.domain = d.name;
+    b.title = d.blurb + ` — ${d.fields.length} fields`;
+    b.innerHTML = '<span class="lbl"></span><span class="n"></span><span class="caret">▾</span>';
+    b.querySelector('.lbl').textContent = d.name;
+    b.querySelector('.n').textContent = d.count;
+    b.setAttribute('aria-pressed', 'false');
+    b.setAttribute('aria-expanded', 'false');
+    b.addEventListener('click', () => {
+      if (activeDomain === d.name && !activeField) {      // second click closes
+        openDomain = activeDomain = null;
+      } else {
+        openDomain = activeDomain = d.name;
+        activeField = null;
+      }
+      sync();
+    });
+    domainsBox.appendChild(b);
+  }
+
+  function drawFields() {
+    fieldsBox.innerHTML = '';
+    const d = DOMAINS.find((x) => x.name === openDomain);
+    fieldsBox.classList.toggle('on', Boolean(d));
+    if (!d) return;
+    const t = document.createElement('div');
+    t.className = 'ftitle';
+    t.textContent = `${d.name} · ${d.blurb}`;
+    fieldsBox.appendChild(t);
+    for (const f of d.fields) {
+      const b = document.createElement('button');
+      b.className = 'fchip';
+      b.dataset.field = f;
+      b.style.setProperty('--fc2', COLORS[f] || 'var(--muted)');
+      b.innerHTML = '<span class="lbl"></span><span class="n"></span>';
+      b.querySelector('.lbl').textContent = f;
+      b.querySelector('.n').textContent = counts[f];
+      b.setAttribute('aria-pressed', String(activeField === f));
+      b.addEventListener('click', () => {
+        activeField = activeField === f ? null : f;
+        activeDomain = d.name;
+        sync();
+      });
+      fieldsBox.appendChild(b);
     }
+  }
+
+  function sync() {
+    allBtn.setAttribute('aria-pressed', String(!activeDomain && !activeField));
+    for (const b of domainsBox.children) {
+      if (!b.dataset.domain) continue;
+      b.setAttribute('aria-pressed', String(b.dataset.domain === activeDomain && !activeField));
+      b.setAttribute('aria-expanded', String(b.dataset.domain === openDomain));
+    }
+    drawFields();
     render();
   }
 
   const eqs = document.getElementById('eqs');
+  function inFilter(e) {
+    if (activeField) return e.Field === activeField;
+    if (activeDomain) {
+      const d = DOMAINS.find((x) => x.name === activeDomain);
+      return d ? d.fields.includes(e.Field) : true;
+    }
+    return true;
+  }
   function render() {
     eqs.innerHTML = '';
+    let shown = 0;
     for (const e of E) {
-      if (active && e.Field !== active) continue;
+      if (!inFilter(e)) continue;
+      shown++;
       const c = document.createElement('article');
       c.className = 'kcard eq';
       c.id = e.slug;
@@ -252,12 +405,16 @@ __SHARED__
       }
       eqs.appendChild(c);
     }
+    const fc = document.getElementById('fcount');
+    fc.textContent = (activeField || activeDomain)
+      ? `${shown} of ${E.length} equations — ${activeField || activeDomain}`
+      : `${E.length} equations across ${present.length} fields, ${DOMAINS.length} domains · 530 BCE to 1995`;
   }
-  render();
+  sync();
 
-  // navigate to a card: clear any field filter hiding it, scroll, flash, update the hash
+  // navigate to a card: clear any filter hiding it, scroll, flash, update the hash
   function goTo(id) {
-    if (active) { active = null; sync(); }
+    if (activeField || activeDomain) { openDomain = activeDomain = activeField = null; sync(); }
     const el = document.getElementById(id);
     if (!el) return;
     history.replaceState(null, '', '#' + id);
