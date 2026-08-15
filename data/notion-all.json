@@ -632,8 +632,945 @@
       "Name": null
     }
   ],
-  "discoveries": [],
-  "observatories": [],
+  "discoveries": [
+    {
+      "id": "3bde5275-7b5c-81ec-a49a-e86f5e500ce6",
+      "url": "https://app.notion.com/p/The-First-Image-of-a-Black-Hole-3bde52757b5c81eca49ae86f5e500ce6",
+      "lastEdited": "2026-08-15T19:18:00.000Z",
+      "Discoverer": [
+        "f3a708d9-63ec-4a86-9f4a-c82690ef9f29"
+      ],
+      "Description": "M87*: a ring of light around a shadow two and a half times the Schwarzschild radius, exactly the size general relativity requires. Assembled from petabytes flown between eight sites on physical hard drives, because no network could carry it.",
+      "Discovery Date": null,
+      "Celestial_Object": [],
+      "Observatory": [
+        "3bde5275-7b5c-8196-b392-c981329e1675"
+      ],
+      "Year": 2019,
+      "Name": "The First Image of a Black Hole"
+    },
+    {
+      "id": "3bde5275-7b5c-81d9-813c-ede6edde9701",
+      "url": "https://app.notion.com/p/A-Neutron-Star-Merger-Seen-and-Heard-3bde52757b5c81d9813cede6edde9701",
+      "lastEdited": "2026-08-15T19:18:00.000Z",
+      "Discoverer": [
+        "3bde5275-7b5c-810f-abe4-f0b088360d26",
+        "3bde5275-7b5c-8170-90fb-f9702a56f66c"
+      ],
+      "Description": "GW170817 arrived as gravitational waves and, 1.7 seconds later, as a gamma-ray burst — then in every other band as seventy observatories turned to look. The debris was measurably manufacturing gold.",
+      "Discovery Date": null,
+      "Celestial_Object": [],
+      "Observatory": [
+        "3bde5275-7b5c-8115-b88d-f1b869cc24f7"
+      ],
+      "Year": 2017,
+      "Name": "A Neutron Star Merger, Seen and Heard"
+    },
+    {
+      "id": "3bde5275-7b5c-8166-b330-fbf27c2e5258",
+      "url": "https://app.notion.com/p/Gravitational-Waves-3bde52757b5c8166b330fbf27c2e5258",
+      "lastEdited": "2026-08-15T19:18:00.000Z",
+      "Discoverer": [
+        "3bde5275-7b5c-810f-abe4-f0b088360d26",
+        "3bde5275-7b5c-8150-a808-e5345dda71e6",
+        "3bde5275-7b5c-8170-90fb-f9702a56f66c"
+      ],
+      "Description": "GW150914: two black holes of 36 and 29 solar masses merging 1.3 billion light-years away, shifting LIGO's 4 km arms by a fraction of a proton's width. The signal was so clean it was initially suspected of being an injected test.",
+      "Discovery Date": null,
+      "Celestial_Object": [],
+      "Observatory": [
+        "3bde5275-7b5c-8115-b88d-f1b869cc24f7"
+      ],
+      "Year": 2015,
+      "Name": "Gravitational Waves"
+    },
+    {
+      "id": "3bde5275-7b5c-819c-abf0-e740f9be23e4",
+      "url": "https://app.notion.com/p/The-Higgs-Boson-3bde52757b5c819cabf0e740f9be23e4",
+      "lastEdited": "2026-08-15T19:18:00.000Z",
+      "Discoverer": [
+        "3bde5275-7b5c-81cf-b8f5-c9b849eacbb6",
+        "3bde5275-7b5c-81d1-b165-fdd3ef972296"
+      ],
+      "Description": "A resonance at 125 GeV in two independent detectors, matching a particle predicted in 1964. Higgs was in the audience for the announcement, 48 years later.",
+      "Discovery Date": null,
+      "Celestial_Object": [],
+      "Observatory": [],
+      "Year": 2012,
+      "Name": "The Higgs Boson"
+    },
+    {
+      "id": "3bde5275-7b5c-812a-b58c-cb829cbed9c0",
+      "url": "https://app.notion.com/p/The-Accelerating-Universe-3bde52757b5c812ab58ccb829cbed9c0",
+      "lastEdited": "2026-08-15T19:18:00.000Z",
+      "Discoverer": [
+        "3bde5275-7b5c-810f-815d-feab1486c2c3",
+        "3bde5275-7b5c-81e7-9fdd-fc601314ede3",
+        "3bde5275-7b5c-81f7-9127-eed4aada4070"
+      ],
+      "Description": "Distant type Ia supernovae came out fainter than a decelerating universe permits. Two competing teams got the same unwelcome answer, and dark energy has been unexplained ever since.",
+      "Discovery Date": null,
+      "Celestial_Object": [],
+      "Observatory": [],
+      "Year": 1998,
+      "Name": "The Accelerating Universe"
+    },
+    {
+      "id": "3bde5275-7b5c-81ab-8d2c-cd3d931487cf",
+      "url": "https://app.notion.com/p/51-Pegasi-b-3bde52757b5c81ab8d2ccd3d931487cf",
+      "lastEdited": "2026-08-15T19:18:00.000Z",
+      "Discoverer": [
+        "504e6604-1942-46af-b10e-5778b77d2218",
+        "f9b3c66a-cb98-4e1c-8252-8d79a3125de0"
+      ],
+      "Description": "A Jupiter-mass planet orbiting a Sun-like star every 4.2 days, far closer than any theory allowed. It was the first planet found around an ordinary star, and it broke planet formation models immediately.",
+      "Discovery Date": null,
+      "Celestial_Object": [],
+      "Observatory": [],
+      "Year": 1995,
+      "Name": "51 Pegasi b"
+    },
+    {
+      "id": "3bde5275-7b5c-8159-8e6d-e36d1494a385",
+      "url": "https://app.notion.com/p/Structure-in-the-Microwave-Background-3bde52757b5c81598e6de36d1494a385",
+      "lastEdited": "2026-08-15T19:18:00.000Z",
+      "Discoverer": [
+        "eb5e7181-08ea-45c5-8318-6495db3e671f"
+      ],
+      "Description": "COBE mapped temperature ripples of one part in a hundred thousand — the density variations that gravity would grow into every galaxy that exists.",
+      "Discovery Date": null,
+      "Celestial_Object": [],
+      "Observatory": [
+        "3bde5275-7b5c-81ed-bc16-f0a3a1fa2b6a"
+      ],
+      "Year": 1992,
+      "Name": "Structure in the Microwave Background"
+    },
+    {
+      "id": "3bde5275-7b5c-8159-a2c2-ffea884d7d0e",
+      "url": "https://app.notion.com/p/The-First-Kuiper-Belt-Object-3bde52757b5c8159a2c2ffea884d7d0e",
+      "lastEdited": "2026-08-15T19:18:00.000Z",
+      "Discoverer": [
+        "3bde5275-7b5c-81da-b7e4-f723a93f2b67",
+        "3bde5275-7b5c-81dd-b8e7-d8e72c85db57"
+      ],
+      "Description": "After five years of finding nothing, Jewitt and Luu found 1992 QB1 beyond Neptune. Thousands followed, and Pluto turned out to be one of them rather than a planet.",
+      "Discovery Date": null,
+      "Celestial_Object": [],
+      "Observatory": [
+        "3bde5275-7b5c-815b-99ba-f35489b04470"
+      ],
+      "Year": 1992,
+      "Name": "The First Kuiper Belt Object"
+    },
+    {
+      "id": "3bde5275-7b5c-8184-94e0-d8fa543139e1",
+      "url": "https://app.notion.com/p/The-Binary-Pulsar-3bde52757b5c818494e0d8fa543139e1",
+      "lastEdited": "2026-08-15T19:18:00.000Z",
+      "Discoverer": [
+        "3bde5275-7b5c-8104-ac2a-ea36282f6e49",
+        "3bde5275-7b5c-8195-98e9-e11878a63087"
+      ],
+      "Description": "Two neutron stars orbiting each other, losing energy at exactly the rate general relativity predicts for gravitational radiation. Indirect proof of gravitational waves, four decades before one was caught directly.",
+      "Discovery Date": null,
+      "Celestial_Object": [],
+      "Observatory": [
+        "3bde5275-7b5c-81ae-bfc1-ebac84ab85f8"
+      ],
+      "Year": 1974,
+      "Name": "The Binary Pulsar"
+    },
+    {
+      "id": "3bde5275-7b5c-8193-ab26-d66e7aa4441a",
+      "url": "https://app.notion.com/p/Flat-Galaxy-Rotation-Curves-3bde52757b5c8193ab26d66e7aa4441a",
+      "lastEdited": "2026-08-15T19:18:00.000Z",
+      "Discoverer": [
+        "3bde5275-7b5c-815a-b9ba-f5e3b84368f6"
+      ],
+      "Description": "Stars at the edges of spiral galaxies orbit as fast as those near the centre, which Newtonian gravity forbids unless most of the mass is invisible. This is what turned dark matter from a curiosity into a crisis.",
+      "Discovery Date": null,
+      "Celestial_Object": [],
+      "Observatory": [],
+      "Year": 1978,
+      "Name": "Flat Galaxy Rotation Curves"
+    },
+    {
+      "id": "3bde5275-7b5c-8142-a593-e4f4a87a417f",
+      "url": "https://app.notion.com/p/Pulsars-3bde52757b5c8142a593e4f4a87a417f",
+      "lastEdited": "2026-08-15T19:18:00.000Z",
+      "Discoverer": [
+        "3bde5275-7b5c-8120-83f9-f796aeb32d6d"
+      ],
+      "Description": "A signal repeating every 1.337 seconds, so regular it was labelled LGM-1 for 'little green men'. It was a neutron star, spinning — an object predicted in 1934 and never expected to be seen.",
+      "Discovery Date": null,
+      "Celestial_Object": [],
+      "Observatory": [],
+      "Year": 1967,
+      "Name": "Pulsars"
+    },
+    {
+      "id": "3bde5275-7b5c-814c-bd39-fd5b13f93809",
+      "url": "https://app.notion.com/p/The-Cosmic-Microwave-Background-3bde52757b5c814cbd39fd5b13f93809",
+      "lastEdited": "2026-08-15T19:18:00.000Z",
+      "Discoverer": [
+        "3bde5275-7b5c-817a-b64b-cbf396d77923",
+        "3bde5275-7b5c-81a9-9233-f6a9f838dd78"
+      ],
+      "Description": "An antenna hiss that would not go away in any direction, at any hour, in any season. They evicted a pair of pigeons and scrubbed out the droppings; the 3 K signal remained. It was the afterglow of the Big Bang, and it settled the argument with the steady state.",
+      "Discovery Date": null,
+      "Celestial_Object": [],
+      "Observatory": [],
+      "Year": 1965,
+      "Name": "The Cosmic Microwave Background"
+    },
+    {
+      "id": "3bde5275-7b5c-81e0-9d9a-e922f5e96001",
+      "url": "https://app.notion.com/p/Quasars-3bde52757b5c81e09d9ae922f5e96001",
+      "lastEdited": "2026-08-15T19:18:00.000Z",
+      "Discoverer": [
+        "3bde5275-7b5c-81f9-a9e9-c8ebf287bf3f"
+      ],
+      "Description": "3C 273's spectrum matched nothing until Schmidt recognised ordinary hydrogen lines redshifted by 16%. That put it two billion light-years away and radiating more than a hundred galaxies from a region the size of the solar system.",
+      "Discovery Date": null,
+      "Celestial_Object": [],
+      "Observatory": [
+        "3bde5275-7b5c-81cd-9aa7-fe02ef65ed1d"
+      ],
+      "Year": 1963,
+      "Name": "Quasars"
+    },
+    {
+      "id": "3bde5275-7b5c-815f-bef8-e9fc74a018d0",
+      "url": "https://app.notion.com/p/The-First-Radio-Map-of-the-Sky-3bde52757b5c815fbef8e9fc74a018d0",
+      "lastEdited": "2026-08-15T19:18:00.000Z",
+      "Discoverer": [
+        "3bde5275-7b5c-81df-a9d7-ee11a00ab0b5"
+      ],
+      "Description": "Reber built a 9 m dish in his back garden, the only radio astronomer in the world for most of a decade, and surveyed the sky nobody else was listening to.",
+      "Discovery Date": null,
+      "Celestial_Object": [],
+      "Observatory": [],
+      "Year": 1938,
+      "Name": "The First Radio Map of the Sky"
+    },
+    {
+      "id": "3bde5275-7b5c-81f8-b99c-d6962c367a15",
+      "url": "https://app.notion.com/p/Dark-Matter-in-the-Coma-Cluster-3bde52757b5c81f8b99cd6962c367a15",
+      "lastEdited": "2026-08-15T19:18:00.000Z",
+      "Discoverer": [
+        "3bde5275-7b5c-8145-b939-d7d5691f84c5"
+      ],
+      "Description": "Zwicky measured how fast the galaxies were moving and found the cluster needed several hundred times more mass than its light accounted for. He was ignored for forty years.",
+      "Discovery Date": null,
+      "Celestial_Object": [],
+      "Observatory": [],
+      "Year": 1933,
+      "Name": "Dark Matter in the Coma Cluster"
+    },
+    {
+      "id": "3bde5275-7b5c-81e1-890c-e1a705dbc4b2",
+      "url": "https://app.notion.com/p/The-Neutron-3bde52757b5c81e1890ce1a705dbc4b2",
+      "lastEdited": "2026-08-15T19:18:00.000Z",
+      "Discoverer": [
+        "3bde5275-7b5c-819e-a3bd-e86eb6b29070"
+      ],
+      "Description": "A neutral particle of roughly proton mass, which explained isotopes at a stroke and made everything in nuclear physics after it possible.",
+      "Discovery Date": null,
+      "Celestial_Object": [],
+      "Observatory": [],
+      "Year": 1932,
+      "Name": "The Neutron"
+    },
+    {
+      "id": "3bde5275-7b5c-8176-acbd-fe248ce623e5",
+      "url": "https://app.notion.com/p/Radio-Waves-from-the-Milky-Way-3bde52757b5c8176acbdfe248ce623e5",
+      "lastEdited": "2026-08-15T19:18:00.000Z",
+      "Discoverer": [
+        "3bde5275-7b5c-81e3-9f5f-f0ed596519d0"
+      ],
+      "Description": "Jansky was hired to find sources of static troubling transatlantic telephone calls. One hiss rose and set four minutes early each day — sidereal time — and came from Sagittarius.",
+      "Discovery Date": null,
+      "Celestial_Object": [],
+      "Observatory": [],
+      "Year": 1932,
+      "Name": "Radio Waves from the Milky Way"
+    },
+    {
+      "id": "3bde5275-7b5c-81c8-857a-ffa730bfe9a2",
+      "url": "https://app.notion.com/p/Pluto-3bde52757b5c81c8857affa730bfe9a2",
+      "lastEdited": "2026-08-15T19:18:00.000Z",
+      "Discoverer": [
+        "3bde5275-7b5c-8167-a64c-c53c47d57340"
+      ],
+      "Description": "Tombaugh blinked photographic plates for a year looking for a predicted ninth planet. He found one — though far too small to be the object the prediction called for, which was an error.",
+      "Discovery Date": null,
+      "Celestial_Object": [],
+      "Observatory": [],
+      "Year": 1930,
+      "Name": "Pluto"
+    },
+    {
+      "id": "3bde5275-7b5c-8127-847c-dfb9a27f0a27",
+      "url": "https://app.notion.com/p/The-Expansion-of-the-Universe-3bde52757b5c8127847cdfb9a27f0a27",
+      "lastEdited": "2026-08-15T19:18:00.000Z",
+      "Discoverer": [
+        "3bde5275-7b5c-8187-bf62-efd78b594816"
+      ],
+      "Description": "Distance plotted against redshift gave a straight line: everything is receding, faster the further away it is. Lemaître had derived it from theory two years earlier and been ignored.",
+      "Discovery Date": null,
+      "Celestial_Object": [],
+      "Observatory": [
+        "3bde5275-7b5c-81b6-86dd-f316fb7a8b35"
+      ],
+      "Year": 1929,
+      "Name": "The Expansion of the Universe"
+    },
+    {
+      "id": "3bde5275-7b5c-81e8-a7cb-e16e530307a0",
+      "url": "https://app.notion.com/p/Andromeda-Is-a-Galaxy-3bde52757b5c81e8a7cbe16e530307a0",
+      "lastEdited": "2026-08-15T19:18:00.000Z",
+      "Discoverer": [
+        "3bde5275-7b5c-8187-bf62-efd78b594816"
+      ],
+      "Description": "A Cepheid in M31 put it a million light-years away — far outside the Milky Way. The universe went from one galaxy to countless in a single plate.",
+      "Discovery Date": null,
+      "Celestial_Object": [],
+      "Observatory": [
+        "3bde5275-7b5c-81b6-86dd-f316fb7a8b35"
+      ],
+      "Year": 1924,
+      "Name": "Andromeda Is a Galaxy"
+    },
+    {
+      "id": "3bde5275-7b5c-81a3-bbb1-d42988cee587",
+      "url": "https://app.notion.com/p/Stars-Are-Made-of-Hydrogen-3bde52757b5c81a3bbb1d42988cee587",
+      "lastEdited": "2026-08-15T19:18:00.000Z",
+      "Discoverer": [
+        "3bde5275-7b5c-8164-b6af-ef98e481d7f7"
+      ],
+      "Description": "Payne-Gaposchkin applied the Saha equation to stellar spectra and found hydrogen outnumbering everything else by orders of magnitude. Told the result was 'clearly impossible', she added a disclaimer; she was right and it was retracted four years later.",
+      "Discovery Date": null,
+      "Celestial_Object": [],
+      "Observatory": [],
+      "Year": 1925,
+      "Name": "Stars Are Made of Hydrogen"
+    },
+    {
+      "id": "3bde5275-7b5c-812d-839f-d1b14a8a6135",
+      "url": "https://app.notion.com/p/The-Bending-of-Starlight-3bde52757b5c812d839fd1b14a8a6135",
+      "lastEdited": "2026-08-15T19:18:00.000Z",
+      "Discoverer": [
+        "3bde5275-7b5c-8111-8852-cedf3df78851",
+        "3bde5275-7b5c-81df-b823-c861e2b439e8"
+      ],
+      "Description": "Eddington photographed stars near the eclipsed Sun and found them displaced by about an arcsecond — twice the Newtonian value, and what general relativity had predicted.",
+      "Discovery Date": null,
+      "Celestial_Object": [],
+      "Observatory": [],
+      "Year": 1919,
+      "Name": "The Bending of Starlight"
+    },
+    {
+      "id": "3bde5275-7b5c-8133-aee8-e3c2f256a9ed",
+      "url": "https://app.notion.com/p/Galaxy-Redshifts-3bde52757b5c8133aee8e3c2f256a9ed",
+      "lastEdited": "2026-08-15T19:18:00.000Z",
+      "Discoverer": [
+        "3bde5275-7b5c-813c-9bb7-d795a4385ac5"
+      ],
+      "Description": "Slipher measured the spectra of spiral nebulae and found almost all of them shifted to the red. He had the expansion of the universe in hand a decade before anyone could interpret it.",
+      "Discovery Date": null,
+      "Celestial_Object": [],
+      "Observatory": [],
+      "Year": 1917,
+      "Name": "Galaxy Redshifts"
+    },
+    {
+      "id": "3bde5275-7b5c-8178-aa59-cddbe059814a",
+      "url": "https://app.notion.com/p/The-Cepheid-Period-Luminosity-Law-3bde52757b5c8178aa59cddbe059814a",
+      "lastEdited": "2026-08-15T19:18:00.000Z",
+      "Discoverer": [
+        "3bde5275-7b5c-81cc-b3d8-d127914014c0"
+      ],
+      "Description": "Leavitt noticed that the brighter Cepheids in the Magellanic Clouds pulse more slowly. Since those stars are all at much the same distance, the relation gives absolute brightness — and therefore distance to anything containing one. Every rung above it depends on this.",
+      "Discovery Date": null,
+      "Celestial_Object": [],
+      "Observatory": [],
+      "Year": 1912,
+      "Name": "The Cepheid Period–Luminosity Law"
+    },
+    {
+      "id": "3bde5275-7b5c-8170-99a4-cd57f229924e",
+      "url": "https://app.notion.com/p/Cosmic-Rays-3bde52757b5c817099a4cd57f229924e",
+      "lastEdited": "2026-08-15T19:18:00.000Z",
+      "Discoverer": [
+        "3bde5275-7b5c-81b5-8693-d0a5e633e6bc"
+      ],
+      "Description": "Radiation was assumed to come from the ground, so it should fall with altitude. Hess took an electroscope to 5,300 m in a balloon and found it rising instead.",
+      "Discovery Date": null,
+      "Celestial_Object": [],
+      "Observatory": [],
+      "Year": 1912,
+      "Name": "Cosmic Rays"
+    },
+    {
+      "id": "3bde5275-7b5c-81b1-8804-e55ecc10aab8",
+      "url": "https://app.notion.com/p/The-Atomic-Nucleus-3bde52757b5c81b18804e55ecc10aab8",
+      "lastEdited": "2026-08-15T19:18:00.000Z",
+      "Discoverer": [
+        "3bde5275-7b5c-8198-abbd-fb88875d4ee1"
+      ],
+      "Description": "Alpha particles fired at gold foil, and about one in eight thousand came straight back — 'as if you had fired a 15-inch shell at tissue paper and it bounced'. The positive charge was a point.",
+      "Discovery Date": null,
+      "Celestial_Object": [],
+      "Observatory": [],
+      "Year": 1911,
+      "Name": "The Atomic Nucleus"
+    },
+    {
+      "id": "3bde5275-7b5c-8139-9fce-f538093263b2",
+      "url": "https://app.notion.com/p/The-Electron-3bde52757b5c81399fcef538093263b2",
+      "lastEdited": "2026-08-15T19:18:00.000Z",
+      "Discoverer": [
+        "3bde5275-7b5c-81b5-bd0b-d555a2965da3"
+      ],
+      "Description": "Cathode rays bent by both magnetic and electric fields, giving a charge-to-mass ratio a thousand times anything expected. The atom had parts.",
+      "Discovery Date": null,
+      "Celestial_Object": [],
+      "Observatory": [],
+      "Year": 1897,
+      "Name": "The Electron"
+    },
+    {
+      "id": "3bde5275-7b5c-810c-8632-c009085993b7",
+      "url": "https://app.notion.com/p/Radioactivity-3bde52757b5c810c8632c009085993b7",
+      "lastEdited": "2026-08-15T19:18:00.000Z",
+      "Discoverer": [
+        "3bde5275-7b5c-8130-af91-c27293c151cc"
+      ],
+      "Description": "Uranium salts left on a wrapped photographic plate in a closed drawer, waiting for sunshine that never came, fogged the plate anyway. The energy was coming from the atom itself.",
+      "Discovery Date": null,
+      "Celestial_Object": [],
+      "Observatory": [],
+      "Year": 1896,
+      "Name": "Radioactivity"
+    },
+    {
+      "id": "3bde5275-7b5c-810f-a3c7-f43330c7a1d6",
+      "url": "https://app.notion.com/p/X-rays-3bde52757b5c810fa3c7f43330c7a1d6",
+      "lastEdited": "2026-08-15T19:18:00.000Z",
+      "Discoverer": [
+        "3bde5275-7b5c-813b-86df-f34da3ade7cc"
+      ],
+      "Description": "A screen across the room fluoresced while a covered discharge tube was running. Within months the effect was being used to photograph bones, before anyone knew what the rays were.",
+      "Discovery Date": null,
+      "Celestial_Object": [],
+      "Observatory": [],
+      "Year": 1895,
+      "Name": "X-rays"
+    },
+    {
+      "id": "3bde5275-7b5c-8136-84c3-d53c793b7c68",
+      "url": "https://app.notion.com/p/Helium-3bde52757b5c813684c3d53c793b7c68",
+      "lastEdited": "2026-08-15T19:18:00.000Z",
+      "Discoverer": [
+        "3bde5275-7b5c-813f-b9cf-ede5e9201d46",
+        "3bde5275-7b5c-81dd-a3ac-e6f110d20ae8"
+      ],
+      "Description": "An unexplained yellow line in the Sun's spectrum during a total eclipse. It was named for the Sun and not found on Earth for another 27 years — the only element discovered off-world first.",
+      "Discovery Date": null,
+      "Celestial_Object": [],
+      "Observatory": [],
+      "Year": 1868,
+      "Name": "Helium"
+    },
+    {
+      "id": "3bde5275-7b5c-8163-b9fc-eeeb5b91d02c",
+      "url": "https://app.notion.com/p/Neptune-3bde52757b5c8163b9fceeeb5b91d02c",
+      "lastEdited": "2026-08-15T19:18:00.000Z",
+      "Discoverer": [
+        "3bde5275-7b5c-8117-8b3a-f5a0ae7cd8fe",
+        "3bde5275-7b5c-8193-84d1-e4f104d041ce"
+      ],
+      "Description": "Found by arithmetic. Le Verrier calculated where an unseen planet must sit to explain Uranus's orbital residuals; Galle pointed a telescope there and had it within an hour, less than a degree from the prediction.",
+      "Discovery Date": null,
+      "Celestial_Object": [],
+      "Observatory": [],
+      "Year": 1846,
+      "Name": "Neptune"
+    },
+    {
+      "id": "3bde5275-7b5c-8131-bed5-f166bb8a640c",
+      "url": "https://app.notion.com/p/Uranus-3bde52757b5c8131bed5f166bb8a640c",
+      "lastEdited": "2026-08-15T19:18:00.000Z",
+      "Discoverer": [
+        "3bde5275-7b5c-81b3-ace2-edfde44f2287"
+      ],
+      "Description": "The first planet discovered rather than always known. Herschel took it for a comet, and the solar system doubled in size once the orbit was worked out.",
+      "Discovery Date": null,
+      "Celestial_Object": [],
+      "Observatory": [],
+      "Year": 1781,
+      "Name": "Uranus"
+    },
+    {
+      "id": "3bde5275-7b5c-81ad-b12e-c8be811f20f8",
+      "url": "https://app.notion.com/p/The-Cassini-Division-3bde52757b5c81adb12ec8be811f20f8",
+      "lastEdited": "2026-08-15T19:18:00.000Z",
+      "Discoverer": [
+        "3bde5275-7b5c-8106-a9e4-c763a2236b15"
+      ],
+      "Description": "A dark gap splitting Saturn's rings in two — the first hint that the rings are not solid but swarms of particles, shepherded by resonances with the moons.",
+      "Discovery Date": null,
+      "Celestial_Object": [],
+      "Observatory": [
+        "3bde5275-7b5c-8111-ae04-f00fa56001e8"
+      ],
+      "Year": 1675,
+      "Name": "The Cassini Division"
+    },
+    {
+      "id": "3bde5275-7b5c-814a-a69a-c9d8206f3044",
+      "url": "https://app.notion.com/p/The-Rings-of-Saturn-3bde52757b5c814aa69ac9d8206f3044",
+      "lastEdited": "2026-08-15T19:18:00.000Z",
+      "Discoverer": [
+        "3bde5275-7b5c-8144-a383-d9eabfc3dc5d"
+      ],
+      "Description": "Galileo saw 'ears' and could not resolve them. Huygens, with a better lens, worked out it was a flat ring touching the planet nowhere.",
+      "Discovery Date": null,
+      "Celestial_Object": [],
+      "Observatory": [],
+      "Year": 1655,
+      "Name": "The Rings of Saturn"
+    },
+    {
+      "id": "3bde5275-7b5c-81cb-9013-fa76ed3dd5bc",
+      "url": "https://app.notion.com/p/The-Galilean-Moons-3bde52757b5c81cb9013fa76ed3dd5bc",
+      "lastEdited": "2026-08-15T19:18:00.000Z",
+      "Discoverer": [
+        "3bde5275-7b5c-812c-b725-df4753846575"
+      ],
+      "Description": "Four points of light beside Jupiter that moved night to night. They orbited something other than the Earth, which the geocentric model had no room for.",
+      "Discovery Date": null,
+      "Celestial_Object": [],
+      "Observatory": [],
+      "Year": 1610,
+      "Name": "The Galilean Moons"
+    }
+  ],
+  "observatories": [
+    {
+      "id": "3bde5275-7b5c-81f1-a17a-f6cd516ac807",
+      "url": "https://app.notion.com/p/James-Webb-Space-Telescope-3bde52757b5c81f1a17af6cd516ac807",
+      "lastEdited": "2026-08-15T19:18:00.000Z",
+      "Discoveries [DB]": [],
+      "Established": null,
+      "Type": "Space-based",
+      "Location": "Earth–Sun L2, 1.5 million km",
+      "Altitude (m)": null,
+      "Notes": "6.5 m of gold-coated beryllium that had to unfold through 344 single-point failures after launch, every one of which worked. Sees the first galaxies, and finds them too bright.",
+      "Primary_Instruments [DB]": [
+        "a3c867b3-aa5e-4eef-badd-aa3510c2d8df"
+      ],
+      "Founded": 2021,
+      "Name": "James Webb Space Telescope"
+    },
+    {
+      "id": "3bde5275-7b5c-81d1-8197-e863a233ad06",
+      "url": "https://app.notion.com/p/Gaia-3bde52757b5c81d18197e863a233ad06",
+      "lastEdited": "2026-08-15T19:18:00.000Z",
+      "Discoveries [DB]": [],
+      "Established": null,
+      "Type": "Space-based",
+      "Location": "Earth–Sun L2, 1.5 million km",
+      "Altitude (m)": null,
+      "Notes": "Measuring positions, distances and motions for nearly two billion stars, which is about 1% of the galaxy and vastly more than everything before it combined.",
+      "Primary_Instruments [DB]": [],
+      "Founded": 2013,
+      "Name": "Gaia"
+    },
+    {
+      "id": "3bde5275-7b5c-811e-92c4-c22764650eba",
+      "url": "https://app.notion.com/p/Planck-3bde52757b5c811e92c4c22764650eba",
+      "lastEdited": "2026-08-15T19:18:00.000Z",
+      "Discoveries [DB]": [],
+      "Established": null,
+      "Type": "Space-based",
+      "Location": "Earth–Sun L2, 1.5 million km",
+      "Altitude (m)": null,
+      "Notes": "Mapped the microwave background to the precision that every cosmological parameter now quoted — including the one at the centre of the Hubble tension — rests on.",
+      "Primary_Instruments [DB]": [
+        "0b70c66b-6919-455c-9e18-12c12c5ae418"
+      ],
+      "Founded": 2009,
+      "Name": "Planck"
+    },
+    {
+      "id": "3bde5275-7b5c-8116-85dc-df122210ba40",
+      "url": "https://app.notion.com/p/Kepler-3bde52757b5c811685dcdf122210ba40",
+      "lastEdited": "2026-08-15T19:18:00.000Z",
+      "Discoveries [DB]": [],
+      "Established": null,
+      "Type": "Space-based",
+      "Location": "Earth-trailing solar orbit",
+      "Altitude (m)": null,
+      "Notes": "Stared at 150,000 stars without blinking and found more than 2,600 planets by measuring dimmings of a hundredth of a percent.",
+      "Primary_Instruments [DB]": [],
+      "Founded": 2009,
+      "Name": "Kepler"
+    },
+    {
+      "id": "3bde5275-7b5c-81fa-9f01-f194e5262117",
+      "url": "https://app.notion.com/p/Spitzer-Space-Telescope-3bde52757b5c81fa9f01f194e5262117",
+      "lastEdited": "2026-08-15T19:18:00.000Z",
+      "Discoveries [DB]": [],
+      "Established": null,
+      "Type": "Space-based",
+      "Location": "Earth-trailing solar orbit",
+      "Altitude (m)": null,
+      "Notes": "Infrared, so it had to be colder than its own targets; it drifted away from the Earth to stay cool and ran warm for eleven more years after the coolant ran out.",
+      "Primary_Instruments [DB]": [],
+      "Founded": 2003,
+      "Name": "Spitzer Space Telescope"
+    },
+    {
+      "id": "3bde5275-7b5c-8187-9956-c72dc414796d",
+      "url": "https://app.notion.com/p/WMAP-3bde52757b5c81879956c72dc414796d",
+      "lastEdited": "2026-08-15T19:18:00.000Z",
+      "Discoveries [DB]": [],
+      "Established": null,
+      "Type": "Space-based",
+      "Location": "Earth–Sun L2, 1.5 million km",
+      "Altitude (m)": null,
+      "Notes": "Pinned the age of the universe at 13.7 billion years and the geometry as flat to within 1%.",
+      "Primary_Instruments [DB]": [],
+      "Founded": 2001,
+      "Name": "WMAP"
+    },
+    {
+      "id": "3bde5275-7b5c-811c-aaf7-ead8a70ae7ee",
+      "url": "https://app.notion.com/p/Chandra-X-ray-Observatory-3bde52757b5c811caaf7ead8a70ae7ee",
+      "lastEdited": "2026-08-15T19:18:00.000Z",
+      "Discoveries [DB]": [],
+      "Established": null,
+      "Type": "Space-based",
+      "Location": "Highly elliptical Earth orbit",
+      "Altitude (m)": null,
+      "Notes": "X-rays cannot be focused by reflection head-on, so its mirrors are nested cylinders that graze the light at less than a degree. Weighed the dark matter in the Bullet Cluster.",
+      "Primary_Instruments [DB]": [
+        "5e727e67-154e-4d29-b5cc-0f8edfb0413f"
+      ],
+      "Founded": 1999,
+      "Name": "Chandra X-ray Observatory"
+    },
+    {
+      "id": "3bde5275-7b5c-818a-a7ac-e30d648c0ee6",
+      "url": "https://app.notion.com/p/Hubble-Space-Telescope-3bde52757b5c818aa7ace30d648c0ee6",
+      "lastEdited": "2026-08-15T19:18:00.000Z",
+      "Discoveries [DB]": [],
+      "Established": null,
+      "Type": "Space-based",
+      "Location": "Low Earth orbit, 540 km",
+      "Altitude (m)": null,
+      "Notes": "Launched with a mirror ground to the wrong shape by 2.2 micrometres, corrected by spacewalk in 1993, and productive ever since — the only space telescope ever repaired by hand.",
+      "Primary_Instruments [DB]": [
+        "bf3acea0-668c-4c49-bbd1-8dec3d49af72"
+      ],
+      "Founded": 1990,
+      "Name": "Hubble Space Telescope"
+    },
+    {
+      "id": "3bde5275-7b5c-81ed-bc16-f0a3a1fa2b6a",
+      "url": "https://app.notion.com/p/COBE-3bde52757b5c81edbc16f0a3a1fa2b6a",
+      "lastEdited": "2026-08-15T19:18:00.000Z",
+      "Discoveries [DB]": [
+        "3bde5275-7b5c-8159-8e6d-e36d1494a385"
+      ],
+      "Established": null,
+      "Type": "Space-based",
+      "Location": "Low Earth orbit, 900 km",
+      "Altitude (m)": null,
+      "Notes": "Measured the microwave background as the most perfect black body ever observed, then found the faint anisotropies that are the seeds of every galaxy.",
+      "Primary_Instruments [DB]": [],
+      "Founded": 1989,
+      "Name": "COBE"
+    },
+    {
+      "id": "3bde5275-7b5c-81d3-9f90-c54538888687",
+      "url": "https://app.notion.com/p/Vera-C-Rubin-Observatory-3bde52757b5c81d39f90c54538888687",
+      "lastEdited": "2026-08-15T19:18:00.000Z",
+      "Discoveries [DB]": [],
+      "Established": null,
+      "Type": "Ground-based",
+      "Location": "Cerro Pachón, Chile",
+      "Altitude (m)": 2647,
+      "Notes": "Will photograph the entire southern sky every few nights for ten years, producing about 20 terabytes a night and alerting on anything that moves or changes.",
+      "Primary_Instruments [DB]": [
+        "b2c375af-6ea5-48a8-95f1-982fa7682f8a"
+      ],
+      "Founded": 2025,
+      "Name": "Vera C. Rubin Observatory"
+    },
+    {
+      "id": "3bde5275-7b5c-8196-b392-c981329e1675",
+      "url": "https://app.notion.com/p/Event-Horizon-Telescope-3bde52757b5c8196b392c981329e1675",
+      "lastEdited": "2026-08-15T19:18:00.000Z",
+      "Discoveries [DB]": [
+        "3bde5275-7b5c-81ec-a49a-e86f5e500ce6"
+      ],
+      "Established": null,
+      "Type": "Ground-based",
+      "Location": "Global array, Spain to the South Pole",
+      "Altitude (m)": null,
+      "Notes": "Not one telescope but eight, combined by atomic clocks into an aperture the size of the Earth. It is the only way to resolve something as small on the sky as M87's shadow.",
+      "Primary_Instruments [DB]": [],
+      "Founded": 2017,
+      "Name": "Event Horizon Telescope"
+    },
+    {
+      "id": "3bde5275-7b5c-81ed-aff3-fcc9bb9aea93",
+      "url": "https://app.notion.com/p/Atacama-Large-Millimeter-Array-3bde52757b5c81edaff3fcc9bb9aea93",
+      "lastEdited": "2026-08-15T19:18:00.000Z",
+      "Discoveries [DB]": [],
+      "Established": null,
+      "Type": "Ground-based",
+      "Location": "Chajnantor Plateau, Chile",
+      "Altitude (m)": 5058,
+      "Notes": "Sixty-six dishes at 5,000 m, where the air is too dry and thin to absorb millimetre waves. Imaged the gaps carved by forming planets in the disc of HL Tauri.",
+      "Primary_Instruments [DB]": [
+        "41dff11c-b8f7-482d-bb9a-458fe9f2e922"
+      ],
+      "Founded": 2011,
+      "Name": "Atacama Large Millimeter Array"
+    },
+    {
+      "id": "3bde5275-7b5c-81d6-95d8-cbf2d74aae79",
+      "url": "https://app.notion.com/p/South-Pole-Telescope-3bde52757b5c81d695d8cbf2d74aae79",
+      "lastEdited": "2026-08-15T19:18:00.000Z",
+      "Discoveries [DB]": [],
+      "Established": null,
+      "Type": "Ground-based",
+      "Location": "Amundsen–Scott Station, Antarctica",
+      "Altitude (m)": 2800,
+      "Notes": "A 10 m dish on the driest, stillest air on the planet, watching the microwave background through a sky that barely moves.",
+      "Primary_Instruments [DB]": [],
+      "Founded": 2007,
+      "Name": "South Pole Telescope"
+    },
+    {
+      "id": "3bde5275-7b5c-8115-b88d-f1b869cc24f7",
+      "url": "https://app.notion.com/p/LIGO-3bde52757b5c8115b88df1b869cc24f7",
+      "lastEdited": "2026-08-15T19:18:00.000Z",
+      "Discoveries [DB]": [
+        "3bde5275-7b5c-8166-b330-fbf27c2e5258",
+        "3bde5275-7b5c-81d9-813c-ede6edde9701"
+      ],
+      "Established": null,
+      "Type": "Ground-based",
+      "Location": "Hanford, Washington and Livingston, Louisiana",
+      "Altitude (m)": 142,
+      "Notes": "Two 4 km interferometers measuring length changes of about a ten-thousandth the width of a proton. Two sites, because a real signal must arrive at both.",
+      "Primary_Instruments [DB]": [],
+      "Founded": 2002,
+      "Name": "LIGO"
+    },
+    {
+      "id": "3bde5275-7b5c-81ae-a924-ff59f2d31c23",
+      "url": "https://app.notion.com/p/Gemini-Observatory-3bde52757b5c81aea924ff59f2d31c23",
+      "lastEdited": "2026-08-15T19:18:00.000Z",
+      "Discoveries [DB]": [],
+      "Established": null,
+      "Type": "Ground-based",
+      "Location": "Mauna Kea, Hawaii and Cerro Pachón, Chile",
+      "Altitude (m)": 4213,
+      "Notes": "Twin 8.1 m telescopes, one in each hemisphere, so that between them no part of the sky is out of reach.",
+      "Primary_Instruments [DB]": [],
+      "Founded": 1999,
+      "Name": "Gemini Observatory"
+    },
+    {
+      "id": "3bde5275-7b5c-81eb-958c-c06a9885b1ca",
+      "url": "https://app.notion.com/p/Paranal-Observatory-3bde52757b5c81eb958cc06a9885b1ca",
+      "lastEdited": "2026-08-15T19:18:00.000Z",
+      "Discoveries [DB]": [],
+      "Established": null,
+      "Type": "Ground-based",
+      "Location": "Atacama Desert, Chile",
+      "Altitude (m)": 2635,
+      "Notes": "Four 8.2 m telescopes that can be combined into one interferometer. Took the first direct image of an exoplanet, and tracked stars orbiting the black hole at the galactic centre.",
+      "Primary_Instruments [DB]": [
+        "ed6ca018-7aab-42e4-be3d-9be5eb30d100"
+      ],
+      "Founded": 1998,
+      "Name": "Paranal Observatory"
+    },
+    {
+      "id": "3bde5275-7b5c-819d-bd6d-cc24407e683d",
+      "url": "https://app.notion.com/p/W-M-Keck-Observatory-3bde52757b5c819dbd6dcc24407e683d",
+      "lastEdited": "2026-08-15T19:18:00.000Z",
+      "Discoveries [DB]": [],
+      "Established": null,
+      "Type": "Ground-based",
+      "Location": "Mauna Kea, Hawaii",
+      "Altitude (m)": 4145,
+      "Notes": "Twin 10 m mirrors, each 36 hexagonal segments actively aligned every few seconds. The segmented design is why telescopes could keep getting bigger.",
+      "Primary_Instruments [DB]": [
+        "5bba6cc7-55f5-45dc-b91b-3d9f0d37f5a7"
+      ],
+      "Founded": 1993,
+      "Name": "W. M. Keck Observatory"
+    },
+    {
+      "id": "3bde5275-7b5c-81b0-9a7a-dafe74936a6c",
+      "url": "https://app.notion.com/p/Roque-de-los-Muchachos-Observatory-3bde52757b5c81b09a7adafe74936a6c",
+      "lastEdited": "2026-08-15T19:18:00.000Z",
+      "Discoveries [DB]": [],
+      "Established": null,
+      "Type": "Ground-based",
+      "Location": "La Palma, Canary Islands",
+      "Altitude (m)": 2396,
+      "Notes": "Home to the Gran Telescopio Canarias, the largest single-aperture optical telescope in operation, sitting above the trade-wind inversion layer.",
+      "Primary_Instruments [DB]": [],
+      "Founded": 1985,
+      "Name": "Roque de los Muchachos Observatory"
+    },
+    {
+      "id": "3bde5275-7b5c-8153-b162-eacf5e4c6c4e",
+      "url": "https://app.notion.com/p/Very-Large-Array-3bde52757b5c8153b162eacf5e4c6c4e",
+      "lastEdited": "2026-08-15T19:18:00.000Z",
+      "Discoveries [DB]": [],
+      "Established": null,
+      "Type": "Ground-based",
+      "Location": "Plains of San Agustin, New Mexico",
+      "Altitude (m)": 2124,
+      "Notes": "Twenty-seven dishes that move on rails along a 36 km Y, trading resolution against field of view by physically rearranging the telescope.",
+      "Primary_Instruments [DB]": [],
+      "Founded": 1980,
+      "Name": "Very Large Array"
+    },
+    {
+      "id": "3bde5275-7b5c-815b-99ba-f35489b04470",
+      "url": "https://app.notion.com/p/Mauna-Kea-Observatories-3bde52757b5c815b99baf35489b04470",
+      "lastEdited": "2026-08-15T19:18:00.000Z",
+      "Discoveries [DB]": [
+        "3bde5275-7b5c-8159-a2c2-ffea884d7d0e"
+      ],
+      "Established": null,
+      "Type": "Ground-based",
+      "Location": "Mauna Kea, Hawaii",
+      "Altitude (m)": 4205,
+      "Notes": "Thirteen telescopes above 40% of the atmosphere and most of its water vapour. Also land held sacred in Native Hawaiian tradition, and the subject of a long and unresolved dispute.",
+      "Primary_Instruments [DB]": [],
+      "Founded": 1968,
+      "Name": "Mauna Kea Observatories"
+    },
+    {
+      "id": "3bde5275-7b5c-81ae-bfc1-ebac84ab85f8",
+      "url": "https://app.notion.com/p/Arecibo-Observatory-3bde52757b5c81aebfc1ebac84ab85f8",
+      "lastEdited": "2026-08-15T19:18:00.000Z",
+      "Discoveries [DB]": [
+        "3bde5275-7b5c-8184-94e0-d8fa543139e1"
+      ],
+      "Established": null,
+      "Type": "Ground-based",
+      "Location": "Arecibo, Puerto Rico",
+      "Altitude (m)": 498,
+      "Notes": "A 305 m dish slung across a natural sinkhole. It sent the 1974 interstellar message and found the first exoplanets; the platform collapsed into the dish in December 2020.",
+      "Primary_Instruments [DB]": [],
+      "Founded": 1963,
+      "Name": "Arecibo Observatory"
+    },
+    {
+      "id": "3bde5275-7b5c-81cd-9aa7-fe02ef65ed1d",
+      "url": "https://app.notion.com/p/Palomar-Observatory-3bde52757b5c81cd9aa7fe02ef65ed1d",
+      "lastEdited": "2026-08-15T19:18:00.000Z",
+      "Discoveries [DB]": [
+        "3bde5275-7b5c-81e0-9d9a-e922f5e96001"
+      ],
+      "Established": null,
+      "Type": "Ground-based",
+      "Location": "Palomar Mountain, California",
+      "Altitude (m)": 1712,
+      "Notes": "The 200-inch Hale telescope held the record for 45 years. Schmidt identified the first quasar here in 1963.",
+      "Primary_Instruments [DB]": [],
+      "Founded": 1948,
+      "Name": "Palomar Observatory"
+    },
+    {
+      "id": "3bde5275-7b5c-81b6-86dd-f316fb7a8b35",
+      "url": "https://app.notion.com/p/Mount-Wilson-Observatory-3bde52757b5c81b686ddf316fb7a8b35",
+      "lastEdited": "2026-08-15T19:18:00.000Z",
+      "Discoveries [DB]": [
+        "3bde5275-7b5c-81e8-a7cb-e16e530307a0",
+        "3bde5275-7b5c-8127-847c-dfb9a27f0a27"
+      ],
+      "Established": null,
+      "Type": "Ground-based",
+      "Location": "San Gabriel Mountains, California",
+      "Altitude (m)": 1742,
+      "Notes": "Where Hubble established that the spiral nebulae are other galaxies, and then that they are receding. Arguably the most consequential telescope site in history.",
+      "Primary_Instruments [DB]": [],
+      "Founded": 1904,
+      "Name": "Mount Wilson Observatory"
+    },
+    {
+      "id": "3bde5275-7b5c-810f-9e9e-fb50e640ce21",
+      "url": "https://app.notion.com/p/Yerkes-Observatory-3bde52757b5c810f9e9efb50e640ce21",
+      "lastEdited": "2026-08-15T19:18:00.000Z",
+      "Discoveries [DB]": [],
+      "Established": null,
+      "Type": "Ground-based",
+      "Location": "Williams Bay, Wisconsin",
+      "Altitude (m)": 334,
+      "Notes": "Its 40-inch refractor is the largest ever built for astronomy and always will be: a lens can only be supported at its rim, and beyond this size the glass sags under its own weight.",
+      "Primary_Instruments [DB]": [],
+      "Founded": 1897,
+      "Name": "Yerkes Observatory"
+    },
+    {
+      "id": "3bde5275-7b5c-81c7-8719-ddef9ec934d1",
+      "url": "https://app.notion.com/p/Lick-Observatory-3bde52757b5c81c78719ddef9ec934d1",
+      "lastEdited": "2026-08-15T19:17:00.000Z",
+      "Discoveries [DB]": [],
+      "Established": null,
+      "Type": "Ground-based",
+      "Location": "Mount Hamilton, California",
+      "Altitude (m)": 1283,
+      "Notes": "The first permanently occupied mountaintop observatory, funded by a real-estate magnate who is buried under the great refractor.",
+      "Primary_Instruments [DB]": [],
+      "Founded": 1888,
+      "Name": "Lick Observatory"
+    },
+    {
+      "id": "3bde5275-7b5c-817b-ae9a-daaa940d78d4",
+      "url": "https://app.notion.com/p/Royal-Observatory-Greenwich-3bde52757b5c817bae9adaaa940d78d4",
+      "lastEdited": "2026-08-15T19:17:00.000Z",
+      "Discoveries [DB]": [],
+      "Established": null,
+      "Type": "Ground-based",
+      "Location": "London, England",
+      "Altitude (m)": 47,
+      "Notes": "Founded to solve longitude at sea, which it eventually did — though by way of Harrison's clocks rather than the star charts it was built for. The prime meridian runs through it.",
+      "Primary_Instruments [DB]": [],
+      "Founded": 1675,
+      "Name": "Royal Observatory, Greenwich"
+    },
+    {
+      "id": "3bde5275-7b5c-8111-ae04-f00fa56001e8",
+      "url": "https://app.notion.com/p/Paris-Observatory-3bde52757b5c8111ae04f00fa56001e8",
+      "lastEdited": "2026-08-15T19:17:00.000Z",
+      "Discoveries [DB]": [
+        "3bde5275-7b5c-81ad-b12e-c8be811f20f8"
+      ],
+      "Established": null,
+      "Type": "Ground-based",
+      "Location": "Paris, France",
+      "Altitude (m)": 67,
+      "Notes": "The oldest working observatory in the world. Cassini ran it, and the Paris meridian was the world's reference until Greenwich won the argument in 1884.",
+      "Primary_Instruments [DB]": [],
+      "Founded": 1667,
+      "Name": "Paris Observatory"
+    }
+  ],
   "instruments": [
     {
       "id": "b2c375af-6ea5-48a8-95f1-982fa7682f8a",
@@ -653,7 +1590,9 @@
         "Visible",
         "Near-infrared"
       ],
-      "Observatory_ID": [],
+      "Observatory_ID": [
+        "3bde5275-7b5c-81d3-9f90-c54538888687"
+      ],
       "Name": "Large Synoptic Survey Telescope (LSST)"
     },
     {
@@ -677,7 +1616,9 @@
       "Wavelength_Range": [
         "Microwave"
       ],
-      "Observatory_ID": [],
+      "Observatory_ID": [
+        "3bde5275-7b5c-811e-92c4-c22764650eba"
+      ],
       "Name": "Planck Satellite"
     },
     {
@@ -695,7 +1636,9 @@
       "Wavelength_Range": [
         "X-ray"
       ],
-      "Observatory_ID": [],
+      "Observatory_ID": [
+        "3bde5275-7b5c-811c-aaf7-ead8a70ae7ee"
+      ],
       "Name": "Chandra X-ray Observatory"
     },
     {
@@ -714,7 +1657,9 @@
         "Visible",
         "Near-infrared"
       ],
-      "Observatory_ID": [],
+      "Observatory_ID": [
+        "3bde5275-7b5c-819d-bd6d-cc24407e683d"
+      ],
       "Name": "Keck Observatory"
     },
     {
@@ -733,7 +1678,9 @@
         "Millimiter",
         "Submillimeter"
       ],
-      "Observatory_ID": [],
+      "Observatory_ID": [
+        "3bde5275-7b5c-81ed-aff3-fcc9bb9aea93"
+      ],
       "Name": "Atacama Large Millimeter/submillimeter Array (ALMA)"
     },
     {
@@ -752,7 +1699,9 @@
       "Wavelength_Range": [
         "Infrared"
       ],
-      "Observatory_ID": [],
+      "Observatory_ID": [
+        "3bde5275-7b5c-81f1-a17a-f6cd516ac807"
+      ],
       "Name": "James Webb Space Telescope (JWST)"
     },
     {
@@ -773,7 +1722,9 @@
         "Ultraviolet",
         "Near-infrared"
       ],
-      "Observatory_ID": [],
+      "Observatory_ID": [
+        "3bde5275-7b5c-818a-a7ac-e30d648c0ee6"
+      ],
       "Name": "Hubble Space Telescope (HST)"
     },
     {
@@ -792,11 +1743,458 @@
         "Visible",
         "Infrared"
       ],
-      "Observatory_ID": [],
+      "Observatory_ID": [
+        "3bde5275-7b5c-81eb-958c-c06a9885b1ca"
+      ],
       "Name": "Very Large Telescope (VLT)"
     }
   ],
   "researchers": [
+    {
+      "id": "3bde5275-7b5c-81dd-b8e7-d8e72c85db57",
+      "url": "https://app.notion.com/p/Jane-Luu-3bde52757b5c81ddb8e7d8e72c85db57",
+      "lastEdited": "2026-08-15T19:17:00.000Z",
+      "Lifespan": "1963–",
+      "Theories [DB]": [],
+      "Discoveries [DB]": [
+        "3bde5275-7b5c-8159-a2c2-ffea884d7d0e"
+      ],
+      "Field": "Astronomy",
+      "Known For": "Co-discovered it — and with it the belt that would eventually reclassify Pluto.",
+      "Nationality": "Vietnamese-American",
+      "Name": "Jane Luu"
+    },
+    {
+      "id": "3bde5275-7b5c-81da-b7e4-f723a93f2b67",
+      "url": "https://app.notion.com/p/David-Jewitt-3bde52757b5c81dab7e4f723a93f2b67",
+      "lastEdited": "2026-08-15T19:17:00.000Z",
+      "Lifespan": "1958–",
+      "Theories [DB]": [],
+      "Discoveries [DB]": [
+        "3bde5275-7b5c-8159-a2c2-ffea884d7d0e"
+      ],
+      "Field": "Astronomy",
+      "Known For": "Found the first Kuiper Belt object after five years of searching an empty-looking sky.",
+      "Nationality": "British-American",
+      "Name": "David Jewitt"
+    },
+    {
+      "id": "3bde5275-7b5c-8195-98e9-e11878a63087",
+      "url": "https://app.notion.com/p/Joseph-Taylor-3bde52757b5c819598e9e11878a63087",
+      "lastEdited": "2026-08-15T19:17:00.000Z",
+      "Lifespan": "1941–",
+      "Theories [DB]": [],
+      "Discoveries [DB]": [
+        "3bde5275-7b5c-8184-94e0-d8fa543139e1"
+      ],
+      "Field": "Astrophysics",
+      "Known For": "Tracked that orbit for decades until the agreement with general relativity was undeniable.",
+      "Nationality": "American",
+      "Name": "Joseph Taylor"
+    },
+    {
+      "id": "3bde5275-7b5c-8104-ac2a-ea36282f6e49",
+      "url": "https://app.notion.com/p/Russell-Hulse-3bde52757b5c8104ac2aea36282f6e49",
+      "lastEdited": "2026-08-15T19:17:00.000Z",
+      "Lifespan": "1950–",
+      "Theories [DB]": [],
+      "Discoveries [DB]": [
+        "3bde5275-7b5c-8184-94e0-d8fa543139e1"
+      ],
+      "Field": "Astrophysics",
+      "Known For": "The binary pulsar whose decaying orbit proved gravitational waves are real, forty years early.",
+      "Nationality": "American",
+      "Name": "Russell Hulse"
+    },
+    {
+      "id": "3bde5275-7b5c-8150-a808-e5345dda71e6",
+      "url": "https://app.notion.com/p/Barry-Barish-3bde52757b5c8150a808e5345dda71e6",
+      "lastEdited": "2026-08-15T19:17:00.000Z",
+      "Lifespan": "1936–",
+      "Theories [DB]": [],
+      "Discoveries [DB]": [
+        "3bde5275-7b5c-8166-b330-fbf27c2e5258"
+      ],
+      "Field": "Physics",
+      "Known For": "Turned LIGO from a promising idea into an experiment that actually worked.",
+      "Nationality": "American",
+      "Name": "Barry Barish"
+    },
+    {
+      "id": "3bde5275-7b5c-810f-abe4-f0b088360d26",
+      "url": "https://app.notion.com/p/Kip-Thorne-3bde52757b5c810fabe4f0b088360d26",
+      "lastEdited": "2026-08-15T19:17:00.000Z",
+      "Lifespan": "1940–",
+      "Theories [DB]": [],
+      "Discoveries [DB]": [
+        "3bde5275-7b5c-8166-b330-fbf27c2e5258",
+        "3bde5275-7b5c-81d9-813c-ede6edde9701"
+      ],
+      "Field": "Physics",
+      "Known For": "Worked out what a black hole merger would look like before there was any way to see one.",
+      "Nationality": "American",
+      "Name": "Kip Thorne"
+    },
+    {
+      "id": "3bde5275-7b5c-8170-90fb-f9702a56f66c",
+      "url": "https://app.notion.com/p/Rainer-Weiss-3bde52757b5c817090fbf9702a56f66c",
+      "lastEdited": "2026-08-15T19:17:00.000Z",
+      "Lifespan": "1932–",
+      "Theories [DB]": [],
+      "Discoveries [DB]": [
+        "3bde5275-7b5c-8166-b330-fbf27c2e5258",
+        "3bde5275-7b5c-81d9-813c-ede6edde9701"
+      ],
+      "Field": "Physics",
+      "Known For": "Designed the interferometer that would eventually catch a gravitational wave, in a 1972 report.",
+      "Nationality": "American",
+      "Name": "Rainer Weiss"
+    },
+    {
+      "id": "3bde5275-7b5c-8120-83f9-f796aeb32d6d",
+      "url": "https://app.notion.com/p/Jocelyn-Bell-Burnell-3bde52757b5c812083f9f796aeb32d6d",
+      "lastEdited": "2026-08-15T19:17:00.000Z",
+      "Lifespan": "1943–",
+      "Theories [DB]": [],
+      "Discoveries [DB]": [
+        "3bde5275-7b5c-8142-a593-e4f4a87a417f"
+      ],
+      "Field": "Astrophysics",
+      "Known For": "Found pulsars as a graduate student. The Nobel went to her supervisor.",
+      "Nationality": "Northern Irish",
+      "Name": "Jocelyn Bell Burnell"
+    },
+    {
+      "id": "3bde5275-7b5c-817a-b64b-cbf396d77923",
+      "url": "https://app.notion.com/p/Robert-Wilson-3bde52757b5c817ab64bcbf396d77923",
+      "lastEdited": "2026-08-15T19:17:00.000Z",
+      "Lifespan": "1936–",
+      "Theories [DB]": [],
+      "Discoveries [DB]": [
+        "3bde5275-7b5c-814c-bd39-fd5b13f93809"
+      ],
+      "Field": "Astronomy",
+      "Known For": "The other half. They evicted the pigeons and cleaned the antenna first; the hiss stayed.",
+      "Nationality": "American",
+      "Name": "Robert Wilson"
+    },
+    {
+      "id": "3bde5275-7b5c-81a9-9233-f6a9f838dd78",
+      "url": "https://app.notion.com/p/Arno-Penzias-3bde52757b5c81a99233f6a9f838dd78",
+      "lastEdited": "2026-08-15T19:17:00.000Z",
+      "Lifespan": "1933–2024",
+      "Theories [DB]": [],
+      "Discoveries [DB]": [
+        "3bde5275-7b5c-814c-bd39-fd5b13f93809"
+      ],
+      "Field": "Astronomy",
+      "Known For": "Half of the pair who found the microwave background while trying to get rid of it.",
+      "Nationality": "American",
+      "Name": "Arno Penzias"
+    },
+    {
+      "id": "3bde5275-7b5c-81f9-a9e9-c8ebf287bf3f",
+      "url": "https://app.notion.com/p/Maarten-Schmidt-3bde52757b5c81f9a9e9c8ebf287bf3f",
+      "lastEdited": "2026-08-15T19:17:00.000Z",
+      "Lifespan": "1929–2022",
+      "Theories [DB]": [],
+      "Discoveries [DB]": [
+        "3bde5275-7b5c-81e0-9d9a-e922f5e96001"
+      ],
+      "Field": "Astronomy",
+      "Known For": "Realised 3C 273's baffling spectrum was ordinary hydrogen redshifted by 16% — and quasars existed.",
+      "Nationality": "Dutch-American",
+      "Name": "Maarten Schmidt"
+    },
+    {
+      "id": "3bde5275-7b5c-8167-a64c-c53c47d57340",
+      "url": "https://app.notion.com/p/Clyde-Tombaugh-3bde52757b5c8167a64cc53c47d57340",
+      "lastEdited": "2026-08-15T19:17:00.000Z",
+      "Lifespan": "1906–1997",
+      "Theories [DB]": [],
+      "Discoveries [DB]": [
+        "3bde5275-7b5c-81c8-857a-ffa730bfe9a2"
+      ],
+      "Field": "Astronomy",
+      "Known For": "Found Pluto at twenty-four by blinking photographic plates until something moved.",
+      "Nationality": "American",
+      "Name": "Clyde Tombaugh"
+    },
+    {
+      "id": "3bde5275-7b5c-8164-b6af-ef98e481d7f7",
+      "url": "https://app.notion.com/p/Cecilia-Payne-Gaposchkin-3bde52757b5c8164b6afef98e481d7f7",
+      "lastEdited": "2026-08-15T19:17:00.000Z",
+      "Lifespan": "1900–1979",
+      "Theories [DB]": [],
+      "Discoveries [DB]": [
+        "3bde5275-7b5c-81a3-bbb1-d42988cee587"
+      ],
+      "Field": "Astrophysics",
+      "Known For": "Worked out that stars are overwhelmingly hydrogen, and was pressured to call the result spurious.",
+      "Nationality": "British-American",
+      "Name": "Cecilia Payne-Gaposchkin"
+    },
+    {
+      "id": "3bde5275-7b5c-819e-a3bd-e86eb6b29070",
+      "url": "https://app.notion.com/p/James-Chadwick-3bde52757b5c819ea3bde86eb6b29070",
+      "lastEdited": "2026-08-15T19:17:00.000Z",
+      "Lifespan": "1891–1974",
+      "Theories [DB]": [],
+      "Discoveries [DB]": [
+        "3bde5275-7b5c-81e1-890c-e1a705dbc4b2"
+      ],
+      "Field": "Nuclear Physics",
+      "Known For": "The neutron — the particle that made fission, and everything after it, possible.",
+      "Nationality": "English",
+      "Name": "James Chadwick"
+    },
+    {
+      "id": "3bde5275-7b5c-8187-bf62-efd78b594816",
+      "url": "https://app.notion.com/p/Edwin-Hubble-3bde52757b5c8187bf62efd78b594816",
+      "lastEdited": "2026-08-15T19:17:00.000Z",
+      "Lifespan": "1889–1953",
+      "Theories [DB]": [],
+      "Discoveries [DB]": [
+        "3bde5275-7b5c-81e8-a7cb-e16e530307a0",
+        "3bde5275-7b5c-8127-847c-dfb9a27f0a27"
+      ],
+      "Field": "Astronomy",
+      "Known For": "Proved the spiral nebulae are separate galaxies, then found they are all rushing away.",
+      "Nationality": "American",
+      "Name": "Edwin Hubble"
+    },
+    {
+      "id": "3bde5275-7b5c-81b5-8693-d0a5e633e6bc",
+      "url": "https://app.notion.com/p/Victor-Hess-3bde52757b5c81b58693d0a5e633e6bc",
+      "lastEdited": "2026-08-15T19:17:00.000Z",
+      "Lifespan": "1883–1964",
+      "Theories [DB]": [],
+      "Discoveries [DB]": [
+        "3bde5275-7b5c-8170-99a4-cd57f229924e"
+      ],
+      "Field": "Physics",
+      "Known For": "Took an electroscope up in a balloon and found the radiation was coming from above, not below.",
+      "Nationality": "Austrian",
+      "Name": "Victor Hess"
+    },
+    {
+      "id": "3bde5275-7b5c-8111-8852-cedf3df78851",
+      "url": "https://app.notion.com/p/Arthur-Eddington-3bde52757b5c81118852cedf3df78851",
+      "lastEdited": "2026-08-15T19:17:00.000Z",
+      "Lifespan": "1882–1944",
+      "Theories [DB]": [],
+      "Discoveries [DB]": [
+        "3bde5275-7b5c-812d-839f-d1b14a8a6135"
+      ],
+      "Field": "Astrophysics",
+      "Known For": "Tested general relativity at the 1919 eclipse and made Einstein famous overnight.",
+      "Nationality": "English",
+      "Name": "Arthur Eddington"
+    },
+    {
+      "id": "3bde5275-7b5c-813c-9bb7-d795a4385ac5",
+      "url": "https://app.notion.com/p/Vesto-Slipher-3bde52757b5c813c9bb7d795a4385ac5",
+      "lastEdited": "2026-08-15T19:17:00.000Z",
+      "Lifespan": "1875–1969",
+      "Theories [DB]": [],
+      "Discoveries [DB]": [
+        "3bde5275-7b5c-8133-aee8-e3c2f256a9ed"
+      ],
+      "Field": "Astronomy",
+      "Known For": "Measured the first galaxy redshifts a decade before anyone understood what they meant.",
+      "Nationality": "American",
+      "Name": "Vesto Slipher"
+    },
+    {
+      "id": "3bde5275-7b5c-81cc-b3d8-d127914014c0",
+      "url": "https://app.notion.com/p/Henrietta-Swan-Leavitt-3bde52757b5c81ccb3d8d127914014c0",
+      "lastEdited": "2026-08-15T19:17:00.000Z",
+      "Lifespan": "1868–1921",
+      "Theories [DB]": [],
+      "Discoveries [DB]": [
+        "3bde5275-7b5c-8178-aa59-cddbe059814a"
+      ],
+      "Field": "Astronomy",
+      "Known For": "The Cepheid period–luminosity law — the rung the entire cosmic distance ladder stands on.",
+      "Nationality": "American",
+      "Name": "Henrietta Swan Leavitt"
+    },
+    {
+      "id": "3bde5275-7b5c-81f1-bc90-e4054753293d",
+      "url": "https://app.notion.com/p/Annie-Jump-Cannon-3bde52757b5c81f1bc90e4054753293d",
+      "lastEdited": "2026-08-15T19:17:00.000Z",
+      "Lifespan": "1863–1941",
+      "Theories [DB]": [],
+      "Discoveries [DB]": [],
+      "Field": "Astronomy",
+      "Known For": "Classified around 350,000 stellar spectra and devised the OBAFGKM sequence still in use.",
+      "Nationality": "American",
+      "Name": "Annie Jump Cannon"
+    },
+    {
+      "id": "3bde5275-7b5c-81df-a9d7-ee11a00ab0b5",
+      "url": "https://app.notion.com/p/Grote-Reber-3bde52757b5c81dfa9d7ee11a00ab0b5",
+      "lastEdited": "2026-08-15T19:17:00.000Z",
+      "Lifespan": "1911–2002",
+      "Theories [DB]": [],
+      "Discoveries [DB]": [
+        "3bde5275-7b5c-815f-bef8-e9fc74a018d0"
+      ],
+      "Field": "Radio Astronomy",
+      "Known For": "Built a radio telescope in his back garden and made the first radio map of the sky, alone.",
+      "Nationality": "American",
+      "Name": "Grote Reber"
+    },
+    {
+      "id": "3bde5275-7b5c-81e3-9f5f-f0ed596519d0",
+      "url": "https://app.notion.com/p/Karl-Jansky-3bde52757b5c81e39f5ff0ed596519d0",
+      "lastEdited": "2026-08-15T19:17:00.000Z",
+      "Lifespan": "1905–1950",
+      "Theories [DB]": [],
+      "Discoveries [DB]": [
+        "3bde5275-7b5c-8176-acbd-fe248ce623e5"
+      ],
+      "Field": "Radio Astronomy",
+      "Known For": "Traced a persistent hiss in a telephone antenna to the centre of the Milky Way, and invented radio astronomy.",
+      "Nationality": "American",
+      "Name": "Karl Jansky"
+    },
+    {
+      "id": "3bde5275-7b5c-8130-af91-c27293c151cc",
+      "url": "https://app.notion.com/p/Henri-Becquerel-3bde52757b5c8130af91c27293c151cc",
+      "lastEdited": "2026-08-15T19:17:00.000Z",
+      "Lifespan": "1852–1908",
+      "Theories [DB]": [],
+      "Discoveries [DB]": [
+        "3bde5275-7b5c-810c-8632-c009085993b7"
+      ],
+      "Field": "Physics",
+      "Known For": "Left uranium salts on a wrapped photographic plate in a drawer and found radioactivity.",
+      "Nationality": "French",
+      "Name": "Henri Becquerel"
+    },
+    {
+      "id": "3bde5275-7b5c-813b-86df-f34da3ade7cc",
+      "url": "https://app.notion.com/p/Wilhelm-R-ntgen-3bde52757b5c813b86dff34da3ade7cc",
+      "lastEdited": "2026-08-15T19:17:00.000Z",
+      "Lifespan": "1845–1923",
+      "Theories [DB]": [],
+      "Discoveries [DB]": [
+        "3bde5275-7b5c-810f-a3c7-f43330c7a1d6"
+      ],
+      "Field": "Physics",
+      "Known For": "X-rays, the first Nobel Prize in Physics, and a photograph of his wife's hand.",
+      "Nationality": "German",
+      "Name": "Wilhelm Röntgen"
+    },
+    {
+      "id": "3bde5275-7b5c-813f-b9cf-ede5e9201d46",
+      "url": "https://app.notion.com/p/Norman-Lockyer-3bde52757b5c813fb9cfede5e9201d46",
+      "lastEdited": "2026-08-15T19:17:00.000Z",
+      "Lifespan": "1836–1920",
+      "Theories [DB]": [],
+      "Discoveries [DB]": [
+        "3bde5275-7b5c-8136-84c3-d53c793b7c68"
+      ],
+      "Field": "Astronomy",
+      "Known For": "Named that line helium, and founded the journal Nature.",
+      "Nationality": "English",
+      "Name": "Norman Lockyer"
+    },
+    {
+      "id": "3bde5275-7b5c-81dd-a3ac-e6f110d20ae8",
+      "url": "https://app.notion.com/p/Jules-Janssen-3bde52757b5c81dda3ace6f110d20ae8",
+      "lastEdited": "2026-08-15T19:17:00.000Z",
+      "Lifespan": "1824–1907",
+      "Theories [DB]": [],
+      "Discoveries [DB]": [
+        "3bde5275-7b5c-8136-84c3-d53c793b7c68"
+      ],
+      "Field": "Astronomy",
+      "Known For": "Saw an unexplained yellow line in the Sun's spectrum during the 1868 eclipse.",
+      "Nationality": "French",
+      "Name": "Jules Janssen"
+    },
+    {
+      "id": "3bde5275-7b5c-8193-84d1-e4f104d041ce",
+      "url": "https://app.notion.com/p/Johann-Galle-3bde52757b5c819384d1e4f104d041ce",
+      "lastEdited": "2026-08-15T19:17:00.000Z",
+      "Lifespan": "1812–1910",
+      "Theories [DB]": [],
+      "Discoveries [DB]": [
+        "3bde5275-7b5c-8163-b9fc-eeeb5b91d02c"
+      ],
+      "Field": "Astronomy",
+      "Known For": "Looked where Le Verrier said and found Neptune within the hour.",
+      "Nationality": "German",
+      "Name": "Johann Galle"
+    },
+    {
+      "id": "3bde5275-7b5c-8117-8b3a-f5a0ae7cd8fe",
+      "url": "https://app.notion.com/p/Urbain-Le-Verrier-3bde52757b5c81178b3af5a0ae7cd8fe",
+      "lastEdited": "2026-08-15T19:17:00.000Z",
+      "Lifespan": "1811–1877",
+      "Theories [DB]": [],
+      "Discoveries [DB]": [
+        "3bde5275-7b5c-8163-b9fc-eeeb5b91d02c"
+      ],
+      "Field": "Astronomy",
+      "Known For": "Calculated where Neptune had to be from Uranus's wobble, then had someone else point the telescope.",
+      "Nationality": "French",
+      "Name": "Urbain Le Verrier"
+    },
+    {
+      "id": "3bde5275-7b5c-81b3-ace2-edfde44f2287",
+      "url": "https://app.notion.com/p/William-Herschel-3bde52757b5c81b3ace2edfde44f2287",
+      "lastEdited": "2026-08-15T19:17:00.000Z",
+      "Lifespan": "1738–1822",
+      "Theories [DB]": [],
+      "Discoveries [DB]": [
+        "3bde5275-7b5c-8131-bed5-f166bb8a640c"
+      ],
+      "Field": "Astronomy",
+      "Known For": "Found Uranus and doubled the size of the known solar system in one night.",
+      "Nationality": "German-British",
+      "Name": "William Herschel"
+    },
+    {
+      "id": "3bde5275-7b5c-816c-a23f-d6328230b67b",
+      "url": "https://app.notion.com/p/Charles-Messier-3bde52757b5c816ca23fd6328230b67b",
+      "lastEdited": "2026-08-15T19:17:00.000Z",
+      "Lifespan": "1730–1817",
+      "Theories [DB]": [],
+      "Discoveries [DB]": [],
+      "Field": "Astronomy",
+      "Known For": "Catalogued 110 fuzzy objects so he would stop mistaking them for comets. Nobody remembers his comets.",
+      "Nationality": "French",
+      "Name": "Charles Messier"
+    },
+    {
+      "id": "3bde5275-7b5c-8106-a9e4-c763a2236b15",
+      "url": "https://app.notion.com/p/Giovanni-Cassini-3bde52757b5c8106a9e4c763a2236b15",
+      "lastEdited": "2026-08-15T19:17:00.000Z",
+      "Lifespan": "1625–1712",
+      "Theories [DB]": [],
+      "Discoveries [DB]": [
+        "3bde5275-7b5c-81ad-b12e-c8be811f20f8"
+      ],
+      "Field": "Astronomy",
+      "Known For": "The division in Saturn's rings, and four of its moons.",
+      "Nationality": "Italian-French",
+      "Name": "Giovanni Cassini"
+    },
+    {
+      "id": "3bde5275-7b5c-8108-b1a7-d158a426d5b8",
+      "url": "https://app.notion.com/p/Tycho-Brahe-3bde52757b5c8108b1a7d158a426d5b8",
+      "lastEdited": "2026-08-15T19:17:00.000Z",
+      "Lifespan": "1546–1601",
+      "Theories [DB]": [],
+      "Discoveries [DB]": [],
+      "Field": "Astronomy",
+      "Known For": "The most accurate naked-eye observations ever made — and Kepler's laws came out of them.",
+      "Nationality": "Danish",
+      "Name": "Tycho Brahe"
+    },
     {
       "id": "3bde5275-7b5c-8168-88af-c066eda15c16",
       "url": "https://app.notion.com/p/Peter-Shor-3bde52757b5c816888afc066eda15c16",
@@ -931,7 +2329,9 @@
       "Theories [DB]": [
         "3bde5275-7b5c-8119-b400-f4b64f9b76f4"
       ],
-      "Discoveries [DB]": [],
+      "Discoveries [DB]": [
+        "3bde5275-7b5c-812a-b58c-cb829cbed9c0"
+      ],
       "Field": "Cosmology",
       "Known For": "Wrote up the accelerating-universe result, and now leads the distance-ladder side of the Hubble tension.",
       "Nationality": "American",
@@ -945,7 +2345,9 @@
       "Theories [DB]": [
         "3bde5275-7b5c-8119-b400-f4b64f9b76f4"
       ],
-      "Discoveries [DB]": [],
+      "Discoveries [DB]": [
+        "3bde5275-7b5c-812a-b58c-cb829cbed9c0"
+      ],
       "Field": "Cosmology",
       "Known For": "Led the other one, and got the same unwelcome answer.",
       "Nationality": "American-Australian",
@@ -959,7 +2361,9 @@
       "Theories [DB]": [
         "3bde5275-7b5c-8119-b400-f4b64f9b76f4"
       ],
-      "Discoveries [DB]": [],
+      "Discoveries [DB]": [
+        "3bde5275-7b5c-812a-b58c-cb829cbed9c0"
+      ],
       "Field": "Cosmology",
       "Known For": "Led one of the two supernova teams that found the expansion is speeding up.",
       "Nationality": "American",
@@ -973,7 +2377,9 @@
       "Theories [DB]": [
         "3bde5275-7b5c-8155-8abe-e1d83b51ecb9"
       ],
-      "Discoveries [DB]": [],
+      "Discoveries [DB]": [
+        "3bde5275-7b5c-8193-ab26-d66e7aa4441a"
+      ],
       "Field": "Astronomy",
       "Known For": "Measured flat galaxy rotation curves and turned dark matter from a curiosity into a crisis.",
       "Nationality": "American",
@@ -1259,7 +2665,9 @@
       "Theories [DB]": [
         "3bde5275-7b5c-813f-9e30-c040189eb298"
       ],
-      "Discoveries [DB]": [],
+      "Discoveries [DB]": [
+        "3bde5275-7b5c-819c-abf0-e740f9be23e4"
+      ],
       "Field": "Particle Physics",
       "Known For": "Published the Brout–Englert mechanism weeks before Higgs, and shared the prize.",
       "Nationality": "Belgian",
@@ -1273,7 +2681,9 @@
       "Theories [DB]": [
         "3bde5275-7b5c-813f-9e30-c040189eb298"
       ],
-      "Discoveries [DB]": [],
+      "Discoveries [DB]": [
+        "3bde5275-7b5c-819c-abf0-e740f9be23e4"
+      ],
       "Field": "Particle Physics",
       "Known For": "Predicted the boson in 1964 and waited forty-eight years for CERN to find it.",
       "Nationality": "British",
@@ -1648,7 +3058,9 @@
       "Theories [DB]": [
         "3bde5275-7b5c-8155-8abe-e1d83b51ecb9"
       ],
-      "Discoveries [DB]": [],
+      "Discoveries [DB]": [
+        "3bde5275-7b5c-81f8-b99c-d6962c367a15"
+      ],
       "Field": "Astrophysics",
       "Known For": "Weighed the Coma cluster in 1933, found most of it missing, and named dark matter.",
       "Nationality": "Swiss",
@@ -1752,7 +3164,9 @@
         "3bde5275-7b5c-81c8-8ac7-cd61c84271da",
         "3bde5275-7b5c-810a-ac78-e3684b14acd1"
       ],
-      "Discoveries [DB]": [],
+      "Discoveries [DB]": [
+        "3bde5275-7b5c-812d-839f-d1b14a8a6135"
+      ],
       "Field": "Theoretical Physics",
       "Known For": "Special relativity, general relativity, the photoelectric effect — and a lifelong quarrel with quantum mechanics.",
       "Nationality": "German-American",
@@ -1766,7 +3180,9 @@
       "Theories [DB]": [
         "3bde5275-7b5c-81e4-b44a-f2d634f6f677"
       ],
-      "Discoveries [DB]": [],
+      "Discoveries [DB]": [
+        "3bde5275-7b5c-81b1-8804-e55ecc10aab8"
+      ],
       "Field": "Nuclear Physics",
       "Known For": "Fired alpha particles at gold foil and discovered the nucleus in the ricochet.",
       "Nationality": "New Zealander",
@@ -1823,7 +3239,9 @@
       "Theories [DB]": [
         "3bde5275-7b5c-8119-8dc0-caca83db4a46"
       ],
-      "Discoveries [DB]": [],
+      "Discoveries [DB]": [
+        "3bde5275-7b5c-8139-9fce-f538093263b2"
+      ],
       "Field": "Atomic Physics",
       "Known For": "Discovered the electron and proposed the plum pudding his student would demolish.",
       "Nationality": "English",
@@ -2010,7 +3428,9 @@
       "Theories [DB]": [
         "3bde5275-7b5c-81a9-9b1e-f56598a0882a"
       ],
-      "Discoveries [DB]": [],
+      "Discoveries [DB]": [
+        "3bde5275-7b5c-814a-a69a-c9d8206f3044"
+      ],
       "Field": "Optics",
       "Known For": "The wave theory of light, the pendulum clock, and Saturn's rings correctly explained.",
       "Nationality": "Dutch",
@@ -2024,7 +3444,9 @@
       "Theories [DB]": [
         "3bde5275-7b5c-81af-86fd-d2bdae2b8b8c"
       ],
-      "Discoveries [DB]": [],
+      "Discoveries [DB]": [
+        "3bde5275-7b5c-81cb-9013-fa76ed3dd5bc"
+      ],
       "Field": "Astronomy & Mechanics",
       "Known For": "Turned the telescope upward and found moons, phases, and trouble.",
       "Nationality": "Italian",
@@ -2081,7 +3503,9 @@
         "3bde5275-7b5c-8183-a9cc-d3532bc342bf",
         "948ffd28-180a-4f7f-8f79-b6a712181262"
       ],
-      "Discoveries [DB]": [],
+      "Discoveries [DB]": [
+        "3bde5275-7b5c-81ec-a49a-e86f5e500ce6"
+      ],
       "Field": "Mathematical Physics",
       "Known For": "Proved that general relativity predicts its own breakdown: singularities are unavoidable.",
       "Nationality": "British",
@@ -2093,7 +3517,9 @@
       "lastEdited": "2026-08-15T18:40:00.000Z",
       "Lifespan": "1945–",
       "Theories [DB]": [],
-      "Discoveries [DB]": [],
+      "Discoveries [DB]": [
+        "3bde5275-7b5c-8159-8e6d-e36d1494a385"
+      ],
       "Field": "Cosmology",
       "Known For": "COBE's map of the microwave background — the first picture of structure in the infant universe.",
       "Nationality": "American",
@@ -2105,7 +3531,9 @@
       "lastEdited": "2026-08-15T18:40:00.000Z",
       "Lifespan": "1966–",
       "Theories [DB]": [],
-      "Discoveries [DB]": [],
+      "Discoveries [DB]": [
+        "3bde5275-7b5c-81ab-8d2c-cd3d931487cf"
+      ],
       "Field": "Astronomy",
       "Known For": "The graduate student on the other end of that discovery.",
       "Nationality": "Swiss",
@@ -2117,7 +3545,9 @@
       "lastEdited": "2026-08-15T18:40:00.000Z",
       "Lifespan": "1942–",
       "Theories [DB]": [],
-      "Discoveries [DB]": [],
+      "Discoveries [DB]": [
+        "3bde5275-7b5c-81ab-8d2c-cd3d931487cf"
+      ],
       "Field": "Astronomy",
       "Known For": "Co-discovered 51 Pegasi b, the first planet found around a Sun-like star.",
       "Nationality": "Swiss",
