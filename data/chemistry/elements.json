@@ -23,6 +23,19 @@
     "minedAs": "Not mined",
     "extraction": "Almost all from steam reforming of methane; electrolysis of water is the growing low-carbon route.",
     "mines": [],
+    "machines": [
+      "3bee5275-7b5c-8179-85b1-f10fafe739bd",
+      "3bee5275-7b5c-816e-8ecf-eb005b6ecd6a",
+      "3bee5275-7b5c-8106-87ad-d93389c8db21",
+      "3bee5275-7b5c-819c-ab65-fab1ca28400e",
+      "3bee5275-7b5c-8173-8694-f25ee51fc058",
+      "3bee5275-7b5c-818a-8972-f3d3abbf4303"
+    ],
+    "skills": [
+      "3bee5275-7b5c-81fa-95b2-db5325c91e8c",
+      "3bee5275-7b5c-8140-ba22-de77cd031504",
+      "3bee5275-7b5c-8127-9394-ce825a20f2ba"
+    ],
     "equations": [
       "3bde5275-7b5c-81a3-914b-f108cd62b10b",
       "3bde5275-7b5c-81fc-a041-fc08a0416af7",
@@ -81,6 +94,10 @@
       "3bee5275-7b5c-814b-9a71-c701da26de40",
       "3bee5275-7b5c-81da-979e-c811ab280533"
     ],
+    "machines": [
+      "3bee5275-7b5c-8179-85b1-f10fafe739bd"
+    ],
+    "skills": [],
     "equations": [
       "3bbe5275-7b5c-811a-a60d-eddf236c3a8c",
       "3bde5275-7b5c-81e2-9c2a-cf03ccc6c865",
@@ -130,6 +147,10 @@
       "3bee5275-7b5c-8145-887e-e1ba9e82cd7b",
       "3bee5275-7b5c-8161-94ff-c9a7488b256c"
     ],
+    "machines": [
+      "3bee5275-7b5c-8109-afca-deb08ef8b07f"
+    ],
+    "skills": [],
     "equations": [
       "3bbe5275-7b5c-817f-80a4-f6e36ff9d306"
     ],
@@ -163,6 +184,8 @@
     "mines": [
       "3bee5275-7b5c-8191-a78a-e6911ab5055e"
     ],
+    "machines": [],
+    "skills": [],
     "equations": [],
     "pageId": "b6d691e6-8f2a-44b8-8991-b0a45663c269",
     "pageUrl": "https://app.notion.com/p/Beryllium-b6d691e68f2a44b88991b0a45663c269",
@@ -195,6 +218,11 @@
       "3bee5275-7b5c-81ee-bd64-de477b8c5efc",
       "3bee5275-7b5c-8131-948e-f3a0eea5fcd9"
     ],
+    "machines": [
+      "3bee5275-7b5c-815a-91d9-ddb1a170b5ba",
+      "3bee5275-7b5c-8173-8694-f25ee51fc058"
+    ],
+    "skills": [],
     "equations": [],
     "pageId": "9a302c67-c5b0-47de-81c2-a58346c2b41a",
     "pageUrl": "https://app.notion.com/p/Boron-9a302c67c5b047de81c2a58346c2b41a",
@@ -230,6 +258,24 @@
       "3bee5275-7b5c-81a7-a491-fdf0e6f9783f",
       "3bee5275-7b5c-8113-bb94-f4b7400c56ee",
       "3bee5275-7b5c-81f7-a941-c626c21adb59"
+    ],
+    "machines": [
+      "3bee5275-7b5c-81a1-828c-cac8a3e19a5d",
+      "3bee5275-7b5c-8109-afca-deb08ef8b07f",
+      "3bee5275-7b5c-8106-87ad-d93389c8db21",
+      "3bee5275-7b5c-81e0-8a21-e90e2ee777ef",
+      "3bee5275-7b5c-819a-a646-e30947c2f6ef",
+      "3bee5275-7b5c-819c-8199-d3b14dbc5c04"
+    ],
+    "skills": [
+      "3bee5275-7b5c-818a-a38a-fd2b417391d9",
+      "3bee5275-7b5c-8162-bbd6-c6add0c038fd",
+      "3bee5275-7b5c-81e2-bf83-dd364bc07e64",
+      "3bee5275-7b5c-818a-8f3b-cc5926f57c88",
+      "3bee5275-7b5c-81fa-95b2-db5325c91e8c",
+      "3bee5275-7b5c-8140-ba22-de77cd031504",
+      "3bee5275-7b5c-8146-bc5f-dfc8858749e6",
+      "3bee5275-7b5c-81ea-8ad8-ca2470b17c2c"
     ],
     "equations": [
       "3bbe5275-7b5c-813e-a03e-dacece1e6c35",
@@ -271,6 +317,12 @@
     "minedAs": "Not mined",
     "extraction": "Separated from air cryogenically, and fixed as ammonia by Haber\u2013Bosch \u2014 the process that feeds half the world.",
     "mines": [],
+    "machines": [
+      "3bee5275-7b5c-819c-8199-d3b14dbc5c04"
+    ],
+    "skills": [
+      "3bee5275-7b5c-81ea-8ad8-ca2470b17c2c"
+    ],
     "equations": [
       "3bbe5275-7b5c-81a2-9653-e0a84065d7fa",
       "3bbe5275-7b5c-8186-884a-ed5996715fc4",
@@ -316,6 +368,20 @@
     "minedAs": "Not mined",
     "extraction": "Cryogenic air separation, or pressure-swing adsorption for smaller volumes.",
     "mines": [],
+    "machines": [
+      "3bee5275-7b5c-8106-87ad-d93389c8db21",
+      "3bee5275-7b5c-819c-ab65-fab1ca28400e",
+      "3bee5275-7b5c-8173-8694-f25ee51fc058",
+      "3bee5275-7b5c-818a-8972-f3d3abbf4303",
+      "3bee5275-7b5c-819c-8199-d3b14dbc5c04"
+    ],
+    "skills": [
+      "3bee5275-7b5c-818a-8f3b-cc5926f57c88",
+      "3bee5275-7b5c-81fa-95b2-db5325c91e8c",
+      "3bee5275-7b5c-8140-ba22-de77cd031504",
+      "3bee5275-7b5c-8146-bc5f-dfc8858749e6",
+      "3bee5275-7b5c-8127-9394-ce825a20f2ba"
+    ],
     "equations": [
       "3bbe5275-7b5c-81a2-9653-e0a84065d7fa",
       "3bbe5275-7b5c-8186-884a-ed5996715fc4",
@@ -367,6 +433,10 @@
     "mines": [
       "3bee5275-7b5c-812c-a4b1-d601dd8e2499"
     ],
+    "machines": [
+      "3bee5275-7b5c-819a-a646-e30947c2f6ef"
+    ],
+    "skills": [],
     "equations": [],
     "pageId": "234a06ad-5489-4e20-8673-2c7a515952a4",
     "pageUrl": "https://app.notion.com/p/Fluorine-234a06ad54894e2086732c7a515952a4",
@@ -396,6 +466,8 @@
     "minedAs": "Not mined",
     "extraction": "Air separation; a by-product of very large oxygen plants, which is why Ukrainian steelworks once supplied most of it.",
     "mines": [],
+    "machines": [],
+    "skills": [],
     "equations": [
       "3bbe5275-7b5c-81a2-9653-e0a84065d7fa",
       "3bbe5275-7b5c-818e-8ccf-c5b952277817",
@@ -431,6 +503,10 @@
     "mines": [
       "3bee5275-7b5c-8106-96f1-eec99cd209f3"
     ],
+    "machines": [
+      "3bee5275-7b5c-81b1-b0ac-e155be8ee317"
+    ],
+    "skills": [],
     "equations": [
       "3bbe5275-7b5c-8113-9b17-e6d7efc091ea",
       "3bbe5275-7b5c-8130-a1e2-d4d1fefda7d8",
@@ -471,6 +547,8 @@
       "3bee5275-7b5c-81a0-8320-ce5f2639933d",
       "3bee5275-7b5c-8171-a45c-c59637b5d835"
     ],
+    "machines": [],
+    "skills": [],
     "equations": [
       "3bbe5275-7b5c-8183-8228-de82d104194f"
     ],
@@ -506,6 +584,24 @@
       "3bee5275-7b5c-81df-b3c3-c95a50c0e5d9",
       "3bee5275-7b5c-811b-88a1-c2c47283945a",
       "3bee5275-7b5c-81cd-b867-eca84307d934"
+    ],
+    "machines": [
+      "3bee5275-7b5c-8142-99bf-ebcc4db94eb2",
+      "3bee5275-7b5c-8174-9c74-c7d269c27471",
+      "3bee5275-7b5c-811d-94f2-da46fc922b68",
+      "3bee5275-7b5c-8162-af85-d68676032bd7",
+      "3bee5275-7b5c-81f1-8adb-e0e77352ecb0",
+      "3bee5275-7b5c-81be-a073-fdc97d8febbe",
+      "3bee5275-7b5c-8109-afca-deb08ef8b07f",
+      "3bee5275-7b5c-81b9-b30c-e1617a4968d5",
+      "3bee5275-7b5c-819a-a646-e30947c2f6ef",
+      "3bee5275-7b5c-819c-8199-d3b14dbc5c04"
+    ],
+    "skills": [
+      "3bee5275-7b5c-8175-830a-fa49c3a84148",
+      "3bee5275-7b5c-8104-bd15-f3f63b6670e5",
+      "3bee5275-7b5c-8146-bc5f-dfc8858749e6",
+      "3bee5275-7b5c-8127-9394-ce825a20f2ba"
     ],
     "equations": [
       "3bbe5275-7b5c-81ee-9b16-dcfba043e1f3",
@@ -544,6 +640,21 @@
     "extraction": "Quarried quartz is reduced with coal, charcoal and wood chips in a submerged-arc furnace to metallurgical-grade silicon at 98\u201399 %. For chips and solar cells that is converted to trichlorosilane, distilled and redeposited in the Siemens process to nine-nines polysilicon, then pulled into single crystals by the Czochralski method \u2014 a crucible made from the purest quartz on Earth holding the melt.",
     "mines": [
       "3bee5275-7b5c-8168-8af2-dbc3caaebe88"
+    ],
+    "machines": [
+      "3bee5275-7b5c-81f1-8adb-e0e77352ecb0",
+      "3bee5275-7b5c-816e-8ecf-eb005b6ecd6a",
+      "3bee5275-7b5c-81be-a073-fdc97d8febbe",
+      "3bee5275-7b5c-81b9-b30c-e1617a4968d5",
+      "3bee5275-7b5c-8164-8a66-c9e9f9cddc2f"
+    ],
+    "skills": [
+      "3bee5275-7b5c-8117-b401-cee2654a1d54",
+      "3bee5275-7b5c-8104-bd15-f3f63b6670e5",
+      "3bee5275-7b5c-818a-8f3b-cc5926f57c88",
+      "3bee5275-7b5c-8146-bc5f-dfc8858749e6",
+      "3bee5275-7b5c-8127-9394-ce825a20f2ba",
+      "3bee5275-7b5c-81d3-ad90-c1a80f5e13ad"
     ],
     "equations": [
       "3bbe5275-7b5c-81d1-abad-c2702fa3abb0",
@@ -584,6 +695,10 @@
     "mines": [
       "3bee5275-7b5c-81dd-bc54-fb731237f029"
     ],
+    "machines": [],
+    "skills": [
+      "3bee5275-7b5c-8165-b6ba-ce4550c54c41"
+    ],
     "equations": [],
     "pageId": "f85b64bb-5e55-44bf-91c7-99a09f2c5b6f",
     "pageUrl": "https://app.notion.com/p/Phosphorus-f85b64bb5e5544bf91c799a09f2c5b6f",
@@ -614,6 +729,10 @@
     "minedAs": "By-product",
     "extraction": "Hardly mined any more. Almost all sulfur is recovered from hydrogen sulfide stripped out of natural gas and oil, converted to elemental sulfur in the Claus process. The Frasch mines that melted native sulfur out of salt domes with superheated water are gone.",
     "mines": [],
+    "machines": [
+      "3bee5275-7b5c-819c-ab65-fab1ca28400e"
+    ],
+    "skills": [],
     "equations": [],
     "pageId": "6a8cb9e7-6464-44a0-b28f-fe79c88c995e",
     "pageUrl": "https://app.notion.com/p/Sulfur-6a8cb9e7646444a0b28ffe79c88c995e",
@@ -646,6 +765,11 @@
     "mines": [
       "3bee5275-7b5c-8106-96f1-eec99cd209f3"
     ],
+    "machines": [
+      "3bee5275-7b5c-81b1-b0ac-e155be8ee317",
+      "3bee5275-7b5c-819c-8199-d3b14dbc5c04"
+    ],
+    "skills": [],
     "equations": [
       "3bbe5275-7b5c-819d-afd0-d0876756a85c",
       "3bbe5275-7b5c-8113-9b17-e6d7efc091ea",
@@ -681,6 +805,11 @@
     "minedAs": "Not mined",
     "extraction": "A by-product of cryogenic air separation, sitting between oxygen and nitrogen in the column.",
     "mines": [],
+    "machines": [],
+    "skills": [
+      "3bee5275-7b5c-8175-830a-fa49c3a84148",
+      "3bee5275-7b5c-818a-8f3b-cc5926f57c88"
+    ],
     "equations": [
       "3bbe5275-7b5c-81a2-9653-e0a84065d7fa",
       "3bbe5275-7b5c-8144-82d8-d6e4bd0f0f2d",
@@ -718,6 +847,8 @@
       "3bee5275-7b5c-8187-8388-fa6d9d177d23",
       "3bee5275-7b5c-81a0-8320-ce5f2639933d"
     ],
+    "machines": [],
+    "skills": [],
     "equations": [
       "3bbe5275-7b5c-813e-a03e-dacece1e6c35",
       "3bbe5275-7b5c-81b2-9ec2-d967f8695b7e",
@@ -751,6 +882,11 @@
     "minedAs": "Primary",
     "extraction": "Quarried limestone is burned in a kiln to quicklime, or ground with clay and fired to cement clinker. Calcium metal itself is a small business, made by reducing lime with aluminium under vacuum.",
     "mines": [],
+    "machines": [],
+    "skills": [
+      "3bee5275-7b5c-8117-b401-cee2654a1d54",
+      "3bee5275-7b5c-8127-9394-ce825a20f2ba"
+    ],
     "equations": [
       "3bbe5275-7b5c-8184-9e26-ff4ad04b3ed8",
       "3bbe5275-7b5c-814d-83e6-ee6df24eacca",
@@ -787,6 +923,8 @@
     "minedAs": "By-product",
     "extraction": "No scandium mine exists; it is scavenged from the acid leach liquors of nickel laterite and titanium pigment plants.",
     "mines": [],
+    "machines": [],
+    "skills": [],
     "equations": [],
     "pageId": "ee3f5305-6d61-4068-8db5-f322517fecd8",
     "pageUrl": "https://app.notion.com/p/Scandium-ee3f53056d6140688db5f322517fecd8",
@@ -820,6 +958,13 @@
       "3bee5275-7b5c-81c7-946e-cccda7b7b5a7",
       "3bee5275-7b5c-818b-961d-f897af1c78aa"
     ],
+    "machines": [
+      "3bee5275-7b5c-8162-af85-d68676032bd7",
+      "3bee5275-7b5c-817c-995b-fcec965fd2fd"
+    ],
+    "skills": [
+      "3bee5275-7b5c-8175-830a-fa49c3a84148"
+    ],
     "equations": [],
     "pageId": "ddc5e592-a135-4804-859e-3b04d8354f5d",
     "pageUrl": "https://app.notion.com/p/Titanium-ddc5e592a1354804859e3b04d8354f5d",
@@ -851,6 +996,8 @@
     "mines": [
       "3bee5275-7b5c-818b-961d-f897af1c78aa"
     ],
+    "machines": [],
+    "skills": [],
     "equations": [],
     "pageId": "8c913696-4e3d-4199-9373-22bd7848527f",
     "pageUrl": "https://app.notion.com/p/Vanadium-8c9136964e3d4199937322bd7848527f",
@@ -882,6 +1029,18 @@
     "mines": [
       "3bee5275-7b5c-8122-a78b-fcd0cfe27d8d",
       "3bee5275-7b5c-8164-a9aa-c919a3a49741"
+    ],
+    "machines": [
+      "3bee5275-7b5c-8162-af85-d68676032bd7",
+      "3bee5275-7b5c-8152-b6e1-cc03227a8473",
+      "3bee5275-7b5c-817c-995b-fcec965fd2fd",
+      "3bee5275-7b5c-8168-a928-d755bed8e21f",
+      "3bee5275-7b5c-81eb-98b0-d02f02376dc4"
+    ],
+    "skills": [
+      "3bee5275-7b5c-8175-830a-fa49c3a84148",
+      "3bee5275-7b5c-818a-a38a-fd2b417391d9",
+      "3bee5275-7b5c-81e2-8719-c969fad098fc"
     ],
     "equations": [
       "3bbe5275-7b5c-816d-9734-c149c749519c",
@@ -918,6 +1077,14 @@
     "mines": [
       "3bee5275-7b5c-8173-b528-d27bea485edc",
       "3bee5275-7b5c-8134-a42b-d681a0525782"
+    ],
+    "machines": [
+      "3bee5275-7b5c-8109-afca-deb08ef8b07f"
+    ],
+    "skills": [
+      "3bee5275-7b5c-8117-b401-cee2654a1d54",
+      "3bee5275-7b5c-818a-a38a-fd2b417391d9",
+      "3bee5275-7b5c-818a-8f3b-cc5926f57c88"
     ],
     "equations": [],
     "pageId": "854ebd58-91a3-4e3e-8d2b-ebbed4e02a42",
@@ -956,6 +1123,36 @@
       "3bee5275-7b5c-8162-a7e0-ea61948a2e2f",
       "3bee5275-7b5c-814e-918d-ca35cfdd4047",
       "3bee5275-7b5c-818b-961d-f897af1c78aa"
+    ],
+    "machines": [
+      "3bee5275-7b5c-8126-be24-fda31adae428",
+      "3bee5275-7b5c-81f5-ac2c-f998f9234162",
+      "3bee5275-7b5c-8142-99bf-ebcc4db94eb2",
+      "3bee5275-7b5c-8179-85b1-f10fafe739bd",
+      "3bee5275-7b5c-8174-9c74-c7d269c27471",
+      "3bee5275-7b5c-811d-94f2-da46fc922b68",
+      "3bee5275-7b5c-8152-b6e1-cc03227a8473",
+      "3bee5275-7b5c-817c-995b-fcec965fd2fd",
+      "3bee5275-7b5c-8168-a928-d755bed8e21f",
+      "3bee5275-7b5c-81eb-98b0-d02f02376dc4",
+      "3bee5275-7b5c-81ce-886e-e9c9ea42dcba",
+      "3bee5275-7b5c-81a1-828c-cac8a3e19a5d",
+      "3bee5275-7b5c-81f1-8adb-e0e77352ecb0",
+      "3bee5275-7b5c-815a-91d9-ddb1a170b5ba",
+      "3bee5275-7b5c-816e-8ecf-eb005b6ecd6a",
+      "3bee5275-7b5c-81be-a073-fdc97d8febbe"
+    ],
+    "skills": [
+      "3bee5275-7b5c-8175-830a-fa49c3a84148",
+      "3bee5275-7b5c-8117-b401-cee2654a1d54",
+      "3bee5275-7b5c-818a-a38a-fd2b417391d9",
+      "3bee5275-7b5c-8162-bbd6-c6add0c038fd",
+      "3bee5275-7b5c-81e2-bf83-dd364bc07e64",
+      "3bee5275-7b5c-818a-8f3b-cc5926f57c88",
+      "3bee5275-7b5c-81ab-982a-ff7c4d67bb4c",
+      "3bee5275-7b5c-8146-bc5f-dfc8858749e6",
+      "3bee5275-7b5c-8127-9394-ce825a20f2ba",
+      "3bee5275-7b5c-81e2-8719-c969fad098fc"
     ],
     "equations": [
       "3bbe5275-7b5c-81f5-bb78-d159340dd03f",
@@ -1003,6 +1200,13 @@
       "3bee5275-7b5c-81c7-aeb0-c281b20393ad",
       "3bee5275-7b5c-8182-af80-e3cb14f04f3f"
     ],
+    "machines": [
+      "3bee5275-7b5c-8162-af85-d68676032bd7",
+      "3bee5275-7b5c-8109-afca-deb08ef8b07f"
+    ],
+    "skills": [
+      "3bee5275-7b5c-81e2-bf83-dd364bc07e64"
+    ],
     "equations": [],
     "pageId": "4db04b1f-6f43-422a-89ad-7cc16ad94e7d",
     "pageUrl": "https://app.notion.com/p/Cobalt-4db04b1f6f43422a89ad7cc16ad94e7d",
@@ -1038,6 +1242,14 @@
       "3bee5275-7b5c-8182-af80-e3cb14f04f3f",
       "3bee5275-7b5c-817d-a0f2-ca413f71e1e8"
     ],
+    "machines": [
+      "3bee5275-7b5c-8179-85b1-f10fafe739bd",
+      "3bee5275-7b5c-8162-af85-d68676032bd7",
+      "3bee5275-7b5c-817c-995b-fcec965fd2fd",
+      "3bee5275-7b5c-8109-afca-deb08ef8b07f",
+      "3bee5275-7b5c-818a-8972-f3d3abbf4303"
+    ],
+    "skills": [],
     "equations": [
       "3bbe5275-7b5c-8170-bd5f-c796d7589e08",
       "3bbe5275-7b5c-816d-9734-c149c749519c",
@@ -1094,6 +1306,27 @@
       "3bee5275-7b5c-8182-af80-e3cb14f04f3f",
       "3bee5275-7b5c-817d-a0f2-ca413f71e1e8"
     ],
+    "machines": [
+      "3bee5275-7b5c-8126-be24-fda31adae428",
+      "3bee5275-7b5c-81f5-ac2c-f998f9234162",
+      "3bee5275-7b5c-81ce-886e-e9c9ea42dcba",
+      "3bee5275-7b5c-81a1-828c-cac8a3e19a5d",
+      "3bee5275-7b5c-81f1-8adb-e0e77352ecb0",
+      "3bee5275-7b5c-815a-91d9-ddb1a170b5ba",
+      "3bee5275-7b5c-816e-8ecf-eb005b6ecd6a",
+      "3bee5275-7b5c-81be-a073-fdc97d8febbe",
+      "3bee5275-7b5c-81b1-b0ac-e155be8ee317",
+      "3bee5275-7b5c-8109-afca-deb08ef8b07f",
+      "3bee5275-7b5c-819a-a646-e30947c2f6ef",
+      "3bee5275-7b5c-818a-8972-f3d3abbf4303"
+    ],
+    "skills": [
+      "3bee5275-7b5c-8165-b6ba-ce4550c54c41",
+      "3bee5275-7b5c-8104-bd15-f3f63b6670e5",
+      "3bee5275-7b5c-8151-a852-f47cb0eb56f2",
+      "3bee5275-7b5c-81ea-8ad8-ca2470b17c2c",
+      "3bee5275-7b5c-8185-b06f-d588a9b08a2c"
+    ],
     "equations": [
       "3bbe5275-7b5c-81ee-9b16-dcfba043e1f3",
       "3bbe5275-7b5c-8154-bcd6-c1cd26ae1a20",
@@ -1142,6 +1375,12 @@
       "3bee5275-7b5c-81f5-81a3-dfd961fd3a84",
       "3bee5275-7b5c-8192-a3ad-e6ccb1102b10"
     ],
+    "machines": [
+      "3bee5275-7b5c-81b1-b0ac-e155be8ee317"
+    ],
+    "skills": [
+      "3bee5275-7b5c-8165-b6ba-ce4550c54c41"
+    ],
     "equations": [
       "3bbe5275-7b5c-81b2-9ec2-d967f8695b7e"
     ],
@@ -1174,6 +1413,10 @@
     "minedAs": "By-product",
     "extraction": "Extracted from the caustic Bayer liquor of alumina refineries by ion exchange or electrolysis; no gallium mine has ever existed.",
     "mines": [],
+    "machines": [],
+    "skills": [
+      "3bee5275-7b5c-81ea-8ad8-ca2470b17c2c"
+    ],
     "equations": [],
     "pageId": "12515eb2-415b-477c-a740-e511bc7ab759",
     "pageUrl": "https://app.notion.com/p/Gallium-12515eb2415b477ca740e511bc7ab759",
@@ -1203,6 +1446,10 @@
     "minedAs": "By-product",
     "extraction": "Recovered from zinc-refinery residues and from the fly ash of germanium-rich coals, then chlorinated, distilled and hydrolysed to the oxide.",
     "mines": [],
+    "machines": [
+      "3bee5275-7b5c-8164-8a66-c9e9f9cddc2f"
+    ],
+    "skills": [],
     "equations": [
       "3bbe5275-7b5c-81e1-96c0-c6157aaee509"
     ],
@@ -1234,6 +1481,8 @@
     "minedAs": "By-product",
     "extraction": "Recovered as the trioxide from smelter flue dusts, mostly in China; more often it is a contaminant to be disposed of than a product to be sold.",
     "mines": [],
+    "machines": [],
+    "skills": [],
     "equations": [],
     "pageId": "976a482d-20cc-44f4-a1ed-1542fd0ca14c",
     "pageUrl": "https://app.notion.com/p/Arsenic-976a482d20cc44f4a1ed1542fd0ca14c",
@@ -1264,6 +1513,8 @@
     "minedAs": "By-product",
     "extraction": "From the anode slimes of copper electrorefining, roasted and leached.",
     "mines": [],
+    "machines": [],
+    "skills": [],
     "equations": [],
     "pageId": "85488811-cbef-41fd-b046-92f786bb0093",
     "pageUrl": "https://app.notion.com/p/Selenium-85488811cbef41fdb04692f786bb0093",
@@ -1296,6 +1547,8 @@
     "mines": [
       "3bee5275-7b5c-81a0-8320-ce5f2639933d"
     ],
+    "machines": [],
+    "skills": [],
     "equations": [],
     "pageId": "11794e99-72a6-4997-ad4e-dfc9ddb895a5",
     "pageUrl": "https://app.notion.com/p/Bromine-11794e9972a64997ad4edfc9ddb895a5",
@@ -1325,6 +1578,8 @@
     "minedAs": "Not mined",
     "extraction": "Air separation, at the bottom of the oxygen column.",
     "mines": [],
+    "machines": [],
+    "skills": [],
     "equations": [],
     "pageId": "cfdeb271-042e-4342-bb9c-741a04941adf",
     "pageUrl": "https://app.notion.com/p/Krypton-cfdeb271042e4342bb9c741a04941adf",
@@ -1353,6 +1608,8 @@
     "minedAs": null,
     "extraction": null,
     "mines": [],
+    "machines": [],
+    "skills": [],
     "equations": [
       "3bbe5275-7b5c-813e-a03e-dacece1e6c35"
     ],
@@ -1384,6 +1641,8 @@
     "minedAs": "Primary",
     "extraction": "Celestine is hand-sorted or floated and converted to strontium carbonate; a small industry, mostly for pyrotechnics and magnets since television tubes disappeared.",
     "mines": [],
+    "machines": [],
+    "skills": [],
     "equations": [],
     "pageId": "5c074948-eb63-4d90-93fc-15220207c94c",
     "pageUrl": "https://app.notion.com/p/Strontium-5c074948eb634d9093fc15220207c94c",
@@ -1415,6 +1674,8 @@
     "mines": [
       "3bee5275-7b5c-8142-990d-cfb611af4b00"
     ],
+    "machines": [],
+    "skills": [],
     "equations": [],
     "pageId": "91a31807-166a-4a1d-93cd-513b023cc731",
     "pageUrl": "https://app.notion.com/p/Yttrium-91a31807166a4a1d93cd513b023cc731",
@@ -1446,6 +1707,10 @@
     "mines": [
       "3bee5275-7b5c-8162-a7e0-ea61948a2e2f"
     ],
+    "machines": [
+      "3bee5275-7b5c-8173-8694-f25ee51fc058"
+    ],
+    "skills": [],
     "equations": [],
     "pageId": "a2b5a7bd-a076-4d34-9c63-d084e2199816",
     "pageUrl": "https://app.notion.com/p/Zirconium-a2b5a7bda0764d349c63d084e2199816",
@@ -1478,6 +1743,10 @@
       "3bee5275-7b5c-814e-918d-ca35cfdd4047",
       "3bee5275-7b5c-813c-b5ac-daff3fb5dfe1"
     ],
+    "machines": [
+      "3bee5275-7b5c-818a-8972-f3d3abbf4303"
+    ],
+    "skills": [],
     "equations": [
       "3bbe5275-7b5c-81b2-ae34-f800aecd57e1",
       "3bbe5275-7b5c-8149-a0e6-d2bf67397229",
@@ -1522,6 +1791,8 @@
       "3bee5275-7b5c-8149-aa34-f898527be676",
       "3bee5275-7b5c-8138-9286-f5323103ad82"
     ],
+    "machines": [],
+    "skills": [],
     "equations": [],
     "pageId": "06ada303-c443-4523-bc0f-c3aa5061d3f1",
     "pageUrl": "https://app.notion.com/p/Molybdenum-06ada303c4434523bc0fc3aa5061d3f1",
@@ -1551,6 +1822,8 @@
     "minedAs": null,
     "extraction": null,
     "mines": [],
+    "machines": [],
+    "skills": [],
     "equations": [],
     "pageId": "d70d26f3-e988-4d04-8249-0414943bcf9f",
     "pageUrl": "https://app.notion.com/p/Technetium-d70d26f3e9884d0482490414943bcf9f",
@@ -1580,6 +1853,8 @@
     "minedAs": "By-product",
     "extraction": "Separated from platinum-group concentrates by distillation of its volatile tetroxide.",
     "mines": [],
+    "machines": [],
+    "skills": [],
     "equations": [],
     "pageId": "30c7e1b4-3320-4fcd-bf89-338f28467dd3",
     "pageUrl": "https://app.notion.com/p/Ruthenium-30c7e1b433204fcdbf89338f28467dd3",
@@ -1612,6 +1887,10 @@
       "3bee5275-7b5c-8122-a78b-fcd0cfe27d8d",
       "3bee5275-7b5c-817d-a0f2-ca413f71e1e8"
     ],
+    "machines": [
+      "3bee5275-7b5c-8142-99bf-ebcc4db94eb2"
+    ],
+    "skills": [],
     "equations": [],
     "pageId": "aa699cd4-0314-4894-a386-42a35242af6f",
     "pageUrl": "https://app.notion.com/p/Rhodium-aa699cd403144894a38642a35242af6f",
@@ -1647,6 +1926,8 @@
       "3bee5275-7b5c-817d-a0f2-ca413f71e1e8",
       "3bee5275-7b5c-81dd-84f2-d7b9910f7deb"
     ],
+    "machines": [],
+    "skills": [],
     "equations": [],
     "pageId": "b96dc6a7-c3dc-4fff-a370-8990b649e01f",
     "pageUrl": "https://app.notion.com/p/Palladium-b96dc6a7c3dc4fffa3708990b649e01f",
@@ -1689,6 +1970,12 @@
       "3bee5275-7b5c-81f5-81a3-dfd961fd3a84",
       "3bee5275-7b5c-8192-a3ad-e6ccb1102b10"
     ],
+    "machines": [
+      "3bee5275-7b5c-81b9-b30c-e1617a4968d5"
+    ],
+    "skills": [
+      "3bee5275-7b5c-8165-b6ba-ce4550c54c41"
+    ],
     "equations": [
       "3bbe5275-7b5c-81ee-9b16-dcfba043e1f3",
       "3bbe5275-7b5c-819d-a258-d3e7dec3b639",
@@ -1723,6 +2010,10 @@
     "minedAs": "By-product",
     "extraction": "Cemented out of zinc electrolyte during purification, then distilled or electrowon.",
     "mines": [],
+    "machines": [
+      "3bee5275-7b5c-81e0-8a21-e90e2ee777ef"
+    ],
+    "skills": [],
     "equations": [],
     "pageId": "cff89a3b-c490-44b5-bb9e-b5fec6722229",
     "pageUrl": "https://app.notion.com/p/Cadmium-cff89a3bc49044b5bb9eb5fec6722229",
@@ -1753,6 +2044,10 @@
     "minedAs": "By-product",
     "extraction": "Leached from zinc-refinery residues; the touchscreen metal, wholly dependent on how much zinc the world smelts.",
     "mines": [],
+    "machines": [],
+    "skills": [
+      "3bee5275-7b5c-81ea-8ad8-ca2470b17c2c"
+    ],
     "equations": [],
     "pageId": "24d4209b-654c-47e9-bad2-7806c9f1dfc9",
     "pageUrl": "https://app.notion.com/p/Indium-24d4209b654c47e9bad27806c9f1dfc9",
@@ -1789,6 +2084,12 @@
       "3bee5275-7b5c-816e-b987-df42e30a7129",
       "3bee5275-7b5c-8138-9286-f5323103ad82"
     ],
+    "machines": [],
+    "skills": [
+      "3bee5275-7b5c-8104-bd15-f3f63b6670e5",
+      "3bee5275-7b5c-8185-b06f-d588a9b08a2c",
+      "3bee5275-7b5c-8164-a6ad-c67f6502291e"
+    ],
     "equations": [],
     "pageId": "f7098b29-1530-4894-ae72-7450dad8212f",
     "pageUrl": "https://app.notion.com/p/Tin-f7098b2915304894ae727450dad8212f",
@@ -1820,6 +2121,8 @@
     "mines": [
       "3bee5275-7b5c-81d1-a174-c43eb8675761"
     ],
+    "machines": [],
+    "skills": [],
     "equations": [
       "3bbe5275-7b5c-814d-8154-c3d16384df7f"
     ],
@@ -1851,6 +2154,10 @@
     "minedAs": "By-product",
     "extraction": "From copper anode slimes alongside selenium; the solar-cell (CdTe) tellurium supply is a by-product of how much copper is refined.",
     "mines": [],
+    "machines": [
+      "3bee5275-7b5c-8164-8a66-c9e9f9cddc2f"
+    ],
+    "skills": [],
     "equations": [
       "3bbe5275-7b5c-814d-8154-c3d16384df7f",
       "3bbe5275-7b5c-8110-a092-dab2770885be",
@@ -1887,6 +2194,8 @@
     "mines": [
       "3bee5275-7b5c-81f7-b056-f1265b55c1f9"
     ],
+    "machines": [],
+    "skills": [],
     "equations": [],
     "pageId": "43de39e9-edc9-42d5-8786-c0f42da16ebc",
     "pageUrl": "https://app.notion.com/p/Iodine-43de39e9edc942d58786c0f42da16ebc",
@@ -1916,6 +2225,8 @@
     "minedAs": "Not mined",
     "extraction": "Air separation; the rarest thing routinely extracted from air, and priced accordingly.",
     "mines": [],
+    "machines": [],
+    "skills": [],
     "equations": [
       "3bde5275-7b5c-81b5-b5ba-ef8abb9338cb"
     ],
@@ -1946,6 +2257,8 @@
     "minedAs": null,
     "extraction": null,
     "mines": [],
+    "machines": [],
+    "skills": [],
     "equations": [],
     "pageId": "aed4dd50-e224-4dde-8a8f-6812f3d6b585",
     "pageUrl": "https://app.notion.com/p/Caesium-aed4dd50e2244dde8a8f6812f3d6b585",
@@ -1975,6 +2288,8 @@
     "minedAs": "Primary",
     "extraction": "Barite is mined, ground and used almost as-is \u2014 nine tenths of it as the weighting agent in oil-well drilling mud.",
     "mines": [],
+    "machines": [],
+    "skills": [],
     "equations": [],
     "pageId": "57a5b197-c936-40db-a07c-1aa735bff1c4",
     "pageUrl": "https://app.notion.com/p/Barium-57a5b197c93640dba07c1aa735bff1c4",
@@ -2007,6 +2322,10 @@
       "3bee5275-7b5c-814e-918d-ca35cfdd4047",
       "3bee5275-7b5c-816f-8c7b-f5dbb2a14cec",
       "3bee5275-7b5c-814a-878f-e6fa2817545d"
+    ],
+    "machines": [],
+    "skills": [
+      "3bee5275-7b5c-8175-830a-fa49c3a84148"
     ],
     "equations": [],
     "pageId": "ea40e9a9-cfe6-42c5-a3d1-1bc2d95f772f",
@@ -2041,6 +2360,8 @@
       "3bee5275-7b5c-816f-8c7b-f5dbb2a14cec",
       "3bee5275-7b5c-814a-878f-e6fa2817545d"
     ],
+    "machines": [],
+    "skills": [],
     "equations": [],
     "pageId": "545901e5-34d0-462e-8ec4-f82a5a40ec44",
     "pageUrl": "https://app.notion.com/p/Cerium-545901e534d0462e8ec4f82a5a40ec44",
@@ -2070,6 +2391,8 @@
     "minedAs": "By-product",
     "extraction": "Co-product of the same rare-earth ores as neodymium, and often left mixed with it as didymium for magnets.",
     "mines": [],
+    "machines": [],
+    "skills": [],
     "equations": [],
     "pageId": "83bb64d3-4f8b-453d-a223-3f86476b8254",
     "pageUrl": "https://app.notion.com/p/Praseodymium-83bb64d34f8b453da2233f86476b8254",
@@ -2103,6 +2426,12 @@
       "3bee5275-7b5c-816f-8c7b-f5dbb2a14cec",
       "3bee5275-7b5c-814a-878f-e6fa2817545d"
     ],
+    "machines": [
+      "3bee5275-7b5c-81ce-886e-e9c9ea42dcba",
+      "3bee5275-7b5c-81a1-828c-cac8a3e19a5d",
+      "3bee5275-7b5c-815a-91d9-ddb1a170b5ba"
+    ],
+    "skills": [],
     "equations": [
       "3bbe5275-7b5c-818e-8ccf-c5b952277817",
       "3bbe5275-7b5c-816e-831d-e184b1a1f659"
@@ -2135,6 +2464,8 @@
     "minedAs": null,
     "extraction": null,
     "mines": [],
+    "machines": [],
+    "skills": [],
     "equations": [],
     "pageId": "88175334-2c8e-4089-9816-1141f2b249f1",
     "pageUrl": "https://app.notion.com/p/Promethium-881753342c8e408998161141f2b249f1",
@@ -2164,6 +2495,8 @@
     "minedAs": null,
     "extraction": null,
     "mines": [],
+    "machines": [],
+    "skills": [],
     "equations": [],
     "pageId": "b70cb1b9-f78b-4581-aa02-cd379e78ca5a",
     "pageUrl": "https://app.notion.com/p/Samarium-b70cb1b9f78b4581aa02cd379e78ca5a",
@@ -2193,6 +2526,8 @@
     "minedAs": null,
     "extraction": null,
     "mines": [],
+    "machines": [],
+    "skills": [],
     "equations": [],
     "pageId": "7c533a7e-17d6-4c7b-97e5-463c83b2fd25",
     "pageUrl": "https://app.notion.com/p/Europium-7c533a7e17d64c7b97e5463c83b2fd25",
@@ -2222,6 +2557,8 @@
     "minedAs": null,
     "extraction": null,
     "mines": [],
+    "machines": [],
+    "skills": [],
     "equations": [],
     "pageId": "34217f7b-c135-4ca7-ac6a-4033b693e182",
     "pageUrl": "https://app.notion.com/p/Gadolinium-34217f7bc1354ca7ac6a4033b693e182",
@@ -2253,6 +2590,8 @@
     "mines": [
       "3bee5275-7b5c-8142-990d-cfb611af4b00"
     ],
+    "machines": [],
+    "skills": [],
     "equations": [],
     "pageId": "3d5b1ef0-e239-4b7c-8721-44d1602c0875",
     "pageUrl": "https://app.notion.com/p/Terbium-3d5b1ef0e2394b7c872144d1602c0875",
@@ -2284,6 +2623,11 @@
     "mines": [
       "3bee5275-7b5c-8142-990d-cfb611af4b00"
     ],
+    "machines": [
+      "3bee5275-7b5c-81ce-886e-e9c9ea42dcba",
+      "3bee5275-7b5c-815a-91d9-ddb1a170b5ba"
+    ],
+    "skills": [],
     "equations": [],
     "pageId": "9ea898c7-67ec-425e-b938-2ce9bfd57670",
     "pageUrl": "https://app.notion.com/p/Dysprosium-9ea898c767ec425eb9382ce9bfd57670",
@@ -2313,6 +2657,8 @@
     "minedAs": null,
     "extraction": null,
     "mines": [],
+    "machines": [],
+    "skills": [],
     "equations": [],
     "pageId": "bc1e1aa6-dc53-48cd-9b0d-2cfba76a056b",
     "pageUrl": "https://app.notion.com/p/Holmium-bc1e1aa6dc5348cd9b0d2cfba76a056b",
@@ -2342,6 +2688,8 @@
     "minedAs": null,
     "extraction": null,
     "mines": [],
+    "machines": [],
+    "skills": [],
     "equations": [],
     "pageId": "d1047e30-474b-49f5-bfa1-e6488a31307c",
     "pageUrl": "https://app.notion.com/p/Erbium-d1047e30474b49f5bfa1e6488a31307c",
@@ -2371,6 +2719,8 @@
     "minedAs": null,
     "extraction": null,
     "mines": [],
+    "machines": [],
+    "skills": [],
     "equations": [],
     "pageId": "98c8b674-59cf-4fe1-ba2c-896617bd1dbe",
     "pageUrl": "https://app.notion.com/p/Thulium-98c8b67459cf4fe1ba2c896617bd1dbe",
@@ -2400,6 +2750,8 @@
     "minedAs": null,
     "extraction": null,
     "mines": [],
+    "machines": [],
+    "skills": [],
     "equations": [
       "3bbe5275-7b5c-8103-8865-faee50cc9c18",
       "3bbe5275-7b5c-810f-8c8d-d0d1ca4da44e"
@@ -2432,6 +2784,8 @@
     "minedAs": null,
     "extraction": null,
     "mines": [],
+    "machines": [],
+    "skills": [],
     "equations": [],
     "pageId": "bd93dd2b-e3b6-4e47-9b4c-4230f133191e",
     "pageUrl": "https://app.notion.com/p/Lutetium-bd93dd2be3b64e479b4c4230f133191e",
@@ -2461,6 +2815,8 @@
     "minedAs": "By-product",
     "extraction": "Separated from zirconium during nuclear-fuel-cladding production, where it must be removed because it absorbs neutrons zirconium lets through.",
     "mines": [],
+    "machines": [],
+    "skills": [],
     "equations": [],
     "pageId": "a1ab7aa0-f87b-4db7-8ecc-c339bbd4e55a",
     "pageUrl": "https://app.notion.com/p/Hafnium-a1ab7aa0f87b4db78eccc339bbd4e55a",
@@ -2493,6 +2849,8 @@
       "3bee5275-7b5c-8166-b905-d2b886983458",
       "3bee5275-7b5c-8145-887e-e1ba9e82cd7b"
     ],
+    "machines": [],
+    "skills": [],
     "equations": [],
     "pageId": "950fb097-88e3-4470-b9ac-a963ae9a50e8",
     "pageUrl": "https://app.notion.com/p/Tantalum-950fb09788e34470b9aca963ae9a50e8",
@@ -2523,6 +2881,11 @@
     "extraction": "The concentrate is pressure-leached in alkali, purified by solvent extraction and crystallised as ammonium paratungstate (APT), the traded intermediate. APT is calcined to the oxide and reduced with hydrogen to tungsten powder \u2014 the metal melts too high to cast \u2014 which is pressed and sintered, or carburised into tungsten carbide for tools.",
     "mines": [
       "3bee5275-7b5c-8138-9286-f5323103ad82"
+    ],
+    "machines": [],
+    "skills": [
+      "3bee5275-7b5c-8175-830a-fa49c3a84148",
+      "3bee5275-7b5c-81e2-bf83-dd364bc07e64"
     ],
     "equations": [
       "3bbe5275-7b5c-816d-9734-c149c749519c",
@@ -2556,6 +2919,10 @@
     "minedAs": "By-product",
     "extraction": "Scrubbed from the flue gas of molybdenite roasters as perrhenic acid and precipitated as ammonium perrhenate \u2014 the source of nearly all rhenium, for jet-engine superalloys.",
     "mines": [],
+    "machines": [
+      "3bee5275-7b5c-8162-af85-d68676032bd7"
+    ],
+    "skills": [],
     "equations": [],
     "pageId": "b70b562d-1165-40d1-9e27-8e415696fd2b",
     "pageUrl": "https://app.notion.com/p/Rhenium-b70b562d116540d19e278e415696fd2b",
@@ -2585,6 +2952,8 @@
     "minedAs": "By-product",
     "extraction": "The rarest stable element in commerce, recovered from platinum-group refining as the volatile tetroxide.",
     "mines": [],
+    "machines": [],
+    "skills": [],
     "equations": [],
     "pageId": "252d5b5d-caaa-40ad-9dfe-1e5eae9ed272",
     "pageUrl": "https://app.notion.com/p/Osmium-252d5b5dcaaa40ad9dfe1e5eae9ed272",
@@ -2614,6 +2983,10 @@
     "minedAs": "By-product",
     "extraction": "A trace in platinum-group concentrates, separated at the tail end of the refinery.",
     "mines": [],
+    "machines": [
+      "3bee5275-7b5c-8164-8a66-c9e9f9cddc2f"
+    ],
+    "skills": [],
     "equations": [],
     "pageId": "c995e2e4-3427-49d8-acee-b9595c4874ad",
     "pageUrl": "https://app.notion.com/p/Iridium-c995e2e4342749d8aceeb9595c4874ad",
@@ -2649,6 +3022,11 @@
       "3bee5275-7b5c-817d-a0f2-ca413f71e1e8",
       "3bee5275-7b5c-81dd-84f2-d7b9910f7deb"
     ],
+    "machines": [
+      "3bee5275-7b5c-8142-99bf-ebcc4db94eb2",
+      "3bee5275-7b5c-8106-87ad-d93389c8db21"
+    ],
+    "skills": [],
     "equations": [],
     "pageId": "a9130bca-ba76-4682-ac49-cc10bb1b7a5f",
     "pageUrl": "https://app.notion.com/p/Platinum-a9130bcaba764682ac49cc10bb1b7a5f",
@@ -2693,6 +3071,8 @@
       "3bee5275-7b5c-81b6-ba93-e90ba76981db",
       "3bee5275-7b5c-817a-858d-c57826dc3d51"
     ],
+    "machines": [],
+    "skills": [],
     "equations": [
       "3bde5275-7b5c-81e2-9c2a-cf03ccc6c865",
       "3bbe5275-7b5c-81ee-9b16-dcfba043e1f3",
@@ -2729,6 +3109,8 @@
     "mines": [
       "3bee5275-7b5c-8126-9e3c-ff170f3993ca"
     ],
+    "machines": [],
+    "skills": [],
     "equations": [
       "3bbe5275-7b5c-81b2-ae34-f800aecd57e1",
       "3bbe5275-7b5c-8149-a0e6-d2bf67397229"
@@ -2762,6 +3144,8 @@
     "minedAs": "By-product",
     "extraction": "A trace in zinc- and lead-smelter flue dust; production is tiny and mostly a matter of keeping it out of the environment.",
     "mines": [],
+    "machines": [],
+    "skills": [],
     "equations": [],
     "pageId": "4eba4f31-6df6-4218-9f39-53eeb3750e24",
     "pageUrl": "https://app.notion.com/p/Thallium-4eba4f316df642189f3953eeb3750e24",
@@ -2799,6 +3183,10 @@
       "3bee5275-7b5c-81f5-81a3-dfd961fd3a84",
       "3bee5275-7b5c-8192-a3ad-e6ccb1102b10"
     ],
+    "machines": [
+      "3bee5275-7b5c-819c-ab65-fab1ca28400e"
+    ],
+    "skills": [],
     "equations": [
       "3bbe5275-7b5c-812d-b464-f7799b61cce9",
       "3bbe5275-7b5c-81b2-ae34-f800aecd57e1",
@@ -2835,6 +3223,8 @@
     "mines": [
       "3bee5275-7b5c-8138-9286-f5323103ad82"
     ],
+    "machines": [],
+    "skills": [],
     "equations": [
       "3bbe5275-7b5c-814d-8154-c3d16384df7f",
       "3bbe5275-7b5c-8110-a092-dab2770885be",
@@ -2870,6 +3260,8 @@
     "minedAs": null,
     "extraction": null,
     "mines": [],
+    "machines": [],
+    "skills": [],
     "equations": [
       "3bbe5275-7b5c-8157-a64b-eb73eeb53735"
     ],
@@ -2901,6 +3293,8 @@
     "minedAs": null,
     "extraction": null,
     "mines": [],
+    "machines": [],
+    "skills": [],
     "equations": [],
     "pageId": "b79c72f7-a274-4509-94ab-92f62a333e59",
     "pageUrl": "https://app.notion.com/p/Astatine-b79c72f7a274450994ab92f62a333e59",
@@ -2930,6 +3324,8 @@
     "minedAs": null,
     "extraction": null,
     "mines": [],
+    "machines": [],
+    "skills": [],
     "equations": [
       "3bbe5275-7b5c-8157-a64b-eb73eeb53735"
     ],
@@ -2960,6 +3356,8 @@
     "minedAs": null,
     "extraction": null,
     "mines": [],
+    "machines": [],
+    "skills": [],
     "equations": [],
     "pageId": "3015b2a8-512f-40c1-b1a5-d7a1b7be1037",
     "pageUrl": "https://app.notion.com/p/Francium-3015b2a8512f40c1b1a5d7a1b7be1037",
@@ -2989,6 +3387,8 @@
     "minedAs": null,
     "extraction": null,
     "mines": [],
+    "machines": [],
+    "skills": [],
     "equations": [
       "3bbe5275-7b5c-8157-a64b-eb73eeb53735"
     ],
@@ -3020,6 +3420,8 @@
     "minedAs": null,
     "extraction": null,
     "mines": [],
+    "machines": [],
+    "skills": [],
     "equations": [],
     "pageId": "ccf3f41c-fa3a-4dba-8c8b-46ab727cc5a0",
     "pageUrl": "https://app.notion.com/p/Actinium-ccf3f41cfa3a4dba8c8b46ab727cc5a0",
@@ -3049,6 +3451,8 @@
     "minedAs": null,
     "extraction": null,
     "mines": [],
+    "machines": [],
+    "skills": [],
     "equations": [
       "3bbe5275-7b5c-8157-a64b-eb73eeb53735"
     ],
@@ -3080,6 +3484,8 @@
     "minedAs": null,
     "extraction": null,
     "mines": [],
+    "machines": [],
+    "skills": [],
     "equations": [],
     "pageId": "7c07c65b-627c-467a-9ea6-5a2883f91276",
     "pageUrl": "https://app.notion.com/p/Protactinium-7c07c65b627c467a9ea65a2883f91276",
@@ -3117,6 +3523,11 @@
       "3bee5275-7b5c-817a-b74f-eeb982035fd8",
       "3bee5275-7b5c-81a7-b57d-eb04b5f0dc99"
     ],
+    "machines": [
+      "3bee5275-7b5c-81e0-8a21-e90e2ee777ef",
+      "3bee5275-7b5c-8173-8694-f25ee51fc058"
+    ],
+    "skills": [],
     "equations": [
       "3bbe5275-7b5c-8157-a64b-eb73eeb53735",
       "3bbe5275-7b5c-813e-a03e-dacece1e6c35",
@@ -3151,6 +3562,8 @@
     "minedAs": null,
     "extraction": null,
     "mines": [],
+    "machines": [],
+    "skills": [],
     "equations": [],
     "pageId": "5acb944a-c604-49a5-b743-a8e93a7d3554",
     "pageUrl": "https://app.notion.com/p/Neptunium-5acb944ac60449a5b743a8e93a7d3554",
@@ -3180,6 +3593,10 @@
     "minedAs": null,
     "extraction": null,
     "mines": [],
+    "machines": [
+      "3bee5275-7b5c-8164-8a66-c9e9f9cddc2f"
+    ],
+    "skills": [],
     "equations": [
       "3bbe5275-7b5c-813e-a03e-dacece1e6c35",
       "3bbe5275-7b5c-812d-b464-f7799b61cce9"
@@ -3212,6 +3629,8 @@
     "minedAs": null,
     "extraction": null,
     "mines": [],
+    "machines": [],
+    "skills": [],
     "equations": [],
     "pageId": "526c4fdc-e0ff-4eb9-ae91-9621aa26e198",
     "pageUrl": "https://app.notion.com/p/Americium-526c4fdce0ff4eb9ae919621aa26e198",
@@ -3241,6 +3660,8 @@
     "minedAs": null,
     "extraction": null,
     "mines": [],
+    "machines": [],
+    "skills": [],
     "equations": [],
     "pageId": "ef38fb54-6eec-4686-a53c-8e8613e981f9",
     "pageUrl": "https://app.notion.com/p/Curium-ef38fb546eec4686a53c8e8613e981f9",
@@ -3270,6 +3691,8 @@
     "minedAs": null,
     "extraction": null,
     "mines": [],
+    "machines": [],
+    "skills": [],
     "equations": [],
     "pageId": "263497a0-c44c-4fe8-805d-ae478dfd15a9",
     "pageUrl": "https://app.notion.com/p/Berkelium-263497a0c44c4fe8805dae478dfd15a9",
@@ -3299,6 +3722,8 @@
     "minedAs": null,
     "extraction": null,
     "mines": [],
+    "machines": [],
+    "skills": [],
     "equations": [],
     "pageId": "01abe943-8124-444f-b563-9904be6034e8",
     "pageUrl": "https://app.notion.com/p/Californium-01abe9438124444fb5639904be6034e8",
@@ -3328,6 +3753,8 @@
     "minedAs": null,
     "extraction": null,
     "mines": [],
+    "machines": [],
+    "skills": [],
     "equations": [],
     "pageId": "f34cc37d-12a1-4a5a-b9f9-663388207ca5",
     "pageUrl": "https://app.notion.com/p/Einsteinium-f34cc37d12a14a5ab9f9663388207ca5",
@@ -3357,6 +3784,8 @@
     "minedAs": null,
     "extraction": null,
     "mines": [],
+    "machines": [],
+    "skills": [],
     "equations": [],
     "pageId": "e184f122-23b5-48c3-96c7-ceebe0c880f0",
     "pageUrl": "https://app.notion.com/p/Fermium-e184f12223b548c396c7ceebe0c880f0",
@@ -3386,6 +3815,8 @@
     "minedAs": null,
     "extraction": null,
     "mines": [],
+    "machines": [],
+    "skills": [],
     "equations": [],
     "pageId": "2a3713fc-04e4-4f39-9f5a-a7fd7459b122",
     "pageUrl": "https://app.notion.com/p/Mendelevium-2a3713fc04e44f399f5aa7fd7459b122",
@@ -3415,6 +3846,8 @@
     "minedAs": null,
     "extraction": null,
     "mines": [],
+    "machines": [],
+    "skills": [],
     "equations": [],
     "pageId": "6aaad9db-b051-4580-a28e-a7845738317e",
     "pageUrl": "https://app.notion.com/p/Nobelium-6aaad9dbb0514580a28ea7845738317e",
@@ -3444,6 +3877,8 @@
     "minedAs": null,
     "extraction": null,
     "mines": [],
+    "machines": [],
+    "skills": [],
     "equations": [],
     "pageId": "976d09b0-c975-45d6-85b8-7008db9594b6",
     "pageUrl": "https://app.notion.com/p/Lawrencium-976d09b0c97545d685b87008db9594b6",
@@ -3473,6 +3908,8 @@
     "minedAs": null,
     "extraction": null,
     "mines": [],
+    "machines": [],
+    "skills": [],
     "equations": [],
     "pageId": "e37c33df-9ea7-414f-8450-e0fd062d96b1",
     "pageUrl": "https://app.notion.com/p/Rutherfordium-e37c33df9ea7414f8450e0fd062d96b1",
@@ -3502,6 +3939,8 @@
     "minedAs": null,
     "extraction": null,
     "mines": [],
+    "machines": [],
+    "skills": [],
     "equations": [],
     "pageId": "63da8ef3-cf72-4447-9f7b-dbce5aef55fd",
     "pageUrl": "https://app.notion.com/p/Dubnium-63da8ef3cf7244479f7bdbce5aef55fd",
@@ -3531,6 +3970,8 @@
     "minedAs": null,
     "extraction": null,
     "mines": [],
+    "machines": [],
+    "skills": [],
     "equations": [],
     "pageId": "b422ac7e-f089-4e79-ad59-188c62e49c6a",
     "pageUrl": "https://app.notion.com/p/Seaborgium-b422ac7ef0894e79ad59188c62e49c6a",
@@ -3560,6 +4001,8 @@
     "minedAs": null,
     "extraction": null,
     "mines": [],
+    "machines": [],
+    "skills": [],
     "equations": [],
     "pageId": "2a99e29d-c5c5-466d-b2dd-f04ca1339476",
     "pageUrl": "https://app.notion.com/p/Bohrium-2a99e29dc5c5466db2ddf04ca1339476",
@@ -3589,6 +4032,8 @@
     "minedAs": null,
     "extraction": null,
     "mines": [],
+    "machines": [],
+    "skills": [],
     "equations": [],
     "pageId": "0f6109a0-b359-44c0-9f06-9de8a1dc35a5",
     "pageUrl": "https://app.notion.com/p/Hassium-0f6109a0b35944c09f069de8a1dc35a5",
@@ -3617,6 +4062,8 @@
     "minedAs": null,
     "extraction": null,
     "mines": [],
+    "machines": [],
+    "skills": [],
     "equations": [],
     "pageId": "ae21b10f-46ee-452f-b5c4-e8296667f755",
     "pageUrl": "https://app.notion.com/p/Meitnerium-ae21b10f46ee452fb5c4e8296667f755",
@@ -3645,6 +4092,8 @@
     "minedAs": null,
     "extraction": null,
     "mines": [],
+    "machines": [],
+    "skills": [],
     "equations": [],
     "pageId": "83ac8257-43f7-427e-ad1e-31947531dd09",
     "pageUrl": "https://app.notion.com/p/Darmstadtium-83ac825743f7427ead1e31947531dd09",
@@ -3673,6 +4122,8 @@
     "minedAs": null,
     "extraction": null,
     "mines": [],
+    "machines": [],
+    "skills": [],
     "equations": [],
     "pageId": "33238488-78b2-41ea-b7d7-8c13fc7438b6",
     "pageUrl": "https://app.notion.com/p/Roentgenium-3323848878b241eab7d78c13fc7438b6",
@@ -3703,6 +4154,8 @@
     "minedAs": null,
     "extraction": null,
     "mines": [],
+    "machines": [],
+    "skills": [],
     "equations": [],
     "pageId": "a441aa30-a459-4fa0-8575-2b4a97d3a1bc",
     "pageUrl": "https://app.notion.com/p/Copernicium-a441aa30a4594fa085752b4a97d3a1bc",
@@ -3732,6 +4185,8 @@
     "minedAs": null,
     "extraction": null,
     "mines": [],
+    "machines": [],
+    "skills": [],
     "equations": [],
     "pageId": "3613b8c2-3029-4dae-b773-884f74300f3c",
     "pageUrl": "https://app.notion.com/p/Nihonium-3613b8c230294daeb773884f74300f3c",
@@ -3762,6 +4217,8 @@
     "minedAs": null,
     "extraction": null,
     "mines": [],
+    "machines": [],
+    "skills": [],
     "equations": [],
     "pageId": "1b2b6074-64e2-4dec-af00-9229385b61bf",
     "pageUrl": "https://app.notion.com/p/Flerovium-1b2b607464e24decaf009229385b61bf",
@@ -3791,6 +4248,8 @@
     "minedAs": null,
     "extraction": null,
     "mines": [],
+    "machines": [],
+    "skills": [],
     "equations": [],
     "pageId": "722a7ba0-666d-4036-a88e-db15b881bba9",
     "pageUrl": "https://app.notion.com/p/Moscovium-722a7ba0666d4036a88edb15b881bba9",
@@ -3820,6 +4279,8 @@
     "minedAs": null,
     "extraction": null,
     "mines": [],
+    "machines": [],
+    "skills": [],
     "equations": [],
     "pageId": "31f6a6a4-a2d6-48ac-b203-5603d0cf0f6e",
     "pageUrl": "https://app.notion.com/p/Livermorium-31f6a6a4a2d648acb2035603d0cf0f6e",
@@ -3848,6 +4309,8 @@
     "minedAs": null,
     "extraction": null,
     "mines": [],
+    "machines": [],
+    "skills": [],
     "equations": [],
     "pageId": "1e3acfc8-1c6a-4727-87ed-56fc692bd276",
     "pageUrl": "https://app.notion.com/p/Tennessine-1e3acfc81c6a472787ed56fc692bd276",
@@ -3876,6 +4339,8 @@
     "minedAs": null,
     "extraction": null,
     "mines": [],
+    "machines": [],
+    "skills": [],
     "equations": [],
     "pageId": "4bdf60d2-1ac7-4bf7-af67-2739d933864c",
     "pageUrl": "https://app.notion.com/p/Oganesson-4bdf60d21ac74bf7af672739d933864c",
