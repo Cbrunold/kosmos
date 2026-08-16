@@ -52,8 +52,7 @@ for a in "$@"; do
   case "$a" in
     --no-fetch) FETCH=0 ;;
     --*) echo "unknown flag: $a" >&2; exit 2 ;;
-    *)  [[ -f "scripts/$a.py" ]] || { echo "no such script: scripts/$a.py" >&2; exit 2; }
-        SEEDS+=("$a") ;;
+    *)  SEEDS+=("$a") ;;        # existence is checked after the pull — a new seed arrives with it
   esac
 done
 
@@ -89,8 +88,11 @@ if [[ "$before" != "$after" && -z "${DEPLOY_REEXEC:-}" ]]; then
   DEPLOY_REEXEC=1 exec bash "$0" "$@"
 fi
 
-# ---- 3. seeds
+# ---- 3. seeds (validated here, after the pull, so a script committed in the same push can be named)
 if ((${#SEEDS[@]})); then
+  for s in "${SEEDS[@]}"; do
+    [[ -f "scripts/$s.py" ]] || { echo "no such script after pull: scripts/$s.py" >&2; exit 2; }
+  done
   for s in "${SEEDS[@]}"; do
     step "seed: $s"
     python3 "scripts/$s.py"
