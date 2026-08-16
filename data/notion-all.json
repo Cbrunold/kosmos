@@ -2220,9 +2220,28 @@
   ],
   "researchers": [
     {
+      "id": "3bee5275-7b5c-8124-8a2f-cc505acb345b",
+      "url": "https://app.notion.com/p/Julien-Lesgourgues-3bee52757b5c81248a2fcc505acb345b",
+      "lastEdited": "2026-08-16T02:38:00.000Z",
+      "Timeline": [
+        "3bde5275-7b5c-8178-aa21-c31f41f3cecd",
+        "3bde5275-7b5c-813c-b30b-e1bcbd63c5cf",
+        "3bde5275-7b5c-816a-8519-ca7fd6cd0f4c",
+        "3bde5275-7b5c-8130-966f-ff0ab7d23a91"
+      ],
+      "Lifespan": null,
+      "Theories [DB]": [],
+      "Discoveries [DB]": [],
+      "Field": "Cosmology",
+      "Known For": "Co-author of CLASS, the Boltzmann code that turns a set of cosmological parameters into a predicted microwave background and matter power spectrum, and of MontePython for fitting them to data. A Planck collaboration member, and — with Sergio Pastor — the neutrino-cosmology bounds that make the CMB the tightest constraint on the sum of the neutrino masses.",
+      "Nationality": "French",
+      "Name": "Julien Lesgourgues"
+    },
+    {
       "id": "3bde5275-7b5c-81dd-b8e7-d8e72c85db57",
       "url": "https://app.notion.com/p/Jane-Luu-3bde52757b5c81ddb8e7d8e72c85db57",
       "lastEdited": "2026-08-15T19:17:00.000Z",
+      "Timeline": [],
       "Lifespan": "1963–",
       "Theories [DB]": [],
       "Discoveries [DB]": [
@@ -2237,6 +2256,7 @@
       "id": "3bde5275-7b5c-81da-b7e4-f723a93f2b67",
       "url": "https://app.notion.com/p/David-Jewitt-3bde52757b5c81dab7e4f723a93f2b67",
       "lastEdited": "2026-08-15T19:17:00.000Z",
+      "Timeline": [],
       "Lifespan": "1958–",
       "Theories [DB]": [],
       "Discoveries [DB]": [
@@ -2251,6 +2271,7 @@
       "id": "3bde5275-7b5c-8195-98e9-e11878a63087",
       "url": "https://app.notion.com/p/Joseph-Taylor-3bde52757b5c819598e9e11878a63087",
       "lastEdited": "2026-08-15T19:17:00.000Z",
+      "Timeline": [],
       "Lifespan": "1941–",
       "Theories [DB]": [],
       "Discoveries [DB]": [
@@ -2265,6 +2286,7 @@
       "id": "3bde5275-7b5c-8104-ac2a-ea36282f6e49",
       "url": "https://app.notion.com/p/Russell-Hulse-3bde52757b5c8104ac2aea36282f6e49",
       "lastEdited": "2026-08-15T19:17:00.000Z",
+      "Timeline": [],
       "Lifespan": "1950–",
       "Theories [DB]": [],
       "Discoveries [DB]": [
@@ -2279,6 +2301,7 @@
       "id": "3bde5275-7b5c-8150-a808-e5345dda71e6",
       "url": "https://app.notion.com/p/Barry-Barish-3bde52757b5c8150a808e5345dda71e6",
       "lastEdited": "2026-08-15T19:17:00.000Z",
+      "Timeline": [],
       "Lifespan": "1936–",
       "Theories [DB]": [],
       "Discoveries [DB]": [
@@ -2293,6 +2316,7 @@
       "id": "3bde5275-7b5c-810f-abe4-f0b088360d26",
       "url": "https://app.notion.com/p/Kip-Thorne-3bde52757b5c810fabe4f0b088360d26",
       "lastEdited": "2026-08-15T19:17:00.000Z",
+      "Timeline": [],
       "Lifespan": "1940–",
       "Theories [DB]": [],
       "Discoveries [DB]": [
@@ -2308,6 +2332,7 @@
       "id": "3bde5275-7b5c-8170-90fb-f9702a56f66c",
       "url": "https://app.notion.com/p/Rainer-Weiss-3bde52757b5c817090fbf9702a56f66c",
       "lastEdited": "2026-08-15T19:17:00.000Z",
+      "Timeline": [],
       "Lifespan": "1932–",
       "Theories [DB]": [],
       "Discoveries [DB]": [
@@ -2323,6 +2348,7 @@
       "id": "3bde5275-7b5c-8120-83f9-f796aeb32d6d",
       "url": "https://app.notion.com/p/Jocelyn-Bell-Burnell-3bde52757b5c812083f9f796aeb32d6d",
       "lastEdited": "2026-08-15T19:17:00.000Z",
+      "Timeline": [],
       "Lifespan": "1943–",
       "Theories [DB]": [],
       "Discoveries [DB]": [
@@ -2337,6 +2363,7 @@
       "id": "3bde5275-7b5c-817a-b64b-cbf396d77923",
       "url": "https://app.notion.com/p/Robert-Wilson-3bde52757b5c817ab64bcbf396d77923",
       "lastEdited": "2026-08-15T19:17:00.000Z",
+      "Timeline": [],
       "Lifespan": "1936–",
       "Theories [DB]": [],
       "Discoveries [DB]": [
@@ -2351,6 +2378,7 @@
       "id": "3bde5275-7b5c-81a9-9233-f6a9f838dd78",
       "url": "https://app.notion.com/p/Arno-Penzias-3bde52757b5c81a99233f6a9f838dd78",
       "lastEdited": "2026-08-15T19:17:00.000Z",
+      "Timeline": [],
       "Lifespan": "1933–2024",
       "Theories [DB]": [],
       "Discoveries [DB]": [
@@ -2365,6 +2393,7 @@
       "id": "3bde5275-7b5c-81f9-a9e9-c8ebf287bf3f",
       "url": "https://app.notion.com/p/Maarten-Schmidt-3bde52757b5c81f9a9e9c8ebf287bf3f",
       "lastEdited": "2026-08-15T19:17:00.000Z",
+      "Timeline": [],
       "Lifespan": "1929–2022",
       "Theories [DB]": [],
       "Discoveries [DB]": [
@@ -2379,6 +2408,7 @@
       "id": "3bde5275-7b5c-8167-a64c-c53c47d57340",
       "url": "https://app.notion.com/p/Clyde-Tombaugh-3bde52757b5c8167a64cc53c47d57340",
       "lastEdited": "2026-08-15T19:17:00.000Z",
+      "Timeline": [],
       "Lifespan": "1906–1997",
       "Theories [DB]": [],
       "Discoveries [DB]": [
@@ -2393,6 +2423,7 @@
       "id": "3bde5275-7b5c-8164-b6af-ef98e481d7f7",
       "url": "https://app.notion.com/p/Cecilia-Payne-Gaposchkin-3bde52757b5c8164b6afef98e481d7f7",
       "lastEdited": "2026-08-15T19:17:00.000Z",
+      "Timeline": [],
       "Lifespan": "1900–1979",
       "Theories [DB]": [],
       "Discoveries [DB]": [
@@ -2407,6 +2438,7 @@
       "id": "3bde5275-7b5c-819e-a3bd-e86eb6b29070",
       "url": "https://app.notion.com/p/James-Chadwick-3bde52757b5c819ea3bde86eb6b29070",
       "lastEdited": "2026-08-15T19:17:00.000Z",
+      "Timeline": [],
       "Lifespan": "1891–1974",
       "Theories [DB]": [],
       "Discoveries [DB]": [
@@ -2421,6 +2453,7 @@
       "id": "3bde5275-7b5c-8187-bf62-efd78b594816",
       "url": "https://app.notion.com/p/Edwin-Hubble-3bde52757b5c8187bf62efd78b594816",
       "lastEdited": "2026-08-15T19:17:00.000Z",
+      "Timeline": [],
       "Lifespan": "1889–1953",
       "Theories [DB]": [],
       "Discoveries [DB]": [
@@ -2436,6 +2469,7 @@
       "id": "3bde5275-7b5c-81b5-8693-d0a5e633e6bc",
       "url": "https://app.notion.com/p/Victor-Hess-3bde52757b5c81b58693d0a5e633e6bc",
       "lastEdited": "2026-08-15T19:17:00.000Z",
+      "Timeline": [],
       "Lifespan": "1883–1964",
       "Theories [DB]": [],
       "Discoveries [DB]": [
@@ -2450,6 +2484,7 @@
       "id": "3bde5275-7b5c-8111-8852-cedf3df78851",
       "url": "https://app.notion.com/p/Arthur-Eddington-3bde52757b5c81118852cedf3df78851",
       "lastEdited": "2026-08-15T19:17:00.000Z",
+      "Timeline": [],
       "Lifespan": "1882–1944",
       "Theories [DB]": [],
       "Discoveries [DB]": [
@@ -2464,6 +2499,7 @@
       "id": "3bde5275-7b5c-813c-9bb7-d795a4385ac5",
       "url": "https://app.notion.com/p/Vesto-Slipher-3bde52757b5c813c9bb7d795a4385ac5",
       "lastEdited": "2026-08-15T19:17:00.000Z",
+      "Timeline": [],
       "Lifespan": "1875–1969",
       "Theories [DB]": [],
       "Discoveries [DB]": [
@@ -2478,6 +2514,7 @@
       "id": "3bde5275-7b5c-81cc-b3d8-d127914014c0",
       "url": "https://app.notion.com/p/Henrietta-Swan-Leavitt-3bde52757b5c81ccb3d8d127914014c0",
       "lastEdited": "2026-08-15T19:17:00.000Z",
+      "Timeline": [],
       "Lifespan": "1868–1921",
       "Theories [DB]": [],
       "Discoveries [DB]": [
@@ -2492,6 +2529,7 @@
       "id": "3bde5275-7b5c-81f1-bc90-e4054753293d",
       "url": "https://app.notion.com/p/Annie-Jump-Cannon-3bde52757b5c81f1bc90e4054753293d",
       "lastEdited": "2026-08-15T19:17:00.000Z",
+      "Timeline": [],
       "Lifespan": "1863–1941",
       "Theories [DB]": [],
       "Discoveries [DB]": [],
@@ -2504,6 +2542,7 @@
       "id": "3bde5275-7b5c-81df-a9d7-ee11a00ab0b5",
       "url": "https://app.notion.com/p/Grote-Reber-3bde52757b5c81dfa9d7ee11a00ab0b5",
       "lastEdited": "2026-08-15T19:17:00.000Z",
+      "Timeline": [],
       "Lifespan": "1911–2002",
       "Theories [DB]": [],
       "Discoveries [DB]": [
@@ -2518,6 +2557,7 @@
       "id": "3bde5275-7b5c-81e3-9f5f-f0ed596519d0",
       "url": "https://app.notion.com/p/Karl-Jansky-3bde52757b5c81e39f5ff0ed596519d0",
       "lastEdited": "2026-08-15T19:17:00.000Z",
+      "Timeline": [],
       "Lifespan": "1905–1950",
       "Theories [DB]": [],
       "Discoveries [DB]": [
@@ -2532,6 +2572,7 @@
       "id": "3bde5275-7b5c-8130-af91-c27293c151cc",
       "url": "https://app.notion.com/p/Henri-Becquerel-3bde52757b5c8130af91c27293c151cc",
       "lastEdited": "2026-08-15T19:17:00.000Z",
+      "Timeline": [],
       "Lifespan": "1852–1908",
       "Theories [DB]": [],
       "Discoveries [DB]": [
@@ -2546,6 +2587,7 @@
       "id": "3bde5275-7b5c-813b-86df-f34da3ade7cc",
       "url": "https://app.notion.com/p/Wilhelm-R-ntgen-3bde52757b5c813b86dff34da3ade7cc",
       "lastEdited": "2026-08-15T19:17:00.000Z",
+      "Timeline": [],
       "Lifespan": "1845–1923",
       "Theories [DB]": [],
       "Discoveries [DB]": [
@@ -2560,6 +2602,7 @@
       "id": "3bde5275-7b5c-813f-b9cf-ede5e9201d46",
       "url": "https://app.notion.com/p/Norman-Lockyer-3bde52757b5c813fb9cfede5e9201d46",
       "lastEdited": "2026-08-15T19:17:00.000Z",
+      "Timeline": [],
       "Lifespan": "1836–1920",
       "Theories [DB]": [],
       "Discoveries [DB]": [
@@ -2574,6 +2617,7 @@
       "id": "3bde5275-7b5c-81dd-a3ac-e6f110d20ae8",
       "url": "https://app.notion.com/p/Jules-Janssen-3bde52757b5c81dda3ace6f110d20ae8",
       "lastEdited": "2026-08-15T19:17:00.000Z",
+      "Timeline": [],
       "Lifespan": "1824–1907",
       "Theories [DB]": [],
       "Discoveries [DB]": [
@@ -2588,6 +2632,7 @@
       "id": "3bde5275-7b5c-8193-84d1-e4f104d041ce",
       "url": "https://app.notion.com/p/Johann-Galle-3bde52757b5c819384d1e4f104d041ce",
       "lastEdited": "2026-08-15T19:17:00.000Z",
+      "Timeline": [],
       "Lifespan": "1812–1910",
       "Theories [DB]": [],
       "Discoveries [DB]": [
@@ -2602,6 +2647,7 @@
       "id": "3bde5275-7b5c-8117-8b3a-f5a0ae7cd8fe",
       "url": "https://app.notion.com/p/Urbain-Le-Verrier-3bde52757b5c81178b3af5a0ae7cd8fe",
       "lastEdited": "2026-08-15T19:17:00.000Z",
+      "Timeline": [],
       "Lifespan": "1811–1877",
       "Theories [DB]": [],
       "Discoveries [DB]": [
@@ -2616,6 +2662,7 @@
       "id": "3bde5275-7b5c-81b3-ace2-edfde44f2287",
       "url": "https://app.notion.com/p/William-Herschel-3bde52757b5c81b3ace2edfde44f2287",
       "lastEdited": "2026-08-15T19:17:00.000Z",
+      "Timeline": [],
       "Lifespan": "1738–1822",
       "Theories [DB]": [],
       "Discoveries [DB]": [
@@ -2630,6 +2677,7 @@
       "id": "3bde5275-7b5c-816c-a23f-d6328230b67b",
       "url": "https://app.notion.com/p/Charles-Messier-3bde52757b5c816ca23fd6328230b67b",
       "lastEdited": "2026-08-15T19:17:00.000Z",
+      "Timeline": [],
       "Lifespan": "1730–1817",
       "Theories [DB]": [],
       "Discoveries [DB]": [],
@@ -2642,6 +2690,7 @@
       "id": "3bde5275-7b5c-8106-a9e4-c763a2236b15",
       "url": "https://app.notion.com/p/Giovanni-Cassini-3bde52757b5c8106a9e4c763a2236b15",
       "lastEdited": "2026-08-15T19:17:00.000Z",
+      "Timeline": [],
       "Lifespan": "1625–1712",
       "Theories [DB]": [],
       "Discoveries [DB]": [
@@ -2656,6 +2705,7 @@
       "id": "3bde5275-7b5c-8108-b1a7-d158a426d5b8",
       "url": "https://app.notion.com/p/Tycho-Brahe-3bde52757b5c8108b1a7d158a426d5b8",
       "lastEdited": "2026-08-15T19:17:00.000Z",
+      "Timeline": [],
       "Lifespan": "1546–1601",
       "Theories [DB]": [],
       "Discoveries [DB]": [],
@@ -2668,6 +2718,7 @@
       "id": "3bde5275-7b5c-8168-88af-c066eda15c16",
       "url": "https://app.notion.com/p/Peter-Shor-3bde52757b5c816888afc066eda15c16",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1959–",
       "Theories [DB]": [
         "3bde5275-7b5c-8140-928d-c0aa2466b01f"
@@ -2682,6 +2733,7 @@
       "id": "3bde5275-7b5c-8138-a1cd-db105d8facb9",
       "url": "https://app.notion.com/p/David-Deutsch-3bde52757b5c8138a1cddb105d8facb9",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1953–",
       "Theories [DB]": [
         "3bde5275-7b5c-8140-928d-c0aa2466b01f"
@@ -2696,6 +2748,7 @@
       "id": "3bde5275-7b5c-8177-aada-daff0c20dfde",
       "url": "https://app.notion.com/p/John-Stewart-Bell-3bde52757b5c8177aadadaff0c20dfde",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1928–1990",
       "Theories [DB]": [
         "3bde5275-7b5c-8113-aa1c-f0b45b84363d"
@@ -2710,6 +2763,7 @@
       "id": "3bde5275-7b5c-819e-a4d4-f35dbe9b17b9",
       "url": "https://app.notion.com/p/Hugh-Everett-III-3bde52757b5c819ea4d4f35dbe9b17b9",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1930–1982",
       "Theories [DB]": [
         "3bde5275-7b5c-810d-ab95-db5786e7b9e2"
@@ -2724,6 +2778,7 @@
       "id": "3bde5275-7b5c-8122-a96d-cea083c4e011",
       "url": "https://app.notion.com/p/Mitchell-Feigenbaum-3bde52757b5c8122a96dcea083c4e011",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1944–2019",
       "Theories [DB]": [
         "3bde5275-7b5c-8151-afe6-e471f9d33f09"
@@ -2738,6 +2793,7 @@
       "id": "3bde5275-7b5c-812a-8bc0-e6e5d15b6642",
       "url": "https://app.notion.com/p/Edward-Lorenz-3bde52757b5c812a8bc0e6e5d15b6642",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1917–2008",
       "Theories [DB]": [
         "3bde5275-7b5c-8151-afe6-e471f9d33f09"
@@ -2752,6 +2808,7 @@
       "id": "3bde5275-7b5c-81f6-b2f7-c165b4ffef6a",
       "url": "https://app.notion.com/p/J-Tuzo-Wilson-3bde52757b5c81f6b2f7c165b4ffef6a",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1908–1993",
       "Theories [DB]": [
         "3bde5275-7b5c-813a-b77a-c766d8a0e418"
@@ -2766,6 +2823,7 @@
       "id": "3bde5275-7b5c-8165-aa32-c11f749ad113",
       "url": "https://app.notion.com/p/Harry-Hess-3bde52757b5c8165aa32c11f749ad113",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1906–1969",
       "Theories [DB]": [
         "3bde5275-7b5c-813a-b77a-c766d8a0e418"
@@ -2780,6 +2838,7 @@
       "id": "3bde5275-7b5c-815a-a104-e3f2cdc21557",
       "url": "https://app.notion.com/p/Mordehai-Milgrom-3bde52757b5c815aa104e3f2cdc21557",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1946–",
       "Theories [DB]": [
         "3bde5275-7b5c-81b8-9c3e-f0c39aa27da9"
@@ -2794,6 +2853,7 @@
       "id": "3bde5275-7b5c-81f7-9127-eed4aada4070",
       "url": "https://app.notion.com/p/Adam-Riess-3bde52757b5c81f79127eed4aada4070",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1969–",
       "Theories [DB]": [
         "3bde5275-7b5c-8119-b400-f4b64f9b76f4"
@@ -2810,6 +2870,7 @@
       "id": "3bde5275-7b5c-810f-815d-feab1486c2c3",
       "url": "https://app.notion.com/p/Brian-Schmidt-3bde52757b5c810f815dfeab1486c2c3",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1967–",
       "Theories [DB]": [
         "3bde5275-7b5c-8119-b400-f4b64f9b76f4"
@@ -2826,6 +2887,7 @@
       "id": "3bde5275-7b5c-81e7-9fdd-fc601314ede3",
       "url": "https://app.notion.com/p/Saul-Perlmutter-3bde52757b5c81e79fddfc601314ede3",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1959–",
       "Theories [DB]": [
         "3bde5275-7b5c-8119-b400-f4b64f9b76f4"
@@ -2842,6 +2904,7 @@
       "id": "3bde5275-7b5c-815a-b9ba-f5e3b84368f6",
       "url": "https://app.notion.com/p/Vera-Rubin-3bde52757b5c815ab9baf5e3b84368f6",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1928–2016",
       "Theories [DB]": [
         "3bde5275-7b5c-8155-8abe-e1d83b51ecb9"
@@ -2858,6 +2921,7 @@
       "id": "3bde5275-7b5c-818e-a2c6-d4102e048893",
       "url": "https://app.notion.com/p/Alexei-Starobinsky-3bde52757b5c818ea2c6d4102e048893",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1948–2023",
       "Theories [DB]": [
         "3bde5275-7b5c-8194-92cc-da98c37e359e"
@@ -2872,6 +2936,7 @@
       "id": "3bde5275-7b5c-8174-8b56-d90ca02f80d8",
       "url": "https://app.notion.com/p/Andrei-Linde-3bde52757b5c81748b56d90ca02f80d8",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1948–",
       "Theories [DB]": [
         "3bde5275-7b5c-8194-92cc-da98c37e359e"
@@ -2886,6 +2951,7 @@
       "id": "3bde5275-7b5c-81a4-b503-cfd2bf7d3305",
       "url": "https://app.notion.com/p/Alan-Guth-3bde52757b5c81a4b503cfd2bf7d3305",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1947–",
       "Theories [DB]": [
         "3bde5275-7b5c-8194-92cc-da98c37e359e"
@@ -2900,6 +2966,7 @@
       "id": "3bde5275-7b5c-8101-bf51-eb1b21e06ba0",
       "url": "https://app.notion.com/p/Abhay-Ashtekar-3bde52757b5c8101bf51eb1b21e06ba0",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1949–",
       "Theories [DB]": [
         "3bde5275-7b5c-81b3-a747-d2e0a75cf5aa"
@@ -2914,6 +2981,7 @@
       "id": "3bde5275-7b5c-81c0-8a92-e9152ccde825",
       "url": "https://app.notion.com/p/Lee-Smolin-3bde52757b5c81c08a92e9152ccde825",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1955–",
       "Theories [DB]": [
         "3bde5275-7b5c-81b3-a747-d2e0a75cf5aa",
@@ -2929,6 +2997,7 @@
       "id": "3bde5275-7b5c-816b-bb69-dbce98c3060c",
       "url": "https://app.notion.com/p/Carlo-Rovelli-3bde52757b5c816bbb69dbce98c3060c",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1956–",
       "Theories [DB]": [
         "3bde5275-7b5c-81b3-a747-d2e0a75cf5aa",
@@ -2944,6 +3013,7 @@
       "id": "3bde5275-7b5c-8149-ab91-cb6c656f25f5",
       "url": "https://app.notion.com/p/Juan-Maldacena-3bde52757b5c8149ab91cb6c656f25f5",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1968–",
       "Theories [DB]": [
         "3bde5275-7b5c-81b1-8212-c31d06505cbc"
@@ -2958,6 +3028,7 @@
       "id": "3bde5275-7b5c-810e-aff6-c621f0f92a4d",
       "url": "https://app.notion.com/p/Edward-Witten-3bde52757b5c810eaff6c621f0f92a4d",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1951–",
       "Theories [DB]": [
         "3bde5275-7b5c-81c8-92c2-e7f2313ec35d"
@@ -2972,6 +3043,7 @@
       "id": "3bde5275-7b5c-81a3-b7cb-c7249ae9e8ae",
       "url": "https://app.notion.com/p/John-Schwarz-3bde52757b5c81a3b7cbc7249ae9e8ae",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1941–",
       "Theories [DB]": [
         "3bde5275-7b5c-81c8-92c2-e7f2313ec35d"
@@ -2986,6 +3058,7 @@
       "id": "3bde5275-7b5c-81c6-a7aa-c14745903c8d",
       "url": "https://app.notion.com/p/Michael-Green-3bde52757b5c81c6a7aac14745903c8d",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1946–",
       "Theories [DB]": [
         "3bde5275-7b5c-81c8-92c2-e7f2313ec35d"
@@ -3000,6 +3073,7 @@
       "id": "3bde5275-7b5c-81ae-96eb-e3dbd02ea9f6",
       "url": "https://app.notion.com/p/Leonard-Susskind-3bde52757b5c81ae96ebe3dbd02ea9f6",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1940–",
       "Theories [DB]": [
         "3bde5275-7b5c-81b1-8212-c31d06505cbc",
@@ -3015,6 +3089,7 @@
       "id": "3bde5275-7b5c-81fc-9aa8-c89cd17f8f71",
       "url": "https://app.notion.com/p/Jacob-Bekenstein-3bde52757b5c81fc9aa8c89cd17f8f71",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1947–2015",
       "Theories [DB]": [
         "3bde5275-7b5c-8183-a9cc-d3532bc342bf"
@@ -3029,6 +3104,7 @@
       "id": "3bde5275-7b5c-8148-b3a9-cd497f7b5af5",
       "url": "https://app.notion.com/p/Stephen-Hawking-3bde52757b5c8148b3a9cd497f7b5af5",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1942–2018",
       "Theories [DB]": [
         "3bde5275-7b5c-8183-a9cc-d3532bc342bf",
@@ -3044,6 +3120,7 @@
       "id": "3bde5275-7b5c-8159-ada5-e0ada4600c48",
       "url": "https://app.notion.com/p/Bruno-Zumino-3bde52757b5c8159ada5e0ada4600c48",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1923–2014",
       "Theories [DB]": [
         "3bde5275-7b5c-81b8-af02-f546654f2aec"
@@ -3058,6 +3135,7 @@
       "id": "3bde5275-7b5c-81cb-a404-c3d526dfaa36",
       "url": "https://app.notion.com/p/Julius-Wess-3bde52757b5c81cba404c3d526dfaa36",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1934–2007",
       "Theories [DB]": [
         "3bde5275-7b5c-81b8-af02-f546654f2aec"
@@ -3072,6 +3150,7 @@
       "id": "3bde5275-7b5c-81c2-a5eb-d42bcf472d03",
       "url": "https://app.notion.com/p/Howard-Georgi-3bde52757b5c81c2a5ebd42bcf472d03",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1947–",
       "Theories [DB]": [
         "3bde5275-7b5c-81c2-a04e-d20bae468120",
@@ -3087,6 +3166,7 @@
       "id": "3bde5275-7b5c-81eb-b1e7-dafaa0eef10e",
       "url": "https://app.notion.com/p/Frank-Wilczek-3bde52757b5c81ebb1e7dafaa0eef10e",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1951–",
       "Theories [DB]": [
         "3bde5275-7b5c-8170-8bb5-f403b35dcc5e"
@@ -3101,6 +3181,7 @@
       "id": "3bde5275-7b5c-8181-b6fd-fd535dca5e44",
       "url": "https://app.notion.com/p/David-Gross-3bde52757b5c8181b6fdfd535dca5e44",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1941–",
       "Theories [DB]": [
         "3bde5275-7b5c-8170-8bb5-f403b35dcc5e"
@@ -3115,6 +3196,7 @@
       "id": "3bde5275-7b5c-815e-ad97-f920948728b3",
       "url": "https://app.notion.com/p/Gerard-t-Hooft-3bde52757b5c815ead97f920948728b3",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1946–",
       "Theories [DB]": [
         "3bde5275-7b5c-81b1-8212-c31d06505cbc",
@@ -3130,6 +3212,7 @@
       "id": "3bde5275-7b5c-81cf-b8f5-c9b849eacbb6",
       "url": "https://app.notion.com/p/Fran-ois-Englert-3bde52757b5c81cfb8f5c9b849eacbb6",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1932–",
       "Theories [DB]": [
         "3bde5275-7b5c-813f-9e30-c040189eb298"
@@ -3146,6 +3229,7 @@
       "id": "3bde5275-7b5c-81d1-b165-fdd3ef972296",
       "url": "https://app.notion.com/p/Peter-Higgs-3bde52757b5c81d1b165fdd3ef972296",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1929–2024",
       "Theories [DB]": [
         "3bde5275-7b5c-813f-9e30-c040189eb298"
@@ -3162,6 +3246,7 @@
       "id": "3bde5275-7b5c-81a8-b6d8-f8e627e862cf",
       "url": "https://app.notion.com/p/Steven-Weinberg-3bde52757b5c81a8b6d8f8e627e862cf",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1933–2021",
       "Theories [DB]": [
         "3bde5275-7b5c-8109-a8c3-f9b6d98cca04",
@@ -3178,6 +3263,7 @@
       "id": "3bde5275-7b5c-81c1-b1c5-c6ee1e1a800e",
       "url": "https://app.notion.com/p/Abdus-Salam-3bde52757b5c81c1b1c5c6ee1e1a800e",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1926–1996",
       "Theories [DB]": [
         "3bde5275-7b5c-812f-987b-d90fa3fe1038",
@@ -3193,6 +3279,7 @@
       "id": "3bde5275-7b5c-81aa-9f3f-f0d27ac09ed7",
       "url": "https://app.notion.com/p/Sheldon-Glashow-3bde52757b5c81aa9f3ff0d27ac09ed7",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1932–",
       "Theories [DB]": [
         "3bde5275-7b5c-8109-a8c3-f9b6d98cca04",
@@ -3210,6 +3297,7 @@
       "id": "3bde5275-7b5c-81e0-aa03-dd0566b7c71d",
       "url": "https://app.notion.com/p/Murray-Gell-Mann-3bde52757b5c81e0aa03dd0566b7c71d",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1929–2019",
       "Theories [DB]": [
         "3bde5275-7b5c-8109-a8c3-f9b6d98cca04",
@@ -3225,6 +3313,7 @@
       "id": "3bde5275-7b5c-81b3-ad0f-f06d4fac0585",
       "url": "https://app.notion.com/p/Geoffrey-Burbidge-3bde52757b5c81b3ad0ff06d4fac0585",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1925–2010",
       "Theories [DB]": [
         "3bde5275-7b5c-8197-a615-cfd4ff53095e"
@@ -3239,6 +3328,7 @@
       "id": "3bde5275-7b5c-8160-808f-fd0c75e2d0fc",
       "url": "https://app.notion.com/p/Margaret-Burbidge-3bde52757b5c8160808ffd0c75e2d0fc",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1919–2020",
       "Theories [DB]": [
         "3bde5275-7b5c-8197-a615-cfd4ff53095e"
@@ -3253,6 +3343,7 @@
       "id": "3bde5275-7b5c-814d-be6c-f3596e4eb04e",
       "url": "https://app.notion.com/p/William-Fowler-3bde52757b5c814dbe6cf3596e4eb04e",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1911–1995",
       "Theories [DB]": [
         "3bde5275-7b5c-8197-a615-cfd4ff53095e"
@@ -3267,6 +3358,7 @@
       "id": "3bde5275-7b5c-814a-a143-cc06316872a2",
       "url": "https://app.notion.com/p/Freeman-Dyson-3bde52757b5c814aa143cc06316872a2",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1923–2020",
       "Theories [DB]": [
         "3bde5275-7b5c-812d-9b11-ec91e612af1b"
@@ -3281,6 +3373,7 @@
       "id": "3bde5275-7b5c-81df-a88f-e0311c90f9df",
       "url": "https://app.notion.com/p/Sin-Itiro-Tomonaga-3bde52757b5c81dfa88fe0311c90f9df",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1906–1979",
       "Theories [DB]": [
         "3bde5275-7b5c-812d-9b11-ec91e612af1b"
@@ -3295,6 +3388,7 @@
       "id": "3bde5275-7b5c-8153-8856-cc1587748647",
       "url": "https://app.notion.com/p/Julian-Schwinger-3bde52757b5c81538856cc1587748647",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1918–1994",
       "Theories [DB]": [
         "3bde5275-7b5c-812d-9b11-ec91e612af1b"
@@ -3309,6 +3403,7 @@
       "id": "3bde5275-7b5c-815f-9a2b-c0fb364ad894",
       "url": "https://app.notion.com/p/Richard-Feynman-3bde52757b5c815f9a2bc0fb364ad894",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1918–1988",
       "Theories [DB]": [
         "3bde5275-7b5c-8140-928d-c0aa2466b01f",
@@ -3324,6 +3419,7 @@
       "id": "3bde5275-7b5c-81f3-9b38-c50e8ee92c0f",
       "url": "https://app.notion.com/p/Claude-Shannon-3bde52757b5c81f39b38c50e8ee92c0f",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1916–2001",
       "Theories [DB]": [
         "3bde5275-7b5c-81e2-845e-f668253c9a4c"
@@ -3338,6 +3434,7 @@
       "id": "3bde5275-7b5c-81fd-968a-c818c62e9897",
       "url": "https://app.notion.com/p/Robert-Schrieffer-3bde52757b5c81fd968ac818c62e9897",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1931–2019",
       "Theories [DB]": [
         "3bde5275-7b5c-8173-b1a7-eaec1d496663"
@@ -3352,6 +3449,7 @@
       "id": "3bde5275-7b5c-815c-b263-d6eebe138be2",
       "url": "https://app.notion.com/p/Leon-Cooper-3bde52757b5c815cb263d6eebe138be2",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1930–2024",
       "Theories [DB]": [
         "3bde5275-7b5c-8173-b1a7-eaec1d496663"
@@ -3366,6 +3464,7 @@
       "id": "3bde5275-7b5c-81c4-9ab9-c19b6570b3eb",
       "url": "https://app.notion.com/p/John-Bardeen-3bde52757b5c81c49ab9c19b6570b3eb",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1908–1991",
       "Theories [DB]": [
         "3bde5275-7b5c-8173-b1a7-eaec1d496663"
@@ -3380,6 +3479,7 @@
       "id": "3bde5275-7b5c-814f-9122-feb2331ef7f9",
       "url": "https://app.notion.com/p/Felix-Bloch-3bde52757b5c814f9122feb2331ef7f9",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1905–1983",
       "Theories [DB]": [
         "3bde5275-7b5c-81bb-96ea-f380ca92d0a8"
@@ -3394,6 +3494,7 @@
       "id": "3bde5275-7b5c-818e-b9b5-f33f8961f523",
       "url": "https://app.notion.com/p/Maria-Goeppert-Mayer-3bde52757b5c818eb9b5f33f8961f523",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1906–1972",
       "Theories [DB]": [
         "3bde5275-7b5c-81cc-8ba3-e8a006fbdce7"
@@ -3408,6 +3509,7 @@
       "id": "3bde5275-7b5c-8193-a0f0-ebd0cbdd775f",
       "url": "https://app.notion.com/p/Ralph-Alpher-3bde52757b5c8193a0f0ebd0cbdd775f",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1921–2007",
       "Theories [DB]": [
         "3bde5275-7b5c-8112-9df5-f96e892e1f88"
@@ -3422,6 +3524,7 @@
       "id": "3bde5275-7b5c-8137-9034-e8704a8769d7",
       "url": "https://app.notion.com/p/George-Gamow-3bde52757b5c81379034e8704a8769d7",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1904–1968",
       "Theories [DB]": [
         "3bde5275-7b5c-8112-9df5-f96e892e1f88",
@@ -3437,6 +3540,7 @@
       "id": "3bde5275-7b5c-8166-a56a-da669ac42a7e",
       "url": "https://app.notion.com/p/Fred-Hoyle-3bde52757b5c8166a56ada669ac42a7e",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1915–2001",
       "Theories [DB]": [
         "3bde5275-7b5c-8197-a615-cfd4ff53095e",
@@ -3452,6 +3556,7 @@
       "id": "3bde5275-7b5c-8108-923b-fc08fe4d5271",
       "url": "https://app.notion.com/p/Thomas-Gold-3bde52757b5c8108923bfc08fe4d5271",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1920–2004",
       "Theories [DB]": [
         "3bde5275-7b5c-811b-ac85-fe83a7a852a4"
@@ -3466,6 +3571,7 @@
       "id": "3bde5275-7b5c-8104-b3cf-ec0824cc5fe7",
       "url": "https://app.notion.com/p/Hermann-Bondi-3bde52757b5c8104b3cfec0824cc5fe7",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1919–2005",
       "Theories [DB]": [
         "3bde5275-7b5c-811b-ac85-fe83a7a852a4"
@@ -3480,6 +3586,7 @@
       "id": "3bde5275-7b5c-819a-8ba9-c39d54846d6c",
       "url": "https://app.notion.com/p/Werner-Heisenberg-3bde52757b5c819a8ba9c39d54846d6c",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1901–1976",
       "Theories [DB]": [
         "3bde5275-7b5c-811e-a927-c8b3e1fee423",
@@ -3495,6 +3602,7 @@
       "id": "3bde5275-7b5c-81e1-b5f4-f96fc2650a52",
       "url": "https://app.notion.com/p/Paul-Dirac-3bde52757b5c81e1b5f4f96fc2650a52",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1902–1984",
       "Theories [DB]": [
         "3bde5275-7b5c-8193-ae2a-f3d957e88a73"
@@ -3509,6 +3617,7 @@
       "id": "3bde5275-7b5c-815d-a4d0-cece91e123b4",
       "url": "https://app.notion.com/p/Georges-Lema-tre-3bde52757b5c815da4d0cece91e123b4",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1894–1966",
       "Theories [DB]": [
         "3bde5275-7b5c-81b0-a714-d53a2345ebdb"
@@ -3523,6 +3632,7 @@
       "id": "3bde5275-7b5c-8145-b939-d7d5691f84c5",
       "url": "https://app.notion.com/p/Fritz-Zwicky-3bde52757b5c8145b939d7d5691f84c5",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1898–1974",
       "Theories [DB]": [
         "3bde5275-7b5c-8155-8abe-e1d83b51ecb9"
@@ -3539,6 +3649,7 @@
       "id": "3bde5275-7b5c-81df-994e-c64bee10dcc4",
       "url": "https://app.notion.com/p/Alfred-Wegener-3bde52757b5c81df994ec64bee10dcc4",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1880–1930",
       "Theories [DB]": [
         "3bde5275-7b5c-813a-b77a-c766d8a0e418"
@@ -3553,6 +3664,7 @@
       "id": "3bde5275-7b5c-8198-98e7-dda822d303c2",
       "url": "https://app.notion.com/p/Louis-de-Broglie-3bde52757b5c819898e7dda822d303c2",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1892–1987",
       "Theories [DB]": [
         "3bde5275-7b5c-8132-b647-c4c04158e693"
@@ -3567,6 +3679,7 @@
       "id": "3bde5275-7b5c-81ff-b052-cf8ff59a2096",
       "url": "https://app.notion.com/p/Arnold-Sommerfeld-3bde52757b5c81ffb052cf8ff59a2096",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1868–1951",
       "Theories [DB]": [
         "3bde5275-7b5c-81bb-96ea-f380ca92d0a8",
@@ -3582,6 +3695,7 @@
       "id": "3bde5275-7b5c-81f6-8c96-c687aed99185",
       "url": "https://app.notion.com/p/Erwin-Schr-dinger-3bde52757b5c81f68c96c687aed99185",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1887–1961",
       "Theories [DB]": [
         "3bde5275-7b5c-8193-ae2a-f3d957e88a73"
@@ -3596,6 +3710,7 @@
       "id": "3bde5275-7b5c-8123-a039-d72f241c4e79",
       "url": "https://app.notion.com/p/Niels-Bohr-3bde52757b5c8123a039d72f241c4e79",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1885–1962",
       "Theories [DB]": [
         "3bde5275-7b5c-811e-a927-c8b3e1fee423",
@@ -3611,6 +3726,7 @@
       "id": "3bde5275-7b5c-8125-b13c-c6c497c077c3",
       "url": "https://app.notion.com/p/Max-Born-3bde52757b5c8125b13cc6c497c077c3",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1882–1970",
       "Theories [DB]": [
         "3bde5275-7b5c-8193-ae2a-f3d957e88a73"
@@ -3625,6 +3741,7 @@
       "id": "3bde5275-7b5c-81df-b823-c861e2b439e8",
       "url": "https://app.notion.com/p/Albert-Einstein-3bde52757b5c81dfb823c861e2b439e8",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1879–1955",
       "Theories [DB]": [
         "3bde5275-7b5c-8113-aa1c-f0b45b84363d",
@@ -3645,6 +3762,7 @@
       "id": "3bde5275-7b5c-8198-abbd-fb88875d4ee1",
       "url": "https://app.notion.com/p/Ernest-Rutherford-3bde52757b5c8198abbdfb88875d4ee1",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1871–1937",
       "Theories [DB]": [
         "3bde5275-7b5c-81e4-b44a-f2d634f6f677"
@@ -3661,6 +3779,7 @@
       "id": "3bde5275-7b5c-81b8-b1de-ca8946d18a62",
       "url": "https://app.notion.com/p/David-Hilbert-3bde52757b5c81b8b1deca8946d18a62",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1862–1943",
       "Theories [DB]": [
         "3bde5275-7b5c-81f8-84d4-ec66c3f8c8eb"
@@ -3675,6 +3794,7 @@
       "id": "3bde5275-7b5c-8134-b7bc-ec35ba6ac34e",
       "url": "https://app.notion.com/p/Henri-Poincar-3bde52757b5c8134b7bcec35ba6ac34e",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1854–1912",
       "Theories [DB]": [
         "3bde5275-7b5c-8151-afe6-e471f9d33f09",
@@ -3690,6 +3810,7 @@
       "id": "3bde5275-7b5c-8194-86d5-df287efa5d3f",
       "url": "https://app.notion.com/p/Max-Planck-3bde52757b5c819486d5df287efa5d3f",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1858–1947",
       "Theories [DB]": [
         "3bde5275-7b5c-810a-ac78-e3684b14acd1"
@@ -3704,6 +3825,7 @@
       "id": "3bde5275-7b5c-81b5-bd0b-d555a2965da3",
       "url": "https://app.notion.com/p/J-J-Thomson-3bde52757b5c81b5bd0bd555a2965da3",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1856–1940",
       "Theories [DB]": [
         "3bde5275-7b5c-8119-8dc0-caca83db4a46"
@@ -3720,6 +3842,7 @@
       "id": "3bde5275-7b5c-8125-b482-d7d95529b56f",
       "url": "https://app.notion.com/p/Hendrik-Lorentz-3bde52757b5c8125b482d7d95529b56f",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1853–1928",
       "Theories [DB]": [
         "3bde5275-7b5c-81c8-8ac7-cd61c84271da",
@@ -3735,6 +3858,7 @@
       "id": "3bde5275-7b5c-8174-af30-c8e5250de801",
       "url": "https://app.notion.com/p/Ludwig-Boltzmann-3bde52757b5c8174af30c8e5250de801",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1844–1906",
       "Theories [DB]": [
         "3bde5275-7b5c-8125-8781-e39471d83726",
@@ -3750,6 +3874,7 @@
       "id": "3bde5275-7b5c-81fd-a77b-d3a39bcec446",
       "url": "https://app.notion.com/p/Josiah-Willard-Gibbs-3bde52757b5c81fda77bd3a39bcec446",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1839–1903",
       "Theories [DB]": [
         "3bde5275-7b5c-8125-8781-e39471d83726"
@@ -3764,6 +3889,7 @@
       "id": "3bde5275-7b5c-8168-94e4-c6c6caac69fd",
       "url": "https://app.notion.com/p/James-Clerk-Maxwell-3bde52757b5c816894e4c6c6caac69fd",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1831–1879",
       "Theories [DB]": [
         "3bde5275-7b5c-8185-85c8-d2d582a91da7",
@@ -3779,6 +3905,7 @@
       "id": "3bde5275-7b5c-81e9-bb86-f066a45f1deb",
       "url": "https://app.notion.com/p/Rudolf-Clausius-3bde52757b5c81e9bb86f066a45f1deb",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1822–1888",
       "Theories [DB]": [
         "3bde5275-7b5c-811e-9e2a-ebcbdc4d07cc"
@@ -3793,6 +3920,7 @@
       "id": "3bde5275-7b5c-81de-9b82-ee16edc3faba",
       "url": "https://app.notion.com/p/Michael-Faraday-3bde52757b5c81de9b82ee16edc3faba",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1791–1867",
       "Theories [DB]": [
         "3bde5275-7b5c-8185-85c8-d2d582a91da7"
@@ -3807,6 +3935,7 @@
       "id": "3bde5275-7b5c-81fa-bfe2-d00255dc6d3e",
       "url": "https://app.notion.com/p/Augustin-Jean-Fresnel-3bde52757b5c81fabfe2d00255dc6d3e",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1788–1827",
       "Theories [DB]": [
         "3bde5275-7b5c-81f8-a1bf-fb7455203c64",
@@ -3822,6 +3951,7 @@
       "id": "3bde5275-7b5c-81fb-ae5d-e972491b3cc7",
       "url": "https://app.notion.com/p/Thomas-Young-3bde52757b5c81fbae5de972491b3cc7",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1773–1829",
       "Theories [DB]": [
         "3bde5275-7b5c-81a9-9b1e-f56598a0882a"
@@ -3836,6 +3966,7 @@
       "id": "3bde5275-7b5c-81d8-855f-cff204c52324",
       "url": "https://app.notion.com/p/John-Dalton-3bde52757b5c81d8855fcff204c52324",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1766–1844",
       "Theories [DB]": [
         "3bde5275-7b5c-81ad-a08c-dba8a668c136"
@@ -3850,6 +3981,7 @@
       "id": "3bde5275-7b5c-819e-895f-de76d0f9c506",
       "url": "https://app.notion.com/p/Antoine-Lavoisier-3bde52757b5c819e895fde76d0f9c506",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1743–1794",
       "Theories [DB]": [
         "3bde5275-7b5c-8190-9fba-cff4da9aa6a2"
@@ -3864,6 +3996,7 @@
       "id": "3bde5275-7b5c-818e-aeae-e70e61464add",
       "url": "https://app.notion.com/p/Georg-Ernst-Stahl-3bde52757b5c818eaeaee70e61464add",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1659–1734",
       "Theories [DB]": [
         "3bde5275-7b5c-8155-ad9b-de63644f9483"
@@ -3878,6 +4011,7 @@
       "id": "3bde5275-7b5c-8163-b1d7-f61d9b760273",
       "url": "https://app.notion.com/p/Isaac-Newton-3bde52757b5c8163b1d7f61d9b760273",
       "lastEdited": "2026-08-15T18:39:00.000Z",
+      "Timeline": [],
       "Lifespan": "1642–1727",
       "Theories [DB]": [
         "3bde5275-7b5c-8162-be54-c9e88fa847d2",
@@ -3893,6 +4027,7 @@
       "id": "3bde5275-7b5c-8144-a383-d9eabfc3dc5d",
       "url": "https://app.notion.com/p/Christiaan-Huygens-3bde52757b5c8144a383d9eabfc3dc5d",
       "lastEdited": "2026-08-15T18:39:00.000Z",
+      "Timeline": [],
       "Lifespan": "1629–1695",
       "Theories [DB]": [
         "3bde5275-7b5c-81a9-9b1e-f56598a0882a"
@@ -3909,6 +4044,7 @@
       "id": "3bde5275-7b5c-812c-b725-df4753846575",
       "url": "https://app.notion.com/p/Galileo-Galilei-3bde52757b5c812cb725df4753846575",
       "lastEdited": "2026-08-15T18:39:00.000Z",
+      "Timeline": [],
       "Lifespan": "1564–1642",
       "Theories [DB]": [
         "3bde5275-7b5c-81af-86fd-d2bdae2b8b8c"
@@ -3925,6 +4061,7 @@
       "id": "3bde5275-7b5c-81ea-af88-cf056278060b",
       "url": "https://app.notion.com/p/Johannes-Kepler-3bde52757b5c81eaaf88cf056278060b",
       "lastEdited": "2026-08-15T18:39:00.000Z",
+      "Timeline": [],
       "Lifespan": "1571–1630",
       "Theories [DB]": [
         "3bde5275-7b5c-81af-86fd-d2bdae2b8b8c"
@@ -3939,6 +4076,7 @@
       "id": "3bde5275-7b5c-8183-ab87-fb31b7c5dc2d",
       "url": "https://app.notion.com/p/Nicolaus-Copernicus-3bde52757b5c8183ab87fb31b7c5dc2d",
       "lastEdited": "2026-08-15T18:39:00.000Z",
+      "Timeline": [],
       "Lifespan": "1473–1543",
       "Theories [DB]": [
         "3bde5275-7b5c-81af-86fd-d2bdae2b8b8c"
@@ -3953,6 +4091,7 @@
       "id": "3bde5275-7b5c-8158-8c83-dcabdb77e3a8",
       "url": "https://app.notion.com/p/Claudius-Ptolemy-3bde52757b5c81588c83dcabdb77e3a8",
       "lastEdited": "2026-08-15T18:39:00.000Z",
+      "Timeline": [],
       "Lifespan": "c. 100–170",
       "Theories [DB]": [
         "3bde5275-7b5c-81a9-85f8-d0b50ab5feb5"
@@ -3967,6 +4106,7 @@
       "id": "f3a708d9-63ec-4a86-9f4a-c82690ef9f29",
       "url": "https://app.notion.com/p/Roger-Penrose-f3a708d963ec4a869f4ac82690ef9f29",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1931–",
       "Theories [DB]": [
         "3bde5275-7b5c-8183-a9cc-d3532bc342bf",
@@ -3984,6 +4124,7 @@
       "id": "eb5e7181-08ea-45c5-8318-6495db3e671f",
       "url": "https://app.notion.com/p/George-Smoot-eb5e718108ea45c583186495db3e671f",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1945–",
       "Theories [DB]": [],
       "Discoveries [DB]": [
@@ -3998,6 +4139,7 @@
       "id": "504e6604-1942-46af-b10e-5778b77d2218",
       "url": "https://app.notion.com/p/Didier-Queloz-504e6604194246afb10e5778b77d2218",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1966–",
       "Theories [DB]": [],
       "Discoveries [DB]": [
@@ -4012,6 +4154,7 @@
       "id": "f9b3c66a-cb98-4e1c-8252-8d79a3125de0",
       "url": "https://app.notion.com/p/Michel-Mayor-f9b3c66acb984e1c82528d79a3125de0",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1942–",
       "Theories [DB]": [],
       "Discoveries [DB]": [
@@ -4026,6 +4169,7 @@
       "id": "e4387cff-b2e4-4511-ba9a-228dd1052f5e",
       "url": "https://app.notion.com/p/James-Peebles-e4387cffb2e44511ba9a228dd1052f5e",
       "lastEdited": "2026-08-15T18:40:00.000Z",
+      "Timeline": [],
       "Lifespan": "1935–",
       "Theories [DB]": [
         "3bde5275-7b5c-81b0-a714-d53a2345ebdb"
@@ -5241,6 +5385,7 @@
       "url": "https://app.notion.com/p/Heat-Death-3bde52757b5c81eaa1d8efb79b33a2e3",
       "lastEdited": "2026-08-15T19:02:00.000Z",
       "Temperature (K)": 0,
+      "Researchers": [],
       "When": "beyond 10¹⁰⁰ years",
       "Equations": [
         "3bbe5275-7b5c-8122-95c0-f19b5930072e",
@@ -5264,6 +5409,7 @@
       "url": "https://app.notion.com/p/The-Last-Black-Holes-Go-3bde52757b5c810fb07ed446eba2268f",
       "lastEdited": "2026-08-15T19:02:00.000Z",
       "Temperature (K)": 1e-29,
+      "Researchers": [],
       "When": "≈ 10¹⁰⁰ years",
       "Equations": [
         "3bbe5275-7b5c-811a-baed-c686bb16bbc3",
@@ -5286,6 +5432,7 @@
       "url": "https://app.notion.com/p/Black-Holes-Evaporate-3bde52757b5c8194968fe63d78f78726",
       "lastEdited": "2026-08-15T19:02:00.000Z",
       "Temperature (K)": 1e-20,
+      "Researchers": [],
       "When": "≈ 10⁶⁷ years",
       "Equations": [
         "3bbe5275-7b5c-811a-baed-c686bb16bbc3",
@@ -5308,6 +5455,7 @@
       "url": "https://app.notion.com/p/Proton-Decay-If-It-Happens-3bde52757b5c815dbc48e61cf4496428",
       "lastEdited": "2026-08-15T19:02:00.000Z",
       "Temperature (K)": 1e-14,
+      "Researchers": [],
       "When": "≈ 10³⁶ years, if at all",
       "Equations": [
         "3bbe5275-7b5c-8125-8857-cffce0164fef",
@@ -5329,6 +5477,7 @@
       "url": "https://app.notion.com/p/Star-Formation-Ends-3bde52757b5c81f49243eb103d8b0511",
       "lastEdited": "2026-08-15T19:02:00.000Z",
       "Temperature (K)": 1e-05,
+      "Researchers": [],
       "When": "≈ 100 trillion years",
       "Equations": [
         "3bbe5275-7b5c-8120-863e-cd94384e0239",
@@ -5348,6 +5497,7 @@
       "url": "https://app.notion.com/p/The-Local-Group-Is-Alone-3bde52757b5c8159ada0cc5af14d257d",
       "lastEdited": "2026-08-15T19:02:00.000Z",
       "Temperature (K)": 0.014,
+      "Researchers": [],
       "When": "≈ 100 billion years",
       "Equations": [
         "3bbe5275-7b5c-8184-9e26-ff4ad04b3ed8",
@@ -5370,6 +5520,7 @@
       "url": "https://app.notion.com/p/The-Sun-Dies-3bde52757b5c8193843bc95fe5547acb",
       "lastEdited": "2026-08-15T19:02:00.000Z",
       "Temperature (K)": 2.3,
+      "Researchers": [],
       "When": "≈ 18.8 billion years — 5 billion years from now",
       "Equations": [
         "3bbe5275-7b5c-8120-863e-cd94384e0239",
@@ -5390,6 +5541,7 @@
       "url": "https://app.notion.com/p/Andromeda-Arrives-3bde52757b5c81309d53ca576cc193ae",
       "lastEdited": "2026-08-15T19:02:00.000Z",
       "Temperature (K)": 2.4,
+      "Researchers": [],
       "When": "≈ 18 billion years — 4.5 billion years from now",
       "Equations": [
         "3bbe5275-7b5c-810a-8065-f03f5253cda9",
@@ -5411,6 +5563,7 @@
       "url": "https://app.notion.com/p/Present-Day-3bde52757b5c81f98ef6f13ac29dc596",
       "lastEdited": "2026-08-15T19:02:00.000Z",
       "Temperature (K)": 2.72548,
+      "Researchers": [],
       "When": "13.797 billion years",
       "Equations": [
         "3bbe5275-7b5c-8184-9e26-ff4ad04b3ed8",
@@ -5434,6 +5587,7 @@
       "url": "https://app.notion.com/p/Dark-Energy-Takes-Over-3bde52757b5c8132859dda190284c1a9",
       "lastEdited": "2026-08-15T19:02:00.000Z",
       "Temperature (K)": 3.6,
+      "Researchers": [],
       "When": "≈ 9.8 billion years",
       "Equations": [
         "3bbe5275-7b5c-8184-9e26-ff4ad04b3ed8",
@@ -5456,6 +5610,7 @@
       "url": "https://app.notion.com/p/The-Solar-System-Forms-3bde52757b5c81e0a7b8e95fd31e8fac",
       "lastEdited": "2026-08-15T19:02:00.000Z",
       "Temperature (K)": 3.8,
+      "Researchers": [],
       "When": "9.2 billion years — 4.6 billion years ago",
       "Equations": [
         "3bbe5275-7b5c-810a-8065-f03f5253cda9",
@@ -5479,6 +5634,7 @@
       "url": "https://app.notion.com/p/Cosmic-Noon-3bde52757b5c8127933fd6a9736b3eaf",
       "lastEdited": "2026-08-15T19:02:00.000Z",
       "Temperature (K)": 9,
+      "Researchers": [],
       "When": "≈ 3.5 billion years",
       "Equations": [
         "3bbe5275-7b5c-8120-863e-cd94384e0239",
@@ -5499,6 +5655,7 @@
       "url": "https://app.notion.com/p/Reionization-3bde52757b5c818c9bd0ce7bb75ea178",
       "lastEdited": "2026-08-15T19:02:00.000Z",
       "Temperature (K)": 30,
+      "Researchers": [],
       "When": "150 million – 1 billion years",
       "Equations": [
         "3bbe5275-7b5c-818e-8ccf-c5b952277817",
@@ -5520,6 +5677,7 @@
       "url": "https://app.notion.com/p/The-First-Galaxies-3bde52757b5c812da3ecd0ec40005c6a",
       "lastEdited": "2026-08-15T19:02:00.000Z",
       "Temperature (K)": 33,
+      "Researchers": [],
       "When": "≈ 400 million years",
       "Equations": [
         "3bbe5275-7b5c-811b-8297-ce47b2c5d614",
@@ -5541,6 +5699,7 @@
       "url": "https://app.notion.com/p/The-First-Stars-3bde52757b5c8161b7ceed3e2f953c38",
       "lastEdited": "2026-08-15T19:02:00.000Z",
       "Temperature (K)": 50,
+      "Researchers": [],
       "When": "≈ 180 million years",
       "Equations": [
         "3bbe5275-7b5c-8120-863e-cd94384e0239",
@@ -5561,6 +5720,7 @@
       "url": "https://app.notion.com/p/The-Dark-Ages-3bde52757b5c81dd8bf4c41148b14015",
       "lastEdited": "2026-08-15T19:02:00.000Z",
       "Temperature (K)": 60,
+      "Researchers": [],
       "When": "380,000 years – 150 million years",
       "Equations": [
         "3bbe5275-7b5c-811b-8297-ce47b2c5d614",
@@ -5579,8 +5739,11 @@
     {
       "id": "3bde5275-7b5c-8130-966f-ff0ab7d23a91",
       "url": "https://app.notion.com/p/Photon-Decoupling-the-CMB-3bde52757b5c8130966fff0ab7d23a91",
-      "lastEdited": "2026-08-15T19:02:00.000Z",
+      "lastEdited": "2026-08-16T02:38:00.000Z",
       "Temperature (K)": 2970,
+      "Researchers": [
+        "3bee5275-7b5c-8124-8a2f-cc505acb345b"
+      ],
       "When": "380,000 years",
       "Equations": [
         "3bde5275-7b5c-811c-8470-d8ecfce3c2de",
@@ -5601,8 +5764,11 @@
     {
       "id": "3bde5275-7b5c-816a-8519-ca7fd6cd0f4c",
       "url": "https://app.notion.com/p/Recombination-3bde52757b5c816a8519ca7fd6cd0f4c",
-      "lastEdited": "2026-08-15T19:02:00.000Z",
+      "lastEdited": "2026-08-16T02:38:00.000Z",
       "Temperature (K)": 3000,
+      "Researchers": [
+        "3bee5275-7b5c-8124-8a2f-cc505acb345b"
+      ],
       "When": "380,000 years",
       "Equations": [
         "3bbe5275-7b5c-816e-b97a-fdbc445f99b7",
@@ -5623,8 +5789,11 @@
     {
       "id": "3bde5275-7b5c-813c-b30b-e1bcbd63c5cf",
       "url": "https://app.notion.com/p/Matter-Radiation-Equality-3bde52757b5c813cb30be1bcbd63c5cf",
-      "lastEdited": "2026-08-15T19:02:00.000Z",
+      "lastEdited": "2026-08-16T02:38:00.000Z",
       "Temperature (K)": 9300,
+      "Researchers": [
+        "3bee5275-7b5c-8124-8a2f-cc505acb345b"
+      ],
       "When": "≈ 50,000 years",
       "Equations": [
         "3bbe5275-7b5c-818c-bf76-d40ebcb485e3",
@@ -5647,6 +5816,7 @@
       "url": "https://app.notion.com/p/Big-Bang-Nucleosynthesis-3bde52757b5c81d4b2cdfdcc3add3657",
       "lastEdited": "2026-08-15T19:02:00.000Z",
       "Temperature (K)": 1000000000,
+      "Researchers": [],
       "When": "10 s – 20 minutes",
       "Equations": [
         "3bbe5275-7b5c-8157-a64b-eb73eeb53735",
@@ -5669,6 +5839,7 @@
       "url": "https://app.notion.com/p/Electron-Positron-Annihilation-3bde52757b5c810290f1d13c66d29fa9",
       "lastEdited": "2026-08-15T19:02:00.000Z",
       "Temperature (K)": 5000000000,
+      "Researchers": [],
       "When": "1 – 10 s",
       "Equations": [
         "3bbe5275-7b5c-8140-a1d4-f7bff1df0334",
@@ -5687,8 +5858,11 @@
     {
       "id": "3bde5275-7b5c-8178-aa21-c31f41f3cecd",
       "url": "https://app.notion.com/p/Neutrino-Decoupling-3bde52757b5c8178aa21c31f41f3cecd",
-      "lastEdited": "2026-08-15T19:02:00.000Z",
+      "lastEdited": "2026-08-16T02:38:00.000Z",
       "Temperature (K)": 10000000000,
+      "Researchers": [
+        "3bee5275-7b5c-8124-8a2f-cc505acb345b"
+      ],
       "When": "1 second",
       "Equations": [
         "3bbe5275-7b5c-816e-b97a-fdbc445f99b7",
@@ -5708,6 +5882,7 @@
       "url": "https://app.notion.com/p/Quark-Confinement-3bde52757b5c817ba494db994bf078d8",
       "lastEdited": "2026-08-15T19:02:00.000Z",
       "Temperature (K)": 10000000000000,
+      "Researchers": [],
       "When": "10⁻⁶ s",
       "Equations": [
         "3bbe5275-7b5c-8125-8857-cffce0164fef"
@@ -5727,6 +5902,7 @@
       "url": "https://app.notion.com/p/Quark-Epoch-3bde52757b5c811aa3e4f872b73ea57f",
       "lastEdited": "2026-08-15T19:02:00.000Z",
       "Temperature (K)": 10000000000000,
+      "Researchers": [],
       "When": "10⁻¹² – 10⁻⁶ s",
       "Equations": [
         "3bbe5275-7b5c-8125-8857-cffce0164fef",
@@ -5746,6 +5922,7 @@
       "url": "https://app.notion.com/p/Baryogenesis-3bde52757b5c81a9b4bacf86d12e1d5b",
       "lastEdited": "2026-08-15T19:02:00.000Z",
       "Temperature (K)": 1000000000000000,
+      "Researchers": [],
       "When": "before 10⁻¹¹ s",
       "Equations": [
         "3bbe5275-7b5c-8125-8857-cffce0164fef",
@@ -5766,6 +5943,7 @@
       "url": "https://app.notion.com/p/Electroweak-Symmetry-Breaking-3bde52757b5c814ea671fe7dc1be5fe1",
       "lastEdited": "2026-08-15T19:02:00.000Z",
       "Temperature (K)": 1000000000000000,
+      "Researchers": [],
       "When": "10⁻¹² s",
       "Equations": [
         "3bbe5275-7b5c-8125-8857-cffce0164fef",
@@ -5786,6 +5964,7 @@
       "url": "https://app.notion.com/p/Reheating-3bde52757b5c812595a3eed7e074a458",
       "lastEdited": "2026-08-15T19:02:00.000Z",
       "Temperature (K)": 1e+27,
+      "Researchers": [],
       "When": "≈ 10⁻³² s",
       "Equations": [
         "3bbe5275-7b5c-8125-8857-cffce0164fef",
@@ -5806,6 +5985,7 @@
       "url": "https://app.notion.com/p/Inflation-3bde52757b5c8194b6c0fcf0d1a866ca",
       "lastEdited": "2026-08-15T19:02:00.000Z",
       "Temperature (K)": 1e+27,
+      "Researchers": [],
       "When": "10⁻³⁶ – 10⁻³² s",
       "Equations": [
         "3bbe5275-7b5c-818c-bf76-d40ebcb485e3",
@@ -5827,6 +6007,7 @@
       "url": "https://app.notion.com/p/Grand-Unification-3bde52757b5c811f93a0c73de104a932",
       "lastEdited": "2026-08-15T19:02:00.000Z",
       "Temperature (K)": 1e+28,
+      "Researchers": [],
       "When": "10⁻⁴³ – 10⁻³⁶ s",
       "Equations": [
         "3bbe5275-7b5c-811f-8db4-cc95acf776dd",
@@ -5847,6 +6028,7 @@
       "url": "https://app.notion.com/p/Planck-Epoch-3bde52757b5c810a85aaf3479a371f25",
       "lastEdited": "2026-08-15T19:02:00.000Z",
       "Temperature (K)": 1.417e+32,
+      "Researchers": [],
       "When": "0 – 10⁻⁴³ s",
       "Equations": [
         "3bbe5275-7b5c-8109-a4a6-c5b903b6e05f",
