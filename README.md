@@ -116,6 +116,22 @@ its own Let's Encrypt cert — configs in `deploy/`. Secrets live in
 To ship an update, from the VPS clone at `/srv/kosmos`:
 
 ```
+./deploy.sh                       # pull, sync from Notion, build, ship, verify, commit, push
+./deploy.sh seed_missions         # ...running scripts/seed_missions.py first (any number, in order)
+./deploy.sh --no-fetch            # code-only: skip the Notion pull
+```
+
+It stops at the first failure and names the step. Two checks it will not skip:
+it waits for `/health` and requires the answering process to have **started
+after the restart** — a stale server that never went down would otherwise pass
+with the pages it loaded last time — and it requires `missing` to be empty. It
+also recovers the state an interrupted run leaves behind (data synced but
+uncommitted), and refuses to run if anything outside `data/` and `public/` is
+dirty, because that clone is a deploy target, not a workspace.
+
+By hand, the equivalent is:
+
+```
 cp public/*.html /opt/kosmos/public/     # NOT /opt/kosmos — server.js reads public/
 cp server.js /opt/kosmos/                # only when routes or the API changed
 systemctl restart kosmos
@@ -126,8 +142,10 @@ The pages live in `/opt/kosmos/public/`, beside `server.js` at `/opt/kosmos/`.
 Copying the HTML flat into `/opt/kosmos/` silently deploys nothing: the files
 land where nothing reads them and the old pages keep being served. That is
 exactly what happened on 2026-08-15, and it only surfaced as an outage once a
-new route was added for a page that had never arrived. `/health` now reports
-which pages are missing, so check it after every deploy.
+new route was added for a page that had never arrived. The same day, four
+hand-typed deploy chains left the VPS clone dirty — three dropped the commit
+step, one was killed by `curl` racing the restart — which is why `deploy.sh`
+exists.
 
 ### Recipe: putting an app on a yeahborhood.com subdomain
 

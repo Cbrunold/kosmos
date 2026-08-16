@@ -33,6 +33,7 @@ for (const [route, file] of Object.entries(PAGES)) {
   }
 }
 
+const STARTED_AT = Date.now();   // /health reports it, so a deploy can tell a fresh process from a stale one
 const hasKey = Boolean(process.env.ANTHROPIC_API_KEY);
 const client = hasKey ? new Anthropic() : null;
 
@@ -152,6 +153,8 @@ const server = http.createServer(async (req, res) => {
       analyzer: hasKey,
       pages: Object.keys(CONTENT).length,
       missing,           // empty on a good deploy; names the files on a bad one
+      startedAt: STARTED_AT,
+      pid: process.pid,
     });
   }
   if (req.method === 'POST' && req.url === '/api/analyze') {
