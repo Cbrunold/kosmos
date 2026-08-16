@@ -8,10 +8,11 @@ to the CMB did not propose Big Bang cosmology. This adds a `Researchers`
 relation to the timeline instead — "people whose work is about this epoch" —
 and seeds it.
 
-PEOPLE adds rows to the Researchers DB for anyone not already there (the seeds
-so far brought the theorists and the observers; contemporary working
-cosmologists are thin). LINKS maps event → researcher names; both directions
-are validated offline before this touches Notion.
+PEOPLE adds rows to the Researchers DB for anyone not already there. LINKS maps
+event → researcher names; both directions are validated offline before this
+touches Notion. The rule for a link is that the person's work is genuinely
+about that epoch — the dark ages, the first stars, reionization and cosmic
+noon are left empty rather than padded, because nobody on file worked on them.
 
 Lifespan is left empty where a birth year is not certain — better a blank than
 a plausible number.
@@ -37,14 +38,51 @@ PEOPLE = [
      "predicted microwave background and matter power spectrum, and of MontePython for fitting them "
      "to data. A Planck collaboration member, and — with Sergio Pastor — the neutrino-cosmology "
      "bounds that make the CMB the tightest constraint on the sum of the neutrino masses."),
+    ("Andrei Sakharov", "1921–1989", "Soviet", "Physics",
+     "Set out in 1967 the three conditions any explanation of the matter–antimatter asymmetry must "
+     "satisfy — baryon number violation, C and CP violation, departure from equilibrium — and they "
+     "still frame the problem. Also the Soviet hydrogen bomb, and the Nobel Peace Prize for "
+     "opposing what he had built."),
+    ("Fred Adams", None, "American", "Astrophysics",
+     "With Gregory Laughlin, 'A Dying Universe' (1997): the paper that laid out the five ages of "
+     "the cosmos from the stelliferous era through the degenerate, black hole and dark eras — the "
+     "source of most far-future chronologies, this one included."),
+    ("Gregory Laughlin", None, "American", "Astrophysics",
+     "The other author of 'A Dying Universe', and of the popular account that followed; also a "
+     "planet-formation and exoplanet theorist."),
 ]
 
 # timeline event -> researchers whose work is about it
 LINKS = {
+    # the very early universe
+    "Planck Epoch": ["Max Planck", "Roger Penrose", "Stephen Hawking", "Carlo Rovelli", "Abhay Ashtekar"],
+    "Grand Unification": ["Howard Georgi", "Sheldon Glashow"],
+    "Inflation": ["Alan Guth", "Andrei Linde", "Alexei Starobinsky"],
+    "Reheating": ["Andrei Linde", "Alexei Starobinsky"],
+    "Electroweak Symmetry Breaking": ["Peter Higgs", "François Englert", "Steven Weinberg",
+                                      "Abdus Salam", "Sheldon Glashow"],
+    "Baryogenesis": ["Andrei Sakharov"],
+    "Quark Epoch": ["Murray Gell-Mann", "David Gross", "Frank Wilczek"],
+    "Quark Confinement": ["Murray Gell-Mann", "David Gross", "Frank Wilczek"],
     "Neutrino Decoupling": ["Julien Lesgourgues"],
-    "Matter–Radiation Equality": ["Julien Lesgourgues"],
-    "Recombination": ["Julien Lesgourgues"],
-    "Photon Decoupling — the CMB": ["Julien Lesgourgues"],
+    # the radiation era
+    "Electron–Positron Annihilation": ["Paul Dirac"],
+    "Big Bang Nucleosynthesis": ["George Gamow", "Ralph Alpher", "James Peebles"],
+    "Matter–Radiation Equality": ["James Peebles", "Julien Lesgourgues"],
+    "Recombination": ["James Peebles", "Julien Lesgourgues"],
+    "Photon Decoupling — the CMB": ["George Gamow", "Ralph Alpher", "Arno Penzias", "Robert Wilson",
+                                    "George Smoot", "James Peebles", "Julien Lesgourgues"],
+    # structure and the present
+    "Dark Energy Takes Over": ["Albert Einstein", "Saul Perlmutter", "Brian Schmidt", "Adam Riess"],
+    "Present Day": ["Edwin Hubble", "Georges Lemaître", "Fritz Zwicky", "Vera Rubin", "Adam Riess"],
+    # the far future — Adams & Laughlin's chronology, plus the physics each step rests on
+    "Andromeda Arrives": ["Vesto Slipher", "Edwin Hubble"],
+    "The Sun Dies": ["Arthur Eddington", "Cecilia Payne-Gaposchkin"],
+    "Star Formation Ends": ["Fred Adams", "Gregory Laughlin"],
+    "Proton Decay, If It Happens": ["Howard Georgi", "Sheldon Glashow", "Fred Adams", "Gregory Laughlin"],
+    "Black Holes Evaporate": ["Stephen Hawking", "Jacob Bekenstein", "Fred Adams", "Gregory Laughlin"],
+    "The Last Black Holes Go": ["Stephen Hawking", "Jacob Bekenstein", "Leonard Susskind", "Gerard 't Hooft"],
+    "Heat Death": ["Rudolf Clausius", "Ludwig Boltzmann", "Fred Adams", "Gregory Laughlin"],
 }
 
 
