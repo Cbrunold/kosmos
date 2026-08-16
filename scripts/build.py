@@ -121,15 +121,19 @@ def build_minerals_page():
         # public/index.html churn with a diff that means nothing
         for s in sorted(set(syms)):
             contains[s] += 1
-            by_symbol[s].append((m.get("Mohs Hardness") or 0, name))
-        sg = m.get("Specific Gravity")
-        if sg is None and m.get("Calculated Density"):
-            sg = round(m["Calculated Density"], 2)
+            # verified (has a Formula from the source) first, then hardest — so the
+            # examples on the periodic table are ones whose membership is trustworthy
+            by_symbol[s].append((bool(m.get("Formula")), m.get("Mohs Hardness") or 0, name))
+        # Specific Gravity is a measurement; Calculated Density and Molar Mass were
+        # derived from the broken import and are only trustworthy on rows that carry a
+        # Formula (i.e. that seed_minerals_fix.py has rewritten from the source)
+        sg = m.get("Specific Gravity") or None
+        verified = bool(m.get("Formula"))
         rows.append([
             m.get("Name") or "?",
             m.get("Mohs Hardness"),
             round(sg, 2) if sg is not None else None,
-            round(m["Molar Mass"], 1) if m.get("Molar Mass") else None,
+            round(m["Molar Mass"], 1) if verified and m.get("Molar Mass") else None,
             " ".join(syms),
             m.get("Equations") or [],   # equation page ids (mirrored relation)
         ])
@@ -139,8 +143,8 @@ def build_minerals_page():
     # per-element mineral summary for the periodic table's detail panel:
     # count plus a few examples (hardest first — the recognizable ones)
     for sym, entries in by_symbol.items():
-        entries.sort(key=lambda t: (-t[0], t[1]))
-        ELEMENT_MINERALS[sym] = {"n": len(entries), "examples": [n for _, n in entries[:6]]}
+        entries.sort(key=lambda t: (not t[0], -t[1], t[2]))
+        ELEMENT_MINERALS[sym] = {"n": len(entries), "examples": [n for _, _, n in entries[:6]]}
 
     sys_name = {r["id"]: r.get("Name") for r in notion["crystalSystems"]}
     gems = [{

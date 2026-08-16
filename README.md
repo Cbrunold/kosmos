@@ -12,7 +12,7 @@ truth for code and the normalised data snapshots. Sync is one-way, Notion → re
 |--------------|--------------|
 | `/`          | Tile launcher with live stats per section, and a search bar over everything the site holds (`/` to focus, `?q=` to deep-link a query) |
 | `/elements`  | Interactive periodic table (11 lenses incl. crustal rarity and concentration factor, temperature + discovery sliders), sources & extraction per element, and the AI photo analyzer |
-| `/minerals`  | 3,000+ minerals searchable and filterable by contained element; gemstone shelf, rock families, silicate classes |
+| `/minerals`  | 3,100+ minerals with formula, elemental makeup (mass %), hardness and density, filterable by contained element; gemstone shelf, rock families, silicate classes |
 | `/cosmos`    | Field guide to celestial object classes, the stellar spectral sequence, observatories, a discovery timeline, instruments and researchers |
 | `/forces`    | The four fundamental interactions |
 | `/mines`     | World map of ~90 flagship mines, and for each raw material its ore minerals, typical grade, concentration factor, and ore-to-product process |
@@ -65,6 +65,12 @@ scripts/seed_mining.py        Ore grade / ore minerals / mined-as / extraction o
                               related to the elements they produce. The concentration factor
                               (grade ÷ crustal abundance) is derived at build time, never stored
 scripts/make_basemap.py       Natural Earth 110m land → web/land-110m.svgpath (run once, committed)
+scripts/fetch_webmineral.py   Formula, molecular weight, density, hardness and mass-% composition
+                              for every mineral from webmineral.com → data/chemistry/webmineral.json
+                              (committed; the Minerals DB was a broken parse of this very source)
+scripts/seed_minerals_fix.py  Rewrites the Minerals DB from that file — Formula, true Molar Mass,
+                              per-element MASS % (replacing counts that were wrong), clears the
+                              derived columns — and adds the ore minerals the DB lacked
 deploy/                       systemd unit + nginx site as deployed on the VPS
 ```
 
