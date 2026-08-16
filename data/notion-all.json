@@ -6717,6 +6717,1585 @@
       "Event": "Planck Epoch"
     }
   ],
+  "mines": [
+    {
+      "id": "3bee5275-7b5c-81f7-b056-f1265b55c1f9",
+      "url": "https://app.notion.com/p/Nueva-Victoria-3bee52757b5c81f7b056f1265b55c1f9",
+      "lastEdited": "2026-08-16T06:14:00.000Z",
+      "Opened": 1990,
+      "Region": "Tarapacá Region",
+      "Status": "Active",
+      "Commodities": [
+        "43de39e9-edc9-42d5-8786-c0f42da16ebc"
+      ],
+      "Country": "Chile",
+      "Notes": "Iodine leached from the nitrate caliche of the Atacama — the same ore that made Chile rich before Haber–Bosch — supplying about half the world's iodine.",
+      "Type": "Open pit",
+      "Latitude": -20.72,
+      "Longitude": -69.63,
+      "Name": "Nueva Victoria"
+    },
+    {
+      "id": "3bee5275-7b5c-8171-a45c-c59637b5d835",
+      "url": "https://app.notion.com/p/Fugu-3bee52757b5c8171a45cc59637b5d835",
+      "lastEdited": "2026-08-16T06:14:00.000Z",
+      "Opened": 1995,
+      "Region": "Shaanxi",
+      "Status": "Active",
+      "Commodities": [
+        "bcc44249-6656-45db-8986-e17faf75e4d7"
+      ],
+      "Country": "China",
+      "Notes": "Dolomite for the Pidgeon-process magnesium plants of the Shaanxi–Shanxi border, which make most of the world's magnesium metal on cheap coal.",
+      "Type": "Quarry",
+      "Latitude": 39.03,
+      "Longitude": 111.07,
+      "Name": "Fugu"
+    },
+    {
+      "id": "3bee5275-7b5c-8168-8af2-dbc3caaebe88",
+      "url": "https://app.notion.com/p/Spruce-Pine-3bee52757b5c81688af2dbc3caaebe88",
+      "lastEdited": "2026-08-16T06:14:00.000Z",
+      "Opened": 1900,
+      "Region": "North Carolina",
+      "Status": "Active",
+      "Commodities": [
+        "22e34085-1b4d-4f83-96dc-1dac62e1f343"
+      ],
+      "Country": "United States",
+      "Notes": "The purest quartz on Earth, and the source of nearly every crucible in which semiconductor silicon is grown; when Hurricane Helene flooded the town in 2024 the chip industry noticed.",
+      "Type": "Quarry",
+      "Latitude": 35.92,
+      "Longitude": -82.06,
+      "Name": "Spruce Pine"
+    },
+    {
+      "id": "3bee5275-7b5c-81da-979e-c811ab280533",
+      "url": "https://app.notion.com/p/Ras-Laffan-3bee52757b5c81da979ec811ab280533",
+      "lastEdited": "2026-08-16T06:14:00.000Z",
+      "Opened": 2005,
+      "Region": "Al Khor",
+      "Status": "Active",
+      "Commodities": [
+        "b3aac4ea-8068-4e58-be44-a07b6ea70663"
+      ],
+      "Country": "Qatar",
+      "Notes": "Helium stripped from the North Field's gas as it is liquefied for export — a by-product that makes Qatar the second-largest helium producer.",
+      "Type": "Gas field",
+      "Latitude": 25.9,
+      "Longitude": 51.55,
+      "Name": "Ras Laffan"
+    },
+    {
+      "id": "3bee5275-7b5c-814b-9a71-c701da26de40",
+      "url": "https://app.notion.com/p/Bush-Dome-Cliffside-3bee52757b5c814b9a71c701da26de40",
+      "lastEdited": "2026-08-16T06:14:00.000Z",
+      "Opened": 1929,
+      "Region": "Texas",
+      "Status": "Active",
+      "Commodities": [
+        "b3aac4ea-8068-4e58-be44-a07b6ea70663"
+      ],
+      "Country": "United States",
+      "Notes": "The Federal Helium Reserve near Amarillo: helium from Hugoton–Panhandle gas, stockpiled underground since the airship era and sold down over the last decade.",
+      "Type": "Gas field",
+      "Latitude": 35.35,
+      "Longitude": -101.98,
+      "Name": "Bush Dome / Cliffside"
+    },
+    {
+      "id": "3bee5275-7b5c-81f7-a941-c626c21adb59",
+      "url": "https://app.notion.com/p/Cerrej-n-3bee52757b5c81f7a941c626c21adb59",
+      "lastEdited": "2026-08-16T06:14:00.000Z",
+      "Opened": 1985,
+      "Region": "La Guajira",
+      "Status": "Active",
+      "Commodities": [
+        "2e821e11-1691-4458-bb40-88ae8a24d4e2"
+      ],
+      "Country": "Colombia",
+      "Notes": "The largest open-pit coal mine in Latin America, on Wayuu land, with its own railway and Caribbean port.",
+      "Type": "Open pit",
+      "Latitude": 11.08,
+      "Longitude": -72.65,
+      "Name": "Cerrejón"
+    },
+    {
+      "id": "3bee5275-7b5c-8113-bb94-f4b7400c56ee",
+      "url": "https://app.notion.com/p/North-Antelope-Rochelle-3bee52757b5c8113bb94f4b7400c56ee",
+      "lastEdited": "2026-08-16T06:14:00.000Z",
+      "Opened": 1983,
+      "Region": "Wyoming",
+      "Status": "Active",
+      "Commodities": [
+        "2e821e11-1691-4458-bb40-88ae8a24d4e2"
+      ],
+      "Country": "United States",
+      "Notes": "The largest coal mine in the world by output, stripping a seam 20 m thick in the Powder River Basin.",
+      "Type": "Open pit",
+      "Latitude": 43.6,
+      "Longitude": -105.3,
+      "Name": "North Antelope Rochelle"
+    },
+    {
+      "id": "3bee5275-7b5c-81a7-a491-fdf0e6f9783f",
+      "url": "https://app.notion.com/p/Mir-3bee52757b5c81a7a491fdf0e6f9783f",
+      "lastEdited": "2026-08-16T06:14:00.000Z",
+      "Opened": 1957,
+      "Region": "Sakha (Yakutia)",
+      "Status": "Closed",
+      "Commodities": [
+        "2e821e11-1691-4458-bb40-88ae8a24d4e2"
+      ],
+      "Country": "Russia",
+      "Notes": "A 525 m deep, 1.2 km wide hole in the permafrost, so large the airspace above it was closed to helicopters; the underground mine that succeeded it flooded in 2017.",
+      "Type": "Open pit + underground",
+      "Latitude": 62.53,
+      "Longitude": 113.99,
+      "Name": "Mir"
+    },
+    {
+      "id": "3bee5275-7b5c-8120-86d2-d0a5b83b0ed6",
+      "url": "https://app.notion.com/p/Jwaneng-3bee52757b5c812086d2d0a5b83b0ed6",
+      "lastEdited": "2026-08-16T06:14:00.000Z",
+      "Opened": 1982,
+      "Region": "Southern District",
+      "Status": "Active",
+      "Commodities": [
+        "2e821e11-1691-4458-bb40-88ae8a24d4e2"
+      ],
+      "Country": "Botswana",
+      "Notes": "The richest diamond mine in the world by value; three kimberlite pipes under the Kalahari sand, and the reason Botswana is not poor.",
+      "Type": "Open pit",
+      "Latitude": -24.52,
+      "Longitude": 24.7,
+      "Name": "Jwaneng"
+    },
+    {
+      "id": "3bee5275-7b5c-810a-ab20-c5f16ab16238",
+      "url": "https://app.notion.com/p/Balama-3bee52757b5c810aab20c5f16ab16238",
+      "lastEdited": "2026-08-16T06:13:00.000Z",
+      "Opened": 2017,
+      "Region": "Cabo Delgado",
+      "Status": "Active",
+      "Commodities": [
+        "2e821e11-1691-4458-bb40-88ae8a24d4e2"
+      ],
+      "Country": "Mozambique",
+      "Notes": "The largest graphite mine outside China, built for the battery-anode market.",
+      "Type": "Open pit",
+      "Latitude": -13.3,
+      "Longitude": 38.66,
+      "Name": "Balama"
+    },
+    {
+      "id": "3bee5275-7b5c-812c-a4b1-d601dd8e2499",
+      "url": "https://app.notion.com/p/Las-Cuevas-3bee52757b5c812ca4b1d601dd8e2499",
+      "lastEdited": "2026-08-16T06:13:00.000Z",
+      "Opened": 1958,
+      "Region": "San Luis Potosí",
+      "Status": "Active",
+      "Commodities": [
+        "234a06ad-5489-4e20-8673-2c7a515952a4"
+      ],
+      "Country": "Mexico",
+      "Notes": "The largest fluorspar mine in the world; Mexico and China supply most of the fluorine that becomes hydrofluoric acid.",
+      "Type": "Underground",
+      "Latitude": 22,
+      "Longitude": -100.6,
+      "Name": "Las Cuevas"
+    },
+    {
+      "id": "3bee5275-7b5c-8131-948e-f3a0eea5fcd9",
+      "url": "https://app.notion.com/p/K-rka-3bee52757b5c8131948ef3a0eea5fcd9",
+      "lastEdited": "2026-08-16T06:13:00.000Z",
+      "Opened": 1970,
+      "Region": "Eskişehir",
+      "Status": "Active",
+      "Commodities": [
+        "9a302c67-c5b0-47de-81c2-a58346c2b41a"
+      ],
+      "Country": "Turkey",
+      "Notes": "Turkey holds around 70 % of the world's boron reserves, and the state producer Eti Maden works them from Kırka and its neighbours.",
+      "Type": "Open pit",
+      "Latitude": 39.28,
+      "Longitude": 30.53,
+      "Name": "Kırka"
+    },
+    {
+      "id": "3bee5275-7b5c-81ee-bd64-de477b8c5efc",
+      "url": "https://app.notion.com/p/Boron-3bee52757b5c81eebd64de477b8c5efc",
+      "lastEdited": "2026-08-16T06:13:00.000Z",
+      "Opened": 1927,
+      "Region": "California",
+      "Status": "Active",
+      "Commodities": [
+        "9a302c67-c5b0-47de-81c2-a58346c2b41a"
+      ],
+      "Country": "United States",
+      "Notes": "The largest borate mine, supplying about 30 % of the world's refined borates from a Mojave desert pit; the twenty-mule teams hauled from near here.",
+      "Type": "Open pit",
+      "Latitude": 35.03,
+      "Longitude": -117.68,
+      "Name": "Boron"
+    },
+    {
+      "id": "3bee5275-7b5c-81dd-bc54-fb731237f029",
+      "url": "https://app.notion.com/p/Khouribga-3bee52757b5c81ddbc54fb731237f029",
+      "lastEdited": "2026-08-16T06:13:00.000Z",
+      "Opened": 1921,
+      "Region": "Béni Mellal-Khénifra",
+      "Status": "Active",
+      "Commodities": [
+        "f85b64bb-5e55-44bf-91c7-99a09f2c5b6f"
+      ],
+      "Country": "Morocco",
+      "Notes": "The largest phosphate mine on Earth; Morocco and Western Sahara hold around 70 % of the world's phosphate rock, and the ore travels 187 km to the coast as slurry in a pipeline.",
+      "Type": "Open pit",
+      "Latitude": 32.88,
+      "Longitude": -6.9,
+      "Name": "Khouribga"
+    },
+    {
+      "id": "3bee5275-7b5c-8187-8388-fa6d9d177d23",
+      "url": "https://app.notion.com/p/Esterhazy-3bee52757b5c81878388fa6d9d177d23",
+      "lastEdited": "2026-08-16T06:13:00.000Z",
+      "Opened": 1962,
+      "Region": "Saskatchewan",
+      "Status": "Active",
+      "Commodities": [
+        "bcc443c1-575c-4170-bc07-9c95249fbdc6"
+      ],
+      "Country": "Canada",
+      "Notes": "The largest potash mine in the world, a kilometre down in a Devonian salt bed; Saskatchewan alone supplies about a third of world potash.",
+      "Type": "Underground",
+      "Latitude": 50.65,
+      "Longitude": -102.08,
+      "Name": "Esterhazy"
+    },
+    {
+      "id": "3bee5275-7b5c-81a0-8320-ce5f2639933d",
+      "url": "https://app.notion.com/p/Dead-Sea-Works-3bee52757b5c81a08320ce5f2639933d",
+      "lastEdited": "2026-08-16T06:13:00.000Z",
+      "Opened": 1934,
+      "Region": "Southern District",
+      "Status": "Active",
+      "Commodities": [
+        "11794e99-72a6-4997-ad4e-dfc9ddb895a5",
+        "bcc44249-6656-45db-8986-e17faf75e4d7",
+        "bcc443c1-575c-4170-bc07-9c95249fbdc6"
+      ],
+      "Country": "Israel",
+      "Notes": "Solar evaporation of the saltiest large water body on Earth for potash, the largest bromine output anywhere, and magnesium metal — while the sea itself drops a metre a year.",
+      "Type": "Brine",
+      "Latitude": 31.03,
+      "Longitude": 35.37,
+      "Name": "Dead Sea Works"
+    },
+    {
+      "id": "3bee5275-7b5c-8106-96f1-eec99cd209f3",
+      "url": "https://app.notion.com/p/Goderich-3bee52757b5c810696f1eec99cd209f3",
+      "lastEdited": "2026-08-16T06:13:00.000Z",
+      "Opened": 1959,
+      "Region": "Ontario",
+      "Status": "Active",
+      "Commodities": [
+        "3eab666d-7f4f-41e3-a816-317f17ca1000",
+        "7ccbdf95-28ff-4620-8198-04a5a9adc687"
+      ],
+      "Country": "Canada",
+      "Notes": "The largest underground salt mine in the world, in a 100 m thick bed 500 m beneath Lake Huron; road salt for the whole Great Lakes region.",
+      "Type": "Underground",
+      "Latitude": 43.74,
+      "Longitude": -81.72,
+      "Name": "Goderich"
+    },
+    {
+      "id": "3bee5275-7b5c-818b-961d-f897af1c78aa",
+      "url": "https://app.notion.com/p/Panzhihua-3bee52757b5c818b961df897af1c78aa",
+      "lastEdited": "2026-08-16T06:13:00.000Z",
+      "Opened": 1970,
+      "Region": "Sichuan",
+      "Status": "Active",
+      "Commodities": [
+        "82688dfa-4810-4954-b0ce-bd530b9b56e2",
+        "8c913696-4e3d-4199-9373-22bd7848527f",
+        "ddc5e592-a135-4804-859e-3b04d8354f5d"
+      ],
+      "Country": "China",
+      "Notes": "Vanadium-bearing titanomagnetite that makes China the largest vanadium producer, with the iron and titanium as co-products.",
+      "Type": "Open pit",
+      "Latitude": 26.58,
+      "Longitude": 101.72,
+      "Name": "Panzhihua"
+    },
+    {
+      "id": "3bee5275-7b5c-8126-9e3c-ff170f3993ca",
+      "url": "https://app.notion.com/p/Almad-n-3bee52757b5c81269e3cff170f3993ca",
+      "lastEdited": "2026-08-16T06:13:00.000Z",
+      "Opened": null,
+      "Region": "Ciudad Real",
+      "Status": "Closed",
+      "Commodities": [
+        "7c9371f0-231a-4801-b6ad-d7d3bf2e0a14"
+      ],
+      "Country": "Spain",
+      "Notes": "Mercury mined since Roman times — a third of all the mercury humanity has ever produced — closed in 2002 and now a World Heritage site.",
+      "Type": "Underground",
+      "Latitude": 38.78,
+      "Longitude": -4.83,
+      "Name": "Almadén"
+    },
+    {
+      "id": "3bee5275-7b5c-81d1-a174-c43eb8675761",
+      "url": "https://app.notion.com/p/Xikuangshan-3bee52757b5c81d1a174c43eb8675761",
+      "lastEdited": "2026-08-16T06:13:00.000Z",
+      "Opened": 1897,
+      "Region": "Hunan",
+      "Status": "Active",
+      "Commodities": [
+        "ea02d98e-3ddd-4deb-acdd-973a156d297c"
+      ],
+      "Country": "China",
+      "Notes": "The 'world antimony capital': for much of the twentieth century a quarter of all antimony came from this one district.",
+      "Type": "Underground",
+      "Latitude": 27.75,
+      "Longitude": 111.48,
+      "Name": "Xikuangshan"
+    },
+    {
+      "id": "3bee5275-7b5c-8191-a78a-e6911ab5055e",
+      "url": "https://app.notion.com/p/Spor-Mountain-3bee52757b5c8191a78ae6911ab5055e",
+      "lastEdited": "2026-08-16T06:13:00.000Z",
+      "Opened": 1969,
+      "Region": "Utah",
+      "Status": "Active",
+      "Commodities": [
+        "b6d691e6-8f2a-44b8-8991-b0a45663c269"
+      ],
+      "Country": "United States",
+      "Notes": "The source of roughly two thirds of the world's beryllium, from bertrandite in volcanic tuff.",
+      "Type": "Open pit",
+      "Latitude": 39.72,
+      "Longitude": -113.2,
+      "Name": "Spor Mountain"
+    },
+    {
+      "id": "3bee5275-7b5c-813c-b5ac-daff3fb5dfe1",
+      "url": "https://app.notion.com/p/Arax-CBMM-3bee52757b5c813cb5acdaff3fb5dfe1",
+      "lastEdited": "2026-08-16T06:13:00.000Z",
+      "Opened": 1961,
+      "Region": "Minas Gerais",
+      "Status": "Active",
+      "Commodities": [
+        "c86f7caf-56a9-4c16-a9b2-4884b3709c83"
+      ],
+      "Country": "Brazil",
+      "Notes": "One deposit, one company, around 80 % of the world's niobium — the largest single-source dominance of any metal.",
+      "Type": "Open pit",
+      "Latitude": -19.65,
+      "Longitude": -46.94,
+      "Name": "Araxá (CBMM)"
+    },
+    {
+      "id": "3bee5275-7b5c-8149-aa34-f898527be676",
+      "url": "https://app.notion.com/p/Climax-3bee52757b5c8149aa34f898527be676",
+      "lastEdited": "2026-08-16T06:13:00.000Z",
+      "Opened": 1918,
+      "Region": "Colorado",
+      "Status": "Active",
+      "Commodities": [
+        "06ada303-c443-4523-bc0f-c3aa5061d3f1"
+      ],
+      "Country": "United States",
+      "Notes": "Once supplied most of the world's molybdenum from a single mountain at 3,400 m; closed in the 1990s and reopened in 2012.",
+      "Type": "Open pit",
+      "Latitude": 39.37,
+      "Longitude": -106.19,
+      "Name": "Climax"
+    },
+    {
+      "id": "3bee5275-7b5c-8138-9286-f5323103ad82",
+      "url": "https://app.notion.com/p/Shizhuyuan-3bee52757b5c81389286f5323103ad82",
+      "lastEdited": "2026-08-16T06:13:00.000Z",
+      "Opened": 1980,
+      "Region": "Hunan",
+      "Status": "Active",
+      "Commodities": [
+        "0082f958-39de-40e7-8290-c08190c85c22",
+        "06ada303-c443-4523-bc0f-c3aa5061d3f1",
+        "b2fccfd9-5205-4010-9c0c-d2419e9bd645",
+        "f7098b29-1530-4894-ae72-7450dad8212f"
+      ],
+      "Country": "China",
+      "Notes": "A polymetallic skarn in the Nanling range — the tungsten province that gives China around 80 % of world supply.",
+      "Type": "Underground",
+      "Latitude": 25.72,
+      "Longitude": 113.1,
+      "Name": "Shizhuyuan"
+    },
+    {
+      "id": "3bee5275-7b5c-816e-b987-df42e30a7129",
+      "url": "https://app.notion.com/p/San-Rafael-3bee52757b5c816eb987df42e30a7129",
+      "lastEdited": "2026-08-16T06:13:00.000Z",
+      "Opened": 1969,
+      "Region": "Puno",
+      "Status": "Active",
+      "Commodities": [
+        "f7098b29-1530-4894-ae72-7450dad8212f"
+      ],
+      "Country": "Peru",
+      "Notes": "The largest tin mine in the Americas, at 4,500 m in the Andes.",
+      "Type": "Underground",
+      "Latitude": -14.24,
+      "Longitude": -70.3,
+      "Name": "San Rafael"
+    },
+    {
+      "id": "3bee5275-7b5c-8199-97bd-ddee8f7631f2",
+      "url": "https://app.notion.com/p/Bangka-Island-3bee52757b5c819997bdddee8f7631f2",
+      "lastEdited": "2026-08-16T06:13:00.000Z",
+      "Opened": 1711,
+      "Region": "Bangka Belitung",
+      "Status": "Active",
+      "Commodities": [
+        "f7098b29-1530-4894-ae72-7450dad8212f"
+      ],
+      "Country": "Indonesia",
+      "Notes": "Tin dredged from rivers, beaches and the seabed for three centuries; Indonesia is the largest exporter, much of it from small and unlicensed pits.",
+      "Type": "Placer",
+      "Latitude": -2.13,
+      "Longitude": 106.11,
+      "Name": "Bangka Island"
+    },
+    {
+      "id": "3bee5275-7b5c-8142-990d-cfb611af4b00",
+      "url": "https://app.notion.com/p/Ganzhou-ionic-clays-3bee52757b5c8142990dcfb611af4b00",
+      "lastEdited": "2026-08-16T06:13:00.000Z",
+      "Opened": 1970,
+      "Region": "Jiangxi",
+      "Status": "Active",
+      "Commodities": [
+        "3d5b1ef0-e239-4b7c-8721-44d1602c0875",
+        "91a31807-166a-4a1d-93cd-513b023cc731",
+        "9ea898c7-67ec-425e-b938-2ce9bfd57670"
+      ],
+      "Country": "China",
+      "Notes": "Heavy rare earths adsorbed on ordinary clay, leached in place with ammonium sulfate — nearly all the world's dysprosium and terbium, at severe cost to the hillsides.",
+      "Type": "In-situ leach",
+      "Latitude": 24.9,
+      "Longitude": 114.8,
+      "Name": "Ganzhou ionic clays"
+    },
+    {
+      "id": "3bee5275-7b5c-814a-878f-e6fa2817545d",
+      "url": "https://app.notion.com/p/Mount-Weld-3bee52757b5c814a878fe6fa2817545d",
+      "lastEdited": "2026-08-16T06:13:00.000Z",
+      "Opened": 2007,
+      "Region": "Western Australia",
+      "Status": "Active",
+      "Commodities": [
+        "29dd1a49-47e7-408e-99ef-e2895d39921f",
+        "545901e5-34d0-462e-8ec4-f82a5a40ec44",
+        "ea40e9a9-cfe6-42c5-a3d1-1bc2d95f772f"
+      ],
+      "Country": "Australia",
+      "Notes": "A rare-earth laterite over an ancient carbonatite; the largest rare-earth producer outside China, with processing in Malaysia.",
+      "Type": "Open pit",
+      "Latitude": -28.86,
+      "Longitude": 122.55,
+      "Name": "Mount Weld"
+    },
+    {
+      "id": "3bee5275-7b5c-816f-8c7b-f5dbb2a14cec",
+      "url": "https://app.notion.com/p/Mountain-Pass-3bee52757b5c816f8c7bf5dbb2a14cec",
+      "lastEdited": "2026-08-16T06:13:00.000Z",
+      "Opened": 1952,
+      "Region": "California",
+      "Status": "Active",
+      "Commodities": [
+        "29dd1a49-47e7-408e-99ef-e2895d39921f",
+        "545901e5-34d0-462e-8ec4-f82a5a40ec44",
+        "ea40e9a9-cfe6-42c5-a3d1-1bc2d95f772f"
+      ],
+      "Country": "United States",
+      "Notes": "Dominated world rare-earth supply from the 1960s to the 1990s, closed in 2002 after a spill and Chinese competition, and reopened in 2017 as the only rare-earth mine in the Americas.",
+      "Type": "Open pit",
+      "Latitude": 35.48,
+      "Longitude": -115.53,
+      "Name": "Mountain Pass"
+    },
+    {
+      "id": "3bee5275-7b5c-814e-918d-ca35cfdd4047",
+      "url": "https://app.notion.com/p/Bayan-Obo-3bee52757b5c814e918dca35cfdd4047",
+      "lastEdited": "2026-08-16T06:13:00.000Z",
+      "Opened": 1957,
+      "Region": "Inner Mongolia",
+      "Status": "Active",
+      "Commodities": [
+        "29dd1a49-47e7-408e-99ef-e2895d39921f",
+        "545901e5-34d0-462e-8ec4-f82a5a40ec44",
+        "82688dfa-4810-4954-b0ce-bd530b9b56e2",
+        "c86f7caf-56a9-4c16-a9b2-4884b3709c83",
+        "ea40e9a9-cfe6-42c5-a3d1-1bc2d95f772f"
+      ],
+      "Country": "China",
+      "Notes": "The largest rare-earth deposit on Earth, supplying about half of the world's rare earths — opened as an iron mine, with the rare earths as an afterthought; the tailings lake at Baotou is one of the most contaminated places in China.",
+      "Type": "Open pit",
+      "Latitude": 41.77,
+      "Longitude": 109.97,
+      "Name": "Bayan Obo"
+    },
+    {
+      "id": "3bee5275-7b5c-8134-a42b-d681a0525782",
+      "url": "https://app.notion.com/p/Groote-Eylandt-3bee52757b5c8134a42bd681a0525782",
+      "lastEdited": "2026-08-16T06:13:00.000Z",
+      "Opened": 1966,
+      "Region": "Northern Territory",
+      "Status": "Active",
+      "Commodities": [
+        "854ebd58-91a3-4e3e-8d2b-ebbed4e02a42"
+      ],
+      "Country": "Australia",
+      "Notes": "The largest manganese ore mine in the world, on Anindilyakwa land in the Gulf of Carpentaria.",
+      "Type": "Open pit",
+      "Latitude": -13.97,
+      "Longitude": 136.45,
+      "Name": "Groote Eylandt"
+    },
+    {
+      "id": "3bee5275-7b5c-8173-b528-d27bea485edc",
+      "url": "https://app.notion.com/p/Kalahari-Manganese-Field-3bee52757b5c8173b528d27bea485edc",
+      "lastEdited": "2026-08-16T06:13:00.000Z",
+      "Opened": 1964,
+      "Region": "Northern Cape",
+      "Status": "Active",
+      "Commodities": [
+        "854ebd58-91a3-4e3e-8d2b-ebbed4e02a42"
+      ],
+      "Country": "South Africa",
+      "Notes": "Around 80 % of the world's known land-based manganese lies in this one field near Hotazel.",
+      "Type": "Open pit + underground",
+      "Latitude": -27.15,
+      "Longitude": 22.95,
+      "Name": "Kalahari Manganese Field"
+    },
+    {
+      "id": "3bee5275-7b5c-8164-a9aa-c919a3a49741",
+      "url": "https://app.notion.com/p/Kemi-3bee52757b5c8164a9aac919a3a49741",
+      "lastEdited": "2026-08-16T06:13:00.000Z",
+      "Opened": 1968,
+      "Region": "Lapland",
+      "Status": "Active",
+      "Commodities": [
+        "afd4a91e-f4d2-496d-8a60-335e32f4a374"
+      ],
+      "Country": "Finland",
+      "Notes": "The only chromium mine in the European Union, feeding the Tornio stainless-steel works next door.",
+      "Type": "Open pit + underground",
+      "Latitude": 65.78,
+      "Longitude": 24.53,
+      "Name": "Kemi"
+    },
+    {
+      "id": "3bee5275-7b5c-81dd-84f2-d7b9910f7deb",
+      "url": "https://app.notion.com/p/Stillwater-3bee52757b5c81dd84f2d7b9910f7deb",
+      "lastEdited": "2026-08-16T06:13:00.000Z",
+      "Opened": 1986,
+      "Region": "Montana",
+      "Status": "Active",
+      "Commodities": [
+        "a9130bca-ba76-4682-ac49-cc10bb1b7a5f",
+        "b96dc6a7-c3dc-4fff-a370-8990b649e01f"
+      ],
+      "Country": "United States",
+      "Notes": "The only primary platinum-group mine in the United States, on the palladium-rich J-M reef.",
+      "Type": "Underground",
+      "Latitude": 45.39,
+      "Longitude": -109.88,
+      "Name": "Stillwater"
+    },
+    {
+      "id": "3bee5275-7b5c-817d-a0f2-ca413f71e1e8",
+      "url": "https://app.notion.com/p/Mogalakwena-3bee52757b5c817da0f2ca413f71e1e8",
+      "lastEdited": "2026-08-16T06:13:00.000Z",
+      "Opened": 1993,
+      "Region": "Limpopo",
+      "Status": "Active",
+      "Commodities": [
+        "68542bc4-f631-46b7-99b9-75931965e407",
+        "a2c287a0-d039-486f-ba2f-5ae1cddbf7cc",
+        "a9130bca-ba76-4682-ac49-cc10bb1b7a5f",
+        "aa699cd4-0314-4894-a386-42a35242af6f",
+        "b96dc6a7-c3dc-4fff-a370-8990b649e01f"
+      ],
+      "Country": "South Africa",
+      "Notes": "The largest open-pit platinum mine, on the Platreef, where the ore is thick enough to be dug from surface rather than followed underground.",
+      "Type": "Open pit",
+      "Latitude": -23.98,
+      "Longitude": 28.92,
+      "Name": "Mogalakwena"
+    },
+    {
+      "id": "3bee5275-7b5c-8122-a78b-fcd0cfe27d8d",
+      "url": "https://app.notion.com/p/Impala-Rustenburg-3bee52757b5c8122a78bfcd0cfe27d8d",
+      "lastEdited": "2026-08-16T06:13:00.000Z",
+      "Opened": 1969,
+      "Region": "North West",
+      "Status": "Active",
+      "Commodities": [
+        "a9130bca-ba76-4682-ac49-cc10bb1b7a5f",
+        "aa699cd4-0314-4894-a386-42a35242af6f",
+        "afd4a91e-f4d2-496d-8a60-335e32f4a374",
+        "b96dc6a7-c3dc-4fff-a370-8990b649e01f"
+      ],
+      "Country": "South Africa",
+      "Notes": "Narrow reefs of the Bushveld Complex followed for kilometres underground; the Bushveld holds around three quarters of the world's platinum-group metals.",
+      "Type": "Underground",
+      "Latitude": -25.62,
+      "Longitude": 27.2,
+      "Name": "Impala Rustenburg"
+    },
+    {
+      "id": "3bee5275-7b5c-81c7-946e-cccda7b7b5a7",
+      "url": "https://app.notion.com/p/Tellnes-3bee52757b5c81c7946ecccda7b7b5a7",
+      "lastEdited": "2026-08-16T06:13:00.000Z",
+      "Opened": 1960,
+      "Region": "Rogaland",
+      "Status": "Active",
+      "Commodities": [
+        "ddc5e592-a135-4804-859e-3b04d8354f5d"
+      ],
+      "Country": "Norway",
+      "Notes": "The largest hard-rock ilmenite deposit in the world, and Europe's main titanium source.",
+      "Type": "Open pit",
+      "Latitude": 58.33,
+      "Longitude": 6.42,
+      "Name": "Tellnes"
+    },
+    {
+      "id": "3bee5275-7b5c-8162-a7e0-ea61948a2e2f",
+      "url": "https://app.notion.com/p/Richards-Bay-Minerals-3bee52757b5c8162a7e0ea61948a2e2f",
+      "lastEdited": "2026-08-16T06:13:00.000Z",
+      "Opened": 1977,
+      "Region": "KwaZulu-Natal",
+      "Status": "Active",
+      "Commodities": [
+        "82688dfa-4810-4954-b0ce-bd530b9b56e2",
+        "a2b5a7bd-a076-4d34-9c63-d084e2199816",
+        "ddc5e592-a135-4804-859e-3b04d8354f5d"
+      ],
+      "Country": "South Africa",
+      "Notes": "Coastal dunes dredged in a moving pond, the heavy minerals spiralled out, and the dunes rebuilt and replanted behind; ilmenite is smelted on site to titania slag.",
+      "Type": "Placer",
+      "Latitude": -28.7,
+      "Longitude": 32.15,
+      "Name": "Richards Bay Minerals"
+    },
+    {
+      "id": "3bee5275-7b5c-81a7-b57d-eb04b5f0dc99",
+      "url": "https://app.notion.com/p/Ranger-3bee52757b5c81a7b57deb04b5f0dc99",
+      "lastEdited": "2026-08-16T06:13:00.000Z",
+      "Opened": 1980,
+      "Region": "Northern Territory",
+      "Status": "Closed",
+      "Commodities": [
+        "87459a14-155f-47c2-b8b1-b63015fa4d30"
+      ],
+      "Country": "Australia",
+      "Notes": "Surrounded by, and excised from, Kakadu National Park on Mirarr land; closed in 2021 with a rehabilitation bill of over a billion dollars.",
+      "Type": "Open pit",
+      "Latitude": -12.68,
+      "Longitude": 132.92,
+      "Name": "Ranger"
+    },
+    {
+      "id": "3bee5275-7b5c-817a-b74f-eeb982035fd8",
+      "url": "https://app.notion.com/p/R-ssing-3bee52757b5c817ab74feeb982035fd8",
+      "lastEdited": "2026-08-16T06:13:00.000Z",
+      "Opened": 1976,
+      "Region": "Erongo Region",
+      "Status": "Active",
+      "Commodities": [
+        "87459a14-155f-47c2-b8b1-b63015fa4d30"
+      ],
+      "Country": "Namibia",
+      "Notes": "The longest-running open-pit uranium mine, on very low-grade ore around 0.03 % — economic only at enormous scale.",
+      "Type": "Open pit",
+      "Latitude": -22.48,
+      "Longitude": 15.03,
+      "Name": "Rössing"
+    },
+    {
+      "id": "3bee5275-7b5c-8169-b370-f05654e9f931",
+      "url": "https://app.notion.com/p/Inkai-3bee52757b5c8169b370f05654e9f931",
+      "lastEdited": "2026-08-16T06:13:00.000Z",
+      "Opened": 2009,
+      "Region": "Turkistan Region",
+      "Status": "Active",
+      "Commodities": [
+        "87459a14-155f-47c2-b8b1-b63015fa4d30"
+      ],
+      "Country": "Kazakhstan",
+      "Notes": "Uranium dissolved out of a sandstone aquifer through wellfields with no mine at all; Kazakhstan produces about 40 % of the world's uranium this way.",
+      "Type": "In-situ leach",
+      "Latitude": 45,
+      "Longitude": 67.7,
+      "Name": "Inkai"
+    },
+    {
+      "id": "3bee5275-7b5c-8174-9c2c-f5100d350a10",
+      "url": "https://app.notion.com/p/McArthur-River-3bee52757b5c81749c2cf5100d350a10",
+      "lastEdited": "2026-08-16T06:13:00.000Z",
+      "Opened": 1999,
+      "Region": "Saskatchewan",
+      "Status": "Active",
+      "Commodities": [
+        "87459a14-155f-47c2-b8b1-b63015fa4d30"
+      ],
+      "Country": "Canada",
+      "Notes": "The largest high-grade uranium mine in the world, in the Athabasca Basin, mined by raise-boring through artificially frozen rock.",
+      "Type": "Underground",
+      "Latitude": 57.76,
+      "Longitude": -105.05,
+      "Name": "McArthur River"
+    },
+    {
+      "id": "3bee5275-7b5c-8196-8550-f8fbc7679bfe",
+      "url": "https://app.notion.com/p/Cigar-Lake-3bee52757b5c81968550f8fbc7679bfe",
+      "lastEdited": "2026-08-16T06:13:00.000Z",
+      "Opened": 2014,
+      "Region": "Saskatchewan",
+      "Status": "Active",
+      "Commodities": [
+        "87459a14-155f-47c2-b8b1-b63015fa4d30"
+      ],
+      "Country": "Canada",
+      "Notes": "The highest-grade uranium orebody ever mined, around 15 % U₃O₈ — a hundred times a typical mine — so rich it is cut by remote jet-boring beneath frozen ground and never touched by hand.",
+      "Type": "Underground",
+      "Latitude": 58.07,
+      "Longitude": -104.53,
+      "Name": "Cigar Lake"
+    },
+    {
+      "id": "3bee5275-7b5c-8145-887e-e1ba9e82cd7b",
+      "url": "https://app.notion.com/p/Pilgangoora-3bee52757b5c8145887ee1ba9e82cd7b",
+      "lastEdited": "2026-08-16T06:13:00.000Z",
+      "Opened": 2018,
+      "Region": "Western Australia",
+      "Status": "Active",
+      "Commodities": [
+        "15f2d64f-57f2-4b03-9de5-c3fa0823b6d3",
+        "950fb097-88e3-4470-b9ac-a963ae9a50e8"
+      ],
+      "Country": "Australia",
+      "Notes": "One of the large Pilbara spodumene mines that turned Western Australia into the world's main source of hard-rock lithium within a decade.",
+      "Type": "Open pit",
+      "Latitude": -21.03,
+      "Longitude": 118.9,
+      "Name": "Pilgangoora"
+    },
+    {
+      "id": "3bee5275-7b5c-8161-94ff-c9a7488b256c",
+      "url": "https://app.notion.com/p/Salar-de-Uyuni-3bee52757b5c816194ffc9a7488b256c",
+      "lastEdited": "2026-08-16T06:13:00.000Z",
+      "Opened": 2023,
+      "Region": "Potosí",
+      "Status": "Development",
+      "Commodities": [
+        "15f2d64f-57f2-4b03-9de5-c3fa0823b6d3"
+      ],
+      "Country": "Bolivia",
+      "Notes": "The largest lithium resource in the world under the largest salt flat, and one of the hardest to work: high magnesium, a rainy season, and a state monopoly that has produced little so far.",
+      "Type": "Brine",
+      "Latitude": -20.3,
+      "Longitude": -67.5,
+      "Name": "Salar de Uyuni"
+    },
+    {
+      "id": "3bee5275-7b5c-812d-b6f6-c02538f7ea08",
+      "url": "https://app.notion.com/p/Salar-del-Hombre-Muerto-3bee52757b5c812db6f6c02538f7ea08",
+      "lastEdited": "2026-08-16T06:13:00.000Z",
+      "Opened": 1997,
+      "Region": "Catamarca",
+      "Status": "Active",
+      "Commodities": [
+        "15f2d64f-57f2-4b03-9de5-c3fa0823b6d3"
+      ],
+      "Country": "Argentina",
+      "Notes": "Argentina's first lithium brine operation, at 4,000 m on the Puna.",
+      "Type": "Brine",
+      "Latitude": -25.4,
+      "Longitude": -67.05,
+      "Name": "Salar del Hombre Muerto"
+    },
+    {
+      "id": "3bee5275-7b5c-8135-8833-c924537f4c7f",
+      "url": "https://app.notion.com/p/Salar-de-Atacama-3bee52757b5c81358833c924537f4c7f",
+      "lastEdited": "2026-08-16T06:13:00.000Z",
+      "Opened": 1984,
+      "Region": "Antofagasta Region",
+      "Status": "Active",
+      "Commodities": [
+        "15f2d64f-57f2-4b03-9de5-c3fa0823b6d3",
+        "bcc443c1-575c-4170-bc07-9c95249fbdc6"
+      ],
+      "Country": "Chile",
+      "Notes": "The richest lithium brine known, pumped from beneath the salt flat into evaporation ponds that cover 40 km²; the water it removes from the driest desert on Earth is the centre of the argument about it.",
+      "Type": "Brine",
+      "Latitude": -23.5,
+      "Longitude": -68.3,
+      "Name": "Salar de Atacama"
+    },
+    {
+      "id": "3bee5275-7b5c-8166-b905-d2b886983458",
+      "url": "https://app.notion.com/p/Greenbushes-3bee52757b5c8166b905d2b886983458",
+      "lastEdited": "2026-08-16T06:13:00.000Z",
+      "Opened": 1888,
+      "Region": "Western Australia",
+      "Status": "Active",
+      "Commodities": [
+        "15f2d64f-57f2-4b03-9de5-c3fa0823b6d3",
+        "950fb097-88e3-4470-b9ac-a963ae9a50e8",
+        "f7098b29-1530-4894-ae72-7450dad8212f"
+      ],
+      "Country": "Australia",
+      "Notes": "The largest hard-rock lithium mine in the world, and the highest grade at around 2 % Li₂O; a tin mine for its first century.",
+      "Type": "Open pit",
+      "Latitude": -33.87,
+      "Longitude": 116.06,
+      "Name": "Greenbushes"
+    },
+    {
+      "id": "3bee5275-7b5c-8182-af80-e3cb14f04f3f",
+      "url": "https://app.notion.com/p/Voisey-s-Bay-3bee52757b5c8182af80e3cb14f04f3f",
+      "lastEdited": "2026-08-16T06:13:00.000Z",
+      "Opened": 2005,
+      "Region": "Newfoundland and Labrador",
+      "Status": "Active",
+      "Commodities": [
+        "4db04b1f-6f43-422a-89ad-7cc16ad94e7d",
+        "68542bc4-f631-46b7-99b9-75931965e407",
+        "a2c287a0-d039-486f-ba2f-5ae1cddbf7cc"
+      ],
+      "Country": "Canada",
+      "Notes": "A nickel-copper-cobalt sulfide found in 1993 by two prospectors looking for diamonds, on the Labrador coast.",
+      "Type": "Open pit + underground",
+      "Latitude": 56.33,
+      "Longitude": -62.1,
+      "Name": "Voisey's Bay"
+    },
+    {
+      "id": "3bee5275-7b5c-81c7-aeb0-c281b20393ad",
+      "url": "https://app.notion.com/p/Tenke-Fungurume-3bee52757b5c81c7aeb0c281b20393ad",
+      "lastEdited": "2026-08-16T06:13:00.000Z",
+      "Opened": 2009,
+      "Region": "Lualaba",
+      "Status": "Active",
+      "Commodities": [
+        "4db04b1f-6f43-422a-89ad-7cc16ad94e7d",
+        "68542bc4-f631-46b7-99b9-75931965e407"
+      ],
+      "Country": "DR Congo",
+      "Notes": "One of the largest copper-cobalt operations on the Copperbelt, now Chinese-owned like most of the belt's cobalt output.",
+      "Type": "Open pit",
+      "Latitude": -10.62,
+      "Longitude": 26.13,
+      "Name": "Tenke Fungurume"
+    },
+    {
+      "id": "3bee5275-7b5c-81a0-b9e7-d53ba9b76fee",
+      "url": "https://app.notion.com/p/Mutanda-3bee52757b5c81a0b9e7d53ba9b76fee",
+      "lastEdited": "2026-08-16T06:13:00.000Z",
+      "Opened": 2010,
+      "Region": "Lualaba",
+      "Status": "Active",
+      "Commodities": [
+        "4db04b1f-6f43-422a-89ad-7cc16ad94e7d",
+        "68542bc4-f631-46b7-99b9-75931965e407"
+      ],
+      "Country": "DR Congo",
+      "Notes": "The largest cobalt mine in the world; the Congolese Copperbelt supplies around 70 % of global cobalt as a co-product of copper.",
+      "Type": "Open pit",
+      "Latitude": -10.78,
+      "Longitude": 25.83,
+      "Name": "Mutanda"
+    },
+    {
+      "id": "3bee5275-7b5c-8192-acd7-c909142391fd",
+      "url": "https://app.notion.com/p/Sorowako-3bee52757b5c8192acd7c909142391fd",
+      "lastEdited": "2026-08-16T06:13:00.000Z",
+      "Opened": 1978,
+      "Region": "South Sulawesi",
+      "Status": "Active",
+      "Commodities": [
+        "a2c287a0-d039-486f-ba2f-5ae1cddbf7cc"
+      ],
+      "Country": "Indonesia",
+      "Notes": "Laterite nickel smelted to matte on site; Indonesia's laterites now supply about half the world's nickel, and Sorowako was where the industry started.",
+      "Type": "Open pit",
+      "Latitude": -2.53,
+      "Longitude": 121.36,
+      "Name": "Sorowako"
+    },
+    {
+      "id": "3bee5275-7b5c-8150-83f1-ddd9a13482a5",
+      "url": "https://app.notion.com/p/Sudbury-Basin-3bee52757b5c815083f1ddd9a13482a5",
+      "lastEdited": "2026-08-16T06:13:00.000Z",
+      "Opened": 1883,
+      "Region": "Ontario",
+      "Status": "Active",
+      "Commodities": [
+        "4db04b1f-6f43-422a-89ad-7cc16ad94e7d",
+        "68542bc4-f631-46b7-99b9-75931965e407",
+        "a2c287a0-d039-486f-ba2f-5ae1cddbf7cc",
+        "a9130bca-ba76-4682-ac49-cc10bb1b7a5f",
+        "b96dc6a7-c3dc-4fff-a370-8990b649e01f"
+      ],
+      "Country": "Canada",
+      "Notes": "Nickel-copper sulfides around the rim of a 1.85-billion-year-old meteorite impact crater; the Creighton mine reaches 2.4 km and hosts a neutrino observatory in a disused level.",
+      "Type": "Underground",
+      "Latitude": 46.47,
+      "Longitude": -81.2,
+      "Name": "Sudbury Basin"
+    },
+    {
+      "id": "3bee5275-7b5c-8192-a3ad-e6ccb1102b10",
+      "url": "https://app.notion.com/p/Broken-Hill-3bee52757b5c8192a3ade6ccb1102b10",
+      "lastEdited": "2026-08-16T06:13:00.000Z",
+      "Opened": 1885,
+      "Region": "New South Wales",
+      "Status": "Active",
+      "Commodities": [
+        "c7619cab-ce7e-40bc-9f59-dfb46860330b",
+        "f1cf69c8-f7ba-44ad-a533-7bea8a11300b",
+        "f756d62b-beb5-431c-a721-743de83c5326"
+      ],
+      "Country": "Australia",
+      "Notes": "The lead-zinc-silver lode that founded BHP — the 'Broken Hill Proprietary' — and shaped Australian mining law and unionism.",
+      "Type": "Underground",
+      "Latitude": -31.96,
+      "Longitude": 141.47,
+      "Name": "Broken Hill"
+    },
+    {
+      "id": "3bee5275-7b5c-81f5-81a3-dfd961fd3a84",
+      "url": "https://app.notion.com/p/Mount-Isa-3bee52757b5c81f581a3dfd961fd3a84",
+      "lastEdited": "2026-08-16T06:13:00.000Z",
+      "Opened": 1931,
+      "Region": "Queensland",
+      "Status": "Active",
+      "Commodities": [
+        "68542bc4-f631-46b7-99b9-75931965e407",
+        "c7619cab-ce7e-40bc-9f59-dfb46860330b",
+        "f1cf69c8-f7ba-44ad-a533-7bea8a11300b",
+        "f756d62b-beb5-431c-a721-743de83c5326"
+      ],
+      "Country": "Australia",
+      "Notes": "A copper and lead-zinc-silver district under one town, mined for ninety years; the copper side is closing.",
+      "Type": "Underground",
+      "Latitude": -20.72,
+      "Longitude": 139.48,
+      "Name": "Mount Isa"
+    },
+    {
+      "id": "3bee5275-7b5c-815b-b10f-e738a326858c",
+      "url": "https://app.notion.com/p/Rampura-Agucha-3bee52757b5c815bb10fe738a326858c",
+      "lastEdited": "2026-08-16T06:13:00.000Z",
+      "Opened": 1991,
+      "Region": "Rajasthan",
+      "Status": "Active",
+      "Commodities": [
+        "c7619cab-ce7e-40bc-9f59-dfb46860330b",
+        "f1cf69c8-f7ba-44ad-a533-7bea8a11300b",
+        "f756d62b-beb5-431c-a721-743de83c5326"
+      ],
+      "Country": "India",
+      "Notes": "One of the largest and highest-grade zinc mines, around 13 % zinc, and the core of India's zinc industry.",
+      "Type": "Open pit + underground",
+      "Latitude": 25.83,
+      "Longitude": 74.73,
+      "Name": "Rampura Agucha"
+    },
+    {
+      "id": "3bee5275-7b5c-81fa-a7e2-d89a26ed13ce",
+      "url": "https://app.notion.com/p/Red-Dog-3bee52757b5c81faa7e2d89a26ed13ce",
+      "lastEdited": "2026-08-16T06:13:00.000Z",
+      "Opened": 1989,
+      "Region": "Alaska",
+      "Status": "Active",
+      "Commodities": [
+        "c7619cab-ce7e-40bc-9f59-dfb46860330b",
+        "f1cf69c8-f7ba-44ad-a533-7bea8a11300b",
+        "f756d62b-beb5-431c-a721-743de83c5326"
+      ],
+      "Country": "United States",
+      "Notes": "The largest zinc mine in the world, above the Arctic Circle on Iñupiat land; concentrate is trucked to a port that ships only in the ice-free hundred days of summer.",
+      "Type": "Open pit",
+      "Latitude": 68.07,
+      "Longitude": -162.87,
+      "Name": "Red Dog"
+    },
+    {
+      "id": "3bee5275-7b5c-8128-95c6-eb8988b57ae3",
+      "url": "https://app.notion.com/p/Cerro-Rico-de-Potos-3bee52757b5c812895c6eb8988b57ae3",
+      "lastEdited": "2026-08-16T06:13:00.000Z",
+      "Opened": 1545,
+      "Region": "Potosí",
+      "Status": "Active",
+      "Commodities": [
+        "c7619cab-ce7e-40bc-9f59-dfb46860330b",
+        "f1cf69c8-f7ba-44ad-a533-7bea8a11300b",
+        "f7098b29-1530-4894-ae72-7450dad8212f"
+      ],
+      "Country": "Bolivia",
+      "Notes": "The mountain that bankrolled the Spanish empire, still worked by cooperatives; so riddled with galleries that the summit is sinking.",
+      "Type": "Underground",
+      "Latitude": -19.62,
+      "Longitude": -65.75,
+      "Name": "Cerro Rico de Potosí"
+    },
+    {
+      "id": "3bee5275-7b5c-81f2-b39e-d6dcb0ba70a1",
+      "url": "https://app.notion.com/p/Cannington-3bee52757b5c81f2b39ed6dcb0ba70a1",
+      "lastEdited": "2026-08-16T06:13:00.000Z",
+      "Opened": 1997,
+      "Region": "Queensland",
+      "Status": "Active",
+      "Commodities": [
+        "c7619cab-ce7e-40bc-9f59-dfb46860330b",
+        "f1cf69c8-f7ba-44ad-a533-7bea8a11300b",
+        "f756d62b-beb5-431c-a721-743de83c5326"
+      ],
+      "Country": "Australia",
+      "Notes": "One of the largest silver producers anywhere, from a single silver-lead-zinc orebody in outback Queensland.",
+      "Type": "Underground",
+      "Latitude": -21.87,
+      "Longitude": 140.92,
+      "Name": "Cannington"
+    },
+    {
+      "id": "3bee5275-7b5c-817a-858d-c57826dc3d51",
+      "url": "https://app.notion.com/p/Fresnillo-3bee52757b5c817a858dc57826dc3d51",
+      "lastEdited": "2026-08-16T06:13:00.000Z",
+      "Opened": 1554,
+      "Region": "Zacatecas",
+      "Status": "Active",
+      "Commodities": [
+        "1865d016-9b94-46c1-aeff-64eda5805f38",
+        "c7619cab-ce7e-40bc-9f59-dfb46860330b",
+        "f1cf69c8-f7ba-44ad-a533-7bea8a11300b",
+        "f756d62b-beb5-431c-a721-743de83c5326"
+      ],
+      "Country": "Mexico",
+      "Notes": "The world's largest primary silver mine, in production almost continuously since the sixteenth century.",
+      "Type": "Underground",
+      "Latitude": 23.17,
+      "Longitude": -102.87,
+      "Name": "Fresnillo"
+    },
+    {
+      "id": "3bee5275-7b5c-81b6-ba93-e90ba76981db",
+      "url": "https://app.notion.com/p/Yanacocha-3bee52757b5c81b6ba93e90ba76981db",
+      "lastEdited": "2026-08-16T06:13:00.000Z",
+      "Opened": 1993,
+      "Region": "Cajamarca",
+      "Status": "Active",
+      "Commodities": [
+        "1865d016-9b94-46c1-aeff-64eda5805f38"
+      ],
+      "Country": "Peru",
+      "Notes": "For years the largest gold mine in Latin America, a heap-leach operation at 4,000 m whose water use set off a decade of conflict with the farms below.",
+      "Type": "Open pit",
+      "Latitude": -6.98,
+      "Longitude": -78.52,
+      "Name": "Yanacocha"
+    },
+    {
+      "id": "3bee5275-7b5c-81bd-b39b-e30c9a001d17",
+      "url": "https://app.notion.com/p/Pueblo-Viejo-3bee52757b5c81bdb39be30c9a001d17",
+      "lastEdited": "2026-08-16T06:13:00.000Z",
+      "Opened": 2012,
+      "Region": "Sánchez Ramírez",
+      "Status": "Active",
+      "Commodities": [
+        "1865d016-9b94-46c1-aeff-64eda5805f38",
+        "f1cf69c8-f7ba-44ad-a533-7bea8a11300b"
+      ],
+      "Country": "Dominican Republic",
+      "Notes": "Worked by the Spanish in the 1500s; today one of the largest gold mines in the Americas, with refractory ore treated by pressure oxidation.",
+      "Type": "Open pit",
+      "Latitude": 18.93,
+      "Longitude": -70.18,
+      "Name": "Pueblo Viejo"
+    },
+    {
+      "id": "3bee5275-7b5c-810e-ae90-da3e201b37b1",
+      "url": "https://app.notion.com/p/Kalgoorlie-Super-Pit-3bee52757b5c810eae90da3e201b37b1",
+      "lastEdited": "2026-08-16T06:13:00.000Z",
+      "Opened": 1893,
+      "Region": "Western Australia",
+      "Status": "Active",
+      "Commodities": [
+        "1865d016-9b94-46c1-aeff-64eda5805f38"
+      ],
+      "Country": "Australia",
+      "Notes": "The Golden Mile of the 1890s rush, consolidated into one pit 3.5 km long that swallowed the old underground workings and part of the town.",
+      "Type": "Open pit",
+      "Latitude": -30.78,
+      "Longitude": 121.5,
+      "Name": "Kalgoorlie Super Pit"
+    },
+    {
+      "id": "3bee5275-7b5c-8164-ac78-d05784be1db6",
+      "url": "https://app.notion.com/p/Boddington-3bee52757b5c8164ac78d05784be1db6",
+      "lastEdited": "2026-08-16T06:13:00.000Z",
+      "Opened": 1987,
+      "Region": "Western Australia",
+      "Status": "Active",
+      "Commodities": [
+        "1865d016-9b94-46c1-aeff-64eda5805f38",
+        "68542bc4-f631-46b7-99b9-75931965e407"
+      ],
+      "Country": "Australia",
+      "Notes": "Australia's largest gold mine, a low-grade, high-tonnage operation south-east of Perth.",
+      "Type": "Open pit",
+      "Latitude": -32.75,
+      "Longitude": 116.37,
+      "Name": "Boddington"
+    },
+    {
+      "id": "3bee5275-7b5c-81a8-a80e-e47a4b753f20",
+      "url": "https://app.notion.com/p/Mponeng-3bee52757b5c81a8a80ee47a4b753f20",
+      "lastEdited": "2026-08-16T06:13:00.000Z",
+      "Opened": 1986,
+      "Region": "Gauteng",
+      "Status": "Active",
+      "Commodities": [
+        "1865d016-9b94-46c1-aeff-64eda5805f38",
+        "87459a14-155f-47c2-b8b1-b63015fa4d30"
+      ],
+      "Country": "South Africa",
+      "Notes": "The deepest mine on Earth, approaching 4 km, on the Witwatersrand basin that has produced around 40 % of all the gold ever mined; rock at the face is 60 °C and has to be cooled with ice.",
+      "Type": "Underground",
+      "Latitude": -26.42,
+      "Longitude": 27.42,
+      "Name": "Mponeng"
+    },
+    {
+      "id": "3bee5275-7b5c-81a9-9e35-c6f1457b184d",
+      "url": "https://app.notion.com/p/Carlin-Trend-3bee52757b5c81a99e35c6f1457b184d",
+      "lastEdited": "2026-08-16T06:13:00.000Z",
+      "Opened": 1965,
+      "Region": "Nevada",
+      "Status": "Active",
+      "Commodities": [
+        "1865d016-9b94-46c1-aeff-64eda5805f38"
+      ],
+      "Country": "United States",
+      "Notes": "Gold too fine to see, dispersed through limestone — the 'invisible gold' that made Nevada one of the world's great gold provinces once cyanide heap leaching could recover it.",
+      "Type": "Open pit + underground",
+      "Latitude": 40.97,
+      "Longitude": -116.38,
+      "Name": "Carlin Trend"
+    },
+    {
+      "id": "3bee5275-7b5c-81f0-b6a5-fa6bb4918918",
+      "url": "https://app.notion.com/p/Muruntau-3bee52757b5c81f0b6a5fa6bb4918918",
+      "lastEdited": "2026-08-16T06:13:00.000Z",
+      "Opened": 1967,
+      "Region": "Navoiy Region",
+      "Status": "Active",
+      "Commodities": [
+        "1865d016-9b94-46c1-aeff-64eda5805f38"
+      ],
+      "Country": "Uzbekistan",
+      "Notes": "The largest open-pit gold mine, in the Kyzylkum desert, and one of the largest gold producers of any kind at over two million ounces a year.",
+      "Type": "Open pit",
+      "Latitude": 41.5,
+      "Longitude": 64.57,
+      "Name": "Muruntau"
+    },
+    {
+      "id": "3bee5275-7b5c-81cd-b867-eca84307d934",
+      "url": "https://app.notion.com/p/Huntly-3bee52757b5c81cdb867eca84307d934",
+      "lastEdited": "2026-08-16T06:13:00.000Z",
+      "Opened": 1976,
+      "Region": "Western Australia",
+      "Status": "Active",
+      "Commodities": [
+        "d101bae0-3ab9-418c-b020-9005585a1b1b"
+      ],
+      "Country": "Australia",
+      "Notes": "The world's largest bauxite mine by output, worked in strips through jarrah forest south of Perth and rehabilitated behind.",
+      "Type": "Open pit",
+      "Latitude": -32.6,
+      "Longitude": 116.1,
+      "Name": "Huntly"
+    },
+    {
+      "id": "3bee5275-7b5c-81df-b3c3-c95a50c0e5d9",
+      "url": "https://app.notion.com/p/Sangar-di-CBG-3bee52757b5c81dfb3c3c95a50c0e5d9",
+      "lastEdited": "2026-08-16T06:13:00.000Z",
+      "Opened": 1973,
+      "Region": "Boké Region",
+      "Status": "Active",
+      "Commodities": [
+        "d101bae0-3ab9-418c-b020-9005585a1b1b"
+      ],
+      "Country": "Guinea",
+      "Notes": "Guinea holds the largest and best bauxite reserves in the world and has become the biggest exporter, almost all of it to China; Sangarédi is the oldest of the big operations.",
+      "Type": "Open pit",
+      "Latitude": 11.12,
+      "Longitude": -13.8,
+      "Name": "Sangarédi (CBG)"
+    },
+    {
+      "id": "3bee5275-7b5c-811b-88a1-c2c47283945a",
+      "url": "https://app.notion.com/p/Weipa-3bee52757b5c811b88a1c2c47283945a",
+      "lastEdited": "2026-08-16T06:13:00.000Z",
+      "Opened": 1963,
+      "Region": "Queensland",
+      "Status": "Active",
+      "Commodities": [
+        "d101bae0-3ab9-418c-b020-9005585a1b1b"
+      ],
+      "Country": "Australia",
+      "Notes": "Bauxite a few metres below the surface of Cape York, strip-mined at over 35 million tonnes a year and shipped to the Gladstone refineries.",
+      "Type": "Open pit",
+      "Latitude": -12.63,
+      "Longitude": 141.87,
+      "Name": "Weipa"
+    },
+    {
+      "id": "3bee5275-7b5c-812f-9879-e8ca67acbef7",
+      "url": "https://app.notion.com/p/Hull-Rust-Mahoning-3bee52757b5c812f9879e8ca67acbef7",
+      "lastEdited": "2026-08-16T06:13:00.000Z",
+      "Opened": 1895,
+      "Region": "Minnesota",
+      "Status": "Active",
+      "Commodities": [
+        "82688dfa-4810-4954-b0ce-bd530b9b56e2"
+      ],
+      "Country": "United States",
+      "Notes": "The Mesabi Range pit that fed American steelmaking for a century; now taconite pellets from low-grade magnetite after the rich ore ran out in the 1950s.",
+      "Type": "Open pit",
+      "Latitude": 47.43,
+      "Longitude": -92.94,
+      "Name": "Hull–Rust–Mahoning"
+    },
+    {
+      "id": "3bee5275-7b5c-8120-9d44-cc289023382b",
+      "url": "https://app.notion.com/p/Sishen-3bee52757b5c81209d44cc289023382b",
+      "lastEdited": "2026-08-16T06:13:00.000Z",
+      "Opened": 1953,
+      "Region": "Northern Cape",
+      "Status": "Active",
+      "Commodities": [
+        "82688dfa-4810-4954-b0ce-bd530b9b56e2"
+      ],
+      "Country": "South Africa",
+      "Notes": "One of the largest open-pit iron mines, feeding an 861 km railway to the port of Saldanha.",
+      "Type": "Open pit",
+      "Latitude": -27.78,
+      "Longitude": 22.99,
+      "Name": "Sishen"
+    },
+    {
+      "id": "3bee5275-7b5c-819d-aa57-ed5342b8b035",
+      "url": "https://app.notion.com/p/Kiruna-3bee52757b5c819daa57ed5342b8b035",
+      "lastEdited": "2026-08-16T06:13:00.000Z",
+      "Opened": 1898,
+      "Region": "Norrbotten",
+      "Status": "Active",
+      "Commodities": [
+        "82688dfa-4810-4954-b0ce-bd530b9b56e2"
+      ],
+      "Country": "Sweden",
+      "Notes": "The largest underground iron mine, a magnetite slab 4 km long dipping under the town — which is now being moved 3 km east because the ground above the workings is subsiding.",
+      "Type": "Underground",
+      "Latitude": 67.85,
+      "Longitude": 20.2,
+      "Name": "Kiruna"
+    },
+    {
+      "id": "3bee5275-7b5c-8163-96db-db4caf23a455",
+      "url": "https://app.notion.com/p/Caraj-s-3bee52757b5c816396dbdb4caf23a455",
+      "lastEdited": "2026-08-16T06:13:00.000Z",
+      "Opened": 1985,
+      "Region": "Pará",
+      "Status": "Active",
+      "Commodities": [
+        "82688dfa-4810-4954-b0ce-bd530b9b56e2"
+      ],
+      "Country": "Brazil",
+      "Notes": "The richest large iron ore on Earth at around 65 % iron, in the Amazon; the S11D expansion runs without trucks, on conveyors, to keep the forest footprint down.",
+      "Type": "Open pit",
+      "Latitude": -6.06,
+      "Longitude": -50.16,
+      "Name": "Carajás"
+    },
+    {
+      "id": "3bee5275-7b5c-817b-a63f-d9f08f0f2012",
+      "url": "https://app.notion.com/p/Mount-Whaleback-3bee52757b5c817ba63fd9f08f0f2012",
+      "lastEdited": "2026-08-16T06:13:00.000Z",
+      "Opened": 1968,
+      "Region": "Pilbara, Western Australia",
+      "Status": "Active",
+      "Commodities": [
+        "82688dfa-4810-4954-b0ce-bd530b9b56e2"
+      ],
+      "Country": "Australia",
+      "Notes": "The largest single-pit iron mine, 5.5 km long, at Newman; the Pilbara as a whole ships over 800 million tonnes a year, most of it to China.",
+      "Type": "Open pit",
+      "Latitude": -23.37,
+      "Longitude": 119.67,
+      "Name": "Mount Whaleback"
+    },
+    {
+      "id": "3bee5275-7b5c-814b-9e75-e259f331d532",
+      "url": "https://app.notion.com/p/Norilsk-Talnakh-3bee52757b5c814b9e75e259f331d532",
+      "lastEdited": "2026-08-16T06:13:00.000Z",
+      "Opened": 1935,
+      "Region": "Krasnoyarsk Krai",
+      "Status": "Active",
+      "Commodities": [
+        "4db04b1f-6f43-422a-89ad-7cc16ad94e7d",
+        "68542bc4-f631-46b7-99b9-75931965e407",
+        "a2c287a0-d039-486f-ba2f-5ae1cddbf7cc",
+        "a9130bca-ba76-4682-ac49-cc10bb1b7a5f",
+        "b96dc6a7-c3dc-4fff-a370-8990b649e01f"
+      ],
+      "Country": "Russia",
+      "Notes": "Above the Arctic Circle: the largest palladium producer in the world and one of the largest of nickel, from magmatic sulfides; built by Gulag labour and long one of the most polluted places on the planet.",
+      "Type": "Underground",
+      "Latitude": 69.35,
+      "Longitude": 88.2,
+      "Name": "Norilsk–Talnakh"
+    },
+    {
+      "id": "3bee5275-7b5c-8190-abdd-e3a813b897d0",
+      "url": "https://app.notion.com/p/Olympic-Dam-3bee52757b5c8190abdde3a813b897d0",
+      "lastEdited": "2026-08-16T06:13:00.000Z",
+      "Opened": 1988,
+      "Region": "South Australia",
+      "Status": "Active",
+      "Commodities": [
+        "1865d016-9b94-46c1-aeff-64eda5805f38",
+        "68542bc4-f631-46b7-99b9-75931965e407",
+        "87459a14-155f-47c2-b8b1-b63015fa4d30",
+        "f1cf69c8-f7ba-44ad-a533-7bea8a11300b"
+      ],
+      "Country": "Australia",
+      "Notes": "An iron-oxide copper-gold deposit that also holds the largest known uranium resource on Earth; found in 1975 by drilling on a geological hunch under 300 m of barren cover.",
+      "Type": "Underground",
+      "Latitude": -30.44,
+      "Longitude": 136.89,
+      "Name": "Olympic Dam"
+    },
+    {
+      "id": "3bee5275-7b5c-8128-a37c-e67cf4fa9570",
+      "url": "https://app.notion.com/p/Kansanshi-3bee52757b5c8128a37ce67cf4fa9570",
+      "lastEdited": "2026-08-16T06:13:00.000Z",
+      "Opened": 2005,
+      "Region": "North-Western Province",
+      "Status": "Active",
+      "Commodities": [
+        "1865d016-9b94-46c1-aeff-64eda5805f38",
+        "68542bc4-f631-46b7-99b9-75931965e407"
+      ],
+      "Country": "Zambia",
+      "Notes": "The largest copper mine in Africa, on the Zambian side of the Copperbelt.",
+      "Type": "Open pit",
+      "Latitude": -12.1,
+      "Longitude": 26.42,
+      "Name": "Kansanshi"
+    },
+    {
+      "id": "3bee5275-7b5c-81f4-8662-de282ed21aef",
+      "url": "https://app.notion.com/p/Kamoa-Kakula-3bee52757b5c81f48662de282ed21aef",
+      "lastEdited": "2026-08-16T06:13:00.000Z",
+      "Opened": 2021,
+      "Region": "Lualaba",
+      "Status": "Active",
+      "Commodities": [
+        "68542bc4-f631-46b7-99b9-75931965e407"
+      ],
+      "Country": "DR Congo",
+      "Notes": "The highest-grade major copper mine in the world, around 5 % copper against a global average of 0.5 %, and the fastest-growing.",
+      "Type": "Underground",
+      "Latitude": -10.77,
+      "Longitude": 25.29,
+      "Name": "Kamoa-Kakula"
+    },
+    {
+      "id": "3bee5275-7b5c-815f-940a-c87c82da4158",
+      "url": "https://app.notion.com/p/Oyu-Tolgoi-3bee52757b5c815f940ac87c82da4158",
+      "lastEdited": "2026-08-16T06:13:00.000Z",
+      "Opened": 2013,
+      "Region": "Ömnögovi",
+      "Status": "Active",
+      "Commodities": [
+        "1865d016-9b94-46c1-aeff-64eda5805f38",
+        "68542bc4-f631-46b7-99b9-75931965e407"
+      ],
+      "Country": "Mongolia",
+      "Notes": "A copper-gold porphyry in the South Gobi whose underground block cave, started in 2023, is one of the largest ever undertaken; a third of Mongolia's economy rides on it.",
+      "Type": "Open pit + underground",
+      "Latitude": 43.01,
+      "Longitude": 106.86,
+      "Name": "Oyu Tolgoi"
+    },
+    {
+      "id": "3bee5275-7b5c-810d-aaa2-e459f3621518",
+      "url": "https://app.notion.com/p/Morenci-3bee52757b5c810daaa2e459f3621518",
+      "lastEdited": "2026-08-16T06:13:00.000Z",
+      "Opened": 1872,
+      "Region": "Arizona",
+      "Status": "Active",
+      "Commodities": [
+        "06ada303-c443-4523-bc0f-c3aa5061d3f1",
+        "68542bc4-f631-46b7-99b9-75931965e407"
+      ],
+      "Country": "United States",
+      "Notes": "The largest copper mine in North America and the place where heap leaching and SX-EW were proven at scale in the 1980s.",
+      "Type": "Open pit",
+      "Latitude": 33.08,
+      "Longitude": -109.36,
+      "Name": "Morenci"
+    },
+    {
+      "id": "3bee5275-7b5c-81d0-9b5c-fbbae81593c1",
+      "url": "https://app.notion.com/p/Cerro-Verde-3bee52757b5c81d09b5cfbbae81593c1",
+      "lastEdited": "2026-08-16T06:13:00.000Z",
+      "Opened": 1976,
+      "Region": "Arequipa",
+      "Status": "Active",
+      "Commodities": [
+        "06ada303-c443-4523-bc0f-c3aa5061d3f1",
+        "68542bc4-f631-46b7-99b9-75931965e407"
+      ],
+      "Country": "Peru",
+      "Notes": "One of the largest concentrators anywhere, processing over 400,000 tonnes of ore a day; the pit overlooks Arequipa.",
+      "Type": "Open pit",
+      "Latitude": -16.53,
+      "Longitude": -71.6,
+      "Name": "Cerro Verde"
+    },
+    {
+      "id": "3bee5275-7b5c-814a-b45c-f590537961ca",
+      "url": "https://app.notion.com/p/Collahuasi-3bee52757b5c814ab45cf590537961ca",
+      "lastEdited": "2026-08-16T06:13:00.000Z",
+      "Opened": 1999,
+      "Region": "Tarapacá Region",
+      "Status": "Active",
+      "Commodities": [
+        "06ada303-c443-4523-bc0f-c3aa5061d3f1",
+        "68542bc4-f631-46b7-99b9-75931965e407"
+      ],
+      "Country": "Chile",
+      "Notes": "Among the three largest copper mines by output, at 4,400 m — high enough that the workforce rotates down to the coast to sleep.",
+      "Type": "Open pit",
+      "Latitude": -20.98,
+      "Longitude": -68.68,
+      "Name": "Collahuasi"
+    },
+    {
+      "id": "3bee5275-7b5c-8189-a40b-f4ef46fcb8cf",
+      "url": "https://app.notion.com/p/El-Teniente-3bee52757b5c8189a40bf4ef46fcb8cf",
+      "lastEdited": "2026-08-16T06:13:00.000Z",
+      "Opened": 1905,
+      "Region": "O'Higgins Region",
+      "Status": "Active",
+      "Commodities": [
+        "06ada303-c443-4523-bc0f-c3aa5061d3f1",
+        "68542bc4-f631-46b7-99b9-75931965e407"
+      ],
+      "Country": "Chile",
+      "Notes": "The largest underground copper mine, with more than 3,000 km of tunnels beneath the Andes; Codelco's flagship.",
+      "Type": "Underground",
+      "Latitude": -34.09,
+      "Longitude": -70.35,
+      "Name": "El Teniente"
+    },
+    {
+      "id": "3bee5275-7b5c-81b7-896b-f94437bf9b56",
+      "url": "https://app.notion.com/p/Bingham-Canyon-3bee52757b5c81b7896bf94437bf9b56",
+      "lastEdited": "2026-08-16T06:13:00.000Z",
+      "Opened": 1906,
+      "Region": "Utah",
+      "Status": "Active",
+      "Commodities": [
+        "06ada303-c443-4523-bc0f-c3aa5061d3f1",
+        "1865d016-9b94-46c1-aeff-64eda5805f38",
+        "68542bc4-f631-46b7-99b9-75931965e407",
+        "f1cf69c8-f7ba-44ad-a533-7bea8a11300b"
+      ],
+      "Country": "United States",
+      "Notes": "The deepest open pit in the world, 1.2 km deep and 4 km across, mined continuously for over a century; a 2013 landslide inside it was one of the largest non-volcanic slides in North America.",
+      "Type": "Open pit",
+      "Latitude": 40.52,
+      "Longitude": -112.15,
+      "Name": "Bingham Canyon"
+    },
+    {
+      "id": "3bee5275-7b5c-8196-8029-e6037838827d",
+      "url": "https://app.notion.com/p/Grasberg-3bee52757b5c81968029e6037838827d",
+      "lastEdited": "2026-08-16T06:13:00.000Z",
+      "Opened": 1973,
+      "Region": "Papua",
+      "Status": "Active",
+      "Commodities": [
+        "1865d016-9b94-46c1-aeff-64eda5805f38",
+        "68542bc4-f631-46b7-99b9-75931965e407",
+        "f1cf69c8-f7ba-44ad-a533-7bea8a11300b"
+      ],
+      "Country": "Indonesia",
+      "Notes": "The world's largest gold mine and second-largest copper mine, at 4,100 m in the Sudirman Range; the pit is exhausted and production now comes from one of the largest block caves ever built.",
+      "Type": "Open pit + underground",
+      "Latitude": -4.06,
+      "Longitude": 137.11,
+      "Name": "Grasberg"
+    },
+    {
+      "id": "3bee5275-7b5c-8178-a933-dddafba56794",
+      "url": "https://app.notion.com/p/Chuquicamata-3bee52757b5c8178a933dddafba56794",
+      "lastEdited": "2026-08-16T06:13:00.000Z",
+      "Opened": 1915,
+      "Region": "Antofagasta Region",
+      "Status": "Active",
+      "Commodities": [
+        "06ada303-c443-4523-bc0f-c3aa5061d3f1",
+        "68542bc4-f631-46b7-99b9-75931965e407"
+      ],
+      "Country": "Chile",
+      "Notes": "The largest open pit by excavated volume, 4.3 km long and nearly a kilometre deep; converted to a block-cave underground mine in 2019 because the pit walls could go no further.",
+      "Type": "Open pit + underground",
+      "Latitude": -22.3,
+      "Longitude": -68.9,
+      "Name": "Chuquicamata"
+    },
+    {
+      "id": "3bee5275-7b5c-8132-b745-da632bc4470d",
+      "url": "https://app.notion.com/p/Escondida-3bee52757b5c8132b745da632bc4470d",
+      "lastEdited": "2026-08-16T06:13:00.000Z",
+      "Opened": 1990,
+      "Region": "Antofagasta Region",
+      "Status": "Active",
+      "Commodities": [
+        "06ada303-c443-4523-bc0f-c3aa5061d3f1",
+        "1865d016-9b94-46c1-aeff-64eda5805f38",
+        "68542bc4-f631-46b7-99b9-75931965e407",
+        "f1cf69c8-f7ba-44ad-a533-7bea8a11300b"
+      ],
+      "Country": "Chile",
+      "Notes": "The largest copper mine on Earth — over a million tonnes a year, roughly 5 % of world supply — in the Atacama at 3,100 m, running on desalinated seawater pumped up from the coast.",
+      "Type": "Open pit",
+      "Latitude": -24.27,
+      "Longitude": -69.07,
+      "Name": "Escondida"
+    }
+  ],
   "spectralTypes": [
     {
       "id": "2569ebb2-01ff-41c8-af88-54f50a983757",
