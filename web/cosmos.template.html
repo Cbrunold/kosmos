@@ -35,7 +35,8 @@ __SHARED__
   .instr .chips { display: flex; flex-wrap: wrap; gap: 4px; }
 
   .people { display: grid; grid-template-columns: repeat(auto-fill, minmax(255px, 1fr)); gap: 10px; }
-  .person { padding: 10px 12px; }
+  .person { padding: 10px 12px; scroll-margin-top: 16px; }
+  .person:target { outline: 2px solid var(--c-violet); outline-offset: 3px; }
   .person .pn { font: 700 12.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; color: var(--ink); }
   .person .pm { font: 10px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; color: var(--muted); margin: 2px 0 5px; font-variant-numeric: tabular-nums; }
   .person .pk { font-size: 11.5px; color: var(--ink-2); line-height: 1.45; }
@@ -269,6 +270,7 @@ __SHARED__
   for (const r of D.researchers) {
     const card = document.createElement('div');
     card.className = 'kcard person';
+    if (r.slug) card.id = r.slug;             // link target for /timeline's people chips
     const n = document.createElement('div'); n.className = 'pn'; n.textContent = r.name;
     card.appendChild(n);
     const meta = [r.life, r.field].filter(Boolean).join(' · ');

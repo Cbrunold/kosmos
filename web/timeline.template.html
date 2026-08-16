@@ -115,7 +115,7 @@ __SHARED__
 <script id="data" type="application/json">__DATA__</script>
 <script>
   const D = JSON.parse(document.getElementById('data').textContent);
-  const EV = D.events, EQ = D.equations || {}, TH = D.theories || {}, ERAS = D.eras || [];
+  const EV = D.events, EQ = D.equations || {}, TH = D.theories || {}, PEOPLE = D.people || {}, ERAS = D.eras || [];
   const ERA_COLOR = {
     'Very Early Universe': 'var(--c-violet)',
     'Radiation Era': 'var(--c-amber)',
@@ -252,6 +252,13 @@ __SHARED__
         .sort((a, b) => a.name.localeCompare(b.name))
         .map((t) => ({ name: t.name, href: '/theories#' + t.slug, title: t.status || '' }));
       if (ths.length) card.appendChild(chipRow('the theory', ths, 'var(--c-pink)'));
+
+      // people whose work is about this epoch — not its proposers, that is the theory row
+      const who = (e.people || []).map((id) => PEOPLE[id]).filter(Boolean)
+        .sort((a, b) => a.name.split(' ').pop().localeCompare(b.name.split(' ').pop()))
+        .map((p) => ({ name: p.name, href: '/cosmos#' + p.slug,
+                       title: [p.life, p.field, p.known].filter(Boolean).join(' · ') }));
+      if (who.length) card.appendChild(chipRow('the people', who, 'var(--c-violet)'));
 
       wrap.append(head, card);
       box.appendChild(wrap);

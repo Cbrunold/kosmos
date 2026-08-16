@@ -269,8 +269,9 @@ def build_cosmos_page():
     } for i in notion["instruments"] if i.get("Name")]
 
     researchers = sorted(
-        ({"name": r["Name"], "life": r.get("Lifespan"), "field": r.get("Field"),
-          "known": r.get("Known For")} for r in notion["researchers"] if r.get("Name")),
+        ({"name": r["Name"], "slug": slugify(r["Name"]), "life": r.get("Lifespan"),
+          "field": r.get("Field"), "known": r.get("Known For")}
+         for r in notion["researchers"] if r.get("Name")),
         key=lambda r: r["name"].split()[-1])   # by surname, as a card index would be
 
     obs_by_id = {}
@@ -334,6 +335,10 @@ def build_timeline_page():
     rows = notion.get("cosmicTimeline", [])
     th_lookup = {t["id"]: {"name": t["Name"], "slug": slugify(t["Name"]), "status": t.get("Status")}
                  for t in notion["theories"] if t.get("Name")}
+    # people whose work is about an epoch — chips link to their card on /cosmos
+    people = {r["id"]: {"name": r["Name"], "slug": slugify(r["Name"]), "life": r.get("Lifespan"),
+                        "field": r.get("Field"), "known": r.get("Known For")}
+              for r in notion["researchers"] if r.get("Name")}
     events = []
     for r in rows:
         if not r.get("Event"):
@@ -348,10 +353,12 @@ def build_timeline_page():
             "what": r.get("What Happened"),
             "equations": r.get("Equations") or [],
             "theories": r.get("Theories") or [],
+            "people": r.get("Researchers") or [],
         })
     # sort on the number, not the prose — that is what the column is for
     events.sort(key=lambda e: (e["secs"] is None, e["secs"] if e["secs"] is not None else 0))
     data = {"events": events, "equations": eq_lookup_all(), "theories": th_lookup,
+            "people": people,
             "eras": [e for e in ERA_ORDER if any(x["era"] == e for x in events)]}
     write_page("timeline.template.html", "timeline.html", data)
     secs = [e["secs"] for e in events if isinstance(e["secs"], (int, float)) and e["secs"] > 0]
