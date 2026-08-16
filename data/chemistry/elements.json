@@ -885,7 +885,8 @@
     "machines": [],
     "skills": [
       "3bee5275-7b5c-8117-b401-cee2654a1d54",
-      "3bee5275-7b5c-8127-9394-ce825a20f2ba"
+      "3bee5275-7b5c-8127-9394-ce825a20f2ba",
+      "3bee5275-7b5c-81d3-ad90-c1a80f5e13ad"
     ],
     "equations": [
       "3bbe5275-7b5c-8184-9e26-ff4ad04b3ed8",
@@ -1152,7 +1153,8 @@
       "3bee5275-7b5c-81ab-982a-ff7c4d67bb4c",
       "3bee5275-7b5c-8146-bc5f-dfc8858749e6",
       "3bee5275-7b5c-8127-9394-ce825a20f2ba",
-      "3bee5275-7b5c-81e2-8719-c969fad098fc"
+      "3bee5275-7b5c-81e2-8719-c969fad098fc",
+      "3bee5275-7b5c-81d3-ad90-c1a80f5e13ad"
     ],
     "equations": [
       "3bbe5275-7b5c-81f5-bb78-d159340dd03f",
@@ -1325,7 +1327,8 @@
       "3bee5275-7b5c-8104-bd15-f3f63b6670e5",
       "3bee5275-7b5c-8151-a852-f47cb0eb56f2",
       "3bee5275-7b5c-81ea-8ad8-ca2470b17c2c",
-      "3bee5275-7b5c-8185-b06f-d588a9b08a2c"
+      "3bee5275-7b5c-8185-b06f-d588a9b08a2c",
+      "3bee5275-7b5c-8164-a6ad-c67f6502291e"
     ],
     "equations": [
       "3bbe5275-7b5c-81ee-9b16-dcfba043e1f3",
@@ -1974,7 +1977,8 @@
       "3bee5275-7b5c-81b9-b30c-e1617a4968d5"
     ],
     "skills": [
-      "3bee5275-7b5c-8165-b6ba-ce4550c54c41"
+      "3bee5275-7b5c-8165-b6ba-ce4550c54c41",
+      "3bee5275-7b5c-8164-a6ad-c67f6502291e"
     ],
     "equations": [
       "3bbe5275-7b5c-81ee-9b16-dcfba043e1f3",
@@ -2885,7 +2889,8 @@
     "machines": [],
     "skills": [
       "3bee5275-7b5c-8175-830a-fa49c3a84148",
-      "3bee5275-7b5c-81e2-bf83-dd364bc07e64"
+      "3bee5275-7b5c-81e2-bf83-dd364bc07e64",
+      "3bee5275-7b5c-81d3-ad90-c1a80f5e13ad"
     ],
     "equations": [
       "3bbe5275-7b5c-816d-9734-c149c749519c",
@@ -3186,7 +3191,9 @@
     "machines": [
       "3bee5275-7b5c-819c-ab65-fab1ca28400e"
     ],
-    "skills": [],
+    "skills": [
+      "3bee5275-7b5c-8164-a6ad-c67f6502291e"
+    ],
     "equations": [
       "3bbe5275-7b5c-812d-b464-f7799b61cce9",
       "3bbe5275-7b5c-81b2-ae34-f800aecd57e1",
