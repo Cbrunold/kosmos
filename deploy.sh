@@ -26,6 +26,12 @@
 #   APP_DIR=/opt/kosmos  PORT=3002  RESTART="systemctl restart kosmos"  NO_PUSH=1
 set -euo pipefail
 
+# The whole run lives in main() and is called on the last line, so bash parses
+# this entire file before executing any of it. That matters because step 2 is a
+# git pull that can update deploy.sh itself: bash reads scripts incrementally,
+# and on 2026-08-16 an older copy of this file was mid-run when the pull
+# replaced it — it kept executing stale lines and shipped without search.json.
+main() {
 APP_DIR="${APP_DIR:-/opt/kosmos}"
 PORT="${PORT:-3002}"
 RESTART="${RESTART:-systemctl restart kosmos}"
@@ -75,7 +81,13 @@ fi
 
 # ---- 2. pull
 step "pull"
+before="$(git rev-parse HEAD:deploy.sh 2>/dev/null || true)"
 git pull --rebase origin main
+after="$(git rev-parse HEAD:deploy.sh 2>/dev/null || true)"
+if [[ "$before" != "$after" && -z "${DEPLOY_REEXEC:-}" ]]; then
+  echo "deploy.sh itself was updated by the pull — re-running with the new version"
+  DEPLOY_REEXEC=1 exec bash "$0" "$@"
+fi
 
 # ---- 3. seeds
 if ((${#SEEDS[@]})); then
@@ -156,3 +168,6 @@ fi
 STEP="done"
 echo
 echo "deployed $(git rev-parse --short HEAD) — https://kosmos.yeahborhood.com"
+}
+
+main "$@"
