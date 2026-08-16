@@ -18,7 +18,9 @@ const PAGES = {
   '/timeline': 'timeline.html',
   '/equations': 'equations.html',
   '/constants': 'constants.html',
+  '/search.json': 'search.json',   // the index behind the home-page search bar, fetched on first keystroke
 };
+const TYPE = (file) => (file.endsWith('.json') ? 'application/json; charset=utf-8' : 'text/html; charset=utf-8');
 // A page that failed to deploy should 404, not take the whole site down with it.
 // This used to be an unguarded readFileSync inside a map: adding /timeline to
 // PAGES and deploying the HTML to the wrong directory put the process into a
@@ -142,7 +144,7 @@ const server = http.createServer(async (req, res) => {
   const route = (req.url || '/').split('?')[0].replace(/\/$/, '') || '/';
   if ((req.method === 'GET' || req.method === 'HEAD') && CONTENT[route]) {
     res.writeHead(200, {
-      'Content-Type': 'text/html; charset=utf-8',
+      'Content-Type': TYPE(PAGES[route]),
       'Cache-Control': 'no-cache',   // always revalidate so deploys show up immediately
     });
     return res.end(CONTENT[route]);

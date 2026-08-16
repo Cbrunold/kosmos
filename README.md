@@ -10,7 +10,7 @@ truth for code and the normalised data snapshots. Sync is one-way, Notion → re
 
 | Route        | What's there |
 |--------------|--------------|
-| `/`          | Tile launcher with live stats per section |
+| `/`          | Tile launcher with live stats per section, and a search bar over everything the site holds (`/` to focus, `?q=` to deep-link a query) |
 | `/elements`  | Interactive periodic table (10 lenses incl. crustal rarity, temperature + discovery sliders) and the AI photo analyzer |
 | `/minerals`  | 3,000+ minerals searchable and filterable by contained element; gemstone shelf, rock families, silicate classes |
 | `/cosmos`    | Field guide to celestial object classes, the stellar spectral sequence, observatories, a discovery timeline, instruments and researchers |
@@ -24,7 +24,7 @@ truth for code and the normalised data snapshots. Sync is one-way, Notion → re
 
 ```
 server.js                     Node server: static pages + POST /api/analyze
-public/                       Built pages (generated — see scripts/build.py)
+public/                       Built pages + search.json (generated — see scripts/build.py)
 web/                          Page sources: templates, shared.css, analyzer parts
 data/chemistry/elements.json  Normalised element data (scripts/fetch_elements.py)
 data/notion-all.json          All other Notion sources (scripts/fetch_all.py)
@@ -132,7 +132,7 @@ dirty, because that clone is a deploy target, not a workspace.
 By hand, the equivalent is:
 
 ```
-cp public/*.html /opt/kosmos/public/     # NOT /opt/kosmos — server.js reads public/
+cp public/*.html public/*.json /opt/kosmos/public/   # NOT /opt/kosmos — server.js reads public/
 cp server.js /opt/kosmos/                # only when routes or the API changed
 systemctl restart kosmos
 curl -s localhost:3002/health            # {"ok":true,...,"missing":[]}

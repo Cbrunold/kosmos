@@ -8,6 +8,7 @@ Inputs:  web/*.template.html + web/shared.css + web/analyzer.{css,html,js}
 Outputs: public/index.html   (periodic table, served at /elements)
          public/home.html    (tile launcher, served at /)
          public/{minerals,cosmos,forces,theories,timeline}.html
+         public/search.json  (flat index behind the home-page search bar)
 """
 import json
 import math
@@ -90,6 +91,7 @@ NON_ELEMENT = {
 
 
 ELEMENT_MINERALS = {}   # symbol -> {"n": count, "examples": [names]} — filled by build_minerals_page
+ELEMENT_MINERALS_BY_NAME = {}   # mineral name -> "Fe O Si" — also filled there, for the search index
 
 
 def build_minerals_page():
@@ -111,6 +113,7 @@ def build_minerals_page():
                 unmapped.add(col)
         syms = [s for s, _ in sorted(weights.items(), key=lambda kv: -kv[1])]
         name = m.get("Name") or "?"
+        ELEMENT_MINERALS_BY_NAME[name] = " ".join(syms)   # for the search index
         # sorted, not set order: string hashing is randomised per process, so an
         # unsorted set here makes the mineral lookups shuffle on every rebuild and
         # public/index.html churn with a diff that means nothing
@@ -366,6 +369,141 @@ def build_timeline_page():
     return len(events), decades
 
 
+# ---------------- search index ----------------
+def _clip(s, n=170) -> str:
+    s = " ".join((s or "").split())
+    return s if len(s) <= n else s[:n - 1].rstrip() + "…"
+
+
+def build_search_index():
+    """One flat index of everything the site renders, fetched lazily by the
+    search bar on the home page. Rows are [kind, name, sub, text, href] —
+    arrays, not objects, because there are ~4,000 rows and the minerals alone
+    would double the size as keyed JSON. Every href is a deep link the target
+    page already understands (see each page's openHash / goTo)."""
+    rows = []
+
+    def add(kind, name, sub, text, href):
+        if name:
+            rows.append([kind, name, sub or "", _clip(text), href])
+
+    # the sections themselves, so "timeline" or "constants" lands on the page
+    for route, name, sub in [
+        ("/elements", "Periodic Table", "118 elements · lenses · photo analyzer"),
+        ("/minerals", "Minerals & Gemstones", "3,000+ minerals · gemstone shelf · rock families"),
+        ("/cosmos", "Cosmic Exploration", "object classes · spectral types · observatories · discoveries · missions"),
+        ("/forces", "Forces", "the four fundamental interactions"),
+        ("/theories", "Theories", "the theory shelf, with standing and proponents"),
+        ("/timeline", "Timeline of the Universe", "Planck epoch to heat death on a log axis"),
+        ("/constants", "Constants & Units", "CODATA constants · SI units · prefixes"),
+        ("/equations", "Equations", "canonical equations with symbols decoded"),
+    ]:
+        add("page", name, sub, "", route)
+
+    for e in elements:
+        add("element", e["name"], f"{e['notation']} · Z {e['atomicNumber']}",
+            " ".join([*(e.get("categories") or []), e.get("occurrence") or ""]).replace("#", ""),
+            f"/elements#{e['notation']}")
+
+    for m in notion["minerals"]:
+        if m.get("Name"):
+            syms = ELEMENT_MINERALS_BY_NAME.get(m["Name"], "")
+            add("mineral", m["Name"], m.get("Formula") or "", syms, f"/minerals#{m['Name'].lower()}")
+
+    for g in notion["gemstones"]:
+        if g.get("Name"):
+            add("gemstone", g["Name"], g.get("Select") or "gemstone", "", f"/minerals#{g['Name'].lower()}")
+
+    for q in notion.get("equations", []):
+        yr = q.get("Year")
+        add("equation", q["Name"],
+            " · ".join(filter(None, [q.get("Field"), f"c. {-yr} BCE" if yr and yr < 0 else (str(yr) if yr else None)])),
+            " — ".join(filter(None, [q.get("Equation"), q.get("Significance")])),
+            f"/equations#{slugify(q['Name'])}")
+
+    for c in notion.get("constants", []):
+        if c.get("Name"):
+            sym = c.get("Symbol") or ""
+            add("constant", c["Name"],
+                " ".join(filter(None, [sym, "=" if sym else "", c.get("Value") or "", c.get("Unit") or ""])).strip(),
+                " · ".join(filter(None, [c.get("Category"), c.get("Note")])),
+                "/constants#" + slugify(f"{sym}-{c['Name']}" if sym and sym != "—" else c["Name"]))
+
+    for u in notion.get("units", []):
+        if u.get("Name"):
+            add("unit", u["Name"], " · ".join(filter(None, [u.get("Symbol"), u.get("Kind")])),
+                " — ".join(filter(None, [u.get("Quantity"), u.get("Definition")])),
+                "/constants#prefixes" if u.get("Kind") == "SI prefix" else "/constants#units")
+
+    for t in notion["theories"]:
+        if t.get("Name"):
+            add("theory", t["Name"], " · ".join(filter(None, [t.get("Status"), str(t["Year"]) if t.get("Year") else None])),
+                t.get("Summary"), f"/theories#{slugify(t['Name'])}")
+
+    for r in notion["researchers"]:
+        if r.get("Name"):
+            add("researcher", r["Name"], " · ".join(filter(None, [r.get("Lifespan"), r.get("Field")])),
+                r.get("Known For"), f"/cosmos#{slugify(r['Name'])}")
+
+    for ev in notion.get("cosmicTimeline", []):
+        if ev.get("Event"):
+            add("event", ev["Event"], " · ".join(filter(None, [ev.get("When"), ev.get("Era")])),
+                ev.get("What Happened"), f"/timeline#{slugify(ev['Event'])}")
+
+    for o in notion.get("observatories", []):
+        if o.get("Name"):
+            add("observatory", o["Name"],
+                " · ".join(filter(None, [o.get("Type"), str(o["Founded"]) if o.get("Founded") else None, o.get("Location")])),
+                o.get("Notes"), f"/cosmos#obs-{slugify(o['Name'])}")
+
+    people_by_id = {r["id"]: r["Name"] for r in notion["researchers"] if r.get("Name")}
+    for x in notion.get("discoveries", []):
+        if x.get("Name"):
+            who = [people_by_id[i] for i in (x.get("Discoverer") or []) if i in people_by_id]
+            add("discovery", x["Name"], " · ".join(filter(None, [str(x["Year"]) if x.get("Year") else None, ", ".join(who)])),
+                x.get("Description"), f"/cosmos#disc-{slugify(x['Name'])}")
+
+    for m in notion.get("missions", []):
+        if m.get("Name"):
+            add("mission", m["Name"],
+                " · ".join(filter(None, [(m.get("Launch Date") or "")[:4], m.get("Agency"), m.get("Destination"), m.get("Status")])),
+                m.get("Objective"), f"/cosmos#mission-{slugify(m['Name'])}")
+
+    for i in notion["instruments"]:
+        if i.get("Name"):
+            add("instrument", i["Name"], " · ".join(filter(None, [i.get("Type"), ", ".join(i.get("Wavelength_Range") or [])])),
+                i.get("Description"), f"/cosmos#instr-{slugify(i['Name'])}")
+
+    for s in notion["spectralTypes"]:
+        if s.get("Name"):
+            add("spectral type", s["Name"], s.get("Temperature") or "", s.get("Characteristics"),
+                f"/cosmos#spec-{s['Name'][0].lower()}")
+
+    for o in notion["celestialObjects"]:
+        if obj_name(o):
+            mass = o.get("Mass")
+            add("object", obj_name(o),
+                " · ".join(filter(None, [o.get("Type"), f"{mass:.3g} kg" if mass else None])),
+                "", "/cosmos#catalogue")
+
+    for t in notion["celestialTypes"]:
+        if t.get("Name"):
+            add("object class", t["Name"], t.get("Type") or "", "", f"/cosmos#class-{slugify(t.get('Type') or 'other')}")
+
+    for f in notion["forces"]:
+        nm = f.get("Force Name")
+        if nm:
+            add("force", nm, " · ".join(filter(None, [f.get("Range"), f.get("Relative Strength")])),
+                f.get("Description"), f"/forces#{slugify(nm)}")
+
+    out = {"built": max((r["lastEdited"] for rows_ in notion.values() for r in rows_ if r.get("lastEdited")), default="")[:10],
+           "kinds": sorted({r[0] for r in rows}), "items": rows}
+    text = compact(out)
+    (PUB / "search.json").write_text(text)
+    print(f"wrote {len(text):>7} bytes -> public/search.json  ({len(rows)} entries)")
+    return len(rows)
+
+
 # ---------------- home ----------------
 def theory_span() -> str:
     """Earliest→latest year across the theory shelf, e.g. '150 CE – 1998'."""
@@ -387,7 +525,7 @@ def theory_span() -> str:
 
 
 def build_home(n_min, n_gems, n_classes, n_spectral, n_instr, n_timeline, tl_decades,
-               n_obs, n_disc, n_miss):
+               n_obs, n_disc, n_miss, n_search):
     gaps = sum(1 for e in elements
                if e["meltingPt"] is None or e["boilingPt"] is None
                or e["density"] is None or e["occurrence"] is None)
@@ -414,6 +552,7 @@ def build_home(n_min, n_gems, n_classes, n_spectral, n_instr, n_timeline, tl_dec
         "__N_OBS__": n_obs,
         "__N_DISC__": n_disc,
         "__N_MISS__": n_miss,
+        "__N_SEARCH__": f"{n_search:,}",
         "__TL_DECADES__": tl_decades,
         "__N_EQ__": len(eqs),
         "__N_EQFIELDS__": len({e.get("Field") for e in eqs if e.get("Field")}),
@@ -479,5 +618,6 @@ if __name__ == "__main__":
                extra={"__ELEMENTS__": compact(el_lookup), "__MINERALS__": compact(min_lookup),
                       "__COSMOS__": compact(cosmos_lookup), "__TABLES__": compact(equation_tables())})
     n_timeline, tl_decades = build_timeline_page()
+    n_search = build_search_index()
     build_home(n_min, n_gems, n_classes, n_spectral, n_instr, n_timeline, tl_decades,
-               n_obs, n_disc, n_miss)
+               n_obs, n_disc, n_miss, n_search)

@@ -213,6 +213,8 @@
   .force .desc { font-size: 13px; line-height: 1.55; color: var(--ink); margin: 0; flex: 1; }
   .sbar { height: 6px; border-radius: 3px; background: color-mix(in oklab, var(--fc) 16%, var(--panel)); overflow: hidden; }
   .sbar > div { height: 100%; background: var(--fc); border-radius: 3px; }
+  .force { scroll-margin-top: 16px; }
+  .force:target { outline: 2px solid var(--c-red); outline-offset: 3px; }
 </style>
 
 <nav class="knav"><a href="/">KOSMOS</a><span>/</span><span class="cur">Forces</span></nav>
@@ -242,6 +244,8 @@
     const m = META[id];
     const card = document.createElement('article');
     card.className = 'kcard force';
+    card.id = (f['Force Name'] || m.name || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+      .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');   // same slug rule as build.py
     card.style.setProperty('--fc', m.color);
     const h = document.createElement('h2'); h.textContent = f['Force Name'] || m.name;
     const rank = document.createElement('span'); rank.className = 'rank'; rank.textContent = RANK[i];
@@ -260,4 +264,11 @@
   });
   document.getElementById('foot').textContent =
     'Names, descriptions, ranges, and strength comparisons from the Cosmic Forces database in Notion. The strength bars are illustrative order, not to scale — the real span covers ~40 orders of magnitude.';
+
+  function openHash() {
+    const el = location.hash.length > 1 && document.getElementById(decodeURIComponent(location.hash.slice(1)));
+    if (el) el.scrollIntoView({ block: 'center', behavior: 'smooth' });
+  }
+  addEventListener('hashchange', openHash);
+  openHash();
 </script>

@@ -17,7 +17,7 @@
 #   3. seeds     — python3 scripts/<name>.py for each argument, in order
 #   4. fetch     — fetch_elements.py + fetch_all.py   (unless --no-fetch)
 #   5. build     — build.py
-#   6. ship      — public/*.html -> $APP_DIR/public/, server.js -> $APP_DIR/
+#   6. ship      — public/*.html + *.json -> $APP_DIR/public/, server.js -> $APP_DIR/
 #   7. restart   — $RESTART, then poll /health until it answers ok:true with
 #                  no missing pages
 #   8. commit    — data/ + public/ if changed, then push
@@ -102,9 +102,9 @@ python3 scripts/build.py
 # ---- 6. ship
 step "ship"
 mkdir -p "$APP_DIR/public"
-cp public/*.html "$APP_DIR/public/"
+cp public/*.html public/*.json "$APP_DIR/public/"
 cp server.js "$APP_DIR/"
-echo "copied $(ls public/*.html | wc -l) pages -> $APP_DIR/public/, server.js -> $APP_DIR/"
+echo "copied $(ls public/*.html public/*.json | wc -l) files -> $APP_DIR/public/, server.js -> $APP_DIR/"
 
 # ---- 7. restart + health
 step "restart"

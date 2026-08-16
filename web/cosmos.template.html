@@ -35,8 +35,9 @@ __SHARED__
   .instr .chips { display: flex; flex-wrap: wrap; gap: 4px; }
 
   .people { display: grid; grid-template-columns: repeat(auto-fill, minmax(255px, 1fr)); gap: 10px; }
-  .person { padding: 10px 12px; scroll-margin-top: 16px; }
-  .person:target { outline: 2px solid var(--c-violet); outline-offset: 3px; }
+  .person { padding: 10px 12px; }
+  .kcard, .drow { scroll-margin-top: 16px; }
+  .kcard:target, .drow:target > .dbody { outline: 2px solid var(--c-violet); outline-offset: 3px; border-radius: 6px; }
   .person .pn { font: 700 12.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; color: var(--ink); }
   .person .pm { font: 10px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; color: var(--muted); margin: 2px 0 5px; font-variant-numeric: tabular-nums; }
   .person .pk { font-size: 11.5px; color: var(--ink-2); line-height: 1.45; }
@@ -115,6 +116,8 @@ __SHARED__
 <script>
   const D = JSON.parse(document.getElementById('data').textContent);
   const EQ = D.equations || {};
+  const slug = (s) => (s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');   // same rule as build.py — search deep-links depend on it
 
   // chips linking to equations on the shelf
   function eqRow(ids, label = 'equations') {
@@ -153,6 +156,7 @@ __SHARED__
   const spec = document.getElementById('spectral');
   for (const s of D.spectral) {
     const card = document.createElement('div'); card.className = 'kcard spec';
+    card.id = 'spec-' + s.letter.toLowerCase();
     const letter = document.createElement('div'); letter.className = 'letter';
     const sw = document.createElement('span'); sw.className = 'sw';
     sw.style.background = SWATCH[(s.colors || [])[0]] || 'var(--muted)';
@@ -170,6 +174,7 @@ __SHARED__
   const guide = document.getElementById('guide');
   for (const g of D.types) {
     const card = document.createElement('div'); card.className = 'kcard gclass';
+    card.id = 'class-' + slug(g.type);
     const h = document.createElement('h3'); h.textContent = g.type;
     const ul = document.createElement('ul');
     for (const e of g.entries) { const li = document.createElement('li'); li.textContent = e; ul.appendChild(li); }
@@ -182,6 +187,7 @@ __SHARED__
   for (const it of D.instruments) {
     const card = document.createElement('div');
     card.className = 'kcard';
+    card.id = 'instr-' + slug(it.name);
     card.innerHTML = '<h3></h3><p></p><div class="chips"></div>';
     card.querySelector('h3').textContent = it.name + (it.type ? ` · ${it.type}` : '');
     card.querySelector('p').textContent = it.desc || '';
@@ -198,6 +204,7 @@ __SHARED__
   for (const o of D.observatories || []) {
     const card = document.createElement('div');
     card.className = 'kcard';
+    card.id = 'obs-' + slug(o.name);
     card.style.setProperty('--oc', OBS_COLOR[o.type] || 'var(--muted)');
     const h = document.createElement('h3'); h.textContent = o.name;
     const meta = document.createElement('div');
@@ -225,6 +232,7 @@ __SHARED__
   for (const x of D.discoveries || []) {
     const row = document.createElement('div');
     row.className = 'drow';
+    row.id = 'disc-' + slug(x.name);
     const y = document.createElement('div'); y.className = 'dyear'; y.textContent = x.year ?? '—';
     const body = document.createElement('div'); body.className = 'dbody';
     const h = document.createElement('h3'); h.textContent = x.name;
@@ -247,6 +255,7 @@ __SHARED__
   for (const m of D.missions || []) {
     const card = document.createElement('div');
     card.className = 'kcard';
+    card.id = 'mission-' + slug(m.name);
     card.style.setProperty('--mc', MISS_COLOR[m.status] || 'var(--muted)');
     const h = document.createElement('h3');
     const nm = document.createElement('span'); nm.textContent = m.name;
@@ -278,4 +287,13 @@ __SHARED__
     if (r.known) { const k = document.createElement('div'); k.className = 'pk'; k.textContent = r.known; card.appendChild(k); }
     people.appendChild(card);
   }
+
+  // everything above is built by script, so the browser's fragment jump can fire before
+  // the target exists — jump again now that it does (search results deep-link here)
+  function openHash() {
+    const el = location.hash.length > 1 && document.getElementById(decodeURIComponent(location.hash.slice(1)));
+    if (el) el.scrollIntoView({ block: 'center', behavior: 'smooth' });
+  }
+  addEventListener('hashchange', openHash);
+  openHash();
 </script>
