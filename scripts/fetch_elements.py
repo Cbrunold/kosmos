@@ -87,6 +87,8 @@ def normalise(results: list) -> list:
             "minedAs": sel("Mined As"),
             "extraction": rich("Extraction"),
             "mines": [x["id"] for x in (p.get("Mines", {}).get("relation") or [])],
+            "machines": [x["id"] for x in (p.get("Machines", {}).get("relation") or [])],
+            "skills": [x["id"] for x in (p.get("Skills", {}).get("relation") or [])],
             "equations": equations,   # page ids in the Equations [DB] (mirrored relation)
             "pageId": r["id"],
             "pageUrl": r.get("url"),

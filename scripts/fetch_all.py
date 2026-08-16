@@ -26,6 +26,8 @@ SOURCES = {
     "cosmologyEvents": "d9a53e88-f4a5-4476-9a8f-94c6f72443ea",
     "cosmicTimeline": "3c1ab928-8ffa-48e7-b0bc-b90e16480a46",
     "mines": "dd711986-067e-43f9-9a74-dd471ac4bcc6",
+    "machines": "f6c4e3cc-bfe0-4fb8-b807-3693cbcf4e88",
+    "skills": "804e17aa-435b-4306-acbb-2ec926b87b10",
     "spectralTypes": "6128c15c-25dd-47fb-bf00-ce737ca1d3e6",
     "gemstones": "e4fe83d2-0365-4dc6-935e-e5b6ce967778",
     "minerals": "a2db78db-efb7-4952-b8bc-e4ab98d42264",

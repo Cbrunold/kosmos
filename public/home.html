@@ -297,7 +297,7 @@
     <div class="sbox">
       <span class="glass" aria-hidden="true">⌕</span>
       <input id="q" type="search" autocomplete="off" spellcheck="false" placeholder="search elements, minerals, equations, theories, people, events…" aria-label="Search Kosmos" aria-controls="results" aria-expanded="false" />
-      <span class="stat" id="sstat">4,041 entries</span>
+      <span class="stat" id="sstat">4,043 entries</span>
       <kbd id="skbd" title="press / to search">/</kbd>
     </div>
     <div class="results" id="results" role="listbox" hidden></div>
@@ -340,6 +340,16 @@
     <p>Where the raw materials come out of the ground — a world map of the flagship mines — and how each one is won: ore minerals, typical grade, how far geology had to enrich it, and the ore-to-metal chain.</p>
     <span class="stat"><b>88</b> mines · <b>41</b> materials with an extraction story</span>
   </a>
+  <a class="tile" href="/machines">
+    <h2><span class="dot" style="background:var(--c-amber)"></span>Machines</h2>
+    <p>The engines and machines that turn heat, motion and chemistry into work — how each one does it, its cycle drawn on a p–V diagram, what it keeps of the energy, and what it is built from.</p>
+    <span class="stat"><b>0</b> machines · <b>0</b> cycle diagrams</span>
+  </a>
+  <a class="tile" href="/skills">
+    <h2><span class="dot" style="background:var(--c-green)"></span>Skills</h2>
+    <p>Hands-on techniques with the science behind them — soldering, welding, heat treatment, casting, machining, electronics, concrete, knots — tools, steps, safety, how it fails, how you know it worked.</p>
+    <span class="stat"><b>0</b> skills · with the physics that makes each one work</span>
+  </a>
   <a class="tile" href="/constants">
     <h2><span class="dot" style="background:var(--c-teal)"></span>Constants &amp; Units</h2>
     <p>The numbers everything else is written in — CODATA values with real uncertainties, the seven constants that define the SI, and both sides of the Hubble tension.</p>
@@ -375,6 +385,8 @@
     'spectral type':['spectral types','var(--c-violet)'],
     'object class': ['object classes','var(--c-violet)'],
     mine:           ['mines',         'var(--c-bronze)'],
+    machine:        ['machines',      'var(--c-amber)'],
+    skill:          ['skills',        'var(--c-green)'],
     force:          ['forces',        'var(--c-red)'],
   };
   const KIND_ORDER = Object.keys(KINDS);

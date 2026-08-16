@@ -17,6 +17,8 @@ const PAGES = {
   '/theories': 'theories.html',
   '/timeline': 'timeline.html',
   '/mines': 'mines.html',
+  '/machines': 'machines.html',
+  '/skills': 'skills.html',
   '/equations': 'equations.html',
   '/constants': 'constants.html',
   '/search.json': 'search.json',   // the index behind the home-page search bar, fetched on first keystroke

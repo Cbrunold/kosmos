@@ -16,6 +16,8 @@ truth for code and the normalised data snapshots. Sync is one-way, Notion → re
 | `/cosmos`    | Field guide to celestial object classes, the stellar spectral sequence, observatories, a discovery timeline, instruments and researchers |
 | `/forces`    | The four fundamental interactions |
 | `/mines`     | World map of ~90 flagship mines, and for each raw material its ore minerals, typical grade, concentration factor, and ore-to-product process |
+| `/machines`  | The canonical engines and machines — how each works, its cycle drawn as a p–V loop, efficiency, materials, inventors; cross-linked to equations, elements and skills |
+| `/skills`    | Hands-on techniques with the science behind them — tools, steps, safety, how it fails, how you know it worked; linked to elements, equations and machines |
 | `/timeline`  | The universe's history on a log axis of seconds — Planck epoch to heat death, cross-linked to the equations and theories |
 | `/theories`  | Theory shelf from Ptolemy to the holographic principle — status, proponents, and the equations each rests on; sortable chronologically |
 | `/equations` | Canonical equations with symbols decoded, filterable by field |
@@ -71,6 +73,10 @@ scripts/fetch_webmineral.py   Formula, molecular weight, density, hardness and m
 scripts/seed_minerals_fix.py  Rewrites the Minerals DB from that file — Formula, true Molar Mass,
                               per-element MASS % (replacing counts that were wrong), clears the
                               derived columns — and adds the ore minerals the DB lacked
+scripts/seed_engineering.py   The engineering half: ~30 machines and ~22 hands-on skills into two
+                              new DBs, plus the cycle equations (Carnot, Otto, Diesel, Brayton, COP,
+                              Betz…) and ~30 inventors they link to. build.py draws each heat
+                              engine's p–V cycle from the cycle name
 deploy/                       systemd unit + nginx site as deployed on the VPS
 ```
 

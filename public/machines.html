@@ -1,0 +1,367 @@
+<title>Kosmos · Machines</title>
+<style>
+  :root {
+    color-scheme: light;
+    --page: #f2f4f5;
+    --panel: #fbfcfc;
+    --ink: #17212b;
+    --ink-2: #4c5a66;
+    --muted: #8595a1;
+    --hairline: #dde4e8;
+    --ring: rgba(23, 33, 43, 0.85);
+    --c-blue: #2a78d6;
+    --c-teal: #0f9b9b;
+    --c-red: #c23434;
+    --c-amber: #e39a00;
+    --c-green: #33a047;
+    --c-violet: #6b50c8;
+    --c-pink: #e05e8f;
+    --c-bronze: #8a5314;
+    --c-cyan: #0b87b8;
+    --c-indigo: #4a58c8;
+    --c-olive: #737a16;
+    --c-rust: #bd5b1c;
+    --c-plum: #a23a9a;
+    --c-slate: #52688a;
+    --c-wine: #8f2b4e;
+    --c-forest: #1f7050;
+    --c-steel: #4a6474;
+    --c-fuchsia: #b81f7a;
+    --c-lime: #5f9e14;
+    --c-yellow: #a89a00;
+    --c-aubergine: #702f9e;
+    --c-navy: #24457e;
+    --c-mint: #0c8f66;
+    --c-mauve: #8d5765;
+    --c-coral: #c14f36;
+    --c-periwinkle: #5e6fd0;
+    --c-ice: #2f93bb;
+    --c-storm: #5c5a7a;
+    --c-ochre: #96690f;
+    --c-tangerine: #d4700a;
+    --c-clay: #9c6249;
+    --c-deepsea: #14586e;
+    --c-cerulean: #1a7fc4;
+    --c-gold: #b07d12;
+    --c-ember: #c8461a;
+    --c-terracotta: #a8502f;
+    --c-silver: #6b7884;
+    --c-moss: #4f7a1e;
+    --c-lavender: #7d5fc0;
+    --heat: #2a78d6;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --page: #0e1116;
+      --panel: #14181d;
+      --ink: #e9edf2;
+      --ink-2: #aab8c4;
+      --muted: #74828e;
+      --hairline: #242b33;
+      --ring: rgba(233, 237, 242, 0.9);
+      --c-blue: #4a90e8;
+      --c-teal: #0aa085;
+      --c-red: #e75570;
+      --c-amber: #b98800;
+      --c-green: #46a850;
+      --c-violet: #8b74e0;
+      --c-pink: #dc5f83;
+      --c-bronze: #a4671f;
+      --c-cyan: #38a8d8;
+      --heat: #5598e7;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --page: #0e1116;
+    --panel: #14181d;
+    --ink: #e9edf2;
+    --ink-2: #aab8c4;
+    --muted: #74828e;
+    --hairline: #242b33;
+    --ring: rgba(233, 237, 242, 0.9);
+    --c-blue: #4a90e8;
+    --c-teal: #0aa085;
+    --c-red: #e75570;
+    --c-amber: #b98800;
+    --c-green: #46a850;
+    --c-violet: #8b74e0;
+    --c-pink: #dc5f83;
+    --c-bronze: #a4671f;
+    --c-cyan: #38a8d8;
+    --c-indigo: #7b87e8;
+    --c-olive: #9aa32e;
+    --c-rust: #d97a3c;
+    --c-plum: #c85fc0;
+    --c-slate: #8ca3c0;
+    --c-wine: #c25572;
+    --c-forest: #3f9a72;
+    --c-steel: #83a0b2;
+    --c-fuchsia: #d94fa3;
+    --c-lime: #93bf3a;
+    --c-yellow: #ccc039;
+    --c-aubergine: #a374d6;
+    --c-navy: #7f9bd4;
+    --c-mint: #3fbd92;
+    --c-mauve: #bd8a98;
+    --c-coral: #e58a76;
+    --c-periwinkle: #98a5ef;
+    --c-ice: #8ed2ea;
+    --c-storm: #918fb5;
+    --c-ochre: #bb8f2e;
+    --c-tangerine: #ee9440;
+    --c-clay: #c9967e;
+    --c-deepsea: #4c9cb4;
+    --c-cerulean: #5fb0f0;
+    --c-gold: #d9a441;
+    --c-ember: #e8683a;
+    --c-terracotta: #d1795a;
+    --c-silver: #a4b0bc;
+    --c-moss: #7fa84a;
+    --c-lavender: #b49ae6;
+    --heat: #5598e7;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--page);
+    color: var(--ink);
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    margin: 0;
+    padding: 20px clamp(14px, 3vw, 40px) 56px;
+  }
+  .mono { font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; }
+
+  .knav {
+    font: 11px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 18px;
+    display: flex;
+    gap: 8px;
+    align-items: baseline;
+  }
+  .knav a { color: var(--ink-2); text-decoration: none; }
+  .knav a:hover { color: var(--ink); }
+  .knav .cur { color: var(--ink); }
+
+  h1.ktitle {
+    font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    font-size: clamp(22px, 3vw, 30px);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin: 0 0 6px;
+    text-wrap: balance;
+  }
+  .klede { font-size: 14px; color: var(--ink-2); max-width: 62ch; line-height: 1.55; margin: 0 0 22px; }
+  .klede a { color: inherit; }
+
+  h2.ksec {
+    font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 34px 0 12px;
+    border-bottom: 1px solid var(--hairline);
+    padding-bottom: 7px;
+  }
+
+  .kcard {
+    background: var(--panel);
+    border: 1px solid var(--hairline);
+    border-radius: 10px;
+    padding: 16px;
+  }
+  .kchip {
+    font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    border: 1px solid var(--hairline);
+    color: var(--ink-2);
+    border-radius: 99px;
+    padding: 2px 9px;
+    white-space: nowrap;
+  }
+  .knote { font-size: 11px; color: var(--muted); line-height: 1.5; }
+  .kfoot { margin-top: 42px; font-size: 11px; color: var(--muted); border-top: 1px solid var(--hairline); padding-top: 12px; }
+  .kfoot a { color: inherit; }
+  a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; }
+
+
+  .wrap { max-width: 1000px; }
+  .kinds { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 18px; }
+  .kchp {
+    font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    background: var(--panel); border: 1px solid var(--hairline); border-left: 3px solid var(--kc, var(--muted));
+    color: var(--ink-2); border-radius: 5px; padding: 4px 9px; cursor: pointer; display: inline-flex; align-items: baseline; gap: 6px;
+  }
+  .kchp:hover { color: var(--ink); border-color: var(--ink-2); }
+  .kchp .n { font-size: 9px; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .kchp[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--page); }
+  .kchp[aria-pressed="true"] .n { color: color-mix(in oklab, var(--page) 65%, var(--ink)); }
+
+  .list { display: flex; flex-direction: column; gap: 14px; }
+  .mach { border-left: 3px solid var(--kc, var(--muted)); scroll-margin-top: 16px; }
+  .mach.flash { outline: 2px solid var(--c-pink); outline-offset: 3px; }
+  .mach[hidden] { display: none; }
+  .mach h2 { font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; font-size: 16px; margin: 0 0 4px; display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+  .mach h2 .yr { font: 11.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; color: var(--muted); font-variant-numeric: tabular-nums; margin-left: auto; }
+  .tag { font: 9.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; letter-spacing: 0.08em; text-transform: uppercase; border: 1px solid var(--hairline); border-radius: 99px; padding: 2px 8px; color: var(--muted); }
+  .tag.cyc { color: var(--kc, var(--muted)); border-color: var(--kc, var(--muted)); }
+  .body { display: grid; grid-template-columns: 1fr; gap: 12px; }
+  .body.with-diagram { grid-template-columns: minmax(0, 1fr) 300px; }
+  @media (max-width: 720px) { .body.with-diagram { grid-template-columns: 1fr; } }
+  .how { font-size: 13px; color: var(--ink-2); line-height: 1.6; margin: 0; }
+  .facts { display: grid; grid-template-columns: max-content 1fr; gap: 3px 12px; margin: 10px 0 0; font-size: 12px; }
+  .facts dt { font: 9.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); padding-top: 3px; }
+  .facts dd { margin: 0; color: var(--ink-2); line-height: 1.5; }
+  .lrow { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 10px; align-items: baseline; }
+  .lrow .lbl { font: 9.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-right: 3px; }
+  .lnk { font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; border: 1px solid var(--hairline); border-left: 3px solid var(--lc, var(--muted)); color: var(--ink-2); border-radius: 4px; padding: 2px 7px 2px 6px; text-decoration: none; white-space: nowrap; }
+  .lnk:hover { color: var(--ink); border-color: var(--ink-2); }
+
+  /* ---- cycle diagram ---- */
+  .diag { border: 1px solid var(--hairline); border-radius: 8px; padding: 10px 10px 8px; background: var(--page); align-self: start; }
+  .diag svg { display: block; width: 100%; height: auto; }
+  .diag .ax { stroke: var(--muted); stroke-width: 1; fill: none; }
+  .diag .axl { font: 9.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; fill: var(--muted); }
+  .diag .loop { fill: color-mix(in oklab, var(--kc, var(--c-amber)) 14%, transparent); stroke: var(--kc, var(--c-amber)); stroke-width: 1.8; stroke-linejoin: round; }
+  .diag .st { fill: var(--page); stroke: var(--ink); stroke-width: 1.2; }
+  .diag .stl { font: 700 9.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; fill: var(--ink); }
+  .diag ol { margin: 8px 0 0; padding-left: 0; list-style: none; font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; color: var(--ink-2); line-height: 1.5; }
+  .diag .note { font-size: 10.5px; color: var(--muted); margin: 6px 0 0; line-height: 1.45; }
+</style>
+
+<nav class="knav"><a href="/">KOSMOS</a><span>/</span><span class="cur">Machines</span></nav>
+<h1 class="ktitle">Machines</h1>
+<p class="klede">The engines and machines that turn heat, motion and chemistry into work and back — how each one does it, the cycle it runs on, what it manages to keep of the energy it is given, and what it is made of. Every heat engine here carries its cycle drawn on a p–V diagram: the area inside the loop is the work you get per cycle, and the shape is the whole story.</p>
+
+<div class="wrap">
+  <div class="kinds" id="kinds"></div>
+  <div class="list" id="list"></div>
+  <p class="empty" id="empty" hidden>Nothing in that family yet.</p>
+</div>
+
+<p class="kfoot">From the Machines database in Notion. Efficiencies are typical for the class of machine, not records. Cycle diagrams are the ideal cycles with textbook parameters — real indicator diagrams are rounder, smaller and less efficient, and each note says what was assumed.</p>
+
+<script id="data" type="application/json">{"machines":[]}</script>
+<script>
+  const D = JSON.parse(document.getElementById('data').textContent);
+  const M = D.machines;
+  const KC = { 'Heat engine': 'var(--c-amber)', 'Turbine': 'var(--c-blue)', 'Electric machine': 'var(--c-violet)',
+               'Power source': 'var(--c-green)', 'Heat pump': 'var(--c-slate)', 'Reactor': 'var(--c-red)', 'Rocket': 'var(--c-bronze)' };
+  const KORDER = Object.keys(KC);
+  const list = document.getElementById('list');
+  const empty = document.getElementById('empty');
+  const active = new Set();
+  const cards = new Map();
+
+  function chips(label, items, color, hrefOf, titleOf) {
+    if (!items.length) return null;
+    const row = document.createElement('div'); row.className = 'lrow';
+    const l = document.createElement('span'); l.className = 'lbl'; l.textContent = label; row.appendChild(l);
+    for (const it of items) {
+      const a = document.createElement('a'); a.className = 'lnk'; a.href = hrefOf(it);
+      a.textContent = it.name || `${it.sym} · ${it.name2 || ''}`; if (titleOf) a.title = titleOf(it) || '';
+      a.style.setProperty('--lc', color); row.appendChild(a);
+    }
+    return row;
+  }
+
+  // ---- p–V diagram: axes, loop, states ----
+  function diagram(d) {
+    const W = 300, H = 210, L = 30, B = 26, T = 8, R = 8;
+    const X = (x) => L + x * (W - L - R), Y = (y) => H - B - y * (H - B - T);
+    const NS = 'http://www.w3.org/2000/svg';
+    const el = (t, a, txt) => { const n = document.createElementNS(NS, t); for (const k in a) n.setAttribute(k, a[k]); if (txt != null) n.textContent = txt; return n; };
+    const svg = el('svg', { viewBox: `0 0 ${W} ${H}`, role: 'img', 'aria-label': 'pressure–volume diagram of the cycle' });
+    svg.appendChild(el('path', { class: 'ax', d: `M${L} ${T} L${L} ${H - B} L${W - R} ${H - B}` }));
+    svg.appendChild(el('text', { class: 'axl', x: L - 4, y: T + 8, 'text-anchor': 'end' }, 'p'));
+    svg.appendChild(el('text', { class: 'axl', x: W - R, y: H - B + 12, 'text-anchor': 'end' }, d.logx ? 'V (log)' : 'V'));
+    svg.appendChild(el('path', { class: 'loop', d: d.pts.map(([x, y], i) => `${i ? 'L' : 'M'}${X(x).toFixed(1)} ${Y(y).toFixed(1)}`).join(' ') + ' Z' }));
+    for (const [n, x, y] of d.states) {
+      svg.appendChild(el('circle', { class: 'st', cx: X(x), cy: Y(y), r: 3.2 }));
+      // nudge labels away from the axes and each other
+      const dx = x < 0.15 ? 7 : -7, dy = y < 0.15 ? -6 : (y > 0.85 ? 12 : -6);
+      svg.appendChild(el('text', { class: 'stl', x: X(x) + dx, y: Y(y) + dy, 'text-anchor': x < 0.15 ? 'start' : 'end' }, n));
+    }
+    return svg;
+  }
+
+  function render() {
+    let shown = 0;
+    for (const m of M) {
+      const on = !active.size || active.has(m.kind);
+      cards.get(m.slug).hidden = !on;
+      if (on) shown++;
+    }
+    empty.hidden = shown > 0;
+  }
+
+  for (const m of M) {
+    const c = document.createElement('article');
+    c.className = 'kcard mach'; c.id = m.slug;
+    c.style.setProperty('--kc', KC[m.kind] || 'var(--muted)');
+    const h = document.createElement('h2');
+    const nm = document.createElement('span'); nm.textContent = m.name; h.appendChild(nm);
+    if (m.kind) { const t = document.createElement('span'); t.className = 'tag'; t.textContent = m.kind; h.appendChild(t); }
+    if (m.cycle && m.cycle !== 'None') { const t = document.createElement('span'); t.className = 'tag cyc'; t.textContent = m.cycle + ' cycle'; h.appendChild(t); }
+    if (m.year) { const y = document.createElement('span'); y.className = 'yr'; y.textContent = m.year; h.appendChild(y); }
+    c.appendChild(h);
+
+    const body = document.createElement('div'); body.className = 'body' + (m.diagram ? ' with-diagram' : '');
+    const left = document.createElement('div');
+    const p = document.createElement('p'); p.className = 'how'; p.textContent = m.how || ''; left.appendChild(p);
+    const dl = document.createElement('dl'); dl.className = 'facts';
+    for (const [k, v] of [['efficiency', m.eff], ['power density', m.pd], ['made of', m.materials], ['used in', m.used]]) {
+      if (!v) continue;
+      const dt = document.createElement('dt'); dt.textContent = k; const dd = document.createElement('dd'); dd.textContent = v; dl.append(dt, dd);
+    }
+    if (dl.children.length) left.appendChild(dl);
+    const inv = chips('built first by', m.inventors, 'var(--c-violet)', (p) => '/cosmos#' + p.slug, (p) => [p.life, p.known].filter(Boolean).join(' · '));
+    if (inv) left.appendChild(inv);
+    const eq = chips('the mathematics', m.equations, 'var(--c-amber)', (q) => '/equations#' + q.slug, (q) => q.field);
+    if (eq) left.appendChild(eq);
+    const els = chips('made with', m.elements.map((e) => ({ name: `${e.sym} · ${e.name}`, sym: e.sym })), 'var(--c-blue)', (e) => '/elements#' + e.sym);
+    if (els) left.appendChild(els);
+    const sk = chips('skills', m.skills, 'var(--c-green)', (s) => '/skills#' + s.slug);
+    if (sk) left.appendChild(sk);
+    body.appendChild(left);
+
+    if (m.diagram) {
+      const box = document.createElement('div'); box.className = 'diag';
+      box.appendChild(diagram(m.diagram));
+      const ol = document.createElement('ol');
+      for (const pr of m.diagram.procs) { const li = document.createElement('li'); li.textContent = pr; ol.appendChild(li); }
+      box.appendChild(ol);
+      const note = document.createElement('p'); note.className = 'note'; note.textContent = m.diagram.note; box.appendChild(note);
+      body.appendChild(box);
+    }
+    c.appendChild(body);
+    list.appendChild(c);
+    cards.set(m.slug, c);
+  }
+
+  // kind filter
+  const kinds = document.getElementById('kinds');
+  const counts = new Map(); for (const m of M) counts.set(m.kind, (counts.get(m.kind) || 0) + 1);
+  for (const k of KORDER) {
+    if (!counts.has(k)) continue;
+    const b = document.createElement('button'); b.className = 'kchp'; b.type = 'button'; b.setAttribute('aria-pressed', 'false');
+    b.style.setProperty('--kc', KC[k]);
+    b.innerHTML = '<span></span><span class="n"></span>'; b.firstChild.textContent = k.toLowerCase(); b.lastChild.textContent = counts.get(k);
+    b.addEventListener('click', () => { if (active.has(k)) active.delete(k); else active.add(k); b.setAttribute('aria-pressed', String(active.has(k))); render(); });
+    kinds.appendChild(b);
+  }
+  render();
+
+  function goTo(id) {
+    const c = cards.get(id); if (!c) return;
+    if (c.hidden) { active.clear(); for (const b of kinds.children) b.setAttribute('aria-pressed', 'false'); render(); }
+    c.scrollIntoView({ block: 'center', behavior: 'smooth' });
+    c.classList.add('flash'); setTimeout(() => c.classList.remove('flash'), 1700);
+  }
+  if (location.hash.length > 1) goTo(location.hash.slice(1));
+  addEventListener('hashchange', () => goTo(location.hash.slice(1)));
+</script>

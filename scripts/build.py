@@ -9,6 +9,7 @@ Outputs: public/index.html   (periodic table, served at /elements)
          public/home.html    (tile launcher, served at /)
          public/{minerals,cosmos,forces,theories,timeline}.html
          public/mines.html   (world map of flagship mines + extraction per element)
+         public/machines.html, public/skills.html   (the engineering half)
          public/search.json  (flat index behind the home-page search bar)
 """
 import json
@@ -419,6 +420,172 @@ def build_mines_page():
     return len(mines), sum(1 for v in ext.values() if v["minedAs"] == "Primary")
 
 
+# ---------------- machines & skills ----------------
+GAMMA = 1.4
+
+
+def _adiabat(p1, v1, v2, n=28):
+    return [(v1 + (v2 - v1) * i / n, p1 * (v1 / (v1 + (v2 - v1) * i / n)) ** GAMMA) for i in range(n + 1)]
+
+
+def _isotherm(p1, v1, v2, n=28):
+    return [(v1 + (v2 - v1) * i / n, p1 * v1 / (v1 + (v2 - v1) * i / n)) for i in range(n + 1)]
+
+
+def cycle_diagram(cycle: str):
+    """A p–V loop for a named thermodynamic cycle, as normalised points the page
+    draws with SVG. Ideal cycles with textbook parameters, chosen so the loop is
+    legible rather than to match any particular machine — the note says which.
+    Returns None for machines that have no cycle."""
+    G = GAMMA
+    if cycle == "Otto":
+        r, k = 8.0, 3.0
+        p2 = r ** G
+        seg = [("1→2 adiabatic compression", _adiabat(1, 1, 1 / r)),
+               ("2→3 heat added at constant volume (the spark)", [(1 / r, p2), (1 / r, k * p2)]),
+               ("3→4 adiabatic expansion — the power stroke", _adiabat(k * p2, 1 / r, 1)),
+               ("4→1 exhaust at constant volume", [(1, k), (1, 1)])]
+        note = f"ideal η = 1 − r^(1−γ) = {1 - r ** (1 - G):.0%} at r = {r:g}, γ = {G}"
+        logx = False
+    elif cycle == "Diesel":
+        r, a = 16.0, 2.0
+        p2 = r ** G
+        seg = [("1→2 adiabatic compression of air alone", _adiabat(1, 1, 1 / r)),
+               ("2→3 fuel injected: heat added at constant pressure", [(1 / r, p2), (a / r, p2)]),
+               ("3→4 adiabatic expansion", _adiabat(p2, a / r, 1)),
+               ("4→1 exhaust at constant volume", [(1, p2 * (a / r) ** G), (1, 1)])]
+        eta = 1 - (1 / r ** (G - 1)) * (a ** G - 1) / (G * (a - 1))
+        note = f"ideal η = {eta:.0%} at r = {r:g}, cut-off α = {a:g}"
+        logx = False
+    elif cycle == "Brayton":
+        rp, k = 8.0, 2.5
+        v2 = rp ** (-1 / G)
+        v3 = k * v2
+        v4 = v3 * rp ** (1 / G)
+        seg = [("1→2 adiabatic compression (compressor)", _adiabat(1, 1, v2)),
+               ("2→3 heat added at constant pressure (combustor)", [(v2, rp), (v3, rp)]),
+               ("3→4 adiabatic expansion (turbine, then nozzle)", _adiabat(rp, v3, v4)),
+               ("4→1 heat rejected at constant pressure (the exhaust)", [(v4, 1), (1, 1)])]
+        note = f"ideal η = 1 − (1/r_p)^((γ−1)/γ) = {1 - (1 / rp) ** ((G - 1) / G):.0%} at pressure ratio {rp:g}"
+        logx = False
+    elif cycle == "Carnot":
+        t = 1.3    # T_h/T_c — small, so the loop is visible; real engines are 3–7
+        v2 = 2.0
+        v3 = v2 * t ** (1 / (G - 1))
+        v4 = 1.0 * t ** (1 / (G - 1))
+        p1 = 4.0
+        p2 = p1 * 1 / v2
+        p3 = p2 * (v2 / v3) ** G
+        p4 = p3 * v3 / v4
+        seg = [("1→2 isothermal expansion at T_h, taking heat in", _isotherm(p1, 1, v2)),
+               ("2→3 adiabatic expansion, cooling to T_c", _adiabat(p2, v2, v3)),
+               ("3→4 isothermal compression at T_c, rejecting heat", _isotherm(p3, v3, v4)),
+               ("4→1 adiabatic compression back to T_h", _adiabat(p4, v4, 1))]
+        note = f"ideal η = 1 − T_c/T_h = {1 - 1 / t:.0%} at T_h/T_c = {t} — drawn small so the loop shows; a real engine's ratio is 3–7"
+        logx = False
+    elif cycle == "Stirling":
+        t, v2, p1 = 2.0, 2.5, 4.0
+        p2 = p1 / v2
+        p3 = p2 / t
+        p4 = p3 * v2
+        seg = [("1→2 isothermal expansion at T_h", _isotherm(p1, 1, v2)),
+               ("2→3 cooling at constant volume — through the regenerator", [(v2, p2), (v2, p3)]),
+               ("3→4 isothermal compression at T_c", _isotherm(p3, v2, 1)),
+               ("4→1 heating at constant volume — the regenerator gives it back", [(1, p4), (1, p1)])]
+        note = f"ideal η equals Carnot's, 1 − T_c/T_h = {1 - 1 / t:.0%} at T_h/T_c = {t:g}"
+        logx = False
+    elif cycle == "Rankine":
+        v4 = 0.32 * (1.0 / 0.05) ** (1 / G)      # where the adiabat from state 3 meets condenser pressure
+        seg = [("1→2 pump: liquid water to boiler pressure", [(0.02, 0.05), (0.02, 1.0)]),
+               ("2→3 boiler: heat, boil, superheat at constant pressure", [(0.02, 1.0), (0.04, 1.0), (0.22, 1.0), (0.32, 1.0)]),
+               ("3→4 turbine: adiabatic expansion to condenser pressure", _adiabat(1.0, 0.32, v4)),
+               ("4→1 condenser: back to liquid at constant pressure", [(v4, 0.05), (0.02, 0.05)])]
+        note = "schematic, volume on a log axis — steam expands about a thousandfold, which no linear plot can show"
+        logx = True
+    elif cycle == "Vapour-compression":
+        g = 1.15
+        v2 = (1 / 4.0) ** (1 / g)
+        seg = [("1→2 compressor: vapour squeezed to condenser pressure", [(1 + (v2 - 1) * i / 28, (1 / (1 + (v2 - 1) * i / 28)) ** g) for i in range(29)]),
+               ("2→3 condenser: gives up heat and liquefies at constant pressure", [(v2, 4.0), (0.02, 4.0)]),
+               ("3→4 expansion valve: pressure drops, some liquid flashes", [(0.02, 4.0), (0.25, 1.0)]),
+               ("4→1 evaporator: boils, taking heat from the cold side", [(0.25, 1.0), (1.0, 1.0)])]
+        note = "run clockwise it is a refrigerator or heat pump; the same loop backwards is a Rankine engine. Schematic, log volume"
+        logx = True
+    else:
+        return None
+    pts = []
+    for _, ps in seg:
+        pts += ps if not pts else ps[1:]
+    xs = [v for v, _ in pts]
+    ys = [pp for _, pp in pts]
+    if logx:
+        lx = [math.log10(x) for x in xs]
+        x0, x1 = min(lx), max(lx)
+        nx = [(v - x0) / (x1 - x0) for v in lx]
+    else:
+        x0, x1 = min(xs), max(xs)
+        nx = [(v - x0) / (x1 - x0) for v in xs]
+    y0, y1 = 0.0, max(ys)
+    ny = [(pp - y0) / (y1 - y0) for pp in ys]
+    norm = [(round(a, 4), round(b, 4)) for a, b in zip(nx, ny)]
+    # a state is the first point of each segment
+    states, i = [], 0
+    for k, (_, ps) in enumerate(seg):
+        states.append([str(k + 1), *norm[i]])
+        i += len(ps) - 1
+    return {"pts": norm, "states": states, "procs": [name for name, _ in seg], "note": note, "logx": logx}
+
+
+def build_machines_page():
+    by_id_eq = eq_lookup_all()
+    el_by_id = {e["pageId"]: {"sym": e["notation"], "name": e["name"]} for e in elements}
+    people = {r["id"]: {"name": r["Name"], "slug": slugify(r["Name"]), "life": r.get("Lifespan"),
+                        "known": r.get("Known For")} for r in notion["researchers"] if r.get("Name")}
+    skills_by_id = {s["id"]: {"name": s["Name"], "slug": slugify(s["Name"])}
+                    for s in notion.get("skills", []) if s.get("Name")}
+    rows = []
+    for m in notion.get("machines", []):
+        if not m.get("Name"):
+            continue
+        rows.append({
+            "name": m["Name"], "slug": slugify(m["Name"]), "kind": m.get("Kind"), "cycle": m.get("Cycle"),
+            "year": m.get("Year"), "how": m.get("How It Works"), "eff": m.get("Efficiency"),
+            "pd": m.get("Power Density"), "materials": m.get("Materials"), "used": m.get("Used In"),
+            "inventors": [people[i] for i in (m.get("Inventors") or []) if i in people],
+            "elements": [el_by_id[i] for i in (m.get("Elements") or []) if i in el_by_id],
+            "equations": [by_id_eq[i] for i in (m.get("Equations") or []) if i in by_id_eq],
+            "skills": [skills_by_id[i] for i in (m.get("Skills") or []) if i in skills_by_id],
+            "diagram": cycle_diagram(m.get("Cycle")) if m.get("Cycle") and m.get("Cycle") != "None" else None,
+        })
+    rows.sort(key=lambda r: (r["year"] is None, r["year"] or 0))
+    write_page("machines.template.html", "machines.html", {"machines": rows})
+    return len(rows), sum(1 for r in rows if r["diagram"])
+
+
+def build_skills_page():
+    by_id_eq = eq_lookup_all()
+    el_by_id = {e["pageId"]: {"sym": e["notation"], "name": e["name"]} for e in elements}
+    machines_by_id = {m["id"]: {"name": m["Name"], "slug": slugify(m["Name"])}
+                      for m in notion.get("machines", []) if m.get("Name")}
+    rows = []
+    for s in notion.get("skills", []):
+        if not s.get("Name"):
+            continue
+        rows.append({
+            "name": s["Name"], "slug": slugify(s["Name"]), "cat": s.get("Category"), "level": s.get("Difficulty"),
+            "summary": s.get("Summary"), "science": s.get("The Science"), "tools": s.get("Tools"),
+            "steps": [x.strip() for x in (s.get("Steps") or "").split("\n") if x.strip()],
+            "safety": s.get("Safety"), "fails": s.get("How It Fails"), "done": s.get("Done When"),
+            "elements": [el_by_id[i] for i in (s.get("Elements") or []) if i in el_by_id],
+            "equations": [by_id_eq[i] for i in (s.get("Equations") or []) if i in by_id_eq],
+            "machines": [machines_by_id[i] for i in (s.get("Machines") or []) if i in machines_by_id],
+        })
+    order = ["Joining", "Metalwork", "Making", "Electronics", "Building", "Rigging", "Measuring"]
+    rows.sort(key=lambda r: (order.index(r["cat"]) if r["cat"] in order else 99, r["name"]))
+    write_page("skills.template.html", "skills.html", {"skills": rows, "cats": [c for c in order if any(r["cat"] == c for r in rows)]})
+    return len(rows)
+
+
 # ---------------- search index ----------------
 def _clip(s, n=170) -> str:
     s = " ".join((s or "").split())
@@ -448,6 +615,8 @@ def build_search_index():
         ("/constants", "Constants & Units", "CODATA constants · SI units · prefixes"),
         ("/equations", "Equations", "canonical equations with symbols decoded"),
         ("/mines", "Mines & Extraction", "a world map of flagship mines, and how each raw material is won"),
+        ("/machines", "Machines", "the canonical engines and machines: how each works, its cycle, efficiency, materials"),
+        ("/skills", "Skills", "hands-on techniques with the science behind them: tools, steps, safety, how it fails"),
     ]:
         add("page", name, sub, "", route)
 
@@ -546,6 +715,17 @@ def build_search_index():
             add("mine", m["Name"], " · ".join(filter(None, [m.get("Country"), m.get("Type")])),
                 m.get("Notes"), f"/mines#{slugify(m['Name'])}")
 
+    for m in notion.get("machines", []):
+        if m.get("Name"):
+            add("machine", m["Name"], " · ".join(filter(None, [m.get("Kind"), str(m["Year"]) if m.get("Year") else None,
+                                                             None if (m.get("Cycle") in (None, "None")) else f"{m['Cycle']} cycle"])),
+                m.get("How It Works"), f"/machines#{slugify(m['Name'])}")
+
+    for sk in notion.get("skills", []):
+        if sk.get("Name"):
+            add("skill", sk["Name"], " · ".join(filter(None, [sk.get("Category"), sk.get("Difficulty")])),
+                sk.get("Summary"), f"/skills#{slugify(sk['Name'])}")
+
     for f in notion["forces"]:
         nm = f.get("Force Name")
         if nm:
@@ -581,7 +761,7 @@ def theory_span() -> str:
 
 
 def build_home(n_min, n_gems, n_classes, n_spectral, n_instr, n_timeline, tl_decades,
-               n_obs, n_disc, n_miss, n_search, n_mines, n_mined):
+               n_obs, n_disc, n_miss, n_search, n_mines, n_mined, n_mach, n_diag, n_skills):
     gaps = sum(1 for e in elements
                if e["meltingPt"] is None or e["boilingPt"] is None
                or e["density"] is None or e["occurrence"] is None)
@@ -611,6 +791,9 @@ def build_home(n_min, n_gems, n_classes, n_spectral, n_instr, n_timeline, tl_dec
         "__N_SEARCH__": f"{n_search:,}",
         "__N_MINES__": n_mines,
         "__N_MINED__": n_mined,
+        "__N_MACHINES__": n_mach,
+        "__N_DIAGRAMS__": n_diag,
+        "__N_SKILLS__": n_skills,
         "__TL_DECADES__": tl_decades,
         "__N_EQ__": len(eqs),
         "__N_EQFIELDS__": len({e.get("Field") for e in eqs if e.get("Field")}),
@@ -677,6 +860,8 @@ if __name__ == "__main__":
                       "__COSMOS__": compact(cosmos_lookup), "__TABLES__": compact(equation_tables())})
     n_timeline, tl_decades = build_timeline_page()
     n_mines, n_mined = build_mines_page()
+    n_mach, n_diag = build_machines_page()
+    n_skills = build_skills_page()
     n_search = build_search_index()
     build_home(n_min, n_gems, n_classes, n_spectral, n_instr, n_timeline, tl_decades,
-               n_obs, n_disc, n_miss, n_search, n_mines, n_mined)
+               n_obs, n_disc, n_miss, n_search, n_mines, n_mined, n_mach, n_diag, n_skills)
