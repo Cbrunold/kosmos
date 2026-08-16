@@ -2220,6 +2220,399 @@
   ],
   "researchers": [
     {
+      "id": "3bee5275-7b5c-81c2-a609-e9ab61fc5d46",
+      "url": "https://app.notion.com/p/Robert-Scherrer-3bee52757b5c81c2a609e9ab61fc5d46",
+      "lastEdited": "2026-08-16T03:25:00.000Z",
+      "Timeline": [
+        "3bde5275-7b5c-8159-ada0-cc5af14d257d"
+      ],
+      "Lifespan": null,
+      "Theories [DB]": [],
+      "Discoveries [DB]": [],
+      "Field": "Physics",
+      "Known For": "The other author of 'The Return of a Static Universe and the End of Cosmology'; also work on dark-energy models and Big Bang nucleosynthesis.",
+      "Nationality": "American",
+      "Name": "Robert Scherrer"
+    },
+    {
+      "id": "3bee5275-7b5c-8110-851e-cb364c0087ae",
+      "url": "https://app.notion.com/p/Lawrence-Krauss-3bee52757b5c8110851ecb364c0087ae",
+      "lastEdited": "2026-08-16T03:25:00.000Z",
+      "Timeline": [
+        "3bde5275-7b5c-8159-ada0-cc5af14d257d"
+      ],
+      "Lifespan": "1954–",
+      "Theories [DB]": [],
+      "Discoveries [DB]": [],
+      "Field": "Physics",
+      "Known For": "With Robert Scherrer, the 2007 paper showing that in 100 billion years an accelerating universe erases its own evidence — no receding galaxies, no microwave background, no way to infer that a Big Bang ever happened.",
+      "Nationality": "American",
+      "Name": "Lawrence Krauss"
+    },
+    {
+      "id": "3bee5275-7b5c-81d7-9f9d-ede1a0ddc686",
+      "url": "https://app.notion.com/p/Clair-Patterson-3bee52757b5c81d79f9dede1a0ddc686",
+      "lastEdited": "2026-08-16T03:25:00.000Z",
+      "Timeline": [
+        "3bde5275-7b5c-81e0-a7b8-e95fd31e8fac"
+      ],
+      "Lifespan": "1922–1995",
+      "Theories [DB]": [],
+      "Discoveries [DB]": [],
+      "Field": "Geochemistry",
+      "Known For": "Dated the Earth and the solar system to 4.55 billion years in 1956, from lead isotopes in the Canyon Diablo meteorite — then spent the rest of his career getting lead out of petrol.",
+      "Nationality": "American",
+      "Name": "Clair Patterson"
+    },
+    {
+      "id": "3bee5275-7b5c-810f-88a3-d73f0aa5347c",
+      "url": "https://app.notion.com/p/Viktor-Safronov-3bee52757b5c810f88a3d73f0aa5347c",
+      "lastEdited": "2026-08-16T03:25:00.000Z",
+      "Timeline": [
+        "3bde5275-7b5c-81e0-a7b8-e95fd31e8fac"
+      ],
+      "Lifespan": "1917–1999",
+      "Theories [DB]": [],
+      "Discoveries [DB]": [],
+      "Field": "Astronomy",
+      "Known For": "Planet growth by the accretion of planetesimals, set out in a 1969 monograph the West largely ignored until it was translated — the foundation of modern planet-formation theory.",
+      "Nationality": "Soviet",
+      "Name": "Viktor Safronov"
+    },
+    {
+      "id": "3bee5275-7b5c-810e-9877-c5f685d88aa3",
+      "url": "https://app.notion.com/p/Pierre-Simon-Laplace-3bee52757b5c810e9877c5f685d88aa3",
+      "lastEdited": "2026-08-16T03:25:00.000Z",
+      "Timeline": [
+        "3bde5275-7b5c-81e0-a7b8-e95fd31e8fac"
+      ],
+      "Lifespan": "1749–1827",
+      "Theories [DB]": [],
+      "Discoveries [DB]": [],
+      "Field": "Mathematics & Astronomy",
+      "Known For": "The nebular hypothesis: the solar system condensed from a rotating disc of gas, which is why the planets orbit in one plane and one direction. Still the picture, with the details filled in.",
+      "Nationality": "French",
+      "Name": "Pierre-Simon Laplace"
+    },
+    {
+      "id": "3bee5275-7b5c-81ce-ab70-eb5216ed0ee8",
+      "url": "https://app.notion.com/p/Mark-Dickinson-3bee52757b5c81ceab70eb5216ed0ee8",
+      "lastEdited": "2026-08-16T03:25:00.000Z",
+      "Timeline": [
+        "3bde5275-7b5c-8127-933f-d6a9736b3eaf"
+      ],
+      "Lifespan": null,
+      "Theories [DB]": [],
+      "Discoveries [DB]": [],
+      "Field": "Astronomy",
+      "Known For": "With Madau, the 2014 review that consolidated the cosmic star-formation history into its modern form; before that, the Hubble Deep Field team.",
+      "Nationality": "American",
+      "Name": "Mark Dickinson"
+    },
+    {
+      "id": "3bee5275-7b5c-814d-9c26-c9f9f7d735b3",
+      "url": "https://app.notion.com/p/Charles-Steidel-3bee52757b5c814d9c26c9f9f7d735b3",
+      "lastEdited": "2026-08-16T03:25:00.000Z",
+      "Timeline": [
+        "3bde5275-7b5c-8127-933f-d6a9736b3eaf"
+      ],
+      "Lifespan": null,
+      "Theories [DB]": [],
+      "Discoveries [DB]": [],
+      "Field": "Astronomy",
+      "Known For": "The Lyman-break technique: picking galaxies at z ≈ 3 out of deep images by their colours alone. It made cosmic noon observable in bulk rather than one object at a time.",
+      "Nationality": "American",
+      "Name": "Charles Steidel"
+    },
+    {
+      "id": "3bee5275-7b5c-8189-9f8d-db3d99258539",
+      "url": "https://app.notion.com/p/Simon-Lilly-3bee52757b5c81899f8ddb3d99258539",
+      "lastEdited": "2026-08-16T03:25:00.000Z",
+      "Timeline": [
+        "3bde5275-7b5c-8127-933f-d6a9736b3eaf"
+      ],
+      "Lifespan": null,
+      "Theories [DB]": [],
+      "Discoveries [DB]": [],
+      "Field": "Astronomy",
+      "Known For": "The Canada–France Redshift Survey, and the 1996 paper that first plotted star-formation density climbing with lookback time — the other half of the Lilly–Madau diagram.",
+      "Nationality": null,
+      "Name": "Simon Lilly"
+    },
+    {
+      "id": "3bee5275-7b5c-8196-a106-d35aeff68411",
+      "url": "https://app.notion.com/p/Piero-Madau-3bee52757b5c8196a106d35aeff68411",
+      "lastEdited": "2026-08-16T03:25:00.000Z",
+      "Timeline": [
+        "3bde5275-7b5c-8127-933f-d6a9736b3eaf"
+      ],
+      "Lifespan": null,
+      "Theories [DB]": [],
+      "Discoveries [DB]": [],
+      "Field": "Astrophysics",
+      "Known For": "The Madau plot: cosmic star-formation rate against redshift, first drawn in 1996 from the Hubble Deep Field. Its peak at z ≈ 2 is what 'cosmic noon' means.",
+      "Nationality": "Italian",
+      "Name": "Piero Madau"
+    },
+    {
+      "id": "3bee5275-7b5c-81d2-a941-c79ae2d8c606",
+      "url": "https://app.notion.com/p/Richard-Ellis-3bee52757b5c81d2a941c79ae2d8c606",
+      "lastEdited": "2026-08-16T03:25:00.000Z",
+      "Timeline": [
+        "3bde5275-7b5c-818c-9bd0-ce7bb75ea178"
+      ],
+      "Lifespan": "1950–",
+      "Theories [DB]": [],
+      "Discoveries [DB]": [],
+      "Field": "Astronomy",
+      "Known For": "Four decades on the most distant galaxies, from the Hubble Ultra Deep Field to JWST, and the case — 'When Galaxies Were Born' — that they are what reionized the universe.",
+      "Nationality": "British",
+      "Name": "Richard Ellis"
+    },
+    {
+      "id": "3bee5275-7b5c-8173-9b13-e72026049833",
+      "url": "https://app.notion.com/p/Xiaohui-Fan-3bee52757b5c81739b13e72026049833",
+      "lastEdited": "2026-08-16T03:25:00.000Z",
+      "Timeline": [
+        "3bde5275-7b5c-818c-9bd0-ce7bb75ea178"
+      ],
+      "Lifespan": null,
+      "Theories [DB]": [],
+      "Discoveries [DB]": [],
+      "Field": "Astronomy",
+      "Known For": "Found the first quasars beyond z = 6 in Sloan data and watched the Gunn–Peterson trough finally appear in their spectra — the observation that pins the end of reionization to roughly a billion years.",
+      "Nationality": "Chinese-American",
+      "Name": "Xiaohui Fan"
+    },
+    {
+      "id": "3bee5275-7b5c-81c1-9651-c04acafcd35a",
+      "url": "https://app.notion.com/p/Bruce-Peterson-3bee52757b5c81c19651c04acafcd35a",
+      "lastEdited": "2026-08-16T03:25:00.000Z",
+      "Timeline": [
+        "3bde5275-7b5c-818c-9bd0-ce7bb75ea178"
+      ],
+      "Lifespan": null,
+      "Theories [DB]": [],
+      "Discoveries [DB]": [],
+      "Field": "Astronomy",
+      "Known For": "The other name on the Gunn–Peterson trough: the 1965 calculation of how little neutral hydrogen a quasar's light could have passed through, given how much of it arrived.",
+      "Nationality": null,
+      "Name": "Bruce Peterson"
+    },
+    {
+      "id": "3bee5275-7b5c-81f3-adee-cad597892521",
+      "url": "https://app.notion.com/p/James-Gunn-3bee52757b5c81f3adeecad597892521",
+      "lastEdited": "2026-08-16T03:25:00.000Z",
+      "Timeline": [
+        "3bde5275-7b5c-818c-9bd0-ce7bb75ea178"
+      ],
+      "Lifespan": "1938–",
+      "Theories [DB]": [],
+      "Discoveries [DB]": [],
+      "Field": "Astronomy",
+      "Known For": "With Bruce Peterson, the 1965 prediction that neutral intergalactic hydrogen would blank out a quasar's spectrum shortward of Lyman-α — the test that dates the end of reionization. Later the architect of the Sloan Digital Sky Survey.",
+      "Nationality": "American",
+      "Name": "James Gunn"
+    },
+    {
+      "id": "3bee5275-7b5c-8174-b947-d5bbe5e32c3d",
+      "url": "https://app.notion.com/p/Judd-Bowman-3bee52757b5c8174b947d5bbe5e32c3d",
+      "lastEdited": "2026-08-16T03:25:00.000Z",
+      "Timeline": [
+        "3bde5275-7b5c-81dd-8bf4-c41148b14015"
+      ],
+      "Lifespan": null,
+      "Theories [DB]": [],
+      "Discoveries [DB]": [],
+      "Field": "Radio Astronomy",
+      "Known For": "Led EDGES, a table-sized radio antenna in Western Australia that reported a 21-cm absorption dip at z ≈ 17 in 2018 — the first claimed signal from cosmic dawn, deeper than any model predicted, and still contested.",
+      "Nationality": "American",
+      "Name": "Judd Bowman"
+    },
+    {
+      "id": "3bee5275-7b5c-817e-8d5f-fb52eee9dd48",
+      "url": "https://app.notion.com/p/Rennan-Barkana-3bee52757b5c817e8d5ffb52eee9dd48",
+      "lastEdited": "2026-08-16T03:25:00.000Z",
+      "Timeline": [
+        "3bde5275-7b5c-81dd-8bf4-c41148b14015",
+        "3bde5275-7b5c-818c-9bd0-ce7bb75ea178"
+      ],
+      "Lifespan": null,
+      "Theories [DB]": [],
+      "Discoveries [DB]": [],
+      "Field": "Astrophysics",
+      "Known For": "The theory of the 21-cm signal from cosmic dawn — how the first stars' light would imprint on the neutral hydrogen around them — and the case that the EDGES dip, if real, needs new physics.",
+      "Nationality": "Israeli",
+      "Name": "Rennan Barkana"
+    },
+    {
+      "id": "3bee5275-7b5c-816c-b994-f3b0ac25707d",
+      "url": "https://app.notion.com/p/Abraham-Loeb-3bee52757b5c816cb994f3b0ac25707d",
+      "lastEdited": "2026-08-16T03:25:00.000Z",
+      "Timeline": [
+        "3bde5275-7b5c-81dd-8bf4-c41148b14015",
+        "3bde5275-7b5c-8161-b7ce-ed3e2f953c38",
+        "3bde5275-7b5c-818c-9bd0-ce7bb75ea178"
+      ],
+      "Lifespan": null,
+      "Theories [DB]": [],
+      "Discoveries [DB]": [],
+      "Field": "Astrophysics",
+      "Known For": "With Rennan Barkana, the 2001 review 'In the Beginning: the first sources of light and the reionization of the universe', which set the agenda for the first-stars and 21-cm fields.",
+      "Nationality": "Israeli-American",
+      "Name": "Abraham Loeb"
+    },
+    {
+      "id": "3bee5275-7b5c-8163-a782-c939b080cc4d",
+      "url": "https://app.notion.com/p/Naoki-Yoshida-3bee52757b5c8163a782c939b080cc4d",
+      "lastEdited": "2026-08-16T03:25:00.000Z",
+      "Timeline": [
+        "3bde5275-7b5c-8161-b7ce-ed3e2f953c38"
+      ],
+      "Lifespan": null,
+      "Theories [DB]": [],
+      "Discoveries [DB]": [],
+      "Field": "Astrophysics",
+      "Known For": "Simulations of the first stars and the first supernovae, following primordial gas as it cooled and fragmented, and of the molecular-hydrogen chemistry that let it cool at all.",
+      "Nationality": "Japanese",
+      "Name": "Naoki Yoshida"
+    },
+    {
+      "id": "3bee5275-7b5c-8185-88da-ff6b2ac86979",
+      "url": "https://app.notion.com/p/Tom-Abel-3bee52757b5c818588daff6b2ac86979",
+      "lastEdited": "2026-08-16T03:25:00.000Z",
+      "Timeline": [
+        "3bde5275-7b5c-8161-b7ce-ed3e2f953c38"
+      ],
+      "Lifespan": null,
+      "Theories [DB]": [],
+      "Discoveries [DB]": [],
+      "Field": "Astrophysics",
+      "Known For": "With Bryan and Norman, the 2002 simulation that followed a single primordial cloud from cosmological scales down to a forming protostar — the first end-to-end model of a first star.",
+      "Nationality": "German",
+      "Name": "Tom Abel"
+    },
+    {
+      "id": "3bee5275-7b5c-8194-b413-db4ee78a3227",
+      "url": "https://app.notion.com/p/Volker-Bromm-3bee52757b5c8194b413db4ee78a3227",
+      "lastEdited": "2026-08-16T03:25:00.000Z",
+      "Timeline": [
+        "3bde5275-7b5c-8161-b7ce-ed3e2f953c38"
+      ],
+      "Lifespan": null,
+      "Theories [DB]": [],
+      "Discoveries [DB]": [],
+      "Field": "Astrophysics",
+      "Known For": "The simulations that showed the first stars formed alone or in pairs inside dark-matter minihalos and were tens to hundreds of times the Sun's mass — the modern picture of Population III.",
+      "Nationality": "German",
+      "Name": "Volker Bromm"
+    },
+    {
+      "id": "3bee5275-7b5c-81a9-b185-e4e572b16779",
+      "url": "https://app.notion.com/p/Garth-Illingworth-3bee52757b5c81a9b185e4e572b16779",
+      "lastEdited": "2026-08-16T03:25:00.000Z",
+      "Timeline": [
+        "3bde5275-7b5c-812d-a3ec-d0ec40005c6a"
+      ],
+      "Lifespan": null,
+      "Theories [DB]": [],
+      "Discoveries [DB]": [],
+      "Field": "Astronomy",
+      "Known For": "The Hubble deep-field campaigns that pushed the frontier to z ≈ 11 before JWST existed; GN-z11, found in 2016, held the distance record for six years.",
+      "Nationality": "Australian-American",
+      "Name": "Garth Illingworth"
+    },
+    {
+      "id": "3bee5275-7b5c-8177-a36f-d0b4b17dc118",
+      "url": "https://app.notion.com/p/Michael-Boylan-Kolchin-3bee52757b5c8177a36fd0b4b17dc118",
+      "lastEdited": "2026-08-16T03:25:00.000Z",
+      "Timeline": [
+        "3bde5275-7b5c-812d-a3ec-d0ec40005c6a"
+      ],
+      "Lifespan": null,
+      "Theories [DB]": [],
+      "Discoveries [DB]": [],
+      "Field": "Astrophysics",
+      "Known For": "Worked out how bright and how massive an early galaxy can possibly be under ΛCDM — the yardstick the JWST candidates are measured against, and by which a few looked impossible.",
+      "Nationality": "American",
+      "Name": "Michael Boylan-Kolchin"
+    },
+    {
+      "id": "3bee5275-7b5c-8145-8dd4-eb0e6b43f38b",
+      "url": "https://app.notion.com/p/Ivo-Labb-3bee52757b5c81458dd4eb0e6b43f38b",
+      "lastEdited": "2026-08-16T03:25:00.000Z",
+      "Timeline": [
+        "3bde5275-7b5c-812d-a3ec-d0ec40005c6a"
+      ],
+      "Lifespan": null,
+      "Theories [DB]": [],
+      "Discoveries [DB]": [],
+      "Field": "Astronomy",
+      "Known For": "Lead author of the 2023 Nature paper on six candidate galaxies at z ≈ 7–9 that looked far too massive for their era — the 'universe breakers' — which forced a hard look at how stellar masses are inferred from early light.",
+      "Nationality": "Dutch",
+      "Name": "Ivo Labbé"
+    },
+    {
+      "id": "3bee5275-7b5c-814d-90c7-d34827bad99d",
+      "url": "https://app.notion.com/p/Rohan-Naidu-3bee52757b5c814d90c7d34827bad99d",
+      "lastEdited": "2026-08-16T03:25:00.000Z",
+      "Timeline": [
+        "3bde5275-7b5c-812d-a3ec-d0ec40005c6a"
+      ],
+      "Lifespan": null,
+      "Theories [DB]": [],
+      "Discoveries [DB]": [],
+      "Field": "Astronomy",
+      "Known For": "First author of one of the earliest JWST papers on galaxy candidates at z ≈ 11–13, out within weeks of the first images — the start of the 'too bright, too early' argument.",
+      "Nationality": null,
+      "Name": "Rohan Naidu"
+    },
+    {
+      "id": "3bee5275-7b5c-81f7-8ca7-f8ccef007076",
+      "url": "https://app.notion.com/p/Emma-Curtis-Lake-3bee52757b5c81f78ca7f8ccef007076",
+      "lastEdited": "2026-08-16T03:25:00.000Z",
+      "Timeline": [
+        "3bde5275-7b5c-812d-a3ec-d0ec40005c6a"
+      ],
+      "Lifespan": null,
+      "Theories [DB]": [],
+      "Discoveries [DB]": [],
+      "Field": "Astronomy",
+      "Known For": "First author of the JADES paper that spectroscopically confirmed four galaxies beyond z = 10 — the first hard evidence that the JWST candidates were real and not nearby interlopers.",
+      "Nationality": "British",
+      "Name": "Emma Curtis-Lake"
+    },
+    {
+      "id": "3bee5275-7b5c-81b5-a07a-e17818518ec0",
+      "url": "https://app.notion.com/p/Brant-Robertson-3bee52757b5c81b5a07ae17818518ec0",
+      "lastEdited": "2026-08-16T03:25:00.000Z",
+      "Timeline": [
+        "3bde5275-7b5c-812d-a3ec-d0ec40005c6a"
+      ],
+      "Lifespan": null,
+      "Theories [DB]": [],
+      "Discoveries [DB]": [],
+      "Field": "Astronomy",
+      "Known For": "Co-lead of JADES, the JWST deep survey that has spectroscopically confirmed galaxies within 300–400 million years of the Big Bang; earlier, models of how galaxies alone could have reionized the universe.",
+      "Nationality": "American",
+      "Name": "Brant Robertson"
+    },
+    {
+      "id": "3bee5275-7b5c-81ec-9ca1-d5f1d2aa2d02",
+      "url": "https://app.notion.com/p/Marcia-Rieke-3bee52757b5c81ec9ca1d5f1d2aa2d02",
+      "lastEdited": "2026-08-16T03:25:00.000Z",
+      "Timeline": [
+        "3bde5275-7b5c-812d-a3ec-d0ec40005c6a"
+      ],
+      "Lifespan": null,
+      "Theories [DB]": [],
+      "Discoveries [DB]": [],
+      "Field": "Astronomy",
+      "Known For": "Principal investigator of NIRCam, JWST's near-infrared camera — the instrument behind the deep-field images the first-galaxy results come from.",
+      "Nationality": "American",
+      "Name": "Marcia Rieke"
+    },
+    {
       "id": "3bee5275-7b5c-8161-a86a-fd7e62c68a66",
       "url": "https://app.notion.com/p/Gregory-Laughlin-3bee52757b5c8161a86afd7e62c68a66",
       "lastEdited": "2026-08-16T03:11:00.000Z",
@@ -2227,7 +2620,9 @@
         "3bde5275-7b5c-81f4-9243-eb103d8b0511",
         "3bde5275-7b5c-815d-bc48-e61cf4496428",
         "3bde5275-7b5c-8194-968f-e63d78f78726",
-        "3bde5275-7b5c-81ea-a1d8-efb79b33a2e3"
+        "3bde5275-7b5c-81ea-a1d8-efb79b33a2e3",
+        "3bde5275-7b5c-81e0-a7b8-e95fd31e8fac",
+        "3bde5275-7b5c-8159-ada0-cc5af14d257d"
       ],
       "Lifespan": null,
       "Theories [DB]": [],
@@ -2245,7 +2640,8 @@
         "3bde5275-7b5c-81f4-9243-eb103d8b0511",
         "3bde5275-7b5c-815d-bc48-e61cf4496428",
         "3bde5275-7b5c-8194-968f-e63d78f78726",
-        "3bde5275-7b5c-81ea-a1d8-efb79b33a2e3"
+        "3bde5275-7b5c-81ea-a1d8-efb79b33a2e3",
+        "3bde5275-7b5c-8159-ada0-cc5af14d257d"
       ],
       "Lifespan": null,
       "Theories [DB]": [],
@@ -5667,9 +6063,14 @@
     {
       "id": "3bde5275-7b5c-8159-ada0-cc5af14d257d",
       "url": "https://app.notion.com/p/The-Local-Group-Is-Alone-3bde52757b5c8159ada0cc5af14d257d",
-      "lastEdited": "2026-08-15T19:02:00.000Z",
+      "lastEdited": "2026-08-16T03:25:00.000Z",
       "Temperature (K)": 0.014,
-      "Researchers": [],
+      "Researchers": [
+        "3bee5275-7b5c-8110-851e-cb364c0087ae",
+        "3bee5275-7b5c-8136-b034-e079c6a767e0",
+        "3bee5275-7b5c-8161-a86a-fd7e62c68a66",
+        "3bee5275-7b5c-81c2-a609-e9ab61fc5d46"
+      ],
       "When": "≈ 100 billion years",
       "Equations": [
         "3bbe5275-7b5c-8184-9e26-ff4ad04b3ed8",
@@ -5797,9 +6198,14 @@
     {
       "id": "3bde5275-7b5c-81e0-a7b8-e95fd31e8fac",
       "url": "https://app.notion.com/p/The-Solar-System-Forms-3bde52757b5c81e0a7b8e95fd31e8fac",
-      "lastEdited": "2026-08-15T19:02:00.000Z",
+      "lastEdited": "2026-08-16T03:25:00.000Z",
       "Temperature (K)": 3.8,
-      "Researchers": [],
+      "Researchers": [
+        "3bee5275-7b5c-810e-9877-c5f685d88aa3",
+        "3bee5275-7b5c-810f-88a3-d73f0aa5347c",
+        "3bee5275-7b5c-8161-a86a-fd7e62c68a66",
+        "3bee5275-7b5c-81d7-9f9d-ede1a0ddc686"
+      ],
       "When": "9.2 billion years — 4.6 billion years ago",
       "Equations": [
         "3bbe5275-7b5c-810a-8065-f03f5253cda9",
@@ -5821,9 +6227,14 @@
     {
       "id": "3bde5275-7b5c-8127-933f-d6a9736b3eaf",
       "url": "https://app.notion.com/p/Cosmic-Noon-3bde52757b5c8127933fd6a9736b3eaf",
-      "lastEdited": "2026-08-15T19:02:00.000Z",
+      "lastEdited": "2026-08-16T03:25:00.000Z",
       "Temperature (K)": 9,
-      "Researchers": [],
+      "Researchers": [
+        "3bee5275-7b5c-814d-9c26-c9f9f7d735b3",
+        "3bee5275-7b5c-8189-9f8d-db3d99258539",
+        "3bee5275-7b5c-8196-a106-d35aeff68411",
+        "3bee5275-7b5c-81ce-ab70-eb5216ed0ee8"
+      ],
       "When": "≈ 3.5 billion years",
       "Equations": [
         "3bbe5275-7b5c-8120-863e-cd94384e0239",
@@ -5842,9 +6253,16 @@
     {
       "id": "3bde5275-7b5c-818c-9bd0-ce7bb75ea178",
       "url": "https://app.notion.com/p/Reionization-3bde52757b5c818c9bd0ce7bb75ea178",
-      "lastEdited": "2026-08-15T19:02:00.000Z",
+      "lastEdited": "2026-08-16T03:25:00.000Z",
       "Temperature (K)": 30,
-      "Researchers": [],
+      "Researchers": [
+        "3bee5275-7b5c-816c-b994-f3b0ac25707d",
+        "3bee5275-7b5c-8173-9b13-e72026049833",
+        "3bee5275-7b5c-817e-8d5f-fb52eee9dd48",
+        "3bee5275-7b5c-81c1-9651-c04acafcd35a",
+        "3bee5275-7b5c-81d2-a941-c79ae2d8c606",
+        "3bee5275-7b5c-81f3-adee-cad597892521"
+      ],
       "When": "150 million – 1 billion years",
       "Equations": [
         "3bbe5275-7b5c-818e-8ccf-c5b952277817",
@@ -5864,9 +6282,17 @@
     {
       "id": "3bde5275-7b5c-812d-a3ec-d0ec40005c6a",
       "url": "https://app.notion.com/p/The-First-Galaxies-3bde52757b5c812da3ecd0ec40005c6a",
-      "lastEdited": "2026-08-15T19:02:00.000Z",
+      "lastEdited": "2026-08-16T03:25:00.000Z",
       "Temperature (K)": 33,
-      "Researchers": [],
+      "Researchers": [
+        "3bee5275-7b5c-8145-8dd4-eb0e6b43f38b",
+        "3bee5275-7b5c-814d-90c7-d34827bad99d",
+        "3bee5275-7b5c-8177-a36f-d0b4b17dc118",
+        "3bee5275-7b5c-81a9-b185-e4e572b16779",
+        "3bee5275-7b5c-81b5-a07a-e17818518ec0",
+        "3bee5275-7b5c-81ec-9ca1-d5f1d2aa2d02",
+        "3bee5275-7b5c-81f7-8ca7-f8ccef007076"
+      ],
       "When": "≈ 400 million years",
       "Equations": [
         "3bbe5275-7b5c-811b-8297-ce47b2c5d614",
@@ -5886,9 +6312,14 @@
     {
       "id": "3bde5275-7b5c-8161-b7ce-ed3e2f953c38",
       "url": "https://app.notion.com/p/The-First-Stars-3bde52757b5c8161b7ceed3e2f953c38",
-      "lastEdited": "2026-08-15T19:02:00.000Z",
+      "lastEdited": "2026-08-16T03:25:00.000Z",
       "Temperature (K)": 50,
-      "Researchers": [],
+      "Researchers": [
+        "3bee5275-7b5c-8163-a782-c939b080cc4d",
+        "3bee5275-7b5c-816c-b994-f3b0ac25707d",
+        "3bee5275-7b5c-8185-88da-ff6b2ac86979",
+        "3bee5275-7b5c-8194-b413-db4ee78a3227"
+      ],
       "When": "≈ 180 million years",
       "Equations": [
         "3bbe5275-7b5c-8120-863e-cd94384e0239",
@@ -5907,9 +6338,13 @@
     {
       "id": "3bde5275-7b5c-81dd-8bf4-c41148b14015",
       "url": "https://app.notion.com/p/The-Dark-Ages-3bde52757b5c81dd8bf4c41148b14015",
-      "lastEdited": "2026-08-15T19:02:00.000Z",
+      "lastEdited": "2026-08-16T03:25:00.000Z",
       "Temperature (K)": 60,
-      "Researchers": [],
+      "Researchers": [
+        "3bee5275-7b5c-816c-b994-f3b0ac25707d",
+        "3bee5275-7b5c-8174-b947-d5bbe5e32c3d",
+        "3bee5275-7b5c-817e-8d5f-fb52eee9dd48"
+      ],
       "When": "380,000 years – 150 million years",
       "Equations": [
         "3bbe5275-7b5c-811b-8297-ce47b2c5d614",
