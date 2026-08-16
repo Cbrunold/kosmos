@@ -8,6 +8,7 @@ Inputs:  web/*.template.html + web/shared.css + web/analyzer.{css,html,js}
 Outputs: public/index.html   (periodic table, served at /elements)
          public/home.html    (tile launcher, served at /)
          public/{minerals,cosmos,forces,theories,timeline}.html
+         public/mines.html   (world map of flagship mines + extraction per element)
          public/search.json  (flat index behind the home-page search bar)
 """
 import json
@@ -70,6 +71,7 @@ def build_elements_page():
                  for e in notion.get("equations", [])}
     tpl = tpl.replace("__EQUATIONS__", compact(eq_lookup))
     tpl = tpl.replace("__MINERALS__", compact(ELEMENT_MINERALS))
+    tpl = tpl.replace("__MINESITES__", compact(mine_lookup()))
     (PUB / "index.html").write_text(tpl)
     print(f"wrote {len(tpl):>7} bytes -> public/index.html")
 
@@ -369,6 +371,50 @@ def build_timeline_page():
     return len(events), decades
 
 
+# ---------------- mines ----------------
+def mine_lookup():
+    """Mine page id -> {name, country, type, slug}, for chips on the element panel."""
+    return {m["id"]: {"name": m["Name"], "country": m.get("Country") or "", "type": m.get("Type") or "",
+                      "slug": slugify(m["Name"])}
+            for m in notion.get("mines", []) if m.get("Name")}
+
+
+def build_mines_page():
+    """A world map of the flagship mines, plus each element's extraction story."""
+    by_id = {e["pageId"]: e for e in elements}
+    mines = []
+    for m in notion.get("mines", []):
+        if not m.get("Name") or m.get("Latitude") is None or m.get("Longitude") is None:
+            continue
+        syms = sorted({by_id[i]["notation"] for i in (m.get("Commodities") or []) if i in by_id},
+                      key=lambda x: x)
+        mines.append({
+            "name": m["Name"], "slug": slugify(m["Name"]),
+            "country": m.get("Country"), "region": m.get("Region"),
+            "lat": m["Latitude"], "lon": m["Longitude"],
+            "type": m.get("Type"), "status": m.get("Status"),
+            "opened": m.get("Opened"), "notes": m.get("Notes"),
+            "syms": syms,
+        })
+    mines.sort(key=lambda m: m["name"])
+    # per-element extraction, only for elements that have any of it
+    ext = {}
+    for e in elements:
+        if e.get("minedAs") or e.get("extraction") or e.get("oreGrade") is not None:
+            f = (e["oreGrade"] / e["abundance"]) if e.get("oreGrade") is not None and e.get("abundance") else None
+            ext[e["notation"]] = {
+                "name": e["name"], "minedAs": e.get("minedAs"), "grade": e.get("oreGrade"),
+                "abundance": e.get("abundance"), "factor": f,
+                "minerals": e.get("oreMinerals"), "text": e.get("extraction"),
+                "n": sum(1 for m in mines if e["notation"] in m["syms"]),
+            }
+    land = (WEB / "land-110m.svgpath").read_text()
+    write_page("mines.template.html", "mines.html",
+               {"mines": mines, "extraction": ext},
+               extra={"__LAND__": land})
+    return len(mines), sum(1 for v in ext.values() if v["minedAs"] == "Primary")
+
+
 # ---------------- search index ----------------
 def _clip(s, n=170) -> str:
     s = " ".join((s or "").split())
@@ -397,6 +443,7 @@ def build_search_index():
         ("/timeline", "Timeline of the Universe", "Planck epoch to heat death on a log axis"),
         ("/constants", "Constants & Units", "CODATA constants · SI units · prefixes"),
         ("/equations", "Equations", "canonical equations with symbols decoded"),
+        ("/mines", "Mines & Extraction", "a world map of flagship mines, and how each raw material is won"),
     ]:
         add("page", name, sub, "", route)
 
@@ -490,6 +537,11 @@ def build_search_index():
         if t.get("Name"):
             add("object class", t["Name"], t.get("Type") or "", "", f"/cosmos#class-{slugify(t.get('Type') or 'other')}")
 
+    for m in notion.get("mines", []):
+        if m.get("Name"):
+            add("mine", m["Name"], " · ".join(filter(None, [m.get("Country"), m.get("Type")])),
+                m.get("Notes"), f"/mines#{slugify(m['Name'])}")
+
     for f in notion["forces"]:
         nm = f.get("Force Name")
         if nm:
@@ -525,7 +577,7 @@ def theory_span() -> str:
 
 
 def build_home(n_min, n_gems, n_classes, n_spectral, n_instr, n_timeline, tl_decades,
-               n_obs, n_disc, n_miss, n_search):
+               n_obs, n_disc, n_miss, n_search, n_mines, n_mined):
     gaps = sum(1 for e in elements
                if e["meltingPt"] is None or e["boilingPt"] is None
                or e["density"] is None or e["occurrence"] is None)
@@ -553,6 +605,8 @@ def build_home(n_min, n_gems, n_classes, n_spectral, n_instr, n_timeline, tl_dec
         "__N_DISC__": n_disc,
         "__N_MISS__": n_miss,
         "__N_SEARCH__": f"{n_search:,}",
+        "__N_MINES__": n_mines,
+        "__N_MINED__": n_mined,
         "__TL_DECADES__": tl_decades,
         "__N_EQ__": len(eqs),
         "__N_EQFIELDS__": len({e.get("Field") for e in eqs if e.get("Field")}),
@@ -618,6 +672,7 @@ if __name__ == "__main__":
                extra={"__ELEMENTS__": compact(el_lookup), "__MINERALS__": compact(min_lookup),
                       "__COSMOS__": compact(cosmos_lookup), "__TABLES__": compact(equation_tables())})
     n_timeline, tl_decades = build_timeline_page()
+    n_mines, n_mined = build_mines_page()
     n_search = build_search_index()
     build_home(n_min, n_gems, n_classes, n_spectral, n_instr, n_timeline, tl_decades,
-               n_obs, n_disc, n_miss, n_search)
+               n_obs, n_disc, n_miss, n_search, n_mines, n_mined)

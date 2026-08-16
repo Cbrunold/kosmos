@@ -339,6 +339,15 @@
     margin: 12px 0 6px;
   }
   .deqs-list { display: flex; flex-wrap: wrap; gap: 4px; }
+  .dext-facts { margin: 4px 0 6px; }
+  .dext-text { font-size: 12px; color: var(--ink-2); line-height: 1.55; margin: 4px 0 8px; }
+  .dmine {
+    font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    border: 1px solid var(--hairline); border-left: 3px solid var(--c-bronze);
+    color: var(--ink-2); border-radius: 4px; padding: 2px 7px 2px 6px; text-decoration: none; white-space: nowrap;
+  }
+  .dmine:hover { color: var(--ink); border-color: var(--ink-2); }
+  .dmine.all { border-left-color: var(--muted); color: var(--muted); }
   .deq {
     font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
     border: 1px solid var(--hairline);
@@ -430,6 +439,7 @@
 <div id="tip" role="presentation"></div>
 
 <script id="data" type="application/json">__DATA__</script>
+<script id="minesites" type="application/json">__MINESITES__</script>
 <script id="eqdata" type="application/json">__EQUATIONS__</script>
 <script id="mindata" type="application/json">__MINERALS__</script>
 <script>
@@ -529,6 +539,8 @@
     .forEach((e, i) => abuRank.set(e.z, i + 1));
   const ordinal = (n) => (n % 100 >= 11 && n % 100 <= 13 ? 'th'
     : ({ 1: 'st', 2: 'nd', 3: 'rd' })[n % 10] || 'th');
+  const MINESITES = JSON.parse(document.getElementById('minesites').textContent);   // mine page id -> {name,country,type,slug}
+  const fmtFactor = (f) => (f >= 100 ? Math.round(f).toLocaleString('en') : f >= 10 ? f.toFixed(0) : f.toFixed(1));
   const fmtPpm = (v) => {
     if (v == null) return null;
     if (v >= 10000) return `${(v / 10000).toFixed(v >= 100000 ? 1 : 2)}%`;
@@ -585,6 +597,18 @@
   // Rarity, not abundance: the scale runs hot for the scarce ones, which is the
   // question people actually ask of a periodic table. Only offered if the data
   // is there — it arrives from Notion via scripts/seed_abundance.py.
+  // Concentration factor: ore grade over crustal abundance — how much geology has to
+  // enrich an element before mining it pays. Log scale from 1× to 10⁵×; hot = hard.
+  const conc = (e) => (e.oreGrade != null && e.abundance ? e.oreGrade / e.abundance : null);
+  if (E.some((e) => conc(e) != null)) {
+    const CF_LO = 0, CF_HI = 5;   // log10
+    LENSES.conc = {
+      name: 'Concentration', seq: true,
+      t: (e) => { const f = conc(e); return f == null ? null : Math.max(0, Math.min(1, (Math.log10(f) - CF_LO) / (CF_HI - CF_LO))); },
+      value: (e) => { const f = conc(e); return f == null ? (e.minedAs === 'By-product' ? 'by-product — no ore of its own' : e.minedAs === 'Not mined' ? 'not mined' : 'no ore grade recorded') : `ore is ${fmtFactor(f)}× richer than the crust`; },
+      range: () => ['1× (crust)', '≥10⁵× (log)'],
+    };
+  }
   if (E.some((e) => e.abundance != null)) {
     LENSES.rarity = {
       name: 'Rarity', seq: true,
@@ -784,6 +808,7 @@
       <div class="tags"></div>
       <div class="derived-note"></div>
       <div class="dmins"></div>
+      <div class="dext"></div>
       <div class="deqs"></div>
       <div class="dfoot">
         <a href="${e.pageUrl}" target="_blank" rel="noopener">open in Notion ↗</a>
@@ -826,6 +851,65 @@
       all.title = `Filter the minerals collection to ${e.name}-bearing minerals`;
       list.appendChild(all);
       box.appendChild(list);
+    }
+
+    // sources & extraction (scripts/seed_mining.py): where it comes from and how it is won
+    if (e.minedAs || e.extraction || e.oreGrade != null) {
+      const box = d.querySelector('.dext');
+      const h = document.createElement('div');
+      h.className = 'deqs-h';
+      h.textContent = 'sources & extraction' + (e.minedAs ? ` · ${e.minedAs.toLowerCase()}` : '');
+      box.appendChild(h);
+      const facts = [];
+      if (e.oreMinerals) facts.push(['ore minerals', e.oreMinerals]);
+      if (e.oreGrade != null) {
+        facts.push(['typical ore grade', fmtPpm(e.oreGrade)]);
+        if (e.abundance) {
+          const f = e.oreGrade / e.abundance;
+          facts.push(['concentration factor', `${fmtFactor(f)}× the crust — ` +
+            (f < 10 ? 'barely enriched; mined by the billion tonnes' :
+             f < 100 ? 'modestly enriched ore bodies' :
+             f < 1000 ? 'needs a real ore deposit' :
+             f < 10000 ? 'only where geology has concentrated it hard' :
+             'freakish enrichment — a handful of deposits on Earth')]);
+        }
+      }
+      if (facts.length) {
+        const dl = document.createElement('dl');
+        dl.className = 'props dext-facts';
+        for (const [k, v] of facts) {
+          const dt = document.createElement('dt'); dt.textContent = k;
+          const dd = document.createElement('dd'); dd.textContent = v;
+          dl.append(dt, dd);
+        }
+        box.appendChild(dl);
+      }
+      if (e.extraction) {
+        const p = document.createElement('p');
+        p.className = 'dext-text';
+        p.textContent = e.extraction;
+        box.appendChild(p);
+      }
+      const sites = (e.mines || []).map((id) => MINESITES[id]).filter(Boolean)
+        .sort((a, b) => a.name.localeCompare(b.name));
+      if (sites.length) {
+        const list = document.createElement('div');
+        list.className = 'deqs-list';
+        for (const m of sites) {
+          const a = document.createElement('a');
+          a.className = 'dmine';
+          a.href = '/mines#' + m.slug;
+          a.textContent = m.name;
+          a.title = `${m.country} · ${m.type}`;
+          list.appendChild(a);
+        }
+        const all = document.createElement('a');
+        all.className = 'dmine all';
+        all.href = '/mines?el=' + e.sym;
+        all.textContent = 'on the map →';
+        list.appendChild(all);
+        box.appendChild(list);
+      }
     }
 
     // equations that concern this element (Notion relation, mirrored from the Equations DB)

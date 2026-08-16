@@ -81,6 +81,12 @@ def normalise(results: list) -> list:
             "boilingPt": num("Boiling Pt"),
             "discovered": num("Discovered"),
             "abundance": num("Crustal Abundance"),   # ppm by mass (scripts/seed_abundance.py)
+            # extraction data (scripts/seed_mining.py); the concentration factor is derived at build time
+            "oreGrade": num("Ore Grade (ppm)"),
+            "oreMinerals": rich("Ore Minerals"),
+            "minedAs": sel("Mined As"),
+            "extraction": rich("Extraction"),
+            "mines": [x["id"] for x in (p.get("Mines", {}).get("relation") or [])],
             "equations": equations,   # page ids in the Equations [DB] (mirrored relation)
             "pageId": r["id"],
             "pageUrl": r.get("url"),

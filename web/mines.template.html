@@ -1,0 +1,277 @@
+<title>Kosmos · Mines & Extraction</title>
+<style>
+__SHARED__
+
+  .wrap { max-width: 1100px; }
+
+  /* ---- commodity filter ---- */
+  .comms { display: flex; flex-wrap: wrap; gap: 5px; margin: 0 0 14px; }
+  .cchip {
+    font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    background: var(--panel); border: 1px solid var(--hairline); color: var(--ink-2);
+    border-radius: 5px; padding: 3px 8px; cursor: pointer; display: inline-flex; align-items: baseline; gap: 5px;
+  }
+  .cchip:hover { color: var(--ink); border-color: var(--ink-2); }
+  .cchip .n { font-size: 9px; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .cchip[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--page); }
+  .cchip[aria-pressed="true"] .n { color: color-mix(in oklab, var(--page) 65%, var(--ink)); }
+  .cchip.all { border-left: 3px solid var(--muted); }
+
+  /* ---- extraction story for the selected commodity ---- */
+  .story { margin: 0 0 16px; }
+  .story[hidden] { display: none; }
+  .story h2 { font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; font-size: 16px; margin: 0 0 6px; display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+  .story h2 .tag {
+    font: 9.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; letter-spacing: 0.08em; text-transform: uppercase;
+    border: 1px solid var(--hairline); border-radius: 99px; padding: 2px 8px; color: var(--muted);
+  }
+  .story .facts { display: flex; flex-wrap: wrap; gap: 14px; margin: 0 0 8px; font: 11px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .story .facts b { color: var(--ink); font-weight: 600; }
+  .story p { font-size: 13px; color: var(--ink-2); line-height: 1.6; margin: 0; }
+  .story .el { font-size: 11px; margin-top: 8px; }
+  .story .el a { color: var(--ink-2); }
+
+  /* ---- map ---- */
+  .mapwrap { position: relative; border: 1px solid var(--hairline); border-radius: 10px; overflow: hidden; background: var(--panel); }
+  .mapwrap svg { display: block; width: 100%; height: auto; }
+  .land { fill: color-mix(in oklab, var(--ink) 9%, var(--panel)); stroke: color-mix(in oklab, var(--ink) 22%, var(--panel)); stroke-width: 0.5; }
+  .grat { stroke: color-mix(in oklab, var(--ink) 8%, transparent); stroke-width: 0.5; fill: none; }
+  .pin { cursor: pointer; }
+  .pin circle { fill: var(--pc, var(--c-bronze)); stroke: var(--panel); stroke-width: 1.2; transition: r 0.1s; }
+  .pin:hover circle, .pin.on circle { r: 6.5; stroke: var(--ink); }
+  .pin.dim { opacity: 0.18; pointer-events: none; }
+  .pin.dev circle { fill: var(--panel); stroke: var(--pc, var(--c-bronze)); stroke-width: 1.8; }
+  .pin.closed circle { fill: color-mix(in oklab, var(--pc, var(--c-bronze)) 40%, var(--panel)); }
+  .maplegend { display: flex; flex-wrap: wrap; gap: 12px; padding: 8px 12px; border-top: 1px solid var(--hairline); font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; color: var(--muted); }
+  .maplegend .sw { display: inline-block; width: 9px; height: 9px; border-radius: 50%; vertical-align: -1px; margin-right: 5px; }
+  .tip {
+    position: absolute; pointer-events: none; z-index: 5;
+    background: var(--ink); color: var(--page); border-radius: 6px; padding: 5px 9px;
+    font: 11px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; white-space: nowrap;
+    transform: translate(-50%, calc(-100% - 12px)); opacity: 0; transition: opacity 0.08s;
+  }
+  .tip.on { opacity: 1; }
+  .tip b { font-weight: 600; }
+
+  /* ---- cards ---- */
+  .list { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 12px; margin-top: 18px; }
+  .mine { border-left: 3px solid var(--mc, var(--c-bronze)); scroll-margin-top: 16px; }
+  .mine.flash { outline: 2px solid var(--c-pink); outline-offset: 3px; }
+  .mine[hidden] { display: none; }
+  .mine h3 { font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; font-size: 13.5px; margin: 0 0 3px; display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+  .mine .st { font: 9px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; letter-spacing: 0.08em; text-transform: uppercase; border: 1px solid var(--hairline); border-radius: 99px; padding: 1px 7px; color: var(--muted); }
+  .mine .st.closed { color: var(--c-red); border-color: var(--c-red); }
+  .mine .st.dev { color: var(--c-blue); border-color: var(--c-blue); }
+  .mine .meta { font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; color: var(--muted); font-variant-numeric: tabular-nums; margin-bottom: 7px; }
+  .mine p { font-size: 12.5px; color: var(--ink-2); line-height: 1.5; margin: 0; }
+  .mine .chips { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px; }
+  .elch {
+    font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    border: 1px solid var(--hairline); border-left: 3px solid var(--c-blue);
+    color: var(--ink-2); border-radius: 4px; padding: 2px 7px 2px 6px; text-decoration: none; white-space: nowrap;
+  }
+  .elch:hover { color: var(--ink); border-color: var(--ink-2); }
+  .empty { font-size: 13px; color: var(--muted); padding: 18px 0; }
+</style>
+
+<nav class="knav"><a href="/">KOSMOS</a><span>/</span><span class="cur">Mines &amp; Extraction</span></nav>
+<h1 class="ktitle">Mines &amp; Extraction</h1>
+<p class="klede">Where the raw materials actually come out of the ground, and how each one is turned from rock into something usable. Pick a commodity to read its extraction story and light up the mines that produce it; click a dot or a card for the site. Every mine here is a flagship — the one that defines its commodity, not a complete register.</p>
+
+<div class="wrap">
+  <div class="comms" id="comms"></div>
+  <section class="story" id="story" hidden></section>
+  <div class="mapwrap">
+    <svg id="map" viewBox="0 0 1000 500" role="img" aria-label="World map of flagship mines"></svg>
+    <div class="tip" id="tip"></div>
+    <div class="maplegend" id="legend"></div>
+  </div>
+  <div class="list" id="list"></div>
+  <p class="empty" id="empty" hidden>No mine on file for that commodity.</p>
+</div>
+
+<p class="kfoot">From the Mines database and the extraction fields of the Elements database in Notion. Ore grades are typical mined grades, not the richest deposit anywhere, and the concentration factor is that grade over the element's crustal abundance — how far geology has to enrich it before mining pays. Coordinates are to a few kilometres: right for a world map, not for finding the gate. Basemap: Natural Earth 110m, public domain.</p>
+
+<script id="land" type="text/plain">__LAND__</script>
+<script id="data" type="application/json">__DATA__</script>
+<script>
+  const D = JSON.parse(document.getElementById('data').textContent);
+  const M = D.mines, EXT = D.extraction || {};
+  const svg = document.getElementById('map');
+  const tip = document.getElementById('tip');
+  const list = document.getElementById('list');
+  const empty = document.getElementById('empty');
+  const W = 1000, H = 500;
+  const project = (lat, lon) => [((lon + 180) * W) / 360, ((90 - lat) * H) / 180];
+
+  // colour by the mine's first (primary) commodity family
+  const FAMILY = (syms) => {
+    const s = syms[0] || '';
+    if (['Fe', 'Al', 'Mn', 'Cr', 'Ti', 'Si', 'Mg', 'Ca', 'Na', 'Cl', 'K', 'P', 'F', 'B', 'V', 'Nb'].includes(s)) return 'bulk';
+    if (['Cu', 'Zn', 'Pb', 'Ni', 'Co', 'Sn', 'W', 'Mo', 'Sb', 'Hg', 'Be', 'Ta'].includes(s)) return 'base';
+    if (['Au', 'Ag', 'Pt', 'Pd', 'Rh'].includes(s)) return 'precious';
+    if (['Li', 'Ce', 'La', 'Nd', 'Dy', 'Tb', 'Y'].includes(s)) return 'critical';
+    if (['U'].includes(s)) return 'nuclear';
+    if (['C', 'He', 'I', 'Br'].includes(s)) return 'energy';
+    return 'other';
+  };
+  const FCOLOR = { bulk: 'var(--c-steel)', base: 'var(--c-bronze)', precious: 'var(--c-amber)',
+                   critical: 'var(--c-violet)', nuclear: 'var(--c-green)', energy: 'var(--c-slate)', other: 'var(--muted)' };
+  const FLABEL = { bulk: 'bulk & industrial', base: 'base metals', precious: 'precious metals',
+                   critical: 'lithium & rare earths', nuclear: 'uranium', energy: 'carbon, helium, halogens', other: 'other' };
+
+  // ---------- basemap ----------
+  const NS = 'http://www.w3.org/2000/svg';
+  const el = (tag, attrs) => { const n = document.createElementNS(NS, tag); for (const k in attrs) n.setAttribute(k, attrs[k]); return n; };
+  const g0 = el('g', {});
+  for (let lat = -60; lat <= 60; lat += 30) { const [, y] = project(lat, 0); g0.appendChild(el('line', { class: 'grat', x1: 0, x2: W, y1: y, y2: y })); }
+  for (let lon = -150; lon <= 150; lon += 30) { const [x] = project(0, lon); g0.appendChild(el('line', { class: 'grat', x1: x, x2: x, y1: 0, y2: H })); }
+  svg.appendChild(g0);
+  svg.appendChild(el('path', { class: 'land', d: document.getElementById('land').textContent }));
+
+  // ---------- pins ----------
+  const pins = new Map();
+  const gp = el('g', {});
+  for (const m of M) {
+    const [x, y] = project(m.lat, m.lon);
+    const fam = FAMILY(m.syms);
+    const g = el('g', { class: 'pin' + (m.status === 'Development' ? ' dev' : m.status === 'Closed' ? ' closed' : ''), transform: `translate(${x.toFixed(1)} ${y.toFixed(1)})` });
+    g.style.setProperty('--pc', FCOLOR[fam]);
+    g.appendChild(el('circle', { r: 4.5 }));
+    g.addEventListener('mousemove', (ev) => {
+      const r = svg.getBoundingClientRect();
+      tip.style.left = ((x / W) * r.width) + 'px';
+      tip.style.top = ((y / H) * r.height) + 'px';
+      tip.innerHTML = '<b></b> · <span></span>';
+      tip.firstChild.textContent = m.name;
+      tip.lastChild.textContent = `${m.country} · ${m.syms.join(' ')}`;
+      tip.classList.add('on');
+    });
+    g.addEventListener('mouseleave', () => tip.classList.remove('on'));
+    g.addEventListener('click', () => goTo(m.slug));
+    gp.appendChild(g);
+    pins.set(m.slug, g);
+  }
+  svg.appendChild(gp);
+
+  // legend
+  const legend = document.getElementById('legend');
+  for (const fam of Object.keys(FLABEL)) {
+    if (!M.some((m) => FAMILY(m.syms) === fam)) continue;
+    const s = document.createElement('span');
+    const sw = document.createElement('span'); sw.className = 'sw'; sw.style.background = FCOLOR[fam];
+    s.append(sw, document.createTextNode(FLABEL[fam]));
+    legend.appendChild(s);
+  }
+  const l2 = document.createElement('span'); l2.textContent = '◌ in development · faded = closed'; legend.appendChild(l2);
+
+  // ---------- cards ----------
+  const cards = new Map();
+  for (const m of M) {
+    const c = document.createElement('article');
+    c.className = 'kcard mine';
+    c.id = m.slug;
+    c.style.setProperty('--mc', FCOLOR[FAMILY(m.syms)]);
+    const h = document.createElement('h3');
+    const nm = document.createElement('span'); nm.textContent = m.name; h.appendChild(nm);
+    if (m.status && m.status !== 'Active') {
+      const st = document.createElement('span'); st.className = 'st ' + (m.status === 'Closed' ? 'closed' : 'dev'); st.textContent = m.status; h.appendChild(st);
+    }
+    const meta = document.createElement('div'); meta.className = 'meta';
+    meta.textContent = [m.region ? `${m.region}, ${m.country}` : m.country, m.type, m.opened ? `since ${m.opened}` : null].filter(Boolean).join(' · ');
+    const p = document.createElement('p'); p.textContent = m.notes || '';
+    c.append(h, meta, p);
+    if (m.syms.length) {
+      const chips = document.createElement('div'); chips.className = 'chips';
+      for (const s of m.syms) {
+        const a = document.createElement('a'); a.className = 'elch'; a.href = '/elements#' + s;
+        a.textContent = EXT[s] ? `${s} · ${EXT[s].name}` : s;
+        a.title = 'open on the periodic table';
+        chips.appendChild(a);
+      }
+      c.appendChild(chips);
+    }
+    list.appendChild(c);
+    cards.set(m.slug, c);
+  }
+
+  // ---------- commodity filter + story ----------
+  const counts = new Map();
+  for (const m of M) for (const s of m.syms) counts.set(s, (counts.get(s) || 0) + 1);
+  const comms = document.getElementById('comms');
+  const story = document.getElementById('story');
+  let active = null;
+  const fmtPpm = (v) => (v >= 10000 ? `${(v / 10000).toFixed(v >= 100000 ? 1 : 2)}%` : v >= 1 ? `${(+v.toPrecision(3)).toLocaleString('en')} ppm` : `${+v.toPrecision(2)} ppm`);
+  const fmtFactor = (f) => (f >= 100 ? Math.round(f).toLocaleString('en') : f >= 10 ? f.toFixed(0) : f.toFixed(1));
+
+  function setActive(sym) {
+    active = sym;
+    for (const b of comms.children) b.setAttribute('aria-pressed', String((b.dataset.sym || null) === sym));
+    let shown = 0;
+    for (const m of M) {
+      const on = !sym || m.syms.includes(sym);
+      pins.get(m.slug).classList.toggle('dim', !on);
+      cards.get(m.slug).hidden = !on;
+      if (on) shown++;
+    }
+    empty.hidden = shown > 0;
+    story.textContent = '';
+    const x = sym && EXT[sym];
+    if (x) {
+      story.hidden = false;
+      const h = document.createElement('h2');
+      const nm = document.createElement('span'); nm.textContent = `${x.name} — how it is won`; h.appendChild(nm);
+      if (x.minedAs) { const t = document.createElement('span'); t.className = 'tag'; t.textContent = x.minedAs; h.appendChild(t); }
+      story.appendChild(h);
+      const facts = document.createElement('div'); facts.className = 'facts';
+      const fact = (k, v) => { const s = document.createElement('span'); s.innerHTML = '<b></b> '; s.firstChild.textContent = v; s.appendChild(document.createTextNode(k)); facts.appendChild(s); };
+      if (x.grade != null) fact('typical ore grade', fmtPpm(x.grade));
+      if (x.abundance != null) fact('in the crust', fmtPpm(x.abundance));
+      if (x.factor != null) fact('× enrichment needed', fmtFactor(x.factor));
+      fact(x.n === 1 ? 'flagship mine here' : 'flagship mines here', String(x.n));
+      story.appendChild(facts);
+      if (x.minerals) { const p0 = document.createElement('p'); p0.innerHTML = '<b>Ore minerals:</b> '; p0.appendChild(document.createTextNode(x.minerals)); story.appendChild(p0); }
+      if (x.text) { const p = document.createElement('p'); p.textContent = x.text; p.style.marginTop = '6px'; story.appendChild(p); }
+      const e = document.createElement('div'); e.className = 'el';
+      const a = document.createElement('a'); a.href = '/elements#' + sym; a.textContent = `${x.name} on the periodic table →`; e.appendChild(a);
+      story.appendChild(e);
+    } else {
+      story.hidden = true;
+    }
+    const url = new URL(location.href);
+    if (sym) url.searchParams.set('el', sym); else url.searchParams.delete('el');
+    history.replaceState(null, '', url.pathname + url.search + location.hash);
+  }
+
+  const all = document.createElement('button');
+  all.className = 'cchip all'; all.type = 'button'; all.textContent = 'all commodities';
+  all.addEventListener('click', () => setActive(null));
+  comms.appendChild(all);
+  // order: by number of mines, then symbol; only commodities that have a mine
+  const order = [...counts.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
+  for (const [s, n] of order) {
+    const b = document.createElement('button');
+    b.className = 'cchip'; b.type = 'button'; b.dataset.sym = s;
+    b.innerHTML = '<span></span><span class="n"></span>';
+    b.firstChild.textContent = EXT[s] ? `${s} ${EXT[s].name}` : s;
+    b.lastChild.textContent = n;
+    b.addEventListener('click', () => setActive(active === s ? null : s));
+    comms.appendChild(b);
+  }
+
+  function goTo(slug) {
+    const c = cards.get(slug);
+    if (!c) return;
+    if (c.hidden) setActive(null);          // a filter must never hide the thing being jumped to
+    c.scrollIntoView({ block: 'center', behavior: 'smooth' });
+    c.classList.add('flash');
+    setTimeout(() => c.classList.remove('flash'), 1700);
+    for (const [k, p] of pins) p.classList.toggle('on', k === slug);
+    history.replaceState(null, '', location.pathname + location.search + '#' + slug);
+  }
+
+  const initialEl = new URLSearchParams(location.search).get('el');
+  setActive(initialEl && counts.has(initialEl) ? initialEl : null);
+  if (location.hash.length > 1) goTo(location.hash.slice(1));
+  addEventListener('hashchange', () => goTo(location.hash.slice(1)));
+</script>

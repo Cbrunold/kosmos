@@ -11,10 +11,11 @@ truth for code and the normalised data snapshots. Sync is one-way, Notion → re
 | Route        | What's there |
 |--------------|--------------|
 | `/`          | Tile launcher with live stats per section, and a search bar over everything the site holds (`/` to focus, `?q=` to deep-link a query) |
-| `/elements`  | Interactive periodic table (10 lenses incl. crustal rarity, temperature + discovery sliders) and the AI photo analyzer |
+| `/elements`  | Interactive periodic table (11 lenses incl. crustal rarity and concentration factor, temperature + discovery sliders), sources & extraction per element, and the AI photo analyzer |
 | `/minerals`  | 3,000+ minerals searchable and filterable by contained element; gemstone shelf, rock families, silicate classes |
 | `/cosmos`    | Field guide to celestial object classes, the stellar spectral sequence, observatories, a discovery timeline, instruments and researchers |
 | `/forces`    | The four fundamental interactions |
+| `/mines`     | World map of ~90 flagship mines, and for each raw material its ore minerals, typical grade, concentration factor, and ore-to-product process |
 | `/timeline`  | The universe's history on a log axis of seconds — Planck epoch to heat death, cross-linked to the equations and theories |
 | `/theories`  | Theory shelf from Ptolemy to the holographic principle — status, proponents, and the equations each rests on; sortable chronologically |
 | `/equations` | Canonical equations with symbols decoded, filterable by field |
@@ -59,6 +60,11 @@ scripts/link_timeline_people.py
                               Adds a Researchers relation to the Cosmic Timeline ("people whose
                               work is about this epoch" — distinct from a theory's Proponent) and
                               seeds it; also adds researchers the other seeds missed
+scripts/seed_mining.py        Ore grade / ore minerals / mined-as / extraction onto the Elements DB
+                              (72 elements) and ~90 flagship mines with coordinates into Mines [DB],
+                              related to the elements they produce. The concentration factor
+                              (grade ÷ crustal abundance) is derived at build time, never stored
+scripts/make_basemap.py       Natural Earth 110m land → web/land-110m.svgpath (run once, committed)
 deploy/                       systemd unit + nginx site as deployed on the VPS
 ```
 
