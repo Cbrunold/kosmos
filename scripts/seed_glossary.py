@@ -2,9 +2,10 @@
 
 Each term has a domain, a one- or two-sentence definition, and optional
 aliases. What it does NOT store is where the term appears — build.py traces
-every term through the text of every entity on the site (equations, theories,
-machines, skills, timeline events, mines, discoveries, missions, the
-extraction stories on the elements) and computes the "appears in" links at
+every term through the text of every entity on the site that carries prose
+(equations, theories, machines, skills, timeline events, mines, observatories,
+discoveries, missions, constants, researchers, forces, instruments, rock types
+and the extraction stories on the elements) and computes the "appears in" links at
 build time. Maintained by hand those links would rot the day a new page was
 added; computed, a term added here traces itself, and a page added elsewhere
 shows up under every term it uses.
@@ -113,7 +114,7 @@ TERMS = [
     ("Neutrino", "Nuclear & Particle", "A near-massless neutral particle that barely interacts with anything; trillions pass through you each second. The cosmic neutrino background at 1.95 K is still undetected.", "neutrinos"),
     # ---- chemistry
     ("Oxidation", "Chemistry", "Loss of electrons — historically, combining with oxygen. Rust, fire and a battery discharging are all oxidation on one side and reduction on the other.", "oxidise, oxidize, oxidised, redox"),
-    ("Reduction", "Chemistry", "Gain of electrons; in metallurgy, pulling a metal out of its ore by stripping the oxygen or sulfur off it — with carbon, hydrogen, or electricity.", "reduce, reduced, reducing"),
+    ("Reduction", "Chemistry", "Gain of electrons; in metallurgy, pulling a metal out of its ore by stripping the oxygen or sulfur off it — with carbon, hydrogen, or electricity.", "reduced, reducing"),
     ("Electrolysis", "Chemistry", "Driving a chemical reaction with electric current — splitting water, or dissolving aluminium out of alumina in a Hall–Héroult cell. The reverse of a battery.", "electrolyse, electrolytic, electrowinning, electrorefining"),
     ("Catalyst", "Chemistry", "A substance that speeds a reaction without being consumed, by offering an easier path. Platinum in a fuel cell and a catalytic converter; iron in Haber–Bosch.", "catalytic, catalysis"),
     ("Activation energy", "Chemistry", "The energy barrier a reaction must climb before it runs, and the reason rates rise so steeply with temperature — the Arrhenius law.", "Arrhenius"),
@@ -123,7 +124,7 @@ TERMS = [
     # ---- mineralogy
     ("Mineral", "Mineralogy", "A naturally occurring solid with a definite chemical composition and crystal structure. About 6,000 are known; a rock is a mixture of them.", "minerals"),
     ("Mohs hardness", "Mineralogy", "A 1–10 scratch scale: each mineral scratches the ones below it. Talc 1, gypsum 2, calcite 3, quartz 7, corundum 9, diamond 10. Ordinal, not linear.", "Mohs, hardness"),
-    ("Specific gravity", "Mineralogy", "A mineral's density relative to water. Quartz 2.65, hematite 5.3, gold 19.3 — one of the quickest ways to tell minerals apart in the hand.", "S.G., density"),
+    ("Specific gravity", "Mineralogy", "A mineral's density relative to water. Quartz 2.65, hematite 5.3, gold 19.3 — one of the quickest ways to tell minerals apart in the hand.", "S.G."),
     ("Silicate", "Mineralogy", "A mineral built from silicon–oxygen tetrahedra, linked into chains, sheets or frameworks. Over 90 % of the crust: feldspar, quartz, mica, olivine, pyroxene.", "silicates"),
     ("Kimberlite", "Mineralogy", "A volcanic rock from very deep in the mantle that carries diamonds up in pipes. Almost every diamond mine is a kimberlite pipe.", ""),
     ("Placer", "Mineralogy", "A deposit of dense, resistant minerals — gold, cassiterite, ilmenite — concentrated by rivers or waves after weathering out of rock. Panned, dredged, or sluiced.", "placers, alluvial"),
@@ -134,7 +135,7 @@ TERMS = [
     ("Ore", "Mining & Metallurgy", "Rock that holds enough of something valuable to be worth mining. What counts as enough depends on price and technology, and changes.", "ores, orebody, ore body"),
     ("Ore grade", "Mining & Metallurgy", "The concentration of the wanted element in the ore — 50 % for iron, 0.5 % for copper, a few grams per tonne for gold. Divided by crustal abundance it gives the concentration factor.", "grade, cut-off grade"),
     ("Concentration factor", "Mining & Metallurgy", "How much geology has enriched an element above its average in the crust before it is worth mining: about 3 for aluminium, 80 for copper, 500 for gold, over 100,000 for antimony.", "clarke of concentration"),
-    ("Flotation", "Mining & Metallurgy", "Grinding ore to powder, mixing it with water and chemicals that make the wanted mineral water-repellent, and blowing bubbles through it — the mineral floats off in the froth. The workhorse of base-metal mining.", "froth flotation, floated, concentrate"),
+    ("Flotation", "Mining & Metallurgy", "Grinding ore to powder, mixing it with water and chemicals that make the wanted mineral water-repellent, and blowing bubbles through it — the mineral floats off in the froth. The workhorse of base-metal mining.", "froth flotation, floated"),
     ("Smelting", "Mining & Metallurgy", "Melting an ore or concentrate with a reducing agent and a flux so the metal separates from the slag. Blast furnaces, flash smelters, submerged-arc furnaces.", "smelt, smelted, smelter, matte, slag"),
     ("Leaching", "Mining & Metallurgy", "Dissolving the wanted metal out of ore with a chemical — cyanide for gold, sulfuric acid for copper oxides and uranium — and recovering it from the solution. Heaps, tanks, or in the ground.", "leach, leached, heap leach, in-situ leach, cyanidation"),
     ("Solvent extraction", "Mining & Metallurgy", "Separating metals in solution by shaking with an organic liquid that prefers one of them, over and over. Copper, uranium, and every one of the rare earths.", "SX, SX-EW"),
@@ -178,6 +179,7 @@ TERMS = [
     ("Kelvin", "Measurement", "The SI unit of temperature, counted from absolute zero in steps the size of a Celsius degree. Every thermodynamic formula wants kelvin.", "K"),
     ("Electronvolt", "Measurement", "The energy an electron gains crossing one volt — 1.6 × 10⁻¹⁹ J. The natural unit of atoms (eV), nuclei (MeV) and particle physics (GeV, TeV).", "eV, MeV, GeV, TeV"),
     ("Sigma", "Measurement", "One standard deviation; a result's distance from the null in those units. Particle physics claims a discovery at 5σ; the Hubble tension has reached it.", "standard deviation, 5σ"),
+    ("Density", "Measurement", "Mass per unit volume — and, by extension, any quantity per unit volume: energy density, charge density, number density. The critical density is the one that decides whether the universe expands forever.", "densities"),
 ]
 
 

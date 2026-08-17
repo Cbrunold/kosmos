@@ -317,6 +317,7 @@ __SHARED__
   const duo = document.getElementById('duo');
   for (const r of D.rocks) {
     const c = document.createElement('div'); c.className = 'kcard';
+    if (r.slug) c.id = 'rock-' + r.slug;
     c.innerHTML = '<h3></h3><p></p>';
     c.querySelector('h3').textContent = r.name;
     c.querySelector('p').textContent = r.comment || '';

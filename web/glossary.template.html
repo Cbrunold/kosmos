@@ -44,7 +44,7 @@ __SHARED__
 
 <nav class="knav"><a href="/">KOSMOS</a><span>/</span><span class="cur">Glossary</span></nav>
 <h1 class="ktitle">Glossary</h1>
-<p class="klede">The words the rest of the site leans on, each defined once — and each traced, at build time, to every equation, theory, machine, skill, epoch, element, mine, discovery and mission whose text uses it. The links are computed, not curated: add a page anywhere and it appears under the terms it uses.</p>
+<p class="klede">The words the rest of the site leans on, each defined once — and each traced, at build time, to every entity on the site that carries prose — equations, theories, machines, skills, epochs, elements, mines, observatories, discoveries, missions, constants, researchers, forces, instruments and rock types — whose text uses it. The links are computed, not curated: add a page anywhere and it appears under the terms it uses.</p>
 
 <div class="wrap">
   <div class="ctl">
@@ -63,8 +63,10 @@ __SHARED__
   const D = JSON.parse(document.getElementById('data').textContent);
   const T = D.terms;
   const KC = { equation: 'var(--c-amber)', theory: 'var(--c-pink)', machine: 'var(--c-amber)', skill: 'var(--c-green)', event: 'var(--c-bronze)',
-               element: 'var(--c-blue)', mine: 'var(--c-bronze)', observatory: 'var(--c-bronze)', discovery: 'var(--c-cyan)', mission: 'var(--c-blue)', constant: 'var(--c-teal)' };
-  const KL = { equation: 'equations', theory: 'theories', machine: 'machines', skill: 'skills', event: 'timeline', element: 'elements', mine: 'mines', observatory: 'observatories', discovery: 'discoveries', mission: 'missions', constant: 'constants' };
+               element: 'var(--c-blue)', mine: 'var(--c-bronze)', observatory: 'var(--c-bronze)', discovery: 'var(--c-cyan)', mission: 'var(--c-blue)', constant: 'var(--c-teal)',
+               researcher: 'var(--c-pink)', force: 'var(--c-teal)', instrument: 'var(--c-cyan)', rock: 'var(--c-bronze)' };
+  const KL = { equation: 'equations', theory: 'theories', machine: 'machines', skill: 'skills', event: 'timeline', element: 'elements', mine: 'mines', observatory: 'observatories', discovery: 'discoveries', mission: 'missions', constant: 'constants',
+               researcher: 'researchers', force: 'forces', instrument: 'instruments', rock: 'rock types' };
   const list = document.getElementById('list'), empty = document.getElementById('empty'), q = document.getElementById('q');
   const fold = (s) => (s || '').toLowerCase().normalize('NFKD').replace(/[̀-ͯ]/g, '');
   const active = new Set();

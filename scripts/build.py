@@ -163,7 +163,9 @@ def build_minerals_page():
         "equations": eq_lookup,
         "topElements": contains.most_common(24),
         "gems": gems,
-        "rocks": [{"name": r.get("Name"), "comment": r.get("Comment")} for r in notion["rockTypes"]],
+        # slug: the glossary links here, so the cards need anchors to land on
+        "rocks": [{"name": r.get("Name"), "comment": r.get("Comment"), "slug": slugify(r.get("Name") or "")}
+                  for r in notion["rockTypes"]],
         "silicates": [{
             "name": s.get("Name"),
             "structure": ", ".join(s.get("Structure") or []),
@@ -636,7 +638,24 @@ def build_glossary_page():
         if c.get("Name") and c.get("Note"):
             corpus.append(("constant", c["Name"], "/constants#" + slugify(f"{c.get('Symbol')}-{c['Name']}" if c.get("Symbol") and c["Symbol"] != "—" else c["Name"]),
                            " ".join([c["Name"], c["Note"]])))
-    KIND_ORDER = ["equation", "theory", "machine", "skill", "event", "element", "mine", "observatory", "discovery", "mission", "constant"]
+    for r in notion.get("researchers", []):
+        if r.get("Name") and r.get("Known For"):
+            corpus.append(("researcher", r["Name"], f"/cosmos#{slugify(r['Name'])}", " ".join([r["Name"], r["Known For"]])))
+    for f in notion.get("forces", []):
+        nm = f.get("Force Name")
+        if nm:
+            corpus.append(("force", nm, f"/forces#{slugify(nm)}",
+                           " ".join(filter(None, [nm, f.get("Description"), f.get("Relative Strength")]))))
+    for i in notion.get("instruments", []):
+        if i.get("Name") and i.get("Description"):
+            corpus.append(("instrument", i["Name"], f"/cosmos#instr-{slugify(i['Name'])}", " ".join([i["Name"], i["Description"]])))
+    for rt in notion.get("rockTypes", []):
+        if rt.get("Name") and rt.get("Comment"):
+            corpus.append(("rock", rt["Name"], f"/minerals#rock-{slugify(rt['Name'])}", " ".join([rt["Name"], rt["Comment"]])))
+    # the databases left out have no prose to search: minerals, gemstones, units,
+    # celestialTypes and spectralTypes are numeric or single-word lookup tables.
+    KIND_ORDER = ["equation", "theory", "machine", "skill", "event", "element", "mine", "observatory",
+                  "discovery", "mission", "constant", "researcher", "force", "instrument", "rock"]
     PER_KIND = 8
 
     def pattern(term):
