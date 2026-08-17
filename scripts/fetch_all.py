@@ -30,6 +30,7 @@ SOURCES = {
     "skills": "804e17aa-435b-4306-acbb-2ec926b87b10",
     "glossary": {"title": "Glossary [DB]"},   # created by seed_glossary.py; resolved by title at fetch time
     "explainers": {"title": "Explainers [DB]"},   # created by seed_explainers.py; likewise
+    "impacts": {"title": "Mining Impacts [DB]"},   # created by seed_impacts.py; likewise
     "spectralTypes": "6128c15c-25dd-47fb-bf00-ce737ca1d3e6",
     "gemstones": "e4fe83d2-0365-4dc6-935e-e5b6ce967778",
     "minerals": "a2db78db-efb7-4952-b8bc-e4ab98d42264",

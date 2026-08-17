@@ -20,6 +20,7 @@ truth for code and the normalised data snapshots. Sync is one-way, Notion → re
 | `/skills`    | Hands-on techniques with the science behind them — tools, steps, safety, how it fails, how you know it worked; linked to elements, equations and machines |
 | `/glossary`  | The terms the site uses, defined once and traced at build time to every page whose text uses them |
 | `/explainers`| The people, channels and organisations that explain this material — with the glossary terms each covers, computed from the same matcher |
+| `/impacts`   | What extraction costs, by mechanism — how each harm arises, what reduces it, where it is documented, and how many mines on the site it applies to |
 | `/timeline`  | The universe's history on a log axis of seconds — Planck epoch to heat death, cross-linked to the equations and theories |
 | `/theories`  | Theory shelf from Ptolemy to the holographic principle — status, proponents, and the equations each rests on; sortable chronologically |
 | `/equations` | Canonical equations with symbols decoded, filterable by field |
@@ -83,6 +84,10 @@ scripts/seed_glossary.py      Creates + seeds Glossary [DB] (~125 terms with dom
                               aliases). "Appears in" links are computed by build.py, never stored
 scripts/seed_nobel.py         Adds a Nobel field to the Researchers DB and marks the laureates on
                               file; `--diff LIST` reports which names in a list are not researchers yet
+scripts/seed_impacts.py       Creates + seeds Mining Impacts [DB] (18 mechanisms — acid mine drainage,
+                              tailings dam failure, silicosis…) with mechanism, mitigation and a
+                              documented case. Where names mine Types, so build.py counts how many
+                              mines on the site each applies to; nothing is stored per-site
 scripts/seed_explainers.py    Creates + seeds Explainers [DB] (~40 people, channels and organisations
                               who explain the material — not the Researchers DB, which is who did the
                               work). The glossary terms each covers are computed by build.py from the

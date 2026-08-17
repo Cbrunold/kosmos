@@ -161,6 +161,9 @@ EXPLAINERS = [
     ("Blondihacks", "Channel", "Workshop", ["YouTube"], "Quinn Dunki",
      "Home shop machining taught step by step — turning, milling, threading, measurement and workholding — with the mistakes left in and explained.",
      "https://www.youtube.com/@Blondihacks"),
+    ("SystExt", "Organisation", "Earth & Mining", ["Blog", "Lectures"], "Systèmes Extractifs et Environnements — French geologists and engineers",
+     "The cost side of mining, which most of the subject's literature leaves out: acid mine drainage and tailings left standing after closure, the post-mining legacy of France's own worked-out orefields, and what the energy transition's appetite for lithium, copper and rare earths actually asks of the ground. Their Panoramine map records every mining title and permit in France.",
+     "https://www.systext.org/"),
     # ---- adjacent
     ("BlueDot Impact", "Organisation", "AI safety", ["Course"], "",
      "Free structured online courses on AI safety and alignment, run in cohorts with facilitated discussion and a reading curriculum — the main on-ramp for people moving into the field from elsewhere.",

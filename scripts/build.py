@@ -676,10 +676,15 @@ def build_glossary_page():
             # description, and "PBS Space Time" is not about spacetime. This also
             # keeps the trace identical to the chips /explainers computes.
             corpus.append(("explainer", x["Name"], f"/explainers#{slugify(x['Name'])}", x["Covers"]))
+    for i in notion.get("impacts", []):
+        if i.get("Name") and i.get("Mechanism"):
+            corpus.append(("impact", i["Name"], f"/impacts#{slugify(i['Name'])}",
+                           " ".join(filter(None, [i["Name"], i.get("Mechanism"), i.get("Mitigation"), i.get("Case")]))))
     # the databases left out have no prose to search: minerals, gemstones, units,
     # celestialTypes and spectralTypes are numeric or single-word lookup tables.
     KIND_ORDER = ["equation", "theory", "machine", "skill", "event", "element", "mine", "observatory",
-                  "discovery", "mission", "constant", "researcher", "force", "instrument", "rock", "explainer"]
+                  "discovery", "mission", "constant", "researcher", "force", "instrument", "rock",
+                  "explainer", "impact"]
     PER_KIND = 8
     pattern = term_pattern
 
@@ -752,6 +757,53 @@ def build_explainers_page():
     return len(out), total_terms
 
 
+# ---------------- mining impacts ----------------
+def build_impacts_page():
+    """What extraction costs, mechanism by mechanism. Where links each impact to
+    the mine Types the Mines DB already records, so the count of sites on this
+    site that it applies to is computed here rather than maintained by hand —
+    and the glossary matcher reads the mechanism prose, same as /explainers."""
+    rows = [i for i in notion.get("impacts", []) if i.get("Name")]
+    if not rows:
+        write_page("impacts.template.html", "impacts.html",
+                   {"impacts": [], "categories": [], "timescales": []})
+        return 0, 0
+    # a mine typed "Open pit + underground" is both, so it counts under each —
+    # otherwise the 9 combined sites vanish from every impact that names one method
+    by_type = Counter()
+    for m in notion.get("mines", []):
+        t = m.get("Type")
+        if not t:
+            continue
+        by_type[t] += 1
+        if t == "Open pit + underground":
+            by_type["Open pit"] += 1
+            by_type["Underground"] += 1
+    matchers = glossary_matchers()
+    out, total_terms = [], 0
+    for i in rows:
+        prose = " ".join(filter(None, [i.get("Mechanism"), i.get("Mitigation"), i.get("Case")]))
+        terms = [{"term": t, "slug": s} for t, s, pats in matchers if any(p.search(prose) for p in pats)]
+        terms.sort(key=lambda t: t["term"].lower())
+        total_terms += len(terms)
+        # a Where value that names a mine Type carries the count of such mines on
+        # the site; the rest (Smelter, Artisanal, Tailings storage) have no Type
+        # to join to and stay plain labels
+        where = [{"name": w, "n": by_type.get(w, 0)} for w in (i.get("Where") or [])]
+        out.append({"name": i["Name"], "slug": slugify(i["Name"]), "category": i.get("Category"),
+                    "timescale": i.get("Timescale"), "where": where,
+                    "mechanism": i.get("Mechanism"), "mitigation": i.get("Mitigation"),
+                    "case": i.get("Case"), "terms": terms})
+    out.sort(key=lambda x: x["name"].lower())
+    CAT_ORDER = ["Water", "Air", "Land", "Health", "Ground", "Energy"]
+    cats = [c for c in CAT_ORDER if any(x["category"] == c for x in out)]
+    cats += sorted({x["category"] for x in out if x["category"] and x["category"] not in cats})
+    scales = [t for t in ["During operation", "After closure", "Both"] if any(x["timescale"] == t for x in out)]
+    write_page("impacts.template.html", "impacts.html",
+               {"impacts": out, "categories": cats, "timescales": scales})
+    return len(out), total_terms
+
+
 # ---------------- search index ----------------
 def _clip(s, n=170) -> str:
     s = " ".join((s or "").split())
@@ -785,6 +837,7 @@ def build_search_index():
         ("/skills", "Skills", "hands-on techniques with the science behind them: tools, steps, safety, how it fails"),
         ("/glossary", "Glossary", "the terms the site uses, each traced to every page that uses it"),
         ("/explainers", "Explainers", "the people, channels and organisations that explain this material"),
+        ("/impacts", "Mining Impacts", "what extraction costs — mechanism, mitigation and documented cases"),
     ]:
         add("page", name, sub, "", route)
 
@@ -898,6 +951,11 @@ def build_search_index():
             add("explainer", x["Name"], " · ".join(filter(None, [x.get("Kind"), x.get("Field")])),
                 x.get("Covers"), f"/explainers#{slugify(x['Name'])}")
 
+    for i in notion.get("impacts", []):
+        if i.get("Name"):
+            add("impact", i["Name"], " · ".join(filter(None, [i.get("Category"), i.get("Timescale")])),
+                i.get("Mechanism"), f"/impacts#{slugify(i['Name'])}")
+
     for sk in notion.get("skills", []):
         if sk.get("Name"):
             add("skill", sk["Name"], " · ".join(filter(None, [sk.get("Category"), sk.get("Difficulty")])),
@@ -939,7 +997,7 @@ def theory_span() -> str:
 
 def build_home(n_min, n_gems, n_classes, n_spectral, n_instr, n_timeline, tl_decades,
                n_obs, n_disc, n_miss, n_search, n_mines, n_mined, n_mach, n_diag, n_skills, n_terms, n_traces,
-               n_expl, n_expl_terms):
+               n_expl, n_expl_terms, n_imp, n_imp_terms):
     gaps = sum(1 for e in elements
                if e["meltingPt"] is None or e["boilingPt"] is None
                or e["density"] is None or e["occurrence"] is None)
@@ -976,6 +1034,8 @@ def build_home(n_min, n_gems, n_classes, n_spectral, n_instr, n_timeline, tl_dec
         "__N_TRACES__": f"{n_traces:,}",
         "__N_EXPL__": n_expl,
         "__N_EXPLTERMS__": f"{n_expl_terms:,}",
+        "__N_IMPACTS__": n_imp,
+        "__N_IMPTERMS__": f"{n_imp_terms:,}",
         "__TL_DECADES__": tl_decades,
         "__N_EQ__": len(eqs),
         "__N_EQFIELDS__": len({e.get("Field") for e in eqs if e.get("Field")}),
@@ -1046,7 +1106,8 @@ if __name__ == "__main__":
     n_skills = build_skills_page()
     n_terms, n_traces = build_glossary_page()
     n_expl, n_expl_terms = build_explainers_page()
+    n_imp, n_imp_terms = build_impacts_page()
     n_search = build_search_index()
     build_home(n_min, n_gems, n_classes, n_spectral, n_instr, n_timeline, tl_decades,
                n_obs, n_disc, n_miss, n_search, n_mines, n_mined, n_mach, n_diag, n_skills, n_terms, n_traces,
-               n_expl, n_expl_terms)
+               n_expl, n_expl_terms, n_imp, n_imp_terms)
