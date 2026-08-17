@@ -711,6 +711,12 @@ def build_glossary_page():
 
 
 # ---------------- explainers ----------------
+# The Notion database /explainers is built from, linked in the page footer.
+# Opens only for someone with access to the workspace — it is the source, not a
+# public mirror, and the footer says "in Notion" so the reader knows that.
+EXPLAINERS_DB = "https://app.notion.com/p/8bbd030a45214045ab0efc21852686ac"
+
+
 def build_explainers_page():
     """The people, channels and organisations that explain what the rest of the
     site catalogues — distinct from the researchers, who did the work. "Covers"
@@ -720,7 +726,8 @@ def build_explainers_page():
     rows = [x for x in notion.get("explainers", []) if x.get("Name")]
     if not rows:
         write_page("explainers.template.html", "explainers.html",
-                   {"explainers": [], "fields": [], "kinds": []})
+                   {"explainers": [], "fields": [], "kinds": []},
+                   extra={"__DBURL__": EXPLAINERS_DB})
         return 0, 0
     matchers = glossary_matchers()
     out, total_terms = [], 0
@@ -740,7 +747,8 @@ def build_explainers_page():
     fields += sorted({x["field"] for x in out if x["field"] and x["field"] not in fields})
     kinds = [k for k in ["Person", "Channel", "Organisation"] if any(x["kind"] == k for x in out)]
     write_page("explainers.template.html", "explainers.html",
-               {"explainers": out, "fields": fields, "kinds": kinds})
+               {"explainers": out, "fields": fields, "kinds": kinds},
+               extra={"__DBURL__": EXPLAINERS_DB})
     return len(out), total_terms
 
 
