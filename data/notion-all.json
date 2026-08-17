@@ -10547,6 +10547,60 @@
   ],
   "glossary": [
     {
+      "id": "3bfe5275-7b5c-81de-a346-e67b1d55a2a0",
+      "url": "https://app.notion.com/p/Control-system-3bfe52757b5c81dea346e67b1d55a2a0",
+      "lastEdited": "2026-08-17T21:06:00.000Z",
+      "Definition": "A loop that measures what a machine is actually doing, compares it with what was asked, and corrects the difference. Feedback is what makes it hold steady — or, badly tuned, what makes it hunt and oscillate.",
+      "Aliases": "feedback loop",
+      "Domain": "Machines",
+      "Term": "Control system"
+    },
+    {
+      "id": "3bfe5275-7b5c-8170-a232-fa67f548bd4f",
+      "url": "https://app.notion.com/p/Shock-wave-3bfe52757b5c8170a232fa67f548bd4f",
+      "lastEdited": "2026-08-17T21:06:00.000Z",
+      "Definition": "A pressure front travelling faster than the medium's own speed of sound, across which pressure, density and temperature jump almost discontinuously. Supersonic flight, explosions and supernova remnants all drive one.",
+      "Aliases": "shockwave",
+      "Domain": "Mechanics",
+      "Term": "Shock wave"
+    },
+    {
+      "id": "3bfe5275-7b5c-8126-896e-e40e2d1130ce",
+      "url": "https://app.notion.com/p/Milling-3bfe52757b5c8126896ee40e2d1130ce",
+      "lastEdited": "2026-08-17T21:06:00.000Z",
+      "Definition": "Cutting with a rotating multi-toothed tool while the work moves past it — the operation that makes flat faces, slots and pockets, as turning makes round ones.",
+      "Aliases": null,
+      "Domain": "Workshop",
+      "Term": "Milling"
+    },
+    {
+      "id": "3bfe5275-7b5c-81d6-8e5a-f24174d8c6bb",
+      "url": "https://app.notion.com/p/Screw-thread-3bfe52757b5c81d68e5af24174d8c6bb",
+      "lastEdited": "2026-08-17T21:06:00.000Z",
+      "Definition": "The helical ridge that turns rotation into clamping force. Pitch sets how far one turn advances it and the flank angle sets how much load it carries, which is why threads are standardised and why the standards do not interchange.",
+      "Aliases": null,
+      "Domain": "Workshop",
+      "Term": "Screw thread"
+    },
+    {
+      "id": "3bfe5275-7b5c-81d3-8b39-e4cb565b6592",
+      "url": "https://app.notion.com/p/Lathe-3bfe52757b5c81d38b39e4cb565b6592",
+      "lastEdited": "2026-08-17T21:06:00.000Z",
+      "Definition": "A machine that spins the work while a fixed tool travels along it, cutting anything round: shafts, bushes, threads. The first machine tool able to reproduce its own parts, and still the one a shop buys first.",
+      "Aliases": null,
+      "Domain": "Workshop",
+      "Term": "Lathe"
+    },
+    {
+      "id": "3bfe5275-7b5c-8183-ad01-fa9071734986",
+      "url": "https://app.notion.com/p/Machining-3bfe52757b5c8183ad01fa9071734986",
+      "lastEdited": "2026-08-17T21:06:00.000Z",
+      "Definition": "Cutting metal to size by removing chips — turning, milling, drilling, grinding. How a part gets from roughly the right shape to within a hundredth of a millimetre, and why a forged part is stronger than a machined one.",
+      "Aliases": "machined, machinist",
+      "Domain": "Workshop",
+      "Term": "Machining"
+    },
+    {
       "id": "3bfe5275-7b5c-811a-8fda-e5a571a37d3f",
       "url": "https://app.notion.com/p/Light-year-3bfe52757b5c811a8fdae5a571a37d3f",
       "lastEdited": "2026-08-17T20:39:00.000Z",
