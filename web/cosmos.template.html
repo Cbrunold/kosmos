@@ -41,6 +41,15 @@ __SHARED__
   .person .pn { font: 700 12.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; color: var(--ink); }
   .person .pm { font: 10px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; color: var(--muted); margin: 2px 0 5px; font-variant-numeric: tabular-nums; }
   .person .pk { font-size: 11.5px; color: var(--ink-2); line-height: 1.45; }
+  .person .nob { font: 9px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; letter-spacing: 0.08em; text-transform: uppercase; color: var(--c-gold); border: 1px solid var(--c-gold); border-radius: 99px; padding: 1px 6px; margin-left: 6px; vertical-align: 1px; }
+  .person[hidden] { display: none; }
+  .pctl { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin: 0 0 12px; }
+  .pctl input { flex: 1; min-width: 180px; background: var(--panel); border: 1px solid var(--hairline); border-radius: 8px; color: var(--ink); font: 12.5px system-ui, sans-serif; padding: 6px 10px; outline: 0; }
+  .pctl input:focus { border-color: var(--ink-2); }
+  .pchp { font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; background: var(--panel); border: 1px solid var(--hairline); border-left: 3px solid var(--c-gold); color: var(--ink-2); border-radius: 5px; padding: 4px 9px; cursor: pointer; display: inline-flex; gap: 6px; align-items: baseline; }
+  .pchp .n { font-size: 9px; color: var(--muted); }
+  .pchp[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--page); }
+  .pchp[aria-pressed="true"] .n { color: color-mix(in oklab, var(--page) 65%, var(--ink)); }
 
   .obs { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; }
   .obs .kcard { border-left: 3px solid var(--oc, var(--muted)); }
@@ -108,6 +117,7 @@ __SHARED__
 <div class="miss" id="miss"></div>
 
 <h2 class="ksec" id="people-h">Researchers on file</h2>
+<div class="pctl" id="pctl"></div>
 <div class="people" id="people"></div>
 
 <p class="kfoot">From the Cosmology databases in Notion. Observatory founding years and discovery years are stored as numbers rather than dates: ground sites are known to the year and space telescopes to the day, and one date column would have to either invent the former or discard the latter. Missions are the exception and keep real dates, because a launch is an instant somebody recorded — Apollo 11 left at 13:32 UTC on 16 July 1969. A mission with no end date is still running.</p>
@@ -276,16 +286,40 @@ __SHARED__
 
   // -- researchers --
   const people = document.getElementById('people');
+  const pcards = [];
   for (const r of D.researchers) {
     const card = document.createElement('div');
     card.className = 'kcard person';
     if (r.slug) card.id = r.slug;             // link target for /timeline's people chips
     const n = document.createElement('div'); n.className = 'pn'; n.textContent = r.name;
+    if (r.nobel) { const b = document.createElement('span'); b.className = 'nob'; b.textContent = 'Nobel ' + r.nobel; b.title = 'Nobel Prize'; n.appendChild(b); }
     card.appendChild(n);
+    pcards.push([r, card]);
     const meta = [r.life, r.field].filter(Boolean).join(' · ');
     if (meta) { const m = document.createElement('div'); m.className = 'pm'; m.textContent = meta; card.appendChild(m); }
     if (r.known) { const k = document.createElement('div'); k.className = 'pk'; k.textContent = r.known; card.appendChild(k); }
     people.appendChild(card);
+  }
+  // filter: name/field search + Nobel laureates
+  {
+    const ctl = document.getElementById('pctl');
+    const q = document.createElement('input'); q.type = 'search'; q.placeholder = `filter ${D.researchers.length} researchers…`; q.setAttribute('aria-label', 'Filter researchers');
+    const nob = document.createElement('button'); nob.className = 'pchp'; nob.type = 'button'; nob.setAttribute('aria-pressed', 'false');
+    const nN = D.researchers.filter((r) => r.nobel).length;
+    nob.innerHTML = '<span>Nobel laureates</span><span class="n"></span>'; nob.lastChild.textContent = nN;
+    let onlyNobel = false;
+    const fold = (s) => (s || '').toLowerCase().normalize('NFKD').replace(/[̀-ͯ]/g, '');
+    const apply = () => {
+      const needle = fold(q.value.trim());
+      for (const [r, card] of pcards) {
+        const hit = !needle || fold(r.name).includes(needle) || fold(r.field).includes(needle) || fold(r.known).includes(needle) || fold(r.nobel).includes(needle);
+        card.hidden = !(hit && (!onlyNobel || r.nobel));
+      }
+    };
+    q.addEventListener('input', apply);
+    nob.addEventListener('click', () => { onlyNobel = !onlyNobel; nob.setAttribute('aria-pressed', String(onlyNobel)); apply(); });
+    ctl.append(q, nob);
+    if (nN === 0) nob.hidden = true;
   }
 
   // everything above is built by script, so the browser's fragment jump can fire before

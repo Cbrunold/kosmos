@@ -280,7 +280,7 @@ def build_cosmos_page():
 
     researchers = sorted(
         ({"name": r["Name"], "slug": slugify(r["Name"]), "life": r.get("Lifespan"),
-          "field": r.get("Field"), "known": r.get("Known For")}
+          "field": r.get("Field"), "known": r.get("Known For"), "nobel": r.get("Nobel")}
          for r in notion["researchers"] if r.get("Name")),
         key=lambda r: r["name"].split()[-1])   # by surname, as a card index would be
 
@@ -586,6 +586,92 @@ def build_skills_page():
     return len(rows)
 
 
+# ---------------- glossary ----------------
+def build_glossary_page():
+    """Every term traced through every entity's text on the site, at build time.
+    A term added in Notion traces itself; a page added anywhere shows up under
+    the terms it uses. Nothing here is maintained by hand."""
+    import re
+    terms = [t for t in notion.get("glossary", []) if t.get("Term")]
+    if not terms:
+        write_page("glossary.template.html", "glossary.html", {"terms": [], "domains": []})
+        return 0, 0
+    # the corpus: (kind, name, href, text)
+    corpus = []
+    for q in notion.get("equations", []):
+        if q.get("Name"):
+            corpus.append(("equation", q["Name"], f"/equations#{slugify(q['Name'])}",
+                           " ".join(filter(None, [q["Name"], q.get("Significance"), q.get("Symbols")]))))
+    for t in notion["theories"]:
+        if t.get("Name"):
+            corpus.append(("theory", t["Name"], f"/theories#{slugify(t['Name'])}", " ".join(filter(None, [t["Name"], t.get("Summary")]))))
+    for m in notion.get("machines", []):
+        if m.get("Name"):
+            corpus.append(("machine", m["Name"], f"/machines#{slugify(m['Name'])}",
+                           " ".join(filter(None, [m["Name"], m.get("How It Works"), m.get("Materials"), m.get("Efficiency"), m.get("Used In")]))))
+    for k in notion.get("skills", []):
+        if k.get("Name"):
+            corpus.append(("skill", k["Name"], f"/skills#{slugify(k['Name'])}",
+                           " ".join(filter(None, [k["Name"], k.get("Summary"), k.get("The Science"), k.get("How It Fails")]))))
+    for ev in notion.get("cosmicTimeline", []):
+        if ev.get("Event"):
+            corpus.append(("event", ev["Event"], f"/timeline#{slugify(ev['Event'])}", " ".join(filter(None, [ev["Event"], ev.get("What Happened")]))))
+    for m in notion.get("mines", []):
+        if m.get("Name"):
+            corpus.append(("mine", m["Name"], f"/mines#{slugify(m['Name'])}", " ".join(filter(None, [m["Name"], m.get("Notes"), m.get("Type")]))))
+    for o in notion.get("observatories", []):
+        if o.get("Name"):
+            corpus.append(("observatory", o["Name"], f"/cosmos#obs-{slugify(o['Name'])}", " ".join(filter(None, [o["Name"], o.get("Notes"), o.get("Type")]))))
+    for x in notion.get("discoveries", []):
+        if x.get("Name"):
+            corpus.append(("discovery", x["Name"], f"/cosmos#disc-{slugify(x['Name'])}", " ".join(filter(None, [x["Name"], x.get("Description")]))))
+    for m in notion.get("missions", []):
+        if m.get("Name"):
+            corpus.append(("mission", m["Name"], f"/cosmos#mission-{slugify(m['Name'])}", " ".join(filter(None, [m["Name"], m.get("Objective")]))))
+    for e in elements:
+        txt = " ".join(filter(None, [e.get("extraction"), e.get("oreMinerals")]))
+        if txt:
+            corpus.append(("element", e["name"], f"/elements#{e['notation']}", txt))
+    for c in notion.get("constants", []):
+        if c.get("Name") and c.get("Note"):
+            corpus.append(("constant", c["Name"], "/constants#" + slugify(f"{c.get('Symbol')}-{c['Name']}" if c.get("Symbol") and c["Symbol"] != "—" else c["Name"]),
+                           " ".join([c["Name"], c["Note"]])))
+    KIND_ORDER = ["equation", "theory", "machine", "skill", "event", "element", "mine", "observatory", "discovery", "mission", "constant"]
+    PER_KIND = 8
+
+    def pattern(term):
+        # whole words, any inflection (-s, -es, -ed, -ing); multiword with flexible spaces/hyphens
+        words = [re.escape(w) for w in re.split(r"[\s-]+", term.strip()) if w]
+        core = r"[\s-]+".join(words)
+        return re.compile(r"\b" + core + r"(?:s|es|ed|ing)?\b", re.IGNORECASE)
+
+    out = []
+    total_links = 0
+    for t in terms:
+        names = [t["Term"]] + [a.strip() for a in (t.get("Aliases") or "").split(",") if a.strip()]
+        pats = [pattern(n) for n in names if len(n) >= 2]
+        hits = {}
+        for kind, name, href, text in corpus:
+            if any(p.search(text) for p in pats):
+                hits.setdefault(kind, []).append({"name": name, "href": href})
+        appears = []
+        for kind in KIND_ORDER:
+            lst = hits.get(kind)
+            if lst:
+                lst.sort(key=lambda x: x["name"])
+                appears.append({"kind": kind, "n": len(lst), "items": lst[:PER_KIND]})
+                total_links += len(lst)
+        out.append({"term": t["Term"], "slug": slugify(t["Term"]), "domain": t.get("Domain"),
+                    "definition": t.get("Definition"), "aliases": names[1:], "appears": appears,
+                    "n": sum(a["n"] for a in appears)})
+    out.sort(key=lambda x: x["term"].lower())
+    domains = [d for d in ["Thermodynamics", "Electromagnetism", "Quantum", "Relativity", "Cosmology", "Astronomy",
+                           "Nuclear & Particle", "Chemistry", "Mineralogy", "Mining & Metallurgy", "Machines",
+                           "Workshop", "Mathematics", "Measurement"] if any(x["domain"] == d for x in out)]
+    write_page("glossary.template.html", "glossary.html", {"terms": out, "domains": domains})
+    return len(out), total_links
+
+
 # ---------------- search index ----------------
 def _clip(s, n=170) -> str:
     s = " ".join((s or "").split())
@@ -617,6 +703,7 @@ def build_search_index():
         ("/mines", "Mines & Extraction", "a world map of flagship mines, and how each raw material is won"),
         ("/machines", "Machines", "the canonical engines and machines: how each works, its cycle, efficiency, materials"),
         ("/skills", "Skills", "hands-on techniques with the science behind them: tools, steps, safety, how it fails"),
+        ("/glossary", "Glossary", "the terms the site uses, each traced to every page that uses it"),
     ]:
         add("page", name, sub, "", route)
 
@@ -721,6 +808,10 @@ def build_search_index():
                                                              None if (m.get("Cycle") in (None, "None")) else f"{m['Cycle']} cycle"])),
                 m.get("How It Works"), f"/machines#{slugify(m['Name'])}")
 
+    for g in notion.get("glossary", []):
+        if g.get("Term"):
+            add("term", g["Term"], g.get("Domain") or "", g.get("Definition"), f"/glossary#{slugify(g['Term'])}")
+
     for sk in notion.get("skills", []):
         if sk.get("Name"):
             add("skill", sk["Name"], " · ".join(filter(None, [sk.get("Category"), sk.get("Difficulty")])),
@@ -761,7 +852,7 @@ def theory_span() -> str:
 
 
 def build_home(n_min, n_gems, n_classes, n_spectral, n_instr, n_timeline, tl_decades,
-               n_obs, n_disc, n_miss, n_search, n_mines, n_mined, n_mach, n_diag, n_skills):
+               n_obs, n_disc, n_miss, n_search, n_mines, n_mined, n_mach, n_diag, n_skills, n_terms, n_traces):
     gaps = sum(1 for e in elements
                if e["meltingPt"] is None or e["boilingPt"] is None
                or e["density"] is None or e["occurrence"] is None)
@@ -794,6 +885,8 @@ def build_home(n_min, n_gems, n_classes, n_spectral, n_instr, n_timeline, tl_dec
         "__N_MACHINES__": n_mach,
         "__N_DIAGRAMS__": n_diag,
         "__N_SKILLS__": n_skills,
+        "__N_TERMS__": n_terms,
+        "__N_TRACES__": f"{n_traces:,}",
         "__TL_DECADES__": tl_decades,
         "__N_EQ__": len(eqs),
         "__N_EQFIELDS__": len({e.get("Field") for e in eqs if e.get("Field")}),
@@ -862,6 +955,7 @@ if __name__ == "__main__":
     n_mines, n_mined = build_mines_page()
     n_mach, n_diag = build_machines_page()
     n_skills = build_skills_page()
+    n_terms, n_traces = build_glossary_page()
     n_search = build_search_index()
     build_home(n_min, n_gems, n_classes, n_spectral, n_instr, n_timeline, tl_decades,
-               n_obs, n_disc, n_miss, n_search, n_mines, n_mined, n_mach, n_diag, n_skills)
+               n_obs, n_disc, n_miss, n_search, n_mines, n_mined, n_mach, n_diag, n_skills, n_terms, n_traces)

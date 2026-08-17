@@ -28,6 +28,7 @@ SOURCES = {
     "mines": "dd711986-067e-43f9-9a74-dd471ac4bcc6",
     "machines": "f6c4e3cc-bfe0-4fb8-b807-3693cbcf4e88",
     "skills": "804e17aa-435b-4306-acbb-2ec926b87b10",
+    "glossary": {"title": "Glossary [DB]"},   # created by seed_glossary.py; resolved by title at fetch time
     "spectralTypes": "6128c15c-25dd-47fb-bf00-ce737ca1d3e6",
     "gemstones": "e4fe83d2-0365-4dc6-935e-e5b6ce967778",
     "minerals": "a2db78db-efb7-4952-b8bc-e4ab98d42264",
@@ -74,6 +75,20 @@ def query(ds_id: str) -> list:
     return results
 
 
+def resolve(ds) -> str | None:
+    """A source may be given as an id, or as {"title": ...} to look up by name —
+    for databases a seed script creates, whose id is not known in advance."""
+    if isinstance(ds, str):
+        return ds
+    body = {"query": ds["title"], "filter": {"property": "object", "value": "data_source"}, "page_size": 50}
+    req = urllib.request.Request("https://api.notion.com/v1/search", data=json.dumps(body).encode(),
+                                 headers={**HEADERS, "Authorization": f"Bearer {token()}"})
+    for r in json.load(urllib.request.urlopen(req)).get("results", []):
+        if "".join(x.get("plain_text", "") for x in r.get("title", [])).strip() == ds["title"]:
+            return r["id"]
+    return None
+
+
 def value(p: dict):
     t = p["type"]
     if t == "title":
@@ -110,7 +125,12 @@ def flatten(page: dict) -> dict:
 if __name__ == "__main__":
     out = {}
     for key, ds in SOURCES.items():
-        rows = [flatten(p) for p in query(ds)]
+        ds_id = resolve(ds)
+        if not ds_id:
+            print(f"{key}: not found (not created yet) — 0 rows", file=sys.stderr)
+            out[key] = []
+            continue
+        rows = [flatten(p) for p in query(ds_id)]
         out[key] = rows
         print(f"{key}: {len(rows)} rows", file=sys.stderr)
     dest = ROOT / "data" / "notion-all.json"

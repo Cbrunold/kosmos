@@ -1,0 +1,140 @@
+<title>Kosmos · Glossary</title>
+<style>
+__SHARED__
+
+  .wrap { max-width: 900px; }
+  .ctl { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin: 0 0 12px; }
+  .ctl input {
+    flex: 1; min-width: 200px; background: var(--panel); border: 1px solid var(--hairline); border-radius: 8px;
+    color: var(--ink); font: 13px system-ui, sans-serif; padding: 8px 12px; outline: 0;
+  }
+  .ctl input:focus { border-color: var(--ink-2); }
+  .dchp {
+    font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    background: var(--panel); border: 1px solid var(--hairline); color: var(--ink-2);
+    border-radius: 5px; padding: 4px 9px; cursor: pointer; display: inline-flex; align-items: baseline; gap: 6px;
+  }
+  .dchp:hover { color: var(--ink); border-color: var(--ink-2); }
+  .dchp .n { font-size: 9px; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .dchp[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--page); }
+  .dchp[aria-pressed="true"] .n { color: color-mix(in oklab, var(--page) 65%, var(--ink)); }
+  .az { display: flex; flex-wrap: wrap; gap: 2px; margin: 0 0 18px; }
+  .az a { font: 11px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; color: var(--ink-2); text-decoration: none; padding: 2px 6px; border-radius: 4px; }
+  .az a:hover { background: var(--panel); color: var(--ink); }
+  .az a.off { color: var(--hairline); pointer-events: none; }
+  .letter { font: 700 13px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; color: var(--muted); margin: 22px 0 8px; padding-bottom: 4px; border-bottom: 1px solid var(--hairline); scroll-margin-top: 16px; }
+  .letter[hidden] { display: none; }
+  .term { padding: 12px 15px; scroll-margin-top: 16px; margin-bottom: 8px; }
+  .term[hidden] { display: none; }
+  .term.flash { outline: 2px solid var(--c-pink); outline-offset: 3px; }
+  .term h2 { font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; font-size: 14.5px; margin: 0 0 4px; display: flex; align-items: baseline; gap: 9px; flex-wrap: wrap; }
+  .term h2 .dom { font: 9.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); border: 1px solid var(--hairline); border-radius: 99px; padding: 1px 7px; }
+  .term h2 .al { font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; color: var(--muted); }
+  .term p { font-size: 13px; color: var(--ink-2); line-height: 1.6; margin: 0; }
+  .trace { display: flex; flex-wrap: wrap; gap: 4px 6px; margin-top: 8px; align-items: baseline; }
+  .trace .lbl { font: 9.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-right: 2px; }
+  .trace .kd { font: 9.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; color: var(--kc, var(--muted)); margin-left: 6px; }
+  .trace .kd:first-of-type { margin-left: 0; }
+  .lnk { font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; border: 1px solid var(--hairline); border-left: 3px solid var(--kc, var(--muted)); color: var(--ink-2); border-radius: 4px; padding: 1px 6px 1px 5px; text-decoration: none; white-space: nowrap; }
+  .lnk:hover { color: var(--ink); border-color: var(--ink-2); }
+  .more { font: 10px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; color: var(--muted); }
+  .none { font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; color: var(--muted); margin-top: 6px; }
+  .empty { font-size: 13px; color: var(--muted); padding: 18px 0; }
+</style>
+
+<nav class="knav"><a href="/">KOSMOS</a><span>/</span><span class="cur">Glossary</span></nav>
+<h1 class="ktitle">Glossary</h1>
+<p class="klede">The words the rest of the site leans on, each defined once — and each traced, at build time, to every equation, theory, machine, skill, epoch, element, mine, discovery and mission whose text uses it. The links are computed, not curated: add a page anywhere and it appears under the terms it uses.</p>
+
+<div class="wrap">
+  <div class="ctl">
+    <input id="q" type="search" placeholder="filter terms…" aria-label="Filter glossary" autocomplete="off" />
+    <div id="doms" style="display:contents"></div>
+  </div>
+  <div class="az" id="az"></div>
+  <div id="list"></div>
+  <p class="empty" id="empty" hidden>No term matches.</p>
+</div>
+
+<p class="kfoot">From the Glossary database in Notion. "Appears in" is found by matching the term and its aliases as whole words, any inflection, in each entity's text — so it will occasionally catch a word used in another sense, and never claims more than that the word occurs. Up to eight per kind are shown; the count is the true total.</p>
+
+<script id="data" type="application/json">__DATA__</script>
+<script>
+  const D = JSON.parse(document.getElementById('data').textContent);
+  const T = D.terms;
+  const KC = { equation: 'var(--c-amber)', theory: 'var(--c-pink)', machine: 'var(--c-amber)', skill: 'var(--c-green)', event: 'var(--c-bronze)',
+               element: 'var(--c-blue)', mine: 'var(--c-bronze)', observatory: 'var(--c-bronze)', discovery: 'var(--c-cyan)', mission: 'var(--c-blue)', constant: 'var(--c-teal)' };
+  const KL = { equation: 'equations', theory: 'theories', machine: 'machines', skill: 'skills', event: 'timeline', element: 'elements', mine: 'mines', observatory: 'observatories', discovery: 'discoveries', mission: 'missions', constant: 'constants' };
+  const list = document.getElementById('list'), empty = document.getElementById('empty'), q = document.getElementById('q');
+  const fold = (s) => (s || '').toLowerCase().normalize('NFKD').replace(/[̀-ͯ]/g, '');
+  const active = new Set();
+  const cards = new Map(), letters = new Map();
+
+  let cur = '';
+  for (const t of T) {
+    const L = fold(t.term)[0].toUpperCase();
+    if (L !== cur) {
+      cur = L;
+      const h = document.createElement('div'); h.className = 'letter'; h.id = 'L-' + L; h.textContent = L; list.appendChild(h); letters.set(L, h);
+    }
+    const c = document.createElement('article'); c.className = 'kcard term'; c.id = t.slug; c.dataset.letter = L;
+    const h2 = document.createElement('h2');
+    const nm = document.createElement('span'); nm.textContent = t.term; h2.appendChild(nm);
+    if (t.domain) { const d = document.createElement('span'); d.className = 'dom'; d.textContent = t.domain; h2.appendChild(d); }
+    if (t.aliases.length) { const a = document.createElement('span'); a.className = 'al'; a.textContent = 'also: ' + t.aliases.join(', '); h2.appendChild(a); }
+    c.appendChild(h2);
+    const p = document.createElement('p'); p.textContent = t.definition || ''; c.appendChild(p);
+    if (t.appears.length) {
+      const tr = document.createElement('div'); tr.className = 'trace';
+      const l = document.createElement('span'); l.className = 'lbl'; l.textContent = `appears in ${t.n}`; tr.appendChild(l);
+      for (const g of t.appears) {
+        const kd = document.createElement('span'); kd.className = 'kd'; kd.style.setProperty('--kc', KC[g.kind]); kd.textContent = KL[g.kind] || g.kind; tr.appendChild(kd);
+        for (const it of g.items) { const a = document.createElement('a'); a.className = 'lnk'; a.href = it.href; a.textContent = it.name; a.style.setProperty('--kc', KC[g.kind]); tr.appendChild(a); }
+        if (g.n > g.items.length) { const m = document.createElement('span'); m.className = 'more'; m.textContent = `+${g.n - g.items.length}`; tr.appendChild(m); }
+      }
+      c.appendChild(tr);
+    } else {
+      const n = document.createElement('div'); n.className = 'none'; n.textContent = 'defined here; not yet used by name elsewhere on the site'; c.appendChild(n);
+    }
+    list.appendChild(c); cards.set(t.slug, c);
+  }
+
+  function render() {
+    const needle = fold(q.value.trim());
+    let shown = 0; const seen = new Set();
+    for (const t of T) {
+      const on = (!active.size || active.has(t.domain)) && (!needle || fold(t.term).includes(needle) || t.aliases.some((a) => fold(a).includes(needle)) || fold(t.definition).includes(needle));
+      cards.get(t.slug).hidden = !on;
+      if (on) { shown++; seen.add(cards.get(t.slug).dataset.letter); }
+    }
+    for (const [L, h] of letters) h.hidden = !seen.has(L);
+    for (const a of document.getElementById('az').children) a.classList.toggle('off', !seen.has(a.textContent));
+    empty.hidden = shown > 0;
+  }
+  q.addEventListener('input', render);
+
+  const doms = document.getElementById('doms');
+  const counts = new Map(); for (const t of T) counts.set(t.domain, (counts.get(t.domain) || 0) + 1);
+  for (const d of D.domains) {
+    const b = document.createElement('button'); b.className = 'dchp'; b.type = 'button'; b.setAttribute('aria-pressed', 'false');
+    b.innerHTML = '<span></span><span class="n"></span>'; b.firstChild.textContent = d.toLowerCase(); b.lastChild.textContent = counts.get(d) || 0;
+    b.addEventListener('click', () => { if (active.has(d)) active.delete(d); else active.add(d); b.setAttribute('aria-pressed', String(active.has(d))); render(); });
+    doms.appendChild(b);
+  }
+  const az = document.getElementById('az');
+  for (const L of 'ABCDEFGHIJKLMNOPQRSTUVWXYZ') {
+    const a = document.createElement('a'); a.href = '#L-' + L; a.textContent = L; if (!letters.has(L)) a.classList.add('off');
+    a.addEventListener('click', (ev) => { ev.preventDefault(); const h = letters.get(L); if (h) h.scrollIntoView({ block: 'start', behavior: 'smooth' }); });
+    az.appendChild(a);
+  }
+  render();
+
+  function goTo(id) {
+    const c = cards.get(id); if (!c) return;
+    if (c.hidden) { active.clear(); q.value = ''; for (const b of doms.children) b.setAttribute('aria-pressed', 'false'); render(); }
+    c.scrollIntoView({ block: 'center', behavior: 'smooth' });
+    c.classList.add('flash'); setTimeout(() => c.classList.remove('flash'), 1700);
+  }
+  if (location.hash.length > 1 && !location.hash.startsWith('#L-')) goTo(location.hash.slice(1));
+  addEventListener('hashchange', () => { if (!location.hash.startsWith('#L-')) goTo(location.hash.slice(1)); });
+</script>

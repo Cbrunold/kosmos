@@ -18,6 +18,7 @@ truth for code and the normalised data snapshots. Sync is one-way, Notion → re
 | `/mines`     | World map of ~90 flagship mines, and for each raw material its ore minerals, typical grade, concentration factor, and ore-to-product process |
 | `/machines`  | The canonical engines and machines — how each works, its cycle drawn as a p–V loop, efficiency, materials, inventors; cross-linked to equations, elements and skills |
 | `/skills`    | Hands-on techniques with the science behind them — tools, steps, safety, how it fails, how you know it worked; linked to elements, equations and machines |
+| `/glossary`  | The terms the site uses, defined once and traced at build time to every page whose text uses them |
 | `/timeline`  | The universe's history on a log axis of seconds — Planck epoch to heat death, cross-linked to the equations and theories |
 | `/theories`  | Theory shelf from Ptolemy to the holographic principle — status, proponents, and the equations each rests on; sortable chronologically |
 | `/equations` | Canonical equations with symbols decoded, filterable by field |
@@ -77,6 +78,10 @@ scripts/seed_engineering.py   The engineering half: ~30 machines and ~22 hands-o
                               new DBs, plus the cycle equations (Carnot, Otto, Diesel, Brayton, COP,
                               Betz…) and ~30 inventors they link to. build.py draws each heat
                               engine's p–V cycle from the cycle name
+scripts/seed_glossary.py      Creates + seeds Glossary [DB] (~125 terms with domain, definition,
+                              aliases). "Appears in" links are computed by build.py, never stored
+scripts/seed_nobel.py         Adds a Nobel field to the Researchers DB and marks the laureates on
+                              file; `--diff LIST` reports which names in a list are not researchers yet
 deploy/                       systemd unit + nginx site as deployed on the VPS
 ```
 

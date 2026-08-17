@@ -297,7 +297,7 @@
     <div class="sbox">
       <span class="glass" aria-hidden="true">⌕</span>
       <input id="q" type="search" autocomplete="off" spellcheck="false" placeholder="search elements, minerals, equations, theories, people, events…" aria-label="Search Kosmos" aria-controls="results" aria-expanded="false" />
-      <span class="stat" id="sstat">4,161 entries</span>
+      <span class="stat" id="sstat">4,162 entries</span>
       <kbd id="skbd" title="press / to search">/</kbd>
     </div>
     <div class="results" id="results" role="listbox" hidden></div>
@@ -350,6 +350,11 @@
     <p>Hands-on techniques with the science behind them — soldering, welding, heat treatment, casting, machining, electronics, concrete, knots — tools, steps, safety, how it fails, how you know it worked.</p>
     <span class="stat"><b>22</b> skills · with the physics that makes each one work</span>
   </a>
+  <a class="tile" href="/glossary">
+    <h2><span class="dot" style="background:var(--c-slate)"></span>Glossary</h2>
+    <p>The words the site leans on, each defined once and traced — automatically, at build time — to every equation, theory, machine, skill, epoch, element and mine whose text uses it.</p>
+    <span class="stat"><b>0</b> terms · <b>0</b> traced appearances</span>
+  </a>
   <a class="tile" href="/constants">
     <h2><span class="dot" style="background:var(--c-teal)"></span>Constants &amp; Units</h2>
     <p>The numbers everything else is written in — CODATA values with real uncertainties, the seven constants that define the SI, and both sides of the Hubble tension.</p>
@@ -387,6 +392,7 @@
     mine:           ['mines',         'var(--c-bronze)'],
     machine:        ['machines',      'var(--c-amber)'],
     skill:          ['skills',        'var(--c-green)'],
+    term:           ['glossary',      'var(--c-slate)'],
     force:          ['forces',        'var(--c-red)'],
   };
   const KIND_ORDER = Object.keys(KINDS);
