@@ -703,7 +703,7 @@ def build_glossary_page():
                     "definition": t.get("Definition"), "aliases": names[1:], "appears": appears,
                     "n": sum(a["n"] for a in appears)})
     out.sort(key=lambda x: x["term"].lower())
-    domains = [d for d in ["Thermodynamics", "Electromagnetism", "Quantum", "Relativity", "Cosmology", "Astronomy",
+    domains = [d for d in ["Mechanics", "Thermodynamics", "Electromagnetism", "Quantum", "Relativity", "Cosmology", "Astronomy",
                            "Nuclear & Particle", "Chemistry", "Mineralogy", "Mining & Metallurgy", "Machines",
                            "Workshop", "Mathematics", "Measurement"] if any(x["domain"] == d for x in out)]
     write_page("glossary.template.html", "glossary.html", {"terms": out, "domains": domains})

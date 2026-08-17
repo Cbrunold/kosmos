@@ -34,7 +34,7 @@ def find_ds(title):
 PARENT_PAGE = "278879ef-bfcb-46e1-bdfb-7f9beb7b7197"   # Physical Sciences
 TITLE = "Glossary [DB]"
 
-DOMAINS = ["Thermodynamics", "Electromagnetism", "Quantum", "Relativity", "Cosmology", "Astronomy",
+DOMAINS = ["Mechanics", "Thermodynamics", "Electromagnetism", "Quantum", "Relativity", "Cosmology", "Astronomy",
            "Nuclear & Particle", "Chemistry", "Mineralogy", "Mining & Metallurgy", "Machines",
            "Workshop", "Mathematics", "Measurement"]
 
@@ -180,6 +180,40 @@ TERMS = [
     ("Electronvolt", "Measurement", "The energy an electron gains crossing one volt — 1.6 × 10⁻¹⁹ J. The natural unit of atoms (eV), nuclei (MeV) and particle physics (GeV, TeV).", "eV, MeV, GeV, TeV"),
     ("Sigma", "Measurement", "One standard deviation; a result's distance from the null in those units. Particle physics claims a discovery at 5σ; the Hubble tension has reached it.", "standard deviation, 5σ"),
     ("Density", "Measurement", "Mass per unit volume — and, by extension, any quantity per unit volume: energy density, charge density, number density. The critical density is the one that decides whether the universe expands forever.", "densities"),
+    # ---- filling the gaps /explainers surfaced (2026-08-17). Adding the explainers
+    # showed which words the site uses constantly but had never defined: no black
+    # hole, no galaxy, no orbit, no electron, and no home at all for mechanics.
+    # Chosen on measured use in the site's own prose, not on what sounded missing.
+    ("Momentum", "Mechanics", "Mass times velocity — the quantity a collision conserves whatever else it destroys. Newton stated his second law as its rate of change, which is the form that survives when the mass is changing too.", ""),
+    ("Friction", "Mechanics", "The force resisting sliding between surfaces, roughly proportional to how hard they are pressed together and nearly independent of contact area. It wears tools out, and it is also the only reason brakes, bolts and knots hold.", "frictional"),
+    ("Resonance", "Mechanics", "Driving a system at its own natural frequency, so small repeated pushes accumulate into a large amplitude. It tunes a radio, shatters a glass, and is the thing bridges are designed to avoid.", "resonant, resonate"),
+    ("Stress", "Mechanics", "Force per unit area inside a material — the quantity a part actually fails on, not the load you applied. Paired with strain, the deformation it causes, it gives both stiffness and breaking point.", ""),
+    ("Combustion", "Thermodynamics", "Rapid oxidation that releases heat and light: fuel plus oxygen to carbon dioxide and water, when it goes cleanly. The heat source for most engines on this site, and the reason nearly all of them breathe air.", "combustible"),
+    ("Magnetic field", "Electromagnetism", "The field produced by moving charge and by intrinsic spin, exerting force only on charge that is itself moving. It has no sources — no magnetic monopole has ever been found — so its field lines close on themselves.", ""),
+    ("Electric field", "Electromagnetism", "Force per unit charge at a point in space. Unlike the magnetic field it begins and ends on charge, and a changing one is half of what light is made of.", ""),
+    ("Lens", "Electromagnetism", "A shaped piece of transparent material that brings light to a focus by refraction, its power set by curvature and refractive index. Its errors — chromatic and spherical — are why a good one is several elements deep.", ""),
+    ("Photon", "Quantum", "The quantum of the electromagnetic field: massless, always moving at c, carrying energy hf. Light behaves as a wave right up until you count the arrivals one at a time.", ""),
+    ("Electron", "Nuclear & Particle", "The light, negatively charged, apparently pointlike particle whose arrangement around a nucleus fixes every chemical property an element has. Found in 1897; no one has yet measured a size for it.", ""),
+    ("Gravitational wave", "Relativity", "A ripple in spacetime radiated when masses accelerate asymmetrically — merging black holes and neutron stars. Predicted in 1916 and detected in 2015, at a strain smaller than a proton's width across a four-kilometre arm.", ""),
+    ("Black hole", "Astronomy", "A region where gravity has closed spacetime around itself, bounded by an event horizon that nothing crosses outward. Stellar ones start above about three solar masses; supermassive ones of millions to billions sit in galactic centres.", ""),
+    ("Galaxy", "Astronomy", "A gravitationally bound system of stars, gas, dust and dark matter — from dwarfs of a few million stars to giants of a trillion. The Milky Way is a barred spiral roughly 100,000 light-years across.", "galaxies, galactic"),
+    ("Orbit", "Astronomy", "The path one body follows around another under gravity alone: an ellipse with the primary at a focus, as Kepler found. Changing one costs velocity, which is why spaceflight is bookkeeping in delta-v.", ""),
+    ("Exoplanet", "Astronomy", "A planet around a star other than the Sun. The first around a main-sequence star was confirmed in 1995; thousands are known now, most of them found by transit or by radial velocity.", "extrasolar planet"),
+    ("Transit", "Astronomy", "A planet crossing the disc of its star as seen from here, dimming it by a fraction of a percent for a few hours. The depth gives the planet's radius and the repeat gives its year.", ""),
+    ("Telescope", "Astronomy", "An instrument that gathers light over an area vastly larger than a pupil and brings it to a focus. Aperture sets both the faintest thing visible and the finest detail resolvable, which is why they only ever get bigger.", ""),
+    ("Neutron star", "Astronomy", "What is left when a massive star's iron core gives way — one or two solar masses inside about 20 km, held up by neutron degeneracy pressure. The ones that spin and beam are pulsars.", ""),
+    ("Periodic table", "Chemistry", "The elements ordered by atomic number so that each column shares an outer-electron structure, and therefore its chemistry. Mendeleev left gaps in 1869 and the missing elements arrived where he had put them.", ""),
+    ("Vacuum", "Machines", "Space with the gas pumped out, rated by how much pressure is left — from a rough 10⁻³ mbar down to ultra-high vacuum below 10⁻⁹. Electron microscopes, thin-film coating and particle beams all need one to work at all.", ""),
+    ("Soil mechanics", "Machines", "How soil behaves as a structural material: its shear strength, how water moves through it, how much it settles under load. Foundations, dams, tunnels and slopes stand or fail on it.", ""),
+    ("Concrete", "Workshop", "Cement, water and aggregate, which hardens by hydration rather than by drying and goes on gaining strength for years. Strong in compression and weak in tension, which is why it is cast around steel.", ""),
+    ("Thin film", "Workshop", "A layer from a few atoms to a few microns thick, laid down by evaporation, sputtering or chemical vapour. Mirrors, anti-reflection coatings, semiconductors and hard tool coatings are all made this way.", ""),
+    ("Plate tectonics", "Mineralogy", "The Earth's outer shell is broken into plates that move over the mantle, and nearly everything geological — earthquakes, volcanoes, mountain belts, most ore deposits — happens where they meet.", "tectonic, tectonics"),
+    ("Derivative", "Mathematics", "The instantaneous rate of change of one quantity with respect to another — the slope of a curve at a point. Almost every law of physics on this site is written as one.", ""),
+    ("Integral", "Mathematics", "The accumulation of a quantity across an interval: the area under the curve, and the inverse of the derivative. Work, charge and total mass are each an integral of something simpler.", ""),
+    ("Probability", "Mathematics", "How often an outcome occurs in the long run, on a scale of 0 to 1. Quantum mechanics makes it fundamental rather than an admission of ignorance, which is the part that still bothers people.", "probabilities, probabilistic"),
+    ("Fourier transform", "Mathematics", "The decomposition of any signal into the sines and cosines that sum to it, trading time for frequency. Spectroscopy, crystallography and every kind of signal processing run on it.", "Fourier"),
+    ("Prime number", "Mathematics", "A whole number above 1 divisible only by itself and 1. There are infinitely many, they thin out logarithmically, and no one can tell you the next one without looking.", "primes"),
+    ("Light-year", "Measurement", "The distance light covers in a year — 9.46 × 10¹² km. A length despite the name, and the unit that makes galactic distances legible.", "light year"),
 ]
 
 
