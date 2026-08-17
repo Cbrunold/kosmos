@@ -214,6 +214,16 @@ TERMS = [
     ("Fourier transform", "Mathematics", "The decomposition of any signal into the sines and cosines that sum to it, trading time for frequency. Spectroscopy, crystallography and every kind of signal processing run on it.", "Fourier"),
     ("Prime number", "Mathematics", "A whole number above 1 divisible only by itself and 1. There are infinitely many, they thin out logarithmically, and no one can tell you the next one without looking.", "primes"),
     ("Light-year", "Measurement", "The distance light covers in a year — 9.46 × 10¹² km. A length despite the name, and the unit that makes galactic distances legible.", "light year"),
+    # ---- the shop-floor and control vocabulary the explainers use and the site had
+    # skipped. Weaker warrant than the batch above: /skills teaches turning on a
+    # lathe without ever writing "machining", so several of these earn their first
+    # appearance from an explainer rather than from the site's own prose.
+    ("Machining", "Workshop", "Cutting metal to size by removing chips — turning, milling, drilling, grinding. How a part gets from roughly the right shape to within a hundredth of a millimetre, and why a forged part is stronger than a machined one.", "machined, machinist"),
+    ("Lathe", "Workshop", "A machine that spins the work while a fixed tool travels along it, cutting anything round: shafts, bushes, threads. The first machine tool able to reproduce its own parts, and still the one a shop buys first.", ""),
+    ("Screw thread", "Workshop", "The helical ridge that turns rotation into clamping force. Pitch sets how far one turn advances it and the flank angle sets how much load it carries, which is why threads are standardised and why the standards do not interchange.", ""),
+    ("Milling", "Workshop", "Cutting with a rotating multi-toothed tool while the work moves past it — the operation that makes flat faces, slots and pockets, as turning makes round ones.", ""),
+    ("Shock wave", "Mechanics", "A pressure front travelling faster than the medium's own speed of sound, across which pressure, density and temperature jump almost discontinuously. Supersonic flight, explosions and supernova remnants all drive one.", "shockwave"),
+    ("Control system", "Machines", "A loop that measures what a machine is actually doing, compares it with what was asked, and corrects the difference. Feedback is what makes it hold steady — or, badly tuned, what makes it hunt and oscillate.", "feedback loop"),
 ]
 
 
