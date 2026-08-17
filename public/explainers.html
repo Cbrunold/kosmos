@@ -1,0 +1,323 @@
+<title>Kosmos · Explainers</title>
+<style>
+  :root {
+    color-scheme: light;
+    --page: #f2f4f5;
+    --panel: #fbfcfc;
+    --ink: #17212b;
+    --ink-2: #4c5a66;
+    --muted: #8595a1;
+    --hairline: #dde4e8;
+    --ring: rgba(23, 33, 43, 0.85);
+    --c-blue: #2a78d6;
+    --c-teal: #0f9b9b;
+    --c-red: #c23434;
+    --c-amber: #e39a00;
+    --c-green: #33a047;
+    --c-violet: #6b50c8;
+    --c-pink: #e05e8f;
+    --c-bronze: #8a5314;
+    --c-cyan: #0b87b8;
+    --c-indigo: #4a58c8;
+    --c-olive: #737a16;
+    --c-rust: #bd5b1c;
+    --c-plum: #a23a9a;
+    --c-slate: #52688a;
+    --c-wine: #8f2b4e;
+    --c-forest: #1f7050;
+    --c-steel: #4a6474;
+    --c-fuchsia: #b81f7a;
+    --c-lime: #5f9e14;
+    --c-yellow: #a89a00;
+    --c-aubergine: #702f9e;
+    --c-navy: #24457e;
+    --c-mint: #0c8f66;
+    --c-mauve: #8d5765;
+    --c-coral: #c14f36;
+    --c-periwinkle: #5e6fd0;
+    --c-ice: #2f93bb;
+    --c-storm: #5c5a7a;
+    --c-ochre: #96690f;
+    --c-tangerine: #d4700a;
+    --c-clay: #9c6249;
+    --c-deepsea: #14586e;
+    --c-cerulean: #1a7fc4;
+    --c-gold: #b07d12;
+    --c-ember: #c8461a;
+    --c-terracotta: #a8502f;
+    --c-silver: #6b7884;
+    --c-moss: #4f7a1e;
+    --c-lavender: #7d5fc0;
+    --heat: #2a78d6;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --page: #0e1116;
+      --panel: #14181d;
+      --ink: #e9edf2;
+      --ink-2: #aab8c4;
+      --muted: #74828e;
+      --hairline: #242b33;
+      --ring: rgba(233, 237, 242, 0.9);
+      --c-blue: #4a90e8;
+      --c-teal: #0aa085;
+      --c-red: #e75570;
+      --c-amber: #b98800;
+      --c-green: #46a850;
+      --c-violet: #8b74e0;
+      --c-pink: #dc5f83;
+      --c-bronze: #a4671f;
+      --c-cyan: #38a8d8;
+      --heat: #5598e7;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --page: #0e1116;
+    --panel: #14181d;
+    --ink: #e9edf2;
+    --ink-2: #aab8c4;
+    --muted: #74828e;
+    --hairline: #242b33;
+    --ring: rgba(233, 237, 242, 0.9);
+    --c-blue: #4a90e8;
+    --c-teal: #0aa085;
+    --c-red: #e75570;
+    --c-amber: #b98800;
+    --c-green: #46a850;
+    --c-violet: #8b74e0;
+    --c-pink: #dc5f83;
+    --c-bronze: #a4671f;
+    --c-cyan: #38a8d8;
+    --c-indigo: #7b87e8;
+    --c-olive: #9aa32e;
+    --c-rust: #d97a3c;
+    --c-plum: #c85fc0;
+    --c-slate: #8ca3c0;
+    --c-wine: #c25572;
+    --c-forest: #3f9a72;
+    --c-steel: #83a0b2;
+    --c-fuchsia: #d94fa3;
+    --c-lime: #93bf3a;
+    --c-yellow: #ccc039;
+    --c-aubergine: #a374d6;
+    --c-navy: #7f9bd4;
+    --c-mint: #3fbd92;
+    --c-mauve: #bd8a98;
+    --c-coral: #e58a76;
+    --c-periwinkle: #98a5ef;
+    --c-ice: #8ed2ea;
+    --c-storm: #918fb5;
+    --c-ochre: #bb8f2e;
+    --c-tangerine: #ee9440;
+    --c-clay: #c9967e;
+    --c-deepsea: #4c9cb4;
+    --c-cerulean: #5fb0f0;
+    --c-gold: #d9a441;
+    --c-ember: #e8683a;
+    --c-terracotta: #d1795a;
+    --c-silver: #a4b0bc;
+    --c-moss: #7fa84a;
+    --c-lavender: #b49ae6;
+    --heat: #5598e7;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--page);
+    color: var(--ink);
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    margin: 0;
+    padding: 20px clamp(14px, 3vw, 40px) 56px;
+  }
+  .mono { font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; }
+
+  .knav {
+    font: 11px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 18px;
+    display: flex;
+    gap: 8px;
+    align-items: baseline;
+  }
+  .knav a { color: var(--ink-2); text-decoration: none; }
+  .knav a:hover { color: var(--ink); }
+  .knav .cur { color: var(--ink); }
+
+  h1.ktitle {
+    font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    font-size: clamp(22px, 3vw, 30px);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin: 0 0 6px;
+    text-wrap: balance;
+  }
+  .klede { font-size: 14px; color: var(--ink-2); max-width: 62ch; line-height: 1.55; margin: 0 0 22px; }
+  .klede a { color: inherit; }
+
+  h2.ksec {
+    font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 34px 0 12px;
+    border-bottom: 1px solid var(--hairline);
+    padding-bottom: 7px;
+  }
+
+  .kcard {
+    background: var(--panel);
+    border: 1px solid var(--hairline);
+    border-radius: 10px;
+    padding: 16px;
+  }
+  .kchip {
+    font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    border: 1px solid var(--hairline);
+    color: var(--ink-2);
+    border-radius: 99px;
+    padding: 2px 9px;
+    white-space: nowrap;
+  }
+  .knote { font-size: 11px; color: var(--muted); line-height: 1.5; }
+  .kfoot { margin-top: 42px; font-size: 11px; color: var(--muted); border-top: 1px solid var(--hairline); padding-top: 12px; }
+  .kfoot a { color: inherit; }
+  a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; }
+
+
+  .wrap { max-width: 900px; }
+  .ctl { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin: 0 0 10px; }
+  .ctl input {
+    flex: 1; min-width: 200px; background: var(--panel); border: 1px solid var(--hairline); border-radius: 8px;
+    color: var(--ink); font: 13px system-ui, sans-serif; padding: 8px 12px; outline: 0;
+  }
+  .ctl input:focus { border-color: var(--ink-2); }
+  .chp {
+    font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    background: var(--panel); border: 1px solid var(--hairline); color: var(--ink-2);
+    border-radius: 5px; padding: 4px 9px; cursor: pointer; display: inline-flex; align-items: baseline; gap: 6px;
+  }
+  .chp:hover { color: var(--ink); border-color: var(--ink-2); }
+  .chp .n { font-size: 9px; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .chp[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--page); }
+  .chp[aria-pressed="true"] .n { color: color-mix(in oklab, var(--page) 65%, var(--ink)); }
+  .kchp { border-style: dashed; }
+  .row { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin: 0 0 18px; }
+  .ex { padding: 13px 15px; scroll-margin-top: 16px; margin-bottom: 8px; }
+  .ex[hidden] { display: none; }
+  .ex.flash { outline: 2px solid var(--c-pink); outline-offset: 3px; }
+  .ex h2 { font-size: 14.5px; margin: 0 0 3px; display: flex; align-items: baseline; gap: 9px; flex-wrap: wrap; }
+  .ex h2 a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--hairline); }
+  .ex h2 a:hover { border-bottom-color: var(--ink-2); }
+  .ex h2 .knd {
+    font: 9.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    letter-spacing: 0.08em; text-transform: uppercase; color: var(--kc, var(--muted));
+    border: 1px solid var(--hairline); border-left: 3px solid var(--kc, var(--muted)); border-radius: 4px; padding: 1px 7px;
+  }
+  .ex h2 .fld { font: 9.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); border: 1px solid var(--hairline); border-radius: 99px; padding: 1px 7px; }
+  .by { font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; color: var(--muted); margin: 0 0 6px; }
+  .ex p.cov { font-size: 13px; color: var(--ink-2); line-height: 1.6; margin: 0; }
+  .med { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 7px; }
+  .med span { font: 9.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); background: var(--panel); border: 1px solid var(--hairline); border-radius: 4px; padding: 1px 6px; }
+  .tms { display: flex; flex-wrap: wrap; gap: 4px 5px; margin-top: 8px; align-items: baseline; }
+  .tms .lbl { font: 9.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-right: 2px; }
+  .tms a { font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; border: 1px solid var(--hairline); border-left: 3px solid var(--c-slate); color: var(--ink-2); border-radius: 4px; padding: 1px 6px 1px 5px; text-decoration: none; white-space: nowrap; }
+  .tms a:hover { color: var(--ink); border-color: var(--ink-2); }
+  .empty { font-size: 13px; color: var(--muted); padding: 18px 0; }
+</style>
+
+<nav class="knav"><a href="/">KOSMOS</a><span>/</span><span class="cur">Explainers</span></nav>
+<h1 class="ktitle">Explainers</h1>
+<p class="klede">The people, channels and organisations that explain this material well — as distinct from the researchers, who worked it out. What each one covers is written as prose in Notion, and the glossary matcher reads it: the terms under each entry are computed, not typed, and the same match puts every explainer under those terms on the glossary page.</p>
+
+<div class="wrap">
+  <div class="ctl">
+    <input id="q" type="search" placeholder="filter explainers…" aria-label="Filter explainers" autocomplete="off" />
+  </div>
+  <div class="row" id="fields"></div>
+  <div id="list"></div>
+  <p class="empty" id="empty" hidden>No explainer matches.</p>
+</div>
+
+<p class="kfoot">From the Explainers database in Notion. Kind separates a person from a channel or an organisation; "behind it" names the person where the two differ. The term chips are whole-word matches of each glossary term against the Covers text, so they claim only that the entry says it covers that ground.</p>
+
+<script id="data" type="application/json">{"explainers":[],"fields":[],"kinds":[]}</script>
+<script>
+  const D = JSON.parse(document.getElementById('data').textContent);
+  const X = D.explainers;
+  const KC = { Person: 'var(--c-violet)', Channel: 'var(--c-red)', Organisation: 'var(--c-teal)' };
+  const list = document.getElementById('list'), empty = document.getElementById('empty'), q = document.getElementById('q');
+  const fold = (s) => (s || '').toLowerCase().normalize('NFKD').replace(/[̀-ͯ]/g, '');
+  const fieldOn = new Set(), kindOn = new Set();
+  const cards = new Map();
+
+  for (const x of X) {
+    const c = document.createElement('article'); c.className = 'kcard ex'; c.id = x.slug;
+    const h2 = document.createElement('h2');
+    const nm = x.url ? document.createElement('a') : document.createElement('span');
+    if (x.url) { nm.href = x.url; nm.rel = 'noopener'; nm.target = '_blank'; }
+    nm.textContent = x.name; h2.appendChild(nm);
+    if (x.kind) { const k = document.createElement('span'); k.className = 'knd'; k.style.setProperty('--kc', KC[x.kind] || 'var(--muted)'); k.textContent = x.kind; h2.appendChild(k); }
+    if (x.field) { const f = document.createElement('span'); f.className = 'fld'; f.textContent = x.field; h2.appendChild(f); }
+    c.appendChild(h2);
+    if (x.behind) { const b = document.createElement('p'); b.className = 'by'; b.textContent = x.behind; c.appendChild(b); }
+    const p = document.createElement('p'); p.className = 'cov'; p.textContent = x.covers || ''; c.appendChild(p);
+    if (x.media.length) {
+      const m = document.createElement('div'); m.className = 'med';
+      for (const t of x.media) { const s = document.createElement('span'); s.textContent = t; m.appendChild(s); }
+      c.appendChild(m);
+    }
+    if (x.terms.length) {
+      const t = document.createElement('div'); t.className = 'tms';
+      const l = document.createElement('span'); l.className = 'lbl'; l.textContent = `covers ${x.terms.length}`; t.appendChild(l);
+      for (const g of x.terms) { const a = document.createElement('a'); a.href = '/glossary#' + g.slug; a.textContent = g.term; t.appendChild(a); }
+      c.appendChild(t);
+    }
+    list.appendChild(c); cards.set(x.slug, c);
+  }
+
+  function render() {
+    const needle = fold(q.value.trim());
+    let shown = 0;
+    for (const x of X) {
+      const on = (!fieldOn.size || fieldOn.has(x.field)) && (!kindOn.size || kindOn.has(x.kind))
+        && (!needle || fold(x.name).includes(needle) || fold(x.covers).includes(needle)
+            || fold(x.behind).includes(needle) || x.terms.some((t) => fold(t.term).includes(needle))
+            || x.media.some((m) => fold(m).includes(needle)));
+      cards.get(x.slug).hidden = !on;
+      if (on) shown++;
+    }
+    empty.hidden = shown > 0;
+  }
+  q.addEventListener('input', render);
+
+  const row = document.getElementById('fields');
+  const fc = new Map(), kc = new Map();
+  for (const x of X) { fc.set(x.field, (fc.get(x.field) || 0) + 1); kc.set(x.kind, (kc.get(x.kind) || 0) + 1); }
+  for (const f of D.fields) {
+    const b = document.createElement('button'); b.className = 'chp'; b.type = 'button'; b.setAttribute('aria-pressed', 'false');
+    b.innerHTML = '<span></span><span class="n"></span>'; b.firstChild.textContent = f.toLowerCase(); b.lastChild.textContent = fc.get(f) || 0;
+    b.addEventListener('click', () => { if (fieldOn.has(f)) fieldOn.delete(f); else fieldOn.add(f); b.setAttribute('aria-pressed', String(fieldOn.has(f))); render(); });
+    row.appendChild(b);
+  }
+  for (const k of D.kinds) {
+    const b = document.createElement('button'); b.className = 'chp kchp'; b.type = 'button'; b.setAttribute('aria-pressed', 'false');
+    b.innerHTML = '<span></span><span class="n"></span>'; b.firstChild.textContent = k.toLowerCase(); b.lastChild.textContent = kc.get(k) || 0;
+    b.addEventListener('click', () => { if (kindOn.has(k)) kindOn.delete(k); else kindOn.add(k); b.setAttribute('aria-pressed', String(kindOn.has(k))); render(); });
+    row.appendChild(b);
+  }
+  render();
+
+  function goTo(id) {
+    const c = cards.get(id); if (!c) return;
+    if (c.hidden) { fieldOn.clear(); kindOn.clear(); q.value = ''; for (const b of row.children) b.setAttribute('aria-pressed', 'false'); render(); }
+    c.scrollIntoView({ block: 'center', behavior: 'smooth' });
+    c.classList.add('flash'); setTimeout(() => c.classList.remove('flash'), 1700);
+  }
+  if (location.hash.length > 1) goTo(location.hash.slice(1));
+  addEventListener('hashchange', () => goTo(location.hash.slice(1)));
+</script>

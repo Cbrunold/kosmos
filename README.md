@@ -19,6 +19,7 @@ truth for code and the normalised data snapshots. Sync is one-way, Notion → re
 | `/machines`  | The canonical engines and machines — how each works, its cycle drawn as a p–V loop, efficiency, materials, inventors; cross-linked to equations, elements and skills |
 | `/skills`    | Hands-on techniques with the science behind them — tools, steps, safety, how it fails, how you know it worked; linked to elements, equations and machines |
 | `/glossary`  | The terms the site uses, defined once and traced at build time to every page whose text uses them |
+| `/explainers`| The people, channels and organisations that explain this material — with the glossary terms each covers, computed from the same matcher |
 | `/timeline`  | The universe's history on a log axis of seconds — Planck epoch to heat death, cross-linked to the equations and theories |
 | `/theories`  | Theory shelf from Ptolemy to the holographic principle — status, proponents, and the equations each rests on; sortable chronologically |
 | `/equations` | Canonical equations with symbols decoded, filterable by field |
@@ -82,6 +83,10 @@ scripts/seed_glossary.py      Creates + seeds Glossary [DB] (~125 terms with dom
                               aliases). "Appears in" links are computed by build.py, never stored
 scripts/seed_nobel.py         Adds a Nobel field to the Researchers DB and marks the laureates on
                               file; `--diff LIST` reports which names in a list are not researchers yet
+scripts/seed_explainers.py    Creates + seeds Explainers [DB] (~40 people, channels and organisations
+                              who explain the material — not the Researchers DB, which is who did the
+                              work). The glossary terms each covers are computed by build.py from the
+                              Covers prose, and the same match lists them on /glossary
 deploy/                       systemd unit + nginx site as deployed on the VPS
 ```
 

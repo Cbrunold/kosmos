@@ -14,6 +14,7 @@ Outputs: public/index.html   (periodic table, served at /elements)
 """
 import json
 import math
+import re
 from collections import Counter, defaultdict
 from pathlib import Path
 
@@ -30,9 +31,27 @@ def compact(obj) -> str:
     return json.dumps(obj, separators=(",", ":"), ensure_ascii=False).replace("</", "<\\/")
 
 
+def term_pattern(term: str):
+    """Whole words, any inflection (-s, -es, -ed, -ing); multiword with flexible
+    spaces or hyphens. Used to trace glossary terms through prose, both ways:
+    /glossary lists what uses a term, /explainers lists the terms it covers."""
+    words = [re.escape(w) for w in re.split(r"[\s-]+", term.strip()) if w]
+    return re.compile(r"\b" + r"[\s-]+".join(words) + r"(?:s|es|ed|ing)?\b", re.IGNORECASE)
+
+
+def glossary_matchers():
+    """[(term, slug, [patterns])] for every glossary term — its name and aliases."""
+    out = []
+    for t in notion.get("glossary", []):
+        if not t.get("Term"):
+            continue
+        names = [t["Term"]] + [a.strip() for a in (t.get("Aliases") or "").split(",") if a.strip()]
+        out.append((t["Term"], slugify(t["Term"]), [term_pattern(n) for n in names if len(n) >= 2]))
+    return out
+
+
 def slugify(s: str) -> str:
     """Same slug rule as the equations page (card anchors) — keep in sync."""
-    import re
     import unicodedata
     s = unicodedata.normalize("NFD", s or "").encode("ascii", "ignore").decode().lower()
     return re.sub(r"^-|-$", "", re.sub(r"[^a-z0-9]+", "-", s))
@@ -593,7 +612,6 @@ def build_glossary_page():
     """Every term traced through every entity's text on the site, at build time.
     A term added in Notion traces itself; a page added anywhere shows up under
     the terms it uses. Nothing here is maintained by hand."""
-    import re
     terms = [t for t in notion.get("glossary", []) if t.get("Term")]
     if not terms:
         write_page("glossary.template.html", "glossary.html", {"terms": [], "domains": []})
@@ -652,17 +670,18 @@ def build_glossary_page():
     for rt in notion.get("rockTypes", []):
         if rt.get("Name") and rt.get("Comment"):
             corpus.append(("rock", rt["Name"], f"/minerals#rock-{slugify(rt['Name'])}", " ".join([rt["Name"], rt["Comment"]])))
+    for x in notion.get("explainers", []):
+        if x.get("Name") and x.get("Covers"):
+            # Covers only, not the name: an explainer's name is a brand, not a
+            # description, and "PBS Space Time" is not about spacetime. This also
+            # keeps the trace identical to the chips /explainers computes.
+            corpus.append(("explainer", x["Name"], f"/explainers#{slugify(x['Name'])}", x["Covers"]))
     # the databases left out have no prose to search: minerals, gemstones, units,
     # celestialTypes and spectralTypes are numeric or single-word lookup tables.
     KIND_ORDER = ["equation", "theory", "machine", "skill", "event", "element", "mine", "observatory",
-                  "discovery", "mission", "constant", "researcher", "force", "instrument", "rock"]
+                  "discovery", "mission", "constant", "researcher", "force", "instrument", "rock", "explainer"]
     PER_KIND = 8
-
-    def pattern(term):
-        # whole words, any inflection (-s, -es, -ed, -ing); multiword with flexible spaces/hyphens
-        words = [re.escape(w) for w in re.split(r"[\s-]+", term.strip()) if w]
-        core = r"[\s-]+".join(words)
-        return re.compile(r"\b" + core + r"(?:s|es|ed|ing)?\b", re.IGNORECASE)
+    pattern = term_pattern
 
     out = []
     total_links = 0
@@ -689,6 +708,40 @@ def build_glossary_page():
                            "Workshop", "Mathematics", "Measurement"] if any(x["domain"] == d for x in out)]
     write_page("glossary.template.html", "glossary.html", {"terms": out, "domains": domains})
     return len(out), total_links
+
+
+# ---------------- explainers ----------------
+def build_explainers_page():
+    """The people, channels and organisations that explain what the rest of the
+    site catalogues — distinct from the researchers, who did the work. "Covers"
+    is prose on purpose: the same matcher the glossary uses turns it into term
+    chips here, and puts each explainer under those terms over there. Two views
+    of one computation, neither maintained by hand."""
+    rows = [x for x in notion.get("explainers", []) if x.get("Name")]
+    if not rows:
+        write_page("explainers.template.html", "explainers.html",
+                   {"explainers": [], "fields": [], "kinds": []})
+        return 0, 0
+    matchers = glossary_matchers()
+    out, total_terms = [], 0
+    for x in rows:
+        covers = x.get("Covers") or ""
+        terms = [{"term": t, "slug": s} for t, s, pats in matchers if any(p.search(covers) for p in pats)]
+        terms.sort(key=lambda t: t["term"].lower())
+        total_terms += len(terms)
+        out.append({"name": x["Name"], "slug": slugify(x["Name"]), "kind": x.get("Kind"),
+                    "field": x.get("Field"), "media": x.get("Medium") or [],
+                    "behind": x.get("Behind It"), "covers": covers,
+                    "url": x.get("URL"), "terms": terms})
+    out.sort(key=lambda x: x["name"].lower())
+    FIELD_ORDER = ["Physics", "Astronomy & Cosmology", "Chemistry", "Earth & Mining",
+                   "Engineering", "Workshop", "Mathematics", "General science", "AI safety"]
+    fields = [f for f in FIELD_ORDER if any(x["field"] == f for x in out)]
+    fields += sorted({x["field"] for x in out if x["field"] and x["field"] not in fields})
+    kinds = [k for k in ["Person", "Channel", "Organisation"] if any(x["kind"] == k for x in out)]
+    write_page("explainers.template.html", "explainers.html",
+               {"explainers": out, "fields": fields, "kinds": kinds})
+    return len(out), total_terms
 
 
 # ---------------- search index ----------------
@@ -723,6 +776,7 @@ def build_search_index():
         ("/machines", "Machines", "the canonical engines and machines: how each works, its cycle, efficiency, materials"),
         ("/skills", "Skills", "hands-on techniques with the science behind them: tools, steps, safety, how it fails"),
         ("/glossary", "Glossary", "the terms the site uses, each traced to every page that uses it"),
+        ("/explainers", "Explainers", "the people, channels and organisations that explain this material"),
     ]:
         add("page", name, sub, "", route)
 
@@ -831,6 +885,11 @@ def build_search_index():
         if g.get("Term"):
             add("term", g["Term"], g.get("Domain") or "", g.get("Definition"), f"/glossary#{slugify(g['Term'])}")
 
+    for x in notion.get("explainers", []):
+        if x.get("Name"):
+            add("explainer", x["Name"], " · ".join(filter(None, [x.get("Kind"), x.get("Field")])),
+                x.get("Covers"), f"/explainers#{slugify(x['Name'])}")
+
     for sk in notion.get("skills", []):
         if sk.get("Name"):
             add("skill", sk["Name"], " · ".join(filter(None, [sk.get("Category"), sk.get("Difficulty")])),
@@ -871,7 +930,8 @@ def theory_span() -> str:
 
 
 def build_home(n_min, n_gems, n_classes, n_spectral, n_instr, n_timeline, tl_decades,
-               n_obs, n_disc, n_miss, n_search, n_mines, n_mined, n_mach, n_diag, n_skills, n_terms, n_traces):
+               n_obs, n_disc, n_miss, n_search, n_mines, n_mined, n_mach, n_diag, n_skills, n_terms, n_traces,
+               n_expl, n_expl_terms):
     gaps = sum(1 for e in elements
                if e["meltingPt"] is None or e["boilingPt"] is None
                or e["density"] is None or e["occurrence"] is None)
@@ -906,6 +966,8 @@ def build_home(n_min, n_gems, n_classes, n_spectral, n_instr, n_timeline, tl_dec
         "__N_SKILLS__": n_skills,
         "__N_TERMS__": n_terms,
         "__N_TRACES__": f"{n_traces:,}",
+        "__N_EXPL__": n_expl,
+        "__N_EXPLTERMS__": f"{n_expl_terms:,}",
         "__TL_DECADES__": tl_decades,
         "__N_EQ__": len(eqs),
         "__N_EQFIELDS__": len({e.get("Field") for e in eqs if e.get("Field")}),
@@ -975,6 +1037,8 @@ if __name__ == "__main__":
     n_mach, n_diag = build_machines_page()
     n_skills = build_skills_page()
     n_terms, n_traces = build_glossary_page()
+    n_expl, n_expl_terms = build_explainers_page()
     n_search = build_search_index()
     build_home(n_min, n_gems, n_classes, n_spectral, n_instr, n_timeline, tl_decades,
-               n_obs, n_disc, n_miss, n_search, n_mines, n_mined, n_mach, n_diag, n_skills, n_terms, n_traces)
+               n_obs, n_disc, n_miss, n_search, n_mines, n_mined, n_mach, n_diag, n_skills, n_terms, n_traces,
+               n_expl, n_expl_terms)
