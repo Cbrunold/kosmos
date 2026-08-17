@@ -12016,6 +12016,21 @@
   ],
   "explainers": [
     {
+      "id": "3bfe5275-7b5c-81e2-875e-f238625370e4",
+      "url": "https://app.notion.com/p/SystExt-3bfe52757b5c81e2875ef238625370e4",
+      "lastEdited": "2026-08-17T23:55:00.000Z",
+      "Medium": [
+        "Blog",
+        "Lectures"
+      ],
+      "Covers": "The cost side of mining, which most of the subject's literature leaves out: acid mine drainage and tailings left standing after closure, the post-mining legacy of France's own worked-out orefields, and what the energy transition's appetite for lithium, copper and rare earths actually asks of the ground. Their Panoramine map records every mining title and permit in France.",
+      "Field": "Earth & Mining",
+      "Kind": "Organisation",
+      "Behind It": "Systèmes Extractifs et Environnements — French geologists and engineers",
+      "URL": "https://www.systext.org/",
+      "Name": "SystExt"
+    },
+    {
       "id": "3bfe5275-7b5c-814d-bd57-da2310ea9368",
       "url": "https://app.notion.com/p/BlueDot-Impact-3bfe52757b5c814dbd57da2310ea9368",
       "lastEdited": "2026-08-17T20:28:00.000Z",
@@ -12585,6 +12600,7 @@
       "Name": "Sean Carroll"
     }
   ],
+  "impacts": [],
   "spectralTypes": [
     {
       "id": "2569ebb2-01ff-41c8-af88-54f50a983757",
