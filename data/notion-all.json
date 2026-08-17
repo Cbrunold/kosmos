@@ -10547,6 +10547,276 @@
   ],
   "glossary": [
     {
+      "id": "3bfe5275-7b5c-811a-8fda-e5a571a37d3f",
+      "url": "https://app.notion.com/p/Light-year-3bfe52757b5c811a8fdae5a571a37d3f",
+      "lastEdited": "2026-08-17T20:39:00.000Z",
+      "Definition": "The distance light covers in a year — 9.46 × 10¹² km. A length despite the name, and the unit that makes galactic distances legible.",
+      "Aliases": "light year",
+      "Domain": "Measurement",
+      "Term": "Light-year"
+    },
+    {
+      "id": "3bfe5275-7b5c-8129-9582-c0ad5abfba51",
+      "url": "https://app.notion.com/p/Prime-number-3bfe52757b5c81299582c0ad5abfba51",
+      "lastEdited": "2026-08-17T20:39:00.000Z",
+      "Definition": "A whole number above 1 divisible only by itself and 1. There are infinitely many, they thin out logarithmically, and no one can tell you the next one without looking.",
+      "Aliases": "primes",
+      "Domain": "Mathematics",
+      "Term": "Prime number"
+    },
+    {
+      "id": "3bfe5275-7b5c-8154-ad0f-e75e16232841",
+      "url": "https://app.notion.com/p/Fourier-transform-3bfe52757b5c8154ad0fe75e16232841",
+      "lastEdited": "2026-08-17T20:39:00.000Z",
+      "Definition": "The decomposition of any signal into the sines and cosines that sum to it, trading time for frequency. Spectroscopy, crystallography and every kind of signal processing run on it.",
+      "Aliases": "Fourier",
+      "Domain": "Mathematics",
+      "Term": "Fourier transform"
+    },
+    {
+      "id": "3bfe5275-7b5c-8161-94ef-e0a0f692505b",
+      "url": "https://app.notion.com/p/Probability-3bfe52757b5c816194efe0a0f692505b",
+      "lastEdited": "2026-08-17T20:39:00.000Z",
+      "Definition": "How often an outcome occurs in the long run, on a scale of 0 to 1. Quantum mechanics makes it fundamental rather than an admission of ignorance, which is the part that still bothers people.",
+      "Aliases": "probabilities, probabilistic",
+      "Domain": "Mathematics",
+      "Term": "Probability"
+    },
+    {
+      "id": "3bfe5275-7b5c-8102-a44a-ed22431db458",
+      "url": "https://app.notion.com/p/Integral-3bfe52757b5c8102a44aed22431db458",
+      "lastEdited": "2026-08-17T20:39:00.000Z",
+      "Definition": "The accumulation of a quantity across an interval: the area under the curve, and the inverse of the derivative. Work, charge and total mass are each an integral of something simpler.",
+      "Aliases": null,
+      "Domain": "Mathematics",
+      "Term": "Integral"
+    },
+    {
+      "id": "3bfe5275-7b5c-813f-8321-e9b5793aae22",
+      "url": "https://app.notion.com/p/Derivative-3bfe52757b5c813f8321e9b5793aae22",
+      "lastEdited": "2026-08-17T20:39:00.000Z",
+      "Definition": "The instantaneous rate of change of one quantity with respect to another — the slope of a curve at a point. Almost every law of physics on this site is written as one.",
+      "Aliases": null,
+      "Domain": "Mathematics",
+      "Term": "Derivative"
+    },
+    {
+      "id": "3bfe5275-7b5c-81ba-9519-f6350c7ebb76",
+      "url": "https://app.notion.com/p/Plate-tectonics-3bfe52757b5c81ba9519f6350c7ebb76",
+      "lastEdited": "2026-08-17T20:39:00.000Z",
+      "Definition": "The Earth's outer shell is broken into plates that move over the mantle, and nearly everything geological — earthquakes, volcanoes, mountain belts, most ore deposits — happens where they meet.",
+      "Aliases": "tectonic, tectonics",
+      "Domain": "Mineralogy",
+      "Term": "Plate tectonics"
+    },
+    {
+      "id": "3bfe5275-7b5c-81b1-80b8-f713ddc09c79",
+      "url": "https://app.notion.com/p/Thin-film-3bfe52757b5c81b180b8f713ddc09c79",
+      "lastEdited": "2026-08-17T20:39:00.000Z",
+      "Definition": "A layer from a few atoms to a few microns thick, laid down by evaporation, sputtering or chemical vapour. Mirrors, anti-reflection coatings, semiconductors and hard tool coatings are all made this way.",
+      "Aliases": null,
+      "Domain": "Workshop",
+      "Term": "Thin film"
+    },
+    {
+      "id": "3bfe5275-7b5c-8122-8ef4-d79aca45125b",
+      "url": "https://app.notion.com/p/Concrete-3bfe52757b5c81228ef4d79aca45125b",
+      "lastEdited": "2026-08-17T20:39:00.000Z",
+      "Definition": "Cement, water and aggregate, which hardens by hydration rather than by drying and goes on gaining strength for years. Strong in compression and weak in tension, which is why it is cast around steel.",
+      "Aliases": null,
+      "Domain": "Workshop",
+      "Term": "Concrete"
+    },
+    {
+      "id": "3bfe5275-7b5c-8115-8277-e86a76471096",
+      "url": "https://app.notion.com/p/Soil-mechanics-3bfe52757b5c81158277e86a76471096",
+      "lastEdited": "2026-08-17T20:39:00.000Z",
+      "Definition": "How soil behaves as a structural material: its shear strength, how water moves through it, how much it settles under load. Foundations, dams, tunnels and slopes stand or fail on it.",
+      "Aliases": null,
+      "Domain": "Machines",
+      "Term": "Soil mechanics"
+    },
+    {
+      "id": "3bfe5275-7b5c-818d-be6b-cf45e6aaac0c",
+      "url": "https://app.notion.com/p/Vacuum-3bfe52757b5c818dbe6bcf45e6aaac0c",
+      "lastEdited": "2026-08-17T20:39:00.000Z",
+      "Definition": "Space with the gas pumped out, rated by how much pressure is left — from a rough 10⁻³ mbar down to ultra-high vacuum below 10⁻⁹. Electron microscopes, thin-film coating and particle beams all need one to work at all.",
+      "Aliases": null,
+      "Domain": "Machines",
+      "Term": "Vacuum"
+    },
+    {
+      "id": "3bfe5275-7b5c-8189-92e9-fef56692e615",
+      "url": "https://app.notion.com/p/Periodic-table-3bfe52757b5c818992e9fef56692e615",
+      "lastEdited": "2026-08-17T20:39:00.000Z",
+      "Definition": "The elements ordered by atomic number so that each column shares an outer-electron structure, and therefore its chemistry. Mendeleev left gaps in 1869 and the missing elements arrived where he had put them.",
+      "Aliases": null,
+      "Domain": "Chemistry",
+      "Term": "Periodic table"
+    },
+    {
+      "id": "3bfe5275-7b5c-812e-94d9-d5e259316977",
+      "url": "https://app.notion.com/p/Neutron-star-3bfe52757b5c812e94d9d5e259316977",
+      "lastEdited": "2026-08-17T20:39:00.000Z",
+      "Definition": "What is left when a massive star's iron core gives way — one or two solar masses inside about 20 km, held up by neutron degeneracy pressure. The ones that spin and beam are pulsars.",
+      "Aliases": null,
+      "Domain": "Astronomy",
+      "Term": "Neutron star"
+    },
+    {
+      "id": "3bfe5275-7b5c-812a-8c1d-d1f25df6e7cb",
+      "url": "https://app.notion.com/p/Telescope-3bfe52757b5c812a8c1dd1f25df6e7cb",
+      "lastEdited": "2026-08-17T20:39:00.000Z",
+      "Definition": "An instrument that gathers light over an area vastly larger than a pupil and brings it to a focus. Aperture sets both the faintest thing visible and the finest detail resolvable, which is why they only ever get bigger.",
+      "Aliases": null,
+      "Domain": "Astronomy",
+      "Term": "Telescope"
+    },
+    {
+      "id": "3bfe5275-7b5c-813b-892e-e4e44bdb3abd",
+      "url": "https://app.notion.com/p/Transit-3bfe52757b5c813b892ee4e44bdb3abd",
+      "lastEdited": "2026-08-17T20:39:00.000Z",
+      "Definition": "A planet crossing the disc of its star as seen from here, dimming it by a fraction of a percent for a few hours. The depth gives the planet's radius and the repeat gives its year.",
+      "Aliases": null,
+      "Domain": "Astronomy",
+      "Term": "Transit"
+    },
+    {
+      "id": "3bfe5275-7b5c-8193-9f27-facc000f2874",
+      "url": "https://app.notion.com/p/Exoplanet-3bfe52757b5c81939f27facc000f2874",
+      "lastEdited": "2026-08-17T20:39:00.000Z",
+      "Definition": "A planet around a star other than the Sun. The first around a main-sequence star was confirmed in 1995; thousands are known now, most of them found by transit or by radial velocity.",
+      "Aliases": "extrasolar planet",
+      "Domain": "Astronomy",
+      "Term": "Exoplanet"
+    },
+    {
+      "id": "3bfe5275-7b5c-815c-987d-f42fee3822c0",
+      "url": "https://app.notion.com/p/Orbit-3bfe52757b5c815c987df42fee3822c0",
+      "lastEdited": "2026-08-17T20:39:00.000Z",
+      "Definition": "The path one body follows around another under gravity alone: an ellipse with the primary at a focus, as Kepler found. Changing one costs velocity, which is why spaceflight is bookkeeping in delta-v.",
+      "Aliases": null,
+      "Domain": "Astronomy",
+      "Term": "Orbit"
+    },
+    {
+      "id": "3bfe5275-7b5c-8138-bb64-feab6e578ccb",
+      "url": "https://app.notion.com/p/Galaxy-3bfe52757b5c8138bb64feab6e578ccb",
+      "lastEdited": "2026-08-17T20:39:00.000Z",
+      "Definition": "A gravitationally bound system of stars, gas, dust and dark matter — from dwarfs of a few million stars to giants of a trillion. The Milky Way is a barred spiral roughly 100,000 light-years across.",
+      "Aliases": "galaxies, galactic",
+      "Domain": "Astronomy",
+      "Term": "Galaxy"
+    },
+    {
+      "id": "3bfe5275-7b5c-8101-b0dd-ebe4a5a4f5f0",
+      "url": "https://app.notion.com/p/Black-hole-3bfe52757b5c8101b0ddebe4a5a4f5f0",
+      "lastEdited": "2026-08-17T20:39:00.000Z",
+      "Definition": "A region where gravity has closed spacetime around itself, bounded by an event horizon that nothing crosses outward. Stellar ones start above about three solar masses; supermassive ones of millions to billions sit in galactic centres.",
+      "Aliases": null,
+      "Domain": "Astronomy",
+      "Term": "Black hole"
+    },
+    {
+      "id": "3bfe5275-7b5c-814e-9b63-eb424dab0d3e",
+      "url": "https://app.notion.com/p/Gravitational-wave-3bfe52757b5c814e9b63eb424dab0d3e",
+      "lastEdited": "2026-08-17T20:39:00.000Z",
+      "Definition": "A ripple in spacetime radiated when masses accelerate asymmetrically — merging black holes and neutron stars. Predicted in 1916 and detected in 2015, at a strain smaller than a proton's width across a four-kilometre arm.",
+      "Aliases": null,
+      "Domain": "Relativity",
+      "Term": "Gravitational wave"
+    },
+    {
+      "id": "3bfe5275-7b5c-81aa-b774-e4a339c51f7e",
+      "url": "https://app.notion.com/p/Electron-3bfe52757b5c81aab774e4a339c51f7e",
+      "lastEdited": "2026-08-17T20:39:00.000Z",
+      "Definition": "The light, negatively charged, apparently pointlike particle whose arrangement around a nucleus fixes every chemical property an element has. Found in 1897; no one has yet measured a size for it.",
+      "Aliases": null,
+      "Domain": "Nuclear & Particle",
+      "Term": "Electron"
+    },
+    {
+      "id": "3bfe5275-7b5c-81a2-a1bf-e8f098af8d5b",
+      "url": "https://app.notion.com/p/Photon-3bfe52757b5c81a2a1bfe8f098af8d5b",
+      "lastEdited": "2026-08-17T20:39:00.000Z",
+      "Definition": "The quantum of the electromagnetic field: massless, always moving at c, carrying energy hf. Light behaves as a wave right up until you count the arrivals one at a time.",
+      "Aliases": null,
+      "Domain": "Quantum",
+      "Term": "Photon"
+    },
+    {
+      "id": "3bfe5275-7b5c-81f3-a9aa-d040b0d42f04",
+      "url": "https://app.notion.com/p/Lens-3bfe52757b5c81f3a9aad040b0d42f04",
+      "lastEdited": "2026-08-17T20:39:00.000Z",
+      "Definition": "A shaped piece of transparent material that brings light to a focus by refraction, its power set by curvature and refractive index. Its errors — chromatic and spherical — are why a good one is several elements deep.",
+      "Aliases": null,
+      "Domain": "Electromagnetism",
+      "Term": "Lens"
+    },
+    {
+      "id": "3bfe5275-7b5c-8129-bb91-fb8c30c255ea",
+      "url": "https://app.notion.com/p/Electric-field-3bfe52757b5c8129bb91fb8c30c255ea",
+      "lastEdited": "2026-08-17T20:39:00.000Z",
+      "Definition": "Force per unit charge at a point in space. Unlike the magnetic field it begins and ends on charge, and a changing one is half of what light is made of.",
+      "Aliases": null,
+      "Domain": "Electromagnetism",
+      "Term": "Electric field"
+    },
+    {
+      "id": "3bfe5275-7b5c-815c-8a4f-d049135703ec",
+      "url": "https://app.notion.com/p/Magnetic-field-3bfe52757b5c815c8a4fd049135703ec",
+      "lastEdited": "2026-08-17T20:39:00.000Z",
+      "Definition": "The field produced by moving charge and by intrinsic spin, exerting force only on charge that is itself moving. It has no sources — no magnetic monopole has ever been found — so its field lines close on themselves.",
+      "Aliases": null,
+      "Domain": "Electromagnetism",
+      "Term": "Magnetic field"
+    },
+    {
+      "id": "3bfe5275-7b5c-8186-a11e-fd7f3624dd74",
+      "url": "https://app.notion.com/p/Combustion-3bfe52757b5c8186a11efd7f3624dd74",
+      "lastEdited": "2026-08-17T20:39:00.000Z",
+      "Definition": "Rapid oxidation that releases heat and light: fuel plus oxygen to carbon dioxide and water, when it goes cleanly. The heat source for most engines on this site, and the reason nearly all of them breathe air.",
+      "Aliases": "combustible",
+      "Domain": "Thermodynamics",
+      "Term": "Combustion"
+    },
+    {
+      "id": "3bfe5275-7b5c-814b-9825-df19f9b56c61",
+      "url": "https://app.notion.com/p/Stress-3bfe52757b5c814b9825df19f9b56c61",
+      "lastEdited": "2026-08-17T20:39:00.000Z",
+      "Definition": "Force per unit area inside a material — the quantity a part actually fails on, not the load you applied. Paired with strain, the deformation it causes, it gives both stiffness and breaking point.",
+      "Aliases": null,
+      "Domain": "Mechanics",
+      "Term": "Stress"
+    },
+    {
+      "id": "3bfe5275-7b5c-81e3-b23f-dea5aab4f548",
+      "url": "https://app.notion.com/p/Resonance-3bfe52757b5c81e3b23fdea5aab4f548",
+      "lastEdited": "2026-08-17T20:39:00.000Z",
+      "Definition": "Driving a system at its own natural frequency, so small repeated pushes accumulate into a large amplitude. It tunes a radio, shatters a glass, and is the thing bridges are designed to avoid.",
+      "Aliases": "resonant, resonate",
+      "Domain": "Mechanics",
+      "Term": "Resonance"
+    },
+    {
+      "id": "3bfe5275-7b5c-8125-995d-de31d8ba4eef",
+      "url": "https://app.notion.com/p/Friction-3bfe52757b5c8125995dde31d8ba4eef",
+      "lastEdited": "2026-08-17T20:39:00.000Z",
+      "Definition": "The force resisting sliding between surfaces, roughly proportional to how hard they are pressed together and nearly independent of contact area. It wears tools out, and it is also the only reason brakes, bolts and knots hold.",
+      "Aliases": "frictional",
+      "Domain": "Mechanics",
+      "Term": "Friction"
+    },
+    {
+      "id": "3bfe5275-7b5c-8135-880d-cf7cb59bf8f4",
+      "url": "https://app.notion.com/p/Momentum-3bfe52757b5c8135880dcf7cb59bf8f4",
+      "lastEdited": "2026-08-17T20:39:00.000Z",
+      "Definition": "Mass times velocity — the quantity a collision conserves whatever else it destroys. Newton stated his second law as its rate of change, which is the form that survives when the mass is changing too.",
+      "Aliases": null,
+      "Domain": "Mechanics",
+      "Term": "Momentum"
+    },
+    {
       "id": "3bfe5275-7b5c-8133-9189-c9ad8bf4a031",
       "url": "https://app.notion.com/p/Density-3bfe52757b5c81339189c9ad8bf4a031",
       "lastEdited": "2026-08-17T20:00:00.000Z",
