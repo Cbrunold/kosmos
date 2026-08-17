@@ -10547,6 +10547,15 @@
   ],
   "glossary": [
     {
+      "id": "3bfe5275-7b5c-8133-9189-c9ad8bf4a031",
+      "url": "https://app.notion.com/p/Density-3bfe52757b5c81339189c9ad8bf4a031",
+      "lastEdited": "2026-08-17T20:00:00.000Z",
+      "Definition": "Mass per unit volume — and, by extension, any quantity per unit volume: energy density, charge density, number density. The critical density is the one that decides whether the universe expands forever.",
+      "Aliases": "densities",
+      "Domain": "Measurement",
+      "Term": "Density"
+    },
+    {
       "id": "3bfe5275-7b5c-8160-b91f-ed96bef56ffe",
       "url": "https://app.notion.com/p/Sigma-3bfe52757b5c8160b91fed96bef56ffe",
       "lastEdited": "2026-08-17T19:33:00.000Z",
@@ -10909,7 +10918,7 @@
     {
       "id": "3bfe5275-7b5c-8180-a954-f3d23ea26a9d",
       "url": "https://app.notion.com/p/Flotation-3bfe52757b5c8180a954f3d23ea26a9d",
-      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "lastEdited": "2026-08-17T19:47:00.000Z",
       "Definition": "Grinding ore to powder, mixing it with water and chemicals that make the wanted mineral water-repellent, and blowing bubbles through it — the mineral floats off in the froth. The workhorse of base-metal mining.",
       "Aliases": "froth flotation, floated",
       "Domain": "Mining & Metallurgy",
@@ -10999,7 +11008,7 @@
     {
       "id": "3bfe5275-7b5c-81b3-a81a-fa95e0dacb97",
       "url": "https://app.notion.com/p/Specific-gravity-3bfe52757b5c81b3a81afa95e0dacb97",
-      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "lastEdited": "2026-08-17T19:47:00.000Z",
       "Definition": "A mineral's density relative to water. Quartz 2.65, hematite 5.3, gold 19.3 — one of the quickest ways to tell minerals apart in the hand.",
       "Aliases": "S.G.",
       "Domain": "Mineralogy",
@@ -11080,7 +11089,7 @@
     {
       "id": "3bfe5275-7b5c-81cb-9ed9-d491f5183de8",
       "url": "https://app.notion.com/p/Reduction-3bfe52757b5c81cb9ed9d491f5183de8",
-      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "lastEdited": "2026-08-17T19:47:00.000Z",
       "Definition": "Gain of electrons; in metallurgy, pulling a metal out of its ore by stripping the oxygen or sulfur off it — with carbon, hydrogen, or electricity.",
       "Aliases": "reduced, reducing",
       "Domain": "Chemistry",
@@ -11679,15 +11688,6 @@
       "Aliases": "entropies",
       "Domain": "Thermodynamics",
       "Term": "Entropy"
-    },
-    {
-      "id": "3bfe5275-7b5c-8133-9189-c9ad8bf4a031",
-      "url": "https://app.notion.com/p/Density-3bfe52757b5c81339189c9ad8bf4a031",
-      "lastEdited": "2026-08-17T20:00:00.000Z",
-      "Definition": "Mass per unit volume — and, by extension, any quantity per unit volume: energy density, charge density, number density. The critical density is the one that decides whether the universe expands forever.",
-      "Aliases": "densities",
-      "Domain": "Measurement",
-      "Term": "Density"
     }
   ],
   "spectralTypes": [
