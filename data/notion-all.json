@@ -2233,6 +2233,7 @@
       "Field": "Engineering",
       "Known For": "The V-2, built at Mittelwerk by concentration-camp labour under his technical direction, and then the Saturn V that took Apollo to the Moon. Both are his.",
       "Nationality": "German-American",
+      "Nobel": null,
       "Name": "Wernher von Braun"
     },
     {
@@ -2249,6 +2250,7 @@
       "Field": "Engineering",
       "Known For": "Flew the first liquid-fuelled rocket, on 16 March 1926, from his aunt's farm; the New York Times mocked him for thinking a rocket could work in vacuum, and apologised in 1969.",
       "Nationality": "American",
+      "Nobel": null,
       "Name": "Robert Goddard"
     },
     {
@@ -2265,6 +2267,7 @@
       "Field": "Fluid Dynamics",
       "Known For": "Showed in 1919 that no wind turbine can take more than 59.3 % of the wind's energy — the ceiling every turbine is measured against.",
       "Nationality": "German",
+      "Nobel": null,
       "Name": "Albert Betz"
     },
     {
@@ -2281,6 +2284,7 @@
       "Field": "Engineering",
       "Known For": "The propeller turbine with adjustable blades, for low heads and big rivers, in 1913.",
       "Nationality": "Austrian",
+      "Nobel": null,
       "Name": "Viktor Kaplan"
     },
     {
@@ -2297,6 +2301,7 @@
       "Field": "Engineering",
       "Known For": "The inward-flow reaction turbine of 1849, now the most widely used hydro turbine in the world.",
       "Nationality": "British-American",
+      "Nobel": null,
       "Name": "James B. Francis"
     },
     {
@@ -2313,6 +2318,7 @@
       "Field": "Engineering",
       "Known For": "The split-bucket impulse wheel of 1878, from watching a misaligned water wheel run faster; still the turbine for high-head hydro.",
       "Nationality": "American",
+      "Nobel": null,
       "Name": "Lester Pelton"
     },
     {
@@ -2329,6 +2335,7 @@
       "Field": "Engineering",
       "Known For": "Turned refrigeration into an industry in the 1870s, and in 1895 liquefied air — the start of the gases business.",
       "Nationality": "German",
+      "Nobel": null,
       "Name": "Carl von Linde"
     },
     {
@@ -2345,6 +2352,7 @@
       "Field": "Engineering",
       "Known For": "Patented the vapour-compression refrigeration cycle in 1834 — the cycle in every fridge and heat pump — and built one, though nobody bought it.",
       "Nationality": "American",
+      "Nobel": null,
       "Name": "Jacob Perkins"
     },
     {
@@ -2361,12 +2369,13 @@
       "Field": "Engineering",
       "Known For": "The pressurized-water reactor, built first for the submarine Nautilus in 1954 and then at Shippingport for the grid; the design most of the world's reactors follow.",
       "Nationality": "American",
+      "Nobel": null,
       "Name": "Hyman Rickover"
     },
     {
       "id": "3bee5275-7b5c-81e3-becc-d637959b3503",
       "url": "https://app.notion.com/p/Enrico-Fermi-3bee52757b5c81e3beccd637959b3503",
-      "lastEdited": "2026-08-16T20:21:00.000Z",
+      "lastEdited": "2026-08-17T19:33:00.000Z",
       "Timeline": [],
       "Machines": [
         "3bee5275-7b5c-81e0-8a21-e90e2ee777ef",
@@ -2378,12 +2387,13 @@
       "Field": "Physics",
       "Known For": "Chicago Pile-1, the first self-sustaining nuclear chain reaction, under a squash court on 2 December 1942.",
       "Nationality": "Italian-American",
+      "Nobel": "Physics 1938",
       "Name": "Enrico Fermi"
     },
     {
       "id": "3bee5275-7b5c-8149-b495-dfb0c8cd3f89",
       "url": "https://app.notion.com/p/Akira-Yoshino-3bee52757b5c8149b495dfb0c8cd3f89",
-      "lastEdited": "2026-08-16T20:21:00.000Z",
+      "lastEdited": "2026-08-17T19:33:00.000Z",
       "Timeline": [],
       "Machines": [
         "3bee5275-7b5c-8109-afca-deb08ef8b07f"
@@ -2394,12 +2404,13 @@
       "Field": "Chemistry",
       "Known For": "The carbon anode that made lithium-ion safe enough to sell, in 1985; Sony shipped it in 1991.",
       "Nationality": "Japanese",
+      "Nobel": "Chemistry 2019",
       "Name": "Akira Yoshino"
     },
     {
       "id": "3bee5275-7b5c-81bd-9ac1-e16ed8f7c942",
       "url": "https://app.notion.com/p/John-Goodenough-3bee52757b5c81bd9ac1e16ed8f7c942",
-      "lastEdited": "2026-08-16T20:21:00.000Z",
+      "lastEdited": "2026-08-17T19:33:00.000Z",
       "Timeline": [],
       "Machines": [
         "3bee5275-7b5c-8109-afca-deb08ef8b07f"
@@ -2410,12 +2421,13 @@
       "Field": "Chemistry",
       "Known For": "The lithium cobalt oxide cathode of 1980, which doubled the voltage and made the lithium-ion cell practical; the oldest Nobel laureate at 97.",
       "Nationality": "American",
+      "Nobel": "Chemistry 2019",
       "Name": "John Goodenough"
     },
     {
       "id": "3bee5275-7b5c-812e-950e-d1c624d2ea32",
       "url": "https://app.notion.com/p/M-Stanley-Whittingham-3bee52757b5c812e950ed1c624d2ea32",
-      "lastEdited": "2026-08-16T20:21:00.000Z",
+      "lastEdited": "2026-08-17T19:33:00.000Z",
       "Timeline": [],
       "Machines": [
         "3bee5275-7b5c-8109-afca-deb08ef8b07f"
@@ -2426,6 +2438,7 @@
       "Field": "Chemistry",
       "Known For": "The first lithium intercalation battery, at Exxon in the 1970s; shared the 2019 Nobel with Goodenough and Yoshino.",
       "Nationality": "British-American",
+      "Nobel": "Chemistry 2019",
       "Name": "M. Stanley Whittingham"
     },
     {
@@ -2442,6 +2455,7 @@
       "Field": "Physics",
       "Known For": "The fuel cell of 1839 — hydrogen and oxygen recombining over platinum to make electricity and water — a century and a half before anyone wanted one.",
       "Nationality": "Welsh",
+      "Nobel": null,
       "Name": "William Grove"
     },
     {
@@ -2458,6 +2472,7 @@
       "Field": "Physics",
       "Known For": "The lead–acid battery of 1859, the first that could be recharged; it still starts almost every car.",
       "Nationality": "French",
+      "Nobel": null,
       "Name": "Gaston Planté"
     },
     {
@@ -2474,6 +2489,7 @@
       "Field": "Physics",
       "Known For": "The voltaic pile of 1800: zinc, copper and brine in a stack, and the first source of continuous electric current. The volt is his.",
       "Nationality": "Italian",
+      "Nobel": null,
       "Name": "Alessandro Volta"
     },
     {
@@ -2490,6 +2506,7 @@
       "Field": "Electrical Engineering",
       "Known For": "Built the first practical transformer and demonstrated AC distribution to a town in 1886, on Westinghouse's money.",
       "Nationality": "American",
+      "Nobel": null,
       "Name": "William Stanley"
     },
     {
@@ -2506,6 +2523,7 @@
       "Field": "Electrical Engineering",
       "Known For": "The self-excited dynamo of 1866, which removed the permanent magnet and made large generators possible; the company still carries his name.",
       "Nationality": "German",
+      "Nobel": null,
       "Name": "Werner von Siemens"
     },
     {
@@ -2522,6 +2540,7 @@
       "Field": "Electrical Engineering",
       "Known For": "The first dynamo that produced smooth direct current at useful power, in 1871 — and, discovered by accident at a Vienna exhibition, ran as a motor when fed current.",
       "Nationality": "Belgian",
+      "Nobel": null,
       "Name": "Zénobe Gramme"
     },
     {
@@ -2538,6 +2557,7 @@
       "Field": "Electrical Engineering",
       "Known For": "Discovered the rotating magnetic field independently of Tesla in 1885 and published first; refused to patent it.",
       "Nationality": "Italian",
+      "Nobel": null,
       "Name": "Galileo Ferraris"
     },
     {
@@ -2554,6 +2574,7 @@
       "Field": "Electrical Engineering",
       "Known For": "The polyphase induction motor and the AC system that carries it — the machine most of the world's electricity is used by.",
       "Nationality": "Serbian-American",
+      "Nobel": null,
       "Name": "Nikola Tesla"
     },
     {
@@ -2570,6 +2591,7 @@
       "Field": "Engineering",
       "Known For": "Built the jet engine that flew first, in the Heinkel He 178 in August 1939 — independently of Whittle and unaware of him.",
       "Nationality": "German",
+      "Nobel": null,
       "Name": "Hans von Ohain"
     },
     {
@@ -2586,6 +2608,7 @@
       "Field": "Engineering",
       "Known For": "Patented the turbojet in 1930 as an RAF cadet, was told it was impractical, and ran one in 1937.",
       "Nationality": "British",
+      "Nobel": null,
       "Name": "Frank Whittle"
     },
     {
@@ -2602,6 +2625,7 @@
       "Field": "Engineering",
       "Known For": "The multi-stage reaction steam turbine of 1884, which powers most of the world's electricity generation and, after his Turbinia gate-crashed a naval review in 1897, most of its ships.",
       "Nationality": "British",
+      "Nobel": null,
       "Name": "Charles Parsons"
     },
     {
@@ -2616,6 +2640,7 @@
       "Field": "Engineering",
       "Known For": "The constant-pressure combustion cycle of 1872, built as a piston engine and now the cycle of every jet and gas turbine.",
       "Nationality": "American",
+      "Nobel": null,
       "Name": "George Brayton"
     },
     {
@@ -2632,6 +2657,7 @@
       "Field": "Engineering",
       "Known For": "The rotary engine with a triangular rotor: no reciprocating parts, very smooth, and a lifelong fight with its seals.",
       "Nationality": "German",
+      "Nobel": null,
       "Name": "Felix Wankel"
     },
     {
@@ -2648,6 +2674,7 @@
       "Field": "Engineering",
       "Known For": "The compression-ignition engine, designed from Carnot's theory rather than by trial; disappeared from a Channel steamer in 1913.",
       "Nationality": "German",
+      "Nobel": null,
       "Name": "Rudolf Diesel"
     },
     {
@@ -2664,6 +2691,7 @@
       "Field": "Engineering",
       "Known For": "The four-stroke internal combustion engine of 1876 — intake, compression, power, exhaust — which is still the cycle in most of the cars on the road.",
       "Nationality": "German",
+      "Nobel": null,
       "Name": "Nikolaus Otto"
     },
     {
@@ -2678,6 +2706,7 @@
       "Field": "Thermodynamics",
       "Known For": "Worked out the maximum efficiency of any heat engine in 1824, from the two temperatures alone, before the nature of heat was understood; died of cholera at 36.",
       "Nationality": "French",
+      "Nobel": null,
       "Name": "Sadi Carnot"
     },
     {
@@ -2694,6 +2723,7 @@
       "Field": "Engineering",
       "Known For": "A minister who patented the closed-cycle hot-air engine with a regenerator in 1816 — the most thermodynamically elegant engine ever devised, and one of the least used.",
       "Nationality": "Scottish",
+      "Nobel": null,
       "Name": "Robert Stirling"
     },
     {
@@ -2710,6 +2740,7 @@
       "Field": "Engineering",
       "Known For": "The separate condenser, which made the steam engine efficient enough to run a factory rather than just a pump; the unit of power is his.",
       "Nationality": "Scottish",
+      "Nobel": null,
       "Name": "James Watt"
     },
     {
@@ -2726,6 +2757,7 @@
       "Field": "Engineering",
       "Known For": "The atmospheric engine of 1712, the first practical machine to turn heat into work — used to pump water out of mines for sixty years before Watt improved it.",
       "Nationality": "English",
+      "Nobel": null,
       "Name": "Thomas Newcomen"
     },
     {
@@ -2742,6 +2774,7 @@
       "Field": "Physics",
       "Known For": "The other author of 'The Return of a Static Universe and the End of Cosmology'; also work on dark-energy models and Big Bang nucleosynthesis.",
       "Nationality": "American",
+      "Nobel": null,
       "Name": "Robert Scherrer"
     },
     {
@@ -2758,6 +2791,7 @@
       "Field": "Physics",
       "Known For": "With Robert Scherrer, the 2007 paper showing that in 100 billion years an accelerating universe erases its own evidence — no receding galaxies, no microwave background, no way to infer that a Big Bang ever happened.",
       "Nationality": "American",
+      "Nobel": null,
       "Name": "Lawrence Krauss"
     },
     {
@@ -2774,6 +2808,7 @@
       "Field": "Geochemistry",
       "Known For": "Dated the Earth and the solar system to 4.55 billion years in 1956, from lead isotopes in the Canyon Diablo meteorite — then spent the rest of his career getting lead out of petrol.",
       "Nationality": "American",
+      "Nobel": null,
       "Name": "Clair Patterson"
     },
     {
@@ -2790,6 +2825,7 @@
       "Field": "Astronomy",
       "Known For": "Planet growth by the accretion of planetesimals, set out in a 1969 monograph the West largely ignored until it was translated — the foundation of modern planet-formation theory.",
       "Nationality": "Soviet",
+      "Nobel": null,
       "Name": "Viktor Safronov"
     },
     {
@@ -2806,6 +2842,7 @@
       "Field": "Mathematics & Astronomy",
       "Known For": "The nebular hypothesis: the solar system condensed from a rotating disc of gas, which is why the planets orbit in one plane and one direction. Still the picture, with the details filled in.",
       "Nationality": "French",
+      "Nobel": null,
       "Name": "Pierre-Simon Laplace"
     },
     {
@@ -2822,6 +2859,7 @@
       "Field": "Astronomy",
       "Known For": "With Madau, the 2014 review that consolidated the cosmic star-formation history into its modern form; before that, the Hubble Deep Field team.",
       "Nationality": "American",
+      "Nobel": null,
       "Name": "Mark Dickinson"
     },
     {
@@ -2838,6 +2876,7 @@
       "Field": "Astronomy",
       "Known For": "The Lyman-break technique: picking galaxies at z ≈ 3 out of deep images by their colours alone. It made cosmic noon observable in bulk rather than one object at a time.",
       "Nationality": "American",
+      "Nobel": null,
       "Name": "Charles Steidel"
     },
     {
@@ -2854,6 +2893,7 @@
       "Field": "Astronomy",
       "Known For": "The Canada–France Redshift Survey, and the 1996 paper that first plotted star-formation density climbing with lookback time — the other half of the Lilly–Madau diagram.",
       "Nationality": null,
+      "Nobel": null,
       "Name": "Simon Lilly"
     },
     {
@@ -2870,6 +2910,7 @@
       "Field": "Astrophysics",
       "Known For": "The Madau plot: cosmic star-formation rate against redshift, first drawn in 1996 from the Hubble Deep Field. Its peak at z ≈ 2 is what 'cosmic noon' means.",
       "Nationality": "Italian",
+      "Nobel": null,
       "Name": "Piero Madau"
     },
     {
@@ -2886,6 +2927,7 @@
       "Field": "Astronomy",
       "Known For": "Four decades on the most distant galaxies, from the Hubble Ultra Deep Field to JWST, and the case — 'When Galaxies Were Born' — that they are what reionized the universe.",
       "Nationality": "British",
+      "Nobel": null,
       "Name": "Richard Ellis"
     },
     {
@@ -2902,6 +2944,7 @@
       "Field": "Astronomy",
       "Known For": "Found the first quasars beyond z = 6 in Sloan data and watched the Gunn–Peterson trough finally appear in their spectra — the observation that pins the end of reionization to roughly a billion years.",
       "Nationality": "Chinese-American",
+      "Nobel": null,
       "Name": "Xiaohui Fan"
     },
     {
@@ -2918,6 +2961,7 @@
       "Field": "Astronomy",
       "Known For": "The other name on the Gunn–Peterson trough: the 1965 calculation of how little neutral hydrogen a quasar's light could have passed through, given how much of it arrived.",
       "Nationality": null,
+      "Nobel": null,
       "Name": "Bruce Peterson"
     },
     {
@@ -2934,6 +2978,7 @@
       "Field": "Astronomy",
       "Known For": "With Bruce Peterson, the 1965 prediction that neutral intergalactic hydrogen would blank out a quasar's spectrum shortward of Lyman-α — the test that dates the end of reionization. Later the architect of the Sloan Digital Sky Survey.",
       "Nationality": "American",
+      "Nobel": null,
       "Name": "James Gunn"
     },
     {
@@ -2950,6 +2995,7 @@
       "Field": "Radio Astronomy",
       "Known For": "Led EDGES, a table-sized radio antenna in Western Australia that reported a 21-cm absorption dip at z ≈ 17 in 2018 — the first claimed signal from cosmic dawn, deeper than any model predicted, and still contested.",
       "Nationality": "American",
+      "Nobel": null,
       "Name": "Judd Bowman"
     },
     {
@@ -2967,6 +3013,7 @@
       "Field": "Astrophysics",
       "Known For": "The theory of the 21-cm signal from cosmic dawn — how the first stars' light would imprint on the neutral hydrogen around them — and the case that the EDGES dip, if real, needs new physics.",
       "Nationality": "Israeli",
+      "Nobel": null,
       "Name": "Rennan Barkana"
     },
     {
@@ -2985,6 +3032,7 @@
       "Field": "Astrophysics",
       "Known For": "With Rennan Barkana, the 2001 review 'In the Beginning: the first sources of light and the reionization of the universe', which set the agenda for the first-stars and 21-cm fields.",
       "Nationality": "Israeli-American",
+      "Nobel": null,
       "Name": "Abraham Loeb"
     },
     {
@@ -3001,6 +3049,7 @@
       "Field": "Astrophysics",
       "Known For": "Simulations of the first stars and the first supernovae, following primordial gas as it cooled and fragmented, and of the molecular-hydrogen chemistry that let it cool at all.",
       "Nationality": "Japanese",
+      "Nobel": null,
       "Name": "Naoki Yoshida"
     },
     {
@@ -3017,6 +3066,7 @@
       "Field": "Astrophysics",
       "Known For": "With Bryan and Norman, the 2002 simulation that followed a single primordial cloud from cosmological scales down to a forming protostar — the first end-to-end model of a first star.",
       "Nationality": "German",
+      "Nobel": null,
       "Name": "Tom Abel"
     },
     {
@@ -3033,6 +3083,7 @@
       "Field": "Astrophysics",
       "Known For": "The simulations that showed the first stars formed alone or in pairs inside dark-matter minihalos and were tens to hundreds of times the Sun's mass — the modern picture of Population III.",
       "Nationality": "German",
+      "Nobel": null,
       "Name": "Volker Bromm"
     },
     {
@@ -3049,6 +3100,7 @@
       "Field": "Astronomy",
       "Known For": "The Hubble deep-field campaigns that pushed the frontier to z ≈ 11 before JWST existed; GN-z11, found in 2016, held the distance record for six years.",
       "Nationality": "Australian-American",
+      "Nobel": null,
       "Name": "Garth Illingworth"
     },
     {
@@ -3065,6 +3117,7 @@
       "Field": "Astrophysics",
       "Known For": "Worked out how bright and how massive an early galaxy can possibly be under ΛCDM — the yardstick the JWST candidates are measured against, and by which a few looked impossible.",
       "Nationality": "American",
+      "Nobel": null,
       "Name": "Michael Boylan-Kolchin"
     },
     {
@@ -3081,6 +3134,7 @@
       "Field": "Astronomy",
       "Known For": "Lead author of the 2023 Nature paper on six candidate galaxies at z ≈ 7–9 that looked far too massive for their era — the 'universe breakers' — which forced a hard look at how stellar masses are inferred from early light.",
       "Nationality": "Dutch",
+      "Nobel": null,
       "Name": "Ivo Labbé"
     },
     {
@@ -3097,6 +3151,7 @@
       "Field": "Astronomy",
       "Known For": "First author of one of the earliest JWST papers on galaxy candidates at z ≈ 11–13, out within weeks of the first images — the start of the 'too bright, too early' argument.",
       "Nationality": null,
+      "Nobel": null,
       "Name": "Rohan Naidu"
     },
     {
@@ -3113,6 +3168,7 @@
       "Field": "Astronomy",
       "Known For": "First author of the JADES paper that spectroscopically confirmed four galaxies beyond z = 10 — the first hard evidence that the JWST candidates were real and not nearby interlopers.",
       "Nationality": "British",
+      "Nobel": null,
       "Name": "Emma Curtis-Lake"
     },
     {
@@ -3129,6 +3185,7 @@
       "Field": "Astronomy",
       "Known For": "Co-lead of JADES, the JWST deep survey that has spectroscopically confirmed galaxies within 300–400 million years of the Big Bang; earlier, models of how galaxies alone could have reionized the universe.",
       "Nationality": "American",
+      "Nobel": null,
       "Name": "Brant Robertson"
     },
     {
@@ -3145,6 +3202,7 @@
       "Field": "Astronomy",
       "Known For": "Principal investigator of NIRCam, JWST's near-infrared camera — the instrument behind the deep-field images the first-galaxy results come from.",
       "Nationality": "American",
+      "Nobel": null,
       "Name": "Marcia Rieke"
     },
     {
@@ -3166,6 +3224,7 @@
       "Field": "Astrophysics",
       "Known For": "The other author of 'A Dying Universe', and of the popular account that followed; also a planet-formation and exoplanet theorist.",
       "Nationality": "American",
+      "Nobel": null,
       "Name": "Gregory Laughlin"
     },
     {
@@ -3186,12 +3245,13 @@
       "Field": "Astrophysics",
       "Known For": "With Gregory Laughlin, 'A Dying Universe' (1997): the paper that laid out the five ages of the cosmos from the stelliferous era through the degenerate, black hole and dark eras — the source of most far-future chronologies, this one included.",
       "Nationality": "American",
+      "Nobel": null,
       "Name": "Fred Adams"
     },
     {
       "id": "3bee5275-7b5c-8157-9ff5-d6bc7901ad9e",
       "url": "https://app.notion.com/p/Andrei-Sakharov-3bee52757b5c81579ff5d6bc7901ad9e",
-      "lastEdited": "2026-08-16T03:11:00.000Z",
+      "lastEdited": "2026-08-17T19:33:00.000Z",
       "Timeline": [
         "3bde5275-7b5c-81a9-b4ba-cf86d12e1d5b"
       ],
@@ -3202,6 +3262,7 @@
       "Field": "Physics",
       "Known For": "Set out in 1967 the three conditions any explanation of the matter–antimatter asymmetry must satisfy — baryon number violation, C and CP violation, departure from equilibrium — and they still frame the problem. Also the Soviet hydrogen bomb, and the Nobel Peace Prize for opposing what he had built.",
       "Nationality": "Soviet",
+      "Nobel": "Peace 1975",
       "Name": "Andrei Sakharov"
     },
     {
@@ -3221,6 +3282,7 @@
       "Field": "Cosmology",
       "Known For": "Co-author of CLASS, the Boltzmann code that turns a set of cosmological parameters into a predicted microwave background and matter power spectrum, and of MontePython for fitting them to data. A Planck collaboration member, and — with Sergio Pastor — the neutrino-cosmology bounds that make the CMB the tightest constraint on the sum of the neutrino masses.",
       "Nationality": "French",
+      "Nobel": null,
       "Name": "Julien Lesgourgues"
     },
     {
@@ -3237,6 +3299,7 @@
       "Field": "Astronomy",
       "Known For": "Co-discovered it — and with it the belt that would eventually reclassify Pluto.",
       "Nationality": "Vietnamese-American",
+      "Nobel": null,
       "Name": "Jane Luu"
     },
     {
@@ -3253,12 +3316,13 @@
       "Field": "Astronomy",
       "Known For": "Found the first Kuiper Belt object after five years of searching an empty-looking sky.",
       "Nationality": "British-American",
+      "Nobel": null,
       "Name": "David Jewitt"
     },
     {
       "id": "3bde5275-7b5c-8195-98e9-e11878a63087",
       "url": "https://app.notion.com/p/Joseph-Taylor-3bde52757b5c819598e9e11878a63087",
-      "lastEdited": "2026-08-15T19:17:00.000Z",
+      "lastEdited": "2026-08-17T19:33:00.000Z",
       "Timeline": [],
       "Machines": [],
       "Lifespan": "1941–",
@@ -3269,12 +3333,13 @@
       "Field": "Astrophysics",
       "Known For": "Tracked that orbit for decades until the agreement with general relativity was undeniable.",
       "Nationality": "American",
+      "Nobel": "Physics 1993",
       "Name": "Joseph Taylor"
     },
     {
       "id": "3bde5275-7b5c-8104-ac2a-ea36282f6e49",
       "url": "https://app.notion.com/p/Russell-Hulse-3bde52757b5c8104ac2aea36282f6e49",
-      "lastEdited": "2026-08-15T19:17:00.000Z",
+      "lastEdited": "2026-08-17T19:33:00.000Z",
       "Timeline": [],
       "Machines": [],
       "Lifespan": "1950–",
@@ -3285,12 +3350,13 @@
       "Field": "Astrophysics",
       "Known For": "The binary pulsar whose decaying orbit proved gravitational waves are real, forty years early.",
       "Nationality": "American",
+      "Nobel": "Physics 1993",
       "Name": "Russell Hulse"
     },
     {
       "id": "3bde5275-7b5c-8150-a808-e5345dda71e6",
       "url": "https://app.notion.com/p/Barry-Barish-3bde52757b5c8150a808e5345dda71e6",
-      "lastEdited": "2026-08-15T19:17:00.000Z",
+      "lastEdited": "2026-08-17T19:33:00.000Z",
       "Timeline": [],
       "Machines": [],
       "Lifespan": "1936–",
@@ -3301,12 +3367,13 @@
       "Field": "Physics",
       "Known For": "Turned LIGO from a promising idea into an experiment that actually worked.",
       "Nationality": "American",
+      "Nobel": "Physics 2017",
       "Name": "Barry Barish"
     },
     {
       "id": "3bde5275-7b5c-810f-abe4-f0b088360d26",
       "url": "https://app.notion.com/p/Kip-Thorne-3bde52757b5c810fabe4f0b088360d26",
-      "lastEdited": "2026-08-15T19:17:00.000Z",
+      "lastEdited": "2026-08-17T19:33:00.000Z",
       "Timeline": [],
       "Machines": [],
       "Lifespan": "1940–",
@@ -3318,12 +3385,13 @@
       "Field": "Physics",
       "Known For": "Worked out what a black hole merger would look like before there was any way to see one.",
       "Nationality": "American",
+      "Nobel": "Physics 2017",
       "Name": "Kip Thorne"
     },
     {
       "id": "3bde5275-7b5c-8170-90fb-f9702a56f66c",
       "url": "https://app.notion.com/p/Rainer-Weiss-3bde52757b5c817090fbf9702a56f66c",
-      "lastEdited": "2026-08-15T19:17:00.000Z",
+      "lastEdited": "2026-08-17T19:33:00.000Z",
       "Timeline": [],
       "Machines": [],
       "Lifespan": "1932–",
@@ -3335,6 +3403,7 @@
       "Field": "Physics",
       "Known For": "Designed the interferometer that would eventually catch a gravitational wave, in a 1972 report.",
       "Nationality": "American",
+      "Nobel": "Physics 2017",
       "Name": "Rainer Weiss"
     },
     {
@@ -3351,12 +3420,13 @@
       "Field": "Astrophysics",
       "Known For": "Found pulsars as a graduate student. The Nobel went to her supervisor.",
       "Nationality": "Northern Irish",
+      "Nobel": null,
       "Name": "Jocelyn Bell Burnell"
     },
     {
       "id": "3bde5275-7b5c-817a-b64b-cbf396d77923",
       "url": "https://app.notion.com/p/Robert-Wilson-3bde52757b5c817ab64bcbf396d77923",
-      "lastEdited": "2026-08-15T19:17:00.000Z",
+      "lastEdited": "2026-08-17T19:33:00.000Z",
       "Timeline": [
         "3bde5275-7b5c-8130-966f-ff0ab7d23a91"
       ],
@@ -3369,12 +3439,13 @@
       "Field": "Astronomy",
       "Known For": "The other half. They evicted the pigeons and cleaned the antenna first; the hiss stayed.",
       "Nationality": "American",
+      "Nobel": "Physics 1978",
       "Name": "Robert Wilson"
     },
     {
       "id": "3bde5275-7b5c-81a9-9233-f6a9f838dd78",
       "url": "https://app.notion.com/p/Arno-Penzias-3bde52757b5c81a99233f6a9f838dd78",
-      "lastEdited": "2026-08-15T19:17:00.000Z",
+      "lastEdited": "2026-08-17T19:33:00.000Z",
       "Timeline": [
         "3bde5275-7b5c-8130-966f-ff0ab7d23a91"
       ],
@@ -3387,6 +3458,7 @@
       "Field": "Astronomy",
       "Known For": "Half of the pair who found the microwave background while trying to get rid of it.",
       "Nationality": "American",
+      "Nobel": "Physics 1978",
       "Name": "Arno Penzias"
     },
     {
@@ -3403,6 +3475,7 @@
       "Field": "Astronomy",
       "Known For": "Realised 3C 273's baffling spectrum was ordinary hydrogen redshifted by 16% — and quasars existed.",
       "Nationality": "Dutch-American",
+      "Nobel": null,
       "Name": "Maarten Schmidt"
     },
     {
@@ -3419,6 +3492,7 @@
       "Field": "Astronomy",
       "Known For": "Found Pluto at twenty-four by blinking photographic plates until something moved.",
       "Nationality": "American",
+      "Nobel": null,
       "Name": "Clyde Tombaugh"
     },
     {
@@ -3437,12 +3511,13 @@
       "Field": "Astrophysics",
       "Known For": "Worked out that stars are overwhelmingly hydrogen, and was pressured to call the result spurious.",
       "Nationality": "British-American",
+      "Nobel": null,
       "Name": "Cecilia Payne-Gaposchkin"
     },
     {
       "id": "3bde5275-7b5c-819e-a3bd-e86eb6b29070",
       "url": "https://app.notion.com/p/James-Chadwick-3bde52757b5c819ea3bde86eb6b29070",
-      "lastEdited": "2026-08-15T19:17:00.000Z",
+      "lastEdited": "2026-08-17T19:33:00.000Z",
       "Timeline": [],
       "Machines": [],
       "Lifespan": "1891–1974",
@@ -3453,6 +3528,7 @@
       "Field": "Nuclear Physics",
       "Known For": "The neutron — the particle that made fission, and everything after it, possible.",
       "Nationality": "English",
+      "Nobel": "Physics 1935",
       "Name": "James Chadwick"
     },
     {
@@ -3473,12 +3549,13 @@
       "Field": "Astronomy",
       "Known For": "Proved the spiral nebulae are separate galaxies, then found they are all rushing away.",
       "Nationality": "American",
+      "Nobel": null,
       "Name": "Edwin Hubble"
     },
     {
       "id": "3bde5275-7b5c-81b5-8693-d0a5e633e6bc",
       "url": "https://app.notion.com/p/Victor-Hess-3bde52757b5c81b58693d0a5e633e6bc",
-      "lastEdited": "2026-08-15T19:17:00.000Z",
+      "lastEdited": "2026-08-17T19:33:00.000Z",
       "Timeline": [],
       "Machines": [],
       "Lifespan": "1883–1964",
@@ -3489,6 +3566,7 @@
       "Field": "Physics",
       "Known For": "Took an electroscope up in a balloon and found the radiation was coming from above, not below.",
       "Nationality": "Austrian",
+      "Nobel": "Physics 1936",
       "Name": "Victor Hess"
     },
     {
@@ -3507,6 +3585,7 @@
       "Field": "Astrophysics",
       "Known For": "Tested general relativity at the 1919 eclipse and made Einstein famous overnight.",
       "Nationality": "English",
+      "Nobel": null,
       "Name": "Arthur Eddington"
     },
     {
@@ -3525,6 +3604,7 @@
       "Field": "Astronomy",
       "Known For": "Measured the first galaxy redshifts a decade before anyone understood what they meant.",
       "Nationality": "American",
+      "Nobel": null,
       "Name": "Vesto Slipher"
     },
     {
@@ -3541,6 +3621,7 @@
       "Field": "Astronomy",
       "Known For": "The Cepheid period–luminosity law — the rung the entire cosmic distance ladder stands on.",
       "Nationality": "American",
+      "Nobel": null,
       "Name": "Henrietta Swan Leavitt"
     },
     {
@@ -3555,6 +3636,7 @@
       "Field": "Astronomy",
       "Known For": "Classified around 350,000 stellar spectra and devised the OBAFGKM sequence still in use.",
       "Nationality": "American",
+      "Nobel": null,
       "Name": "Annie Jump Cannon"
     },
     {
@@ -3571,6 +3653,7 @@
       "Field": "Radio Astronomy",
       "Known For": "Built a radio telescope in his back garden and made the first radio map of the sky, alone.",
       "Nationality": "American",
+      "Nobel": null,
       "Name": "Grote Reber"
     },
     {
@@ -3587,12 +3670,13 @@
       "Field": "Radio Astronomy",
       "Known For": "Traced a persistent hiss in a telephone antenna to the centre of the Milky Way, and invented radio astronomy.",
       "Nationality": "American",
+      "Nobel": null,
       "Name": "Karl Jansky"
     },
     {
       "id": "3bde5275-7b5c-8130-af91-c27293c151cc",
       "url": "https://app.notion.com/p/Henri-Becquerel-3bde52757b5c8130af91c27293c151cc",
-      "lastEdited": "2026-08-15T19:17:00.000Z",
+      "lastEdited": "2026-08-17T19:33:00.000Z",
       "Timeline": [],
       "Machines": [],
       "Lifespan": "1852–1908",
@@ -3603,12 +3687,13 @@
       "Field": "Physics",
       "Known For": "Left uranium salts on a wrapped photographic plate in a drawer and found radioactivity.",
       "Nationality": "French",
+      "Nobel": "Physics 1903",
       "Name": "Henri Becquerel"
     },
     {
       "id": "3bde5275-7b5c-813b-86df-f34da3ade7cc",
       "url": "https://app.notion.com/p/Wilhelm-R-ntgen-3bde52757b5c813b86dff34da3ade7cc",
-      "lastEdited": "2026-08-15T19:17:00.000Z",
+      "lastEdited": "2026-08-17T19:33:00.000Z",
       "Timeline": [],
       "Machines": [],
       "Lifespan": "1845–1923",
@@ -3619,6 +3704,7 @@
       "Field": "Physics",
       "Known For": "X-rays, the first Nobel Prize in Physics, and a photograph of his wife's hand.",
       "Nationality": "German",
+      "Nobel": "Physics 1901",
       "Name": "Wilhelm Röntgen"
     },
     {
@@ -3635,6 +3721,7 @@
       "Field": "Astronomy",
       "Known For": "Named that line helium, and founded the journal Nature.",
       "Nationality": "English",
+      "Nobel": null,
       "Name": "Norman Lockyer"
     },
     {
@@ -3651,6 +3738,7 @@
       "Field": "Astronomy",
       "Known For": "Saw an unexplained yellow line in the Sun's spectrum during the 1868 eclipse.",
       "Nationality": "French",
+      "Nobel": null,
       "Name": "Jules Janssen"
     },
     {
@@ -3667,6 +3755,7 @@
       "Field": "Astronomy",
       "Known For": "Looked where Le Verrier said and found Neptune within the hour.",
       "Nationality": "German",
+      "Nobel": null,
       "Name": "Johann Galle"
     },
     {
@@ -3683,6 +3772,7 @@
       "Field": "Astronomy",
       "Known For": "Calculated where Neptune had to be from Uranus's wobble, then had someone else point the telescope.",
       "Nationality": "French",
+      "Nobel": null,
       "Name": "Urbain Le Verrier"
     },
     {
@@ -3699,6 +3789,7 @@
       "Field": "Astronomy",
       "Known For": "Found Uranus and doubled the size of the known solar system in one night.",
       "Nationality": "German-British",
+      "Nobel": null,
       "Name": "William Herschel"
     },
     {
@@ -3713,6 +3804,7 @@
       "Field": "Astronomy",
       "Known For": "Catalogued 110 fuzzy objects so he would stop mistaking them for comets. Nobody remembers his comets.",
       "Nationality": "French",
+      "Nobel": null,
       "Name": "Charles Messier"
     },
     {
@@ -3729,6 +3821,7 @@
       "Field": "Astronomy",
       "Known For": "The division in Saturn's rings, and four of its moons.",
       "Nationality": "Italian-French",
+      "Nobel": null,
       "Name": "Giovanni Cassini"
     },
     {
@@ -3743,6 +3836,7 @@
       "Field": "Astronomy",
       "Known For": "The most accurate naked-eye observations ever made — and Kepler's laws came out of them.",
       "Nationality": "Danish",
+      "Nobel": null,
       "Name": "Tycho Brahe"
     },
     {
@@ -3759,6 +3853,7 @@
       "Field": "Quantum Computing",
       "Known For": "The factoring algorithm that made everyone take quantum computing seriously.",
       "Nationality": "American",
+      "Nobel": null,
       "Name": "Peter Shor"
     },
     {
@@ -3775,6 +3870,7 @@
       "Field": "Quantum Computing",
       "Known For": "Defined the universal quantum computer.",
       "Nationality": "British",
+      "Nobel": null,
       "Name": "David Deutsch"
     },
     {
@@ -3791,6 +3887,7 @@
       "Field": "Quantum Foundations",
       "Known For": "Turned a philosophical argument into an inequality that experiments could — and did — violate.",
       "Nationality": "Northern Irish",
+      "Nobel": null,
       "Name": "John Stewart Bell"
     },
     {
@@ -3807,6 +3904,7 @@
       "Field": "Quantum Mechanics",
       "Known For": "Proposed the many-worlds interpretation, was ignored, and left physics for defence analysis.",
       "Nationality": "American",
+      "Nobel": null,
       "Name": "Hugh Everett III"
     },
     {
@@ -3823,6 +3921,7 @@
       "Field": "Nonlinear Dynamics",
       "Known For": "Found a universal constant hiding in the route from order to chaos.",
       "Nationality": "American",
+      "Nobel": null,
       "Name": "Mitchell Feigenbaum"
     },
     {
@@ -3839,6 +3938,7 @@
       "Field": "Meteorology",
       "Known For": "Rounded a number from six digits to three, got a different forecast, and founded chaos theory.",
       "Nationality": "American",
+      "Nobel": null,
       "Name": "Edward Lorenz"
     },
     {
@@ -3855,6 +3955,7 @@
       "Field": "Geophysics",
       "Known For": "Transform faults and hotspots; assembled the pieces into plate tectonics.",
       "Nationality": "Canadian",
+      "Nobel": null,
       "Name": "J. Tuzo Wilson"
     },
     {
@@ -3871,6 +3972,7 @@
       "Field": "Geology",
       "Known For": "Seafloor spreading — the mechanism that made continental drift respectable.",
       "Nationality": "American",
+      "Nobel": null,
       "Name": "Harry Hess"
     },
     {
@@ -3887,12 +3989,13 @@
       "Field": "Astrophysics",
       "Known For": "Proposed modifying gravity instead of adding dark matter — a minority view that refuses to die.",
       "Nationality": "Israeli",
+      "Nobel": null,
       "Name": "Mordehai Milgrom"
     },
     {
       "id": "3bde5275-7b5c-81f7-9127-eed4aada4070",
       "url": "https://app.notion.com/p/Adam-Riess-3bde52757b5c81f79127eed4aada4070",
-      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "lastEdited": "2026-08-17T19:33:00.000Z",
       "Timeline": [
         "3bde5275-7b5c-8132-859d-da190284c1a9",
         "3bde5275-7b5c-81f9-8ef6-f13ac29dc596"
@@ -3908,12 +4011,13 @@
       "Field": "Cosmology",
       "Known For": "Wrote up the accelerating-universe result, and now leads the distance-ladder side of the Hubble tension.",
       "Nationality": "American",
+      "Nobel": "Physics 2011",
       "Name": "Adam Riess"
     },
     {
       "id": "3bde5275-7b5c-810f-815d-feab1486c2c3",
       "url": "https://app.notion.com/p/Brian-Schmidt-3bde52757b5c810f815dfeab1486c2c3",
-      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "lastEdited": "2026-08-17T19:33:00.000Z",
       "Timeline": [
         "3bde5275-7b5c-8132-859d-da190284c1a9"
       ],
@@ -3928,12 +4032,13 @@
       "Field": "Cosmology",
       "Known For": "Led the other one, and got the same unwelcome answer.",
       "Nationality": "American-Australian",
+      "Nobel": "Physics 2011",
       "Name": "Brian Schmidt"
     },
     {
       "id": "3bde5275-7b5c-81e7-9fdd-fc601314ede3",
       "url": "https://app.notion.com/p/Saul-Perlmutter-3bde52757b5c81e79fddfc601314ede3",
-      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "lastEdited": "2026-08-17T19:33:00.000Z",
       "Timeline": [
         "3bde5275-7b5c-8132-859d-da190284c1a9"
       ],
@@ -3948,6 +4053,7 @@
       "Field": "Cosmology",
       "Known For": "Led one of the two supernova teams that found the expansion is speeding up.",
       "Nationality": "American",
+      "Nobel": "Physics 2011",
       "Name": "Saul Perlmutter"
     },
     {
@@ -3968,6 +4074,7 @@
       "Field": "Astronomy",
       "Known For": "Measured flat galaxy rotation curves and turned dark matter from a curiosity into a crisis.",
       "Nationality": "American",
+      "Nobel": null,
       "Name": "Vera Rubin"
     },
     {
@@ -3987,6 +4094,7 @@
       "Field": "Cosmology",
       "Known For": "Proposed an inflationary model in 1980 that current CMB data still fits best.",
       "Nationality": "Russian",
+      "Nobel": null,
       "Name": "Alexei Starobinsky"
     },
     {
@@ -4006,6 +4114,7 @@
       "Field": "Cosmology",
       "Known For": "Chaotic and eternal inflation, in which our universe is one bubble among endlessly many.",
       "Nationality": "Russian-American",
+      "Nobel": null,
       "Name": "Andrei Linde"
     },
     {
@@ -4024,6 +4133,7 @@
       "Field": "Cosmology",
       "Known For": "Inflation — a fraction of a second of exponential expansion that explains why the sky looks so uniform.",
       "Nationality": "American",
+      "Nobel": null,
       "Name": "Alan Guth"
     },
     {
@@ -4042,6 +4152,7 @@
       "Field": "Quantum Gravity",
       "Known For": "The variables that made loop quantum gravity tractable.",
       "Nationality": "Indian-American",
+      "Nobel": null,
       "Name": "Abhay Ashtekar"
     },
     {
@@ -4059,6 +4170,7 @@
       "Field": "Quantum Gravity",
       "Known For": "Loop quantum gravity, and a book-length case against string theory.",
       "Nationality": "American",
+      "Nobel": null,
       "Name": "Lee Smolin"
     },
     {
@@ -4078,6 +4190,7 @@
       "Field": "Quantum Gravity",
       "Known For": "Loop quantum gravity, and the argument that time is not fundamental.",
       "Nationality": "Italian",
+      "Nobel": null,
       "Name": "Carlo Rovelli"
     },
     {
@@ -4094,6 +4207,7 @@
       "Field": "String Theory",
       "Known For": "The AdS/CFT correspondence — the most-cited idea in theoretical physics this century.",
       "Nationality": "Argentine",
+      "Nobel": null,
       "Name": "Juan Maldacena"
     },
     {
@@ -4110,6 +4224,7 @@
       "Field": "String Theory",
       "Known For": "Unified five string theories into M-theory; the only physicist to win a Fields Medal.",
       "Nationality": "American",
+      "Nobel": null,
       "Name": "Edward Witten"
     },
     {
@@ -4126,6 +4241,7 @@
       "Field": "String Theory",
       "Known For": "Kept string theory alive through the decade nobody was listening.",
       "Nationality": "American",
+      "Nobel": null,
       "Name": "John Schwarz"
     },
     {
@@ -4142,6 +4258,7 @@
       "Field": "String Theory",
       "Known For": "The 1984 anomaly cancellation that triggered the first superstring revolution.",
       "Nationality": "British",
+      "Nobel": null,
       "Name": "Michael Green"
     },
     {
@@ -4161,6 +4278,7 @@
       "Field": "String Theory",
       "Known For": "String theory from the start, the holographic principle, and the black hole war with Hawking.",
       "Nationality": "American",
+      "Nobel": null,
       "Name": "Leonard Susskind"
     },
     {
@@ -4180,6 +4298,7 @@
       "Field": "Gravitation",
       "Known For": "Argued a black hole has entropy proportional to its area, and was disbelieved until Hawking proved it.",
       "Nationality": "Israeli-American",
+      "Nobel": null,
       "Name": "Jacob Bekenstein"
     },
     {
@@ -4201,6 +4320,7 @@
       "Field": "Cosmology",
       "Known For": "Showed black holes evaporate, which is still the sharpest clue we have about quantum gravity.",
       "Nationality": "British",
+      "Nobel": null,
       "Name": "Stephen Hawking"
     },
     {
@@ -4217,6 +4337,7 @@
       "Field": "Particle Physics",
       "Known For": "The other half of the Wess–Zumino model.",
       "Nationality": "Italian",
+      "Nobel": null,
       "Name": "Bruno Zumino"
     },
     {
@@ -4233,6 +4354,7 @@
       "Field": "Particle Physics",
       "Known For": "Co-founded supersymmetry, still the best-motivated idea with no experimental support.",
       "Nationality": "Austrian",
+      "Nobel": null,
       "Name": "Julius Wess"
     },
     {
@@ -4253,12 +4375,13 @@
       "Field": "Particle Physics",
       "Known For": "The first grand unified theory, whose predicted proton decay has stubbornly failed to appear.",
       "Nationality": "American",
+      "Nobel": null,
       "Name": "Howard Georgi"
     },
     {
       "id": "3bde5275-7b5c-81eb-b1e7-dafaa0eef10e",
       "url": "https://app.notion.com/p/Frank-Wilczek-3bde52757b5c81ebb1e7dafaa0eef10e",
-      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "lastEdited": "2026-08-17T19:33:00.000Z",
       "Timeline": [
         "3bde5275-7b5c-811a-a3e4-f872b73ea57f",
         "3bde5275-7b5c-817b-a494-db994bf078d8"
@@ -4272,12 +4395,13 @@
       "Field": "Particle Physics",
       "Known For": "Asymptotic freedom as a graduate student; later, the axion.",
       "Nationality": "American",
+      "Nobel": "Physics 2004",
       "Name": "Frank Wilczek"
     },
     {
       "id": "3bde5275-7b5c-8181-b6fd-fd535dca5e44",
       "url": "https://app.notion.com/p/David-Gross-3bde52757b5c8181b6fdfd535dca5e44",
-      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "lastEdited": "2026-08-17T19:33:00.000Z",
       "Timeline": [
         "3bde5275-7b5c-811a-a3e4-f872b73ea57f",
         "3bde5275-7b5c-817b-a494-db994bf078d8"
@@ -4291,12 +4415,13 @@
       "Field": "Particle Physics",
       "Known For": "Asymptotic freedom — why quarks rattle around loosely inside a proton and can never leave.",
       "Nationality": "American",
+      "Nobel": "Physics 2004",
       "Name": "David Gross"
     },
     {
       "id": "3bde5275-7b5c-815e-ad97-f920948728b3",
       "url": "https://app.notion.com/p/Gerard-t-Hooft-3bde52757b5c815ead97f920948728b3",
-      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "lastEdited": "2026-08-17T19:33:00.000Z",
       "Timeline": [
         "3bde5275-7b5c-810f-b07e-d446eba2268f"
       ],
@@ -4310,12 +4435,13 @@
       "Field": "Quantum Field Theory",
       "Known For": "Proved electroweak theory renormalisable, making it physics rather than speculation.",
       "Nationality": "Dutch",
+      "Nobel": "Physics 1999",
       "Name": "Gerard 't Hooft"
     },
     {
       "id": "3bde5275-7b5c-81cf-b8f5-c9b849eacbb6",
       "url": "https://app.notion.com/p/Fran-ois-Englert-3bde52757b5c81cfb8f5c9b849eacbb6",
-      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "lastEdited": "2026-08-17T19:33:00.000Z",
       "Timeline": [
         "3bde5275-7b5c-814e-a671-fe7dc1be5fe1"
       ],
@@ -4330,12 +4456,13 @@
       "Field": "Particle Physics",
       "Known For": "Published the Brout–Englert mechanism weeks before Higgs, and shared the prize.",
       "Nationality": "Belgian",
+      "Nobel": "Physics 2013",
       "Name": "François Englert"
     },
     {
       "id": "3bde5275-7b5c-81d1-b165-fdd3ef972296",
       "url": "https://app.notion.com/p/Peter-Higgs-3bde52757b5c81d1b165fdd3ef972296",
-      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "lastEdited": "2026-08-17T19:33:00.000Z",
       "Timeline": [
         "3bde5275-7b5c-814e-a671-fe7dc1be5fe1"
       ],
@@ -4350,12 +4477,13 @@
       "Field": "Particle Physics",
       "Known For": "Predicted the boson in 1964 and waited forty-eight years for CERN to find it.",
       "Nationality": "British",
+      "Nobel": "Physics 2013",
       "Name": "Peter Higgs"
     },
     {
       "id": "3bde5275-7b5c-81a8-b6d8-f8e627e862cf",
       "url": "https://app.notion.com/p/Steven-Weinberg-3bde52757b5c81a8b6d8f8e627e862cf",
-      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "lastEdited": "2026-08-17T19:33:00.000Z",
       "Timeline": [
         "3bde5275-7b5c-814e-a671-fe7dc1be5fe1"
       ],
@@ -4370,12 +4498,13 @@
       "Field": "Particle Physics",
       "Known For": "'A Model of Leptons' — three pages that became the Standard Model.",
       "Nationality": "American",
+      "Nobel": "Physics 1979",
       "Name": "Steven Weinberg"
     },
     {
       "id": "3bde5275-7b5c-81c1-b1c5-c6ee1e1a800e",
       "url": "https://app.notion.com/p/Abdus-Salam-3bde52757b5c81c1b1c5c6ee1e1a800e",
-      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "lastEdited": "2026-08-17T19:33:00.000Z",
       "Timeline": [
         "3bde5275-7b5c-814e-a671-fe7dc1be5fe1"
       ],
@@ -4389,12 +4518,13 @@
       "Field": "Particle Physics",
       "Known For": "Electroweak unification, and a lifetime spent building physics in the developing world.",
       "Nationality": "Pakistani",
+      "Nobel": "Physics 1979",
       "Name": "Abdus Salam"
     },
     {
       "id": "3bde5275-7b5c-81aa-9f3f-f0d27ac09ed7",
       "url": "https://app.notion.com/p/Sheldon-Glashow-3bde52757b5c81aa9f3ff0d27ac09ed7",
-      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "lastEdited": "2026-08-17T19:33:00.000Z",
       "Timeline": [
         "3bde5275-7b5c-811f-93a0-c73de104a932",
         "3bde5275-7b5c-814e-a671-fe7dc1be5fe1",
@@ -4412,12 +4542,13 @@
       "Field": "Particle Physics",
       "Known For": "The first electroweak gauge theory, and a long-running scepticism about string theory.",
       "Nationality": "American",
+      "Nobel": "Physics 1979",
       "Name": "Sheldon Glashow"
     },
     {
       "id": "3bde5275-7b5c-81e0-aa03-dd0566b7c71d",
       "url": "https://app.notion.com/p/Murray-Gell-Mann-3bde52757b5c81e0aa03dd0566b7c71d",
-      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "lastEdited": "2026-08-17T19:33:00.000Z",
       "Timeline": [
         "3bde5275-7b5c-811a-a3e4-f872b73ea57f",
         "3bde5275-7b5c-817b-a494-db994bf078d8"
@@ -4432,6 +4563,7 @@
       "Field": "Particle Physics",
       "Known For": "Quarks, the eightfold way, and the name 'quark' lifted from Finnegans Wake.",
       "Nationality": "American",
+      "Nobel": "Physics 1969",
       "Name": "Murray Gell-Mann"
     },
     {
@@ -4448,6 +4580,7 @@
       "Field": "Astrophysics",
       "Known For": "Co-author of B²FH; remained a Big Bang sceptic to the end.",
       "Nationality": "British-American",
+      "Nobel": null,
       "Name": "Geoffrey Burbidge"
     },
     {
@@ -4464,12 +4597,13 @@
       "Field": "Astrophysics",
       "Known For": "Lead author of B²FH, the paper that explained where every element heavier than helium comes from.",
       "Nationality": "British-American",
+      "Nobel": null,
       "Name": "Margaret Burbidge"
     },
     {
       "id": "3bde5275-7b5c-814d-be6c-f3596e4eb04e",
       "url": "https://app.notion.com/p/William-Fowler-3bde52757b5c814dbe6cf3596e4eb04e",
-      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "lastEdited": "2026-08-17T19:33:00.000Z",
       "Timeline": [],
       "Machines": [],
       "Lifespan": "1911–1995",
@@ -4480,6 +4614,7 @@
       "Field": "Nuclear Astrophysics",
       "Known For": "Measured the nuclear reaction rates that make stellar nucleosynthesis quantitative.",
       "Nationality": "American",
+      "Nobel": "Physics 1983",
       "Name": "William Fowler"
     },
     {
@@ -4496,12 +4631,13 @@
       "Field": "Quantum Field Theory",
       "Known For": "Proved the three formulations of QED were the same theory.",
       "Nationality": "British-American",
+      "Nobel": null,
       "Name": "Freeman Dyson"
     },
     {
       "id": "3bde5275-7b5c-81df-a88f-e0311c90f9df",
       "url": "https://app.notion.com/p/Sin-Itiro-Tomonaga-3bde52757b5c81dfa88fe0311c90f9df",
-      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "lastEdited": "2026-08-17T19:33:00.000Z",
       "Timeline": [],
       "Machines": [],
       "Lifespan": "1906–1979",
@@ -4512,12 +4648,13 @@
       "Field": "Quantum Field Theory",
       "Known For": "Developed QED independently in wartime Japan, in near-total isolation.",
       "Nationality": "Japanese",
+      "Nobel": "Physics 1965",
       "Name": "Sin-Itiro Tomonaga"
     },
     {
       "id": "3bde5275-7b5c-8153-8856-cc1587748647",
       "url": "https://app.notion.com/p/Julian-Schwinger-3bde52757b5c81538856cc1587748647",
-      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "lastEdited": "2026-08-17T19:33:00.000Z",
       "Timeline": [],
       "Machines": [],
       "Lifespan": "1918–1994",
@@ -4528,12 +4665,13 @@
       "Field": "Quantum Field Theory",
       "Known For": "Built QED by a formalism so dense that Feynman's pictures won the popularity contest.",
       "Nationality": "American",
+      "Nobel": "Physics 1965",
       "Name": "Julian Schwinger"
     },
     {
       "id": "3bde5275-7b5c-815f-9a2b-c0fb364ad894",
       "url": "https://app.notion.com/p/Richard-Feynman-3bde52757b5c815f9a2bc0fb364ad894",
-      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "lastEdited": "2026-08-17T19:33:00.000Z",
       "Timeline": [],
       "Machines": [],
       "Lifespan": "1918–1988",
@@ -4545,6 +4683,7 @@
       "Field": "Quantum Field Theory",
       "Known For": "Path integrals, diagrams, and the first serious proposal for a quantum computer.",
       "Nationality": "American",
+      "Nobel": "Physics 1965",
       "Name": "Richard Feynman"
     },
     {
@@ -4561,12 +4700,13 @@
       "Field": "Information Theory",
       "Known For": "Invented information as a measurable quantity, and juggled while riding a unicycle.",
       "Nationality": "American",
+      "Nobel": null,
       "Name": "Claude Shannon"
     },
     {
       "id": "3bde5275-7b5c-81fd-968a-c818c62e9897",
       "url": "https://app.notion.com/p/Robert-Schrieffer-3bde52757b5c81fd968ac818c62e9897",
-      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "lastEdited": "2026-08-17T19:33:00.000Z",
       "Timeline": [],
       "Machines": [],
       "Lifespan": "1931–2019",
@@ -4577,12 +4717,13 @@
       "Field": "Superconductivity",
       "Known For": "Wrote down the many-body wavefunction that completed BCS theory.",
       "Nationality": "American",
+      "Nobel": "Physics 1972",
       "Name": "Robert Schrieffer"
     },
     {
       "id": "3bde5275-7b5c-815c-b263-d6eebe138be2",
       "url": "https://app.notion.com/p/Leon-Cooper-3bde52757b5c815cb263d6eebe138be2",
-      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "lastEdited": "2026-08-17T19:33:00.000Z",
       "Timeline": [],
       "Machines": [],
       "Lifespan": "1930–2024",
@@ -4593,12 +4734,13 @@
       "Field": "Superconductivity",
       "Known For": "Cooper pairs — the bound electrons that carry a supercurrent.",
       "Nationality": "American",
+      "Nobel": "Physics 1972",
       "Name": "Leon Cooper"
     },
     {
       "id": "3bde5275-7b5c-81c4-9ab9-c19b6570b3eb",
       "url": "https://app.notion.com/p/John-Bardeen-3bde52757b5c81c49ab9c19b6570b3eb",
-      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "lastEdited": "2026-08-17T19:33:00.000Z",
       "Timeline": [],
       "Machines": [],
       "Lifespan": "1908–1991",
@@ -4609,12 +4751,13 @@
       "Field": "Condensed Matter",
       "Known For": "The only person with two Nobel Prizes in physics: the transistor, then superconductivity.",
       "Nationality": "American",
+      "Nobel": "Physics 1956 · Physics 1972",
       "Name": "John Bardeen"
     },
     {
       "id": "3bde5275-7b5c-814f-9122-feb2331ef7f9",
       "url": "https://app.notion.com/p/Felix-Bloch-3bde52757b5c814f9122feb2331ef7f9",
-      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "lastEdited": "2026-08-17T19:33:00.000Z",
       "Timeline": [],
       "Machines": [],
       "Lifespan": "1905–1983",
@@ -4625,12 +4768,13 @@
       "Field": "Condensed Matter",
       "Known For": "Bloch's theorem — why electrons move through a crystal lattice at all.",
       "Nationality": "Swiss-American",
+      "Nobel": "Physics 1952",
       "Name": "Felix Bloch"
     },
     {
       "id": "3bde5275-7b5c-818e-b9b5-f33f8961f523",
       "url": "https://app.notion.com/p/Maria-Goeppert-Mayer-3bde52757b5c818eb9b5f33f8961f523",
-      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "lastEdited": "2026-08-17T19:33:00.000Z",
       "Timeline": [],
       "Machines": [],
       "Lifespan": "1906–1972",
@@ -4641,6 +4785,7 @@
       "Field": "Nuclear Physics",
       "Known For": "The nuclear shell model and its magic numbers, worked out unpaid for most of her career.",
       "Nationality": "German-American",
+      "Nobel": "Physics 1963",
       "Name": "Maria Goeppert Mayer"
     },
     {
@@ -4660,6 +4805,7 @@
       "Field": "Cosmology",
       "Known For": "Calculated Big Bang nucleosynthesis for his PhD; the prediction of the CMB was in it.",
       "Nationality": "American",
+      "Nobel": null,
       "Name": "Ralph Alpher"
     },
     {
@@ -4680,6 +4826,7 @@
       "Field": "Cosmology",
       "Known For": "Predicted the microwave background, and wrote the physics books people actually finished.",
       "Nationality": "Russian-American",
+      "Nobel": null,
       "Name": "George Gamow"
     },
     {
@@ -4697,6 +4844,7 @@
       "Field": "Astrophysics",
       "Known For": "Explained where the elements come from, coined 'Big Bang' as an insult, and never believed it.",
       "Nationality": "English",
+      "Nobel": null,
       "Name": "Fred Hoyle"
     },
     {
@@ -4713,6 +4861,7 @@
       "Field": "Astrophysics",
       "Known For": "Steady state cosmology, and the correct identification of pulsars as neutron stars.",
       "Nationality": "Austrian-American",
+      "Nobel": null,
       "Name": "Thomas Gold"
     },
     {
@@ -4729,12 +4878,13 @@
       "Field": "Cosmology",
       "Known For": "Co-authored the steady state theory, the most elegant cosmology that turned out to be wrong.",
       "Nationality": "Austrian-British",
+      "Nobel": null,
       "Name": "Hermann Bondi"
     },
     {
       "id": "3bde5275-7b5c-819a-8ba9-c39d54846d6c",
       "url": "https://app.notion.com/p/Werner-Heisenberg-3bde52757b5c819a8ba9c39d54846d6c",
-      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "lastEdited": "2026-08-17T19:33:00.000Z",
       "Timeline": [],
       "Machines": [],
       "Lifespan": "1901–1976",
@@ -4746,12 +4896,13 @@
       "Field": "Quantum Mechanics",
       "Known For": "Matrix mechanics and the uncertainty principle — the end of the classical trajectory.",
       "Nationality": "German",
+      "Nobel": "Physics 1932",
       "Name": "Werner Heisenberg"
     },
     {
       "id": "3bde5275-7b5c-81e1-b5f4-f96fc2650a52",
       "url": "https://app.notion.com/p/Paul-Dirac-3bde52757b5c81e1b5f4f96fc2650a52",
-      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "lastEdited": "2026-08-17T19:33:00.000Z",
       "Timeline": [
         "3bde5275-7b5c-8102-90f1-d13c66d29fa9"
       ],
@@ -4764,6 +4915,7 @@
       "Field": "Quantum Field Theory",
       "Known For": "Married relativity to quantum mechanics and got antimatter as an unavoidable side effect.",
       "Nationality": "English",
+      "Nobel": "Physics 1933",
       "Name": "Paul Dirac"
     },
     {
@@ -4782,6 +4934,7 @@
       "Field": "Cosmology",
       "Known For": "A priest who derived the expanding universe from Einstein's equations two years before Hubble measured it.",
       "Nationality": "Belgian",
+      "Nobel": null,
       "Name": "Georges Lemaître"
     },
     {
@@ -4802,6 +4955,7 @@
       "Field": "Astrophysics",
       "Known For": "Weighed the Coma cluster in 1933, found most of it missing, and named dark matter.",
       "Nationality": "Swiss",
+      "Nobel": null,
       "Name": "Fritz Zwicky"
     },
     {
@@ -4818,12 +4972,13 @@
       "Field": "Geophysics",
       "Known For": "Saw that the continents fit together and was ridiculed for fifty years.",
       "Nationality": "German",
+      "Nobel": null,
       "Name": "Alfred Wegener"
     },
     {
       "id": "3bde5275-7b5c-8198-98e7-dda822d303c2",
       "url": "https://app.notion.com/p/Louis-de-Broglie-3bde52757b5c819898e7dda822d303c2",
-      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "lastEdited": "2026-08-17T19:33:00.000Z",
       "Timeline": [],
       "Machines": [],
       "Lifespan": "1892–1987",
@@ -4834,6 +4989,7 @@
       "Field": "Quantum Mechanics",
       "Known For": "Proposed that matter has a wavelength, in a doctoral thesis, and was right.",
       "Nationality": "French",
+      "Nobel": "Physics 1929",
       "Name": "Louis de Broglie"
     },
     {
@@ -4851,12 +5007,13 @@
       "Field": "Atomic Physics",
       "Known For": "Refined the Bohr model and introduced the fine-structure constant; taught more Nobel laureates than anyone.",
       "Nationality": "German",
+      "Nobel": null,
       "Name": "Arnold Sommerfeld"
     },
     {
       "id": "3bde5275-7b5c-81f6-8c96-c687aed99185",
       "url": "https://app.notion.com/p/Erwin-Schr-dinger-3bde52757b5c81f68c96c687aed99185",
-      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "lastEdited": "2026-08-17T19:33:00.000Z",
       "Timeline": [],
       "Machines": [],
       "Lifespan": "1887–1961",
@@ -4867,12 +5024,13 @@
       "Field": "Quantum Mechanics",
       "Known For": "One wave equation for all of chemistry, and one very famous hypothetical cat.",
       "Nationality": "Austrian",
+      "Nobel": "Physics 1933",
       "Name": "Erwin Schrödinger"
     },
     {
       "id": "3bde5275-7b5c-8123-a039-d72f241c4e79",
       "url": "https://app.notion.com/p/Niels-Bohr-3bde52757b5c8123a039d72f241c4e79",
-      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "lastEdited": "2026-08-17T19:33:00.000Z",
       "Timeline": [],
       "Machines": [],
       "Lifespan": "1885–1962",
@@ -4884,12 +5042,13 @@
       "Field": "Quantum Mechanics",
       "Known For": "Quantised the atom, then spent thirty years arguing with Einstein about what it meant.",
       "Nationality": "Danish",
+      "Nobel": "Physics 1922",
       "Name": "Niels Bohr"
     },
     {
       "id": "3bde5275-7b5c-8125-b13c-c6c497c077c3",
       "url": "https://app.notion.com/p/Max-Born-3bde52757b5c8125b13cc6c497c077c3",
-      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "lastEdited": "2026-08-17T19:33:00.000Z",
       "Timeline": [],
       "Machines": [],
       "Lifespan": "1882–1970",
@@ -4900,12 +5059,13 @@
       "Field": "Quantum Mechanics",
       "Known For": "Interpreted the wavefunction as probability, which is the part Einstein never accepted.",
       "Nationality": "German-British",
+      "Nobel": "Physics 1954",
       "Name": "Max Born"
     },
     {
       "id": "3bde5275-7b5c-81df-b823-c861e2b439e8",
       "url": "https://app.notion.com/p/Albert-Einstein-3bde52757b5c81dfb823c861e2b439e8",
-      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "lastEdited": "2026-08-17T19:33:00.000Z",
       "Timeline": [
         "3bde5275-7b5c-8132-859d-da190284c1a9"
       ],
@@ -4924,12 +5084,13 @@
       "Field": "Theoretical Physics",
       "Known For": "Special relativity, general relativity, the photoelectric effect — and a lifelong quarrel with quantum mechanics.",
       "Nationality": "German-American",
+      "Nobel": "Physics 1921",
       "Name": "Albert Einstein"
     },
     {
       "id": "3bde5275-7b5c-8198-abbd-fb88875d4ee1",
       "url": "https://app.notion.com/p/Ernest-Rutherford-3bde52757b5c8198abbdfb88875d4ee1",
-      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "lastEdited": "2026-08-17T19:33:00.000Z",
       "Timeline": [],
       "Machines": [],
       "Lifespan": "1871–1937",
@@ -4942,6 +5103,7 @@
       "Field": "Nuclear Physics",
       "Known For": "Fired alpha particles at gold foil and discovered the nucleus in the ricochet.",
       "Nationality": "New Zealander",
+      "Nobel": "Chemistry 1908",
       "Name": "Ernest Rutherford"
     },
     {
@@ -4958,6 +5120,7 @@
       "Field": "Mathematics",
       "Known For": "Derived the field equations of general relativity within days of Einstein, by a different route.",
       "Nationality": "German",
+      "Nobel": null,
       "Name": "David Hilbert"
     },
     {
@@ -4975,12 +5138,13 @@
       "Field": "Mathematics & Physics",
       "Known For": "Found chaos in the three-body problem and came within a hair of special relativity.",
       "Nationality": "French",
+      "Nobel": null,
       "Name": "Henri Poincaré"
     },
     {
       "id": "3bde5275-7b5c-8194-86d5-df287efa5d3f",
       "url": "https://app.notion.com/p/Max-Planck-3bde52757b5c819486d5df287efa5d3f",
-      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "lastEdited": "2026-08-17T19:33:00.000Z",
       "Timeline": [
         "3bde5275-7b5c-810a-85aa-f3479a371f25"
       ],
@@ -4993,12 +5157,13 @@
       "Field": "Quantum Theory",
       "Known For": "Quantised energy as a desperate fix for the black-body spectrum, and started everything.",
       "Nationality": "German",
+      "Nobel": "Physics 1918",
       "Name": "Max Planck"
     },
     {
       "id": "3bde5275-7b5c-81b5-bd0b-d555a2965da3",
       "url": "https://app.notion.com/p/J-J-Thomson-3bde52757b5c81b5bd0bd555a2965da3",
-      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "lastEdited": "2026-08-17T19:33:00.000Z",
       "Timeline": [],
       "Machines": [],
       "Lifespan": "1856–1940",
@@ -5011,12 +5176,13 @@
       "Field": "Atomic Physics",
       "Known For": "Discovered the electron and proposed the plum pudding his student would demolish.",
       "Nationality": "English",
+      "Nobel": "Physics 1906",
       "Name": "J. J. Thomson"
     },
     {
       "id": "3bde5275-7b5c-8125-b482-d7d95529b56f",
       "url": "https://app.notion.com/p/Hendrik-Lorentz-3bde52757b5c8125b482d7d95529b56f",
-      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "lastEdited": "2026-08-17T19:33:00.000Z",
       "Timeline": [],
       "Machines": [],
       "Lifespan": "1853–1928",
@@ -5028,6 +5194,7 @@
       "Field": "Theoretical Physics",
       "Known For": "Wrote down the transformations of special relativity before anyone knew what they meant.",
       "Nationality": "Dutch",
+      "Nobel": "Physics 1902",
       "Name": "Hendrik Lorentz"
     },
     {
@@ -5047,6 +5214,7 @@
       "Field": "Statistical Mechanics",
       "Known For": "S = k log W, carved on his gravestone — he did not live to see atoms accepted.",
       "Nationality": "Austrian",
+      "Nobel": null,
       "Name": "Ludwig Boltzmann"
     },
     {
@@ -5063,6 +5231,7 @@
       "Field": "Thermodynamics",
       "Known For": "Built statistical mechanics and chemical thermodynamics, quietly, at Yale.",
       "Nationality": "American",
+      "Nobel": null,
       "Name": "Josiah Willard Gibbs"
     },
     {
@@ -5080,6 +5249,7 @@
       "Field": "Electromagnetism",
       "Known For": "Four equations that turned electricity, magnetism, and light into one subject.",
       "Nationality": "Scottish",
+      "Nobel": null,
       "Name": "James Clerk Maxwell"
     },
     {
@@ -5098,6 +5268,7 @@
       "Field": "Thermodynamics",
       "Known For": "Named entropy and stated the second law in the form everyone still quotes.",
       "Nationality": "German",
+      "Nobel": null,
       "Name": "Rudolf Clausius"
     },
     {
@@ -5117,6 +5288,7 @@
       "Field": "Electromagnetism",
       "Known For": "Discovered induction with almost no mathematics — the field concept was his.",
       "Nationality": "English",
+      "Nobel": null,
       "Name": "Michael Faraday"
     },
     {
@@ -5134,6 +5306,7 @@
       "Field": "Optics",
       "Known For": "Made the wave theory of light quantitative, and left it needing an aether to wave in.",
       "Nationality": "French",
+      "Nobel": null,
       "Name": "Augustin-Jean Fresnel"
     },
     {
@@ -5150,6 +5323,7 @@
       "Field": "Optics",
       "Known For": "The double-slit experiment, and a decent stab at the Rosetta Stone in his spare time.",
       "Nationality": "English",
+      "Nobel": null,
       "Name": "Thomas Young"
     },
     {
@@ -5166,6 +5340,7 @@
       "Field": "Chemistry",
       "Known For": "Atoms with fixed weights — the idea that made chemistry quantitative.",
       "Nationality": "English",
+      "Nobel": null,
       "Name": "John Dalton"
     },
     {
@@ -5182,6 +5357,7 @@
       "Field": "Chemistry",
       "Known For": "Killed phlogiston with a balance, named oxygen, and was guillotined anyway.",
       "Nationality": "French",
+      "Nobel": null,
       "Name": "Antoine Lavoisier"
     },
     {
@@ -5198,6 +5374,7 @@
       "Field": "Chemistry",
       "Known For": "Systematised phlogiston, the most productive wrong idea in the history of chemistry.",
       "Nationality": "German",
+      "Nobel": null,
       "Name": "Georg Ernst Stahl"
     },
     {
@@ -5215,6 +5392,7 @@
       "Field": "Mechanics & Optics",
       "Known For": "One law of gravitation for apples and planets alike — and the calculus to work it out.",
       "Nationality": "English",
+      "Nobel": null,
       "Name": "Isaac Newton"
     },
     {
@@ -5233,6 +5411,7 @@
       "Field": "Optics",
       "Known For": "The wave theory of light, the pendulum clock, and Saturn's rings correctly explained.",
       "Nationality": "Dutch",
+      "Nobel": null,
       "Name": "Christiaan Huygens"
     },
     {
@@ -5251,6 +5430,7 @@
       "Field": "Astronomy & Mechanics",
       "Known For": "Turned the telescope upward and found moons, phases, and trouble.",
       "Nationality": "Italian",
+      "Nobel": null,
       "Name": "Galileo Galilei"
     },
     {
@@ -5267,6 +5447,7 @@
       "Field": "Astronomy",
       "Known For": "Three laws of planetary motion, extracted from Tycho Brahe's data by sheer arithmetic stubbornness.",
       "Nationality": "German",
+      "Nobel": null,
       "Name": "Johannes Kepler"
     },
     {
@@ -5283,6 +5464,7 @@
       "Field": "Astronomy",
       "Known For": "Put the Sun at the centre and published it the year he died, which may have been wise.",
       "Nationality": "Polish",
+      "Nobel": null,
       "Name": "Nicolaus Copernicus"
     },
     {
@@ -5299,12 +5481,13 @@
       "Field": "Astronomy",
       "Known For": "The Almagest — the geocentric model that organised the sky for fourteen centuries.",
       "Nationality": "Roman Egyptian",
+      "Nobel": null,
       "Name": "Claudius Ptolemy"
     },
     {
       "id": "f3a708d9-63ec-4a86-9f4a-c82690ef9f29",
       "url": "https://app.notion.com/p/Roger-Penrose-f3a708d963ec4a869f4ac82690ef9f29",
-      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "lastEdited": "2026-08-17T19:33:00.000Z",
       "Timeline": [
         "3bde5275-7b5c-810a-85aa-f3479a371f25"
       ],
@@ -5320,12 +5503,13 @@
       "Field": "Mathematical Physics",
       "Known For": "Proved that general relativity predicts its own breakdown: singularities are unavoidable.",
       "Nationality": "British",
+      "Nobel": "Physics 2020",
       "Name": "Roger Penrose"
     },
     {
       "id": "eb5e7181-08ea-45c5-8318-6495db3e671f",
       "url": "https://app.notion.com/p/George-Smoot-eb5e718108ea45c583186495db3e671f",
-      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "lastEdited": "2026-08-17T19:33:00.000Z",
       "Timeline": [
         "3bde5275-7b5c-8130-966f-ff0ab7d23a91"
       ],
@@ -5338,12 +5522,13 @@
       "Field": "Cosmology",
       "Known For": "COBE's map of the microwave background — the first picture of structure in the infant universe.",
       "Nationality": "American",
+      "Nobel": "Physics 2006",
       "Name": "George Smoot"
     },
     {
       "id": "504e6604-1942-46af-b10e-5778b77d2218",
       "url": "https://app.notion.com/p/Didier-Queloz-504e6604194246afb10e5778b77d2218",
-      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "lastEdited": "2026-08-17T19:33:00.000Z",
       "Timeline": [],
       "Machines": [],
       "Lifespan": "1966–",
@@ -5354,12 +5539,13 @@
       "Field": "Astronomy",
       "Known For": "The graduate student on the other end of that discovery.",
       "Nationality": "Swiss",
+      "Nobel": "Physics 2019",
       "Name": "Didier Queloz"
     },
     {
       "id": "f9b3c66a-cb98-4e1c-8252-8d79a3125de0",
       "url": "https://app.notion.com/p/Michel-Mayor-f9b3c66acb984e1c82528d79a3125de0",
-      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "lastEdited": "2026-08-17T19:33:00.000Z",
       "Timeline": [],
       "Machines": [],
       "Lifespan": "1942–",
@@ -5370,12 +5556,13 @@
       "Field": "Astronomy",
       "Known For": "Co-discovered 51 Pegasi b, the first planet found around a Sun-like star.",
       "Nationality": "Swiss",
+      "Nobel": "Physics 2019",
       "Name": "Michel Mayor"
     },
     {
       "id": "e4387cff-b2e4-4511-ba9a-228dd1052f5e",
       "url": "https://app.notion.com/p/James-Peebles-e4387cffb2e44511ba9a228dd1052f5e",
-      "lastEdited": "2026-08-15T18:40:00.000Z",
+      "lastEdited": "2026-08-17T19:33:00.000Z",
       "Timeline": [
         "3bde5275-7b5c-81d4-b2cd-fdcc3add3657",
         "3bde5275-7b5c-813c-b30b-e1bcbd63c5cf",
@@ -5391,6 +5578,7 @@
       "Field": "Cosmology",
       "Known For": "Built most of the theoretical scaffolding of modern physical cosmology.",
       "Nationality": "Canadian-American",
+      "Nobel": "Physics 2019",
       "Name": "James Peebles"
     }
   ],
@@ -10355,6 +10543,1142 @@
       "Category": "Joining",
       "Summary": "Joining electrical parts with a low-melting tin alloy that wets copper and freezes into a conductive, mechanically weak joint.",
       "Name": "Soldering"
+    }
+  ],
+  "glossary": [
+    {
+      "id": "3bfe5275-7b5c-8160-b91f-ed96bef56ffe",
+      "url": "https://app.notion.com/p/Sigma-3bfe52757b5c8160b91fed96bef56ffe",
+      "lastEdited": "2026-08-17T19:33:00.000Z",
+      "Definition": "One standard deviation; a result's distance from the null in those units. Particle physics claims a discovery at 5σ; the Hubble tension has reached it.",
+      "Aliases": "standard deviation, 5σ",
+      "Domain": "Measurement",
+      "Term": "Sigma"
+    },
+    {
+      "id": "3bfe5275-7b5c-81ce-b02c-eb4e0ebc1bf2",
+      "url": "https://app.notion.com/p/Electronvolt-3bfe52757b5c81ceb02ceb4e0ebc1bf2",
+      "lastEdited": "2026-08-17T19:33:00.000Z",
+      "Definition": "The energy an electron gains crossing one volt — 1.6 × 10⁻¹⁹ J. The natural unit of atoms (eV), nuclei (MeV) and particle physics (GeV, TeV).",
+      "Aliases": "eV, MeV, GeV, TeV",
+      "Domain": "Measurement",
+      "Term": "Electronvolt"
+    },
+    {
+      "id": "3bfe5275-7b5c-8117-8792-d4befd44002e",
+      "url": "https://app.notion.com/p/Kelvin-3bfe52757b5c81178792d4befd44002e",
+      "lastEdited": "2026-08-17T19:33:00.000Z",
+      "Definition": "The SI unit of temperature, counted from absolute zero in steps the size of a Celsius degree. Every thermodynamic formula wants kelvin.",
+      "Aliases": "K",
+      "Domain": "Measurement",
+      "Term": "Kelvin"
+    },
+    {
+      "id": "3bfe5275-7b5c-817a-937b-d0c8611f51fd",
+      "url": "https://app.notion.com/p/Parts-per-million-3bfe52757b5c817a937bd0c8611f51fd",
+      "lastEdited": "2026-08-17T19:33:00.000Z",
+      "Definition": "One part in a million by mass, unless stated otherwise: 1 ppm is 1 gram per tonne. Crustal abundances and ore grades on this site are quoted in it.",
+      "Aliases": "ppm",
+      "Domain": "Measurement",
+      "Term": "Parts per million"
+    },
+    {
+      "id": "3bfe5275-7b5c-816b-9cc4-e5f97887ab2f",
+      "url": "https://app.notion.com/p/Dimensionless-3bfe52757b5c816b9cc4e5f97887ab2f",
+      "lastEdited": "2026-08-17T19:33:00.000Z",
+      "Definition": "A quantity with no units — a ratio, like the fine-structure constant or a compression ratio — and so the same for anyone who measures it.",
+      "Aliases": null,
+      "Domain": "Mathematics",
+      "Term": "Dimensionless"
+    },
+    {
+      "id": "3bfe5275-7b5c-81c1-8c08-ef17f839237a",
+      "url": "https://app.notion.com/p/Order-of-magnitude-3bfe52757b5c81c18c08ef17f839237a",
+      "lastEdited": "2026-08-17T19:33:00.000Z",
+      "Definition": "A factor of ten. Two things an order of magnitude apart differ tenfold; the timeline covers 161 of them.",
+      "Aliases": "orders of magnitude",
+      "Domain": "Mathematics",
+      "Term": "Order of magnitude"
+    },
+    {
+      "id": "3bfe5275-7b5c-81f7-a9df-d26ae42dbd42",
+      "url": "https://app.notion.com/p/Logarithmic-scale-3bfe52757b5c81f7a9dfd26ae42dbd42",
+      "lastEdited": "2026-08-17T19:33:00.000Z",
+      "Definition": "An axis on which each step multiplies rather than adds, so quantities spanning many orders of magnitude fit on one picture. The timeline, the abundance lenses and the p–V diagram of a steam engine all use one.",
+      "Aliases": "log scale, log axis, orders of magnitude",
+      "Domain": "Mathematics",
+      "Term": "Logarithmic scale"
+    },
+    {
+      "id": "3bfe5275-7b5c-81e7-a183-cfbeb1d28f34",
+      "url": "https://app.notion.com/p/Cure-3bfe52757b5c81e7a183cfbeb1d28f34",
+      "lastEdited": "2026-08-17T19:33:00.000Z",
+      "Definition": "The chemical hardening of concrete, epoxy or resin over time — a reaction, not drying. Concrete kept damp for a week is far stronger than concrete left to dry out.",
+      "Aliases": "curing, cured, hydration",
+      "Domain": "Workshop",
+      "Term": "Cure"
+    },
+    {
+      "id": "3bfe5275-7b5c-81b0-b916-c96207bb8ce7",
+      "url": "https://app.notion.com/p/Mechanical-advantage-3bfe52757b5c81b0b916c96207bb8ce7",
+      "lastEdited": "2026-08-17T19:33:00.000Z",
+      "Definition": "The factor by which a machine multiplies force at the cost of distance — a lever's arm ratio, the number of rope segments in a pulley system.",
+      "Aliases": "purchase",
+      "Domain": "Workshop",
+      "Term": "Mechanical advantage"
+    },
+    {
+      "id": "3bfe5275-7b5c-81aa-845d-e58cbf3a7287",
+      "url": "https://app.notion.com/p/Tolerance-3bfe52757b5c81aa845de58cbf3a7287",
+      "lastEdited": "2026-08-17T19:33:00.000Z",
+      "Definition": "The permitted variation in a dimension — how far from nominal a part may be and still fit. Tighter costs more; a lathe holds a hundredth of a millimetre.",
+      "Aliases": "tolerances",
+      "Domain": "Workshop",
+      "Term": "Tolerance"
+    },
+    {
+      "id": "3bfe5275-7b5c-812d-bcde-f250711c5585",
+      "url": "https://app.notion.com/p/Burr-3bfe52757b5c812dbcdef250711c5585",
+      "lastEdited": "2026-08-17T19:33:00.000Z",
+      "Definition": "The thin ragged edge of metal left where a cut or grind ends. On a blade it must be removed or it folds on first use; on machined parts it is deburred.",
+      "Aliases": "burrs, deburr, deburring",
+      "Domain": "Workshop",
+      "Term": "Burr"
+    },
+    {
+      "id": "3bfe5275-7b5c-81f0-8773-ddbccc430dba",
+      "url": "https://app.notion.com/p/Shielding-gas-3bfe52757b5c81f08773ddbccc430dba",
+      "lastEdited": "2026-08-17T19:33:00.000Z",
+      "Definition": "Argon or a mix blown over a weld pool to keep oxygen and nitrogen out, which would otherwise make it porous and brittle. Stick welding makes its own from the flux coating.",
+      "Aliases": "shielding, argon",
+      "Domain": "Workshop",
+      "Term": "Shielding gas"
+    },
+    {
+      "id": "3bfe5275-7b5c-81ae-ba20-c07ac6f05056",
+      "url": "https://app.notion.com/p/Arc-3bfe52757b5c81aeba20c07ac6f05056",
+      "lastEdited": "2026-08-17T19:33:00.000Z",
+      "Definition": "Electric current jumping through ionised gas — a plasma at thousands of degrees. The heat source of arc welding and of the arc furnace.",
+      "Aliases": "arc welding, arcs",
+      "Domain": "Workshop",
+      "Term": "Arc"
+    },
+    {
+      "id": "3bfe5275-7b5c-8189-982c-ec5e089a4970",
+      "url": "https://app.notion.com/p/Capillary-action-3bfe52757b5c8189982cec5e089a4970",
+      "lastEdited": "2026-08-17T19:33:00.000Z",
+      "Definition": "Liquid pulled into a narrow gap by surface tension. What draws brazing filler through a joint, and why the gap has to be tight.",
+      "Aliases": "capillarity",
+      "Domain": "Workshop",
+      "Term": "Capillary action"
+    },
+    {
+      "id": "3bfe5275-7b5c-817f-ab75-cd87fc20edb7",
+      "url": "https://app.notion.com/p/Wetting-3bfe52757b5c817fab75cd87fc20edb7",
+      "lastEdited": "2026-08-17T19:33:00.000Z",
+      "Definition": "A liquid metal spreading over and bonding to a solid one, as solder must to copper. Needs a clean surface and flux; if it balls up instead, the joint has failed before it froze.",
+      "Aliases": "wet, wets",
+      "Domain": "Workshop",
+      "Term": "Wetting"
+    },
+    {
+      "id": "3bfe5275-7b5c-81ae-8076-faf44bda8a6e",
+      "url": "https://app.notion.com/p/Work-hardening-3bfe52757b5c81ae8076faf44bda8a6e",
+      "lastEdited": "2026-08-17T19:33:00.000Z",
+      "Definition": "A metal getting harder and more brittle as it is bent or hammered cold, as its crystals tangle. Why a paperclip snaps after a few bends, and why forged parts are annealed between heats.",
+      "Aliases": "work-hardening, work-harden, work-hardens, work-hardened, cold working",
+      "Domain": "Workshop",
+      "Term": "Work hardening"
+    },
+    {
+      "id": "3bfe5275-7b5c-810e-a9b4-d7d04ccf17fa",
+      "url": "https://app.notion.com/p/Quenching-3bfe52757b5c810ea9b4d7d04ccf17fa",
+      "lastEdited": "2026-08-17T19:33:00.000Z",
+      "Definition": "Cooling hot steel fast — in oil or water — to trap carbon in a hard, brittle structure called martensite. Tempering afterwards trades some hardness back for toughness.",
+      "Aliases": "quench, quenched, martensite, tempering, temper",
+      "Domain": "Workshop",
+      "Term": "Quenching"
+    },
+    {
+      "id": "3bfe5275-7b5c-8129-a681-d87c7f49ffa0",
+      "url": "https://app.notion.com/p/Annealing-3bfe52757b5c8129a681d87c7f49ffa0",
+      "lastEdited": "2026-08-17T19:33:00.000Z",
+      "Definition": "Heating a metal and cooling it slowly to soften it and relieve stress. The opposite of quenching.",
+      "Aliases": "anneal, annealed",
+      "Domain": "Workshop",
+      "Term": "Annealing"
+    },
+    {
+      "id": "3bfe5275-7b5c-8134-82c5-fabd9cae82dc",
+      "url": "https://app.notion.com/p/Thermocouple-3bfe52757b5c813482c5fabd9cae82dc",
+      "lastEdited": "2026-08-17T19:33:00.000Z",
+      "Definition": "Two different metals joined at a hot end and a cold end make a small voltage — the Seebeck effect. Used to measure temperature, and in bulk to power spacecraft from a lump of plutonium.",
+      "Aliases": "thermoelectric, Seebeck",
+      "Domain": "Machines",
+      "Term": "Thermocouple"
+    },
+    {
+      "id": "3bfe5275-7b5c-819a-bff1-c3208c3d0434",
+      "url": "https://app.notion.com/p/Fuel-cell-3bfe52757b5c819abff1c3208c3d0434",
+      "lastEdited": "2026-08-17T19:33:00.000Z",
+      "Definition": "A device that combines a fuel and oxygen electrochemically to make electricity and water directly, without burning — so it is not bound by the Carnot limit.",
+      "Aliases": "fuel cells",
+      "Domain": "Machines",
+      "Term": "Fuel cell"
+    },
+    {
+      "id": "3bfe5275-7b5c-8159-a02f-fdd6f62fed1e",
+      "url": "https://app.notion.com/p/Power-density-3bfe52757b5c8159a02ffdd6f62fed1e",
+      "lastEdited": "2026-08-17T19:33:00.000Z",
+      "Definition": "Power per unit of mass or volume. A jet engine's is enormous, a wind turbine's tiny — which is why one is small and the other is not.",
+      "Aliases": null,
+      "Domain": "Machines",
+      "Term": "Power density"
+    },
+    {
+      "id": "3bfe5275-7b5c-81c5-bb37-f5c4d266495d",
+      "url": "https://app.notion.com/p/Specific-impulse-3bfe52757b5c81c5bb37f5c4d266495d",
+      "lastEdited": "2026-08-17T19:33:00.000Z",
+      "Definition": "How much thrust a rocket gets per unit of propellant per second, in seconds: 250–300 for solids, up to 450 for hydrogen–oxygen. The rocket equivalent of fuel economy.",
+      "Aliases": "Isp",
+      "Domain": "Machines",
+      "Term": "Specific impulse"
+    },
+    {
+      "id": "3bfe5275-7b5c-8153-a6c3-d22700df089a",
+      "url": "https://app.notion.com/p/Stator-3bfe52757b5c8153a6c3d22700df089a",
+      "lastEdited": "2026-08-17T19:33:00.000Z",
+      "Definition": "The part of an electric machine that does not move — the outer ring of coils or magnets. The rotor turns inside it.",
+      "Aliases": "rotor",
+      "Domain": "Machines",
+      "Term": "Stator"
+    },
+    {
+      "id": "3bfe5275-7b5c-8179-88f4-cc31a8620454",
+      "url": "https://app.notion.com/p/Superalloy-3bfe52757b5c817988f4cc31a8620454",
+      "lastEdited": "2026-08-17T19:33:00.000Z",
+      "Definition": "A nickel- or cobalt-based alloy that keeps its strength close to its melting point, grown as a single crystal for turbine blades. The reason jet engines can run hotter than their own metal would allow.",
+      "Aliases": "superalloys, single-crystal",
+      "Domain": "Machines",
+      "Term": "Superalloy"
+    },
+    {
+      "id": "3bfe5275-7b5c-8171-af3f-def5f26c45ad",
+      "url": "https://app.notion.com/p/Turbine-3bfe52757b5c8171af3fdef5f26c45ad",
+      "lastEdited": "2026-08-17T19:33:00.000Z",
+      "Definition": "A rotor of blades that a moving fluid — steam, gas, water, wind — spins as it passes. Reaction turbines run full of fluid under pressure; impulse turbines take a jet.",
+      "Aliases": "turbines",
+      "Domain": "Machines",
+      "Term": "Turbine"
+    },
+    {
+      "id": "3bfe5275-7b5c-8193-bd0c-fb96a7df8ca6",
+      "url": "https://app.notion.com/p/Four-stroke-3bfe52757b5c8193bd0cfb96a7df8ca6",
+      "lastEdited": "2026-08-17T19:33:00.000Z",
+      "Definition": "Intake, compression, power, exhaust — one power stroke every two revolutions. Otto's 1876 cycle, and most engines on the road.",
+      "Aliases": "four stroke, two-stroke",
+      "Domain": "Machines",
+      "Term": "Four-stroke"
+    },
+    {
+      "id": "3bfe5275-7b5c-81f7-b9d7-d7556e9f4b95",
+      "url": "https://app.notion.com/p/Compression-ratio-3bfe52757b5c81f7b9d7d7556e9f4b95",
+      "lastEdited": "2026-08-17T19:33:00.000Z",
+      "Definition": "The cylinder's largest volume over its smallest. Higher means more efficient — until the fuel knocks, which is what limits petrol engines to about 10 and frees diesels to reach 20.",
+      "Aliases": null,
+      "Domain": "Machines",
+      "Term": "Compression ratio"
+    },
+    {
+      "id": "3bfe5275-7b5c-8135-bcb4-cd215611d81d",
+      "url": "https://app.notion.com/p/Cycle-3bfe52757b5c8135bcb4cd215611d81d",
+      "lastEdited": "2026-08-17T19:33:00.000Z",
+      "Definition": "A sequence of processes that brings a working fluid back to its starting state, done over and over. On a p–V diagram it is a closed loop, and the area inside is the work per cycle.",
+      "Aliases": "cycles",
+      "Domain": "Machines",
+      "Term": "Cycle"
+    },
+    {
+      "id": "3bfe5275-7b5c-8177-a521-d70ef45d228f",
+      "url": "https://app.notion.com/p/Rare-earths-3bfe52757b5c8177a521d70ef45d228f",
+      "lastEdited": "2026-08-17T19:33:00.000Z",
+      "Definition": "The fifteen lanthanides plus scandium and yttrium — not rare, but so alike chemically that separating them takes hundreds of solvent-extraction stages. Neodymium magnets are the reason anyone cares.",
+      "Aliases": "rare earth, rare-earth, lanthanide, lanthanides, REE",
+      "Domain": "Mining & Metallurgy",
+      "Term": "Rare earths"
+    },
+    {
+      "id": "3bfe5275-7b5c-812f-83cc-db80d0bc378a",
+      "url": "https://app.notion.com/p/Blast-furnace-3bfe52757b5c812f83ccdb80d0bc378a",
+      "lastEdited": "2026-08-17T19:33:00.000Z",
+      "Definition": "A tall shaft in which iron ore, coke and limestone are charged at the top and hot air blown in at the bottom; molten iron and slag are tapped from the hearth. Iron's route to steel for seven centuries.",
+      "Aliases": "pig iron",
+      "Domain": "Mining & Metallurgy",
+      "Term": "Blast furnace"
+    },
+    {
+      "id": "3bfe5275-7b5c-81ec-958d-cf32edbb3c8d",
+      "url": "https://app.notion.com/p/Kroll-process-3bfe52757b5c81ec958dcf32edbb3c8d",
+      "lastEdited": "2026-08-17T19:33:00.000Z",
+      "Definition": "Reducing titanium or zirconium chloride with magnesium metal in a sealed vessel to a porous sponge. Slow and batchwise, and why titanium is expensive.",
+      "Aliases": "Kroll",
+      "Domain": "Mining & Metallurgy",
+      "Term": "Kroll process"
+    },
+    {
+      "id": "3bfe5275-7b5c-81e3-b95d-d70293e0080d",
+      "url": "https://app.notion.com/p/Hall-H-roult-process-3bfe52757b5c81e3b95dd70293e0080d",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "Electrolysing alumina dissolved in molten cryolite at about 960 °C to make aluminium metal — the reason aluminium smelters sit next to cheap electricity.",
+      "Aliases": "Hall–Héroult, Hall-Héroult, Hall–Heroult, Hall-Heroult",
+      "Domain": "Mining & Metallurgy",
+      "Term": "Hall–Héroult process"
+    },
+    {
+      "id": "3bfe5275-7b5c-81c3-a5df-dce4dc2a6571",
+      "url": "https://app.notion.com/p/Bayer-process-3bfe52757b5c81c3a5dfdce4dc2a6571",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "Dissolving bauxite in hot caustic soda to get pure alumina, leaving red mud behind. Step one of aluminium; Hall–Héroult is step two.",
+      "Aliases": "Bayer",
+      "Domain": "Mining & Metallurgy",
+      "Term": "Bayer process"
+    },
+    {
+      "id": "3bfe5275-7b5c-8114-9b6e-fa85f3aacae0",
+      "url": "https://app.notion.com/p/Brine-3bfe52757b5c81149b6efa85f3aacae0",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "Salt-saturated water, pumped from beneath salt flats or the sea, from which lithium, potash, bromine and magnesium are taken by evaporation or chemistry.",
+      "Aliases": "brines, salar",
+      "Domain": "Mining & Metallurgy",
+      "Term": "Brine"
+    },
+    {
+      "id": "3bfe5275-7b5c-816c-accc-d17b4d00acdd",
+      "url": "https://app.notion.com/p/Underground-mining-3bfe52757b5c816cacccd17b4d00acdd",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "Following the ore down shafts and tunnels when it is too deep or too narrow for a pit. Room-and-pillar, longwall, block caving; the deepest reach 4 km.",
+      "Aliases": "underground, block cave, longwall",
+      "Domain": "Mining & Metallurgy",
+      "Term": "Underground mining"
+    },
+    {
+      "id": "3bfe5275-7b5c-8180-bb50-efe3fdb28948",
+      "url": "https://app.notion.com/p/Open-pit-3bfe52757b5c8180bb50efe3fdb28948",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "Mining from the surface down in benches, moving the overburden aside. Cheap per tonne, so it wins for low-grade ore; the deepest is over a kilometre.",
+      "Aliases": "open-pit, opencast, strip mining",
+      "Domain": "Mining & Metallurgy",
+      "Term": "Open pit"
+    },
+    {
+      "id": "3bfe5275-7b5c-81c6-995d-ea27846cd128",
+      "url": "https://app.notion.com/p/Tailings-3bfe52757b5c81c6995dea27846cd128",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "What is left after the valuable mineral is taken out — most of the rock, ground fine and wet, stored behind dams. The largest structures the industry builds, and the ones that fail worst.",
+      "Aliases": null,
+      "Domain": "Mining & Metallurgy",
+      "Term": "Tailings"
+    },
+    {
+      "id": "3bfe5275-7b5c-8155-8d7e-ccc37f8d45fd",
+      "url": "https://app.notion.com/p/Solvent-extraction-3bfe52757b5c81558d7eccc37f8d45fd",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "Separating metals in solution by shaking with an organic liquid that prefers one of them, over and over. Copper, uranium, and every one of the rare earths.",
+      "Aliases": "SX, SX-EW",
+      "Domain": "Mining & Metallurgy",
+      "Term": "Solvent extraction"
+    },
+    {
+      "id": "3bfe5275-7b5c-81d2-9028-f91a82b24e08",
+      "url": "https://app.notion.com/p/Leaching-3bfe52757b5c81d29028f91a82b24e08",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "Dissolving the wanted metal out of ore with a chemical — cyanide for gold, sulfuric acid for copper oxides and uranium — and recovering it from the solution. Heaps, tanks, or in the ground.",
+      "Aliases": "leach, leached, heap leach, in-situ leach, cyanidation",
+      "Domain": "Mining & Metallurgy",
+      "Term": "Leaching"
+    },
+    {
+      "id": "3bfe5275-7b5c-812f-9a7a-d33e77953ab7",
+      "url": "https://app.notion.com/p/Smelting-3bfe52757b5c812f9a7ad33e77953ab7",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "Melting an ore or concentrate with a reducing agent and a flux so the metal separates from the slag. Blast furnaces, flash smelters, submerged-arc furnaces.",
+      "Aliases": "smelt, smelted, smelter, matte, slag",
+      "Domain": "Mining & Metallurgy",
+      "Term": "Smelting"
+    },
+    {
+      "id": "3bfe5275-7b5c-8180-a954-f3d23ea26a9d",
+      "url": "https://app.notion.com/p/Flotation-3bfe52757b5c8180a954f3d23ea26a9d",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "Grinding ore to powder, mixing it with water and chemicals that make the wanted mineral water-repellent, and blowing bubbles through it — the mineral floats off in the froth. The workhorse of base-metal mining.",
+      "Aliases": "froth flotation, floated, concentrate",
+      "Domain": "Mining & Metallurgy",
+      "Term": "Flotation"
+    },
+    {
+      "id": "3bfe5275-7b5c-819e-bd22-c5ef824732e0",
+      "url": "https://app.notion.com/p/Concentration-factor-3bfe52757b5c819ebd22c5ef824732e0",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "How much geology has enriched an element above its average in the crust before it is worth mining: about 3 for aluminium, 80 for copper, 500 for gold, over 100,000 for antimony.",
+      "Aliases": "clarke of concentration",
+      "Domain": "Mining & Metallurgy",
+      "Term": "Concentration factor"
+    },
+    {
+      "id": "3bfe5275-7b5c-8113-95f7-ef2ca4e0cc15",
+      "url": "https://app.notion.com/p/Ore-grade-3bfe52757b5c811395f7ef2ca4e0cc15",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "The concentration of the wanted element in the ore — 50 % for iron, 0.5 % for copper, a few grams per tonne for gold. Divided by crustal abundance it gives the concentration factor.",
+      "Aliases": "grade, cut-off grade",
+      "Domain": "Mining & Metallurgy",
+      "Term": "Ore grade"
+    },
+    {
+      "id": "3bfe5275-7b5c-8136-86fd-f2277b9738e2",
+      "url": "https://app.notion.com/p/Ore-3bfe52757b5c813686fdf2277b9738e2",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "Rock that holds enough of something valuable to be worth mining. What counts as enough depends on price and technology, and changes.",
+      "Aliases": "ores, orebody, ore body",
+      "Domain": "Mining & Metallurgy",
+      "Term": "Ore"
+    },
+    {
+      "id": "3bfe5275-7b5c-81a9-8e84-f552c99ecdd2",
+      "url": "https://app.notion.com/p/Porphyry-deposit-3bfe52757b5c81a98e84f552c99ecdd2",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "A huge, low-grade body of copper (often with molybdenum and gold) disseminated through a granitic intrusion. Most of the world's copper, mined open-pit at half a percent.",
+      "Aliases": "porphyry",
+      "Domain": "Mineralogy",
+      "Term": "Porphyry deposit"
+    },
+    {
+      "id": "3bfe5275-7b5c-8189-baf5-d040064536bb",
+      "url": "https://app.notion.com/p/Laterite-3bfe52757b5c8189baf5d040064536bb",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "The deep, iron- and aluminium-rich soil left when tropical rain leaches everything else out of rock. Bauxite is an aluminium laterite; nickel laterites are half the world's nickel.",
+      "Aliases": "laterites, lateritic",
+      "Domain": "Mineralogy",
+      "Term": "Laterite"
+    },
+    {
+      "id": "3bfe5275-7b5c-81dd-9cbc-f72750fe7ad1",
+      "url": "https://app.notion.com/p/Pegmatite-3bfe52757b5c81dd9cbcf72750fe7ad1",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "A very coarse-grained igneous rock, the last liquid of a cooling granite, where rare elements — lithium, tantalum, beryllium — concentrate in big crystals.",
+      "Aliases": "pegmatites",
+      "Domain": "Mineralogy",
+      "Term": "Pegmatite"
+    },
+    {
+      "id": "3bfe5275-7b5c-8181-bc45-e57958595e64",
+      "url": "https://app.notion.com/p/Placer-3bfe52757b5c8181bc45e57958595e64",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "A deposit of dense, resistant minerals — gold, cassiterite, ilmenite — concentrated by rivers or waves after weathering out of rock. Panned, dredged, or sluiced.",
+      "Aliases": "placers, alluvial",
+      "Domain": "Mineralogy",
+      "Term": "Placer"
+    },
+    {
+      "id": "3bfe5275-7b5c-816e-9230-da033b356820",
+      "url": "https://app.notion.com/p/Kimberlite-3bfe52757b5c816e9230da033b356820",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "A volcanic rock from very deep in the mantle that carries diamonds up in pipes. Almost every diamond mine is a kimberlite pipe.",
+      "Aliases": null,
+      "Domain": "Mineralogy",
+      "Term": "Kimberlite"
+    },
+    {
+      "id": "3bfe5275-7b5c-815f-aa25-c75b66455b37",
+      "url": "https://app.notion.com/p/Silicate-3bfe52757b5c815faa25c75b66455b37",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "A mineral built from silicon–oxygen tetrahedra, linked into chains, sheets or frameworks. Over 90 % of the crust: feldspar, quartz, mica, olivine, pyroxene.",
+      "Aliases": "silicates",
+      "Domain": "Mineralogy",
+      "Term": "Silicate"
+    },
+    {
+      "id": "3bfe5275-7b5c-81b3-a81a-fa95e0dacb97",
+      "url": "https://app.notion.com/p/Specific-gravity-3bfe52757b5c81b3a81afa95e0dacb97",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "A mineral's density relative to water. Quartz 2.65, hematite 5.3, gold 19.3 — one of the quickest ways to tell minerals apart in the hand.",
+      "Aliases": "S.G., density",
+      "Domain": "Mineralogy",
+      "Term": "Specific gravity"
+    },
+    {
+      "id": "3bfe5275-7b5c-81a5-8091-e1cb294c376b",
+      "url": "https://app.notion.com/p/Mohs-hardness-3bfe52757b5c81a58091e1cb294c376b",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "A 1–10 scratch scale: each mineral scratches the ones below it. Talc 1, gypsum 2, calcite 3, quartz 7, corundum 9, diamond 10. Ordinal, not linear.",
+      "Aliases": "Mohs, hardness",
+      "Domain": "Mineralogy",
+      "Term": "Mohs hardness"
+    },
+    {
+      "id": "3bfe5275-7b5c-81a1-b8f2-d6e28356bc84",
+      "url": "https://app.notion.com/p/Mineral-3bfe52757b5c81a1b8f2d6e28356bc84",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "A naturally occurring solid with a definite chemical composition and crystal structure. About 6,000 are known; a rock is a mixture of them.",
+      "Aliases": "minerals",
+      "Domain": "Mineralogy",
+      "Term": "Mineral"
+    },
+    {
+      "id": "3bfe5275-7b5c-8100-bd4a-d6563cd77245",
+      "url": "https://app.notion.com/p/Mole-3bfe52757b5c8100bd4ad6563cd77245",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "The chemist's counting unit: 6.022 × 10²³ entities, chosen so that a mole of carbon-12 weighs twelve grams.",
+      "Aliases": "molar",
+      "Domain": "Chemistry",
+      "Term": "Mole"
+    },
+    {
+      "id": "3bfe5275-7b5c-811b-a283-e47b3cb3b4ee",
+      "url": "https://app.notion.com/p/Alloy-3bfe52757b5c811ba283e47b3cb3b4ee",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "A metal mixed with other elements to change its properties: steel is iron with carbon, bronze copper with tin, superalloys nickel with a dozen things.",
+      "Aliases": "alloys, alloyed",
+      "Domain": "Chemistry",
+      "Term": "Alloy"
+    },
+    {
+      "id": "3bfe5275-7b5c-8109-89e1-ffd3f92e09ae",
+      "url": "https://app.notion.com/p/Flux-3bfe52757b5c810989e1ffd3f92e09ae",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "In joining and smelting, a substance that dissolves oxide and keeps air off hot metal so it can wet and bond — rosin in solder, borax in brazing, limestone in a blast furnace.",
+      "Aliases": "fluxes",
+      "Domain": "Chemistry",
+      "Term": "Flux"
+    },
+    {
+      "id": "3bfe5275-7b5c-813b-bf55-dbf3893d9b74",
+      "url": "https://app.notion.com/p/Activation-energy-3bfe52757b5c813bbf55dbf3893d9b74",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "The energy barrier a reaction must climb before it runs, and the reason rates rise so steeply with temperature — the Arrhenius law.",
+      "Aliases": "Arrhenius",
+      "Domain": "Chemistry",
+      "Term": "Activation energy"
+    },
+    {
+      "id": "3bfe5275-7b5c-814d-a5cd-f1c607a39d99",
+      "url": "https://app.notion.com/p/Catalyst-3bfe52757b5c814da5cdf1c607a39d99",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "A substance that speeds a reaction without being consumed, by offering an easier path. Platinum in a fuel cell and a catalytic converter; iron in Haber–Bosch.",
+      "Aliases": "catalytic, catalysis",
+      "Domain": "Chemistry",
+      "Term": "Catalyst"
+    },
+    {
+      "id": "3bfe5275-7b5c-8196-8fbf-c9d894971d2b",
+      "url": "https://app.notion.com/p/Electrolysis-3bfe52757b5c81968fbfc9d894971d2b",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "Driving a chemical reaction with electric current — splitting water, or dissolving aluminium out of alumina in a Hall–Héroult cell. The reverse of a battery.",
+      "Aliases": "electrolyse, electrolytic, electrowinning, electrorefining",
+      "Domain": "Chemistry",
+      "Term": "Electrolysis"
+    },
+    {
+      "id": "3bfe5275-7b5c-81cb-9ed9-d491f5183de8",
+      "url": "https://app.notion.com/p/Reduction-3bfe52757b5c81cb9ed9d491f5183de8",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "Gain of electrons; in metallurgy, pulling a metal out of its ore by stripping the oxygen or sulfur off it — with carbon, hydrogen, or electricity.",
+      "Aliases": "reduce, reduced, reducing",
+      "Domain": "Chemistry",
+      "Term": "Reduction"
+    },
+    {
+      "id": "3bfe5275-7b5c-813c-8b4c-ef437458cb9d",
+      "url": "https://app.notion.com/p/Oxidation-3bfe52757b5c813c8b4cef437458cb9d",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "Loss of electrons — historically, combining with oxygen. Rust, fire and a battery discharging are all oxidation on one side and reduction on the other.",
+      "Aliases": "oxidise, oxidize, oxidised, redox",
+      "Domain": "Chemistry",
+      "Term": "Oxidation"
+    },
+    {
+      "id": "3bfe5275-7b5c-8171-b039-d0fccc6e9941",
+      "url": "https://app.notion.com/p/Neutrino-3bfe52757b5c8171b039d0fccc6e9941",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "A near-massless neutral particle that barely interacts with anything; trillions pass through you each second. The cosmic neutrino background at 1.95 K is still undetected.",
+      "Aliases": "neutrinos",
+      "Domain": "Nuclear & Particle",
+      "Term": "Neutrino"
+    },
+    {
+      "id": "3bfe5275-7b5c-8194-b923-cc8bfdd459f4",
+      "url": "https://app.notion.com/p/Symmetry-breaking-3bfe52757b5c8194b923cc8bfdd459f4",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "A state that has less symmetry than the laws that produced it, like a pencil falling over. The Higgs field's doing it is what gives the W and Z their mass.",
+      "Aliases": "spontaneous symmetry breaking",
+      "Domain": "Nuclear & Particle",
+      "Term": "Symmetry breaking"
+    },
+    {
+      "id": "3bfe5275-7b5c-8150-b8cb-daf238de6e75",
+      "url": "https://app.notion.com/p/Gauge-symmetry-3bfe52757b5c8150b8cbdaf238de6e75",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "A symmetry of the equations under local transformations that turns out to require the existence of a force. Electromagnetism, the weak and strong forces are all gauge forces.",
+      "Aliases": "gauge theory, gauge",
+      "Domain": "Nuclear & Particle",
+      "Term": "Gauge symmetry"
+    },
+    {
+      "id": "3bfe5275-7b5c-810e-a238-cc63159cc6d7",
+      "url": "https://app.notion.com/p/Standard-Model-3bfe52757b5c810ea238cc63159cc6d7",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "The theory of everything except gravity: twelve matter particles, four force carriers, the Higgs, and about nineteen numbers nobody can derive. Fifty years unbroken.",
+      "Aliases": null,
+      "Domain": "Nuclear & Particle",
+      "Term": "Standard Model"
+    },
+    {
+      "id": "3bfe5275-7b5c-81cd-84e1-c6529097de3f",
+      "url": "https://app.notion.com/p/Baryon-3bfe52757b5c81cd84e1c6529097de3f",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "A particle made of three quarks — protons and neutrons, essentially. Ordinary matter is baryonic; the excess of baryons over antibaryons is the unsolved problem of baryogenesis.",
+      "Aliases": "baryons, baryonic, baryogenesis",
+      "Domain": "Nuclear & Particle",
+      "Term": "Baryon"
+    },
+    {
+      "id": "3bfe5275-7b5c-814b-9789-c38de40e9250",
+      "url": "https://app.notion.com/p/Enrichment-3bfe52757b5c814b9789c38de40e9250",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "Raising the share of uranium-235 above its natural 0.7 %, by spinning uranium hexafluoride in centrifuges. Reactor fuel is 3–5 %; a weapon needs about 90 %.",
+      "Aliases": "enriched",
+      "Domain": "Nuclear & Particle",
+      "Term": "Enrichment"
+    },
+    {
+      "id": "3bfe5275-7b5c-8100-8b5a-cdfdd28e8a30",
+      "url": "https://app.notion.com/p/Moderator-3bfe52757b5c81008b5acdfdd28e8a30",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "A material — water, graphite — that slows fast neutrons down so uranium-235 can capture them. Every thermal reactor has one.",
+      "Aliases": "moderated, moderating, slowed neutrons",
+      "Domain": "Nuclear & Particle",
+      "Term": "Moderator"
+    },
+    {
+      "id": "3bfe5275-7b5c-8180-90f9-f39d16d35f42",
+      "url": "https://app.notion.com/p/Isotope-3bfe52757b5c818090f9f39d16d35f42",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "Atoms of one element with different numbers of neutrons — same chemistry, different mass and sometimes different stability. Uranium-235 fissions; uranium-238 mostly does not.",
+      "Aliases": "isotopes",
+      "Domain": "Nuclear & Particle",
+      "Term": "Isotope"
+    },
+    {
+      "id": "3bfe5275-7b5c-8166-84a2-f751b836eb21",
+      "url": "https://app.notion.com/p/Half-life-3bfe52757b5c816684a2f751b836eb21",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "The time for half of a sample of a radioactive isotope to decay. Fixed for each isotope, from microseconds to longer than the age of the universe.",
+      "Aliases": "half-lives",
+      "Domain": "Nuclear & Particle",
+      "Term": "Half-life"
+    },
+    {
+      "id": "3bfe5275-7b5c-8114-a9ba-c1c5d07561c9",
+      "url": "https://app.notion.com/p/Fusion-3bfe52757b5c8114a9bac1c5d07561c9",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "Light nuclei joining into a heavier one and releasing energy — the power source of stars, and the hard way to make helium on Earth.",
+      "Aliases": "fuse, fusing",
+      "Domain": "Nuclear & Particle",
+      "Term": "Fusion"
+    },
+    {
+      "id": "3bfe5275-7b5c-817b-919e-f6e9ce8fc016",
+      "url": "https://app.notion.com/p/Fission-3bfe52757b5c817b919ef6e9ce8fc016",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "A heavy nucleus splitting into two lighter ones and releasing energy and neutrons; if each fission causes at least one more, the reaction is self-sustaining.",
+      "Aliases": "chain reaction, fissile",
+      "Domain": "Nuclear & Particle",
+      "Term": "Fission"
+    },
+    {
+      "id": "3bfe5275-7b5c-81d1-8d82-ea8c1d1811a2",
+      "url": "https://app.notion.com/p/Interferometer-3bfe52757b5c81d18d82ea8c1d1811a2",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "An instrument that combines waves from two paths and reads their difference — kilometre-long arms for gravitational waves, or telescopes a continent apart to resolve a black hole's shadow.",
+      "Aliases": "interferometry, interferometers, interferometric",
+      "Domain": "Astronomy",
+      "Term": "Interferometer"
+    },
+    {
+      "id": "3bfe5275-7b5c-8159-877c-e4dc32011969",
+      "url": "https://app.notion.com/p/Chandrasekhar-limit-3bfe52757b5c8159877ce4dc32011969",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "About 1.4 solar masses: the most a white dwarf can weigh before electron degeneracy pressure fails and it collapses.",
+      "Aliases": null,
+      "Domain": "Astronomy",
+      "Term": "Chandrasekhar limit"
+    },
+    {
+      "id": "3bfe5275-7b5c-81fe-99b5-f99fc168ff3b",
+      "url": "https://app.notion.com/p/Pulsar-3bfe52757b5c81fe99b5f99fc168ff3b",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "A spinning neutron star sweeping a radio beam past us like a lighthouse, with a regularity that rivals atomic clocks. Found in 1967 and briefly labelled LGM-1.",
+      "Aliases": "pulsars, neutron star",
+      "Domain": "Astronomy",
+      "Term": "Pulsar"
+    },
+    {
+      "id": "3bfe5275-7b5c-811b-b7be-e1a3a010af45",
+      "url": "https://app.notion.com/p/Quasar-3bfe52757b5c811bb7bee1a3a010af45",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "The core of a distant galaxy outshining the whole galaxy, powered by matter falling onto a supermassive black hole. The first was recognised in 1963 by its redshift.",
+      "Aliases": "quasars, active galactic nucleus, AGN",
+      "Domain": "Astronomy",
+      "Term": "Quasar"
+    },
+    {
+      "id": "3bfe5275-7b5c-810b-b34b-dd3892afb093",
+      "url": "https://app.notion.com/p/Cepheid-3bfe52757b5c810bb34bdd3892afb093",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "A pulsating star whose period is set by its true brightness, so measuring the period gives the distance. The rung of the distance ladder everything above stands on.",
+      "Aliases": "Cepheids",
+      "Domain": "Astronomy",
+      "Term": "Cepheid"
+    },
+    {
+      "id": "3bfe5275-7b5c-8101-b382-e5245197c127",
+      "url": "https://app.notion.com/p/Parallax-3bfe52757b5c8101b382e5245197c127",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "The apparent shift of a nearby star against distant ones as the Earth moves round the Sun. The only direct measure of stellar distance, and the origin of the parsec.",
+      "Aliases": "parsec",
+      "Domain": "Astronomy",
+      "Term": "Parallax"
+    },
+    {
+      "id": "3bfe5275-7b5c-818e-8148-e1a86365bbb7",
+      "url": "https://app.notion.com/p/Spectral-type-3bfe52757b5c818e8148e1a86365bbb7",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "A star's classification by the absorption lines in its light, which is really by temperature: O B A F G K M, hottest to coolest. The Sun is a G2.",
+      "Aliases": "spectral class, spectral sequence",
+      "Domain": "Astronomy",
+      "Term": "Spectral type"
+    },
+    {
+      "id": "3bfe5275-7b5c-81e8-aa0f-fa1e22f33959",
+      "url": "https://app.notion.com/p/Heat-death-3bfe52757b5c81e8aa0ffa1e22f33959",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "The far future in which the universe reaches maximum entropy — no gradients, no structure, no work possible.",
+      "Aliases": null,
+      "Domain": "Cosmology",
+      "Term": "Heat death"
+    },
+    {
+      "id": "3bfe5275-7b5c-8124-97b8-f9472a4bc1a6",
+      "url": "https://app.notion.com/p/Population-III-3bfe52757b5c812497b8f9472a4bc1a6",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "The first generation of stars, made of hydrogen and helium alone, huge and short-lived; none has yet been observed.",
+      "Aliases": "first stars",
+      "Domain": "Cosmology",
+      "Term": "Population III"
+    },
+    {
+      "id": "3bfe5275-7b5c-81ea-8067-cceb1f0277e8",
+      "url": "https://app.notion.com/p/Reionization-3bfe52757b5c81ea8067cceb1f0277e8",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "The stripping of electrons back off intergalactic hydrogen by the first stars and quasars, between about 150 million and a billion years — the universe's second, and final, phase change.",
+      "Aliases": "reionized, reionize",
+      "Domain": "Cosmology",
+      "Term": "Reionization"
+    },
+    {
+      "id": "3bfe5275-7b5c-8106-9b24-ec98d79e2e11",
+      "url": "https://app.notion.com/p/Big-Bang-nucleosynthesis-3bfe52757b5c81069b24ec98d79e2e11",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "The first few minutes, when the universe was hot enough to fuse protons and neutrons into helium and traces of lithium; the predicted 24 % helium by mass is what we see.",
+      "Aliases": "nucleosynthesis, primordial",
+      "Domain": "Cosmology",
+      "Term": "Big Bang nucleosynthesis"
+    },
+    {
+      "id": "3bfe5275-7b5c-8114-b39c-c97930f6092d",
+      "url": "https://app.notion.com/p/Hubble-constant-3bfe52757b5c8114b39cc97930f6092d",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "The present rate of expansion — how fast recession speed grows with distance, about 70 km/s per megaparsec. Two careful methods disagree on it by 5σ, which is the Hubble tension.",
+      "Aliases": "Hubble parameter, Hubble tension",
+      "Domain": "Cosmology",
+      "Term": "Hubble constant"
+    },
+    {
+      "id": "3bfe5275-7b5c-81e9-a000-f5c97af64b51",
+      "url": "https://app.notion.com/p/Scale-factor-3bfe52757b5c81e9a000f5c97af64b51",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "The size of the universe relative to now, written a; distances between galaxies grow in proportion to it. Redshift is 1/a − 1.",
+      "Aliases": null,
+      "Domain": "Cosmology",
+      "Term": "Scale factor"
+    },
+    {
+      "id": "3bfe5275-7b5c-810a-a448-c857bcfbd163",
+      "url": "https://app.notion.com/p/Dark-energy-3bfe52757b5c810aa448c857bcfbd163",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "Whatever is making the expansion of the universe accelerate — about seven tenths of its energy budget, consistent so far with a cosmological constant.",
+      "Aliases": "cosmological constant",
+      "Domain": "Cosmology",
+      "Term": "Dark energy"
+    },
+    {
+      "id": "3bfe5275-7b5c-81d6-87ae-d735f9f72706",
+      "url": "https://app.notion.com/p/Dark-matter-3bfe52757b5c81d687aed735f9f72706",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "Matter that gravitates but neither emits nor absorbs light, inferred from how galaxies and clusters move; about five times as much of it as ordinary matter, and its identity is unknown.",
+      "Aliases": null,
+      "Domain": "Cosmology",
+      "Term": "Dark matter"
+    },
+    {
+      "id": "3bfe5275-7b5c-8164-982e-f5233759edf7",
+      "url": "https://app.notion.com/p/Inflation-3bfe52757b5c8164982ef5233759edf7",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "A proposed burst of exponential expansion in the first fraction of a second, which would explain why the universe is so flat and uniform and where the seeds of galaxies came from.",
+      "Aliases": "inflaton, inflationary",
+      "Domain": "Cosmology",
+      "Term": "Inflation"
+    },
+    {
+      "id": "3bfe5275-7b5c-8163-bff5-c012a62325ea",
+      "url": "https://app.notion.com/p/Cosmic-microwave-background-3bfe52757b5c8163bff5c012a62325ea",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "The light released at recombination, arriving now stretched a thousandfold into microwaves at 2.725 K from every direction. The oldest light there is.",
+      "Aliases": "CMB, microwave background",
+      "Domain": "Cosmology",
+      "Term": "Cosmic microwave background"
+    },
+    {
+      "id": "3bfe5275-7b5c-8152-985a-e8b65ef1cd2a",
+      "url": "https://app.notion.com/p/Recombination-3bfe52757b5c8152985ae8b65ef1cd2a",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "The moment, 380,000 years in, when the universe cooled enough for electrons to bind to protons and become neutral hydrogen — after which light could travel freely.",
+      "Aliases": null,
+      "Domain": "Cosmology",
+      "Term": "Recombination"
+    },
+    {
+      "id": "3bfe5275-7b5c-81fa-9424-c8c2eed54fc9",
+      "url": "https://app.notion.com/p/Redshift-3bfe52757b5c81fa9424c8c2eed54fc9",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "The stretching of light to longer wavelengths as the universe expands during its journey. Written z; the CMB is at z ≈ 1100, and it doubles as a clock and a distance.",
+      "Aliases": "redshifted, redshifts",
+      "Domain": "Cosmology",
+      "Term": "Redshift"
+    },
+    {
+      "id": "3bfe5275-7b5c-8121-b891-da324ff20422",
+      "url": "https://app.notion.com/p/Time-dilation-3bfe52757b5c8121b891da324ff20422",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "Clocks run slower when moving fast or sitting deep in a gravitational field. GPS satellites correct for both, in opposite directions.",
+      "Aliases": "dilation",
+      "Domain": "Relativity",
+      "Term": "Time dilation"
+    },
+    {
+      "id": "3bfe5275-7b5c-8160-b470-f962d8090c70",
+      "url": "https://app.notion.com/p/Schwarzschild-radius-3bfe52757b5c8160b470f962d8090c70",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "The radius a mass must be squeezed inside to become a black hole — 3 km for the Sun, 9 mm for the Earth.",
+      "Aliases": null,
+      "Domain": "Relativity",
+      "Term": "Schwarzschild radius"
+    },
+    {
+      "id": "3bfe5275-7b5c-8154-a8d7-f460212623b3",
+      "url": "https://app.notion.com/p/Event-horizon-3bfe52757b5c8154a8d7f460212623b3",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "The surface around a black hole inside which nothing, light included, can get out. Its area is the black hole's entropy, which is where thermodynamics and gravity meet.",
+      "Aliases": "horizon",
+      "Domain": "Relativity",
+      "Term": "Event horizon"
+    },
+    {
+      "id": "3bfe5275-7b5c-8119-a8a7-c37d08dbeb6d",
+      "url": "https://app.notion.com/p/Geodesic-3bfe52757b5c8119a8a7c37d08dbeb6d",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "The straightest possible path through curved spacetime — the path a freely falling body follows. Orbits are geodesics; the apple falls along one.",
+      "Aliases": "geodesics",
+      "Domain": "Relativity",
+      "Term": "Geodesic"
+    },
+    {
+      "id": "3bfe5275-7b5c-81fc-b251-e44c8f4a3286",
+      "url": "https://app.notion.com/p/Spacetime-3bfe52757b5c81fcb251e44c8f4a3286",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "Space and time as one four-dimensional thing, whose curvature is gravity. Matter tells it how to bend; it tells matter how to move.",
+      "Aliases": "space-time",
+      "Domain": "Relativity",
+      "Term": "Spacetime"
+    },
+    {
+      "id": "3bfe5275-7b5c-81f6-87b1-f2c89162e8fb",
+      "url": "https://app.notion.com/p/Qubit-3bfe52757b5c81f687b1f2c89162e8fb",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "A two-state quantum system used as a bit — one that can be in a superposition of 0 and 1 and entangled with others. Copying one is forbidden.",
+      "Aliases": "qubits",
+      "Domain": "Quantum",
+      "Term": "Qubit"
+    },
+    {
+      "id": "3bfe5275-7b5c-8136-ac78-cbae877b8a34",
+      "url": "https://app.notion.com/p/Entanglement-3bfe52757b5c8136ac78cbae877b8a34",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "Two particles sharing one quantum state, so that measuring one fixes the other's outcome however far apart they are. Bell's inequality turned the philosophy into an experiment, and the experiments agreed with quantum mechanics.",
+      "Aliases": "entangled",
+      "Domain": "Quantum",
+      "Term": "Entanglement"
+    },
+    {
+      "id": "3bfe5275-7b5c-811b-b9db-d51a8d7276f9",
+      "url": "https://app.notion.com/p/Intercalation-3bfe52757b5c811bb9dbd51a8d7276f9",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "Ions slipping into the layers of a crystal — lithium into graphite — without breaking it apart. What lets a lithium-ion cell charge and discharge thousands of times.",
+      "Aliases": "intercalate, intercalates",
+      "Domain": "Quantum",
+      "Term": "Intercalation"
+    },
+    {
+      "id": "3bfe5275-7b5c-81d3-9fa9-f7035425937b",
+      "url": "https://app.notion.com/p/Band-gap-3bfe52757b5c81d39fa9f7035425937b",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "The energy gap between the electrons a solid holds tightly and the ones free to move. Zero in a metal, small in a semiconductor, large in an insulator; it sets an LED's colour and a solar cell's voltage.",
+      "Aliases": "bandgap, band structure",
+      "Domain": "Quantum",
+      "Term": "Band gap"
+    },
+    {
+      "id": "3bfe5275-7b5c-811e-9b6c-c000d04e9e2c",
+      "url": "https://app.notion.com/p/Uncertainty-principle-3bfe52757b5c811e9b6cc000d04e9e2c",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "Position and momentum — or energy and time — cannot both be sharply defined at once; the product of their spreads has a floor of about ℏ/2. Not a limit on measurement but on what exists to measure.",
+      "Aliases": "uncertainty",
+      "Domain": "Quantum",
+      "Term": "Uncertainty principle"
+    },
+    {
+      "id": "3bfe5275-7b5c-81c7-b915-f11e0c236bcd",
+      "url": "https://app.notion.com/p/Wavefunction-3bfe52757b5c81c7b915f11e0c236bcd",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "The mathematical object that describes a quantum system; its square gives the probability of finding it in each state. Whether it is a thing or a description is still argued.",
+      "Aliases": "wave function",
+      "Domain": "Quantum",
+      "Term": "Wavefunction"
+    },
+    {
+      "id": "3bfe5275-7b5c-8182-9aba-ecfbe49d26d9",
+      "url": "https://app.notion.com/p/Quantum-3bfe52757b5c81829abaecfbe49d26d9",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "The smallest possible unit of something — energy, charge, angular momentum. Planck's 1900 proposal that energy comes in packets of hf, made to fit a graph, started everything.",
+      "Aliases": "quantised, quantized, quanta",
+      "Domain": "Quantum",
+      "Term": "Quantum"
+    },
+    {
+      "id": "3bfe5275-7b5c-8136-a1c3-dc1e3ab0f1ec",
+      "url": "https://app.notion.com/p/Superconductivity-3bfe52757b5c8136a1c3dc1e3ab0f1ec",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "The complete loss of electrical resistance below a critical temperature, when electrons pair up and move as one quantum state. Explained by BCS theory in 1957.",
+      "Aliases": "superconductor, superconducting",
+      "Domain": "Electromagnetism",
+      "Term": "Superconductivity"
+    },
+    {
+      "id": "3bfe5275-7b5c-81ce-8eab-e874b85a12c8",
+      "url": "https://app.notion.com/p/Permeability-3bfe52757b5c81ce8eabe874b85a12c8",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "The magnetic counterpart of permittivity: how readily a material carries a magnetic field. Iron's is thousands of times the vacuum's, which is why motors have iron in them.",
+      "Aliases": null,
+      "Domain": "Electromagnetism",
+      "Term": "Permeability"
+    },
+    {
+      "id": "3bfe5275-7b5c-8100-bed2-c86af05166aa",
+      "url": "https://app.notion.com/p/Permittivity-3bfe52757b5c8100bed2c86af05166aa",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "How much a material resists forming an electric field inside it. The vacuum's own value, ε₀, sets the strength of the electric force.",
+      "Aliases": null,
+      "Domain": "Electromagnetism",
+      "Term": "Permittivity"
+    },
+    {
+      "id": "3bfe5275-7b5c-81b8-aca5-c8e8ac0487dc",
+      "url": "https://app.notion.com/p/Eddy-current-3bfe52757b5c81b8aca5c8e8ac0487dc",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "A current induced in a lump of conductor by a changing field, circulating uselessly and heating it. Why transformer cores are stacked from thin insulated sheets instead of cast solid.",
+      "Aliases": "eddy currents, laminations",
+      "Domain": "Electromagnetism",
+      "Term": "Eddy current"
+    },
+    {
+      "id": "3bfe5275-7b5c-81b3-a3f1-cfc3031c5c3c",
+      "url": "https://app.notion.com/p/Rotating-magnetic-field-3bfe52757b5c81b3a3f1cfc3031c5c3c",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "What three-phase current makes in a ring of stator coils: a magnetic field that spins on its own, with nothing moving. The rotor of an induction motor chases it.",
+      "Aliases": "rotating field, field that rotates",
+      "Domain": "Electromagnetism",
+      "Term": "Rotating magnetic field"
+    },
+    {
+      "id": "3bfe5275-7b5c-8118-a3af-fed390601070",
+      "url": "https://app.notion.com/p/Commutator-3bfe52757b5c8118a3affed390601070",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "The segmented copper ring on a DC motor's shaft that reverses the coil current every half turn, so the push always goes the same way. Brushes rub on it, and wear.",
+      "Aliases": "commutation, brushes",
+      "Domain": "Electromagnetism",
+      "Term": "Commutator"
+    },
+    {
+      "id": "3bfe5275-7b5c-819b-a4d0-fd7d0fa9a8bd",
+      "url": "https://app.notion.com/p/Induction-3bfe52757b5c819ba4d0fd7d0fa9a8bd",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "A changing magnetic field through a loop of wire drives a voltage in it. The principle of every generator, transformer and induction motor.",
+      "Aliases": "induced, induces, inductive",
+      "Domain": "Electromagnetism",
+      "Term": "Induction"
+    },
+    {
+      "id": "3bfe5275-7b5c-8198-bde1-d893e35130d4",
+      "url": "https://app.notion.com/p/Electromotive-force-3bfe52757b5c8198bde1d893e35130d4",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "The voltage a source can drive round a circuit — from a battery's chemistry or a changing magnetic field. Not a force, despite the name.",
+      "Aliases": "EMF, back-EMF",
+      "Domain": "Electromagnetism",
+      "Term": "Electromotive force"
+    },
+    {
+      "id": "3bfe5275-7b5c-81e1-88ca-fc6b9d5934e9",
+      "url": "https://app.notion.com/p/Absolute-zero-3bfe52757b5c81e188cafc6b9d5934e9",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "0 K, −273.15 °C: the temperature at which a system holds the least energy it possibly can. Unreachable in a finite number of steps, by the third law.",
+      "Aliases": "kelvin",
+      "Domain": "Thermodynamics",
+      "Term": "Absolute zero"
+    },
+    {
+      "id": "3bfe5275-7b5c-8182-b764-d0b68191335c",
+      "url": "https://app.notion.com/p/Black-body-3bfe52757b5c8182b764d0b68191335c",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "An idealised object that absorbs all radiation falling on it and emits a spectrum that depends only on its temperature. Stars, and the microwave background, come remarkably close.",
+      "Aliases": "blackbody, black-body",
+      "Domain": "Thermodynamics",
+      "Term": "Black body"
+    },
+    {
+      "id": "3bfe5275-7b5c-8124-9eb5-ce3616e5c61b",
+      "url": "https://app.notion.com/p/Latent-heat-3bfe52757b5c81249eb5ce3616e5c61b",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "Heat that changes a substance's phase without changing its temperature — melting, boiling. Why steam scalds worse than water at the same temperature, and why boilers and condensers dominate a steam plant.",
+      "Aliases": null,
+      "Domain": "Thermodynamics",
+      "Term": "Latent heat"
+    },
+    {
+      "id": "3bfe5275-7b5c-81aa-b381-db43745f689b",
+      "url": "https://app.notion.com/p/Working-fluid-3bfe52757b5c81aab381db43745f689b",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "The gas or liquid that carries heat through an engine's cycle: air in an Otto engine, steam in a Rankine plant, refrigerant in a heat pump.",
+      "Aliases": "working gas",
+      "Domain": "Thermodynamics",
+      "Term": "Working fluid"
+    },
+    {
+      "id": "3bfe5275-7b5c-81b5-b588-dba9a3b87c35",
+      "url": "https://app.notion.com/p/Regenerator-3bfe52757b5c81b5b588dba9a3b87c35",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "A heat store — usually a matrix of wire or ceramic — that takes heat from a gas on one pass and gives it back on the return, so it is not thrown away. The trick that lets a Stirling engine approach the Carnot limit.",
+      "Aliases": "regenerative",
+      "Domain": "Thermodynamics",
+      "Term": "Regenerator"
+    },
+    {
+      "id": "3bfe5275-7b5c-8125-882b-d99e114bd6d5",
+      "url": "https://app.notion.com/p/Coefficient-of-performance-3bfe52757b5c8125882bd99e114bd6d5",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "For a heat pump or refrigerator, the heat moved per unit of work put in. Unlike an efficiency it can exceed 1 — a good heat pump moves four joules of heat for one of electricity.",
+      "Aliases": "COP",
+      "Domain": "Thermodynamics",
+      "Term": "Coefficient of performance"
+    },
+    {
+      "id": "3bfe5275-7b5c-8137-9629-d7c10549c7f1",
+      "url": "https://app.notion.com/p/Carnot-limit-3bfe52757b5c81379629d7c10549c7f1",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "The greatest efficiency any heat engine can have between two temperatures: 1 − T_cold/T_hot, in kelvin. Set in 1824, never beaten.",
+      "Aliases": "Carnot efficiency, Carnot",
+      "Domain": "Thermodynamics",
+      "Term": "Carnot limit"
+    },
+    {
+      "id": "3bfe5275-7b5c-817d-82d1-ea60da0c29b6",
+      "url": "https://app.notion.com/p/Thermal-efficiency-3bfe52757b5c817d82d1ea60da0c29b6",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "Work out divided by heat in — what you get for what you burn. Real engines run from a few percent to about 60 %.",
+      "Aliases": "efficiency",
+      "Domain": "Thermodynamics",
+      "Term": "Thermal efficiency"
+    },
+    {
+      "id": "3bfe5275-7b5c-8181-987a-cf92b3821e2b",
+      "url": "https://app.notion.com/p/Heat-engine-3bfe52757b5c8181987acf92b3821e2b",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "Any device that takes heat from a hot source, turns some of it into work, and rejects the rest to a cold sink. The fraction it converts is bounded by the two temperatures alone.",
+      "Aliases": "heat engines",
+      "Domain": "Thermodynamics",
+      "Term": "Heat engine"
+    },
+    {
+      "id": "3bfe5275-7b5c-8154-86af-e4a8bde34a65",
+      "url": "https://app.notion.com/p/Isochoric-3bfe52757b5c815486afe4a8bde34a65",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "At constant volume, so no work is done — the ideal picture of the spark firing in a petrol engine, all the heat arriving before the piston moves.",
+      "Aliases": "isochore, constant volume",
+      "Domain": "Thermodynamics",
+      "Term": "Isochoric"
+    },
+    {
+      "id": "3bfe5275-7b5c-8172-9f35-f5c3b8f2b3f5",
+      "url": "https://app.notion.com/p/Isobaric-3bfe52757b5c81729f35f5c3b8f2b3f5",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "At constant pressure. Boiling in an open boiler and combustion in a gas turbine are both isobaric.",
+      "Aliases": "isobar, constant pressure",
+      "Domain": "Thermodynamics",
+      "Term": "Isobaric"
+    },
+    {
+      "id": "3bfe5275-7b5c-8161-aa07-f86ab30ccf83",
+      "url": "https://app.notion.com/p/Isothermal-3bfe52757b5c8161aa07f86ab30ccf83",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "A process at constant temperature, which means heat flows in or out exactly as fast as work is done. The slow, ideal limit that real engines cannot reach.",
+      "Aliases": "isotherm",
+      "Domain": "Thermodynamics",
+      "Term": "Isothermal"
+    },
+    {
+      "id": "3bfe5275-7b5c-816b-b556-fe2becab547e",
+      "url": "https://app.notion.com/p/Adiabatic-3bfe52757b5c816bb556fe2becab547e",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "A process with no heat exchanged with the surroundings — because it is insulated, or because it happens too fast for heat to move. Compression and expansion strokes in engines are close to it.",
+      "Aliases": "adiabat, adiabatically, isentropic",
+      "Domain": "Thermodynamics",
+      "Term": "Adiabatic"
+    },
+    {
+      "id": "3bfe5275-7b5c-8177-a98d-c3ca885086b0",
+      "url": "https://app.notion.com/p/Enthalpy-3bfe52757b5c8177a98dc3ca885086b0",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "Internal energy plus pressure times volume: the heat content of a system at constant pressure, and the quantity that changes when something burns, boils or reacts in the open.",
+      "Aliases": null,
+      "Domain": "Thermodynamics",
+      "Term": "Enthalpy"
+    },
+    {
+      "id": "3bfe5275-7b5c-81b6-a46b-ca0058b2d327",
+      "url": "https://app.notion.com/p/Entropy-3bfe52757b5c81b6a46bca0058b2d327",
+      "lastEdited": "2026-08-17T19:32:00.000Z",
+      "Definition": "A measure of how many microscopic arrangements a system could be in and still look the same from outside — equivalently, of energy that can no longer do work. It never decreases in a closed system, which is the second law.",
+      "Aliases": "entropies",
+      "Domain": "Thermodynamics",
+      "Term": "Entropy"
     }
   ],
   "spectralTypes": [
