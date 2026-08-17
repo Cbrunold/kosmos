@@ -11690,6 +11690,577 @@
       "Term": "Entropy"
     }
   ],
+  "explainers": [
+    {
+      "id": "3bfe5275-7b5c-814d-bd57-da2310ea9368",
+      "url": "https://app.notion.com/p/BlueDot-Impact-3bfe52757b5c814dbd57da2310ea9368",
+      "lastEdited": "2026-08-17T20:28:00.000Z",
+      "Medium": [
+        "Course"
+      ],
+      "Covers": "Free structured online courses on AI safety and alignment, run in cohorts with facilitated discussion and a reading curriculum — the main on-ramp for people moving into the field from elsewhere.",
+      "Field": "AI safety",
+      "Kind": "Organisation",
+      "Behind It": null,
+      "URL": "https://bluedot.org/",
+      "Name": "BlueDot Impact"
+    },
+    {
+      "id": "3bfe5275-7b5c-81ee-82ec-d21ef117c5a2",
+      "url": "https://app.notion.com/p/Blondihacks-3bfe52757b5c81ee82ecd21ef117c5a2",
+      "lastEdited": "2026-08-17T20:28:00.000Z",
+      "Medium": [
+        "YouTube"
+      ],
+      "Covers": "Home shop machining taught step by step — turning, milling, threading, measurement and workholding — with the mistakes left in and explained.",
+      "Field": "Workshop",
+      "Kind": "Channel",
+      "Behind It": "Quinn Dunki",
+      "URL": "https://www.youtube.com/@Blondihacks",
+      "Name": "Blondihacks"
+    },
+    {
+      "id": "3bfe5275-7b5c-816a-a2af-fb2c49a7991f",
+      "url": "https://app.notion.com/p/Clickspring-3bfe52757b5c816aa2affb2c49a7991f",
+      "lastEdited": "2026-08-17T20:28:00.000Z",
+      "Medium": [
+        "YouTube"
+      ],
+      "Covers": "Clock and instrument making to museum standard: hand tool work, silver soldering, gear cutting, hardening and tempering, and a long reconstruction of the Antikythera mechanism.",
+      "Field": "Workshop",
+      "Kind": "Channel",
+      "Behind It": "Chris",
+      "URL": "https://www.youtube.com/@Clickspring",
+      "Name": "Clickspring"
+    },
+    {
+      "id": "3bfe5275-7b5c-8169-b06e-ffe6f7806b48",
+      "url": "https://app.notion.com/p/This-Old-Tony-3bfe52757b5c8169b06effe6f7806b48",
+      "lastEdited": "2026-08-17T20:28:00.000Z",
+      "Medium": [
+        "YouTube"
+      ],
+      "Covers": "Machining explained by someone doing it — lathe and mill work, tolerances and fits, tool geometry, welding and heat treatment — under a running commentary that hides how careful the teaching is.",
+      "Field": "Workshop",
+      "Kind": "Channel",
+      "Behind It": null,
+      "URL": "https://www.youtube.com/@ThisOldTony",
+      "Name": "This Old Tony"
+    },
+    {
+      "id": "3bfe5275-7b5c-81a3-8604-da241618b047",
+      "url": "https://app.notion.com/p/Everyday-Astronaut-3bfe52757b5c81a38604da241618b047",
+      "lastEdited": "2026-08-17T20:28:00.000Z",
+      "Medium": [
+        "YouTube"
+      ],
+      "Covers": "Rocket engines and launch vehicles in depth: combustion cycles, propellant choices, reusability and heat shielding, usually with the engineers who designed them.",
+      "Field": "Engineering",
+      "Kind": "Channel",
+      "Behind It": "Tim Dodd",
+      "URL": "https://www.youtube.com/@EverydayAstronaut",
+      "Name": "Everyday Astronaut"
+    },
+    {
+      "id": "3bfe5275-7b5c-815d-8d20-fb9fa2dd565c",
+      "url": "https://app.notion.com/p/Scott-Manley-3bfe52757b5c815d8d20fb9fa2dd565c",
+      "lastEdited": "2026-08-17T20:28:00.000Z",
+      "Medium": [
+        "YouTube"
+      ],
+      "Covers": "Orbital mechanics and spaceflight engineering — delta-v, transfer orbits, rocket propulsion and staging — from an astronomer who explains launches as they happen.",
+      "Field": "Engineering",
+      "Kind": "Channel",
+      "Behind It": null,
+      "URL": "https://www.youtube.com/@scottmanley",
+      "Name": "Scott Manley"
+    },
+    {
+      "id": "3bfe5275-7b5c-816b-a97e-cbbaa7925c48",
+      "url": "https://app.notion.com/p/Huygens-Optics-3bfe52757b5c816ba97ecbbaa7925c48",
+      "lastEdited": "2026-08-17T20:28:00.000Z",
+      "Medium": [
+        "YouTube"
+      ],
+      "Covers": "Optical fabrication and metrology — grinding and polishing surfaces to a fraction of a wavelength, interferometry, thin-film coatings, and how flatness is measured at all.",
+      "Field": "Engineering",
+      "Kind": "Channel",
+      "Behind It": "Jeroen Mostert",
+      "URL": "https://www.youtube.com/@HuygensOptics",
+      "Name": "Huygens Optics"
+    },
+    {
+      "id": "3bfe5275-7b5c-81fd-9830-f0fb2287d0bf",
+      "url": "https://app.notion.com/p/Breaking-Taps-3bfe52757b5c81fd9830f0fb2287d0bf",
+      "lastEdited": "2026-08-17T20:28:00.000Z",
+      "Medium": [
+        "YouTube"
+      ],
+      "Covers": "Microscopy, microfabrication and precision measurement at home: electron beams, photolithography, thin films, and careful experiments on what small structures really do.",
+      "Field": "Engineering",
+      "Kind": "Channel",
+      "Behind It": "Zachary Tong",
+      "URL": "https://www.youtube.com/@BreakingTaps",
+      "Name": "Breaking Taps"
+    },
+    {
+      "id": "3bfe5275-7b5c-815f-935a-fd1e91ebf0aa",
+      "url": "https://app.notion.com/p/Applied-Science-3bfe52757b5c815f935afd1e91ebf0aa",
+      "lastEdited": "2026-08-17T20:28:00.000Z",
+      "Medium": [
+        "YouTube"
+      ],
+      "Covers": "Laboratory instruments built from scratch — electron microscope, X-ray source, mass spectrometer — with the vacuum technique, electronics and materials handling shown in full.",
+      "Field": "Engineering",
+      "Kind": "Channel",
+      "Behind It": "Ben Krasnow",
+      "URL": "https://www.youtube.com/@AppliedScience",
+      "Name": "Applied Science"
+    },
+    {
+      "id": "3bfe5275-7b5c-8131-b9d7-cd93345f52bd",
+      "url": "https://app.notion.com/p/Technology-Connections-3bfe52757b5c8131b9d7cd93345f52bd",
+      "lastEdited": "2026-08-17T20:28:00.000Z",
+      "Medium": [
+        "YouTube"
+      ],
+      "Covers": "How ordinary machines actually work and why they were designed that way — heat pumps and refrigeration cycles, induction cooking, lighting, recording formats and the logic of obsolete standards.",
+      "Field": "Engineering",
+      "Kind": "Channel",
+      "Behind It": "Alec Watson",
+      "URL": "https://www.youtube.com/@TechnologyConnections",
+      "Name": "Technology Connections"
+    },
+    {
+      "id": "3bfe5275-7b5c-81cb-9808-f796a17cbb83",
+      "url": "https://app.notion.com/p/Real-Engineering-3bfe52757b5c81cb9808f796a17cbb83",
+      "lastEdited": "2026-08-17T20:28:00.000Z",
+      "Medium": [
+        "YouTube"
+      ],
+      "Covers": "The engineering behind aircraft, turbines, batteries and materials, worked through with the numbers — efficiency, thermal limits, why an alloy or a cycle was chosen over the alternative.",
+      "Field": "Engineering",
+      "Kind": "Channel",
+      "Behind It": "Brian McManus",
+      "URL": "https://www.youtube.com/@RealEngineering",
+      "Name": "Real Engineering"
+    },
+    {
+      "id": "3bfe5275-7b5c-81df-9d39-f68c7f1e2466",
+      "url": "https://app.notion.com/p/Practical-Engineering-3bfe52757b5c81df9d39f68c7f1e2466",
+      "lastEdited": "2026-08-17T20:28:00.000Z",
+      "Medium": [
+        "YouTube"
+      ],
+      "Covers": "Civil infrastructure explained with tabletop models: dams and spillways, foundations and soil mechanics, the power grid, water treatment, and the failure modes each is designed against.",
+      "Field": "Engineering",
+      "Kind": "Channel",
+      "Behind It": "Grady Hillhouse",
+      "URL": "https://www.youtube.com/@PracticalEngineeringChannel",
+      "Name": "Practical Engineering"
+    },
+    {
+      "id": "3bfe5275-7b5c-814d-921c-e6d6e75321f1",
+      "url": "https://app.notion.com/p/GeologyHub-3bfe52757b5c814d921ce6d6e75321f1",
+      "lastEdited": "2026-08-17T20:28:00.000Z",
+      "Medium": [
+        "YouTube"
+      ],
+      "Covers": "Short reports on volcanic activity, earthquakes, ore deposits and mineral occurrences as they happen, with the geological setting explained each time.",
+      "Field": "Earth & Mining",
+      "Kind": "Channel",
+      "Behind It": null,
+      "URL": "https://www.youtube.com/@GeologyHub",
+      "Name": "GeologyHub"
+    },
+    {
+      "id": "3bfe5275-7b5c-81f5-8905-e3993755e4e7",
+      "url": "https://app.notion.com/p/Nick-Zentner-3bfe52757b5c81f58905e3993755e4e7",
+      "lastEdited": "2026-08-17T20:28:00.000Z",
+      "Medium": [
+        "YouTube",
+        "Lectures"
+      ],
+      "Covers": "Field and lecture-hall geology of the Pacific Northwest: plate tectonics, basalt floods, glacial megafloods, and how to read a landscape for the events that made it.",
+      "Field": "Earth & Mining",
+      "Kind": "Person",
+      "Behind It": "Central Washington University",
+      "URL": "https://www.youtube.com/@GeologyNick",
+      "Name": "Nick Zentner"
+    },
+    {
+      "id": "3bfe5275-7b5c-81cc-b9f7-c1e2dfe04849",
+      "url": "https://app.notion.com/p/Cody-s-Lab-3bfe52757b5c81ccb9f7c1e2dfe04849",
+      "lastEdited": "2026-08-17T20:28:00.000Z",
+      "Medium": [
+        "YouTube"
+      ],
+      "Covers": "Ore to metal at small scale — panning and prospecting, smelting, leaching, electrolysis and refining — done in the field and the back garden rather than described.",
+      "Field": "Earth & Mining",
+      "Kind": "Channel",
+      "Behind It": "Cody Reeder",
+      "URL": "https://www.youtube.com/user/theCodyReeder",
+      "Name": "Cody's Lab"
+    },
+    {
+      "id": "3bfe5275-7b5c-8177-86c1-c132faba0bbf",
+      "url": "https://app.notion.com/p/NileRed-3bfe52757b5c817786c1c132faba0bbf",
+      "lastEdited": "2026-08-17T20:28:00.000Z",
+      "Medium": [
+        "YouTube"
+      ],
+      "Covers": "Long-form practical organic chemistry: multi-step syntheses run at the bench, with the purification, the failures and the reasoning about why a reduction or an oxidation goes the way it does.",
+      "Field": "Chemistry",
+      "Kind": "Channel",
+      "Behind It": "Nigel Braun",
+      "URL": "https://www.youtube.com/@NileRed",
+      "Name": "NileRed"
+    },
+    {
+      "id": "3bfe5275-7b5c-8112-9af0-cf6bcadc3a04",
+      "url": "https://app.notion.com/p/Periodic-Videos-3bfe52757b5c81129af0cf6bcadc3a04",
+      "lastEdited": "2026-08-17T20:28:00.000Z",
+      "Medium": [
+        "YouTube"
+      ],
+      "Covers": "A video for every element in the periodic table, filmed in a working Nottingham chemistry department, plus the reactions, the glassware and the stories behind the names.",
+      "Field": "Chemistry",
+      "Kind": "Channel",
+      "Behind It": "Brady Haran, with Martyn Poliakoff",
+      "URL": "https://www.youtube.com/@periodicvideos",
+      "Name": "Periodic Videos"
+    },
+    {
+      "id": "3bfe5275-7b5c-8102-8d87-d2985a7e781c",
+      "url": "https://app.notion.com/p/Stand-up-Maths-3bfe52757b5c81028d87d2985a7e781c",
+      "lastEdited": "2026-08-17T20:28:00.000Z",
+      "Medium": [
+        "YouTube",
+        "Book"
+      ],
+      "Covers": "Recreational mathematics done seriously — geometry, probability and how badly people reason about it, numerical methods, and spreadsheets pushed far past their intended use.",
+      "Field": "Mathematics",
+      "Kind": "Channel",
+      "Behind It": "Matt Parker",
+      "URL": "https://www.youtube.com/@standupmaths",
+      "Name": "Stand-up Maths"
+    },
+    {
+      "id": "3bfe5275-7b5c-8155-9ba6-ed001889717a",
+      "url": "https://app.notion.com/p/Numberphile-3bfe52757b5c81559ba6ed001889717a",
+      "lastEdited": "2026-08-17T20:28:00.000Z",
+      "Medium": [
+        "YouTube"
+      ],
+      "Covers": "Mathematicians on brown paper: prime numbers, infinity and cardinality, topology, famous unsolved problems, and the occasional proof that a beloved result is not what people think.",
+      "Field": "Mathematics",
+      "Kind": "Channel",
+      "Behind It": "Brady Haran",
+      "URL": "https://www.youtube.com/@numberphile",
+      "Name": "Numberphile"
+    },
+    {
+      "id": "3bfe5275-7b5c-81a7-b69f-f96a1fde1625",
+      "url": "https://app.notion.com/p/3Blue1Brown-3bfe52757b5c81a7b69ff96a1fde1625",
+      "lastEdited": "2026-08-17T20:28:00.000Z",
+      "Medium": [
+        "YouTube"
+      ],
+      "Covers": "Animated mathematics built around what the objects look like: linear algebra and eigenvectors, calculus and derivatives, differential equations, the Fourier transform, and neural networks from the gradient up.",
+      "Field": "Mathematics",
+      "Kind": "Channel",
+      "Behind It": "Grant Sanderson",
+      "URL": "https://www.youtube.com/@3blue1brown",
+      "Name": "3Blue1Brown"
+    },
+    {
+      "id": "3bfe5275-7b5c-8116-ae29-ee8e1c848d2d",
+      "url": "https://app.notion.com/p/Quanta-Magazine-3bfe52757b5c8116ae29ee8e1c848d2d",
+      "lastEdited": "2026-08-17T20:28:00.000Z",
+      "Medium": [
+        "Blog",
+        "YouTube"
+      ],
+      "Covers": "Reported journalism on mathematics, physics and biology that stays close to the research — quantum computing, black holes, prime numbers, the standard model — written for readers who want the actual result.",
+      "Field": "General science",
+      "Kind": "Organisation",
+      "Behind It": "Simons Foundation",
+      "URL": "https://www.quantamagazine.org/",
+      "Name": "Quanta Magazine"
+    },
+    {
+      "id": "3bfe5275-7b5c-81d6-8654-dc3107b3af9f",
+      "url": "https://app.notion.com/p/Mark-Rober-3bfe52757b5c81d68654dc3107b3af9f",
+      "lastEdited": "2026-08-17T20:28:00.000Z",
+      "Medium": [
+        "YouTube"
+      ],
+      "Covers": "Engineering as spectacle from a former NASA engineer: build a machine to answer a silly question, and teach the mechanics, materials and control systems on the way through.",
+      "Field": "Engineering",
+      "Kind": "Channel",
+      "Behind It": null,
+      "URL": "https://www.youtube.com/@MarkRober",
+      "Name": "Mark Rober"
+    },
+    {
+      "id": "3bfe5275-7b5c-812d-92d6-f2e3daef5979",
+      "url": "https://app.notion.com/p/Physics-Girl-3bfe52757b5c812d92d6f2e3daef5979",
+      "lastEdited": "2026-08-17T20:28:00.000Z",
+      "Medium": [
+        "YouTube"
+      ],
+      "Covers": "Demonstration-led physics — plasma, light and optics, sound and resonance, superconductors — aimed at people who have not decided whether physics is for them.",
+      "Field": "General science",
+      "Kind": "Channel",
+      "Behind It": "Dianna Cowern",
+      "URL": "https://www.youtube.com/@physicsgirl",
+      "Name": "Physics Girl"
+    },
+    {
+      "id": "3bfe5275-7b5c-8172-86d7-e1e7029affdc",
+      "url": "https://app.notion.com/p/Steve-Mould-3bfe52757b5c817286d7e1e7029affdc",
+      "lastEdited": "2026-08-17T20:28:00.000Z",
+      "Medium": [
+        "YouTube"
+      ],
+      "Covers": "Small, strange physical effects explained properly — non-Newtonian fluids, siphons, capillary action, magnetism, the chain fountain that now carries his name.",
+      "Field": "General science",
+      "Kind": "Channel",
+      "Behind It": null,
+      "URL": "https://www.youtube.com/@SteveMould",
+      "Name": "Steve Mould"
+    },
+    {
+      "id": "3bfe5275-7b5c-819d-924a-efb0ad8f27ec",
+      "url": "https://app.notion.com/p/SmarterEveryDay-3bfe52757b5c819d924aefb0ad8f27ec",
+      "lastEdited": "2026-08-17T20:28:00.000Z",
+      "Medium": [
+        "YouTube"
+      ],
+      "Covers": "An engineer taking apart the physical world with high-speed cameras: fluid dynamics, ballistics, flight, resonance and rotation, usually by going to where the thing is actually made.",
+      "Field": "General science",
+      "Kind": "Channel",
+      "Behind It": "Destin Sandlin",
+      "URL": "https://www.youtube.com/@smartereveryday",
+      "Name": "SmarterEveryDay"
+    },
+    {
+      "id": "3bfe5275-7b5c-81de-b411-cbec30646d3e",
+      "url": "https://app.notion.com/p/Kurzgesagt-3bfe52757b5c81deb411cbec30646d3e",
+      "lastEdited": "2026-08-17T20:28:00.000Z",
+      "Medium": [
+        "YouTube"
+      ],
+      "Covers": "Animated explanations at cosmic scale — black holes, the heat death of the universe, nuclear energy, the Fermi paradox — built on cited sources and released with the reading list attached.",
+      "Field": "General science",
+      "Kind": "Channel",
+      "Behind It": null,
+      "URL": "https://www.youtube.com/@kurzgesagt",
+      "Name": "Kurzgesagt"
+    },
+    {
+      "id": "3bfe5275-7b5c-81fb-9257-ec70e13f40bc",
+      "url": "https://app.notion.com/p/Veritasium-3bfe52757b5c81fb9257ec70e13f40bc",
+      "lastEdited": "2026-08-17T20:28:00.000Z",
+      "Medium": [
+        "YouTube"
+      ],
+      "Covers": "Science explained by first finding the misconception: electricity and how energy actually travels in a circuit, relativity, resonance, radioactivity and half-life, and a long-running interest in why the intuitive answer is usually wrong.",
+      "Field": "General science",
+      "Kind": "Channel",
+      "Behind It": "Derek Muller",
+      "URL": "https://www.youtube.com/@veritasium",
+      "Name": "Veritasium"
+    },
+    {
+      "id": "3bfe5275-7b5c-8152-bdcf-ea324f4dfea3",
+      "url": "https://app.notion.com/p/The-Royal-Institution-3bfe52757b5c8152bdcfea324f4dfea3",
+      "lastEdited": "2026-08-17T20:28:00.000Z",
+      "Medium": [
+        "YouTube",
+        "Lectures"
+      ],
+      "Covers": "Public lectures from the institution that has been giving them since 1825, including the Christmas Lectures, on everything from combustion and electromagnetism to modern cosmology.",
+      "Field": "General science",
+      "Kind": "Organisation",
+      "Behind It": null,
+      "URL": "https://www.youtube.com/@TheRoyalInstitution",
+      "Name": "The Royal Institution"
+    },
+    {
+      "id": "3bfe5275-7b5c-810c-861a-ca4b48206ac0",
+      "url": "https://app.notion.com/p/HyperPhysics-3bfe52757b5c810c861aca4b48206ac0",
+      "lastEdited": "2026-08-17T20:28:00.000Z",
+      "Medium": [
+        "Blog"
+      ],
+      "Covers": "A concept map of undergraduate physics — thermodynamics, electricity and magnetism, quantum and nuclear physics — where every page is one screen and every term links to the one behind it.",
+      "Field": "Physics",
+      "Kind": "Organisation",
+      "Behind It": "Rod Nave, Georgia State University",
+      "URL": "http://hyperphysics.phy-astr.gsu.edu/hbase/index.html",
+      "Name": "HyperPhysics"
+    },
+    {
+      "id": "3bfe5275-7b5c-8159-85b5-f3042d157220",
+      "url": "https://app.notion.com/p/The-Feynman-Lectures-on-Physics-3bfe52757b5c815985b5f3042d157220",
+      "lastEdited": "2026-08-17T20:28:00.000Z",
+      "Medium": [
+        "Book",
+        "Lectures"
+      ],
+      "Covers": "The 1960s Caltech lecture course, free to read online in full: mechanics, radiation and heat, then electromagnetism and matter, then quantum mechanics, in the clearest first-principles prose the subject has.",
+      "Field": "Physics",
+      "Kind": "Organisation",
+      "Behind It": "Caltech",
+      "URL": "https://www.feynmanlectures.caltech.edu/",
+      "Name": "The Feynman Lectures on Physics"
+    },
+    {
+      "id": "3bfe5275-7b5c-8110-a1be-e43a83f7f974",
+      "url": "https://app.notion.com/p/AlphaPhoenix-3bfe52757b5c8110a1bee43a83f7f974",
+      "lastEdited": "2026-08-17T20:27:00.000Z",
+      "Medium": [
+        "YouTube"
+      ],
+      "Covers": "Physics questions settled by building the experiment: measuring the speed of electricity in a wire, imaging shock waves, chasing down what a field really does rather than what the textbook says it does.",
+      "Field": "Physics",
+      "Kind": "Channel",
+      "Behind It": "Brian Haidet",
+      "URL": "https://www.youtube.com/@AlphaPhoenixChannel",
+      "Name": "AlphaPhoenix"
+    },
+    {
+      "id": "3bfe5275-7b5c-81ff-83d4-c8798c6364d2",
+      "url": "https://app.notion.com/p/Angela-Collier-3bfe52757b5c81ff83d4c8798c6364d2",
+      "lastEdited": "2026-08-17T20:27:00.000Z",
+      "Medium": [
+        "YouTube"
+      ],
+      "Covers": "Long, discursive talks from a computational astrophysicist on dark matter, general relativity, the sociology of physics and how physics research actually gets done.",
+      "Field": "Physics",
+      "Kind": "Channel",
+      "Behind It": null,
+      "URL": "https://www.youtube.com/@acollierastro",
+      "Name": "Angela Collier"
+    },
+    {
+      "id": "3bfe5275-7b5c-8113-8abc-f5ec9bc44228",
+      "url": "https://app.notion.com/p/Sabine-Hossenfelder-3bfe52757b5c81138abcf5ec9bc44228",
+      "lastEdited": "2026-08-17T20:27:00.000Z",
+      "Medium": [
+        "YouTube",
+        "Book"
+      ],
+      "Covers": "A theoretical physicist on quantum gravity, particle physics beyond the standard model, dark matter alternatives and the state of the field, with a persistent scepticism about where its funding goes.",
+      "Field": "Physics",
+      "Kind": "Channel",
+      "Behind It": null,
+      "URL": "https://www.youtube.com/@SabineHossenfelder",
+      "Name": "Sabine Hossenfelder"
+    },
+    {
+      "id": "3bfe5275-7b5c-818a-b4b6-dc93ab606bd5",
+      "url": "https://app.notion.com/p/MinutePhysics-3bfe52757b5c818ab4b6dc93ab606bd5",
+      "lastEdited": "2026-08-17T20:27:00.000Z",
+      "Medium": [
+        "YouTube"
+      ],
+      "Covers": "Short whiteboard explanations of special and general relativity, quantum mechanics, symmetry and conservation, and why the sky is dark at night.",
+      "Field": "Physics",
+      "Kind": "Channel",
+      "Behind It": "Henry Reich",
+      "URL": "https://www.youtube.com/@minutephysics",
+      "Name": "MinutePhysics"
+    },
+    {
+      "id": "3bfe5275-7b5c-810c-bf3c-fa5bb7c00630",
+      "url": "https://app.notion.com/p/Sixty-Symbols-3bfe52757b5c810cbf3cfa5bb7c00630",
+      "lastEdited": "2026-08-17T20:27:00.000Z",
+      "Medium": [
+        "YouTube"
+      ],
+      "Covers": "Working physicists talking through one symbol or idea at a time: entropy, the fine-structure constant, relativity, quantum tunnelling, the Planck length. Unscripted, and better for it.",
+      "Field": "Physics",
+      "Kind": "Channel",
+      "Behind It": "Brady Haran, with Nottingham physicists",
+      "URL": "https://www.youtube.com/@sixtysymbols",
+      "Name": "Sixty Symbols"
+    },
+    {
+      "id": "3bfe5275-7b5c-81eb-85c3-ead0f7b13e8d",
+      "url": "https://app.notion.com/p/Anton-Petrov-3bfe52757b5c81eb85c3ead0f7b13e8d",
+      "lastEdited": "2026-08-17T20:27:00.000Z",
+      "Medium": [
+        "YouTube"
+      ],
+      "Covers": "A near-daily read of new astronomy and astrophysics papers — neutron stars, pulsars, quasars, gamma-ray bursts, solar activity — summarised the day they appear.",
+      "Field": "Astronomy & Cosmology",
+      "Kind": "Channel",
+      "Behind It": null,
+      "URL": "https://www.youtube.com/@whatdamath",
+      "Name": "Anton Petrov"
+    },
+    {
+      "id": "3bfe5275-7b5c-8184-b608-e8b86160fc54",
+      "url": "https://app.notion.com/p/Cool-Worlds-3bfe52757b5c8184b608e8b86160fc54",
+      "lastEdited": "2026-08-17T20:27:00.000Z",
+      "Medium": [
+        "YouTube"
+      ],
+      "Covers": "Exoplanets, habitability and the search for life, from an astronomer who works on the detection methods — transits, radial velocity, exomoons — and is unusually careful about what the evidence supports.",
+      "Field": "Astronomy & Cosmology",
+      "Kind": "Channel",
+      "Behind It": "David Kipping",
+      "URL": "https://www.youtube.com/@CoolWorldsLab",
+      "Name": "Cool Worlds"
+    },
+    {
+      "id": "3bfe5275-7b5c-8162-94c8-c42e909aad45",
+      "url": "https://app.notion.com/p/Dr-Becky-3bfe52757b5c816294c8c42e909aad45",
+      "lastEdited": "2026-08-17T20:27:00.000Z",
+      "Medium": [
+        "YouTube",
+        "Book"
+      ],
+      "Covers": "An astrophysicist on supermassive black holes, galaxy evolution and how they are actually observed, with a monthly round-up of new results and a steady line in explaining what a paper does and does not show.",
+      "Field": "Astronomy & Cosmology",
+      "Kind": "Channel",
+      "Behind It": "Becky Smethurst",
+      "URL": "https://www.youtube.com/@DrBecky",
+      "Name": "Dr. Becky"
+    },
+    {
+      "id": "3bfe5275-7b5c-813d-b821-e46d5cc266c2",
+      "url": "https://app.notion.com/p/PBS-Space-Time-3bfe52757b5c813db821e46d5cc266c2",
+      "lastEdited": "2026-08-17T20:27:00.000Z",
+      "Medium": [
+        "YouTube"
+      ],
+      "Covers": "Graduate-level cosmology and field theory for a general audience: general relativity, black holes and event horizons, quantum field theory, dark matter and dark energy, the cosmic microwave background and the expansion of the universe.",
+      "Field": "Astronomy & Cosmology",
+      "Kind": "Channel",
+      "Behind It": "Matt O'Dowd",
+      "URL": "https://www.youtube.com/@pbsspacetime",
+      "Name": "PBS Space Time"
+    },
+    {
+      "id": "3bfe5275-7b5c-8159-894b-eb1fb8f0bda4",
+      "url": "https://app.notion.com/p/Sean-Carroll-3bfe52757b5c8159894beb1fb8f0bda4",
+      "lastEdited": "2026-08-17T20:27:00.000Z",
+      "Medium": [
+        "Podcast",
+        "Book",
+        "Lectures"
+      ],
+      "Covers": "A theoretical physicist who writes and podcasts about entropy and the arrow of time, quantum mechanics and the many-worlds interpretation, general relativity, spacetime and cosmology. The Mindscape podcast runs long interviews; the Biggest Ideas series works through the equations themselves.",
+      "Field": "Astronomy & Cosmology",
+      "Kind": "Person",
+      "Behind It": null,
+      "URL": "https://www.preposterousuniverse.com/",
+      "Name": "Sean Carroll"
+    }
+  ],
   "spectralTypes": [
     {
       "id": "2569ebb2-01ff-41c8-af88-54f50a983757",
