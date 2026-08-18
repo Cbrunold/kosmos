@@ -222,6 +222,28 @@ def eq_lookup_all():
 # equation name; rendered under the significance text on the equations page.
 # "rule" marks a row after which a labelled divider is drawn.
 EQUATION_TABLES = {
+    "Ninety-Degree Rule": {
+        "caption": "The numbers a pool table runs on — the same values the Pool Sauce engine "
+                   "(pool-sauce-engine, poolsauce/constants.py) integrates with, so the shelf and "
+                   "the engine never disagree on one.",
+        "columns": ["Quantity", "Value", "Enters", "Note"],
+        "rows": [
+            ["Ball radius R", "28.575 mm", "ghost-ball aim, tip offset, slide-to-roll",
+             "A 2¼-inch ball. Snooker's are 52.5 mm; carom 61.5 mm."],
+            ["Ball mass m", "170 g", "speed transfer, momentum", "Phenolic resin; matched to a gram in a set."],
+            ["Ball–ball restitution e", "0.92", "restitution, ninety-degree rule",
+             "So a stun stop shot still creeps forward — a touch of draw fixes it."],
+            ["Ball–ball friction μ", "≈ 0.06", "throw", "Clean balls. Chalk on the contact point can double it."],
+            ["Cloth sliding friction μ_s", "0.2", "slide-to-roll, draw distance", "Worsted tournament cloth; napped cloth is higher."],
+            ["Cloth rolling resistance μ_r", "0.01", "rolling resistance", "A ball at 1 m/s rolls about 5 m."],
+            ["Cloth spinning friction", "0.044", "how long side spin lasts", "Torque on a ball spinning in place about a vertical axis."],
+            ["Cushion efficiency", "0.75 of energy → 0.87 of speed", "cushion rebound",
+             "Rubber; varies table to table and with speed. Test before a match."],
+            ["9-ft playing surface", "2.54 × 1.27 m", "distance, speed control", "Inside the cushion noses; a 7-ft bar table is 1.98 × 0.99 m."],
+        ],
+        "note": "Where the engine and the literature differ the engine's value is quoted, because that is "
+                "the number the shots on the channel are computed with.",
+    },
     "Cosmological Equation of State": {
         "caption": "Every ingredient of the universe is one number, w. It fixes how that "
                    "ingredient dilutes as space expands, and so which era it dominates.",
@@ -601,7 +623,7 @@ def build_skills_page():
             "equations": [by_id_eq[i] for i in (s.get("Equations") or []) if i in by_id_eq],
             "machines": [machines_by_id[i] for i in (s.get("Machines") or []) if i in machines_by_id],
         })
-    order = ["Joining", "Metalwork", "Making", "Electronics", "Building", "Rigging", "Measuring"]
+    order = ["Joining", "Metalwork", "Making", "Electronics", "Building", "Rigging", "Measuring", "Cue sports"]
     rows.sort(key=lambda r: (order.index(r["cat"]) if r["cat"] in order else 99, r["name"]))
     write_page("skills.template.html", "skills.html", {"skills": rows, "cats": [c for c in order if any(r["cat"] == c for r in rows)]})
     return len(rows)
@@ -708,7 +730,7 @@ def build_glossary_page():
                     "definition": t.get("Definition"), "aliases": names[1:], "appears": appears,
                     "n": sum(a["n"] for a in appears)})
     out.sort(key=lambda x: x["term"].lower())
-    domains = [d for d in ["Mechanics", "Waves & Fluids", "Thermodynamics", "Electromagnetism", "Quantum", "Relativity", "Cosmology", "Astronomy",
+    domains = [d for d in ["Mechanics", "Waves & Fluids", "Cue sports", "Thermodynamics", "Electromagnetism", "Quantum", "Relativity", "Cosmology", "Astronomy",
                            "Nuclear & Particle", "Chemistry", "Mineralogy", "Mining & Metallurgy", "Machines",
                            "Workshop", "Mathematics", "Measurement"] if any(x["domain"] == d for x in out)]
     write_page("glossary.template.html", "glossary.html", {"terms": out, "domains": domains})

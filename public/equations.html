@@ -50,6 +50,7 @@
     --c-lavender: #7d5fc0;
     --c-magenta: #b3268e;
     --c-cobalt: #2f4bb0;
+    --c-felt: #2e7d4f;
     --heat: #2a78d6;
   }
   @media (prefers-color-scheme: dark) {
@@ -124,6 +125,7 @@
     --c-lavender: #b49ae6;
     --c-magenta: #e06ac4;
     --c-cobalt: #7a8ee6;
+    --c-felt: #5fb083;
     --heat: #5598e7;
   }
 
@@ -474,7 +476,7 @@
     Electrostatics: 'var(--c-gold)', Radiation: 'var(--c-ember)',
     'Heat Transfer': 'var(--c-terracotta)', Rocketry: 'var(--c-silver)',
     'Chemical Thermodynamics': 'var(--c-moss)', 'Atomic Physics': 'var(--c-lavender)',
-    'Vectors & Geometry': 'var(--c-magenta)', Calculus: 'var(--c-cobalt)',
+    'Vectors & Geometry': 'var(--c-magenta)', Calculus: 'var(--c-cobalt)', Billiards: 'var(--c-felt)',
   };
   E.sort((a, b) => (a.Year ?? 9999) - (b.Year ?? 9999));
   const slug = (s) => (s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '')
@@ -535,7 +537,7 @@
                'Information Theory', 'Nonlinear Dynamics'] },
     { name: 'Matter & Motion', color: 'var(--c-blue)',
       blurb: 'things that move, flow, vibrate and break',
-      fields: ['Mechanics', 'Celestial Mechanics', 'Rocketry', 'Fluid Dynamics', 'Acoustics',
+      fields: ['Mechanics', 'Billiards', 'Celestial Mechanics', 'Rocketry', 'Fluid Dynamics', 'Acoustics',
                'Materials Science', 'Geophysics'] },
     { name: 'Heat, Chemistry & Life', color: 'var(--c-amber)',
       blurb: 'energy, entropy, reactions and the cell',

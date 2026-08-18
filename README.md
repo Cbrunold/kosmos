@@ -17,7 +17,7 @@ truth for code and the normalised data snapshots. Sync is one-way, Notion → re
 | `/forces`    | The four fundamental interactions |
 | `/mines`     | World map of ~90 flagship mines, and for each raw material its ore minerals, typical grade, concentration factor, and ore-to-product process |
 | `/machines`  | The canonical engines and machines — how each works, its cycle drawn as a p–V loop, efficiency, materials, inventors; cross-linked to equations, elements and skills |
-| `/skills`    | Hands-on techniques with the science behind them — tools, steps, safety, how it fails, how you know it worked; linked to elements, equations and machines |
+| `/skills`    | Hands-on techniques with the science behind them — tools, steps, safety, how it fails, how you know it worked; linked to elements, equations and machines. Includes three cue-sports skills that run on the billiards equations |
 | `/glossary`  | The terms the site uses, defined once and traced at build time to every page whose text uses them |
 | `/explainers`| The people, channels and organisations that explain this material — with the glossary terms each covers, computed from the same matcher |
 | `/impacts`   | What extraction costs, by mechanism — how each harm arises, what reduces it, where it is documented, how many mines on the site it applies to, and the physics it runs on (Darcy, Stokes, hydrostatics) |
@@ -80,7 +80,7 @@ scripts/seed_engineering.py   The engineering half: ~30 machines and ~22 hands-o
                               new DBs, plus the cycle equations (Carnot, Otto, Diesel, Brayton, COP,
                               Betz…) and ~30 inventors they link to. build.py draws each heat
                               engine's p–V cycle from the cycle name
-scripts/seed_glossary.py      Creates + seeds Glossary [DB] (~195 terms with domain, definition,
+scripts/seed_glossary.py      Creates + seeds Glossary [DB] (~205 terms with domain, definition,
                               aliases). "Appears in" links are computed by build.py, never stored
 scripts/seed_nobel.py         Adds a Nobel field to the Researchers DB and marks the laureates on
                               file; `--diff LIST` reports which names in a list are not researchers yet
@@ -104,6 +104,16 @@ scripts/seed_fluids_waves.py  Fluids (12: hydrostatics, Pascal, Archimedes, visc
                               rest. Hooks: hydro turbines, soldering/brazing/casting, every telescope,
                               and a new Impacts ↔ Equations dual relation (Darcy on drainage, Stokes
                               on tailings) that /impacts and /equations both render
+scripts/seed_billiards.py     The physics of the pool table — companion to the pool-sauce-engine
+                              repo, which integrates these equations while this shelf states them.
+                              Ten equations (ninety-degree rule, ghost-ball aim, throw, tip offset →
+                              spin, slide-to-roll, thirty-degree rule, cushion rebound, cue-to-ball
+                              speed transfer in a Billiards field; restitution and rolling resistance
+                              in Mechanics), all with Requires edges onto momentum, energy, friction,
+                              torque and projection; and three Skills in a Cue sports category (The
+                              Cut Shot, Follow Draw and Stun, Using Side). build.py attaches a lookup
+                              table to the ninety-degree rule quoting poolsauce/constants.py, so the
+                              shelf and the engine never disagree on a number
 scripts/seed_explainers.py    Creates + seeds Explainers [DB] (~40 people, channels and organisations
                               who explain the material — not the Researchers DB, which is who did the
                               work). The glossary terms each covers are computed by build.py from the

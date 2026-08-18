@@ -36,7 +36,7 @@ TITLE = "Glossary [DB]"
 
 DOMAINS = ["Mechanics", "Thermodynamics", "Electromagnetism", "Quantum", "Relativity", "Cosmology", "Astronomy",
            "Nuclear & Particle", "Chemistry", "Mineralogy", "Mining & Metallurgy", "Machines",
-           "Workshop", "Mathematics", "Measurement", "Waves & Fluids"]
+           "Workshop", "Mathematics", "Measurement", "Waves & Fluids", "Cue sports"]
 
 # term, domain, definition, aliases (comma-separated, for tracing)
 TERMS = [
@@ -263,6 +263,22 @@ TERMS = [
     ("Frequency", "Waves & Fluids", "How many cycles pass a point per second, in hertz. Middle A is 440; visible light is around 5 × 10¹⁴; the energy of a photon is this times Planck's constant.", "hertz, Hz"),
     ("Standing wave", "Waves & Fluids", "A wave trapped between two boundaries so that only whole numbers of half-wavelengths fit — the fundamental and its harmonics. Strings, pipes, laser cavities and, in a sense, electrons in atoms.", "harmonics, harmonic, resonant frequency"),
     ("Refraction", "Waves & Fluids", "The bending of a wave where its speed changes — light entering glass, sound crossing warm air, a sea swell reaching the shallows. Snell's law gives the angle; the refractive index gives the speed.", "refract, refracts, refractive index"),
+    # ---- the pool table, with seed_billiards. Its own domain: the words are the
+    # game's, not physics'. "English" left out as an alias — it is a nationality on
+    # every researcher card; "follow" and "draw" left out as terms — ordinary
+    # words on this site — so Topspin and Backspin carry them as aliases.
+    ("Tangent line", "Cue sports", "The line at right angles to the line of centres at contact — where the cue ball goes immediately after hitting the object ball, before any spin acts. The ninety-degree rule, drawn on the cloth.", ""),
+    ("Ghost ball", "Cue sports", "The imaginary cue ball frozen where the real one must be at contact: touching the object ball on the far side from the pocket, its centre one ball's width away along the pocket line. Aim at its centre.", ""),
+    ("Cut angle", "Cue sports", "The angle between the cue ball's path and the line of centres at contact — zero for a straight-in shot, 30° for a half-ball hit. It sets how the speed and energy divide between the two balls.", "cut"),
+    ("Throw", "Cue sports", "The object ball's departure a degree or few off the line of centres, from friction between the balls during contact — forward on a cut, sideways with side spin. Slow shots throw more.", "cut-induced throw, spin-induced throw"),
+    ("Side spin", "Cue sports", "Spin about a vertical axis, from a tip left or right of centre. It throws the object ball, alters the rebound off a cushion, and on the way there produces squirt and swerve — four effects for one stroke.", "sidespin, running side, reverse side"),
+    ("Squirt", "Cue sports", "The cue ball's small deflection off the cue's line when struck with side spin, away from the side the tip was on. A property of the cue's front-end mass, not of the table; low-deflection shafts move that mass back.", "cue-ball deflection"),
+    ("Swerve", "Cue sports", "The curve of a cue ball hit with side spin and an elevated cue, from friction with the cloth. Small on a level cue, large in a massé; it partly cancels squirt at some speed, and only that speed.", "massé"),
+    ("Stun", "Cue sports", "A cue ball arriving with no spin — hit slightly below centre so it is still sliding at contact. It stops dead on a straight shot and holds the tangent line on a cut.", "stun shot, stunned"),
+    ("Topspin", "Cue sports", "Forward spin from a tip above centre. It survives the collision and bends the cue ball forward off the tangent line as it takes up roll — the follow shot, and the thirty-degree rule.", "follow shot"),
+    ("Backspin", "Cue sports", "Reverse spin from a tip below centre. After the collision the cloth's friction turns it into a return: the cue ball comes back. Twice the speed pulls back four times as far.", "draw shot"),
+    ("Miscue", "Cue sports", "The tip sliding off the ball instead of gripping it — beyond about half a radius of offset, or with no chalk. The ball goes almost nowhere and sometimes off the table.", "miscues"),
+    ("Cushion", "Cue sports", "The rubber rail the ball rebounds from. It returns about three-quarters of the energy and drags on what runs along it, so the ball leaves shorter than it arrived — more so at speed, and side spin changes it either way.", "cushions"),
 ]
 
 
