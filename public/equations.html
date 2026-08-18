@@ -48,6 +48,8 @@
     --c-silver: #6b7884;
     --c-moss: #4f7a1e;
     --c-lavender: #7d5fc0;
+    --c-magenta: #b3268e;
+    --c-cobalt: #2f4bb0;
     --heat: #2a78d6;
   }
   @media (prefers-color-scheme: dark) {
@@ -120,6 +122,8 @@
     --c-silver: #a4b0bc;
     --c-moss: #7fa84a;
     --c-lavender: #b49ae6;
+    --c-magenta: #e06ac4;
+    --c-cobalt: #7a8ee6;
     --heat: #5598e7;
   }
 
@@ -456,6 +460,7 @@
     Electrostatics: 'var(--c-gold)', Radiation: 'var(--c-ember)',
     'Heat Transfer': 'var(--c-terracotta)', Rocketry: 'var(--c-silver)',
     'Chemical Thermodynamics': 'var(--c-moss)', 'Atomic Physics': 'var(--c-lavender)',
+    'Vectors & Geometry': 'var(--c-magenta)', Calculus: 'var(--c-cobalt)',
   };
   E.sort((a, b) => (a.Year ?? 9999) - (b.Year ?? 9999));
   const slug = (s) => (s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '')
@@ -467,7 +472,8 @@
   const DOMAINS = [
     { name: 'Foundations', color: 'var(--c-pink)',
       blurb: 'the mathematics and principles the rest is written in',
-      fields: ['Mathematics', 'Classical Field Theory', 'Information Theory', 'Nonlinear Dynamics'] },
+      fields: ['Vectors & Geometry', 'Calculus', 'Mathematics', 'Classical Field Theory',
+               'Information Theory', 'Nonlinear Dynamics'] },
     { name: 'Matter & Motion', color: 'var(--c-blue)',
       blurb: 'things that move, flow, vibrate and break',
       fields: ['Mechanics', 'Celestial Mechanics', 'Rocketry', 'Fluid Dynamics', 'Acoustics',
@@ -610,12 +616,15 @@
       if (e['Named After']) bits.push(e['Named After']);
       if (e.Year) bits.push(e.Year < 0 ? `c. ${-e.Year} BCE` : String(e.Year));
       if (bits.length) { const m = document.createElement('div'); m.className = 'meta'; m.textContent = bits.join(' · '); c.appendChild(m); }
-      const rel = (e.Related || []).map((id) => byId[id]).filter(Boolean)
-        .sort((a, b) => (a.Year ?? 9999) - (b.Year ?? 9999));
-      if (rel.length) {
+      // three equation-to-equation rows: what it leans on (Requires), what leans on it
+      // (Required By, the synced half of the same relation), and the looser Related web
+      const eqRow = (ids, label) => {
+        const rel = (ids || []).map((id) => byId[id]).filter(Boolean)
+          .sort((a, b) => (a.Year ?? 9999) - (b.Year ?? 9999));
+        if (!rel.length) return;
         const row = document.createElement('div');
         row.className = 'rel';
-        const lbl = document.createElement('span'); lbl.className = 'lbl'; lbl.textContent = 'related';
+        const lbl = document.createElement('span'); lbl.className = 'lbl'; lbl.textContent = label;
         row.appendChild(lbl);
         for (const r of rel) {
           const a = document.createElement('a');
@@ -628,7 +637,10 @@
           row.appendChild(a);
         }
         c.appendChild(row);
-      }
+      };
+      eqRow(e.Requires, 'requires');
+      eqRow(e['Required By'], 'required by');
+      eqRow(e.Related, 'related');
       const els = (e.Elements || []).map((id) => EL[id]).filter(Boolean).sort((a, b) => a.z - b.z);
       if (els.length) {
         const row = document.createElement('div');

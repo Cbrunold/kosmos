@@ -10,7 +10,7 @@ truth for code and the normalised data snapshots. Sync is one-way, Notion → re
 
 | Route        | What's there |
 |--------------|--------------|
-| `/`          | Tile launcher with live stats per section, and a search bar over everything the site holds (`/` to focus, `?q=` to deep-link a query) |
+| `/`          | Tile launcher in four groups (Matter & Earth, Cosmos & Physics, Making & Doing, Reference) with live stats per section, and a search bar over everything the site holds (`/` to focus, `?q=` to deep-link a query) |
 | `/elements`  | Interactive periodic table (11 lenses incl. crustal rarity and concentration factor, temperature + discovery sliders), sources & extraction per element, and the AI photo analyzer |
 | `/minerals`  | 3,100+ minerals with formula, elemental makeup (mass %), hardness and density, filterable by contained element; gemstone shelf, rock families, silicate classes |
 | `/cosmos`    | Field guide to celestial object classes, the stellar spectral sequence, observatories, a discovery timeline, instruments and researchers |
@@ -88,6 +88,12 @@ scripts/seed_impacts.py       Creates + seeds Mining Impacts [DB] (18 mechanisms
                               tailings dam failure, silicosis…) with mechanism, mitigation and a
                               documented case. Where names mine Types, so build.py counts how many
                               mines on the site each applies to; nothing is stored per-site
+scripts/seed_foundations.py   The mathematics the physics is written in, and the mechanics it forgot:
+                              vectors & geometry (13), calculus (8), mechanics (18) into the Equations
+                              DB, plus a Requires / Required By dual self-relation — a dependency
+                              graph, distinct from the looser Related web — with ~100 edges, many
+                              from existing equations back to their new prerequisites; and hooks
+                              from Machines and Skills to torque, power, friction and the rest
 scripts/seed_explainers.py    Creates + seeds Explainers [DB] (~40 people, channels and organisations
                               who explain the material — not the Researchers DB, which is who did the
                               work). The glossary terms each covers are computed by build.py from the

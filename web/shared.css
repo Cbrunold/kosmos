@@ -46,6 +46,8 @@
     --c-silver: #6b7884;
     --c-moss: #4f7a1e;
     --c-lavender: #7d5fc0;
+    --c-magenta: #b3268e;
+    --c-cobalt: #2f4bb0;
     --heat: #2a78d6;
   }
   @media (prefers-color-scheme: dark) {
@@ -118,6 +120,8 @@
     --c-silver: #a4b0bc;
     --c-moss: #7fa84a;
     --c-lavender: #b49ae6;
+    --c-magenta: #e06ac4;
+    --c-cobalt: #7a8ee6;
     --heat: #5598e7;
   }
 
