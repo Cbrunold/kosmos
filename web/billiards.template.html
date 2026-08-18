@@ -1,0 +1,415 @@
+<title>Kosmos · Billiards</title>
+<style>
+__SHARED__
+
+  .lab { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 16px; align-items: start; max-width: 1240px; }
+  @media (max-width: 860px) { .lab { grid-template-columns: 1fr; } }
+  .felt { width: 100%; height: auto; display: block; border-radius: 8px; background: var(--panel); border: 1px solid var(--hairline); }
+  .ctl { display: flex; flex-direction: column; gap: 10px; }
+  .ctl .row { display: grid; grid-template-columns: 1fr auto; gap: 2px 10px; align-items: center; }
+  .ctl label { font: 10px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); grid-column: 1 / -1; }
+  .ctl input[type=range] { width: 100%; accent-color: var(--c-felt); margin: 0; }
+  .ctl .v { font: 12px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; color: var(--ink); font-variant-numeric: tabular-nums; min-width: 84px; text-align: right; }
+  .ctl .hint { font-size: 11px; color: var(--muted); line-height: 1.4; grid-column: 1 / -1; }
+  .presets { display: flex; flex-wrap: wrap; gap: 5px; }
+  .presets button { font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; border: 1px solid var(--hairline); background: transparent; color: var(--ink-2); border-radius: 99px; padding: 3px 10px; cursor: pointer; }
+  .presets button:hover { color: var(--ink); border-color: var(--ink-2); }
+  .out { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 14px; max-width: 1240px; }
+  @media (max-width: 860px) { .out { grid-template-columns: 1fr; } }
+  .out h3 { font: 700 12px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; letter-spacing: 0.1em; text-transform: uppercase; margin: 0 0 8px; display: flex; align-items: center; gap: 8px; }
+  .out h3 .dot { width: 9px; height: 9px; border-radius: 50%; }
+  .out dl { display: grid; grid-template-columns: auto 1fr; gap: 3px 12px; margin: 0; font-size: 12.5px; }
+  .out dt { color: var(--muted); font: 10px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; letter-spacing: 0.08em; text-transform: uppercase; padding-top: 3px; white-space: nowrap; }
+  .out dd { margin: 0; color: var(--ink); font-variant-numeric: tabular-nums; line-height: 1.45; }
+  .out dd small { color: var(--muted); }
+  .out .warn { color: var(--c-red); }
+  .legend { display: flex; flex-wrap: wrap; gap: 4px 14px; margin: 8px 0 0; font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; color: var(--muted); }
+  .legend span::before { content: ""; display: inline-block; width: 18px; height: 0; border-top: 2px solid var(--lc); margin-right: 6px; vertical-align: middle; border-top-style: var(--ls, solid); }
+
+  .cush { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 16px; align-items: start; max-width: 1240px; }
+  @media (max-width: 860px) { .cush { grid-template-columns: 1fr; } }
+
+  table.nums { border-collapse: collapse; width: 100%; font-size: 12px; max-width: 1240px; }
+  table.nums th { font: 9.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-align: left; font-weight: 400; padding: 7px 10px; border-bottom: 1px solid var(--hairline); white-space: nowrap; }
+  table.nums td { padding: 6px 10px; color: var(--ink-2); line-height: 1.45; vertical-align: top; border-top: 1px solid color-mix(in oklab, var(--hairline) 60%, transparent); }
+  table.nums td.k { color: var(--ink); white-space: nowrap; }
+  table.nums td.v { font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; font-variant-numeric: tabular-nums; color: var(--ink); white-space: nowrap; }
+  .numswrap { overflow-x: auto; border: 1px solid var(--hairline); border-radius: 8px; background: var(--panel); max-width: 1240px; }
+
+  .shelf { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; max-width: 1240px; }
+  .shelf a.eq { text-decoration: none; color: inherit; border-top: 3px solid var(--fc, var(--hairline)); display: flex; flex-direction: column; gap: 6px; }
+  .shelf a.eq:hover { border-color: var(--ink-2); }
+  .shelf .eq h3 { font: 700 13px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; margin: 0; display: flex; justify-content: space-between; gap: 8px; align-items: baseline; }
+  .shelf .eq h3 .fld { font-size: 9px; letter-spacing: 0.09em; text-transform: uppercase; color: var(--fc); font-weight: 400; white-space: nowrap; }
+  .shelf .eq .formula { font: 600 14px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; overflow-x: auto; white-space: nowrap; }
+  .shelf .eq .sig { font-size: 12px; color: var(--ink-2); line-height: 1.5; margin: 0; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+  .shelf .eq .meta { font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; color: var(--muted); }
+  .skills { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; max-width: 1240px; }
+  .skills a { text-decoration: none; color: inherit; border-top: 3px solid var(--c-felt); display: flex; flex-direction: column; gap: 6px; }
+  .skills a:hover { border-color: var(--ink-2); }
+  .skills h3 { font: 700 13px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; margin: 0; display: flex; justify-content: space-between; gap: 8px; }
+  .skills h3 .d { font-size: 9px; letter-spacing: 0.09em; text-transform: uppercase; color: var(--muted); font-weight: 400; }
+  .skills p { font-size: 12px; color: var(--ink-2); line-height: 1.5; margin: 0; }
+  .assume { max-width: 72ch; font-size: 12.5px; color: var(--ink-2); line-height: 1.6; }
+  .assume li { margin-bottom: 4px; }
+  .assume a, .klede a { color: inherit; }
+</style>
+
+<nav class="knav"><a href="/">KOSMOS</a><span>/</span><span class="cur">Billiards</span></nav>
+<h1 class="ktitle">Billiards</h1>
+<p class="klede">Two equal spheres, a cloth and a rubber rail — and every one of the shelf's mechanics equations turned into a shot. Momentum and energy give the <a href="/glossary#tangent-line">tangent line</a>; friction between the balls gives <a href="/glossary#throw">throw</a>; the tip's offset gives spin; the cloth turns that spin into follow, draw and stun. The lab below runs those equations live. It is the same physics, and the same numbers, that the <em>Pool Sauce</em> engine integrates.</p>
+
+<h2 class="ksec">The shot lab</h2>
+<div class="lab">
+  <svg class="felt" id="lab" viewBox="0 0 900 470" role="img" aria-label="Top view of a shot: cue ball, object ball, ghost ball, tangent line, and the paths both balls take"></svg>
+  <div class="kcard ctl">
+    <div class="row"><label for="cut">cut angle θ</label><input id="cut" type="range" min="0" max="75" step="0.5" value="30"><span class="v" id="cutv"></span>
+      <div class="hint">0° is straight in; 30° is a half-ball hit. The object ball is set on the cue ball's left.</div></div>
+    <div class="row"><label for="spd">cue-ball speed leaving the tip</label><input id="spd" type="range" min="0.5" max="6" step="0.1" value="2.5"><span class="v" id="spdv"></span>
+      <div class="hint">A soft roll is ~1 m/s; a break is 10+. Above ~5 the paths leave the frame.</div></div>
+    <div class="row"><label for="tip">tip height, b/R</label><input id="tip" type="range" min="-0.5" max="0.5" step="0.02" value="0.4"><span class="v" id="tipv"></span>
+      <div class="hint">+0.4 is natural roll from the start; 0 is a centre-ball hit; below 0 is draw. ±0.5 is the miscue limit.</div></div>
+    <div class="row"><label for="side">side, b/R</label><input id="side" type="range" min="-0.5" max="0.5" step="0.02" value="0"><span class="v" id="sidev"></span>
+      <div class="hint">Left is negative. On a level cue side does not curve the cue ball — it throws the object ball, and it matters at the rail.</div></div>
+    <div class="row"><label for="dist">distance to the object ball</label><input id="dist" type="range" min="0.15" max="1.6" step="0.05" value="0.8"><span class="v" id="distv"></span>
+      <div class="hint">Spin changes on the way: a stunned ball takes up roll, a drawn one loses its backspin.</div></div>
+    <div class="presets" id="presets"></div>
+  </div>
+</div>
+<div class="legend">
+  <span style="--lc:var(--ink)">cue ball, before</span>
+  <span style="--lc:var(--c-felt)">cue ball, after — sliding then rolling</span>
+  <span style="--lc:var(--c-amber)">object ball</span>
+  <span style="--lc:var(--muted); --ls:dashed">tangent line · line of centres · pocket line</span>
+  <span style="--lc:var(--c-red); --ls:dotted">object ball with no throw</span>
+</div>
+<div class="out">
+  <div class="kcard"><h3><span class="dot" style="background:var(--c-amber)"></span>Object ball</h3><dl id="ob"></dl></div>
+  <div class="kcard"><h3><span class="dot" style="background:var(--c-felt)"></span>Cue ball</h3><dl id="cb"></dl></div>
+</div>
+
+<h2 class="ksec">The cushion</h2>
+<div class="cush">
+  <svg class="felt" id="cushion" viewBox="0 0 900 300" role="img" aria-label="A ball approaching a cushion and rebounding"></svg>
+  <div class="kcard ctl">
+    <div class="row"><label for="ca">approach angle, from the rail</label><input id="ca" type="range" min="10" max="85" step="1" value="45"><span class="v" id="cav"></span></div>
+    <div class="row"><label for="cs">speed into the rail</label><input id="cs" type="range" min="0.5" max="6" step="0.1" value="2"><span class="v" id="csv"></span></div>
+    <div class="row"><label for="cside">side — running (+) or reverse (−)</label><input id="cside" type="range" min="-0.5" max="0.5" step="0.02" value="0"><span class="v" id="csidev"></span>
+      <div class="hint">Running side has the ball's surface moving against its travel at the rail, so friction speeds it along; reverse does the opposite.</div></div>
+    <dl id="cout" style="margin-top:6px"></dl>
+  </div>
+</div>
+
+<h2 class="ksec">The numbers</h2>
+<p class="knote" style="max-width:72ch;margin:0 0 10px">The lab runs on these — quoted from <code>poolsauce/constants.py</code> in the pool-sauce-engine repository, so the page and the engine never disagree on one. Where the engine has no value yet (ball–ball friction, cushion friction) the literature's is used and marked.</p>
+<div class="numswrap"><table class="nums" id="nums"></table></div>
+
+<h2 class="ksec">The equations</h2>
+<div class="shelf" id="shelf"></div>
+
+<h2 class="ksec">The skills</h2>
+<div class="skills" id="skills"></div>
+
+<h2 class="ksec">What the lab leaves out</h2>
+<ul class="assume">
+  <li><strong>The cue is level.</strong> No swerve, no massé — side spin curves the cue ball only when the cue is elevated, and here it never is. Squirt (the cue ball leaving a shade off the cue's line with side) is a property of the cue, not the table, and is not modelled either: the speed and spin are taken as they leave the tip.</li>
+  <li><strong>Balls stay on the cloth.</strong> No hop on a firm draw stroke, no jump; the cushion returns the ball in the plane.</li>
+  <li><strong>Friction is Coulomb's</strong> — a constant coefficient, except ball–ball friction for throw, which uses Alciatore's measured fit μ = 0.01 + 0.108 e<sup>−1.088 v</sup> because slow shots really do throw more.</li>
+  <li><strong>The cue ball's spin is untouched by the collision.</strong> The friction impulse between the balls also nudges the cue ball's spin (it is what makes the object ball pick up a little roll); that second-order effect is dropped, and the object ball leaves without spin.</li>
+  <li><strong>The frame is a 9-ft table without pockets</strong> — paths stop where they would meet a rail. Rails are the cushion lab's business.</li>
+</ul>
+
+<p class="kfoot">Physics from the Equations shelf; constants from pool-sauce-engine. Coriolis, <em>Théorie mathématique des effets du jeu de billard</em>, 1835, had most of this; the throw model follows Alciatore (<em>The Illustrated Principles of Pool and Billiards</em>, technical proofs). Nothing here is a substitute for a table.</p>
+
+<script id="data" type="application/json">__DATA__</script>
+<script>
+  const D = JSON.parse(document.getElementById('data').textContent);
+  // ---- constants: pool-sauce-engine/poolsauce/constants.py, plus two literature values marked below
+  const R = 0.028575, M = 0.170, G = 9.81;
+  const E_BB = 0.92;                 // ball–ball restitution
+  const MU_S = 0.2, MU_R = 0.01, MU_SP = 0.044;   // cloth: sliding, rolling, spinning
+  const E_C = Math.sqrt(0.75);       // cushion keeps 3/4 of the energy → 0.87 of the speed
+  const MU_C = 0.2;                  // cushion friction — literature, not in constants.py
+  const muBB = (v) => 0.01 + 0.108 * Math.exp(-1.088 * v);   // Alciatore's fit — literature
+  const TABLE_L = 2.54, TABLE_W = 1.27;
+
+  const $ = (id) => document.getElementById(id);
+  const fmt = (x, d = 2) => (Math.round(x * 10 ** d) / 10 ** d).toFixed(d);
+  const deg = (r) => r * 180 / Math.PI, rad = (d) => d * Math.PI / 180;
+  const vadd = (a, b) => [a[0] + b[0], a[1] + b[1]], vsub = (a, b) => [a[0] - b[0], a[1] - b[1]];
+  const vmul = (a, k) => [a[0] * k, a[1] * k], vlen = (a) => Math.hypot(a[0], a[1]);
+  const vdot = (a, b) => a[0] * b[0] + a[1] * b[1], vunit = (a) => { const l = vlen(a); return l ? vmul(a, 1 / l) : [0, 0]; };
+  const perp = (a) => [-a[1], a[0]];   // rotate +90°
+
+  // ---- one ball on cloth: velocity v, "spin surface velocity" s (the velocity the spin would give at the
+  // contact point, reversed — equals v when rolling), side spin surface speed z. Advance by dt.
+  // Slip u = v − s: friction μ_s g against û, spin surface velocity gains (5/2) μ_s g along û. Rolling: μ_r g.
+  function step(b, dt) {
+    const u = vsub(b.v, b.s), ul = vlen(u);
+    if (ul > 1e-4) {
+      const uh = vmul(u, 1 / ul);
+      const tRoll = 2 * ul / (7 * MU_S * G);
+      if (dt >= tRoll) {   // finish the slide exactly, then roll for the rest
+        const vf = vadd(vmul(b.v, 5 / 7), vmul(b.s, 2 / 7));
+        b.p = vadd(b.p, vsub(vmul(b.v, tRoll), vmul(uh, 0.5 * MU_S * G * tRoll * tRoll)));
+        b.v = vf; b.s = vf; b.slid += tRoll;
+        return step(b, dt - tRoll);
+      }
+      b.p = vadd(b.p, vsub(vmul(b.v, dt), vmul(uh, 0.5 * MU_S * G * dt * dt)));
+      b.v = vsub(b.v, vmul(uh, MU_S * G * dt));
+      b.s = vadd(b.s, vmul(uh, 2.5 * MU_S * G * dt));
+      b.slid += dt;
+    } else {
+      const sp = vlen(b.v);
+      if (sp < 1e-4) { b.v = [0, 0]; b.s = [0, 0]; return; }
+      const dec = Math.min(sp, MU_R * G * dt);
+      const vh = vmul(b.v, 1 / sp);
+      b.p = vadd(b.p, vsub(vmul(b.v, dt), vmul(vh, 0.5 * MU_R * G * dt * dt)));
+      b.v = vmul(vh, sp - dec); b.s = b.v;
+    }
+    if (b.z) { const dz = 2.5 * MU_SP * G * dt; b.z = Math.abs(b.z) <= dz ? 0 : b.z - Math.sign(b.z) * dz; }
+  }
+  const stopDistance = (b) => {   // from a state: remaining slide + roll, along the current line
+    const u = vsub(b.v, b.s), ul = vlen(u);
+    const vf = ul > 1e-4 ? vadd(vmul(b.v, 5 / 7), vmul(b.s, 2 / 7)) : b.v;
+    let d = 0;
+    if (ul > 1e-4) { const t = 2 * ul / (7 * MU_S * G); d += vlen(vsub(vmul(b.v, t), vmul(vunit(u), 0.5 * MU_S * G * t * t))); }
+    return d + vlen(vf) ** 2 / (2 * MU_R * G);
+  };
+
+  // ---- the shot
+  function shoot(cutDeg, v0, tip, side, dist) {
+    const th = rad(cutDeg);
+    const d = [1, 0];                                    // cue ball travels +x
+    const n = [Math.cos(th), -Math.sin(th)];             // line of centres, object ball on the left (screen up)
+    const t = perp(n);
+    const ob0 = [1.55, TABLE_W / 2];
+    const ghost = vsub(ob0, vmul(n, 2 * R));
+    const cb = { p: [ghost[0] - dist, ghost[1]], v: vmul(d, v0), s: vmul(d, 2.5 * v0 * tip), z: 2.5 * v0 * side, slid: 0 };
+    // ---- travel to contact
+    const pre = [cb.p.slice()];
+    let reached = false, tt = 0;
+    for (let i = 0; i < 4000; i++) {
+      const dt = 0.002;
+      step(cb, dt); tt += dt; pre.push(cb.p.slice());
+      if (cb.p[0] >= ghost[0]) { reached = true; break; }
+      if (vlen(cb.v) < 1e-3) break;
+    }
+    if (!reached) return { pre, reached: false, ghost, ob0, n, t, cb };
+    cb.p = ghost.slice();
+    const vc = vlen(cb.v), sc = vdot(cb.s, d), rollingAtContact = vlen(vsub(cb.v, cb.s)) < 0.02;
+    // ---- collision
+    const vn = vdot(cb.v, n), vt = vdot(cb.v, t);        // normal closing, tangential
+    const Jn = M * vn * (1 + E_BB) / 2;                  // normal impulse (object ball at rest)
+    const uh = vt - cb.z;                                // horizontal surface slip at the contact, along t: left (inside) side adds to a left cut's slip
+    const uz = -sc * Math.cos(th);                       // vertical surface slip from top/bottom spin
+    const ul = Math.hypot(uh, uz);
+    const mu = muBB(ul);
+    let Jh = 0;
+    if (ul > 1e-6) Jh = Math.min(mu * Jn * Math.abs(uh) / ul, M * Math.abs(uh) / 7);   // gearing cap
+    const throwDir = Math.sign(uh) || 0;
+    const vOB = vadd(vmul(n, Jn / M), vmul(t, throwDir * Jh / M));
+    const throwDeg = deg(Math.atan2(Jh / M, Jn / M));
+    const vCB = vsub(vsub(cb.v, vmul(n, Jn / M)), vmul(t, throwDir * Jh / M));
+    const ob = { p: ob0.slice(), v: vOB, s: [0, 0], z: 0, slid: 0 };
+    const cbAfter = { p: ghost.slice(), v: vCB, s: cb.s.slice(), z: cb.z, slid: 0 };
+    const stopOB = stopDistance(ob), stopCB = stopDistance(cbAfter);
+    const vfCB = vlen(vsub(cbAfter.v, cbAfter.s)) > 1e-4 ? vadd(vmul(cbAfter.v, 5 / 7), vmul(cbAfter.s, 2 / 7)) : cbAfter.v;
+    // ---- roll both out, clipped to the table
+    const inside = (p) => p[0] > R && p[0] < TABLE_L - R && p[1] > R && p[1] < TABLE_W - R;
+    const trace = (b) => {
+      const pts = [b.p.slice()]; let off = false;
+      for (let i = 0; i < 6000; i++) { step(b, 0.004); pts.push(b.p.slice()); if (!inside(b.p)) { off = true; break; } if (vlen(b.v) < 1e-3) break; }
+      return { pts, off, slid: b.slid };
+    };
+    const obTrace = trace(ob), cbTrace = trace(cbAfter);
+    const slideLen = (() => { const b = { p: ghost.slice(), v: vCB, s: cb.s.slice(), z: 0, slid: 0 }; const u = vlen(vsub(b.v, b.s)); if (u < 1e-4) return 0; const tr = 2 * u / (7 * MU_S * G); const uh2 = vunit(vsub(b.v, b.s)); return vlen(vsub(vmul(b.v, tr), vmul(uh2, 0.5 * MU_S * G * tr * tr))); })();
+    return {
+      pre, reached: true, ghost, ob0, n, t, th, vc, sc, rollingAtContact, tip, cbz: cb.z,
+      vn, vt, Jn, Jh, throwDeg, throwDir, mu, ul, vOB, vCB, vfCB, stopOB, stopCB, obTrace, cbTrace, slideLen,
+      eOB: vlen(vOB) ** 2 / (vc * vc), fraction: 1 - Math.sin(th),
+      deflect: deg(Math.atan2(vfCB[1], vfCB[0])),            // from its original line, 0–180°; the tangent side is always away from the object ball
+      obDir: deg(Math.atan2(-vOB[1], vOB[0])), locDir: deg(Math.atan2(-n[1], n[0])),
+      cutStopped: vlen(vc) < 1e-3,
+    };
+  }
+
+  // ---- drawing
+  const svg = $('lab');
+  const SX = 900 / TABLE_L, SY = 470 / TABLE_W;   // near-isotropic; the table is 2:1
+  const px = (p) => [p[0] * SX, p[1] * SY];
+  const el = (tag, attrs, parent = svg) => { const e = document.createElementNS('http://www.w3.org/2000/svg', tag); for (const k in attrs) e.setAttribute(k, attrs[k]); parent.appendChild(e); return e; };
+  const poly = (pts, attrs) => el('polyline', { points: pts.map(px).map((p) => p.join(',')).join(' '), fill: 'none', ...attrs });
+  const line = (a, b, attrs) => { const [x1, y1] = px(a), [x2, y2] = px(b); return el('line', { x1, y1, x2, y2, ...attrs }); };
+  const ball = (p, attrs) => { const [cx, cy] = px(p); return el('circle', { cx, cy, r: R * SX, ...attrs }); };
+  const text = (p, s, attrs) => { const [x, y] = px(p); const e = el('text', { x, y, ...attrs }); e.textContent = s; return e; };
+  const clipLine = (p, dir, len) => vadd(p, vmul(dir, len));
+
+  function drawShot(S) {
+    svg.innerHTML = '';
+    el('rect', { x: 0, y: 0, width: 900, height: 470, fill: 'color-mix(in oklab, var(--c-felt) 9%, var(--panel))' });
+    // rails
+    el('rect', { x: 0.5, y: 0.5, width: 899, height: 469, fill: 'none', stroke: 'color-mix(in oklab, var(--c-felt) 40%, var(--hairline))', 'stroke-width': 3 });
+    const mono = { 'font-family': 'ui-monospace, "SF Mono", Consolas, monospace', 'font-size': 11, fill: 'var(--muted)' };
+    // pocket line & line of centres
+    line(vsub(S.ob0, vmul(S.n, 0.25)), clipLine(S.ob0, S.n, 2.5), { stroke: 'var(--muted)', 'stroke-width': 1, 'stroke-dasharray': '6 5', opacity: 0.6 });
+    text(clipLine(S.ob0, S.n, 0.32), 'to the pocket →', { ...mono, transform: `rotate(${deg(Math.atan2(S.n[1], S.n[0]))} ${px(clipLine(S.ob0, S.n, 0.32)).join(' ')})` });
+    // tangent line through the ghost ball
+    line(vsub(S.ghost, vmul(S.t, 1.2)), vadd(S.ghost, vmul(S.t, 1.2)), { stroke: 'var(--muted)', 'stroke-width': 1, 'stroke-dasharray': '3 5', opacity: 0.7 });
+    text(vadd(S.ghost, vmul(S.t, -0.36)), 'tangent line', { ...mono });
+    // pre-contact path
+    poly(S.pre, { stroke: 'var(--ink)', 'stroke-width': 2, opacity: 0.85 });
+    if (S.reached) {
+      // no-throw reference
+      line(S.ob0, clipLine(S.ob0, S.n, 2.5), { stroke: 'var(--c-red)', 'stroke-width': 1.2, 'stroke-dasharray': '2 4', opacity: 0.8 });
+      poly(S.obTrace.pts, { stroke: 'var(--c-amber)', 'stroke-width': 2.4 });
+      poly(S.cbTrace.pts, { stroke: 'var(--c-felt)', 'stroke-width': 2.4 });
+      // where the slide ends
+      const sl = S.cbTrace.pts[Math.min(S.cbTrace.pts.length - 1, Math.round(S.cbTrace.slid / 0.004))];
+      if (S.slideLen > 0.01 && sl) { const [cx, cy] = px(sl); el('circle', { cx, cy, r: 3.5, fill: 'var(--c-felt)' }); text(vadd(sl, [0.03, -0.02]), 'rolls from here', { ...mono, fill: 'var(--c-felt)' }); }
+      // end markers
+      const endOB = S.obTrace.pts[S.obTrace.pts.length - 1], endCB = S.cbTrace.pts[S.cbTrace.pts.length - 1];
+      ball(endOB, { fill: 'none', stroke: 'var(--c-amber)', 'stroke-width': 1.2, 'stroke-dasharray': '3 3' });
+      ball(endCB, { fill: 'none', stroke: 'var(--c-felt)', 'stroke-width': 1.2, 'stroke-dasharray': '3 3' });
+      // ghost ball at contact
+      ball(S.ghost, { fill: 'none', stroke: 'var(--ink)', 'stroke-width': 1.2, 'stroke-dasharray': '2 3', opacity: 0.8 });
+      text(vadd(S.ghost, [-0.02, 0.075]), 'ghost ball', { ...mono, 'text-anchor': 'middle' });
+    } else {
+      text(vadd(S.pre[S.pre.length - 1], [0.04, 0.005]), 'stops short', { ...mono, fill: 'var(--c-red)' });
+    }
+    // object ball at rest, cue ball at start
+    ball(S.ob0, { fill: 'var(--c-amber)', stroke: 'var(--page)', 'stroke-width': 1.5 });
+    ball(S.pre[0], { fill: 'var(--panel)', stroke: 'var(--ink)', 'stroke-width': 1.5 });
+    // cut angle arc
+    if (S.reached && S.th > 0.01) {
+      const c = px(S.ghost), r = 40;
+      const a0 = 0, a1 = -S.th;
+      el('path', { d: `M ${c[0] + r * Math.cos(a0)} ${c[1] + r * Math.sin(a0)} A ${r} ${r} 0 0 0 ${c[0] + r * Math.cos(a1)} ${c[1] + r * Math.sin(a1)}`, fill: 'none', stroke: 'var(--ink-2)', 'stroke-width': 1 });
+      const lab = el('text', { x: c[0] + (r + 12) * Math.cos(a1 / 2), y: c[1] + (r + 12) * Math.sin(a1 / 2) + 4, ...mono, fill: 'var(--ink-2)' }); lab.textContent = `θ ${fmt(deg(S.th), 0)}°`;
+    }
+    text([0.06, TABLE_W - 0.05], `9-ft table · ${TABLE_L} × ${TABLE_W} m · balls to scale`, { ...mono, opacity: 0.8 });
+  }
+
+  const dl = (rows) => rows.map(([k, v, cls]) => `<dt>${k}</dt><dd${cls ? ` class="${cls}"` : ''}>${v}</dd>`).join('');
+  function report(S) {
+    if (!S.reached) {
+      $('ob').innerHTML = dl([['—', 'The cue ball stopped before it got there. More speed, or less distance.', 'warn']]);
+      $('cb').innerHTML = dl([['at rest', `after ${fmt(vlen(vsub(S.pre[S.pre.length - 1], S.pre[0])), 2)} m`]]);
+      return;
+    }
+    const spinWord = S.rollingAtContact ? 'rolling naturally' : (S.sc > S.vc * 0.98 ? 'over-spinning (topspin beyond roll)' : S.sc > 0.05 * S.vc ? `sliding, ${fmt(100 * S.sc / S.vc, 0)} % of natural roll` : Math.abs(S.sc) <= 0.05 * S.vc ? 'stun — sliding with no spin' : `backspin, ${fmt(100 * -S.sc / S.vc, 0)} % of natural roll`);
+    $('ob').innerHTML = dl([
+      ['speed', `${fmt(vlen(S.vOB))} m/s <small>= v cos θ · (1+e)/2</small>`],
+      ['energy share', `${fmt(100 * S.eOB, 0)} % <small>cos²θ = ${fmt(100 * Math.cos(S.th) ** 2, 0)} % before restitution</small>`],
+      ['direction', `line of centres${S.throwDeg > 0.05 ? ` ${S.throwDir > 0 ? 'rotated toward the cue ball\'s line' : 'rotated away from the cue ball\'s line'} by ${fmt(S.throwDeg, 1)}° <small>${S.throwDir > 0 ? 'plays fuller than aimed — aim thinner' : 'plays thinner than aimed — aim fuller'}</small>` : ' — no throw'}`],
+      ['throw', `${fmt(S.throwDeg, 2)}° <small>μ = ${fmt(S.mu, 3)} at ${fmt(S.ul, 2)} m/s surface slip${S.Jh >= M * Math.abs(S.vt - S.cbz) / 7 - 1e-9 && S.Jh > 0 ? ' · gearing limit' : ''}</small>`],
+      ['ball-hit fraction', `${fmt(S.fraction, 2)} <small>1 − sin θ</small>`],
+      ['comes to rest', S.obTrace.off ? `at the rail (would roll ${fmt(S.stopOB, 1)} m)` : `after ${fmt(S.stopOB, 2)} m`],
+    ]);
+    $('cb').innerHTML = dl([
+      ['at contact', `${fmt(S.vc)} m/s · ${spinWord}${S.cbz ? ` · side ${fmt(Math.abs(S.cbz) / (2.5 * S.vc) * 100, 0)} %` : ''}`],
+      ['off the tangent line', `${fmt(vlen(S.vCB))} m/s <small>v sin θ, plus (1−e)/2 forward</small>`],
+      ['final direction', `${fmt(Math.abs(S.deflect), 1)}° from its original line${Math.abs(S.deflect) > 90 ? ' — coming back' : Math.abs(S.deflect) < 0.5 ? ' — straight on' : ', away from the object ball'} <small>${Math.abs(S.deflect) > 20 && Math.abs(S.deflect) < 40 && S.rollingAtContact && S.th > 0.1 ? '— the thirty-degree rule' : Math.abs(Math.abs(S.deflect) - (90 - deg(S.th))) < 2 && S.th > 0.1 ? '— holds the tangent line' : ''}</small>`],
+      ['slides', S.slideLen > 0.01 ? `${fmt(S.slideLen, 2)} m before it rolls` : 'not at all — rolling from contact'],
+      ['comes to rest', S.cbTrace.off ? `at the rail (would roll ${fmt(S.stopCB, 1)} m)` : `after ${fmt(S.stopCB, 2)} m`],
+      ['restitution', `e = ${E_BB}: separation ${fmt(100 * (1 - E_BB) / 2, 0)} % short of the ninety-degree rule`],
+    ]);
+  }
+
+  // ---- cushion
+  const csvg = $('cushion');
+  function cushion(aDeg, v, side) {
+    const a = rad(aDeg);
+    const vx = v * Math.cos(a), vy = v * Math.sin(a);           // along the rail, into the rail
+    const z = 2.5 * v * side;                                    // surface speed from side spin at the contact
+    const slip = vx - z;                                         // running side (z > 0) reduces the slip
+    const Jn = M * vy * (1 + E_C);
+    const Jt = Math.min(MU_C * Jn, (2 / 7) * M * Math.abs(slip)) * (Math.sign(slip) || 0);
+    const vx2 = vx - Jt / M, vy2 = E_C * vy;
+    return { vx, vy, vx2, vy2, out: deg(Math.atan2(vy2, Math.abs(vx2))), reversed: vx2 < 0, speed: Math.hypot(vx2, vy2) / v, noSide: deg(Math.atan2(E_C * vy, Math.max(1e-6, vx - Math.min(MU_C * (1 + E_C) * vy, (2 / 7) * Math.abs(vx))))) };
+  }
+  function drawCushion(C, aDeg) {
+    csvg.innerHTML = '';
+    const cel = (tag, attrs) => el(tag, attrs, csvg);
+    cel('rect', { x: 0, y: 0, width: 900, height: 300, fill: 'color-mix(in oklab, var(--c-felt) 9%, var(--panel))' });
+    cel('rect', { x: 0, y: 0, width: 900, height: 26, fill: 'color-mix(in oklab, var(--c-felt) 40%, var(--hairline))' });
+    const mono = { 'font-family': 'ui-monospace, "SF Mono", Consolas, monospace', 'font-size': 11, fill: 'var(--muted)' };
+    const cx = 450, cy = 26 + R * SX, L = 230;
+    const inA = rad(aDeg);
+    const p0 = [cx - L * Math.cos(inA), cy + L * Math.sin(inA)];
+    cel('line', { x1: p0[0], y1: p0[1], x2: cx, y2: cy, stroke: 'var(--ink)', 'stroke-width': 2 });
+    const outA = rad(C.out), sgn = C.reversed ? -1 : 1;
+    const p1 = [cx + sgn * L * Math.cos(outA), cy + L * Math.sin(outA)];
+    cel('line', { x1: cx, y1: cy, x2: p1[0], y2: p1[1], stroke: 'var(--c-felt)', 'stroke-width': 2.4 });
+    const nsA = rad(C.noSide), pn = [cx + L * Math.cos(nsA), cy + L * Math.sin(nsA)];
+    cel('line', { x1: cx, y1: cy, x2: pn[0], y2: pn[1], stroke: 'var(--muted)', 'stroke-width': 1, 'stroke-dasharray': '3 5' });
+    cel('circle', { cx, cy, r: R * SX, fill: 'var(--panel)', stroke: 'var(--ink)', 'stroke-width': 1.5 });
+    const t1 = cel('text', { x: p0[0] - 6, y: p0[1] + 16, ...mono, 'text-anchor': 'middle' }); t1.textContent = `in · ${aDeg}° from the rail`;
+    const t2 = cel('text', { x: p1[0] + 6 * sgn, y: p1[1] + 16, ...mono, fill: 'var(--c-felt)', 'text-anchor': 'middle' }); t2.textContent = `out · ${fmt(C.out, 0)}° · ${fmt(100 * C.speed, 0)} % of the speed`;
+    const t3 = cel('text', { x: pn[0] + 6, y: pn[1] + 30, ...mono, 'text-anchor': 'middle' }); t3.textContent = `no side: ${fmt(C.noSide, 0)}°`;
+    const t4 = cel('text', { x: 12, y: 290, ...mono }); t4.textContent = 'top rail · angles measured from the rail · reference: same shot with no side';
+    $('cout').innerHTML = dl([
+      ['rebound angle', `${fmt(C.out, 1)}° from the rail <small>vs ${fmt(C.noSide, 1)}° with no side; ${aDeg}° in</small>`],
+      ['speed kept', `${fmt(100 * C.speed, 0)} % <small>√0.75 into the rail; friction on the rest</small>`],
+      ['along the rail', `${fmt(C.vx, 2)} → ${fmt(C.vx2, 2)} m/s${C.reversed ? ' — reversed: the ball comes back' : ''}`],
+      ['into the rail', `${fmt(C.vy, 2)} → ${fmt(C.vy2, 2)} m/s`],
+    ]);
+  }
+
+  // ---- shelf, skills, numbers from the build
+  const COLORS = { Billiards: 'var(--c-felt)', Mechanics: 'var(--c-blue)' };
+  const shelf = $('shelf');
+  for (const e of D.equations) {
+    const a = document.createElement('a'); a.className = 'kcard eq'; a.href = '/equations#' + e.slug; a.style.setProperty('--fc', COLORS[e.field] || 'var(--muted)');
+    a.innerHTML = '<h3><span class="n"></span><span class="fld"></span></h3><div class="formula"></div><p class="sig"></p><div class="meta"></div>';
+    a.querySelector('.n').textContent = e.name; a.querySelector('.fld').textContent = e.field || '';
+    a.querySelector('.formula').textContent = e.equation || ''; a.querySelector('.sig').textContent = e.significance || '';
+    a.querySelector('.meta').textContent = [e.year ? (e.year < 0 ? `c. ${-e.year} BCE` : e.year) : null, e.requires ? `rests on ${e.requires} equation${e.requires === 1 ? '' : 's'}` : null, 'open on the equations page →'].filter(Boolean).join(' · ');
+    shelf.appendChild(a);
+  }
+  const sk = $('skills');
+  for (const s of D.skills) {
+    const a = document.createElement('a'); a.className = 'kcard'; a.href = '/skills#' + s.slug;
+    a.innerHTML = '<h3><span class="n"></span><span class="d"></span></h3><p></p>';
+    a.querySelector('.n').textContent = s.name; a.querySelector('.d').textContent = s.difficulty || ''; a.querySelector('p').textContent = s.summary || '';
+    sk.appendChild(a);
+  }
+  const nums = $('nums');
+  if (D.table) {
+    nums.innerHTML = '<thead><tr>' + D.table.columns.map((c) => `<th>${c}</th>`).join('') + '</tr></thead><tbody></tbody>';
+    const tb = nums.querySelector('tbody');
+    for (const r of D.table.rows) { const tr = document.createElement('tr'); r.forEach((c, i) => { const td = document.createElement('td'); td.className = i === 0 ? 'k' : i === 1 ? 'v' : ''; td.textContent = c; tr.appendChild(td); }); tb.appendChild(tr); }
+    const extra = [["Ball–ball friction μ", "≈ 0.06 (0.01–0.12 with speed)", "throw", "Literature — Alciatore's fit; not yet in constants.py"], ["Cushion friction μ_c", "≈ 0.2", "cushion rebound", "Literature; not yet in constants.py"]];
+    for (const r of extra) { const tr = document.createElement('tr'); r.forEach((c, i) => { const td = document.createElement('td'); td.className = i === 0 ? 'k' : i === 1 ? 'v' : ''; td.textContent = c; if (i === 3) td.style.color = 'var(--muted)'; tr.appendChild(td); }); tb.appendChild(tr); }
+  }
+
+  // ---- wiring
+  const ids = ['cut', 'spd', 'tip', 'side', 'dist'];
+  const units = { cut: (v) => `${fmt(v, 1)}°`, spd: (v) => `${fmt(v, 1)} m/s`, tip: (v) => `${v >= 0 ? '+' : ''}${fmt(v, 2)}`, side: (v) => `${v >= 0 ? '+' : ''}${fmt(v, 2)}`, dist: (v) => `${fmt(v, 2)} m` };
+  function run() {
+    const v = Object.fromEntries(ids.map((k) => [k, +$(k).value]));
+    for (const k of ids) $(k + 'v').textContent = units[k](v[k]);
+    const S = shoot(v.cut, v.spd, v.tip, v.side, v.dist);
+    drawShot(S); report(S);
+  }
+  for (const k of ids) $(k).addEventListener('input', run);
+  const PRESETS = [
+    ['half-ball, rolling', { cut: 30, spd: 2.5, tip: 0.4, side: 0, dist: 0.8 }],
+    ['half-ball, stun', { cut: 30, spd: 2.5, tip: -0.1, side: 0, dist: 0.3 }],
+    ['straight stop shot', { cut: 0, spd: 2, tip: -0.3, side: 0, dist: 0.6 }],
+    ['straight draw', { cut: 0, spd: 3, tip: -0.45, side: 0, dist: 0.5 }],
+    ['long draw that dies', { cut: 0, spd: 3, tip: -0.45, side: 0, dist: 1.6 }],
+    ['thin cut, slow — throw', { cut: 60, spd: 1, tip: 0.02, side: 0, dist: 0.5 }],
+    ['inside side on a cut', { cut: 30, spd: 2, tip: 0.02, side: -0.4, dist: 0.5 }],
+  ];
+  for (const [name, p] of PRESETS) { const b = document.createElement('button'); b.type = 'button'; b.textContent = name; b.addEventListener('click', () => { for (const k in p) $(k).value = p[k]; run(); }); $('presets').appendChild(b); }
+  run();
+
+  function runC() {
+    const a = +$('ca').value, v = +$('cs').value, s = +$('cside').value;
+    $('cav').textContent = `${a}°`; $('csv').textContent = `${fmt(v, 1)} m/s`; $('csidev').textContent = `${s >= 0 ? '+' : ''}${fmt(s, 2)}`;
+    drawCushion(cushion(a, v, s), a);
+  }
+  for (const k of ['ca', 'cs', 'cside']) $(k).addEventListener('input', runC);
+  runC();
+</script>

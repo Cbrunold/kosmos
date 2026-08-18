@@ -629,6 +629,27 @@ def build_skills_page():
     return len(rows)
 
 
+# ---------------- billiards ----------------
+def build_billiards_page():
+    """The physics of the pool table: the lab runs the equations in the browser; the page
+    lists the Billiards-field rows plus the two Mechanics rows the game needs, the three
+    Cue sports skills, and the constants table that quotes pool-sauce-engine."""
+    GENERAL = {"Coefficient of Restitution", "Rolling Resistance"}
+    eqs = [e for e in notion.get("equations", [])
+           if e.get("Name") and (e.get("Field") == "Billiards" or e["Name"] in GENERAL)]
+    eqs.sort(key=lambda e: (e.get("Field") != "Billiards", e.get("Year") or 9999, e["Name"]))
+    skills = [{"name": s["Name"], "slug": slugify(s["Name"]), "summary": s.get("Summary"), "difficulty": s.get("Difficulty")}
+              for s in notion.get("skills", []) if s.get("Category") == "Cue sports" and s.get("Name")]
+    write_page("billiards.template.html", "billiards.html", {
+        "equations": [{"name": e["Name"], "slug": slugify(e["Name"]), "field": e.get("Field"), "equation": e.get("Equation"),
+                       "significance": e.get("Significance"), "year": e.get("Year"), "requires": len(e.get("Requires") or [])}
+                      for e in eqs],
+        "skills": skills,
+        "table": EQUATION_TABLES.get("Ninety-Degree Rule"),
+    })
+    return len(eqs), len(skills)
+
+
 # ---------------- glossary ----------------
 def build_glossary_page():
     """Every term traced through every entity's text on the site, at build time.
@@ -863,6 +884,7 @@ def build_search_index():
         ("/glossary", "Glossary", "the terms the site uses, each traced to every page that uses it"),
         ("/explainers", "Explainers", "the people, channels and organisations that explain this material"),
         ("/impacts", "Mining Impacts", "what extraction costs — mechanism, mitigation and documented cases"),
+        ("/billiards", "Billiards", "the physics of the pool table — a live shot lab, the cushion, and the numbers Pool Sauce runs on"),
     ]:
         add("page", name, sub, "", route)
 
@@ -1022,7 +1044,7 @@ def theory_span() -> str:
 
 def build_home(n_min, n_gems, n_classes, n_spectral, n_instr, n_timeline, tl_decades,
                n_obs, n_disc, n_miss, n_search, n_mines, n_mined, n_mach, n_diag, n_skills, n_terms, n_traces,
-               n_expl, n_expl_terms, n_imp, n_imp_terms):
+               n_expl, n_expl_terms, n_imp, n_imp_terms, n_bill_eq=0, n_bill_skills=0):
     gaps = sum(1 for e in elements
                if e["meltingPt"] is None or e["boilingPt"] is None
                or e["density"] is None or e["occurrence"] is None)
@@ -1055,6 +1077,8 @@ def build_home(n_min, n_gems, n_classes, n_spectral, n_instr, n_timeline, tl_dec
         "__N_MACHINES__": n_mach,
         "__N_DIAGRAMS__": n_diag,
         "__N_SKILLS__": n_skills,
+        "__N_BILL_EQ__": n_bill_eq,
+        "__N_BILL_SKILLS__": n_bill_skills,
         "__N_TERMS__": n_terms,
         "__N_TRACES__": f"{n_traces:,}",
         "__N_EXPL__": n_expl,
@@ -1134,7 +1158,8 @@ if __name__ == "__main__":
     n_terms, n_traces = build_glossary_page()
     n_expl, n_expl_terms = build_explainers_page()
     n_imp, n_imp_terms = build_impacts_page()
+    n_bill_eq, n_bill_skills = build_billiards_page()
     n_search = build_search_index()
     build_home(n_min, n_gems, n_classes, n_spectral, n_instr, n_timeline, tl_decades,
                n_obs, n_disc, n_miss, n_search, n_mines, n_mined, n_mach, n_diag, n_skills, n_terms, n_traces,
-               n_expl, n_expl_terms, n_imp, n_imp_terms)
+               n_expl, n_expl_terms, n_imp, n_imp_terms, n_bill_eq, n_bill_skills)

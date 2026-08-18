@@ -18,6 +18,7 @@ truth for code and the normalised data snapshots. Sync is one-way, Notion → re
 | `/mines`     | World map of ~90 flagship mines, and for each raw material its ore minerals, typical grade, concentration factor, and ore-to-product process |
 | `/machines`  | The canonical engines and machines — how each works, its cycle drawn as a p–V loop, efficiency, materials, inventors; cross-linked to equations, elements and skills |
 | `/skills`    | Hands-on techniques with the science behind them — tools, steps, safety, how it fails, how you know it worked; linked to elements, equations and machines. Includes three cue-sports skills that run on the billiards equations |
+| `/billiards` | The physics of the pool table — a live shot lab (cut angle, speed, tip height, side, distance → tangent line, ghost ball, throw, slide-to-roll, stop distances), a cushion lab, the constants quoted from pool-sauce-engine, and the equations and skills it rests on |
 | `/glossary`  | The terms the site uses, defined once and traced at build time to every page whose text uses them |
 | `/explainers`| The people, channels and organisations that explain this material — with the glossary terms each covers, computed from the same matcher |
 | `/impacts`   | What extraction costs, by mechanism — how each harm arises, what reduces it, where it is documented, how many mines on the site it applies to, and the physics it runs on (Darcy, Stokes, hydrostatics) |
@@ -31,6 +32,8 @@ truth for code and the normalised data snapshots. Sync is one-way, Notion → re
 ```
 server.js                     Node server: static pages + POST /api/analyze
 public/                       Built pages + search.json (generated — see scripts/build.py)
+web/billiards.template.html   The shot lab: the billiards equations integrated in the browser (sliding→rolling,
+                              restitution, throw with Alciatore's μ(v), cushion impulse) on the constants below
 web/                          Page sources: templates, shared.css, analyzer parts
 data/chemistry/elements.json  Normalised element data (scripts/fetch_elements.py)
 data/notion-all.json          All other Notion sources (scripts/fetch_all.py)

@@ -22,6 +22,7 @@ const PAGES = {
   '/glossary': 'glossary.html',
   '/explainers': 'explainers.html',
   '/impacts': 'impacts.html',
+  '/billiards': 'billiards.html',
   '/equations': 'equations.html',
   '/constants': 'constants.html',
   '/search.json': 'search.json',   // the index behind the home-page search bar, fetched on first keystroke
