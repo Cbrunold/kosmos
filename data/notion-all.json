@@ -10595,6 +10595,195 @@
   ],
   "glossary": [
     {
+      "id": "3c0e5275-7b5c-814d-ac3f-c5b0329ebac2",
+      "url": "https://app.notion.com/p/Flywheel-3c0e52757b5c814dac3fc5b0329ebac2",
+      "lastEdited": "2026-08-18T19:44:00.000Z",
+      "Definition": "A heavy wheel on a shaft that stores rotational energy and smooths a jerky drive: a piston engine fires in pulses and the flywheel carries it between them. Mass at the rim, where the moment of inertia counts most.",
+      "Aliases": "flywheels",
+      "Domain": "Machines",
+      "Term": "Flywheel"
+    },
+    {
+      "id": "3c0e5275-7b5c-817e-995e-c349f848f059",
+      "url": "https://app.notion.com/p/Simple-harmonic-motion-3c0e52757b5c817e995ec349f848f059",
+      "lastEdited": "2026-08-18T19:44:00.000Z",
+      "Definition": "The sinusoidal motion of anything pulled back toward equilibrium in proportion to how far it has strayed — a mass on a spring, a pendulum at small angles, an atom in a lattice. Its period does not depend on the amplitude, which is what makes clocks possible.",
+      "Aliases": "SHM, harmonic oscillator, simple harmonic",
+      "Domain": "Mechanics",
+      "Term": "Simple harmonic motion"
+    },
+    {
+      "id": "3c0e5275-7b5c-81a4-b1cb-e1d0fbec1805",
+      "url": "https://app.notion.com/p/Centripetal-acceleration-3c0e52757b5c81a4b1cbe1d0fbec1805",
+      "lastEdited": "2026-08-18T19:44:00.000Z",
+      "Definition": "The inward acceleration of anything moving on a curve, v²/r, needed just to keep turning at constant speed. Supplied by gravity for an orbit, by the road for a car, by the tension in a string. \"Centrifugal\" is the same thing seen from the turning frame.",
+      "Aliases": "centripetal, centrifugal",
+      "Domain": "Mechanics",
+      "Term": "Centripetal acceleration"
+    },
+    {
+      "id": "3c0e5275-7b5c-819f-bbcf-c9b50e4bcd5e",
+      "url": "https://app.notion.com/p/Moment-of-inertia-3c0e52757b5c819fbbcfc9b50e4bcd5e",
+      "lastEdited": "2026-08-18T19:44:00.000Z",
+      "Definition": "The rotational counterpart of mass — how hard a body is to spin up — set by how far from the axis its mass sits, squared. A flywheel puts its mass at the rim for exactly this reason.",
+      "Aliases": null,
+      "Domain": "Mechanics",
+      "Term": "Moment of inertia"
+    },
+    {
+      "id": "3c0e5275-7b5c-8153-8abf-cc75bb9fe039",
+      "url": "https://app.notion.com/p/Angular-momentum-3c0e52757b5c81538abfcc75bb9fe039",
+      "lastEdited": "2026-08-18T19:44:00.000Z",
+      "Definition": "What a spinning or orbiting body keeps unless a torque acts on it: moment of inertia times angular velocity, or r × p. Why a gyroscope holds, a skater spins up, and a planet sweeps equal areas in equal times.",
+      "Aliases": null,
+      "Domain": "Mechanics",
+      "Term": "Angular momentum"
+    },
+    {
+      "id": "3c0e5275-7b5c-8169-bbf4-c0b88e8c7bc3",
+      "url": "https://app.notion.com/p/Torque-3c0e52757b5c8169bbf4c0b88e8c7bc3",
+      "lastEdited": "2026-08-18T19:44:00.000Z",
+      "Definition": "The turning effect of a force: force times lever arm, at right angles — a longer wrench or a push square to the handle gives more. What a motor delivers to its shaft and a nut is tightened to.",
+      "Aliases": "torques",
+      "Domain": "Mechanics",
+      "Term": "Torque"
+    },
+    {
+      "id": "3c0e5275-7b5c-8149-95b3-cd44e904f391",
+      "url": "https://app.notion.com/p/Mechanical-power-3c0e52757b5c814995b3cd44e904f391",
+      "lastEdited": "2026-08-18T19:44:00.000Z",
+      "Definition": "The rate of doing work, in watts — force times velocity, or torque times angular speed. An engine's power, not its force, sets how fast it can climb a hill; a turbine is sold by this number.",
+      "Aliases": "power output, watts, kilowatts, megawatts, gigawatts, horsepower",
+      "Domain": "Mechanics",
+      "Term": "Mechanical power"
+    },
+    {
+      "id": "3c0e5275-7b5c-819b-b16c-f0d98e344f55",
+      "url": "https://app.notion.com/p/Potential-energy-3c0e52757b5c819bb16cf0d98e344f55",
+      "lastEdited": "2026-08-18T19:44:00.000Z",
+      "Definition": "Energy stored by position or configuration and recoverable as motion: a raised weight, a stretched spring, water behind a dam, a satellite in a high orbit. Kinetic and potential trade back and forth; without friction their sum is fixed.",
+      "Aliases": null,
+      "Domain": "Mechanics",
+      "Term": "Potential energy"
+    },
+    {
+      "id": "3c0e5275-7b5c-813f-bc71-c1c247210d23",
+      "url": "https://app.notion.com/p/Kinetic-energy-3c0e52757b5c813fbc71c1c247210d23",
+      "lastEdited": "2026-08-18T19:44:00.000Z",
+      "Definition": "The energy of motion, ½mv² — quadratic in speed, so doubling the speed quadruples it. What the wind hands a turbine, what a crumple zone must absorb, what a bullet carries.",
+      "Aliases": null,
+      "Domain": "Mechanics",
+      "Term": "Kinetic energy"
+    },
+    {
+      "id": "3c0e5275-7b5c-814d-a538-ec8b96b9ecce",
+      "url": "https://app.notion.com/p/Mechanical-work-3c0e52757b5c814da538ec8b96b9ecce",
+      "lastEdited": "2026-08-18T19:44:00.000Z",
+      "Definition": "Force times the distance moved along it, in joules — only the component of force along the motion counts, so carrying a load on the level does none. It is what a heat engine delivers and what a pulley system conserves.",
+      "Aliases": "work done, work–energy",
+      "Domain": "Mechanics",
+      "Term": "Mechanical work"
+    },
+    {
+      "id": "3c0e5275-7b5c-81a0-b730-f4dafa63dd76",
+      "url": "https://app.notion.com/p/Tensor-3c0e52757b5c81a0b730f4dafa63dd76",
+      "lastEdited": "2026-08-18T19:44:00.000Z",
+      "Definition": "A vector's bigger relative: an array that turns one vector into another by a single multiplication and keeps its meaning under any rotation of the axes. Stress is one; so is the metric of spacetime.",
+      "Aliases": null,
+      "Domain": "Mathematics",
+      "Term": "Tensor"
+    },
+    {
+      "id": "3c0e5275-7b5c-8120-af6f-caa177c49cb0",
+      "url": "https://app.notion.com/p/Curvature-3c0e52757b5c8120af6fcaa177c49cb0",
+      "lastEdited": "2026-08-18T19:44:00.000Z",
+      "Definition": "How sharply a curve or surface bends: one over the radius of the circle that best fits it there. Straight lines have none. In general relativity it is what gravity is — matter tells spacetime how to curve.",
+      "Aliases": "curved, curve",
+      "Domain": "Mathematics",
+      "Term": "Curvature"
+    },
+    {
+      "id": "3c0e5275-7b5c-8121-82fd-d0ecc917b2ca",
+      "url": "https://app.notion.com/p/Curl-3c0e52757b5c812182fdd0ecc917b2ca",
+      "lastEdited": "2026-08-18T19:44:00.000Z",
+      "Definition": "Of a vector field, how much it circulates about a point, as a vector along the axis of rotation. Its flux through a surface equals the circulation round the edge — Stokes' theorem — which is how a changing magnetic field drives a current round a loop.",
+      "Aliases": null,
+      "Domain": "Mathematics",
+      "Term": "Curl"
+    },
+    {
+      "id": "3c0e5275-7b5c-813d-9534-f5bf460fe8e6",
+      "url": "https://app.notion.com/p/Divergence-3c0e52757b5c813d9534f5bf460fe8e6",
+      "lastEdited": "2026-08-18T19:44:00.000Z",
+      "Definition": "Of a vector field, the net outflow per unit volume at a point — a source if positive, a sink if negative. Integrated over a volume it equals the flux through the boundary, which is Gauss's theorem and Gauss's law.",
+      "Aliases": null,
+      "Domain": "Mathematics",
+      "Term": "Divergence"
+    },
+    {
+      "id": "3c0e5275-7b5c-81d7-8729-f3cdd9856ccb",
+      "url": "https://app.notion.com/p/Gradient-3c0e52757b5c81d78729f3cdd9856ccb",
+      "lastEdited": "2026-08-18T19:44:00.000Z",
+      "Definition": "Of a scalar field, the vector that points where it rises fastest, with the slope as its length. Heat flows down the temperature gradient; a conservative force is minus the gradient of its potential.",
+      "Aliases": null,
+      "Domain": "Mathematics",
+      "Term": "Gradient"
+    },
+    {
+      "id": "3c0e5275-7b5c-811a-aa39-f1bff6b688ce",
+      "url": "https://app.notion.com/p/Solid-angle-3c0e52757b5c811aaa39f1bff6b688ce",
+      "lastEdited": "2026-08-18T19:44:00.000Z",
+      "Definition": "How much of the view something fills, as the area it cuts from a sphere over the radius squared, in steradians; the whole sky is 4π. Every inverse-square law is a statement about solid angle.",
+      "Aliases": "steradian",
+      "Domain": "Mathematics",
+      "Term": "Solid angle"
+    },
+    {
+      "id": "3c0e5275-7b5c-8180-91f8-fb8b007845ed",
+      "url": "https://app.notion.com/p/Radian-3c0e52757b5c818091f8fb8b007845ed",
+      "lastEdited": "2026-08-18T19:44:00.000Z",
+      "Definition": "The natural measure of angle: arc length divided by radius, so a full turn is 2π and a straight angle π. Not a unit but a ratio, which is why sin θ ≈ θ needs no conversion factor.",
+      "Aliases": null,
+      "Domain": "Mathematics",
+      "Term": "Radian"
+    },
+    {
+      "id": "3c0e5275-7b5c-810a-9574-c5b38c15fbb3",
+      "url": "https://app.notion.com/p/Cross-product-3c0e52757b5c810a9574c5b38c15fbb3",
+      "lastEdited": "2026-08-18T19:44:00.000Z",
+      "Definition": "The product of two vectors that gives a third, at right angles to both, with the parallelogram's area as its length. Torque, angular momentum and the magnetic force are all cross products.",
+      "Aliases": "vector product",
+      "Domain": "Mathematics",
+      "Term": "Cross product"
+    },
+    {
+      "id": "3c0e5275-7b5c-81be-949d-c66a47789f47",
+      "url": "https://app.notion.com/p/Dot-product-3c0e52757b5c81be949dc66a47789f47",
+      "lastEdited": "2026-08-18T19:44:00.000Z",
+      "Definition": "The product of two vectors that gives a number: their lengths times the cosine of the angle between them — how much of one lies along the other. Zero for perpendicular vectors. Work is force dot displacement.",
+      "Aliases": "scalar product",
+      "Domain": "Mathematics",
+      "Term": "Dot product"
+    },
+    {
+      "id": "3c0e5275-7b5c-8198-a214-dddedca6aa74",
+      "url": "https://app.notion.com/p/Scalar-3c0e52757b5c8198a214dddedca6aa74",
+      "lastEdited": "2026-08-18T19:44:00.000Z",
+      "Definition": "A quantity that is just a number, with no direction: mass, temperature, energy, pressure. A scalar field gives one at every point in space; its gradient is a vector.",
+      "Aliases": null,
+      "Domain": "Mathematics",
+      "Term": "Scalar"
+    },
+    {
+      "id": "3c0e5275-7b5c-81e1-8a57-da570ec1871c",
+      "url": "https://app.notion.com/p/Vector-3c0e52757b5c81e18a57da570ec1871c",
+      "lastEdited": "2026-08-18T19:44:00.000Z",
+      "Definition": "A quantity with a direction as well as a size — velocity, force, a field — written as components along axes. Add them tip to tail; multiply them two ways, dot and cross. A scalar is what it is not.",
+      "Aliases": null,
+      "Domain": "Mathematics",
+      "Term": "Vector"
+    },
+    {
       "id": "3bfe5275-7b5c-81de-a346-e67b1d55a2a0",
       "url": "https://app.notion.com/p/Control-system-3bfe52757b5c81dea346e67b1d55a2a0",
       "lastEdited": "2026-08-17T21:06:00.000Z",
@@ -502693,7 +502882,9 @@
       "Spectral Types": [],
       "Significance": "How fast work is done. Watt needed a number to sell engines against horses and settled on 550 foot-pounds per second in 1782; the SI named its unit after him. An engine's power, not its force, sets how quickly it climbs a hill; a turbine's rating is this figure; and the same equation shows why towing at speed costs more than towing slowly.",
       "Year": 1782,
-      "Required By": [],
+      "Required By": [
+        "3bbe5275-7b5c-816d-9734-c149c749519c"
+      ],
       "Elements": [],
       "Name": "Power"
     },
@@ -502858,7 +503049,8 @@
         "3c0e5275-7b5c-81b5-88e0-fe12756b2975",
         "3c0e5275-7b5c-8127-b7f0-fb3910ec4fef",
         "3c0e5275-7b5c-814f-b307-cb20271300f2",
-        "3c0e5275-7b5c-8102-8d87-ff81e12cd1da"
+        "3c0e5275-7b5c-8102-8d87-ff81e12cd1da",
+        "3bbe5275-7b5c-819a-8209-e94b6436d16a"
       ],
       "Elements": [],
       "Name": "Work"
@@ -503689,7 +503881,7 @@
     {
       "id": "3bee5275-7b5c-81c4-8e92-d3d7679e0227",
       "url": "https://app.notion.com/p/Transformer-Equation-3bee52757b5c81c48e92d3d7679e0227",
-      "lastEdited": "2026-08-16T20:21:00.000Z",
+      "lastEdited": "2026-08-18T19:44:00.000Z",
       "Skills": [],
       "Equation": "V_s/V_p = N_s/N_p",
       "Minerals": [],
@@ -503704,7 +503896,9 @@
       "Related": [],
       "Instruments": [],
       "Constants": [],
-      "Requires": [],
+      "Requires": [
+        "3bbe5275-7b5c-81c9-a5d1-eaa911ffb7cd"
+      ],
       "Symbols": "V_p, V_s primary and secondary voltage · N_p, N_s turns on each winding",
       "Spectral Types": [],
       "Significance": "Two coils on one iron core, and the voltage steps by the ratio of their turns — with almost nothing lost, which is why alternating current won: step up to hundreds of kilovolts, send it across a country with small losses, step down at the other end. Faraday's law made practical.",
@@ -503748,7 +503942,7 @@
     {
       "id": "3bee5275-7b5c-810d-bb53-d6c1cec88ac3",
       "url": "https://app.notion.com/p/Adiabatic-Relation-3bee52757b5c810dbb53d6c1cec88ac3",
-      "lastEdited": "2026-08-16T20:21:00.000Z",
+      "lastEdited": "2026-08-18T19:44:00.000Z",
       "Skills": [],
       "Equation": "p V^γ = constant",
       "Minerals": [],
@@ -503767,19 +503961,26 @@
       "Related": [],
       "Instruments": [],
       "Constants": [],
-      "Requires": [],
+      "Requires": [
+        "3bbe5275-7b5c-819a-8209-e94b6436d16a",
+        "3bbe5275-7b5c-81a2-9653-e0a84065d7fa"
+      ],
       "Symbols": "p pressure · V volume · γ = c_p/c_v ratio of specific heats, 1.4 for diatomic gases",
       "Spectral Types": [],
       "Significance": "How a gas behaves when compressed or expanded too fast to exchange heat — the compression and power strokes of every piston engine, and the compressor and turbine of every jet. It is the curve the cycle diagrams on this site are drawn with, and the reason a bicycle pump gets hot.",
       "Year": 1823,
-      "Required By": [],
+      "Required By": [
+        "3bee5275-7b5c-81a0-98bb-f16eb9526a4c",
+        "3bee5275-7b5c-81b5-ad2f-c01c197e6fa2",
+        "3bee5275-7b5c-8141-afc3-f466a7435bf6"
+      ],
       "Elements": [],
       "Name": "Adiabatic Relation"
     },
     {
       "id": "3bee5275-7b5c-813f-a53f-daa662c95798",
       "url": "https://app.notion.com/p/Coefficient-of-Performance-3bee52757b5c813fa53fdaa662c95798",
-      "lastEdited": "2026-08-16T20:21:00.000Z",
+      "lastEdited": "2026-08-18T19:44:00.000Z",
       "Skills": [],
       "Equation": "COP_heating = Q_h/W ≤ T_h/(T_h − T_c)",
       "Minerals": [],
@@ -503794,7 +503995,10 @@
       "Related": [],
       "Instruments": [],
       "Constants": [],
-      "Requires": [],
+      "Requires": [
+        "3bbe5275-7b5c-819a-8209-e94b6436d16a",
+        "3bee5275-7b5c-814b-883f-f3a911e3d4e1"
+      ],
       "Symbols": "COP heat delivered per unit of work · Q_h heat moved to the warm side · W work in · T_h, T_c the two temperatures in kelvin",
       "Spectral Types": [],
       "Significance": "A heat pump is a heat engine run backwards, and its figure of merit can exceed 1 without breaking anything: a COP of 4 means four joules of heat moved for one joule of electricity. The Carnot limit shows why it works best when the two temperatures are close — and why heat pumps struggle in the deep cold.",
@@ -503806,7 +504010,7 @@
     {
       "id": "3bee5275-7b5c-8141-afc3-f466a7435bf6",
       "url": "https://app.notion.com/p/Brayton-Cycle-Efficiency-3bee52757b5c8141afc3f466a7435bf6",
-      "lastEdited": "2026-08-16T20:21:00.000Z",
+      "lastEdited": "2026-08-18T19:44:00.000Z",
       "Skills": [],
       "Equation": "η = 1 − (p_1/p_2)^((γ−1)/γ)",
       "Minerals": [],
@@ -503821,7 +504025,10 @@
       "Related": [],
       "Instruments": [],
       "Constants": [],
-      "Requires": [],
+      "Requires": [
+        "3bee5275-7b5c-810d-bb53-d6c1cec88ac3",
+        "3bee5275-7b5c-8179-b2e5-ed3b9ea12888"
+      ],
       "Symbols": "p_2/p_1 the pressure ratio across the compressor · γ ratio of specific heats",
       "Spectral Types": [],
       "Significance": "The gas-turbine cycle: efficiency rises with pressure ratio, so jet engines have gone from 5:1 to over 50:1 in eighty years. The catch is that a higher ratio means a hotter turbine inlet, and the whole history of the jet engine is the history of alloys and cooling that survive that temperature.",
@@ -503833,7 +504040,7 @@
     {
       "id": "3bee5275-7b5c-81b5-ad2f-c01c197e6fa2",
       "url": "https://app.notion.com/p/Diesel-Cycle-Efficiency-3bee52757b5c81b5ad2fc01c197e6fa2",
-      "lastEdited": "2026-08-16T20:21:00.000Z",
+      "lastEdited": "2026-08-18T19:44:00.000Z",
       "Skills": [],
       "Equation": "η = 1 − (1/r^(γ−1)) · (α^γ − 1)/(γ(α − 1))",
       "Minerals": [],
@@ -503848,7 +504055,10 @@
       "Related": [],
       "Instruments": [],
       "Constants": [],
-      "Requires": [],
+      "Requires": [
+        "3bee5275-7b5c-810d-bb53-d6c1cec88ac3",
+        "3bee5275-7b5c-8179-b2e5-ed3b9ea12888"
+      ],
       "Symbols": "r compression ratio · α cut-off ratio, the volume expansion during fuel injection · γ ratio of specific heats",
       "Spectral Types": [],
       "Significance": "Heat is added at constant pressure while fuel sprays in, not at constant volume; for the same compression ratio that costs efficiency, but compression ignition allows r of 15–22 where petrol knocks at 10, so the diesel wins in the end — which is why lorries, ships and generators use it.",
@@ -503860,7 +504070,7 @@
     {
       "id": "3bee5275-7b5c-81a0-98bb-f16eb9526a4c",
       "url": "https://app.notion.com/p/Otto-Cycle-Efficiency-3bee52757b5c81a098bbf16eb9526a4c",
-      "lastEdited": "2026-08-16T20:21:00.000Z",
+      "lastEdited": "2026-08-18T19:44:00.000Z",
       "Skills": [],
       "Equation": "η = 1 − r^(1−γ)",
       "Minerals": [],
@@ -503876,7 +504086,10 @@
       "Related": [],
       "Instruments": [],
       "Constants": [],
-      "Requires": [],
+      "Requires": [
+        "3bee5275-7b5c-810d-bb53-d6c1cec88ac3",
+        "3bee5275-7b5c-8179-b2e5-ed3b9ea12888"
+      ],
       "Symbols": "r compression ratio V_max/V_min · γ ratio of specific heats, about 1.4 for air",
       "Spectral Types": [],
       "Significance": "The ideal efficiency of a spark-ignition engine depends on the compression ratio alone: r = 9 gives 58 % in theory. Real engines get about half that after friction, heat loss and incomplete combustion. Raise r and the fuel knocks — which is why octane rating exists, and why diesel, immune to knock, can go higher.",
@@ -503888,7 +504101,7 @@
     {
       "id": "3bee5275-7b5c-8179-b2e5-ed3b9ea12888",
       "url": "https://app.notion.com/p/Thermal-Efficiency-3bee52757b5c8179b2e5ed3b9ea12888",
-      "lastEdited": "2026-08-16T20:21:00.000Z",
+      "lastEdited": "2026-08-18T19:44:00.000Z",
       "Skills": [],
       "Equation": "η = W_net/Q_in = 1 − Q_out/Q_in",
       "Minerals": [],
@@ -503908,19 +504121,26 @@
       "Related": [],
       "Instruments": [],
       "Constants": [],
-      "Requires": [],
+      "Requires": [
+        "3bbe5275-7b5c-819a-8209-e94b6436d16a"
+      ],
       "Symbols": "η thermal efficiency · W_net net work out per cycle · Q_in heat taken from the hot source · Q_out heat rejected to the cold sink",
       "Spectral Types": [],
       "Significance": "What you get for what you burn. Every real cycle's efficiency is this ratio; the Carnot value is what it would be if nothing were wasted. Rankine steam plants manage 33–45 %, combined-cycle gas plants over 60 %, and the difference between them is worth a great deal of fuel.",
       "Year": 1824,
-      "Required By": [],
+      "Required By": [
+        "3bee5275-7b5c-814b-883f-f3a911e3d4e1",
+        "3bee5275-7b5c-81a0-98bb-f16eb9526a4c",
+        "3bee5275-7b5c-81b5-ad2f-c01c197e6fa2",
+        "3bee5275-7b5c-8141-afc3-f466a7435bf6"
+      ],
       "Elements": [],
       "Name": "Thermal Efficiency"
     },
     {
       "id": "3bee5275-7b5c-814b-883f-f3a911e3d4e1",
       "url": "https://app.notion.com/p/Carnot-Efficiency-3bee52757b5c814b883ff3a911e3d4e1",
-      "lastEdited": "2026-08-16T20:21:00.000Z",
+      "lastEdited": "2026-08-18T19:44:00.000Z",
       "Skills": [],
       "Equation": "η_max = 1 − T_c/T_h",
       "Minerals": [],
@@ -503937,12 +504157,17 @@
       "Related": [],
       "Instruments": [],
       "Constants": [],
-      "Requires": [],
+      "Requires": [
+        "3bbe5275-7b5c-8147-a393-dbf10b5befde",
+        "3bee5275-7b5c-8179-b2e5-ed3b9ea12888"
+      ],
       "Symbols": "η_max the greatest possible efficiency of any heat engine · T_h temperature of the hot reservoir · T_c of the cold, both in kelvin",
       "Spectral Types": [],
       "Significance": "The ceiling on every engine ever built, set in 1824 before anyone knew what heat was. Only the two temperatures matter — not the fluid, not the design. A car engine at 2,000 K exhausting to 300 K could at best reach 85 %; the second law, and metallurgy, keep it near a third of that.",
       "Year": 1824,
-      "Required By": [],
+      "Required By": [
+        "3bee5275-7b5c-813f-a53f-daa662c95798"
+      ],
       "Elements": [],
       "Name": "Carnot Efficiency"
     },
@@ -504287,7 +504512,9 @@
       "Spectral Types": [],
       "Significance": "The single most-used number in observational cosmology. Light is not merely Doppler-shifted by galaxies rushing away — the wavelength is stretched by the expansion of space itself while the photon is in flight, so redshift measures how much smaller the universe was when the light set out. The microwave background left at z ≈ 1100, when everything was a thousand times more compact and 3000 K hot; the most distant galaxies JWST sees sit near z ≈ 14. Redshift is the closest thing cosmology has to a clock.",
       "Year": 1927,
-      "Required By": [],
+      "Required By": [
+        "3bbe5275-7b5c-8184-9e26-ff4ad04b3ed8"
+      ],
       "Elements": [],
       "Name": "Cosmological Redshift"
     },
@@ -506233,7 +506460,9 @@
       "Spectral Types": [],
       "Significance": "The vis-viva equation with the orbit opened to infinity — 11.2 km/s from Earth's surface, 2.4 from the Moon, 620 from the Sun. Set v_esc equal to the speed of light and Schwarzschild's radius appears two centuries early: John Michell imagined 'dark stars' this way in 1783.",
       "Year": 1687,
-      "Required By": [],
+      "Required By": [
+        "3bbe5275-7b5c-811a-baed-c686bb16bbc3"
+      ],
       "Elements": [],
       "Name": "Escape Velocity"
     },
@@ -506738,7 +506967,7 @@
     {
       "id": "3bbe5275-7b5c-816d-9734-c149c749519c",
       "url": "https://app.notion.com/p/Joule-Heating-3bbe52757b5c816d9734c149c749519c",
-      "lastEdited": "2026-08-15T16:38:00.000Z",
+      "lastEdited": "2026-08-18T19:44:00.000Z",
       "Skills": [
         "3bee5275-7b5c-8175-830a-fa49c3a84148",
         "3bee5275-7b5c-8117-b401-cee2654a1d54",
@@ -506760,7 +506989,10 @@
       ],
       "Instruments": [],
       "Constants": [],
-      "Requires": [],
+      "Requires": [
+        "3bbe5275-7b5c-8154-bcd6-c1cd26ae1a20",
+        "3c0e5275-7b5c-814f-b307-cb20271300f2"
+      ],
       "Symbols": "P power dissipated as heat · I current · R resistance · equivalently P = V·I",
       "Spectral Types": [],
       "Significance": "Current forcing its way through resistance sheds energy as heat — toasters, fuses, and incandescent filaments on purpose; warm laptops and power-line losses by accident. The I² is why the grid transmits at high voltage and low current.",
@@ -506816,7 +507048,9 @@
       "Spectral Types": [],
       "Significance": "Current flows in proportion to the voltage pushing it — the straight line every circuit design starts from. Dismissed as 'a web of naked fancies' when published; now it's the first equation every electronics student learns.",
       "Year": 1827,
-      "Required By": [],
+      "Required By": [
+        "3bbe5275-7b5c-816d-9734-c149c749519c"
+      ],
       "Elements": [
         "68542bc4-f631-46b7-99b9-75931965e407"
       ],
@@ -507523,7 +507757,7 @@
     {
       "id": "3bbe5275-7b5c-811a-baed-c686bb16bbc3",
       "url": "https://app.notion.com/p/Schwarzschild-Radius-3bbe52757b5c811abaedc686bb16bbc3",
-      "lastEdited": "2026-08-15T16:49:00.000Z",
+      "lastEdited": "2026-08-18T19:44:00.000Z",
       "Skills": [],
       "Equation": "r_s = 2GM/c²",
       "Minerals": [],
@@ -507559,7 +507793,9 @@
         "3bde5275-7b5c-8157-8026-dbb044233fc8",
         "3bde5275-7b5c-81d6-a084-f77a4c868d4f"
       ],
-      "Requires": [],
+      "Requires": [
+        "3bbe5275-7b5c-813a-84a7-ea08528b3c93"
+      ],
       "Symbols": "r_s the event-horizon radius · G gravitational constant · M mass · c speed of light",
       "Spectral Types": [
         "fbbb7d85-a746-4aa6-9045-622d68637585"
@@ -508003,7 +508239,7 @@
     {
       "id": "3bbe5275-7b5c-8184-9e26-ff4ad04b3ed8",
       "url": "https://app.notion.com/p/Hubble-s-Law-3bbe52757b5c81849e26ff4ad04b3ed8",
-      "lastEdited": "2026-08-15T18:00:00.000Z",
+      "lastEdited": "2026-08-18T19:44:00.000Z",
       "Skills": [],
       "Equation": "v = H₀·d",
       "Minerals": [],
@@ -508046,7 +508282,9 @@
         "3bde5275-7b5c-8169-80b5-cf721082faab",
         "3bde5275-7b5c-8113-abea-d0038e9513f0"
       ],
-      "Requires": [],
+      "Requires": [
+        "3bde5275-7b5c-811c-8470-d8ecfce3c2de"
+      ],
       "Symbols": "v recession velocity of a galaxy · d its distance from us · H₀ the Hubble constant (about 70 km/s per megaparsec today)",
       "Spectral Types": [],
       "Significance": "The farther a galaxy, the faster it recedes — space itself is expanding. Lemaître derived it from general relativity in 1927; Hubble's 1929 measurements made it fact. Run the expansion backwards and you arrive at the Big Bang; H₀ is the first Friedmann equation's ȧ/a measured today — and its exact value is still argued over, a puzzle known as the Hubble tension.",
@@ -508228,14 +508466,16 @@
       "Spectral Types": [],
       "Significance": "Disorder never decreases on its own: heat flows hot to cold, engines can't be perfect, and time gets its arrow. Born from Carnot's steam-engine analysis, named by Clausius — arguably the most unbreakable law in physics.",
       "Year": 1865,
-      "Required By": [],
+      "Required By": [
+        "3bee5275-7b5c-814b-883f-f3a911e3d4e1"
+      ],
       "Elements": [],
       "Name": "Second Law of Thermodynamics"
     },
     {
       "id": "3bbe5275-7b5c-819a-8209-e94b6436d16a",
       "url": "https://app.notion.com/p/First-Law-of-Thermodynamics-3bbe52757b5c819a8209e94b6436d16a",
-      "lastEdited": "2026-08-15T17:50:00.000Z",
+      "lastEdited": "2026-08-18T19:44:00.000Z",
       "Skills": [],
       "Equation": "ΔU = Q − W",
       "Minerals": [],
@@ -508258,12 +508498,18 @@
       ],
       "Instruments": [],
       "Constants": [],
-      "Requires": [],
+      "Requires": [
+        "3c0e5275-7b5c-8129-9711-d8261f03fa1d"
+      ],
       "Symbols": "ΔU change in internal energy · Q heat added to the system · W work done by the system",
       "Spectral Types": [],
       "Significance": "Energy is never created or destroyed, only moved and converted — heat in, work out, the books always balance. The law that retired the perpetual-motion machine.",
       "Year": 1850,
-      "Required By": [],
+      "Required By": [
+        "3bee5275-7b5c-8179-b2e5-ed3b9ea12888",
+        "3bee5275-7b5c-813f-a53f-daa662c95798",
+        "3bee5275-7b5c-810d-bb53-d6c1cec88ac3"
+      ],
       "Elements": [],
       "Name": "First Law of Thermodynamics"
     },
@@ -508447,7 +508693,9 @@
       "Spectral Types": [],
       "Significance": "A changing magnetic field stirs up a circulating electric field — the principle inside every generator, transformer, and induction cooktop. Third of Maxwell's four equations.",
       "Year": 1831,
-      "Required By": [],
+      "Required By": [
+        "3bee5275-7b5c-81c4-8e92-d3d7679e0227"
+      ],
       "Elements": [],
       "Name": "Faraday's Law of Induction"
     },
@@ -508727,7 +508975,9 @@
       "Spectral Types": [],
       "Significance": "Equal volumes of any gas hold equal numbers of molecules — the insight that made molecular formulas countable and gave the mole its meaning.",
       "Year": 1811,
-      "Required By": [],
+      "Required By": [
+        "3bbe5275-7b5c-81a2-9653-e0a84065d7fa"
+      ],
       "Elements": [
         "4b708650-86c2-4532-b5a2-b9ae2762abb1",
         "58b43aa4-583e-446a-a0b7-5f0669916b53",
@@ -508793,7 +509043,9 @@
       "Spectral Types": [],
       "Significance": "Warm a gas and it swells in proportion to absolute temperature — hot-air balloons in one line, and an early signpost pointing at absolute zero.",
       "Year": 1787,
-      "Required By": [],
+      "Required By": [
+        "3bbe5275-7b5c-81a2-9653-e0a84065d7fa"
+      ],
       "Elements": [
         "4b708650-86c2-4532-b5a2-b9ae2762abb1",
         "58b43aa4-583e-446a-a0b7-5f0669916b53",
@@ -508829,7 +509081,9 @@
       "Spectral Types": [],
       "Significance": "Squeeze a gas and its pressure rises in exact proportion — the oldest quantitative gas law, and the reason a syringe works.",
       "Year": 1662,
-      "Required By": [],
+      "Required By": [
+        "3bbe5275-7b5c-81a2-9653-e0a84065d7fa"
+      ],
       "Elements": [
         "4b708650-86c2-4532-b5a2-b9ae2762abb1",
         "cbefbf0f-1f4f-4673-a6f9-bf04e05331b6"
@@ -509105,7 +509359,7 @@
     {
       "id": "3bbe5275-7b5c-81a2-9653-e0a84065d7fa",
       "url": "https://app.notion.com/p/Ideal-Gas-Law-3bbe52757b5c81a29653e0a84065d7fa",
-      "lastEdited": "2026-08-15T18:00:00.000Z",
+      "lastEdited": "2026-08-18T19:44:00.000Z",
       "Skills": [],
       "Equation": "pV = nRT",
       "Minerals": [
@@ -509140,14 +509394,20 @@
         "3bde5275-7b5c-81c6-a8a9-ebe40783ecf1",
         "3bde5275-7b5c-814f-b400-ee7fe6fe92d3"
       ],
-      "Requires": [],
+      "Requires": [
+        "3bbe5275-7b5c-8101-9ffd-d15e28719c53",
+        "3bbe5275-7b5c-8186-884a-ed5996715fc4",
+        "3bbe5275-7b5c-819d-afd0-d0876756a85c"
+      ],
       "Symbols": "p pressure · V volume · n amount of gas (moles) · R gas constant · T absolute temperature",
       "Spectral Types": [
         "2569ebb2-01ff-41c8-af88-54f50a983757"
       ],
       "Significance": "The behaviour of dilute gases in one line — weather balloons, engine cylinders, and lung volumes to first approximation.",
       "Year": 1834,
-      "Required By": [],
+      "Required By": [
+        "3bee5275-7b5c-810d-bb53-d6c1cec88ac3"
+      ],
       "Elements": [
         "4b708650-86c2-4532-b5a2-b9ae2762abb1",
         "52ddb22c-7065-4de1-af2d-ae3b264a08f8",
