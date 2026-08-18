@@ -2044,15 +2044,17 @@
     {
       "id": "b2c375af-6ea5-48a8-95f1-982fa7682f8a",
       "url": "https://app.notion.com/p/Large-Synoptic-Survey-Telescope-LSST-b2c375af6ea548a895f1982fa7682f8a",
-      "lastEdited": "2024-07-26T05:32:00.000Z",
+      "lastEdited": "2026-08-18T20:04:00.000Z",
       "Type": "Telescope",
       "Equations": [
         "3bbe5275-7b5c-8184-9e26-ff4ad04b3ed8",
-        "3bbe5275-7b5c-81dd-a75c-d703f0a640b3",
         "3bbe5275-7b5c-81c8-8eb1-cdc2179de58e",
+        "3bbe5275-7b5c-81dd-a75c-d703f0a640b3",
         "3bde5275-7b5c-810f-908a-e09a4a0699e1",
         "3bde5275-7b5c-8157-88dd-ea46b41f1776",
-        "3bde5275-7b5c-81b6-8a2d-f530d01d6412"
+        "3bde5275-7b5c-81b6-8a2d-f530d01d6412",
+        "3c0e5275-7b5c-81dc-8645-c26e23417e74",
+        "3c0e5275-7b5c-81f6-8c60-d01cd1aa9b5c"
       ],
       "Description": "A wide-field survey telescope that will provide deep images of the sky in multiple wavelengths.",
       "Wavelength_Range": [
@@ -2093,13 +2095,14 @@
     {
       "id": "5e727e67-154e-4d29-b5cc-0f8edfb0413f",
       "url": "https://app.notion.com/p/Chandra-X-ray-Observatory-5e727e67154e4d29b5cc0f8edfb0413f",
-      "lastEdited": "2024-07-26T05:31:00.000Z",
+      "lastEdited": "2026-08-18T20:04:00.000Z",
       "Type": "Telescope",
       "Equations": [
         "3bbe5275-7b5c-8113-9b17-e6d7efc091ea",
         "3bbe5275-7b5c-811a-baed-c686bb16bbc3",
+        "3bbe5275-7b5c-8140-a1d4-f7bff1df0334",
         "3bbe5275-7b5c-81dd-a75c-d703f0a640b3",
-        "3bbe5275-7b5c-8140-a1d4-f7bff1df0334"
+        "3c0e5275-7b5c-81dc-8645-c26e23417e74"
       ],
       "Description": "A space-based observatory designed to detect X-ray emissions from very hot regions of the universe.",
       "Wavelength_Range": [
@@ -2113,13 +2116,14 @@
     {
       "id": "5bba6cc7-55f5-45dc-b91b-3d9f0d37f5a7",
       "url": "https://app.notion.com/p/Keck-Observatory-5bba6cc755f545dcb91b3d9f0d37f5a7",
-      "lastEdited": "2024-07-26T05:31:00.000Z",
+      "lastEdited": "2026-08-18T20:04:00.000Z",
       "Type": "Telescope",
       "Equations": [
         "3bbe5275-7b5c-811a-baed-c686bb16bbc3",
-        "3bbe5275-7b5c-814d-83e6-ee6df24eacca",
         "3bbe5275-7b5c-8130-a1e2-d4d1fefda7d8",
-        "3bbe5275-7b5c-81c8-8eb1-cdc2179de58e"
+        "3bbe5275-7b5c-814d-83e6-ee6df24eacca",
+        "3bbe5275-7b5c-81c8-8eb1-cdc2179de58e",
+        "3c0e5275-7b5c-81dc-8645-c26e23417e74"
       ],
       "Description": "Two large optical telescopes located in Hawaii, known for their large apertures and adaptive optics.",
       "Wavelength_Range": [
@@ -2134,13 +2138,15 @@
     {
       "id": "41dff11c-b8f7-482d-bb9a-458fe9f2e922",
       "url": "https://app.notion.com/p/Atacama-Large-Millimeter-submillimeter-Array-ALMA-41dff11cb8f7482dbb9a458fe9f2e922",
-      "lastEdited": "2024-07-26T05:30:00.000Z",
+      "lastEdited": "2026-08-18T20:04:00.000Z",
       "Type": "Telescope Array",
       "Equations": [
-        "3bde5275-7b5c-811f-9033-f21e2c8a2791",
         "3bbe5275-7b5c-814d-83e6-ee6df24eacca",
+        "3bbe5275-7b5c-81da-b2e6-ed931eca7217",
+        "3bde5275-7b5c-811f-9033-f21e2c8a2791",
         "3bde5275-7b5c-8134-baec-df28e10bc16c",
-        "3bbe5275-7b5c-81da-b2e6-ed931eca7217"
+        "3c0e5275-7b5c-81dc-8645-c26e23417e74",
+        "3c0e5275-7b5c-81de-9fb6-f2ec61468944"
       ],
       "Description": "An array of radio telescopes located in the Atacama Desert of Chile, used for observing millimeter and submillimeter wavelengths.",
       "Wavelength_Range": [
@@ -2155,14 +2161,15 @@
     {
       "id": "a3c867b3-aa5e-4eef-badd-aa3510c2d8df",
       "url": "https://app.notion.com/p/James-Webb-Space-Telescope-JWST-a3c867b3aa5e4eefbaddaa3510c2d8df",
-      "lastEdited": "2024-07-26T05:29:00.000Z",
+      "lastEdited": "2026-08-18T20:03:00.000Z",
       "Type": "Telescope",
       "Equations": [
+        "3bbe5275-7b5c-8130-a1e2-d4d1fefda7d8",
+        "3bbe5275-7b5c-8184-9e26-ff4ad04b3ed8",
+        "3bde5275-7b5c-811c-8470-d8ecfce3c2de",
         "3bde5275-7b5c-811f-9033-f21e2c8a2791",
         "3bde5275-7b5c-8131-93f6-c15c214946b1",
-        "3bbe5275-7b5c-8184-9e26-ff4ad04b3ed8",
-        "3bbe5275-7b5c-8130-a1e2-d4d1fefda7d8",
-        "3bde5275-7b5c-811c-8470-d8ecfce3c2de"
+        "3c0e5275-7b5c-81dc-8645-c26e23417e74"
       ],
       "Description": "A large, space-based observatory designed to observe the universe in the infrared spectrum.",
       "Wavelength_Range": [
@@ -2176,14 +2183,16 @@
     {
       "id": "bf3acea0-668c-4c49-bbd1-8dec3d49af72",
       "url": "https://app.notion.com/p/Hubble-Space-Telescope-HST-bf3acea0668c4c49bbd18dec3d49af72",
-      "lastEdited": "2024-07-26T05:29:00.000Z",
+      "lastEdited": "2026-08-18T20:03:00.000Z",
       "Type": "Telescope",
       "Equations": [
-        "3bbe5275-7b5c-8184-9e26-ff4ad04b3ed8",
-        "3bbe5275-7b5c-81dd-a75c-d703f0a640b3",
         "3bbe5275-7b5c-814d-83e6-ee6df24eacca",
         "3bbe5275-7b5c-8174-8c31-eda1293e8fe6",
-        "3bde5275-7b5c-811c-8470-d8ecfce3c2de"
+        "3bbe5275-7b5c-8184-9e26-ff4ad04b3ed8",
+        "3bbe5275-7b5c-81dd-a75c-d703f0a640b3",
+        "3bde5275-7b5c-811c-8470-d8ecfce3c2de",
+        "3c0e5275-7b5c-8177-a2fb-fdc2170b2401",
+        "3c0e5275-7b5c-81dc-8645-c26e23417e74"
       ],
       "Description": "A space-based observatory that has provided high-resolution images and data of space objects.",
       "Wavelength_Range": [
@@ -2199,13 +2208,14 @@
     {
       "id": "ed6ca018-7aab-42e4-be3d-9be5eb30d100",
       "url": "https://app.notion.com/p/Very-Large-Telescope-VLT-ed6ca0187aab42e4be3d9be5eb30d100",
-      "lastEdited": "2024-07-26T05:29:00.000Z",
+      "lastEdited": "2026-08-18T20:04:00.000Z",
       "Type": "Telescope",
       "Equations": [
         "3bbe5275-7b5c-811a-baed-c686bb16bbc3",
-        "3bbe5275-7b5c-813d-86cf-c29a346fe2f8",
         "3bbe5275-7b5c-8130-a1e2-d4d1fefda7d8",
-        "3bbe5275-7b5c-81ef-b92b-d35cea11b9be"
+        "3bbe5275-7b5c-813d-86cf-c29a346fe2f8",
+        "3bbe5275-7b5c-81ef-b92b-d35cea11b9be",
+        "3c0e5275-7b5c-81dc-8645-c26e23417e74"
       ],
       "Description": "An array of four optical telescopes located in Chile, operated by the European Southern Observatory.",
       "Wavelength_Range": [
@@ -9648,7 +9658,7 @@
     {
       "id": "3bee5275-7b5c-81ce-886e-e9c9ea42dcba",
       "url": "https://app.notion.com/p/Wind-Turbine-3bee52757b5c81ce886ee9c9ea42dcba",
-      "lastEdited": "2026-08-18T19:16:00.000Z",
+      "lastEdited": "2026-08-18T20:03:00.000Z",
       "Inventors": [
         "3bee5275-7b5c-8160-ab34-e8589ec8949c"
       ],
@@ -9661,7 +9671,9 @@
         "3bbe5275-7b5c-81c9-a5d1-eaa911ffb7cd",
         "3bee5275-7b5c-8166-8a64-fd5e2ad2d5dc",
         "3c0e5275-7b5c-813b-8d2e-da5484cf3b1c",
-        "3c0e5275-7b5c-814f-b307-cb20271300f2"
+        "3c0e5275-7b5c-814f-b307-cb20271300f2",
+        "3c0e5275-7b5c-81b6-92ea-fb5e9b0a93fd",
+        "3c0e5275-7b5c-81d6-b1de-ec9081641f42"
       ],
       "Used In": "About a tenth of the world's electricity, and rising.",
       "How It Works": "Three blades, shaped like aircraft wings, generate lift from the wind and turn a shaft; a gearbox or a direct-drive generator turns that into electricity. The tower puts the rotor where the wind is faster and steadier, and the whole nacelle yaws to face it.",
@@ -9681,7 +9693,7 @@
     {
       "id": "3bee5275-7b5c-8168-a928-d755bed8e21f",
       "url": "https://app.notion.com/p/Kaplan-Turbine-3bee52757b5c8168a928d755bed8e21f",
-      "lastEdited": "2026-08-18T19:16:00.000Z",
+      "lastEdited": "2026-08-18T20:03:00.000Z",
       "Inventors": [
         "3bee5275-7b5c-815a-b270-df4a2fdf2da0"
       ],
@@ -9693,6 +9705,8 @@
         "3bbe5275-7b5c-8189-9f06-e3de324e0af4",
         "3bbe5275-7b5c-819b-ba4e-f3c3031b13f1",
         "3c0e5275-7b5c-8127-b7f0-fb3910ec4fef",
+        "3c0e5275-7b5c-812f-9604-d1e8723865d9",
+        "3c0e5275-7b5c-8168-9f58-e868d30da92e",
         "3c0e5275-7b5c-818b-97c8-d52070d30162"
       ],
       "Used In": "Run-of-river plants on the Danube, Rhine and Columbia.",
@@ -9709,7 +9723,7 @@
     {
       "id": "3bee5275-7b5c-81eb-98b0-d02f02376dc4",
       "url": "https://app.notion.com/p/Francis-Turbine-3bee52757b5c81eb98b0d02f02376dc4",
-      "lastEdited": "2026-08-18T19:16:00.000Z",
+      "lastEdited": "2026-08-18T20:03:00.000Z",
       "Inventors": [
         "3bee5275-7b5c-8123-81f6-f8dadf672a6f"
       ],
@@ -9721,6 +9735,8 @@
         "3bbe5275-7b5c-8189-9f06-e3de324e0af4",
         "3bbe5275-7b5c-819b-ba4e-f3c3031b13f1",
         "3c0e5275-7b5c-8127-b7f0-fb3910ec4fef",
+        "3c0e5275-7b5c-812f-9604-d1e8723865d9",
+        "3c0e5275-7b5c-8168-9f58-e868d30da92e",
         "3c0e5275-7b5c-818b-97c8-d52070d30162"
       ],
       "Used In": "Most large dams, from Hoover to Itaipu to the Three Gorges.",
@@ -9737,7 +9753,7 @@
     {
       "id": "3bee5275-7b5c-8152-b6e1-cc03227a8473",
       "url": "https://app.notion.com/p/Pelton-Wheel-3bee52757b5c8152b6e1cc03227a8473",
-      "lastEdited": "2026-08-18T19:16:00.000Z",
+      "lastEdited": "2026-08-18T20:03:00.000Z",
       "Inventors": [
         "3bee5275-7b5c-8155-933b-d1303b42b7cb"
       ],
@@ -9750,6 +9766,8 @@
         "3bbe5275-7b5c-819b-ba4e-f3c3031b13f1",
         "3c0e5275-7b5c-8127-b7f0-fb3910ec4fef",
         "3c0e5275-7b5c-813b-8d2e-da5484cf3b1c",
+        "3c0e5275-7b5c-815c-be60-d2a80ee3b254",
+        "3c0e5275-7b5c-8168-9f58-e868d30da92e",
         "3c0e5275-7b5c-818b-97c8-d52070d30162"
       ],
       "Used In": "Alpine and Andean hydro with heads of hundreds of metres.",
@@ -9766,7 +9784,7 @@
     {
       "id": "3bee5275-7b5c-8162-af85-d68676032bd7",
       "url": "https://app.notion.com/p/Gas-Turbine-Jet-Engine-3bee52757b5c8162af85d68676032bd7",
-      "lastEdited": "2026-08-18T19:16:00.000Z",
+      "lastEdited": "2026-08-18T20:03:00.000Z",
       "Inventors": [
         "3bee5275-7b5c-81b4-902b-f89338b35f83",
         "3bee5275-7b5c-81f6-baa6-dc3fea39cbca"
@@ -9782,6 +9800,7 @@
         "3bee5275-7b5c-8179-b2e5-ed3b9ea12888",
         "3c0e5275-7b5c-8105-911a-ceb8efc94b5f",
         "3c0e5275-7b5c-818b-97c8-d52070d30162",
+        "3c0e5275-7b5c-81b6-92ea-fb5e9b0a93fd",
         "3c0e5275-7b5c-81e5-a7d4-c8ba74770b4d"
       ],
       "Used In": "Airliners, fighters, helicopters, ships, and peaking and combined-cycle power plants.",
@@ -9804,7 +9823,7 @@
     {
       "id": "3bee5275-7b5c-817c-995b-fcec965fd2fd",
       "url": "https://app.notion.com/p/Steam-Turbine-3bee52757b5c817c995bfcec965fd2fd",
-      "lastEdited": "2026-08-18T19:16:00.000Z",
+      "lastEdited": "2026-08-18T20:03:00.000Z",
       "Inventors": [
         "3bee5275-7b5c-811c-83ca-c4dcae35deb6"
       ],
@@ -9818,7 +9837,8 @@
         "3bee5275-7b5c-814b-883f-f3a911e3d4e1",
         "3bee5275-7b5c-8179-b2e5-ed3b9ea12888",
         "3c0e5275-7b5c-818b-97c8-d52070d30162",
-        "3c0e5275-7b5c-81a3-855d-d1d1c3821e1f"
+        "3c0e5275-7b5c-81a3-855d-d1d1c3821e1f",
+        "3c0e5275-7b5c-81b6-92ea-fb5e9b0a93fd"
       ],
       "Used In": "Coal, gas, nuclear and geothermal power stations, and warships.",
       "How It Works": "High-pressure steam expands through row after row of blades, each stage taking a little of the pressure drop and turning it into rotation, so the steam speed never gets destructively high. Boiler, turbine, condenser, pump — the Rankine cycle, at up to 3,000 rpm and hundreds of megawatts.",
@@ -10129,7 +10149,7 @@
     {
       "id": "3bee5275-7b5c-8127-9394-ce825a20f2ba",
       "url": "https://app.notion.com/p/Mixing-and-Placing-Concrete-3bee52757b5c81279394ce825a20f2ba",
-      "lastEdited": "2026-08-16T20:22:00.000Z",
+      "lastEdited": "2026-08-18T20:03:00.000Z",
       "Difficulty": "Beginner",
       "Elements": [
         "22e34085-1b4d-4f83-96dc-1dac62e1f343",
@@ -10143,7 +10163,8 @@
       "Done When": "It sets hard overnight, rings rather than thuds after a week, and shows no surface dusting or fine cracks.",
       "Equations": [
         "3bbe5275-7b5c-8144-9213-c057e1f3e5ab",
-        "3bbe5275-7b5c-81f5-bb78-d159340dd03f"
+        "3bbe5275-7b5c-81f5-bb78-d159340dd03f",
+        "3c0e5275-7b5c-81ba-9b00-d48bf3cd9936"
       ],
       "Steps": "Gauge by volume: 1 cement, 2 sand, 3 gravel for general work.\nMix the dry ingredients until one colour, then add water a little at a time to a stiff, workable mix that holds a shape.\nDampen the formwork or hole; place the concrete within an hour of mixing.\nTamp or rod it to drive the air out, especially at edges and around bar.\nStrike off level, then float once the surface sheen has gone.\nCover and keep damp for a week; do not load for a month.",
       "Tools": "Cement, sharp sand, 20 mm gravel, clean water; a mixer or a board and shovel; buckets for gauging; a trowel, float, and something to tamp with; polythene to cover it.",
@@ -10372,7 +10393,7 @@
     {
       "id": "3bee5275-7b5c-8104-bd15-f3f63b6670e5",
       "url": "https://app.notion.com/p/Sand-Casting-3bee52757b5c8104bd15f3f63b6670e5",
-      "lastEdited": "2026-08-16T20:22:00.000Z",
+      "lastEdited": "2026-08-18T20:03:00.000Z",
       "Difficulty": "Intermediate",
       "Elements": [
         "22e34085-1b4d-4f83-96dc-1dac62e1f343",
@@ -10384,7 +10405,9 @@
       "Done When": "The casting fills every corner of the pattern, rings when tapped, and machines clean without pockets.",
       "Equations": [
         "3bbe5275-7b5c-819b-ba4e-f3c3031b13f1",
-        "3bde5275-7b5c-8144-b755-d881fbf879cb"
+        "3bde5275-7b5c-8144-b755-d881fbf879cb",
+        "3c0e5275-7b5c-812f-9604-d1e8723865d9",
+        "3c0e5275-7b5c-815c-be60-d2a80ee3b254"
       ],
       "Steps": "Set the pattern on a board in the drag; dust it; ram sand in layers, firm at the edges.\nFlip, add the cope, place sprue and riser pins, ram again.\nLift the cope off; remove pattern and pins; cut a gate from sprue to cavity.\nClose the flask; weight it — molten metal floats a cope.\nMelt, skim the dross, and pour steadily into the sprue without stopping until the riser fills.\nLet it freeze; break out; cut off sprue and riser; clean up.",
       "Tools": "Two-part flask, green sand (silica, bentonite clay, water), a pattern with draft, parting dust, a crucible and furnace, tongs, sprue and riser pins.",
@@ -10541,7 +10564,7 @@
     {
       "id": "3bee5275-7b5c-8165-b6ba-ce4550c54c41",
       "url": "https://app.notion.com/p/Brazing-3bee52757b5c8165b6bace4550c54c41",
-      "lastEdited": "2026-08-16T20:22:00.000Z",
+      "lastEdited": "2026-08-18T20:03:00.000Z",
       "Difficulty": "Intermediate",
       "Elements": [
         "68542bc4-f631-46b7-99b9-75931965e407",
@@ -10552,7 +10575,8 @@
       "Safety": "Eye protection against the flame and the flux glare. Ventilate — cadmium-bearing silver solder is toxic when hot; use cadmium-free. Hot metal looks cold within a minute.",
       "Done When": "A full, smooth fillet all round with filler visible on the far side of the joint — proof it went through.",
       "Equations": [
-        "3bde5275-7b5c-81af-b4b4-ef52a39887e9"
+        "3bde5275-7b5c-81af-b4b4-ef52a39887e9",
+        "3c0e5275-7b5c-81ba-9b00-d48bf3cd9936"
       ],
       "Steps": "Fit the parts to a 0.05–0.15 mm gap; too tight and the filler cannot enter, too loose and capillarity fails.\nClean to bright metal and flux both surfaces.\nHeat the whole joint evenly to a dull red — heat the parts, not the rod.\nTouch the rod to the joint; if the parts are hot enough it melts and runs in on its own.\nFollow the joint round with the torch; the filler follows the heat.\nCool slowly, then pickle or scrub off the glassy flux.",
       "Tools": "Oxy-acetylene, MAPP or propane torch; silver-brazing rod or brass rod; borax-based flux; wire brush; pickle (dilute acid) for cleanup.",
@@ -10566,7 +10590,7 @@
     {
       "id": "3bee5275-7b5c-8164-a6ad-c67f6502291e",
       "url": "https://app.notion.com/p/Soldering-3bee52757b5c8164a6adc67f6502291e",
-      "lastEdited": "2026-08-16T20:22:00.000Z",
+      "lastEdited": "2026-08-18T20:03:00.000Z",
       "Difficulty": "Beginner",
       "Elements": [
         "68542bc4-f631-46b7-99b9-75931965e407",
@@ -10579,7 +10603,8 @@
       "Equations": [
         "3bbe5275-7b5c-8154-bcd6-c1cd26ae1a20",
         "3bbe5275-7b5c-816d-9734-c149c749519c",
-        "3bde5275-7b5c-81af-b4b4-ef52a39887e9"
+        "3bde5275-7b5c-81af-b4b4-ef52a39887e9",
+        "3c0e5275-7b5c-81ba-9b00-d48bf3cd9936"
       ],
       "Steps": "Tin the tip: melt a little solder on it and wipe.\nTouch the tip to both the pad and the lead at once — heat the joint, never the solder.\nAfter a second, feed solder into the far side of the joint; it should flow toward the heat.\nRemove the solder, then the iron; hold still until it dulls and sets.\nInspect: a shiny concave fillet climbing both surfaces.\nClip the lead above the fillet.",
       "Tools": "Temperature-controlled iron (330–370 °C for lead-free), 0.5–0.8 mm rosin-core solder, flux pen, brass tip cleaner, tweezers, extractor fan.",
@@ -10594,6 +10619,87 @@
     }
   ],
   "glossary": [
+    {
+      "id": "3c0e5275-7b5c-8148-a2ae-c7ddcdb094f8",
+      "url": "https://app.notion.com/p/Refraction-3c0e52757b5c8148a2aec7ddcdb094f8",
+      "lastEdited": "2026-08-18T20:04:00.000Z",
+      "Definition": "The bending of a wave where its speed changes — light entering glass, sound crossing warm air, a sea swell reaching the shallows. Snell's law gives the angle; the refractive index gives the speed.",
+      "Aliases": "refract, refracts, refractive index",
+      "Domain": "Waves & Fluids",
+      "Term": "Refraction"
+    },
+    {
+      "id": "3c0e5275-7b5c-8177-b34a-f50c3a699287",
+      "url": "https://app.notion.com/p/Standing-wave-3c0e52757b5c8177b34af50c3a699287",
+      "lastEdited": "2026-08-18T20:04:00.000Z",
+      "Definition": "A wave trapped between two boundaries so that only whole numbers of half-wavelengths fit — the fundamental and its harmonics. Strings, pipes, laser cavities and, in a sense, electrons in atoms.",
+      "Aliases": "harmonics, harmonic, resonant frequency",
+      "Domain": "Waves & Fluids",
+      "Term": "Standing wave"
+    },
+    {
+      "id": "3c0e5275-7b5c-815f-9f42-e06fd9f71bba",
+      "url": "https://app.notion.com/p/Frequency-3c0e52757b5c815f9f42e06fd9f71bba",
+      "lastEdited": "2026-08-18T20:04:00.000Z",
+      "Definition": "How many cycles pass a point per second, in hertz. Middle A is 440; visible light is around 5 × 10¹⁴; the energy of a photon is this times Planck's constant.",
+      "Aliases": "hertz, Hz",
+      "Domain": "Waves & Fluids",
+      "Term": "Frequency"
+    },
+    {
+      "id": "3c0e5275-7b5c-8160-a4dd-d5e26cef4536",
+      "url": "https://app.notion.com/p/Wavelength-3c0e52757b5c8160a4ddd5e26cef4536",
+      "lastEdited": "2026-08-18T20:04:00.000Z",
+      "Definition": "The distance between one crest of a wave and the next. Times the frequency it gives the wave speed; for light it is what colour means, for sound, pitch.",
+      "Aliases": null,
+      "Domain": "Waves & Fluids",
+      "Term": "Wavelength"
+    },
+    {
+      "id": "3c0e5275-7b5c-817b-8d09-cd52370a388c",
+      "url": "https://app.notion.com/p/Terminal-velocity-3c0e52757b5c817b8d09cd52370a388c",
+      "lastEdited": "2026-08-18T20:04:00.000Z",
+      "Definition": "The steady speed a falling body reaches when drag equals its weight. For a fine particle in water it goes as the radius squared, which is why silt settles in hours and clay in months.",
+      "Aliases": null,
+      "Domain": "Waves & Fluids",
+      "Term": "Terminal velocity"
+    },
+    {
+      "id": "3c0e5275-7b5c-8185-b030-ceb9abfd5c05",
+      "url": "https://app.notion.com/p/Hydraulic-head-3c0e52757b5c8185b030ceb9abfd5c05",
+      "lastEdited": "2026-08-18T20:04:00.000Z",
+      "Definition": "The height of a column of water that would produce a given pressure — the energy of water per unit weight, in metres. Groundwater flows down the head gradient; a dam's power is head times flow.",
+      "Aliases": "head gradient, metres of head",
+      "Domain": "Waves & Fluids",
+      "Term": "Hydraulic head"
+    },
+    {
+      "id": "3c0e5275-7b5c-81ed-8afe-c37391f717cc",
+      "url": "https://app.notion.com/p/Turbulence-3c0e52757b5c81ed8afec37391f717cc",
+      "lastEdited": "2026-08-18T20:04:00.000Z",
+      "Definition": "Flow that has broken into eddies and no longer moves in orderly layers; the alternative is laminar. The Reynolds number says which you get, and turbulence is what mixes, drags and roars.",
+      "Aliases": "turbulent, laminar",
+      "Domain": "Waves & Fluids",
+      "Term": "Turbulence"
+    },
+    {
+      "id": "3c0e5275-7b5c-817b-bcec-f2247310fea4",
+      "url": "https://app.notion.com/p/Viscosity-3c0e52757b5c817bbcecf2247310fea4",
+      "lastEdited": "2026-08-18T20:04:00.000Z",
+      "Definition": "A fluid's resistance to flowing — the drag between its own layers sliding past each other. Water's is low, honey's high, and it is what makes fine particles settle slowly and pipes lose pressure.",
+      "Aliases": "viscous",
+      "Domain": "Waves & Fluids",
+      "Term": "Viscosity"
+    },
+    {
+      "id": "3c0e5275-7b5c-81c3-90bd-ed7f862c27ba",
+      "url": "https://app.notion.com/p/Buoyancy-3c0e52757b5c81c390bded7f862c27ba",
+      "lastEdited": "2026-08-18T20:04:00.000Z",
+      "Definition": "The upward push a fluid gives anything in it, equal to the weight of fluid displaced. Why a mineral weighs less in water than in air — and by exactly its own volume of water, which is how specific gravity is measured.",
+      "Aliases": "buoyant",
+      "Domain": "Waves & Fluids",
+      "Term": "Buoyancy"
+    },
     {
       "id": "3c0e5275-7b5c-814d-ac3f-c5b0329ebac2",
       "url": "https://app.notion.com/p/Flywheel-3c0e52757b5c814dac3fc5b0329ebac2",
@@ -12841,11 +12947,15 @@
     {
       "id": "3bfe5275-7b5c-81dc-a142-f8f26705de58",
       "url": "https://app.notion.com/p/Pit-lakes-and-perpetual-treatment-3bfe52757b5c81dca142f8f26705de58",
-      "lastEdited": "2026-08-17T23:55:00.000Z",
+      "lastEdited": "2026-08-18T20:04:00.000Z",
       "Mitigation": "Financial assurance sized to perpetual care, passive treatment wetlands where the load allows, and backfilling or flooding designed to limit oxidation from the start.",
       "Where": [
         "Open pit",
         "Underground"
+      ],
+      "Equations": [
+        "3c0e5275-7b5c-812f-9604-d1e8723865d9",
+        "3c0e5275-7b5c-81d7-bcee-d6ab697a2df4"
       ],
       "Case": "The Berkeley Pit at Butte, Montana has been filling since pumping stopped in 1982; its water is acidic and metal-laden, and treatment is expected to continue indefinitely.",
       "Category": "Water",
@@ -12864,6 +12974,7 @@
         "Artisanal",
         "Quarry"
       ],
+      "Equations": [],
       "Case": null,
       "Category": "Land",
       "Mechanism": "The mine footprint is only part of it: access roads, power lines, camps and the settlement that follows open ground that was previously hard to reach, and in forest the clearance that follows the road usually exceeds the clearance for the mine.",
@@ -12878,6 +12989,7 @@
       "Where": [
         "Smelter"
       ],
+      "Equations": [],
       "Case": null,
       "Category": "Energy",
       "Mechanism": "Pulling a metal out of its compound takes at least the energy that bound it, and often much more. Aluminium is the extreme case: Hall–Héroult electrolysis uses roughly 13–15 kWh of electricity per kilogram of metal, which is why smelters are built where power is cheap rather than where the ore is.",
@@ -12893,6 +13005,7 @@
         "Open pit",
         "Underground"
       ],
+      "Equations": [],
       "Case": null,
       "Category": "Energy",
       "Mechanism": "The richest deposits are mined first, so average grades fall over time — copper mined today is a fraction of a percent where it was several percent a century ago. Every tonne of metal then needs more rock moved, more rock ground, more water and more energy, and produces more tailings, with no change in practice required for the impact to grow.",
@@ -12908,6 +13021,7 @@
         "Open pit",
         "Quarry"
       ],
+      "Equations": [],
       "Case": null,
       "Category": "Land",
       "Mechanism": "Reaching ore in a pit means removing everything above and around it. The strip ratio — tonnes of waste per tonne of ore — is commonly several to one, so the waste dumps are the largest structures on most sites and outlast the pit itself.",
@@ -12922,6 +13036,7 @@
       "Where": [
         "Smelter"
       ],
+      "Equations": [],
       "Case": "Smelting at Sudbury, Ontario denuded a landscape large enough to be visible from orbit; capture, a 381 m stack and a regreening programme running since 1978 have reversed much of it.",
       "Category": "Air",
       "Mechanism": "Roasting and smelting sulfide ores drives off sulfur as sulfur dioxide. Released untreated it acidifies rain downwind, strips foliage and acidifies soils and lakes across an area far larger than the plant.",
@@ -12938,6 +13053,7 @@
         "Open pit",
         "Underground"
       ],
+      "Equations": [],
       "Case": "Kabwe in Zambia, smelting lead from 1902 to 1994, left soil and dust contamination that continues to produce some of the highest childhood blood-lead levels recorded anywhere.",
       "Category": "Health",
       "Mechanism": "Lead reaches people as smelter emissions, as dust from ore stockpiles and tailings, and as contaminated soil that children then put their hands in. It is a developmental neurotoxin with no threshold known to be safe, and the exposure that matters most happens before school age.",
@@ -12954,6 +13070,7 @@
         "Open pit",
         "In-situ leach"
       ],
+      "Equations": [],
       "Case": "The Wismut operations in East Germany left one of the largest uranium legacies anywhere; the German rehabilitation programme has run since 1991 and is measured in decades and billions of euros.",
       "Category": "Health",
       "Mechanism": "Uranium ore holds the whole decay chain, so its tailings retain most of the original radioactivity as thorium-230 and radium-226 long after the uranium is gone. Radium decays to radon, a gas that escapes the pile continuously, and radium-226's 1,600-year half-life sets the timescale for containment.",
@@ -12963,12 +13080,16 @@
     {
       "id": "3bfe5275-7b5c-81be-9141-e7a46870c2f8",
       "url": "https://app.notion.com/p/Dust-and-particulates-3bfe52757b5c81be9141e7a46870c2f8",
-      "lastEdited": "2026-08-17T23:55:00.000Z",
+      "lastEdited": "2026-08-18T20:04:00.000Z",
       "Mitigation": "Watering and sealing haul roads, enclosing crushers and conveyors, wind fences, and revegetating or wetting exposed tailings beaches.",
       "Where": [
         "Open pit",
         "Quarry",
         "Heap leach"
+      ],
+      "Equations": [
+        "3c0e5275-7b5c-81d6-b1de-ec9081641f42",
+        "3c0e5275-7b5c-81e2-968a-c4a8f0f00d29"
       ],
       "Case": null,
       "Category": "Air",
@@ -12979,12 +13100,15 @@
     {
       "id": "3bfe5275-7b5c-8110-8285-e00bf645a069",
       "url": "https://app.notion.com/p/Silicosis-3bfe52757b5c81108285e00bf645a069",
-      "lastEdited": "2026-08-17T23:55:00.000Z",
+      "lastEdited": "2026-08-18T20:04:00.000Z",
       "Mitigation": "Wet drilling, ventilation, dust suppression on haul roads, respiratory protection, and screening programmes that catch it early enough to remove the worker from exposure.",
       "Where": [
         "Underground",
         "Open pit",
         "Quarry"
+      ],
+      "Equations": [
+        "3c0e5275-7b5c-81e2-968a-c4a8f0f00d29"
       ],
       "Case": "South Africa's gold mines produced silicosis on a scale that led to a class action settled in 2019 covering tens of thousands of current and former miners.",
       "Category": "Health",
@@ -12995,12 +13119,15 @@
     {
       "id": "3bfe5275-7b5c-8159-8d41-da330100b177",
       "url": "https://app.notion.com/p/Subsidence-3bfe52757b5c81598d41da330100b177",
-      "lastEdited": "2026-08-17T23:55:00.000Z",
+      "lastEdited": "2026-08-18T20:04:00.000Z",
       "Mitigation": "Backfilling with paste or waste rock, leaving support pillars, and mapping old workings so that what is above them can be planned around.",
       "Where": [
         "Underground",
         "In-situ leach",
         "Brine"
+      ],
+      "Equations": [
+        "3c0e5275-7b5c-812f-9604-d1e8723865d9"
       ],
       "Case": null,
       "Category": "Ground",
@@ -13011,11 +13138,14 @@
     {
       "id": "3bfe5275-7b5c-81b7-bfd0-e57c81b60d25",
       "url": "https://app.notion.com/p/Riverine-tailings-disposal-3bfe52757b5c81b7bfd0e57c81b60d25",
-      "lastEdited": "2026-08-17T23:55:00.000Z",
+      "lastEdited": "2026-08-18T20:04:00.000Z",
       "Mitigation": "Now rejected by most regulators and lenders in favour of engineered storage; where it has happened, remediation means dredging and long-term floodplain monitoring.",
       "Where": [
         "Open pit",
         "Underground"
+      ],
+      "Equations": [
+        "3c0e5275-7b5c-81e2-968a-c4a8f0f00d29"
       ],
       "Case": "The Ok Tedi mine in Papua New Guinea discharged to the Fly River system for decades, with sediment aggrading the bed and killing floodplain forest well over 100 km downstream.",
       "Category": "Water",
@@ -13026,12 +13156,15 @@
     {
       "id": "3bfe5275-7b5c-818e-a5cb-f39fdac867a3",
       "url": "https://app.notion.com/p/Water-table-drawdown-3bfe52757b5c818ea5cbf39fdac867a3",
-      "lastEdited": "2026-08-17T23:55:00.000Z",
+      "lastEdited": "2026-08-18T20:04:00.000Z",
       "Mitigation": "Recharge of pumped water back to the aquifer, grout curtains around the workings, and allocation limits set from a monitored regional model rather than the mine's own balance.",
       "Where": [
         "Open pit",
         "Underground",
         "In-situ leach"
+      ],
+      "Equations": [
+        "3c0e5275-7b5c-81d7-bcee-d6ab697a2df4"
       ],
       "Case": null,
       "Category": "Water",
@@ -13042,12 +13175,15 @@
     {
       "id": "3bfe5275-7b5c-8184-ad8a-cf5ea55437b2",
       "url": "https://app.notion.com/p/Arsenic-mobilisation-3bfe52757b5c8184ad8acf5ea55437b2",
-      "lastEdited": "2026-08-17T23:55:00.000Z",
+      "lastEdited": "2026-08-18T20:04:00.000Z",
       "Mitigation": "Capture and stable disposal of roaster dust, arsenic fixation as scorodite, and containment of what has already been produced.",
       "Where": [
         "Underground",
         "Open pit",
         "Smelter"
+      ],
+      "Equations": [
+        "3c0e5275-7b5c-81d7-bcee-d6ab697a2df4"
       ],
       "Case": "Giant Mine, Yellowknife holds 237,000 tonnes of arsenic trioxide dust in underground chambers. Canada's remediation freezes the surrounding rock with passive thermosyphons, and is planned to hold for at least a century.",
       "Category": "Water",
@@ -13064,6 +13200,7 @@
         "Artisanal",
         "Placer"
       ],
+      "Equations": [],
       "Case": "UNEP attributes close to 40 % of all anthropogenic mercury entering the atmosphere to artisanal and small-scale gold mining — the single largest source.",
       "Category": "Health",
       "Mechanism": "Small-scale miners mix mercury with crushed ore to amalgamate the gold, then burn the amalgam off with a torch, releasing mercury vapour directly to air and to whoever is holding it. What reaches water is methylated by bacteria into methylmercury, which accumulates up the food chain.",
@@ -13073,11 +13210,14 @@
     {
       "id": "3bfe5275-7b5c-8119-a981-f5e4d6d61af2",
       "url": "https://app.notion.com/p/Cyanide-release-3bfe52757b5c8119a981f5e4d6d61af2",
-      "lastEdited": "2026-08-17T23:55:00.000Z",
+      "lastEdited": "2026-08-18T20:04:00.000Z",
       "Mitigation": "Lined ponds with freeboard for storm events, cyanide destruction circuits before discharge, and the industry's voluntary International Cyanide Management Code.",
       "Where": [
         "Heap leach",
         "Open pit"
+      ],
+      "Equations": [
+        "3c0e5275-7b5c-81d7-bcee-d6ab697a2df4"
       ],
       "Case": "Baia Mare, Romania, 30 January 2000: a dam at the Aurul plant released about 100,000 m³ of water carrying roughly 100 tonnes of cyanide into the Someș, then the Tisza and the Danube.",
       "Category": "Water",
@@ -13088,10 +13228,15 @@
     {
       "id": "3bfe5275-7b5c-81ab-bf54-d48227961223",
       "url": "https://app.notion.com/p/Tailings-dam-failure-3bfe52757b5c81abbf54d48227961223",
-      "lastEdited": "2026-08-17T23:55:00.000Z",
+      "lastEdited": "2026-08-18T20:04:00.000Z",
       "Mitigation": "Downstream or centreline construction instead of upstream raises, dewatered or thickened tailings, piezometer monitoring, and independent review of the design.",
       "Where": [
         "Tailings storage"
+      ],
+      "Equations": [
+        "3c0e5275-7b5c-812f-9604-d1e8723865d9",
+        "3c0e5275-7b5c-81d7-bcee-d6ab697a2df4",
+        "3c0e5275-7b5c-81e2-968a-c4a8f0f00d29"
       ],
       "Case": "Brumadinho, Brazil, 25 January 2019: a Vale iron ore dam failed without warning and killed about 270 people. Fundão at Mariana, 5 November 2015, killed 19 and carried tailings down 668 km of watercourse.",
       "Category": "Ground",
@@ -13102,12 +13247,15 @@
     {
       "id": "3bfe5275-7b5c-8194-bc81-c9300fd4c484",
       "url": "https://app.notion.com/p/Acid-mine-drainage-3bfe52757b5c8194bc81c9300fd4c484",
-      "lastEdited": "2026-08-17T23:55:00.000Z",
+      "lastEdited": "2026-08-18T20:04:00.000Z",
       "Mitigation": "Flooding old workings to exclude oxygen, capping and lining waste rock, adding limestone to neutralise; where the load is too large, treating the water indefinitely.",
       "Where": [
         "Open pit",
         "Underground",
         "Tailings storage"
+      ],
+      "Equations": [
+        "3c0e5275-7b5c-81d7-bcee-d6ab697a2df4"
       ],
       "Case": "The Richmond mine at Iron Mountain, California has produced the most acidic water ever measured — pH as low as −3.6, with dissolved metals up to 200 g/L (Nordstrom & Alpers, 2000).",
       "Category": "Water",
@@ -502595,6 +502743,639 @@
   ],
   "equations": [
     {
+      "id": "3c0e5275-7b5c-813f-9898-c79e692ca2ac",
+      "url": "https://app.notion.com/p/Decibel-Scale-3c0e52757b5c813f9898c79e692ca2ac",
+      "lastEdited": "2026-08-18T20:03:00.000Z",
+      "Skills": [],
+      "Equation": "L = 10 log₁₀ (I / I₀)",
+      "Minerals": [],
+      "Timeline": [],
+      "Field": "Acoustics",
+      "Celestial Objects": [],
+      "Theories": [],
+      "Named After": null,
+      "Machines": [],
+      "Related": [],
+      "Instruments": [],
+      "Constants": [],
+      "Requires": [
+        "3c0e5275-7b5c-81f6-8c60-d01cd1aa9b5c"
+      ],
+      "Impacts": [],
+      "Symbols": "L level in decibels · I the intensity being described · I₀ a reference intensity — for sound in air, 10⁻¹² W/m², about the threshold of hearing",
+      "Spectral Types": [],
+      "Significance": "Ten times the intensity is ten decibels more; a hundred times, twenty. The scale is logarithmic because hearing is: a hundred-fold range in power sounds like a moderate step. Named for Bell and standardised in 1924, it serves any ratio — a filter's rolloff, an antenna's gain, a signal above its noise.",
+      "Year": 1924,
+      "Required By": [],
+      "Elements": [],
+      "Name": "Decibel Scale"
+    },
+    {
+      "id": "3c0e5275-7b5c-81dc-8645-c26e23417e74",
+      "url": "https://app.notion.com/p/Rayleigh-Criterion-3c0e52757b5c81dc8645c26e23417e74",
+      "lastEdited": "2026-08-18T20:03:00.000Z",
+      "Skills": [],
+      "Equation": "θ ≈ 1.22 λ / D",
+      "Minerals": [],
+      "Timeline": [],
+      "Field": "Waves & Optics",
+      "Celestial Objects": [],
+      "Theories": [],
+      "Named After": "Lord Rayleigh",
+      "Machines": [],
+      "Related": [],
+      "Instruments": [
+        "bf3acea0-668c-4c49-bbd1-8dec3d49af72",
+        "a3c867b3-aa5e-4eef-badd-aa3510c2d8df",
+        "ed6ca018-7aab-42e4-be3d-9be5eb30d100",
+        "5bba6cc7-55f5-45dc-b91b-3d9f0d37f5a7",
+        "41dff11c-b8f7-482d-bb9a-458fe9f2e922",
+        "b2c375af-6ea5-48a8-95f1-982fa7682f8a",
+        "5e727e67-154e-4d29-b5cc-0f8edfb0413f"
+      ],
+      "Constants": [],
+      "Requires": [
+        "3bbe5275-7b5c-8130-a1e2-d4d1fefda7d8",
+        "3c0e5275-7b5c-8189-b7b0-c947c0dfc027"
+      ],
+      "Impacts": [],
+      "Symbols": "θ the smallest angle two points can be apart and still be told apart · λ wavelength · D aperture diameter",
+      "Spectral Types": [],
+      "Significance": "The finest detail any telescope, microscope or eye can resolve is set by wavelength over aperture — diffraction, not workmanship, is the floor. It is why telescopes are big, why radio dishes are enormous and get combined into interferometers, why JWST sees sharper in the infrared than Hubble does only because it is larger, and why a microscope cannot show an atom in visible light.",
+      "Year": 1879,
+      "Required By": [],
+      "Elements": [],
+      "Name": "Rayleigh Criterion"
+    },
+    {
+      "id": "3c0e5275-7b5c-81f6-8c60-d01cd1aa9b5c",
+      "url": "https://app.notion.com/p/Inverse-Square-Law-of-Intensity-3c0e52757b5c81f68c60d01cd1aa9b5c",
+      "lastEdited": "2026-08-18T20:03:00.000Z",
+      "Skills": [],
+      "Equation": "I = P / (4π r²)",
+      "Minerals": [],
+      "Timeline": [],
+      "Field": "Waves & Optics",
+      "Celestial Objects": [],
+      "Theories": [],
+      "Named After": null,
+      "Machines": [],
+      "Related": [],
+      "Instruments": [
+        "b2c375af-6ea5-48a8-95f1-982fa7682f8a"
+      ],
+      "Constants": [],
+      "Requires": [
+        "3c0e5275-7b5c-814f-b307-cb20271300f2",
+        "3c0e5275-7b5c-81e8-9036-d1ef2290ec4f"
+      ],
+      "Impacts": [],
+      "Symbols": "I intensity: power per unit area at distance r · P the source's total power · 4πr² the area of the sphere the power has spread over",
+      "Spectral Types": [],
+      "Significance": "Light, sound and gravity spread out over a sphere whose surface grows as the square of the distance, so what reaches you falls as one over that square. Kepler stated it for light in 1604. It is why a star's apparent brightness gives its distance once its luminosity is known — the whole cosmic distance ladder — and why doubling the distance from a lamp quarters the light.",
+      "Year": 1604,
+      "Required By": [
+        "3c0e5275-7b5c-813f-9898-c79e692ca2ac"
+      ],
+      "Elements": [],
+      "Name": "Inverse-Square Law of Intensity"
+    },
+    {
+      "id": "3c0e5275-7b5c-8177-a2fb-fdc2170b2401",
+      "url": "https://app.notion.com/p/Thin-Lens-Equation-3c0e52757b5c8177a2fbfdc2170b2401",
+      "lastEdited": "2026-08-18T20:03:00.000Z",
+      "Skills": [],
+      "Equation": "1/f = 1/d_o + 1/d_i",
+      "Minerals": [],
+      "Timeline": [],
+      "Field": "Waves & Optics",
+      "Celestial Objects": [],
+      "Theories": [],
+      "Named After": null,
+      "Machines": [],
+      "Related": [],
+      "Instruments": [
+        "bf3acea0-668c-4c49-bbd1-8dec3d49af72"
+      ],
+      "Constants": [],
+      "Requires": [
+        "3c0e5275-7b5c-8163-bff2-f6cc55e9a90a",
+        "3c0e5275-7b5c-8189-b7b0-c947c0dfc027"
+      ],
+      "Impacts": [],
+      "Symbols": "f focal length · d_o distance from lens to object · d_i distance from lens to image",
+      "Spectral Types": [],
+      "Significance": "Where a lens puts the image of an object, given how strongly it bends light. Halley wrote it in 1693, though the ray tracing goes back to Kepler. It sizes a camera, a telescope's eyepiece, a pair of spectacles and the analyzer's photograph; the same form serves a curved mirror.",
+      "Year": 1693,
+      "Required By": [],
+      "Elements": [],
+      "Name": "Thin Lens Equation"
+    },
+    {
+      "id": "3c0e5275-7b5c-8163-bff2-f6cc55e9a90a",
+      "url": "https://app.notion.com/p/Refractive-Index-3c0e52757b5c8163bff2f6cc55e9a90a",
+      "lastEdited": "2026-08-18T20:03:00.000Z",
+      "Skills": [],
+      "Equation": "n = c / v",
+      "Minerals": [],
+      "Timeline": [],
+      "Field": "Waves & Optics",
+      "Celestial Objects": [],
+      "Theories": [],
+      "Named After": null,
+      "Machines": [],
+      "Related": [],
+      "Instruments": [],
+      "Constants": [],
+      "Requires": [
+        "3c0e5275-7b5c-81de-9fb6-f2ec61468944"
+      ],
+      "Impacts": [],
+      "Symbols": "n refractive index of a medium · c speed of light in vacuum · v speed of light in the medium",
+      "Spectral Types": [],
+      "Significance": "Light slows in matter — by a third in glass, a quarter in water, a factor of 2.4 in diamond — and the ratio is the refractive index. Snell's law is the consequence: the wavefront bends where its speed changes. It is why a lens focuses, a prism disperses, a fibre guides, and a diamond sparkles; Huygens explained it with wavefronts in 1678.",
+      "Year": 1678,
+      "Required By": [
+        "3c0e5275-7b5c-8177-a2fb-fdc2170b2401",
+        "3bbe5275-7b5c-813d-86cf-c29a346fe2f8"
+      ],
+      "Elements": [],
+      "Name": "Refractive Index"
+    },
+    {
+      "id": "3c0e5275-7b5c-81e9-81ee-c1b0db6c1249",
+      "url": "https://app.notion.com/p/Standing-Waves-3c0e52757b5c81e981eec1b0db6c1249",
+      "lastEdited": "2026-08-18T20:03:00.000Z",
+      "Skills": [],
+      "Equation": "f_n = n v / (2L)  (n = 1, 2, 3…)",
+      "Minerals": [],
+      "Timeline": [],
+      "Field": "Waves & Optics",
+      "Celestial Objects": [],
+      "Theories": [],
+      "Named After": null,
+      "Machines": [],
+      "Related": [],
+      "Instruments": [],
+      "Constants": [],
+      "Requires": [
+        "3c0e5275-7b5c-81de-9fb6-f2ec61468944"
+      ],
+      "Impacts": [],
+      "Symbols": "f_n the nth resonant frequency · v wave speed on the string or in the pipe · L its length · n the harmonic number",
+      "Spectral Types": [],
+      "Significance": "Confine a wave and only those wavelengths that fit — a whole number of half-waves — survive; the rest cancel. That is why a string, a pipe and a laser cavity have a fundamental and overtones, why a bridge has modes, and why an electron in an atom has discrete energies. Sauveur named the harmonics in 1701.",
+      "Year": 1701,
+      "Required By": [],
+      "Elements": [],
+      "Name": "Standing Waves"
+    },
+    {
+      "id": "3c0e5275-7b5c-81de-9fb6-f2ec61468944",
+      "url": "https://app.notion.com/p/Wave-Speed-3c0e52757b5c81de9fb6f2ec61468944",
+      "lastEdited": "2026-08-18T20:02:00.000Z",
+      "Skills": [],
+      "Equation": "v = f λ",
+      "Minerals": [],
+      "Timeline": [],
+      "Field": "Waves & Optics",
+      "Celestial Objects": [],
+      "Theories": [],
+      "Named After": null,
+      "Machines": [],
+      "Related": [],
+      "Instruments": [
+        "41dff11c-b8f7-482d-bb9a-458fe9f2e922"
+      ],
+      "Constants": [],
+      "Requires": [],
+      "Impacts": [],
+      "Symbols": "v speed of the wave · f frequency, cycles per second · λ wavelength, the distance between repeats",
+      "Spectral Types": [],
+      "Significance": "A wave advances one wavelength every cycle. Fix the speed — sound in air, light in vacuum — and frequency and wavelength are one quantity written two ways: 440 Hz is 78 cm of air, green light is 5.5 × 10¹⁴ Hz. Mersenne measured it for strings in 1636. Doppler, refraction, standing waves and every spectrum on the cosmos page start here.",
+      "Year": 1636,
+      "Required By": [
+        "3c0e5275-7b5c-81e9-81ee-c1b0db6c1249",
+        "3c0e5275-7b5c-8163-bff2-f6cc55e9a90a",
+        "3bbe5275-7b5c-814d-83e6-ee6df24eacca",
+        "3bbe5275-7b5c-81d8-b63d-d44990bf2054",
+        "3bbe5275-7b5c-8179-9734-eea3fa4e014c",
+        "3bbe5275-7b5c-8113-9b17-e6d7efc091ea",
+        "3bbe5275-7b5c-8130-a1e2-d4d1fefda7d8",
+        "3bbe5275-7b5c-8174-8c31-eda1293e8fe6",
+        "3bbe5275-7b5c-8170-bd5f-c796d7589e08",
+        "3bbe5275-7b5c-8140-a1d4-f7bff1df0334"
+      ],
+      "Elements": [],
+      "Name": "Wave Speed"
+    },
+    {
+      "id": "3c0e5275-7b5c-81ba-9b00-d48bf3cd9936",
+      "url": "https://app.notion.com/p/Capillary-Rise-3c0e52757b5c81ba9b00d48bf3cd9936",
+      "lastEdited": "2026-08-18T20:03:00.000Z",
+      "Skills": [
+        "3bee5275-7b5c-8164-a6ad-c67f6502291e",
+        "3bee5275-7b5c-8165-b6ba-ce4550c54c41",
+        "3bee5275-7b5c-8127-9394-ce825a20f2ba"
+      ],
+      "Equation": "h = 2 γ cos θ / (ρ g r)",
+      "Minerals": [],
+      "Timeline": [],
+      "Field": "Fluid Dynamics",
+      "Celestial Objects": [],
+      "Theories": [],
+      "Named After": "James Jurin",
+      "Machines": [],
+      "Related": [],
+      "Instruments": [],
+      "Constants": [],
+      "Requires": [
+        "3c0e5275-7b5c-8110-a5c1-c471f72f8383",
+        "3c0e5275-7b5c-812f-9604-d1e8723865d9"
+      ],
+      "Impacts": [],
+      "Symbols": "h height the liquid climbs in a narrow tube · γ surface tension · θ contact angle between liquid and wall · ρ liquid density · g gravitational acceleration · r tube radius",
+      "Spectral Types": [],
+      "Significance": "Liquid climbs a narrow gap when it wets the walls, and higher the narrower the gap — Jurin's law of 1718. It draws molten solder and brazing alloy into a joint that fits closely and refuses one that does not, lifts water through soil and up a plant, and wicks ink into paper. When the liquid does not wet, θ passes 90° and it is pushed out instead: mercury in glass.",
+      "Year": 1718,
+      "Required By": [],
+      "Elements": [],
+      "Name": "Capillary Rise"
+    },
+    {
+      "id": "3c0e5275-7b5c-8168-9f58-e868d30da92e",
+      "url": "https://app.notion.com/p/Hydraulic-Power-3c0e52757b5c81689f58e868d30da92e",
+      "lastEdited": "2026-08-18T20:03:00.000Z",
+      "Skills": [],
+      "Equation": "P = ρ g Q h",
+      "Minerals": [],
+      "Timeline": [],
+      "Field": "Fluid Dynamics",
+      "Celestial Objects": [],
+      "Theories": [],
+      "Named After": null,
+      "Machines": [
+        "3bee5275-7b5c-8152-b6e1-cc03227a8473",
+        "3bee5275-7b5c-81eb-98b0-d02f02376dc4",
+        "3bee5275-7b5c-8168-a928-d755bed8e21f"
+      ],
+      "Related": [],
+      "Instruments": [],
+      "Constants": [],
+      "Requires": [
+        "3bbe5275-7b5c-8189-9f06-e3de324e0af4",
+        "3c0e5275-7b5c-8127-b7f0-fb3910ec4fef",
+        "3c0e5275-7b5c-814f-b307-cb20271300f2"
+      ],
+      "Impacts": [],
+      "Symbols": "P power available · ρ water density · g gravitational acceleration · Q volume flow rate · h head: the height the water falls",
+      "Spectral Types": [],
+      "Significance": "Head times flow times the weight of water — the power a hydro site can give before turbine and generator losses take their share. A hundred metres of head and a cubic metre a second is about a megawatt. It is potential energy per second, and every dam, mill race and micro-hydro scheme is designed on it.",
+      "Year": null,
+      "Required By": [],
+      "Elements": [],
+      "Name": "Hydraulic Power"
+    },
+    {
+      "id": "3c0e5275-7b5c-815c-be60-d2a80ee3b254",
+      "url": "https://app.notion.com/p/Torricelli-s-Law-3c0e52757b5c815cbe60d2a80ee3b254",
+      "lastEdited": "2026-08-18T20:03:00.000Z",
+      "Skills": [
+        "3bee5275-7b5c-8104-bd15-f3f63b6670e5"
+      ],
+      "Equation": "v = √(2 g h)",
+      "Minerals": [],
+      "Timeline": [],
+      "Field": "Fluid Dynamics",
+      "Celestial Objects": [],
+      "Theories": [],
+      "Named After": "Evangelista Torricelli",
+      "Machines": [
+        "3bee5275-7b5c-8152-b6e1-cc03227a8473"
+      ],
+      "Related": [],
+      "Instruments": [],
+      "Constants": [],
+      "Requires": [
+        "3bbe5275-7b5c-819b-ba4e-f3c3031b13f1",
+        "3c0e5275-7b5c-812b-8ec5-dae78166d0f7"
+      ],
+      "Impacts": [],
+      "Symbols": "v the speed of a jet leaving an opening · g gravitational acceleration · h the height of fluid surface above the opening",
+      "Spectral Types": [],
+      "Significance": "Fluid escapes a hole at the speed a stone would reach falling the same height — Torricelli's 1643 result, a century before Bernoulli explained it as energy conservation. It sets the jet speed of a Pelton wheel from its head, the pour rate through a casting sprue, and how long a tank takes to drain.",
+      "Year": 1643,
+      "Required By": [],
+      "Elements": [],
+      "Name": "Torricelli's Law"
+    },
+    {
+      "id": "3c0e5275-7b5c-81d6-b1de-ec9081641f42",
+      "url": "https://app.notion.com/p/Drag-Equation-3c0e52757b5c81d6b1deec9081641f42",
+      "lastEdited": "2026-08-18T20:03:00.000Z",
+      "Skills": [],
+      "Equation": "F_d = ½ ρ v² C_d A",
+      "Minerals": [],
+      "Timeline": [],
+      "Field": "Fluid Dynamics",
+      "Celestial Objects": [],
+      "Theories": [],
+      "Named After": null,
+      "Machines": [
+        "3bee5275-7b5c-81ce-886e-e9c9ea42dcba"
+      ],
+      "Related": [],
+      "Instruments": [],
+      "Constants": [],
+      "Requires": [
+        "3c0e5275-7b5c-813b-8d2e-da5484cf3b1c",
+        "3c0e5275-7b5c-81b6-92ea-fb5e9b0a93fd"
+      ],
+      "Impacts": [
+        "3bfe5275-7b5c-81be-9141-e7a46870c2f8"
+      ],
+      "Symbols": "F_d drag force · ρ fluid density · v speed relative to the fluid · C_d drag coefficient, found by experiment · A frontal area",
+      "Spectral Types": [],
+      "Significance": "At the speeds of cars, birds and turbine blades drag goes with the square of the speed — twice as fast, four times the force, eight times the power. The drag coefficient sweeps up everything shape and Reynolds number do: about 0.3 for a modern car, 1.0 for a cyclist upright, 0.04 for an aerofoil. Rayleigh gave it this form in 1876; the v² was Newton's.",
+      "Year": 1876,
+      "Required By": [
+        "3bee5275-7b5c-8166-8a64-fd5e2ad2d5dc"
+      ],
+      "Elements": [],
+      "Name": "Drag Equation"
+    },
+    {
+      "id": "3c0e5275-7b5c-81d7-bcee-d6ab697a2df4",
+      "url": "https://app.notion.com/p/Darcy-s-Law-3c0e52757b5c81d7bceed6ab697a2df4",
+      "lastEdited": "2026-08-18T20:03:00.000Z",
+      "Skills": [],
+      "Equation": "Q = −K A (Δh / L)",
+      "Minerals": [],
+      "Timeline": [],
+      "Field": "Fluid Dynamics",
+      "Celestial Objects": [],
+      "Theories": [],
+      "Named After": "Henry Darcy",
+      "Machines": [],
+      "Related": [],
+      "Instruments": [],
+      "Constants": [],
+      "Requires": [
+        "3c0e5275-7b5c-812f-9604-d1e8723865d9",
+        "3c0e5275-7b5c-81fb-9731-efee92cee113"
+      ],
+      "Impacts": [
+        "3bfe5275-7b5c-8194-bc81-c9300fd4c484",
+        "3bfe5275-7b5c-818e-a5cb-f39fdac867a3",
+        "3bfe5275-7b5c-81dc-a142-f8f26705de58",
+        "3bfe5275-7b5c-8184-ad8a-cf5ea55437b2",
+        "3bfe5275-7b5c-8119-a981-f5e4d6d61af2",
+        "3bfe5275-7b5c-81ab-bf54-d48227961223"
+      ],
+      "Symbols": "Q volume flow through a porous medium · K hydraulic conductivity, a property of the rock or soil and the fluid · A cross-section · Δh/L the drop in hydraulic head over the distance L",
+      "Spectral Types": [],
+      "Significance": "Groundwater moves down the head gradient at a rate set by how open the rock is. Darcy found it in 1856 sizing sand filters for the fountains of Dijon. It is the equation of a mine's dewatering cone, of how far and how fast acid drainage travels from a waste dump, of the seepage through a tailings dam, and — with a leak coefficient — of every aquifer model.",
+      "Year": 1856,
+      "Required By": [],
+      "Elements": [],
+      "Name": "Darcy's Law"
+    },
+    {
+      "id": "3c0e5275-7b5c-81e2-968a-c4a8f0f00d29",
+      "url": "https://app.notion.com/p/Stokes-Law-3c0e52757b5c81e2968ac4a8f0f00d29",
+      "lastEdited": "2026-08-18T20:03:00.000Z",
+      "Skills": [],
+      "Equation": "F_d = 6π μ r v;  terminal v = 2 (ρ_p − ρ_f) g r² / (9 μ)",
+      "Minerals": [],
+      "Timeline": [],
+      "Field": "Fluid Dynamics",
+      "Celestial Objects": [],
+      "Theories": [],
+      "Named After": "George Gabriel Stokes",
+      "Machines": [],
+      "Related": [],
+      "Instruments": [],
+      "Constants": [],
+      "Requires": [
+        "3c0e5275-7b5c-8112-9969-c5a9611652d7",
+        "3c0e5275-7b5c-81b6-92ea-fb5e9b0a93fd",
+        "3c0e5275-7b5c-81e8-9036-d1ef2290ec4f",
+        "3c0e5275-7b5c-81f8-8913-f1c2456baa65"
+      ],
+      "Impacts": [
+        "3bfe5275-7b5c-81ab-bf54-d48227961223",
+        "3bfe5275-7b5c-81b7-bfd0-e57c81b60d25",
+        "3bfe5275-7b5c-81be-9141-e7a46870c2f8",
+        "3bfe5275-7b5c-8110-8285-e00bf645a069"
+      ],
+      "Symbols": "F_d drag on a small sphere moving slowly through a fluid · μ dynamic viscosity · r sphere radius · v its speed · ρ_p, ρ_f particle and fluid density",
+      "Spectral Types": [],
+      "Significance": "For a small particle in slow flow, drag is proportional to speed, and a settling particle reaches a terminal velocity that goes as the square of its radius. That is why fine tailings take days to clear a pond and clays may never settle, why dust hangs in air, why sediment sorts itself by grain size, and how a flotation cell and a settling tank are sized. Valid while the Reynolds number stays below about one.",
+      "Year": 1851,
+      "Required By": [],
+      "Elements": [],
+      "Name": "Stokes' Law"
+    },
+    {
+      "id": "3c0e5275-7b5c-811a-82e0-ea124828f2df",
+      "url": "https://app.notion.com/p/Poiseuille-s-Law-3c0e52757b5c811a82e0ea124828f2df",
+      "lastEdited": "2026-08-18T20:03:00.000Z",
+      "Skills": [],
+      "Equation": "Q = π r⁴ Δp / (8 μ L)",
+      "Minerals": [],
+      "Timeline": [],
+      "Field": "Fluid Dynamics",
+      "Celestial Objects": [],
+      "Theories": [],
+      "Named After": "Jean Léonard Marie Poiseuille",
+      "Machines": [],
+      "Related": [],
+      "Instruments": [],
+      "Constants": [],
+      "Requires": [
+        "3c0e5275-7b5c-81f4-af22-d5443c14c83c",
+        "3c0e5275-7b5c-81f8-8913-f1c2456baa65"
+      ],
+      "Impacts": [],
+      "Symbols": "Q volume flow rate · r pipe radius · Δp pressure drop along the pipe · μ dynamic viscosity · L pipe length",
+      "Spectral Types": [],
+      "Significance": "Laminar flow through a pipe goes as the fourth power of the radius: halve the bore and the same pressure moves one-sixteenth the fluid. Poiseuille was a physician measuring blood in glass capillaries in 1840; the law explains why a small narrowing of an artery matters so much, why a hydraulic line is sized as it is, and why a syringe with a fine needle takes so much force.",
+      "Year": 1840,
+      "Required By": [],
+      "Elements": [],
+      "Name": "Poiseuille's Law"
+    },
+    {
+      "id": "3c0e5275-7b5c-81b6-92ea-fb5e9b0a93fd",
+      "url": "https://app.notion.com/p/Reynolds-Number-3c0e52757b5c81b692eafb5e9b0a93fd",
+      "lastEdited": "2026-08-18T20:03:00.000Z",
+      "Skills": [],
+      "Equation": "Re = ρ v L / μ",
+      "Minerals": [],
+      "Timeline": [],
+      "Field": "Fluid Dynamics",
+      "Celestial Objects": [],
+      "Theories": [],
+      "Named After": "Osborne Reynolds",
+      "Machines": [
+        "3bee5275-7b5c-81ce-886e-e9c9ea42dcba",
+        "3bee5275-7b5c-8162-af85-d68676032bd7",
+        "3bee5275-7b5c-817c-995b-fcec965fd2fd"
+      ],
+      "Related": [],
+      "Instruments": [],
+      "Constants": [],
+      "Requires": [
+        "3c0e5275-7b5c-81f8-8913-f1c2456baa65"
+      ],
+      "Impacts": [],
+      "Symbols": "Re a dimensionless ratio of inertial to viscous forces · ρ density · v flow speed · L a characteristic length — pipe diameter, blade chord · μ dynamic viscosity",
+      "Spectral Types": [],
+      "Significance": "One number decides whether a flow is smooth or turbulent: below about 2,000 in a pipe it is laminar and predictable, above about 4,000 it breaks into eddies. Reynolds watched a thread of dye in a glass tube in 1883 and saw where it happened. It is why a model in a wind tunnel tells you about the full-size aircraft only if Re matches, and why bacteria swim in a world that feels like treacle.",
+      "Year": 1883,
+      "Required By": [
+        "3c0e5275-7b5c-81e2-968a-c4a8f0f00d29",
+        "3c0e5275-7b5c-81d6-b1de-ec9081641f42"
+      ],
+      "Elements": [],
+      "Name": "Reynolds Number"
+    },
+    {
+      "id": "3c0e5275-7b5c-81f8-8913-f1c2456baa65",
+      "url": "https://app.notion.com/p/Newtonian-Viscosity-3c0e52757b5c81f88913f1c2456baa65",
+      "lastEdited": "2026-08-18T20:03:00.000Z",
+      "Skills": [],
+      "Equation": "τ = μ (du/dy)",
+      "Minerals": [],
+      "Timeline": [],
+      "Field": "Fluid Dynamics",
+      "Celestial Objects": [],
+      "Theories": [],
+      "Named After": "Isaac Newton",
+      "Machines": [],
+      "Related": [],
+      "Instruments": [],
+      "Constants": [],
+      "Requires": [
+        "3c0e5275-7b5c-8107-b848-c04b61f7a12f"
+      ],
+      "Impacts": [],
+      "Symbols": "τ shear stress in the fluid · μ dynamic viscosity, in pascal-seconds · du/dy the velocity gradient across the flow",
+      "Spectral Types": [],
+      "Significance": "Newton's hypothesis of 1687: the drag between layers of a fluid sliding past one another is proportional to how fast the velocity changes across them, and the constant is the viscosity. Water's is a millipascal-second, honey's a few thousand times more, air's fifty times less. Fluids that obey it are Newtonian; paint, blood and mud are not, and their viscosity depends on how hard they are pushed.",
+      "Year": 1687,
+      "Required By": [
+        "3c0e5275-7b5c-81b6-92ea-fb5e9b0a93fd",
+        "3c0e5275-7b5c-811a-82e0-ea124828f2df",
+        "3c0e5275-7b5c-81e2-968a-c4a8f0f00d29",
+        "3bbe5275-7b5c-8197-8da5-de06c7641cc3"
+      ],
+      "Elements": [],
+      "Name": "Newtonian Viscosity"
+    },
+    {
+      "id": "3c0e5275-7b5c-8112-9969-c5a9611652d7",
+      "url": "https://app.notion.com/p/Archimedes-Principle-3c0e52757b5c81129969c5a9611652d7",
+      "lastEdited": "2026-08-18T20:03:00.000Z",
+      "Skills": [],
+      "Equation": "F_b = ρ_fluid V g",
+      "Minerals": [],
+      "Timeline": [],
+      "Field": "Fluid Dynamics",
+      "Celestial Objects": [],
+      "Theories": [],
+      "Named After": "Archimedes",
+      "Machines": [],
+      "Related": [],
+      "Instruments": [],
+      "Constants": [],
+      "Requires": [
+        "3c0e5275-7b5c-812f-9604-d1e8723865d9"
+      ],
+      "Impacts": [],
+      "Symbols": "F_b the buoyant force, upward · ρ_fluid density of the fluid displaced · V volume of fluid displaced · g gravitational acceleration",
+      "Spectral Types": [],
+      "Significance": "A body in a fluid is pushed up by the weight of the fluid it displaces — the pressure below it is higher than the pressure above, by exactly that much. It floats if it weighs less than the fluid it would displace, sinks if more. It is why a mineral's specific gravity can be measured by weighing it in air and in water, why ships of steel float, and why hot air rises.",
+      "Year": -250,
+      "Required By": [
+        "3c0e5275-7b5c-81e2-968a-c4a8f0f00d29"
+      ],
+      "Elements": [],
+      "Name": "Archimedes' Principle"
+    },
+    {
+      "id": "3c0e5275-7b5c-815d-a2a4-fec7a35a5f85",
+      "url": "https://app.notion.com/p/Pascal-s-Principle-3c0e52757b5c815da2a4fec7a35a5f85",
+      "lastEdited": "2026-08-18T20:03:00.000Z",
+      "Skills": [],
+      "Equation": "Δp is the same everywhere in a confined fluid  ⇒  F₂/F₁ = A₂/A₁",
+      "Minerals": [],
+      "Timeline": [],
+      "Field": "Fluid Dynamics",
+      "Celestial Objects": [],
+      "Theories": [],
+      "Named After": "Blaise Pascal",
+      "Machines": [],
+      "Related": [],
+      "Instruments": [],
+      "Constants": [],
+      "Requires": [
+        "3c0e5275-7b5c-8102-8d87-ff81e12cd1da",
+        "3c0e5275-7b5c-812f-9604-d1e8723865d9"
+      ],
+      "Impacts": [],
+      "Symbols": "Δp a change in pressure applied to an enclosed fluid · F₁, F₂ the forces on two pistons · A₁, A₂ their areas",
+      "Spectral Types": [],
+      "Significance": "Push on a confined fluid anywhere and the pressure rises everywhere by the same amount — so a small force on a small piston becomes a large force on a large one. Every hydraulic jack, brake and excavator arm is this. It trades force for distance like a lever, and the work is the same at both ends.",
+      "Year": 1653,
+      "Required By": [],
+      "Elements": [],
+      "Name": "Pascal's Principle"
+    },
+    {
+      "id": "3c0e5275-7b5c-812f-9604-d1e8723865d9",
+      "url": "https://app.notion.com/p/Hydrostatic-Pressure-3c0e52757b5c812f9604d1e8723865d9",
+      "lastEdited": "2026-08-18T20:03:00.000Z",
+      "Skills": [
+        "3bee5275-7b5c-8104-bd15-f3f63b6670e5"
+      ],
+      "Equation": "p = p₀ + ρ g h",
+      "Minerals": [],
+      "Timeline": [],
+      "Field": "Fluid Dynamics",
+      "Celestial Objects": [],
+      "Theories": [],
+      "Named After": null,
+      "Machines": [
+        "3bee5275-7b5c-81eb-98b0-d02f02376dc4",
+        "3bee5275-7b5c-8168-a928-d755bed8e21f"
+      ],
+      "Related": [],
+      "Instruments": [],
+      "Constants": [],
+      "Requires": [
+        "3bbe5275-7b5c-8183-bbd5-ff733704a984"
+      ],
+      "Impacts": [
+        "3bfe5275-7b5c-81dc-a142-f8f26705de58",
+        "3bfe5275-7b5c-81ab-bf54-d48227961223",
+        "3bfe5275-7b5c-8159-8d41-da330100b177"
+      ],
+      "Symbols": "p pressure at depth h · p₀ pressure at the surface · ρ fluid density · g gravitational acceleration · h depth below the surface",
+      "Spectral Types": [],
+      "Significance": "Pressure in a still fluid rises with depth by the weight of the column above — about one atmosphere per ten metres of water. Stevin had it in 1586, Pascal made it precise in 1653. It is the load on a tailings dam's face, the pressure a diver feels, the metallostatic head that fills a sand mould, and the p in every fluid equation that follows.",
+      "Year": 1653,
+      "Required By": [
+        "3c0e5275-7b5c-815d-a2a4-fec7a35a5f85",
+        "3c0e5275-7b5c-8112-9969-c5a9611652d7",
+        "3c0e5275-7b5c-81d7-bcee-d6ab697a2df4",
+        "3c0e5275-7b5c-81ba-9b00-d48bf3cd9936",
+        "3bbe5275-7b5c-819b-ba4e-f3c3031b13f1"
+      ],
+      "Elements": [],
+      "Name": "Hydrostatic Pressure"
+    },
+    {
       "id": "3c0e5275-7b5c-8102-8d87-ff81e12cd1da",
       "url": "https://app.notion.com/p/Mechanical-Advantage-3c0e52757b5c81028d87ff81e12cd1da",
       "lastEdited": "2026-08-18T19:16:00.000Z",
@@ -502616,11 +503397,14 @@
       "Requires": [
         "3c0e5275-7b5c-8129-9711-d8261f03fa1d"
       ],
+      "Impacts": [],
       "Symbols": "MA mechanical advantage · F_in, F_out the force applied and the force delivered · d_in, d_out the distances each moves",
       "Spectral Types": [],
       "Significance": "A lever, a pulley block, a screw or a gear train trades force for distance, and the product — the work — stays the same. A four-part tackle lifts with a quarter of the effort and hauls four times the rope. Archimedes claimed he could move the Earth with a long enough lever; the catch is how far the other end has to travel. Friction eats into the ideal figure, and rigging tables say by how much.",
       "Year": -250,
-      "Required By": [],
+      "Required By": [
+        "3c0e5275-7b5c-815d-a2a4-fec7a35a5f85"
+      ],
       "Elements": [],
       "Name": "Mechanical Advantage"
     },
@@ -502646,6 +503430,7 @@
       "Instruments": [],
       "Constants": [],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "F_f the friction force · N the normal force pressing the surfaces together · μ_s, μ_k the coefficients of static and kinetic friction, properties of the pair of surfaces",
       "Spectral Types": [],
       "Significance": "Friction is proportional to the load and independent of the contact area — Amontons's laws of 1699, which da Vinci had in his notebooks two centuries earlier and Coulomb refined in 1785. Static friction is what a knot, a masonry anchor and a clutch rely on; kinetic friction is what a brake pad and a bearing pay. The coefficients are empirical, and the honest tables give ranges.",
@@ -502675,6 +503460,7 @@
         "3c0e5275-7b5c-8189-b7b0-c947c0dfc027",
         "3c0e5275-7b5c-81f4-8604-d240bc46db20"
       ],
+      "Impacts": [],
       "Symbols": "T the period of one full swing · L the length from pivot to centre of mass · g the local gravitational acceleration",
       "Spectral Types": [],
       "Significance": "The period depends on the length and on gravity — not on the mass, and, for small swings, not on the amplitude. Galileo noticed the last in 1602; Huygens made a clock of it in 1657 and derived the formula in 1673. It is the small-angle approximation applied to SHM, and it made g measurable to four figures with a string and a stone.",
@@ -502704,6 +503490,7 @@
         "3c0e5275-7b5c-8107-b848-c04b61f7a12f",
         "3c0e5275-7b5c-8110-a5c1-c471f72f8383"
       ],
+      "Impacts": [],
       "Symbols": "x displacement from equilibrium · ω angular frequency · A amplitude · φ phase · k the restoring stiffness (Hooke's law) · m mass",
       "Spectral Types": [],
       "Significance": "Whenever the restoring force is proportional to the displacement, the motion is a sinusoid with a period that does not depend on how big the swing is. A mass on a spring, a pendulum at small angles, a plucked string, an atom in a crystal lattice, an LC circuit — the same equation, and near any stable equilibrium every system looks like this to first order. That universality is why the sine wave is everywhere.",
@@ -502734,6 +503521,7 @@
         "3c0e5275-7b5c-8107-b848-c04b61f7a12f",
         "3c0e5275-7b5c-8131-95e8-c78e021c5f36"
       ],
+      "Impacts": [],
       "Symbols": "a the acceleration of anything moving on a circle · v its speed · r the circle's radius · ω its angular velocity",
       "Spectral Types": [],
       "Significance": "Turning is accelerating, even at constant speed, because the direction of the velocity changes — and the acceleration points inward. Huygens derived it in 1659 and Newton used it to link the Moon's orbit to a falling apple: set it equal to GM/r² and Kepler's third law follows. It is also the load on a spinning flywheel and the reason a centrifuge separates.",
@@ -502771,6 +503559,7 @@
         "3c0e5275-7b5c-8189-8821-d72a42bf2463",
         "3c0e5275-7b5c-81c1-928d-f024f2a2484f"
       ],
+      "Impacts": [],
       "Symbols": "L angular momentum · r position from the axis · p linear momentum · I moment of inertia · ω angular velocity · τ net torque",
       "Spectral Types": [],
       "Significance": "What a spinning or orbiting body keeps unless a torque acts on it. Kepler's second law — equal areas in equal times — is its conservation for a planet, seen eighty years before Newton explained why. It is why a gyroscope holds its axis, why a collapsing star spins up into a pulsar, and why a turbine's blades are shaped to change the working fluid's angular momentum as it passes.",
@@ -502802,6 +503591,7 @@
       "Instruments": [],
       "Constants": [],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "I moment of inertia · m_i a bit of mass at distance r_i from the axis · the sum or integral over the whole body",
       "Spectral Types": [],
       "Significance": "The rotational counterpart of mass: how hard a body is to spin up, set not just by how much mass it has but by how far from the axis it sits — hence the square. Euler defined it in 1765. A flywheel puts its mass at the rim for exactly this reason; a figure skater pulls arms in to spin faster; a hollow shaft is nearly as stiff in torsion as a solid one for a fraction of the weight.",
@@ -502843,6 +503633,7 @@
       "Requires": [
         "3c0e5275-7b5c-8142-9190-e1a6552eec12"
       ],
+      "Impacts": [],
       "Symbols": "τ torque, a vector along the axis of rotation · r the lever arm from the axis to where the force acts · F the force · θ the angle between them",
       "Spectral Types": [],
       "Significance": "The turning effect of a force: bigger with a longer arm and a force at right angles to it, zero when you push along the arm. Archimedes had the law of the lever in 250 BCE; the vector form with the cross product is Gibbs's. It is what a motor delivers to its shaft, what a tap wrench applies to a thread, and what a wheel nut is torqued to.",
@@ -502878,12 +503669,15 @@
         "3c0e5275-7b5c-8107-b848-c04b61f7a12f",
         "3c0e5275-7b5c-8129-9711-d8261f03fa1d"
       ],
+      "Impacts": [],
       "Symbols": "P power, in watts · W work · t time · F force · v velocity",
       "Spectral Types": [],
       "Significance": "How fast work is done. Watt needed a number to sell engines against horses and settled on 550 foot-pounds per second in 1782; the SI named its unit after him. An engine's power, not its force, sets how quickly it climbs a hill; a turbine's rating is this figure; and the same equation shows why towing at speed costs more than towing slowly.",
       "Year": 1782,
       "Required By": [
-        "3bbe5275-7b5c-816d-9734-c149c749519c"
+        "3bbe5275-7b5c-816d-9734-c149c749519c",
+        "3c0e5275-7b5c-8168-9f58-e868d30da92e",
+        "3c0e5275-7b5c-81f6-8c60-d01cd1aa9b5c"
       ],
       "Elements": [],
       "Name": "Power"
@@ -502908,6 +503702,7 @@
         "3c0e5275-7b5c-8127-b7f0-fb3910ec4fef",
         "3c0e5275-7b5c-813b-8d2e-da5484cf3b1c"
       ],
+      "Impacts": [],
       "Symbols": "K kinetic energy · U potential energy · their sum unchanged as one turns into the other",
       "Spectral Types": [],
       "Significance": "A pendulum trades height for speed and back; a roller coaster the same; a comet the same over centuries. Helmholtz stated the general principle in 1847 — that when the sum seems to fall, the difference has gone into heat — and it became the first law of thermodynamics. Bernoulli's equation is this per unit volume of a flowing fluid.",
@@ -502943,13 +503738,15 @@
       "Requires": [
         "3c0e5275-7b5c-8129-9711-d8261f03fa1d"
       ],
+      "Impacts": [],
       "Symbols": "U potential energy · m the mass raised · g the local gravitational acceleration · h height above a chosen zero · G the gravitational constant · M the attracting mass · r distance between centres",
       "Spectral Types": [],
       "Significance": "Energy stored by position in a gravitational field: what a raised weight, a reservoir behind a dam or a satellite in a high orbit can give back. The mgh form is the −GMm/r form linearised near a planet's surface. Rankine named it in 1853. Hydroelectric turbines run on the first form; escape velocity and the vis-viva equation on the second.",
       "Year": 1853,
       "Required By": [
         "3c0e5275-7b5c-8173-a3f1-e7c3bd697946",
-        "3bbe5275-7b5c-813a-84a7-ea08528b3c93"
+        "3bbe5275-7b5c-813a-84a7-ea08528b3c93",
+        "3c0e5275-7b5c-8168-9f58-e868d30da92e"
       ],
       "Elements": [],
       "Name": "Gravitational Potential Energy"
@@ -502975,6 +503772,7 @@
         "3c0e5275-7b5c-812c-9b0d-ecfcca65b013",
         "3c0e5275-7b5c-813b-8d2e-da5484cf3b1c"
       ],
+      "Impacts": [],
       "Symbols": "W_net the net work done on a body by all forces · ΔK its change in kinetic energy",
       "Spectral Types": [],
       "Significance": "Net work in equals kinetic energy out — the bookkeeping that ties force to motion without solving for the motion in between. It falls out of F = ma and the chain rule in three lines and is the fastest way to find a speed at the bottom of a hill, a projectile's launch speed, or a bullet's energy from the depth of a hole.",
@@ -503006,6 +503804,7 @@
         "3c0e5275-7b5c-8129-9711-d8261f03fa1d",
         "3c0e5275-7b5c-812b-8ec5-dae78166d0f7"
       ],
+      "Impacts": [],
       "Symbols": "K kinetic energy, in joules · m mass · v speed",
       "Spectral Types": [],
       "Significance": "The energy of motion. Leibniz's vis viva of 1686 was mv²; the half arrived when Coriolis matched it to work in 1829, so that the work done accelerating a body equals exactly this. It is quadratic in speed, which is why a car at 100 km/h has four times the stopping energy of one at 50, and why the wind's power goes as the cube of its speed — this, times the mass arriving per second.",
@@ -503013,7 +503812,8 @@
       "Required By": [
         "3c0e5275-7b5c-81b5-88e0-fe12756b2975",
         "3c0e5275-7b5c-8173-a3f1-e7c3bd697946",
-        "3bee5275-7b5c-8166-8a64-fd5e2ad2d5dc"
+        "3bee5275-7b5c-8166-8a64-fd5e2ad2d5dc",
+        "3c0e5275-7b5c-81d6-b1de-ec9081641f42"
       ],
       "Elements": [],
       "Name": "Kinetic Energy"
@@ -503040,6 +503840,7 @@
         "3c0e5275-7b5c-8125-8c12-e1861f26c3f3",
         "3c0e5275-7b5c-81d8-88da-e294d72318ab"
       ],
+      "Impacts": [],
       "Symbols": "W work, in joules · F force · d displacement, or ds a step along the path · F · d the dot product: only the component of force along the motion counts",
       "Spectral Types": [],
       "Significance": "Force times the distance moved along it. Carry a suitcase across a level floor and you do no work on it, however tired you are; lift it a metre and you do. Coriolis gave the quantity its name and its ½mv² partner in 1829. It is what a heat engine delivers, what a pulley system trades force against, and what an integral of force along a path always means.",
@@ -503079,6 +503880,7 @@
         "3c0e5275-7b5c-8105-911a-ceb8efc94b5f",
         "3c0e5275-7b5c-81c1-928d-f024f2a2484f"
       ],
+      "Impacts": [],
       "Symbols": "Σ p the vector sum of the momenta of everything in the system",
       "Spectral Types": [],
       "Significance": "In any collision, explosion or separation, the total momentum before equals the total after — Wallis, Wren and Huygens each derived it for the Royal Society in 1668, twenty years before the Principia. It follows from the third law and is what makes a rocket work in vacuum: exhaust goes one way, the ship the other, and the sum stays what it was. Noether's theorem later showed it is the symmetry of space under translation.",
@@ -503111,6 +503913,7 @@
       "Requires": [
         "3c0e5275-7b5c-8131-95e8-c78e021c5f36"
       ],
+      "Impacts": [],
       "Symbols": "p momentum, a vector · m mass · v velocity · J impulse: a force F acting for a time Δt, equal to the change in momentum it produces",
       "Spectral Types": [],
       "Significance": "Newton wrote his second law as the rate of change of this 'quantity of motion', not as F = ma — and his form is the one that survives relativity. Impulse is why a crumple zone works: the same momentum change spread over a longer time is a smaller force. Specific impulse, the rocket engineer's figure of merit, is impulse per unit of propellant.",
@@ -503119,7 +503922,8 @@
         "3c0e5275-7b5c-81e5-a7d4-c8ba74770b4d",
         "3c0e5275-7b5c-818b-97c8-d52070d30162",
         "3bbe5275-7b5c-8183-bbd5-ff733704a984",
-        "3bde5275-7b5c-81b5-b5ba-ef8abb9338cb"
+        "3bde5275-7b5c-81b5-b5ba-ef8abb9338cb",
+        "3bbe5275-7b5c-8170-bd5f-c796d7589e08"
       ],
       "Elements": [],
       "Name": "Momentum and Impulse"
@@ -503145,6 +503949,7 @@
       "Instruments": [],
       "Constants": [],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "F_AB the force body A exerts on body B · F_BA the force B exerts back on A: equal in size, opposite in direction",
       "Spectral Types": [],
       "Significance": "Forces come in pairs, and the pair acts on two different bodies — which is why they never cancel. A rocket goes up because it pushes exhaust down; a jet engine and a swimmer work the same way. It is the reason momentum is conserved: the two forces in a pair change the two momenta by equal and opposite amounts.",
@@ -503175,12 +503980,14 @@
         "3c0e5275-7b5c-8107-b848-c04b61f7a12f",
         "3c0e5275-7b5c-81d8-88da-e294d72318ab"
       ],
+      "Impacts": [],
       "Symbols": "s displacement · v₀, v initial and final velocity · a constant acceleration · t time",
       "Spectral Types": [],
       "Significance": "Motion under a steady push, from a dropped stone to a car braking. Galileo got them from a ball rolling down an incline in 1638; the Merton scholars had the mean-speed rule three centuries earlier. Each is the fundamental theorem of calculus applied once or twice to a constant, and they fail the moment the acceleration is not constant — for that you need F = ma and a differential equation.",
       "Year": 1638,
       "Required By": [
-        "3c0e5275-7b5c-813b-8d2e-da5484cf3b1c"
+        "3c0e5275-7b5c-813b-8d2e-da5484cf3b1c",
+        "3c0e5275-7b5c-815c-be60-d2a80ee3b254"
       ],
       "Elements": [],
       "Name": "Kinematic Equations"
@@ -503206,6 +504013,7 @@
         "3c0e5275-7b5c-81d8-88da-e294d72318ab",
         "3c0e5275-7b5c-81fb-9731-efee92cee113"
       ],
+      "Impacts": [],
       "Symbols": "F a vector field · C a closed loop bounding the surface S · dl a step along the loop · ∇ × F the curl: how much the field circulates about a point",
       "Spectral Types": [],
       "Significance": "The circulation around a loop equals the curl through any surface it bounds. Faraday's law of induction is this theorem applied to a changing magnetic field; the Ampère–Maxwell law is it applied to current. Kelvin set it as an exam question in a letter to Stokes in 1850, and Stokes put it on the Smith's Prize paper in 1854 — Maxwell was among those who sat it.",
@@ -503238,6 +504046,7 @@
         "3c0e5275-7b5c-81d8-88da-e294d72318ab",
         "3c0e5275-7b5c-81fb-9731-efee92cee113"
       ],
+      "Impacts": [],
       "Symbols": "F a vector field · S a closed surface enclosing the volume V · dA an outward-pointing patch of surface · ∇ · F the divergence: net outflow per unit volume at a point",
       "Spectral Types": [],
       "Significance": "What flows out through a closed surface equals what is created inside it. That single sentence is Gauss's law for electricity (flux out equals charge within), Gauss's law for magnetism (no flux, no monopoles) and the continuity equation of fluid flow. It is the fundamental theorem of calculus in three dimensions: an integral over a boundary traded for one over the interior.",
@@ -503269,6 +504078,7 @@
       "Requires": [
         "3c0e5275-7b5c-8107-b848-c04b61f7a12f"
       ],
+      "Impacts": [],
       "Symbols": "f a scalar field — a number at every point, like temperature or pressure · ∇f a vector at every point, pointing uphill, with the slope as its length",
       "Spectral Types": [],
       "Significance": "Where a field rises fastest, and how fast. Heat flows down the temperature gradient (Fourier's law), water down the pressure gradient, and a conservative force is minus the gradient of its potential energy — F = −∇U — which is what makes a ball roll downhill. Hamilton introduced the ∇ symbol in 1837; the vector reading of it is Gibbs's.",
@@ -503278,7 +504088,8 @@
         "3c0e5275-7b5c-817d-9d6f-f7324c248b09",
         "3bde5275-7b5c-81eb-8234-c87a6700bc0d",
         "3bde5275-7b5c-81af-b4b4-ef52a39887e9",
-        "3bde5275-7b5c-810f-bed8-fee488db4170"
+        "3bde5275-7b5c-810f-bed8-fee488db4170",
+        "3c0e5275-7b5c-81d7-bcee-d6ab697a2df4"
       ],
       "Elements": [],
       "Name": "Gradient"
@@ -503303,13 +504114,17 @@
         "3c0e5275-7b5c-8152-b372-ca6ffe82ebd1",
         "3c0e5275-7b5c-8154-a8e1-f1e60b5aaa5e"
       ],
+      "Impacts": [],
       "Symbols": "θ an angle in radians, small compared with 1",
       "Spectral Types": [],
       "Significance": "The first terms of three Taylor series, and the reason the simple pendulum has a simple period, a lens has a focal length, and a diffraction pattern has evenly spaced fringes. At 10° the error in sin θ ≈ θ is half a percent; at 30° it is 5 %. Every one of those results is exact only in the limit, and the honest ones say so.",
       "Year": null,
       "Required By": [
         "3c0e5275-7b5c-8122-bd48-c1cd0374b2c8",
-        "3bbe5275-7b5c-8130-a1e2-d4d1fefda7d8"
+        "3bbe5275-7b5c-8130-a1e2-d4d1fefda7d8",
+        "3c0e5275-7b5c-8177-a2fb-fdc2170b2401",
+        "3c0e5275-7b5c-81dc-8645-c26e23417e74",
+        "3bbe5275-7b5c-8174-8c31-eda1293e8fe6"
       ],
       "Elements": [],
       "Name": "Small-Angle Approximation"
@@ -503333,6 +504148,7 @@
       "Requires": [
         "3c0e5275-7b5c-8107-b848-c04b61f7a12f"
       ],
+      "Impacts": [],
       "Symbols": "f a smooth function · f⁽ⁿ⁾(a) its nth derivative at the point a · n! n factorial",
       "Spectral Types": [],
       "Significance": "Any smooth function, rebuilt near a point from its derivatives there: a constant, plus a slope, plus a curvature, and so on. Keep one term and you have linear approximation; keep them all and e^x, sin x and cos x become polynomials — which is how Euler's identity is proved. It is the machinery behind every 'for small x' in physics, from the pendulum to the low-speed limit of relativity.",
@@ -503363,6 +504179,7 @@
       "Requires": [
         "3c0e5275-7b5c-8107-b848-c04b61f7a12f"
       ],
+      "Impacts": [],
       "Symbols": "f, g two functions, one applied to the other · f′, g′ their derivatives",
       "Spectral Types": [],
       "Significance": "Rates multiply through a chain of dependence: if pressure depends on depth and depth on time, the rate of pressure change is the product of the two rates. It is what turns dv/dt into v dv/dx (the origin of ½mv²), lets the heat equation be solved by substitution, and makes every physical derivative computable rather than merely defined.",
@@ -503393,6 +504210,7 @@
       "Requires": [
         "3c0e5275-7b5c-8107-b848-c04b61f7a12f"
       ],
+      "Impacts": [],
       "Symbols": "f′ a rate of change · ∫_a^b … dx the total accumulated between a and b · f(b) − f(a) the net change",
       "Spectral Types": [],
       "Significance": "Adding up a rate of change over an interval gives the total change — so integration undoes differentiation, and the area under a velocity graph is the distance travelled. Barrow had the geometric version in 1670; his student Newton and, separately, Leibniz turned it into a method. Kinematics, the rocket equation and every 'work is the integral of force' rest on it.",
@@ -503425,6 +504243,7 @@
       "Instruments": [],
       "Constants": [],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "f a function · f′ or df/dx its rate of change · h a step that shrinks to nothing",
       "Spectral Types": [],
       "Significance": "The slope of a curve at a single point, obtained by taking the slope over an ever-smaller step. Velocity is the derivative of position, acceleration of velocity, current of charge, power of work; almost every law of physics on this site is a statement about a derivative. Newton had it in 1665 as fluxions; the notation that survived is Leibniz's, from 1675.",
@@ -503445,7 +504264,8 @@
         "3bbe5275-7b5c-818c-81f5-e08330c436f3",
         "3bbe5275-7b5c-81d8-b63d-d44990bf2054",
         "3bde5275-7b5c-814c-82d8-d3e6acd9cfda",
-        "3bbe5275-7b5c-811a-a60d-eddf236c3a8c"
+        "3bbe5275-7b5c-811a-a60d-eddf236c3a8c",
+        "3c0e5275-7b5c-81f8-8913-f1c2456baa65"
       ],
       "Elements": [],
       "Name": "Derivative"
@@ -503470,6 +504290,7 @@
         "3c0e5275-7b5c-8107-b848-c04b61f7a12f",
         "3c0e5275-7b5c-81f4-af22-d5443c14c83c"
       ],
+      "Impacts": [],
       "Symbols": "κ curvature · R the radius of the circle that best fits the curve at that point · y′, y″ the first and second derivatives",
       "Spectral Types": [],
       "Significance": "How sharply a path bends: the reciprocal of the radius of the circle that hugs it. A straight line has zero, a tight corner a lot. Huygens needed it in 1673 to make a pendulum keep exact time; a road engineer needs it to bank a bend; general relativity generalises it to spacetime, where curvature is what gravity is — the geodesic equation and the FLRW metric are curvature statements. Gauss showed a surface's curvature can be measured from within it, without leaving.",
@@ -503499,6 +504320,7 @@
       "Instruments": [],
       "Constants": [],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "V, E, F the numbers of vertices, edges and faces of any convex polyhedron",
       "Spectral Types": [],
       "Significance": "Count the corners, edges and faces of a cube (8, 12, 6), a tetrahedron (4, 6, 4) or a soccer ball (60, 90, 32) and the same 2 comes out every time. It does not care about lengths or angles — only how the pieces connect — which made it the first theorem of topology. It is why there are exactly five Platonic solids, and it constrains every crystal habit on the minerals page: a form's faces and edges must obey it.",
@@ -503524,6 +504346,7 @@
       "Instruments": [],
       "Constants": [],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "a…i the entries of a square matrix · det a single number: the signed area (2×2) or volume (3×3) spanned by the rows",
       "Spectral Types": [],
       "Significance": "The scale factor of a linear map — how much a transformation stretches area or volume, with a sign for whether it flips orientation. Zero means the map squashes space flat and cannot be undone. The cross product is a 3×3 determinant; the Jacobian in every change of variables is one; the volume of a crystal's unit cell is the determinant of its three lattice vectors. Seki Takakazu had it in 1683, Leibniz independently a decade later.",
@@ -503554,6 +504377,7 @@
         "3c0e5275-7b5c-8154-a8e1-f1e60b5aaa5e",
         "3c0e5275-7b5c-81e8-9036-d1ef2290ec4f"
       ],
+      "Impacts": [],
       "Symbols": "Ω solid angle in steradians · A the area cut from a sphere of radius r centred on the vertex",
       "Spectral Types": [],
       "Significance": "The radian's three-dimensional cousin: how much of the sky something fills, as the area it covers on a sphere over the radius squared. Gauss's law is the statement that a point charge's flux through any closed surface is the same 4π worth of solid angle; a telescope's field of view, a lamp's output in candela, and the fraction of a star's light a planet intercepts are all solid angles.",
@@ -503583,6 +504407,7 @@
       "Requires": [
         "3c0e5275-7b5c-81f4-af22-d5443c14c83c"
       ],
+      "Impacts": [],
       "Symbols": "s length along the arc · r radius · θ the angle subtended, measured as arc length over radius — a pure number",
       "Spectral Types": [],
       "Significance": "An angle is a ratio, not a count of degrees: the arc it cuts from a circle divided by the radius. That is what makes sin θ ≈ θ true for small angles, ω = v/r hold without a conversion factor, and every equation with a frequency in it come out in the right units. Roger Cotes saw in 1714 that this was the natural measure; the word 'radian' arrived in 1873.",
@@ -503612,6 +504437,7 @@
       "Instruments": [],
       "Constants": [],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "r radius · A surface area · V volume",
       "Spectral Types": [],
       "Significance": "The result Archimedes asked to have carved on his tomb: a sphere has two-thirds the volume and two-thirds the surface of the cylinder that just contains it. The 4πr² is why every inverse-square law is inverse-square — light, gravity and electric flux spread over a spherical shell whose area grows as r². The r³ is why a planet's mass, and its gravity, are set by its radius cubed.",
@@ -503619,7 +504445,9 @@
       "Required By": [
         "3c0e5275-7b5c-814c-bf1b-f26ae2aa38f6",
         "3bbe5275-7b5c-811b-8297-ce47b2c5d614",
-        "3bde5275-7b5c-814b-9628-f090f0207a42"
+        "3bde5275-7b5c-814b-9628-f090f0207a42",
+        "3c0e5275-7b5c-81e2-968a-c4a8f0f00d29",
+        "3c0e5275-7b5c-81f6-8c60-d01cd1aa9b5c"
       ],
       "Elements": [],
       "Name": "Sphere: Surface and Volume"
@@ -503643,13 +504471,15 @@
       "Instruments": [],
       "Constants": [],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "r radius · C circumference · A area · π the ratio of any circle's circumference to its diameter, 3.14159…",
       "Spectral Types": [],
       "Significance": "Archimedes squeezed π between 3 10/71 and 3 1/7 by fitting 96-sided polygons inside and outside a circle, and showed the area equals that of a right triangle with the radius and circumference as its legs — the first rigorous calculation of a curved figure. On a lathe the cutting speed is π × diameter × rpm; every wheel, pulley and orbit begins here.",
       "Year": -250,
       "Required By": [
         "3c0e5275-7b5c-8154-a8e1-f1e60b5aaa5e",
-        "3c0e5275-7b5c-8106-ba68-c7e036dd2cc4"
+        "3c0e5275-7b5c-8106-ba68-c7e036dd2cc4",
+        "3c0e5275-7b5c-811a-82e0-ea124828f2df"
       ],
       "Elements": [],
       "Name": "Circle: Circumference and Area"
@@ -503676,6 +504506,7 @@
         "3bbe5275-7b5c-81bf-b306-fdf6fa438de8",
         "3c0e5275-7b5c-8110-a5c1-c471f72f8383"
       ],
+      "Impacts": [],
       "Symbols": "a, b, c the three sides of any triangle · C the angle opposite side c",
       "Spectral Types": [],
       "Significance": "Pythagoras for triangles that are not right-angled: the correction term vanishes when C = 90°. It is what a surveyor uses to close a triangle from two sides and the included angle, what a navigator uses for a course change, and what the dot product's cosine form is a restatement of. Euclid proved it geometrically in the Elements; al-Kashi wrote it with a cosine in 1427.",
@@ -503703,6 +504534,7 @@
       "Instruments": [],
       "Constants": [],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "θ an angle in a right triangle · opp, adj the sides opposite and adjacent to it · hyp the hypotenuse",
       "Spectral Types": [],
       "Significance": "The dictionary between angles and lengths. Snell's law, Bragg's law and the diffraction grating are each one line of trigonometry; so is resolving a force on an incline or laying out a roof pitch. Hipparchus tabulated chords around 150 BCE; the sine as we write it came from India in the fifth century and reached Europe through Arabic. The identity on the right is Pythagoras again.",
@@ -503714,7 +504546,8 @@
         "3c0e5275-7b5c-81f4-8604-d240bc46db20",
         "3bbe5275-7b5c-813d-86cf-c29a346fe2f8",
         "3bbe5275-7b5c-8113-9b17-e6d7efc091ea",
-        "3bbe5275-7b5c-8130-a1e2-d4d1fefda7d8"
+        "3bbe5275-7b5c-8130-a1e2-d4d1fefda7d8",
+        "3c0e5275-7b5c-81ba-9b00-d48bf3cd9936"
       ],
       "Elements": [],
       "Name": "Trigonometric Ratios"
@@ -503738,6 +504571,7 @@
       "Requires": [
         "3c0e5275-7b5c-8125-8c12-e1861f26c3f3"
       ],
+      "Impacts": [],
       "Symbols": "a the vector being projected · b the direction projected onto · proj_b a the shadow a casts along b",
       "Spectral Types": [],
       "Significance": "How much of a force acts along a slope, how much of a velocity is toward the observer, how much of a field crosses a surface — every 'component along' in physics is a projection, and the dot product does the work. The redshift a spectrograph measures is the projection of a galaxy's velocity onto the line of sight; the rest is invisible to it.",
@@ -503767,6 +504601,7 @@
         "3c0e5275-7b5c-8131-95e8-c78e021c5f36",
         "3c0e5275-7b5c-81f0-ab8c-d50afd756730"
       ],
+      "Impacts": [],
       "Symbols": "a, b two vectors · θ the angle between them · a × b a third vector, perpendicular to the plane of the first two, with the area of their parallelogram as its length",
       "Spectral Types": [],
       "Significance": "The turning quantity. Torque is r × F, angular momentum r × p, the magnetic force qv × B — every time a physical effect points at right angles to its causes, this is the operation. Largest when the two are perpendicular and zero when parallel, which is why pushing straight along a wrench handle turns nothing. Its components are a determinant.",
@@ -503800,6 +504635,7 @@
         "3c0e5275-7b5c-8110-a5c1-c471f72f8383",
         "3c0e5275-7b5c-8131-95e8-c78e021c5f36"
       ],
+      "Impacts": [],
       "Symbols": "a, b two vectors · θ the angle between them · a · b a number, not a vector: how much of one lies along the other",
       "Spectral Types": [],
       "Significance": "The overlap of two directions. Zero when they are perpendicular, largest when aligned, negative when opposed — which is why work is F · d and not F times d: a force at right angles to the motion does nothing. The component form on the right is what a computer calculates; the cosine form is what it means.",
@@ -503832,6 +504668,7 @@
       "Requires": [
         "3bbe5275-7b5c-81bf-b306-fdf6fa438de8"
       ],
+      "Impacts": [],
       "Symbols": "v a vector · v_x, v_y, v_z its components along three perpendicular axes · |v| its length, a plain number",
       "Spectral Types": [],
       "Significance": "Pythagoras applied twice, and the first thing you do with any quantity that has a direction — velocity, force, field. Everything on this site that reads r² in a denominator, from gravitation to Coulomb's law, is this: the squared length of the vector from source to point. Written in Gibbs's notation of 1881; the geometry is 2,400 years older.",
@@ -503851,7 +504688,7 @@
     {
       "id": "3bee5275-7b5c-8166-8a64-fd5e2ad2d5dc",
       "url": "https://app.notion.com/p/Betz-Limit-3bee52757b5c81668a64fd5e2ad2d5dc",
-      "lastEdited": "2026-08-18T19:16:00.000Z",
+      "lastEdited": "2026-08-18T20:03:00.000Z",
       "Skills": [],
       "Equation": "C_p,max = 16/27 ≈ 0.593",
       "Minerals": [],
@@ -503868,8 +504705,10 @@
       "Constants": [],
       "Requires": [
         "3bbe5275-7b5c-8189-9f06-e3de324e0af4",
-        "3c0e5275-7b5c-813b-8d2e-da5484cf3b1c"
+        "3c0e5275-7b5c-813b-8d2e-da5484cf3b1c",
+        "3c0e5275-7b5c-81d6-b1de-ec9081641f42"
       ],
+      "Impacts": [],
       "Symbols": "C_p power coefficient: the fraction of the wind's kinetic energy a turbine extracts",
       "Spectral Types": [],
       "Significance": "No turbine can take more than 59.3 % of the energy in the wind passing through it, because air that has given up all its energy would stop and block the rotor. Good modern turbines reach 45–50 %, close to the ceiling — the improvements now are in size and reliability, not the physics.",
@@ -503899,6 +504738,7 @@
       "Requires": [
         "3bbe5275-7b5c-81c9-a5d1-eaa911ffb7cd"
       ],
+      "Impacts": [],
       "Symbols": "V_p, V_s primary and secondary voltage · N_p, N_s turns on each winding",
       "Spectral Types": [],
       "Significance": "Two coils on one iron core, and the voltage steps by the ratio of their turns — with almost nothing lost, which is why alternating current won: step up to hundreds of kilovolts, send it across a country with small losses, step down at the other end. Faraday's law made practical.",
@@ -503931,6 +504771,7 @@
       "Requires": [
         "3c0e5275-7b5c-8142-9190-e1a6552eec12"
       ],
+      "Impacts": [],
       "Symbols": "F force on the charge · q charge · E electric field · v velocity · B magnetic field",
       "Spectral Types": [],
       "Significance": "The force that turns every electric motor: current in a wire is moving charge, a magnetic field pushes it sideways, and a loop of it in a field turns. Run in reverse — move the wire — and the same force pushes charge along it, which is the generator. One equation, both directions.",
@@ -503965,6 +504806,7 @@
         "3bbe5275-7b5c-819a-8209-e94b6436d16a",
         "3bbe5275-7b5c-81a2-9653-e0a84065d7fa"
       ],
+      "Impacts": [],
       "Symbols": "p pressure · V volume · γ = c_p/c_v ratio of specific heats, 1.4 for diatomic gases",
       "Spectral Types": [],
       "Significance": "How a gas behaves when compressed or expanded too fast to exchange heat — the compression and power strokes of every piston engine, and the compressor and turbine of every jet. It is the curve the cycle diagrams on this site are drawn with, and the reason a bicycle pump gets hot.",
@@ -503972,7 +504814,8 @@
       "Required By": [
         "3bee5275-7b5c-81a0-98bb-f16eb9526a4c",
         "3bee5275-7b5c-81b5-ad2f-c01c197e6fa2",
-        "3bee5275-7b5c-8141-afc3-f466a7435bf6"
+        "3bee5275-7b5c-8141-afc3-f466a7435bf6",
+        "3bbe5275-7b5c-8179-9734-eea3fa4e014c"
       ],
       "Elements": [],
       "Name": "Adiabatic Relation"
@@ -503999,6 +504842,7 @@
         "3bbe5275-7b5c-819a-8209-e94b6436d16a",
         "3bee5275-7b5c-814b-883f-f3a911e3d4e1"
       ],
+      "Impacts": [],
       "Symbols": "COP heat delivered per unit of work · Q_h heat moved to the warm side · W work in · T_h, T_c the two temperatures in kelvin",
       "Spectral Types": [],
       "Significance": "A heat pump is a heat engine run backwards, and its figure of merit can exceed 1 without breaking anything: a COP of 4 means four joules of heat moved for one joule of electricity. The Carnot limit shows why it works best when the two temperatures are close — and why heat pumps struggle in the deep cold.",
@@ -504029,6 +504873,7 @@
         "3bee5275-7b5c-810d-bb53-d6c1cec88ac3",
         "3bee5275-7b5c-8179-b2e5-ed3b9ea12888"
       ],
+      "Impacts": [],
       "Symbols": "p_2/p_1 the pressure ratio across the compressor · γ ratio of specific heats",
       "Spectral Types": [],
       "Significance": "The gas-turbine cycle: efficiency rises with pressure ratio, so jet engines have gone from 5:1 to over 50:1 in eighty years. The catch is that a higher ratio means a hotter turbine inlet, and the whole history of the jet engine is the history of alloys and cooling that survive that temperature.",
@@ -504059,6 +504904,7 @@
         "3bee5275-7b5c-810d-bb53-d6c1cec88ac3",
         "3bee5275-7b5c-8179-b2e5-ed3b9ea12888"
       ],
+      "Impacts": [],
       "Symbols": "r compression ratio · α cut-off ratio, the volume expansion during fuel injection · γ ratio of specific heats",
       "Spectral Types": [],
       "Significance": "Heat is added at constant pressure while fuel sprays in, not at constant volume; for the same compression ratio that costs efficiency, but compression ignition allows r of 15–22 where petrol knocks at 10, so the diesel wins in the end — which is why lorries, ships and generators use it.",
@@ -504090,6 +504936,7 @@
         "3bee5275-7b5c-810d-bb53-d6c1cec88ac3",
         "3bee5275-7b5c-8179-b2e5-ed3b9ea12888"
       ],
+      "Impacts": [],
       "Symbols": "r compression ratio V_max/V_min · γ ratio of specific heats, about 1.4 for air",
       "Spectral Types": [],
       "Significance": "The ideal efficiency of a spark-ignition engine depends on the compression ratio alone: r = 9 gives 58 % in theory. Real engines get about half that after friction, heat loss and incomplete combustion. Raise r and the fuel knocks — which is why octane rating exists, and why diesel, immune to knock, can go higher.",
@@ -504124,6 +504971,7 @@
       "Requires": [
         "3bbe5275-7b5c-819a-8209-e94b6436d16a"
       ],
+      "Impacts": [],
       "Symbols": "η thermal efficiency · W_net net work out per cycle · Q_in heat taken from the hot source · Q_out heat rejected to the cold sink",
       "Spectral Types": [],
       "Significance": "What you get for what you burn. Every real cycle's efficiency is this ratio; the Carnot value is what it would be if nothing were wasted. Rankine steam plants manage 33–45 %, combined-cycle gas plants over 60 %, and the difference between them is worth a great deal of fuel.",
@@ -504161,6 +505009,7 @@
         "3bbe5275-7b5c-8147-a393-dbf10b5befde",
         "3bee5275-7b5c-8179-b2e5-ed3b9ea12888"
       ],
+      "Impacts": [],
       "Symbols": "η_max the greatest possible efficiency of any heat engine · T_h temperature of the hot reservoir · T_c of the cold, both in kelvin",
       "Spectral Types": [],
       "Significance": "The ceiling on every engine ever built, set in 1824 before anyone knew what heat was. Only the two temperatures matter — not the fluid, not the design. A car engine at 2,000 K exhausting to 300 K could at best reach 85 %; the second law, and metallurgy, keep it near a third of that.",
@@ -504218,6 +505067,7 @@
         "3bde5275-7b5c-81ec-95a0-e586da4863dd"
       ],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "n_i, n_{i+1} number densities of two adjacent ionization stages · n_e electron density · g statistical weights · m_e electron mass · T temperature · χ the ionization energy · k_B, h the Boltzmann and Planck constants",
       "Spectral Types": [
         "2569ebb2-01ff-41c8-af88-54f50a983757",
@@ -504278,6 +505128,7 @@
       ],
       "Constants": [],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "δ = δρ/ρ̄ the density contrast, how much denser a patch is than average · δ̇, δ̈ its time derivatives · H the Hubble parameter · ρ̄ the mean matter density · G gravitational constant",
       "Spectral Types": [],
       "Significance": "How a nearly smooth universe turns lumpy. Gravity on the right amplifies any overdensity; the 2Hδ̇ term on the left is Hubble friction, expansion dragging against collapse. The contest is why structure grows as a power law (δ ∝ a in matter domination) rather than running away exponentially as it would in static space. It also forces dark matter: the microwave background shows δ ≈ 10⁻⁵ at recombination, and ordinary matter starting from there cannot reach today's galaxies in the time available — something that had been growing since long before, unimpeded by radiation pressure, must have dug the wells first.",
@@ -504324,6 +505175,7 @@
         "3bde5275-7b5c-8126-9e39-d5ecfc5220cd"
       ],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "w the equation-of-state parameter · p pressure · ρ energy density · a scale factor · w = 0 for matter, 1/3 for radiation, −1 for a cosmological constant",
       "Spectral Types": [],
       "Significance": "One number per ingredient, and it decides everything. Feed w into the fluid equation and the dilution law falls out: matter thins as a⁻³ (volume alone), radiation as a⁻⁴ (volume plus redshift), and dark energy with w = −1 does not thin at all — which is why the early universe was radiation-dominated, the middle matter-dominated, and the present is being taken over by a constant. Acceleration begins when w < −1/3; measurements put dark energy at w = −1.03 ± 0.03, maddeningly consistent with a plain cosmological constant.",
@@ -504361,6 +505213,7 @@
       "Instruments": [],
       "Constants": [],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "ρ energy density of a component · ρ̇ its rate of change with cosmic time · H = ȧ/a the Hubble parameter · p pressure · c speed of light",
       "Spectral Types": [],
       "Significance": "The third member of the Friedmann trio, and the one most often left out: energy conservation for an expanding universe. It is nothing more exotic than the first law of thermodynamics — dU = −p dV — applied to a comoving volume that is growing, which is why the pressure term appears alongside the density. Any two of the three cosmological equations imply the third, so this is the closure that makes the system solvable; without it the Friedmann equations have more unknowns than constraints.",
@@ -504410,6 +505263,7 @@
         "3bde5275-7b5c-8148-b8bc-c45aa881ee13"
       ],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "ρ_c the density that makes space exactly flat · H the Hubble parameter at that epoch · G gravitational constant · densities are quoted against it as Ω = ρ/ρ_c",
       "Spectral Types": [],
       "Significance": "The tipping-point density: above it space curves closed, below it open, exactly at it flat. Today it is about 8.5 × 10⁻²⁷ kg/m³ — five hydrogen atoms per cubic metre, a better vacuum than any laboratory can make, and yet it is the density that decides the shape of the cosmos. Measurements put the total at Ω = 1.000 ± 0.002, flat to a fifth of a percent, which is the observation inflation was invented to explain.",
@@ -504460,6 +505314,7 @@
       "Requires": [
         "3c0e5275-7b5c-8106-ba68-c7e036dd2cc4"
       ],
+      "Impacts": [],
       "Symbols": "ds the spacetime interval · t cosmic time · r, θ, φ comoving coordinates that expand with space · a(t) the scale factor · k spatial curvature (−1 open, 0 flat, +1 closed) · c speed of light",
       "Spectral Types": [],
       "Significance": "The shape of the universe, written down. Assume only that space is homogeneous and isotropic — the same everywhere, the same in every direction — and this is the *only* geometry allowed; that uniqueness is a theorem, not a modelling choice. Everything else in cosmology follows: feed this metric to Einstein's field equations and the Friedmann equations fall out, and the redshift-distance relation with them. All the physics hides in one function of time, a(t), and one number, k.",
@@ -504471,7 +505326,7 @@
     {
       "id": "3bde5275-7b5c-811c-8470-d8ecfce3c2de",
       "url": "https://app.notion.com/p/Cosmological-Redshift-3bde52757b5c811c8470d8ecfce3c2de",
-      "lastEdited": "2026-08-15T18:00:00.000Z",
+      "lastEdited": "2026-08-18T20:03:00.000Z",
       "Skills": [],
       "Equation": "1 + z = λ_obs/λ_emit = a(t_obs)/a(t_emit)",
       "Minerals": [],
@@ -504507,7 +505362,10 @@
       "Constants": [
         "3bde5275-7b5c-8150-b5ab-eed848d071ed"
       ],
-      "Requires": [],
+      "Requires": [
+        "3bbe5275-7b5c-814d-83e6-ee6df24eacca"
+      ],
+      "Impacts": [],
       "Symbols": "z redshift · λ_emit wavelength when the light left · λ_obs wavelength when it arrives · a(t) scale factor of the universe at each moment · z = 0 is here and now",
       "Spectral Types": [],
       "Significance": "The single most-used number in observational cosmology. Light is not merely Doppler-shifted by galaxies rushing away — the wavelength is stretched by the expansion of space itself while the photon is in flight, so redshift measures how much smaller the universe was when the light set out. The microwave background left at z ≈ 1100, when everything was a thousand times more compact and 3000 K hot; the most distant galaxies JWST sees sit near z ≈ 14. Redshift is the closest thing cosmology has to a clock.",
@@ -504555,6 +505413,7 @@
         "3bde5275-7b5c-8193-a528-df52381a5103"
       ],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "Eₙ energy of the electron in the nth orbit · n = 1, 2, 3, … the principal quantum number · 13.6 eV the ionization energy of hydrogen; the differences give Rydberg's lines exactly",
       "Spectral Types": [
         "c185512d-753a-4dc0-9818-42091ca06062"
@@ -504594,6 +505453,7 @@
         "3bde5275-7b5c-8154-890c-ead5c58ed11d"
       ],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "dσ/dΩ how many particles scatter into each direction · Z₁, Z₂ charges of projectile and target nucleus · E projectile energy · θ scattering angle · the sin⁴ makes large-angle bounces rare but real",
       "Spectral Types": [],
       "Significance": "Fire alpha particles at gold foil and a few come straight back — 'as if you fired a shell at tissue paper and it bounced.' Only a tiny, dense, charged nucleus could do that: the atom is mostly empty space. Coulomb's law, applied one nucleus at a time, and the birth of the nuclear atom.",
@@ -504638,6 +505498,7 @@
         "3bde5275-7b5c-815d-9aa8-d0076c2ea5a9"
       ],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "λ wavelength of an emitted or absorbed line · R_H the Rydberg constant (1.097×10⁷ m⁻¹) · n₁, n₂ whole numbers labelling the lower and upper energy levels",
       "Spectral Types": [
         "7740ec4a-0143-465a-8830-04b10edad57b",
@@ -504675,6 +505536,7 @@
         "3bde5275-7b5c-81c6-a8a9-ebe40783ecf1"
       ],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "K equilibrium constant · T absolute temperature · ΔH° standard enthalpy of reaction · R gas constant · heat-releasing reactions (ΔH° < 0) lose ground as T rises",
       "Spectral Types": [],
       "Significance": "Heat a reaction that gives off heat and equilibrium retreats; heat one that absorbs heat and it advances — Le Chatelier's principle made quantitative. It's why the Haber process runs hot for speed but not too hot for yield, feeding half the world's nitrogen. First chemistry Nobel, 1901.",
@@ -504712,6 +505574,7 @@
         "3bde5275-7b5c-81c6-a8a9-ebe40783ecf1"
       ],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "ΔG° standard free-energy change · R gas constant · T absolute temperature · K the equilibrium constant: products over reactants when the reaction has run its course",
       "Spectral Types": [],
       "Significance": "How far a reaction goes, from how much energy it releases — thermodynamics and equilibrium welded into one line. A modest ΔG° of −40 kJ/mol already means K of ten million; the logarithm is why reactions tend to go nearly to completion or barely at all.",
@@ -504753,6 +505616,7 @@
       "Instruments": [],
       "Constants": [],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "ΔG change in free energy — negative means the process can run on its own · ΔH enthalpy change, heat released or absorbed · T absolute temperature · ΔS entropy change",
       "Spectral Types": [],
       "Significance": "Will it happen? One number answers: a reaction proceeds spontaneously only if it lowers G, trading released heat against created disorder, with temperature setting the exchange rate. Why ice melts above 0 °C but not below, why ATP powers cells, and the quantity every chemist checks first — from a Yale professor so unassuming he was paid nothing for a decade.",
@@ -504785,6 +505649,7 @@
       "Instruments": [],
       "Constants": [],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "Δv₁ the first burn (a second, at arrival, circularizes) · μ = GM of the central body · r₁ starting orbit radius · r₂ destination orbit radius · the transfer is a half-ellipse touching both",
       "Spectral Types": [],
       "Significance": "The cheapest way between two circular orbits: two burns joined by half an ellipse. Worked out by a German city architect as a hobby, decades before any rocket could try it; it still sets launch windows to Mars (every 26 months) and lifts satellites to geostationary orbit.",
@@ -504822,6 +505687,7 @@
       "Requires": [
         "3c0e5275-7b5c-81c1-928d-f024f2a2484f"
       ],
+      "Impacts": [],
       "Symbols": "I_sp engine efficiency in seconds · v_e exhaust velocity · g₀ standard gravity (9.81 m/s²) · F thrust · ṁ propellant mass flow rate",
       "Spectral Types": [],
       "Significance": "How many seconds one kilogram of propellant can produce one kilogram-force of thrust — the miles-per-gallon of rocket engines. Solid boosters ~250 s, kerosene ~300, hydrogen ~450, ion drives thousands (but a whisper of thrust). Every mission trade-off begins by reading this number off the engine's data sheet.",
@@ -504862,6 +505728,7 @@
         "3c0e5275-7b5c-81d8-88da-e294d72318ab",
         "3c0e5275-7b5c-81e5-a7d4-c8ba74770b4d"
       ],
+      "Impacts": [],
       "Symbols": "Δv the change in velocity the burn can deliver · v_e exhaust velocity · m₀ mass at ignition, propellant included · m_f dry mass at burnout · the ratio inside the log is the whole game",
       "Spectral Types": [],
       "Significance": "A rocket must carry the fuel to push its fuel — so payload shrinks exponentially with the speed you want. Derived by a deaf, self-taught schoolteacher in provincial Russia the year the Wright brothers flew; it is why rockets are staged, why they are 90% propellant on the pad, and why orbit is hard and Mars is harder.",
@@ -504903,6 +505770,7 @@
         "3c0e5275-7b5c-812c-9b0d-ecfcca65b013",
         "3c0e5275-7b5c-81fb-9731-efee92cee113"
       ],
+      "Impacts": [],
       "Symbols": "T temperature field · t time · ∇² Laplacian, the local curvature of temperature · α thermal diffusivity = k/(ρ·c_p): how fast heat evens out",
       "Spectral Types": [],
       "Significance": "Temperature smooths itself out: peaks flatten, dips fill, at a rate set by the local curvature. Fourier invented his transform to solve exactly this, and the same equation wearing other names governs diffusion, option prices (Black–Scholes), and image blurring. Kelvin used it to date the Earth — and got it wrong only because he didn't know about radioactivity.",
@@ -504944,6 +505812,7 @@
       "Requires": [
         "3c0e5275-7b5c-81fb-9731-efee92cee113"
       ],
+      "Impacts": [],
       "Symbols": "q heat flux, energy crossing unit area per second · k thermal conductivity of the material · ∇T the temperature gradient · the minus sign: heat runs downhill",
       "Spectral Types": [],
       "Significance": "Heat flows from hot to cold at a rate set by the steepness of the temperature slope and the material's conductivity — copper's k is 400, wool's 0.04. The constitutive law of conduction; combined with energy conservation it yields the heat equation, and it's the template Fick copied for diffusion and Ohm for current.",
@@ -504985,6 +505854,7 @@
       "Requires": [
         "3c0e5275-7b5c-8107-b848-c04b61f7a12f"
       ],
+      "Impacts": [],
       "Symbols": "T temperature of the object · T_env temperature of its surroundings · k a rate constant set by surface, material, and airflow · t time",
       "Spectral Types": [],
       "Significance": "A hot object cools in proportion to how much hotter it is than the room — so temperature decays exponentially toward the ambient. Published anonymously; still how coroners estimate time of death and how your coffee's temperature curve actually looks.",
@@ -505023,6 +505893,7 @@
       "Requires": [
         "3c0e5275-7b5c-8125-8c12-e1861f26c3f3"
       ],
+      "Impacts": [],
       "Symbols": "t the traction — force per unit area on an imaginary cut through the material · n the unit normal to that cut · σ the stress tensor, a 3×3 array holding the whole state of stress at a point",
       "Spectral Types": [],
       "Significance": "The force on any surface inside a solid follows from one object — the stress tensor — by a single multiplication, whatever the surface's orientation. Cauchy's insight made 'stress' a proper mathematical quantity and founded continuum mechanics: Young's modulus, Griffith's cracks, and the elastic waves of seismology all live downstream of this line.",
@@ -505078,6 +505949,7 @@
         "3bde5275-7b5c-81d6-a084-f77a4c868d4f"
       ],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "B spectral radiance — brightness at each wavelength · λ wavelength · T temperature · h Planck constant · c speed of light · k Boltzmann constant",
       "Spectral Types": [
         "2569ebb2-01ff-41c8-af88-54f50a983757",
@@ -505132,6 +506004,7 @@
         "3bde5275-7b5c-816d-9a6d-f853cfef352d"
       ],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "λ_max wavelength where a hot body glows brightest · T its absolute temperature · the product is a constant",
       "Spectral Types": [
         "2569ebb2-01ff-41c8-af88-54f50a983757",
@@ -505180,6 +506053,7 @@
       "Instruments": [],
       "Constants": [],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "ε emissivity — how well a body radiates at each wavelength · α absorptivity — how well it absorbs the same wavelength · equal for any body in thermal equilibrium",
       "Spectral Types": [
         "b2652565-709b-468a-a616-b84ae2120764"
@@ -505221,6 +506095,7 @@
       "Requires": [
         "3c0e5275-7b5c-81fb-9731-efee92cee113"
       ],
+      "Impacts": [],
       "Symbols": "φ the electric potential (voltage landscape) · ∇² Laplacian, its curvature · ρ charge density · ε₀ permittivity of free space · with ρ = 0 it is Laplace's equation",
       "Spectral Types": [],
       "Significance": "Given where the charge is, find the voltage everywhere — Gauss's law rewritten for the potential, and the workhorse behind capacitor design, semiconductor junctions, and molecular electrostatics. Swap ε₀ for G and it's Newtonian gravity's potential too.",
@@ -505255,6 +506130,7 @@
       "Requires": [
         "3c0e5275-7b5c-8131-95e8-c78e021c5f36"
       ],
+      "Impacts": [],
       "Symbols": "E the field: force per unit test charge · F force felt by a small probe charge q · Q the source charge · r distance from it",
       "Spectral Types": [],
       "Significance": "Faraday's great reframing: a charge doesn't reach across empty space to grab another — it fills space with a condition, and the other charge responds to the field where it sits. The idea that turned action-at-a-distance into field theory, and gave Maxwell something to write equations about.",
@@ -505301,6 +506177,7 @@
         "3c0e5275-7b5c-8131-95e8-c78e021c5f36",
         "3c0e5275-7b5c-81e8-9036-d1ef2290ec4f"
       ],
+      "Impacts": [],
       "Symbols": "F force between two charges · q₁, q₂ the charges · r their separation · k = 1/(4πε₀) the Coulomb constant · like charges repel, opposite attract",
       "Spectral Types": [],
       "Significance": "Charges push and pull with the same inverse-square shape as Newton's gravity — but a staggering 10³⁶ times stronger between two protons, and in both signs. Measured with a torsion balance so delicate Coulomb could feel forces of a billionth of a newton; it holds atoms, molecules, and you together.",
@@ -505336,6 +506213,7 @@
       "Instruments": [],
       "Constants": [],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "L the Lagrangian density · φ the field · δφ a symmetry: a change that leaves L alone · J^μ the resulting current, whose flow ∂_μJ^μ vanishes — the conserved charge",
       "Spectral Types": [],
       "Significance": "Every continuous symmetry produces a conserved quantity — physics' deepest theorem. Time looks the same tomorrow, so energy is conserved; space is the same over there, so momentum is; turn around and angular momentum is; rotate a quantum phase and electric charge is. Proved by a woman Göttingen wouldn't pay; Einstein called her a creative mathematical genius.",
@@ -505370,6 +506248,7 @@
         "3c0e5275-7b5c-8107-b848-c04b61f7a12f",
         "3c0e5275-7b5c-81d8-88da-e294d72318ab"
       ],
+      "Impacts": [],
       "Symbols": "L the Lagrangian · q a generalized coordinate (any convenient variable) · q̇ its rate of change · one equation per coordinate, whatever the coordinates",
       "Spectral Types": [],
       "Significance": "Least action turned into a machine: write down L, turn the crank, out come the equations of motion — in any coordinates, no forces to draw. Newton's F = ma falls out as a special case; so do pendulums on carts, orbits, and (with L a field density) Maxwell and Einstein.",
@@ -505402,6 +506281,7 @@
       "Instruments": [],
       "Constants": [],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "S the action, a single number scoring an entire history · L the Lagrangian, kinetic minus potential energy · δS = 0: the true path is the one small changes can't improve",
       "Spectral Types": [],
       "Significance": "Nature doesn't push things step by step — it picks, among all conceivable histories, the one that makes the action stationary. Every classical law on this shelf can be rewritten as a choice of L; Feynman's path integral later explained why: all paths are tried, and this one is where the phases agree.",
@@ -505440,6 +506320,7 @@
       "Requires": [
         "3bbe5275-7b5c-81fb-9558-e243bfa28227"
       ],
+      "Impacts": [],
       "Symbols": "f(t) a signal in time (or space) · f̂(ω) the same signal as a recipe of pure frequencies · e^(−iωt) the probe oscillation · the transform runs both ways",
       "Spectral Types": [],
       "Significance": "Any signal — a chord, a heartbeat, an image — is a sum of pure waves, and this integral finds the recipe. Fourier invented it to solve heat flow; today it is spectroscopy, MRI, JPEG and MP3, and the reason position and momentum can't both be sharp: Heisenberg's uncertainty is a Fourier fact wearing physics clothes.",
@@ -505474,6 +506355,7 @@
         "3bde5275-7b5c-8162-8345-c9415f07a7ac"
       ],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "μ the mean, where the bell centres · σ the standard deviation, its width · the curve's total area is exactly 1",
       "Spectral Types": [],
       "Significance": "Pile up enough independent small causes and their sum falls on this bell — the central limit theorem makes it the default shape of noise, from measurement error (Gauss derived it fitting asteroid orbits) to heights, IQ scores, and the static in every instrument on this site's shelves.",
@@ -505503,6 +506385,7 @@
       ],
       "Constants": [],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "P(A|B) belief in A after seeing evidence B · P(B|A) how likely the evidence is if A holds · P(A) belief before the evidence · P(B) how likely the evidence is overall",
       "Spectral Types": [],
       "Significance": "How to change your mind, made arithmetic: prior belief times the weight of evidence gives updated belief. Published posthumously by Bayes' friend Price, it now runs spam filters, medical diagnostics, spacecraft navigation — and explains why a positive test for a rare disease is usually a false alarm.",
@@ -505534,6 +506417,7 @@
       "Instruments": [],
       "Constants": [],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "xₙ this year's population, as a fraction of maximum · r the growth rate knob · iterate to get next year, and the next",
       "Spectral Types": [],
       "Significance": "One line of arithmetic a child could iterate: below r ≈ 3 it settles, then oscillates, then doubles and doubles again — and past 3.5699… it's chaos. May's point, made with an ecology model, was that wild complexity needs no complicated cause; the simplest feedback suffices.",
@@ -505564,6 +506448,7 @@
       "Instruments": [],
       "Constants": [],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "rₙ the parameter values where the period doubles again (2, 4, 8, …) · δ the universal ratio at which those doublings accelerate toward chaos",
       "Spectral Types": [],
       "Significance": "On the road to chaos, the period-doublings arrive geometrically faster — and the ratio is the same number for the logistic map, dripping faucets, and convecting fluids alike. A new universal constant of nature discovered on a programmable calculator.",
@@ -505594,6 +506479,7 @@
       "Instruments": [],
       "Constants": [],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "x, y, z the state of a drastically simplified convecting atmosphere · σ, ρ, β knobs for the fluid's properties · the dots are time derivatives",
       "Spectral Types": [],
       "Significance": "Three innocuous-looking equations whose solutions never settle and never repeat, tracing the butterfly-shaped attractor that named an effect: Lorenz found that rounding a starting value in the fourth decimal produced a different weather forecast entirely. Deterministic yet unpredictable — the discovery that killed Laplace's demon.",
@@ -505627,6 +506513,7 @@
         "3bde5275-7b5c-81c6-a8a9-ebe40783ecf1"
       ],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "V_m the membrane's resting voltage · P each ion's permeability (weighting its vote) · the sums run over K⁺, Na⁺, Cl⁻ · reduces to Nernst when one ion dominates",
       "Spectral Types": [],
       "Significance": "Real membranes listen to several ions at once, each weighted by how easily it passes — the ~−70 mV hum of a resting neuron. Flip the sodium permeability and the voltage spikes: that reversal, propagating down the axon, is the nerve impulse reading this sentence.",
@@ -505661,6 +506548,7 @@
       "Instruments": [],
       "Constants": [],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "v reaction rate · [S] substrate concentration · V_max the enzyme's top speed, all sites busy · K_m the concentration at half speed — the enzyme's affinity signature",
       "Spectral Types": [],
       "Significance": "How enzymes work: fast when fed, saturating when swamped — a hyperbola that describes digestion, drug metabolism, and nearly every reaction keeping you alive. Menten was one of the first women in medical research; the equation still anchors pharmacology dosing.",
@@ -505708,6 +506596,7 @@
         "3bde5275-7b5c-81c6-a8a9-ebe40783ecf1"
       ],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "E equilibrium voltage for one ion species · R gas constant · T absolute temperature · z the ion's charge · F Faraday's constant · the log compares concentrations outside and inside the membrane",
       "Spectral Types": [],
       "Significance": "A concentration difference across a membrane is a battery — about −90 mV for potassium in your neurons, right now. Born in electrochemistry (it prices every battery's voltage too), it became the foundation stone of electrophysiology: nerves run on Nernst.",
@@ -505726,7 +506615,7 @@
     {
       "id": "3bbe5275-7b5c-8174-8c31-eda1293e8fe6",
       "url": "https://app.notion.com/p/Gaussian-Beam-Divergence-3bbe52757b5c81748c31eda1293e8fe6",
-      "lastEdited": "2026-08-15T16:49:00.000Z",
+      "lastEdited": "2026-08-18T20:03:00.000Z",
       "Skills": [],
       "Equation": "θ = λ / (π·w₀)",
       "Minerals": [],
@@ -505749,7 +506638,11 @@
       "Constants": [
         "3bde5275-7b5c-8162-8345-c9415f07a7ac"
       ],
-      "Requires": [],
+      "Requires": [
+        "3c0e5275-7b5c-8189-b7b0-c947c0dfc027",
+        "3c0e5275-7b5c-81de-9fb6-f2ec61468944"
+      ],
+      "Impacts": [],
       "Symbols": "θ far-field half-angle of spread · λ wavelength · w₀ the beam waist, its narrowest radius · diffraction makes tighter focus mean faster spread",
       "Spectral Types": [],
       "Significance": "A laser beam cannot stay pencil-thin forever — diffraction spreads it at an angle set by wavelength over waist. The trade is fundamental: focus harder, diverge faster. It's why lunar ranging beams leave Earth centimetres wide and arrive kilometres wide, and still come home with an answer.",
@@ -505784,6 +506677,7 @@
       "Instruments": [],
       "Constants": [],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "N population inversion (excited atoms) · φ photon number in the cavity · P pumping rate · τ excited-state lifetime · τ_c cavity photon lifetime · B stimulated-emission strength",
       "Spectral Types": [],
       "Significance": "The laser as a ledger: pumping fills the upper level, photons breed photons off the inversion, the cavity leaks. Above a pump threshold the light term runs away and the cavity blazes coherently — written in the very year Maiman's ruby laser first flashed, and still how engineers model everything from laser pointers to fiber amplifiers.",
@@ -505824,6 +506718,7 @@
         "3bde5275-7b5c-816d-9a6d-f853cfef352d"
       ],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "A₂₁ rate of spontaneous emission · B₂₁ rate of stimulated emission per unit radiation density · ν frequency of the transition · h Planck constant · c speed of light",
       "Spectral Types": [],
       "Significance": "Einstein's thermodynamic bookkeeping of light and atoms demanded a third process nobody had seen: an incoming photon can tickle an excited atom into emitting an identical twin — same direction, same phase. Stimulated emission sat as a curiosity for four decades, then became the L, A, S, E and R of 'laser'.",
@@ -505859,6 +506754,7 @@
       "Instruments": [],
       "Constants": [],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "S Seebeck coefficient · σ electrical conductivity · κ thermal conductivity · T absolute temperature · dimensionless — bigger is better, and above ~1 is device-worthy",
       "Spectral Types": [],
       "Significance": "The materials-hunt scorecard: a good thermoelectric conducts electricity like a metal but heat like a glass — a contradiction to engineer around. Radioisotope generators score just well enough to power Voyager and the Mars rovers on decay heat, decades from the Sun.",
@@ -505893,6 +506789,7 @@
       "Instruments": [],
       "Constants": [],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "Q̇ heat absorbed or released at a junction of two materials · I electric current through it · Π the Peltier coefficient, tied to Seebeck's by Π = S·T",
       "Spectral Types": [],
       "Significance": "Run the Seebeck effect backwards: push current through a junction and it pumps heat from one side to the other — a solid-state refrigerator. Camping coolers, CPU chillers, and laser stabilizers all run on this thirteen-years-later mirror image.",
@@ -505928,6 +506825,7 @@
       "Instruments": [],
       "Constants": [],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "V voltage generated · ΔT temperature difference across the material · S the Seebeck coefficient, the material's signature (microvolts per kelvin)",
       "Spectral Types": [],
       "Significance": "Hold one end of a conductor hot and the other cold, and a voltage appears — heat turned directly into electricity with no moving parts. Seebeck misread his own discovery as 'thermomagnetism'; the thermocouple it spawned is still how most of industry measures temperature.",
@@ -505964,6 +506862,7 @@
       "Instruments": [],
       "Constants": [],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "v flow speed · L size of the system · η magnetic diffusivity · dimensionless — big R_m means the field is frozen into the fluid, small means it slips through",
       "Spectral Types": [],
       "Significance": "One number that decides the regime: in Earth's core and the Sun (R_m huge) field lines are frozen into the flow and can be wound up into a dynamo — Elsasser's explanation for why Earth is a magnet at all. In the lab (R_m small) the field barely notices the fluid.",
@@ -506002,6 +506901,7 @@
         "3bde5275-7b5c-810f-a122-c855a6d75f23"
       ],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "v_A speed of magnetic waves along the field · B magnetic field strength · μ₀ permeability of free space · ρ fluid density",
       "Spectral Types": [],
       "Significance": "Magnetic field lines behave like plucked strings under tension, carrying waves at this speed — an idea so strange it was ignored until Fermi nodded at a seminar. Alfvén waves thread the solar wind and corona, and the 1970 Nobel followed.",
@@ -506035,6 +506935,7 @@
       "Instruments": [],
       "Constants": [],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "B magnetic field · v velocity of the conducting fluid · η magnetic diffusivity · the first term carries the field with the flow, the second lets it slip and decay",
       "Spectral Types": [],
       "Significance": "How a magnetic field evolves inside a moving conducting fluid — stirred by the flow, leaking by diffusion. It's Faraday's induction married to fluid dynamics, and it governs the Sun's boiling field, Earth's core, and every fusion plasma.",
@@ -506072,6 +506973,7 @@
         "3bde5275-7b5c-8132-bc66-d5cee263e47d"
       ],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "I supercurrent through a thin insulating barrier · I_c the junction's critical current · φ₁, φ₂ quantum phases of the superconductors on each side",
       "Spectral Types": [],
       "Significance": "Current flows through an insulator with no voltage at all, steered only by quantum phase — predicted by a 22-year-old graduate student. Josephson junctions are the working element of SQUID magnetometers, the definition of the volt, and the superconducting qubits inside today's quantum computers.",
@@ -506109,6 +507011,7 @@
         "3bde5275-7b5c-818e-abff-ce5fb1f0518e"
       ],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "Δ the energy gap protecting the superconducting state · k_B Boltzmann constant · T_c the critical temperature where superconductivity dies",
       "Spectral Types": [],
       "Significance": "The mechanism, 46 years after the discovery: electrons pair up (Cooper pairs), glued by lattice vibrations, and condense into one collective quantum state protected by this gap — too costly for stray collisions to break, so current flows forever. Bardeen's second Nobel.",
@@ -506151,6 +507054,7 @@
         "3bde5275-7b5c-8132-bc66-d5cee263e47d"
       ],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "J supercurrent density · n_s density of superconducting electrons · E, B electric and magnetic fields · fields penetrate only the London depth λ_L = √(mₑ/(μ₀·n_s·e²))",
       "Spectral Types": [],
       "Significance": "Two lines that capture superconductivity's twin miracles: current accelerates freely with no resistance, and magnetic fields are expelled from the interior — the Meissner effect, which is why superconductors levitate magnets. Written by refugee brothers two years after the expulsion was discovered.",
@@ -506191,6 +507095,7 @@
       "Instruments": [],
       "Constants": [],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "ψ_k electron wavefunction in a crystal · k crystal momentum · u_k a function with the lattice's own periodicity · the plane wave e^(i·k·r) rides the lattice unimpeded",
       "Spectral Types": [],
       "Significance": "The Schrödinger equation solved in the periodic potential of a crystal: electrons travel as waves shaped by the lattice, scattering only off imperfections — why copper conducts at all. The allowed and forbidden energies this form produces are the band structure, the blueprint of every material's electronic personality.",
@@ -506239,6 +507144,7 @@
         "3bde5275-7b5c-818e-abff-ce5fb1f0518e"
       ],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "f(E) probability an electron state of energy E is occupied · μ chemical potential (the Fermi level) · k Boltzmann constant · T temperature · the +1 encodes the exclusion principle",
       "Spectral Types": [
         "c68315d6-f203-4556-acf1-d2ddcc118da1"
@@ -506285,6 +507191,7 @@
         "3bde5275-7b5c-8132-bc66-d5cee263e47d"
       ],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "σ electrical conductivity · n density of free electrons · e electron charge · τ average time between collisions · mₑ electron mass",
       "Spectral Types": [],
       "Significance": "Metals as a pinball sea of electrons, drifting between collisions — proposed three years after the electron's discovery. Crude but unreasonably effective: it still gives the right form for conductivity, and its failures pointed straight at the quantum theory of solids.",
@@ -506325,6 +507232,7 @@
       "Instruments": [],
       "Constants": [],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "n fuel density · T temperature · τ_E energy confinement time — how long the heat stays put · the triple product a fusion plasma must exceed to yield net power",
       "Spectral Types": [
         "b2652565-709b-468a-a616-b84ae2120764"
@@ -506369,6 +507277,7 @@
         "3bde5275-7b5c-8132-bc66-d5cee263e47d"
       ],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "ω_p natural sloshing frequency of the electrons · n electron density · e electron charge · ε₀ permittivity of free space · mₑ electron mass",
       "Spectral Types": [],
       "Significance": "Displace a plasma's electrons and they slosh back at this frequency — waves below it bounce off, waves above pass through. It's why shortwave radio skips off the ionosphere to cross oceans, and why metals (a plasma of conduction electrons) are shiny mirrors to visible light.",
@@ -506411,6 +507320,7 @@
         "3bde5275-7b5c-8132-bc66-d5cee263e47d"
       ],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "λ_D the screening distance · ε₀ permittivity of free space · k_B Boltzmann constant · T temperature · n electron density · e electron charge",
       "Spectral Types": [],
       "Significance": "In a soup of free charges, any stray electric field is smothered within this distance — beyond it the plasma looks neutral. It's the definition of the state of matter itself: a gas counts as plasma only when it's much bigger than its own Debye length. Born, oddly, in the chemistry of salt solutions.",
@@ -506456,6 +507366,7 @@
         "3c0e5275-7b5c-8127-b7f0-fb3910ec4fef",
         "3c0e5275-7b5c-8173-a3f1-e7c3bd697946"
       ],
+      "Impacts": [],
       "Symbols": "v_esc minimum speed to leave forever, ignoring drag · G gravitational constant · M mass of the body · r starting distance from its centre",
       "Spectral Types": [],
       "Significance": "The vis-viva equation with the orbit opened to infinity — 11.2 km/s from Earth's surface, 2.4 from the Moon, 620 from the Sun. Set v_esc equal to the speed of light and Schwarzschild's radius appears two centuries early: John Michell imagined 'dark stars' this way in 1783.",
@@ -506496,6 +507407,7 @@
       "Requires": [
         "3c0e5275-7b5c-8173-a3f1-e7c3bd697946"
       ],
+      "Impacts": [],
       "Symbols": "v orbital speed at distance r from the central body · a semi-major axis of the orbit · G gravitational constant · M central mass · for a circular orbit r = a and v = √(GM/r)",
       "Spectral Types": [],
       "Significance": "Speed anywhere along any orbit from energy bookkeeping alone — 'vis viva' is Leibniz's name for what we now call kinetic energy. The everyday tool of mission design: every Hohmann transfer, gravity assist, and orbital insertion burn starts from this line.",
@@ -506531,6 +507443,7 @@
       "Instruments": [],
       "Constants": [],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "|0⟩, |1⟩ the two classical answers · α, β complex amplitudes weighting each · measurement yields 0 with probability |α|², 1 with |β|²",
       "Spectral Types": [],
       "Significance": "A bit that holds both answers at once, in precise proportions, until measured — the unit of quantum information. n qubits span 2ⁿ amplitudes simultaneously, which is the entire bet behind quantum computing; Schumacher named it while proving quantum states can be compressed, Shannon-style.",
@@ -506566,6 +507479,7 @@
       "Instruments": [],
       "Constants": [],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "|ψ⟩ an arbitrary unknown quantum state · U any allowed (unitary) operation · the theorem: no universal copier is possible",
       "Spectral Types": [],
       "Significance": "Unknown quantum states cannot be photocopied — linearity forbids it. The apparent handicap is a feature: an eavesdropper can't copy a quantum key without leaving fingerprints, which makes quantum cryptography possible, and it's why quantum error correction had to be invented rather than borrowed.",
@@ -506598,6 +507512,7 @@
       "Instruments": [],
       "Constants": [],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "|00⟩, |11⟩ both qubits reading zero, or both reading one · the superposition holds the pair in perfect correlation with neither value decided",
       "Spectral Types": [],
       "Significance": "Two qubits sharing one state: measure either and the other's answer is fixed instantly, however far apart. Bell showed no hidden local mechanism can fake these correlations — entanglement is real, and it is the working fuel of quantum computing, teleportation, and quantum cryptography.",
@@ -506612,7 +507527,7 @@
     {
       "id": "3bbe5275-7b5c-8113-9b17-e6d7efc091ea",
       "url": "https://app.notion.com/p/Bragg-s-Law-3bbe52757b5c81139b17e6d7efc091ea",
-      "lastEdited": "2026-08-18T19:16:00.000Z",
+      "lastEdited": "2026-08-18T20:03:00.000Z",
       "Skills": [],
       "Equation": "2d·sin θ = n·λ",
       "Minerals": [
@@ -506642,8 +507557,10 @@
       ],
       "Constants": [],
       "Requires": [
-        "3c0e5275-7b5c-8110-a5c1-c471f72f8383"
+        "3c0e5275-7b5c-8110-a5c1-c471f72f8383",
+        "3c0e5275-7b5c-81de-9fb6-f2ec61468944"
       ],
+      "Impacts": [],
       "Symbols": "d spacing between atomic planes in a crystal · θ grazing angle of the X-ray beam · n order · λ X-ray wavelength",
       "Spectral Types": [],
       "Significance": "Crystals diffract X-rays as if their atomic planes were mirrors — measure the angles and you read the atomic architecture itself. A father-son Nobel (the son, at 25, still the youngest science laureate); it revealed the structure of salt, diamond, and eventually DNA.",
@@ -506660,7 +507577,7 @@
     {
       "id": "3bbe5275-7b5c-8130-a1e2-d4d1fefda7d8",
       "url": "https://app.notion.com/p/Diffraction-Grating-Equation-3bbe52757b5c8130a1e2d4d1fefda7d8",
-      "lastEdited": "2026-08-18T19:16:00.000Z",
+      "lastEdited": "2026-08-18T20:03:00.000Z",
       "Skills": [],
       "Equation": "d·sin θ = m·λ",
       "Minerals": [
@@ -506689,13 +507606,17 @@
       "Constants": [],
       "Requires": [
         "3c0e5275-7b5c-8110-a5c1-c471f72f8383",
-        "3c0e5275-7b5c-8189-b7b0-c947c0dfc027"
+        "3c0e5275-7b5c-8189-b7b0-c947c0dfc027",
+        "3c0e5275-7b5c-81de-9fb6-f2ec61468944"
       ],
+      "Impacts": [],
       "Symbols": "d spacing between the grating's slits or grooves · θ angle of the bright beam · m order (0, ±1, ±2, …) · λ wavelength of the light",
       "Spectral Types": [],
       "Significance": "Many slits in lockstep fling each wavelength to its own angle — light sorted by color with ruler-like precision. Fraunhofer used it to map the Sun's dark spectral lines; gratings still sit at the heart of every spectrometer, and a CD's rainbow is the equation at play.",
       "Year": 1821,
-      "Required By": [],
+      "Required By": [
+        "3c0e5275-7b5c-81dc-8645-c26e23417e74"
+      ],
       "Elements": [
         "3eab666d-7f4f-41e3-a816-317f17ca1000",
         "58b43aa4-583e-446a-a0b7-5f0669916b53"
@@ -506730,6 +507651,7 @@
         "3bde5275-7b5c-8157-8026-dbb044233fc8"
       ],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "R the Ricci scalar, total curvature at each point · g determinant of the metric · the integral runs over all of spacetime · varying S yields the field equations",
       "Spectral Types": [],
       "Significance": "All of general relativity compressed into one thing to minimize: spacetime arranges itself to extremize total curvature. Hilbert reached the field equations this way days before Einstein's own derivation — and the action form is the doorway every attempt at quantum gravity walks through.",
@@ -506766,6 +507688,7 @@
       "Requires": [
         "3c0e5275-7b5c-8106-ba68-c7e036dd2cc4"
       ],
+      "Impacts": [],
       "Symbols": "x^μ position in spacetime · τ proper time along the worldline · Γ^μ_αβ Christoffel symbols, the local record of spacetime curvature",
       "Spectral Types": [],
       "Significance": "There is no force of gravity — falling things simply follow the straightest possible line through curved spacetime. Planetary orbits, the bending of starlight, and your fall off a ladder are all the same statement: mass tells spacetime how to curve, and this equation is how spacetime tells matter to move.",
@@ -506803,6 +507726,7 @@
         "3bde5275-7b5c-81d6-a084-f77a4c868d4f"
       ],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "Δτ time ticked by a clock at radius r from mass M · Δt time far away · G gravitational constant · c speed of light · the factor under the root hits zero at the event horizon",
       "Spectral Types": [],
       "Significance": "Clocks deeper in gravity run slower — predicted from the equivalence principle years before the full theory existed. Not an abstraction: GPS satellites' clocks gain 45 microseconds a day over yours, and without this correction positions would drift kilometres per day.",
@@ -506838,6 +507762,7 @@
         "3bde5275-7b5c-8106-8a9c-d118818e203d"
       ],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "⟨x_f|x_i⟩ amplitude to go from one point to another · ∫Dx a sum over every conceivable path between them · S[x] the classical action along each path · ℏ sets the scale of quantum interference",
       "Spectral Types": [],
       "Significance": "A particle takes every possible path at once, each contributing a spinning phase — most cancel, and what survives is what we observe. When ℏ is small the stationary-action path wins, which is why classical mechanics' least-action principle works at all. The computational engine of modern QFT, from Feynman diagrams to lattice simulations.",
@@ -506875,6 +507800,7 @@
         "3bde5275-7b5c-81d6-a084-f77a4c868d4f"
       ],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "φ a scalar field · □ the d'Alembertian, ∂²/c²∂t² − ∇² (the wave operator of spacetime) · m the field quantum's mass · ℏ, c the usual constants",
       "Spectral Types": [],
       "Significance": "The first relativistic quantum equation — the wave equation and E = mc² fused into one. Set aside when it seemed to misbehave for electrons (Dirac fixed that), it returned as the equation every spinless field obeys, the Higgs included.",
@@ -506923,6 +507849,7 @@
         "3bde5275-7b5c-81d6-a084-f77a4c868d4f"
       ],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "e electron charge · ε₀ permittivity of free space · ℏ reduced Planck constant · c speed of light · dimensionless — the same number for any choice of units",
       "Spectral Types": [],
       "Significance": "The strength of electromagnetism distilled to one pure number, about 1/137 — small enough that atoms are stable and QED can be computed as a series of corrections. Why 137? Nobody knows; Feynman called it 'one of the greatest damn mysteries of physics'.",
@@ -506956,6 +507883,7 @@
       "Instruments": [],
       "Constants": [],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "I currents meeting at a junction · V voltage rises and drops around any closed loop · signs by direction",
       "Spectral Types": [],
       "Significance": "Charge doesn't pile up and energy books balance — conservation laws dressed for circuit analysis, written by Kirchhoff as a 21-year-old student. Together with Ohm's law they solve any network of wires, from a flashlight to a motherboard.",
@@ -506993,6 +507921,7 @@
         "3bbe5275-7b5c-8154-bcd6-c1cd26ae1a20",
         "3c0e5275-7b5c-814f-b307-cb20271300f2"
       ],
+      "Impacts": [],
       "Symbols": "P power dissipated as heat · I current · R resistance · equivalently P = V·I",
       "Spectral Types": [],
       "Significance": "Current forcing its way through resistance sheds energy as heat — toasters, fuses, and incandescent filaments on purpose; warm laptops and power-line losses by accident. The I² is why the grid transmits at high voltage and low current.",
@@ -507044,6 +507973,7 @@
       "Instruments": [],
       "Constants": [],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "V voltage across a component · I current through it · R its resistance",
       "Spectral Types": [],
       "Significance": "Current flows in proportion to the voltage pushing it — the straight line every circuit design starts from. Dismissed as 'a web of naked fancies' when published; now it's the first equation every electronics student learns.",
@@ -507079,6 +508009,7 @@
       "Instruments": [],
       "Constants": [],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "C maximum error-free data rate (bits per second) · B bandwidth of the channel · S/N signal-to-noise power ratio",
       "Spectral Types": [],
       "Significance": "Every noisy channel has an exact speed limit — and below it, astonishingly, communication can be made error-free with clever coding. The theorem every modem, Wi-Fi router, 5G mast, and deep-space probe has spent seventy years engineering toward.",
@@ -507116,6 +508047,7 @@
       "Instruments": [],
       "Constants": [],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "H information content in bits · pᵢ probability of each possible message · rare messages carry more information than expected ones",
       "Spectral Types": [],
       "Significance": "How much surprise a message carries — the definition of the bit, and the hard floor below which no compression can squeeze data. The formula is Boltzmann's entropy in new clothes, a connection Shannon knew: information and thermodynamic disorder are the same mathematics.",
@@ -507149,6 +508081,7 @@
         "3bde5275-7b5c-816d-9a6d-f853cfef352d"
       ],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "k rate constant · k_B Boltzmann constant · h Planck constant · ΔG‡ free energy of the transition state, the fleeting halfway arrangement · R gas constant · T temperature",
       "Spectral Types": [],
       "Significance": "Arrhenius's barrier given a physical face: reactions pass through a transition state, and quantum mechanics (there's Planck's h) sets the universal attempt frequency k_BT/h — about six trillion tries per second at room temperature.",
@@ -507190,6 +508123,7 @@
         "3bde5275-7b5c-81c6-a8a9-ebe40783ecf1"
       ],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "k rate constant · A pre-exponential factor (how often molecules collide, well-oriented) · Eₐ activation energy, the barrier to react · R gas constant · T absolute temperature",
       "Spectral Types": [],
       "Significance": "Reaction rates climb exponentially with temperature, because only the Boltzmann tail of molecules has energy above the barrier — the rule of thumb that rates double per 10 °C. Cooking, food spoilage, battery aging, and firefly flashes all follow it.",
@@ -507229,6 +508163,7 @@
       "Instruments": [],
       "Constants": [],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "[A], [B] concentrations of the reactants · k rate constant · m, n reaction orders (found by experiment, not from the balanced equation)",
       "Spectral Types": [],
       "Significance": "How fast a reaction runs depends on how much of each ingredient is present — the founding statement of chemical kinetics, worked out by two Norwegian brothers-in-law. The exponents hide the reaction's actual mechanism, which is why chemists measure them.",
@@ -507265,6 +508200,7 @@
       "Instruments": [],
       "Constants": [],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "σ_f stress at which fracture runs away · E Young's modulus · γ energy to create new surface · a length of the largest existing crack",
       "Spectral Types": [],
       "Significance": "Things break not because their atoms are weak but because flaws concentrate stress — strength falls with the square root of the biggest crack. Why glass fibres are strong while glass panes shatter, why aircraft windows are round, and the founding equation of fracture mechanics.",
@@ -507306,11 +508242,14 @@
       "Instruments": [],
       "Constants": [],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "σ stress (force per unit area) · ε strain (fractional stretch) · E the stiffness of the material itself, independent of the object's shape",
       "Spectral Types": [],
       "Significance": "Hooke's law made a property of matter rather than of a particular spring — rubber's E is measured in megapascals, steel's in hundreds of gigapascals, diamond's beyond a terapascal. The number engineers reach for first when choosing what to build with.",
       "Year": 1807,
-      "Required By": [],
+      "Required By": [
+        "3bbe5275-7b5c-8183-8228-de82d104194f"
+      ],
       "Elements": [
         "2e821e11-1691-4458-bb40-88ae8a24d4e2",
         "82688dfa-4810-4954-b0ce-bd530b9b56e2",
@@ -507349,6 +508288,7 @@
       "Instruments": [],
       "Constants": [],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "F restoring force · k stiffness of the spring or material · x displacement from rest · the minus sign points the force back toward equilibrium",
       "Spectral Types": [],
       "Significance": "Stretch is proportional to force — announced by Hooke as the anagram 'ceiiinosssttuv' (ut tensio, sic vis) to stake his claim before revealing it. Springs, bonds between atoms, and every small vibration in physics answer to it: the harmonic oscillator is this law in motion.",
@@ -507364,7 +508304,7 @@
     {
       "id": "3bbe5275-7b5c-8183-8228-de82d104194f",
       "url": "https://app.notion.com/p/Seismic-Wave-Speeds-3bbe52757b5c81838228de82d104194f",
-      "lastEdited": "2026-08-15T16:44:00.000Z",
+      "lastEdited": "2026-08-18T20:03:00.000Z",
       "Skills": [],
       "Equation": "v_p = √((K + 4μ/3)/ρ) · v_s = √(μ/ρ)",
       "Minerals": [
@@ -507389,7 +508329,11 @@
       ],
       "Instruments": [],
       "Constants": [],
-      "Requires": [],
+      "Requires": [
+        "3bbe5275-7b5c-818c-81f5-e08330c436f3",
+        "3bbe5275-7b5c-81f5-bb78-d159340dd03f"
+      ],
+      "Impacts": [],
       "Symbols": "v_p compressional (P) wave speed · v_s shear (S) wave speed · K bulk modulus (incompressibility) · μ shear modulus (rigidity) · ρ density · liquids have μ = 0, so no S-waves",
       "Spectral Types": [],
       "Significance": "P-waves arrive first and pass through anything; S-waves arrive second and cannot cross liquid — and their shadow on the far side of earthquakes is how we know Earth's outer core is molten. Timing the two arrivals locates quakes and X-rays the planet's interior, layer by layer.",
@@ -507407,7 +508351,7 @@
     {
       "id": "3bbe5275-7b5c-818c-81f5-e08330c436f3",
       "url": "https://app.notion.com/p/Elastic-Wave-Equation-3bbe52757b5c818c81f5e08330c436f3",
-      "lastEdited": "2026-08-18T19:16:00.000Z",
+      "lastEdited": "2026-08-18T20:03:00.000Z",
       "Skills": [],
       "Equation": "ρ·∂²u/∂t² = (λ+μ)∇(∇·u) + μ∇²u",
       "Minerals": [
@@ -507430,13 +508374,17 @@
       "Instruments": [],
       "Constants": [],
       "Requires": [
+        "3bbe5275-7b5c-81d8-b63d-d44990bf2054",
         "3c0e5275-7b5c-8107-b848-c04b61f7a12f"
       ],
+      "Impacts": [],
       "Symbols": "u displacement of the rock · ρ density · λ, μ the Lamé constants (compressibility and rigidity) · t time · the two terms carry two different wave types",
       "Spectral Types": [],
       "Significance": "Newton's second law written for solid rock — and Poisson noticed the equation splits into two independent waves: compressional and shear. Every seismogram is this equation's solution, rung through the body of the Earth.",
       "Year": 1828,
-      "Required By": [],
+      "Required By": [
+        "3bbe5275-7b5c-8183-8228-de82d104194f"
+      ],
       "Elements": [
         "22e34085-1b4d-4f83-96dc-1dac62e1f343",
         "82688dfa-4810-4954-b0ce-bd530b9b56e2"
@@ -507473,6 +508421,7 @@
         "3bde5275-7b5c-818e-abff-ce5fb1f0518e"
       ],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "Z the sum over every state i the system can occupy · Eᵢ each state's energy · k Boltzmann constant · T absolute temperature · free energy follows as F = −kT·ln Z",
       "Spectral Types": [],
       "Significance": "One sum that knows everything: energy, entropy, pressure, heat capacity — every thermodynamic quantity is a derivative of ln Z. Statistical mechanics' entire program is 'compute Z, then differentiate', formalized in Gibbs' 1902 treatise.",
@@ -507517,6 +508466,7 @@
         "3bde5275-7b5c-818e-abff-ce5fb1f0518e"
       ],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "Pᵢ probability of finding the system in state i · Eᵢ that state's energy · k Boltzmann constant · T absolute temperature · Z the partition function, normalizing the sum to 1",
       "Spectral Types": [
         "3e612da8-9d62-43d2-8596-97f41d0648d2"
@@ -507553,6 +508503,7 @@
         "3bde5275-7b5c-818e-abff-ce5fb1f0518e"
       ],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "⟨E⟩ average energy · k Boltzmann constant · T absolute temperature · counts each quadratic way a molecule can hold energy (motion, rotation, vibration)",
       "Spectral Types": [],
       "Significance": "Heat shares itself equally among all the ways a molecule can move — which predicts heat capacities from pure counting. Its mysterious failures at low temperatures were early cracks that quantum theory eventually explained: frozen-out degrees of freedom.",
@@ -507610,6 +508561,7 @@
         "3bde5275-7b5c-81bc-b331-f42e8716333d"
       ],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "line 1: the force fields (photon, W, Z, gluons) · line 2: matter in motion (quarks, leptons) · line 3: matter meeting the Higgs, gaining mass · line 4: the Higgs field itself · compact notation — expanded it runs to pages",
       "Spectral Types": [],
       "Significance": "Every known particle and every force except gravity, in one (very compressed) expression — the equation on CERN's coffee mugs. Assembled through the 1960s-70s from electroweak unification and quantum chromodynamics; its last missing piece, the Higgs boson, arrived in 2012. Nothing it predicts has yet been caught being wrong.",
@@ -507646,6 +508598,7 @@
       "Instruments": [],
       "Constants": [],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "φ the Higgs field · μ², λ parameters shaping the potential · the minus sign puts the minimum away from zero — the 'Mexican hat'",
       "Spectral Types": [],
       "Significance": "A field whose lowest-energy state is not zero, so all of space sits in it — and particles wading through acquire mass. Proposed in 1964, confirmed at CERN in 2012 when the field's own ripple, the Higgs boson, finally showed itself.",
@@ -507681,6 +508634,7 @@
         "3bde5275-7b5c-8106-8a9c-d118818e203d"
       ],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "ψ the electron's four-component field · γ^μ the Dirac matrices · ∂_μ spacetime derivatives · m electron mass · units where ℏ = c = 1",
       "Spectral Types": [],
       "Significance": "Quantum mechanics made compatible with special relativity — and the equation demanded more than it was asked for: electron spin fell out automatically, and its negative-energy solutions predicted antimatter four years before the positron was found.",
@@ -507738,6 +508692,7 @@
         "3bde5275-7b5c-81d6-a084-f77a4c868d4f"
       ],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "M_Ch the maximum white-dwarf mass · ℏ reduced Planck constant · c speed of light · G gravitational constant · μₑ electrons per nucleon · mₚ proton mass · M☉ solar mass",
       "Spectral Types": [
         "c185512d-753a-4dc0-9818-42091ca06062",
@@ -507796,6 +508751,7 @@
       "Requires": [
         "3bbe5275-7b5c-813a-84a7-ea08528b3c93"
       ],
+      "Impacts": [],
       "Symbols": "r_s the event-horizon radius · G gravitational constant · M mass · c speed of light",
       "Spectral Types": [
         "fbbb7d85-a746-4aa6-9045-622d68637585"
@@ -507846,6 +508802,7 @@
         "3bde5275-7b5c-8100-9c06-e8130a78b9f4"
       ],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "L luminosity (power radiated) · R radius of the star · T surface temperature · σ the Stefan–Boltzmann constant",
       "Spectral Types": [
         "53d890a6-54be-4b11-bfeb-76804e4fab79",
@@ -507899,6 +508856,7 @@
       "Requires": [
         "3bbe5275-7b5c-8157-a64b-eb73eeb53735"
       ],
+      "Impacts": [],
       "Symbols": "t½ time for half of any sample to decay · λ decay constant · ln 2 ≈ 0.693",
       "Spectral Types": [],
       "Significance": "Every radioactive nuclide has a signature clock: after one half-life, half remains; after ten, a thousandth. Carbon-14's 5,730 years dates archaeology; uranium-238's 4.5 billion years dated the Earth itself.",
@@ -507953,6 +508911,7 @@
       "Requires": [
         "3c0e5275-7b5c-8107-b848-c04b61f7a12f"
       ],
+      "Impacts": [],
       "Symbols": "N(t) undecayed nuclei remaining at time t · N₀ the starting number · λ decay constant (each nuclide's characteristic rate) · e base of natural logarithms",
       "Spectral Types": [
         "ab7bd7c6-343e-452b-a637-3ab633d86b34"
@@ -507974,7 +508933,7 @@
     {
       "id": "3bbe5275-7b5c-814d-83e6-ee6df24eacca",
       "url": "https://app.notion.com/p/Doppler-Effect-3bbe52757b5c814d83e6ee6df24eacca",
-      "lastEdited": "2026-08-15T17:47:00.000Z",
+      "lastEdited": "2026-08-18T20:03:00.000Z",
       "Skills": [],
       "Equation": "f′ = f·(c + vₒ)/(c − vₛ)",
       "Minerals": [],
@@ -507997,12 +508956,17 @@
         "bf3acea0-668c-4c49-bbd1-8dec3d49af72"
       ],
       "Constants": [],
-      "Requires": [],
+      "Requires": [
+        "3c0e5275-7b5c-81de-9fb6-f2ec61468944"
+      ],
+      "Impacts": [],
       "Symbols": "f emitted frequency · f′ observed frequency · c wave speed · vₒ observer speed toward the source · vₛ source speed toward the observer",
       "Spectral Types": [],
       "Significance": "Motion squeezes waves ahead and stretches them behind — the siren that drops in pitch as it passes. The same effect, applied to light, is how radar guns catch speeders and how Hubble read the expansion of the universe from galaxy redshifts.",
       "Year": 1842,
-      "Required By": [],
+      "Required By": [
+        "3bde5275-7b5c-811c-8470-d8ecfce3c2de"
+      ],
       "Elements": [
         "3eab666d-7f4f-41e3-a816-317f17ca1000",
         "58b43aa4-583e-446a-a0b7-5f0669916b53",
@@ -508013,7 +508977,7 @@
     {
       "id": "3bbe5275-7b5c-8179-9734-eea3fa4e014c",
       "url": "https://app.notion.com/p/Newton-Laplace-Speed-of-Sound-3bbe52757b5c81799734eea3fa4e014c",
-      "lastEdited": "2026-08-15T16:38:00.000Z",
+      "lastEdited": "2026-08-18T20:03:00.000Z",
       "Skills": [],
       "Equation": "c = √(γp/ρ)",
       "Minerals": [],
@@ -508029,7 +508993,11 @@
       ],
       "Instruments": [],
       "Constants": [],
-      "Requires": [],
+      "Requires": [
+        "3bee5275-7b5c-810d-bb53-d6c1cec88ac3",
+        "3c0e5275-7b5c-81de-9fb6-f2ec61468944"
+      ],
+      "Impacts": [],
       "Symbols": "c speed of sound · p pressure · ρ density · γ adiabatic index (about 1.4 for air) — roughly 343 m/s in room-temperature air",
       "Spectral Types": [],
       "Significance": "How fast pressure waves travel through a gas. Newton derived it first in 1687 and came out 15% slow by assuming compression at constant temperature; Laplace's adiabatic correction — sound compresses air too fast for heat to escape — made theory match experiment.",
@@ -508045,7 +509013,7 @@
     {
       "id": "3bbe5275-7b5c-81d8-b63d-d44990bf2054",
       "url": "https://app.notion.com/p/Wave-Equation-3bbe52757b5c81d8b63dd44990bf2054",
-      "lastEdited": "2026-08-18T19:16:00.000Z",
+      "lastEdited": "2026-08-18T20:03:00.000Z",
       "Skills": [],
       "Equation": "∂²u/∂t² = c²·∇²u",
       "Minerals": [],
@@ -508071,20 +509039,24 @@
       "Instruments": [],
       "Constants": [],
       "Requires": [
-        "3c0e5275-7b5c-8107-b848-c04b61f7a12f"
+        "3c0e5275-7b5c-8107-b848-c04b61f7a12f",
+        "3c0e5275-7b5c-81de-9fb6-f2ec61468944"
       ],
+      "Impacts": [],
       "Symbols": "u the disturbance (string displacement, air pressure, field strength) · t time · c wave speed · ∇² Laplacian (spatial curvature of the disturbance)",
       "Spectral Types": [],
       "Significance": "One equation for everything that waves: a plucked string, sound in air, ripples on water — and, a century later, Maxwell found light obeying the very same form. Derived by d'Alembert for the vibrating string, it is the mathematical definition of what a wave is.",
       "Year": 1746,
-      "Required By": [],
+      "Required By": [
+        "3bbe5275-7b5c-818c-81f5-e08330c436f3"
+      ],
       "Elements": [],
       "Name": "Wave Equation"
     },
     {
       "id": "3bbe5275-7b5c-8197-8da5-de06c7641cc3",
       "url": "https://app.notion.com/p/Navier-Stokes-Equations-3bbe52757b5c81978da5de06c7641cc3",
-      "lastEdited": "2026-08-15T18:00:00.000Z",
+      "lastEdited": "2026-08-18T20:03:00.000Z",
       "Skills": [],
       "Equation": "ρ(∂v/∂t + v·∇v) = −∇p + μ∇²v + f",
       "Minerals": [],
@@ -508104,7 +509076,12 @@
       ],
       "Instruments": [],
       "Constants": [],
-      "Requires": [],
+      "Requires": [
+        "3bbe5275-7b5c-8183-bbd5-ff733704a984",
+        "3bbe5275-7b5c-8189-9f06-e3de324e0af4",
+        "3c0e5275-7b5c-81f8-8913-f1c2456baa65"
+      ],
+      "Impacts": [],
       "Symbols": "ρ density · v velocity field · p pressure · μ viscosity · f body forces such as gravity · v·∇v the nonlinear term that makes turbulence",
       "Spectral Types": [],
       "Significance": "Newton's second law written for flowing matter — weather, ocean currents, aerodynamics, and blood flow all obey it. Its nonlinear term breeds turbulence, and whether smooth solutions always exist remains a Clay Millennium Problem with a million dollars unclaimed.",
@@ -508142,12 +509119,15 @@
       "Requires": [
         "3c0e5275-7b5c-817d-9d6f-f7324c248b09"
       ],
+      "Impacts": [],
       "Symbols": "ρ density · v velocity field · t time · ∇· divergence · for incompressible flow it reduces to ∇·v = 0",
       "Spectral Types": [],
       "Significance": "Mass is neither created nor destroyed as fluid flows — what goes in must come out. Why a river races through its narrows and a thumb over a hose makes the jet fly farther.",
       "Year": 1757,
       "Required By": [
-        "3bee5275-7b5c-8166-8a64-fd5e2ad2d5dc"
+        "3bee5275-7b5c-8166-8a64-fd5e2ad2d5dc",
+        "3c0e5275-7b5c-8168-9f58-e868d30da92e",
+        "3bbe5275-7b5c-8197-8da5-de06c7641cc3"
       ],
       "Elements": [],
       "Name": "Continuity Equation"
@@ -508155,7 +509135,7 @@
     {
       "id": "3bbe5275-7b5c-819b-ba4e-f3c3031b13f1",
       "url": "https://app.notion.com/p/Bernoulli-s-Equation-3bbe52757b5c819bba4ef3c3031b13f1",
-      "lastEdited": "2026-08-18T19:16:00.000Z",
+      "lastEdited": "2026-08-18T20:03:00.000Z",
       "Skills": [
         "3bee5275-7b5c-8104-bd15-f3f63b6670e5"
       ],
@@ -508182,20 +509162,24 @@
       "Instruments": [],
       "Constants": [],
       "Requires": [
+        "3c0e5275-7b5c-812f-9604-d1e8723865d9",
         "3c0e5275-7b5c-8173-a3f1-e7c3bd697946"
       ],
+      "Impacts": [],
       "Symbols": "p pressure · ρ density · v flow speed · g gravitational acceleration · h height · holds along a streamline for steady, frictionless, incompressible flow",
       "Spectral Types": [],
       "Significance": "Where a fluid speeds up, its pressure drops — energy bookkeeping along a streamline. Why airplane wings lift, carburetors draw fuel, and a shower curtain billows inward.",
       "Year": 1738,
-      "Required By": [],
+      "Required By": [
+        "3c0e5275-7b5c-815c-be60-d2a80ee3b254"
+      ],
       "Elements": [],
       "Name": "Bernoulli's Equation"
     },
     {
       "id": "3bbe5275-7b5c-813d-86cf-c29a346fe2f8",
       "url": "https://app.notion.com/p/Snell-s-Law-3bbe52757b5c813d86cfc29a346fe2f8",
-      "lastEdited": "2026-08-18T19:16:00.000Z",
+      "lastEdited": "2026-08-18T20:03:00.000Z",
       "Skills": [],
       "Equation": "n₁·sin θ₁ = n₂·sin θ₂",
       "Minerals": [
@@ -508223,8 +509207,10 @@
       ],
       "Constants": [],
       "Requires": [
-        "3c0e5275-7b5c-8110-a5c1-c471f72f8383"
+        "3c0e5275-7b5c-8110-a5c1-c471f72f8383",
+        "3c0e5275-7b5c-8163-bff2-f6cc55e9a90a"
       ],
+      "Impacts": [],
       "Symbols": "n₁, n₂ refractive indices of the two media · θ₁, θ₂ angles of the ray from the surface normal on each side",
       "Spectral Types": [],
       "Significance": "Light bends when it crosses into a new medium — the rule behind every lens, eyeglass, camera, and the total internal reflection that traps light inside optical fibers. First stated by Ibn Sahl in Baghdad in 984, rediscovered by Snellius in 1621, and it's why pools look shallower than they are.",
@@ -508285,6 +509271,7 @@
       "Requires": [
         "3bde5275-7b5c-811c-8470-d8ecfce3c2de"
       ],
+      "Impacts": [],
       "Symbols": "v recession velocity of a galaxy · d its distance from us · H₀ the Hubble constant (about 70 km/s per megaparsec today)",
       "Spectral Types": [],
       "Significance": "The farther a galaxy, the faster it recedes — space itself is expanding. Lemaître derived it from general relativity in 1927; Hubble's 1929 measurements made it fact. Run the expansion backwards and you arrive at the Big Bang; H₀ is the first Friedmann equation's ȧ/a measured today — and its exact value is still argued over, a puzzle known as the Hubble tension.",
@@ -508319,6 +509306,7 @@
       "Instruments": [],
       "Constants": [],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "a, b the two legs of a right triangle · c the hypotenuse",
       "Spectral Types": [],
       "Significance": "The square on the hypotenuse equals the sum of the squares on the other two sides — how distance itself is measured, from surveying to GPS to the metric of spacetime. Babylonian tablets list its triples a thousand years before Pythagoras; the Greek contribution was proving it must always hold.",
@@ -508354,6 +509342,7 @@
         "3bde5275-7b5c-81d6-a084-f77a4c868d4f"
       ],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "γ the stretch factor · v relative speed · c speed of light · equals 1 at rest, grows without bound as v approaches c",
       "Spectral Types": [],
       "Significance": "The exchange rate of relativity: moving clocks run slow by γ, moving rulers shrink by γ, and kinetic energy diverges as v nears c — which is why nothing with mass reaches light speed. At everyday speeds γ is 1 to a dozen decimal places, which is why none of this is felt.",
@@ -508387,6 +509376,7 @@
         "3bde5275-7b5c-81d6-a084-f77a4c868d4f"
       ],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "x, t position and time in one frame · x′, t′ the same event seen from a frame moving at speed v · c speed of light · γ the Lorentz factor · y and z pass through unchanged",
       "Spectral Types": [],
       "Significance": "How space and time coordinates convert between observers in relative motion — and the surprise is that time mixes with position. Written by Lorentz to patch electromagnetism; reinterpreted by Einstein in 1905 as the actual geometry of space and time. Simultaneity has been relative ever since.",
@@ -508419,6 +509409,7 @@
       "Instruments": [],
       "Constants": [],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "S entropy of a perfect crystal · T absolute temperature",
       "Spectral Types": [],
       "Significance": "As temperature approaches absolute zero, entropy approaches a constant floor — zero for a perfect crystal. Consequence: absolute zero itself can be approached but never reached, no matter how clever the refrigerator.",
@@ -508462,6 +509453,7 @@
       "Instruments": [],
       "Constants": [],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "ΔS change in total entropy of an isolated system · equality only for reversible processes",
       "Spectral Types": [],
       "Significance": "Disorder never decreases on its own: heat flows hot to cold, engines can't be perfect, and time gets its arrow. Born from Carnot's steam-engine analysis, named by Clausius — arguably the most unbreakable law in physics.",
@@ -508501,6 +509493,7 @@
       "Requires": [
         "3c0e5275-7b5c-8129-9711-d8261f03fa1d"
       ],
+      "Impacts": [],
       "Symbols": "ΔU change in internal energy · Q heat added to the system · W work done by the system",
       "Spectral Types": [],
       "Significance": "Energy is never created or destroyed, only moved and converted — heat in, work out, the books always balance. The law that retired the perpetual-motion machine.",
@@ -508533,6 +509526,7 @@
       "Instruments": [],
       "Constants": [],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "T₁, T₂, T₃ temperatures of three systems · systems in thermal equilibrium share a temperature",
       "Spectral Types": [],
       "Significance": "If two systems each sit in equilibrium with a third, they're in equilibrium with each other — the quiet assumption that makes 'temperature' a well-defined number and thermometers meaningful. So foundational it was named zeroth, after the first and second were taken.",
@@ -508571,6 +509565,7 @@
         "3bde5275-7b5c-8106-8a9c-d118818e203d"
       ],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "Δx uncertainty in position · Δp uncertainty in momentum · ℏ reduced Planck constant",
       "Spectral Types": [],
       "Significance": "Position and momentum cannot both be pinned down — sharpen one and the other blurs. Not a limit of instruments but of nature itself: it keeps electrons from collapsing into nuclei and gives atoms their size.",
@@ -508582,7 +509577,7 @@
     {
       "id": "3bbe5275-7b5c-8170-bd5f-c796d7589e08",
       "url": "https://app.notion.com/p/De-Broglie-Wavelength-3bbe52757b5c8170bd5fc796d7589e08",
-      "lastEdited": "2026-08-15T16:37:00.000Z",
+      "lastEdited": "2026-08-18T20:03:00.000Z",
       "Skills": [],
       "Equation": "λ = h/p",
       "Minerals": [],
@@ -508606,7 +509601,11 @@
         "3bde5275-7b5c-81ec-95a0-e586da4863dd",
         "3bde5275-7b5c-816d-9a6d-f853cfef352d"
       ],
-      "Requires": [],
+      "Requires": [
+        "3c0e5275-7b5c-81c1-928d-f024f2a2484f",
+        "3c0e5275-7b5c-81de-9fb6-f2ec61468944"
+      ],
+      "Impacts": [],
       "Symbols": "λ wavelength associated with a particle · h Planck constant · p momentum",
       "Spectral Types": [],
       "Significance": "If light can act like particles, matter can act like waves — every moving thing has a wavelength. Electrons diffract like light does, which is why electron microscopes see atoms and why atoms have discrete orbitals at all.",
@@ -508648,6 +509647,7 @@
       "Requires": [
         "3c0e5275-7b5c-8163-90ac-c7ca1f4531ec"
       ],
+      "Impacts": [],
       "Symbols": "B magnetic field · J current density · E electric field · μ₀ permeability of free space · ε₀ permittivity of free space · t time",
       "Spectral Types": [],
       "Significance": "Currents make magnetic fields — and, Maxwell's crucial addition, so do changing electric fields. That extra term closes the loop: E and B can regenerate each other and race through empty space as light, at exactly c. Fourth of Maxwell's equations, completing the set with Gauss's two laws and Faraday's.",
@@ -508689,6 +509689,7 @@
       "Requires": [
         "3c0e5275-7b5c-8163-90ac-c7ca1f4531ec"
       ],
+      "Impacts": [],
       "Symbols": "E electric field · B magnetic field · ∇× curl (circulation around a point) · t time",
       "Spectral Types": [],
       "Significance": "A changing magnetic field stirs up a circulating electric field — the principle inside every generator, transformer, and induction cooktop. Third of Maxwell's four equations.",
@@ -508724,6 +509725,7 @@
       "Requires": [
         "3c0e5275-7b5c-817d-9d6f-f7324c248b09"
       ],
+      "Impacts": [],
       "Symbols": "B magnetic field · ∇· divergence (net outflow from a point)",
       "Spectral Types": [],
       "Significance": "Magnetic field lines never start or end — there are no magnetic monopoles. Cut a magnet in half and you get two magnets, never a lone north pole. Second of Maxwell's four equations.",
@@ -508770,6 +509772,7 @@
         "3bbe5275-7b5c-811b-8297-ce47b2c5d614",
         "3c0e5275-7b5c-811e-99c3-e3cea4de8e52"
       ],
+      "Impacts": [],
       "Symbols": "T orbital period · a semi-major axis of the orbit · G gravitational constant · M mass of the central body",
       "Spectral Types": [],
       "Significance": "Orbital period squared scales with orbit size cubed — the harmony that let Newton reverse-engineer the inverse-square law, and how we weigh stars, planets, and black holes today.",
@@ -508801,6 +509804,7 @@
       "Requires": [
         "3c0e5275-7b5c-818b-97c8-d52070d30162"
       ],
+      "Impacts": [],
       "Symbols": "A area swept by the Sun–planet line · t time · L orbital angular momentum · m planet mass",
       "Spectral Types": [],
       "Significance": "The line to the Sun sweeps equal areas in equal times: planets hurry through closest approach and dawdle far away. Conservation of angular momentum, decades before the concept had a name.",
@@ -508833,6 +509837,7 @@
       ],
       "Constants": [],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "r distance from the Sun · p semi-latus rectum (size of the orbit) · e eccentricity (0 circle, <1 ellipse) · θ angle from closest approach",
       "Spectral Types": [],
       "Significance": "Planets travel ellipses with the Sun at one focus — not the perfect circles two millennia of astronomy insisted on. Written as the polar equation of the orbit.",
@@ -508865,6 +509870,7 @@
       "Instruments": [],
       "Constants": [],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "p pressure · V volume · n moles · R gas constant · T absolute temperature · a attraction between molecules · b volume the molecules themselves occupy",
       "Spectral Types": [],
       "Significance": "The ideal gas law with reality patched in: molecules attract each other and take up space. Explains why real gases condense into liquids — which pV = nRT never could.",
@@ -508901,6 +509907,7 @@
       "Instruments": [],
       "Constants": [],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "r rate of effusion through a small opening · M molar mass · subscripts: the two gases compared",
       "Spectral Types": [],
       "Significance": "Light molecules escape faster, in inverse proportion to the square root of their mass — why helium balloons deflate overnight, and the principle behind uranium enrichment by diffusion.",
@@ -508934,6 +509941,7 @@
       "Instruments": [],
       "Constants": [],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "p total pressure of the mixture · p₁, p₂, … partial pressure each gas would exert alone",
       "Spectral Types": [],
       "Significance": "Gases in a mixture ignore each other: each contributes its own pressure independently. How divers compute oxygen dose and how the atmosphere's 21% oxygen is meant.",
@@ -508971,6 +509979,7 @@
         "3bde5275-7b5c-814f-b400-ee7fe6fe92d3"
       ],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "V volume · n amount of gas (moles) · subscripts: two samples · holds at constant temperature and pressure",
       "Spectral Types": [],
       "Significance": "Equal volumes of any gas hold equal numbers of molecules — the insight that made molecular formulas countable and gave the mole its meaning.",
@@ -509007,6 +510016,7 @@
       "Instruments": [],
       "Constants": [],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "p pressure · T absolute temperature · subscripts: two states · holds at constant volume and amount",
       "Spectral Types": [],
       "Significance": "In a rigid container, pressure tracks absolute temperature — why a sealed can builds pressure in a fire, and why tire pressure reads higher after the drive.",
@@ -509039,6 +510049,7 @@
       "Instruments": [],
       "Constants": [],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "V volume · T absolute temperature · subscripts: two states · holds at constant pressure and amount",
       "Spectral Types": [],
       "Significance": "Warm a gas and it swells in proportion to absolute temperature — hot-air balloons in one line, and an early signpost pointing at absolute zero.",
@@ -509077,6 +510088,7 @@
       "Instruments": [],
       "Constants": [],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "p pressure · V volume · subscripts: two states of the same gas · holds at constant temperature and amount",
       "Spectral Types": [],
       "Significance": "Squeeze a gas and its pressure rises in exact proportion — the oldest quantitative gas law, and the reason a syringe works.",
@@ -509128,6 +510140,7 @@
         "3bde5275-7b5c-8148-b8bc-c45aa881ee13"
       ],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "a scale factor of the universe · ȧ, ä its first and second time derivatives · H = ȧ/a Hubble parameter · G gravitational constant · ρ density · p pressure · k spatial curvature (−1, 0, +1) · Λ cosmological constant · c speed of light",
       "Spectral Types": [],
       "Significance": "Whether the expansion speeds up or slows down. Matter and pressure put on the brakes; the cosmological constant steps on the gas — exactly what the 1998 supernova surveys found the universe doing.",
@@ -509179,6 +510192,7 @@
         "3bde5275-7b5c-8113-abea-d0038e9513f0"
       ],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "a scale factor of the universe · ȧ, ä its first and second time derivatives · H = ȧ/a Hubble parameter · G gravitational constant · ρ density · p pressure · k spatial curvature (−1, 0, +1) · Λ cosmological constant · c speed of light",
       "Spectral Types": [],
       "Significance": "How fast the universe expands, given what it contains — Einstein's field equations applied to a uniform cosmos. The Hubble parameter, the critical density, and the fate of the universe all fall out of this one line.",
@@ -509215,6 +510229,7 @@
       "Requires": [
         "3c0e5275-7b5c-8152-b372-ca6ffe82ebd1"
       ],
+      "Impacts": [],
       "Symbols": "e Euler's number · i imaginary unit · π ratio of circumference to diameter",
       "Spectral Types": [],
       "Significance": "Five fundamental constants in one exact statement — routinely voted the most beautiful equation in mathematics.",
@@ -509253,6 +510268,7 @@
         "3c0e5275-7b5c-814c-bf1b-f26ae2aa38f6",
         "3c0e5275-7b5c-817d-9d6f-f7324c248b09"
       ],
+      "Impacts": [],
       "Symbols": "E electric field · ρ charge density · ε₀ permittivity of free space",
       "Spectral Types": [],
       "Significance": "Electric charge is the source of the electric field. One quarter of Maxwell's equations, and the reason field lines start and end on charges.",
@@ -509264,7 +510280,7 @@
     {
       "id": "3bbe5275-7b5c-8140-a1d4-f7bff1df0334",
       "url": "https://app.notion.com/p/Planck-Einstein-Relation-3bbe52757b5c8140a1d4f7bff1df0334",
-      "lastEdited": "2026-08-15T16:49:00.000Z",
+      "lastEdited": "2026-08-18T20:03:00.000Z",
       "Skills": [
         "3bee5275-7b5c-81ea-8ad8-ca2470b17c2c"
       ],
@@ -509299,7 +510315,10 @@
       "Constants": [
         "3bde5275-7b5c-816d-9a6d-f853cfef352d"
       ],
-      "Requires": [],
+      "Requires": [
+        "3c0e5275-7b5c-81de-9fb6-f2ec61468944"
+      ],
+      "Impacts": [],
       "Symbols": "E photon energy · h Planck constant · ν frequency of light",
       "Spectral Types": [],
       "Significance": "Light comes in packets whose energy scales with frequency — the crack in classical physics that opened into quantum theory.",
@@ -509346,6 +510365,7 @@
         "3bde5275-7b5c-818e-abff-ce5fb1f0518e"
       ],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "S entropy · k Boltzmann constant · W number of microscopic arrangements",
       "Spectral Types": [],
       "Significance": "Entropy counts the ways. The bridge between the microscopic world of atoms and the macroscopic arrow of time — carved on Boltzmann's gravestone.",
@@ -509399,6 +510419,7 @@
         "3bbe5275-7b5c-8186-884a-ed5996715fc4",
         "3bbe5275-7b5c-819d-afd0-d0876756a85c"
       ],
+      "Impacts": [],
       "Symbols": "p pressure · V volume · n amount of gas (moles) · R gas constant · T absolute temperature",
       "Spectral Types": [
         "2569ebb2-01ff-41c8-af88-54f50a983757"
@@ -509456,6 +510477,7 @@
       "Requires": [
         "3c0e5275-7b5c-8106-ba68-c7e036dd2cc4"
       ],
+      "Impacts": [],
       "Symbols": "G_μν spacetime curvature · Λ cosmological constant · g_μν metric · T_μν energy and momentum content",
       "Spectral Types": [],
       "Significance": "Matter tells spacetime how to curve; curved spacetime tells matter how to move. Black holes, gravitational waves, and the expanding universe live here.",
@@ -509501,6 +510523,7 @@
       "Requires": [
         "3c0e5275-7b5c-8107-b848-c04b61f7a12f"
       ],
+      "Impacts": [],
       "Symbols": "ψ wavefunction · ℏ reduced Planck constant · Ĥ Hamiltonian (total energy) operator · i imaginary unit",
       "Spectral Types": [],
       "Significance": "How quantum states evolve in time. Everything from chemistry's periodic trends to semiconductors falls out of solving it.",
@@ -509553,6 +510576,7 @@
         "3c0e5275-7b5c-8131-95e8-c78e021c5f36",
         "3c0e5275-7b5c-81e8-9036-d1ef2290ec4f"
       ],
+      "Impacts": [],
       "Symbols": "F gravitational force · G gravitational constant · m₁, m₂ the two masses · r distance between them",
       "Spectral Types": [],
       "Significance": "The same rule pulls an apple to the ground and holds the Moon in orbit — the first law to unify heaven and Earth.",
@@ -509601,11 +510625,15 @@
         "3c0e5275-7b5c-8107-b848-c04b61f7a12f",
         "3c0e5275-7b5c-81c1-928d-f024f2a2484f"
       ],
+      "Impacts": [],
       "Symbols": "F net force · m mass · a acceleration",
       "Spectral Types": [],
       "Significance": "The workhorse of classical mechanics: push something, and its motion changes in proportion. Rockets, bridges, and billiards all answer to it.",
       "Year": 1687,
-      "Required By": [],
+      "Required By": [
+        "3c0e5275-7b5c-812f-9604-d1e8723865d9",
+        "3bbe5275-7b5c-8197-8da5-de06c7641cc3"
+      ],
       "Elements": [],
       "Name": "Newton's Second Law"
     },
@@ -509645,6 +510673,7 @@
         "3bde5275-7b5c-81d6-a084-f77a4c868d4f"
       ],
       "Requires": [],
+      "Impacts": [],
       "Symbols": "E energy · m rest mass · c speed of light in vacuum",
       "Spectral Types": [
         "b2652565-709b-468a-a616-b84ae2120764"
