@@ -23,7 +23,7 @@ truth for code and the normalised data snapshots. Sync is one-way, Notion → re
 | `/impacts`   | What extraction costs, by mechanism — how each harm arises, what reduces it, where it is documented, and how many mines on the site it applies to |
 | `/timeline`  | The universe's history on a log axis of seconds — Planck epoch to heat death, cross-linked to the equations and theories |
 | `/theories`  | Theory shelf from Ptolemy to the holographic principle — status, proponents, and the equations each rests on; sortable chronologically |
-| `/equations` | Canonical equations with symbols decoded, filterable by field |
+| `/equations` | Equations, laws and definitions with symbols decoded, filterable by domain and field; each shows what it *requires* (with the full path down to the foundations) and what requires it; sortable by year or foundations-first |
 | `/constants` | CODATA constants with uncertainties, SI units, prefixes |
 
 ## Layout
@@ -80,7 +80,7 @@ scripts/seed_engineering.py   The engineering half: ~30 machines and ~22 hands-o
                               new DBs, plus the cycle equations (Carnot, Otto, Diesel, Brayton, COP,
                               Betz…) and ~30 inventors they link to. build.py draws each heat
                               engine's p–V cycle from the cycle name
-scripts/seed_glossary.py      Creates + seeds Glossary [DB] (~125 terms with domain, definition,
+scripts/seed_glossary.py      Creates + seeds Glossary [DB] (~185 terms with domain, definition,
                               aliases). "Appears in" links are computed by build.py, never stored
 scripts/seed_nobel.py         Adds a Nobel field to the Researchers DB and marks the laureates on
                               file; `--diff LIST` reports which names in a list are not researchers yet
@@ -93,7 +93,9 @@ scripts/seed_foundations.py   The mathematics the physics is written in, and the
                               DB, plus a Requires / Required By dual self-relation — a dependency
                               graph, distinct from the looser Related web — with ~100 edges, many
                               from existing equations back to their new prerequisites; and hooks
-                              from Machines and Skills to torque, power, friction and the rest
+                              from Machines and Skills to torque, power, friction and the rest.
+                              Also wires the cycle family (Carnot, Otto, Diesel, Brayton, COP…),
+                              which had no equation links at all. Re-runnable: unions, never resets
 scripts/seed_explainers.py    Creates + seeds Explainers [DB] (~40 people, channels and organisations
                               who explain the material — not the Researchers DB, which is who did the
                               work). The glossary terms each covers are computed by build.py from the

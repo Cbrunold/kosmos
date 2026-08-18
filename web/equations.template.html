@@ -112,7 +112,18 @@ __SHARED__
     padding: 4px 10px;
   }
   .lutnote { font-size: 11px; color: var(--muted); line-height: 1.5; }
+  .sortrow { display: flex; align-items: baseline; gap: 6px; margin: 0 0 12px; flex-wrap: wrap; }
+  .sortrow .slbl { font: 9.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-right: 2px; }
   .eq .rel { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px; margin-top: 2px; }
+  .eq .rel .more {
+    font: 10px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    border: 0; background: transparent; color: var(--muted); cursor: pointer; padding: 2px 4px; text-decoration: underline dotted;
+  }
+  .eq .rel .more:hover { color: var(--ink); }
+  .eq .path { display: none; flex-wrap: wrap; align-items: baseline; gap: 4px; padding: 6px 8px; border: 1px dashed var(--hairline); border-radius: 6px; }
+  .eq .path.on { display: flex; }
+  .eq .path .lvl { font: 9px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; width: 100%; margin-top: 3px; }
+  .eq .path .lvl:first-child { margin-top: 0; }
   .eq .rel .lbl { font: 9.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-right: 3px; }
   .rlink {
     font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
@@ -173,10 +184,11 @@ __SHARED__
 
 <nav class="knav"><a href="/">KOSMOS</a><span>/</span><span class="cur">Equations</span></nav>
 <h1 class="ktitle">Equations</h1>
-<p class="klede">The physical world, stated exactly. Each entry gives the statement, what every symbol means, why it matters — and which other equations it leans on. Follow the <em>related</em> links: the shelf is a web.</p>
+<p class="klede">The physical world, stated exactly. Each entry gives the statement, what every symbol means, why it matters — what it <em>requires</em> (the equations you need first, all the way down to the foundations), what requires it, and what it is <em>related</em> to. Sort <em>foundations first</em> to read the shelf bottom-up.</p>
 
 <div class="domains" id="domains"></div>
 <div class="fields" id="fields"></div>
+<div class="sortrow" id="sortrow" role="group" aria-label="Sort"><span class="slbl">sort</span></div>
 <p class="fcount" id="fcount"></p>
 <div class="eqs" id="eqs"></div>
 
@@ -276,6 +288,51 @@ __SHARED__
     .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
   const byId = Object.fromEntries(E.map((e) => [e.id, e]));
   for (const e of E) e.slug = slug(e.Name);
+
+  // ---- the Requires graph: everything an equation rests on, transitively, and how
+  // deep the chain goes. depth 0 = a foundation (requires nothing); depth n = the
+  // longest chain of requires beneath it. Cycles cannot occur by construction (the
+  // seed refuses them) but a visited set guards against one anyway.
+  for (const e of E) {
+    e.reqs = (e.Requires || []).map((id) => byId[id]).filter(Boolean);
+    e.reqBy = (e['Required By'] || []).map((id) => byId[id]).filter(Boolean);
+  }
+  const closureCache = new Map();
+  function closure(e, stack = new Set()) {
+    if (closureCache.has(e.id)) return closureCache.get(e.id);
+    if (stack.has(e.id)) return new Set();
+    stack.add(e.id);
+    const out = new Set();
+    for (const r of e.reqs) { out.add(r); for (const x of closure(r, stack)) out.add(x); }
+    stack.delete(e.id);
+    closureCache.set(e.id, out);
+    return out;
+  }
+  const depthCache = new Map();
+  function depth(e, stack = new Set()) {
+    if (depthCache.has(e.id)) return depthCache.get(e.id);
+    if (stack.has(e.id) || !e.reqs.length) return 0;
+    stack.add(e.id);
+    const d = 1 + Math.max(...e.reqs.map((r) => depth(r, stack)));
+    stack.delete(e.id);
+    depthCache.set(e.id, d);
+    return d;
+  }
+  for (const e of E) { e.closure = closure(e); e.depth = depth(e); }
+  const nFoundations = E.filter((e) => !e.reqs.length && e.reqBy.length).length;
+
+  let sortMode = 'year';           // 'year' | 'depth'
+  const SORTS = { year: 'by year', depth: 'foundations first' };
+  const sortRow = document.getElementById('sortrow');
+  for (const [k, label] of Object.entries(SORTS)) {
+    const b = document.createElement('button');
+    b.className = 'fchip'; b.dataset.sort = k; b.textContent = label;
+    b.addEventListener('click', () => { sortMode = k; sync(); });
+    sortRow.appendChild(b);
+  }
+  const ordered = () => sortMode === 'depth'
+    ? [...E].sort((a, b) => a.depth - b.depth || (a.Year ?? 9999) - (b.Year ?? 9999))
+    : E;
 
   // ---- filters: six physical domains, fields collapsed underneath ----
   const DOMAINS = [
@@ -389,6 +446,7 @@ __SHARED__
       b.setAttribute('aria-expanded', String(b.dataset.domain === openDomain));
     }
     drawFields();
+    for (const b of sortRow.querySelectorAll('.fchip')) b.setAttribute('aria-pressed', String(b.dataset.sort === sortMode));
     render();
   }
 
@@ -404,7 +462,7 @@ __SHARED__
   function render() {
     eqs.innerHTML = '';
     let shown = 0;
-    for (const e of E) {
+    for (const e of ordered()) {
       if (!inFilter(e)) continue;
       shown++;
       const c = document.createElement('article');
@@ -424,32 +482,58 @@ __SHARED__
       const bits = [];
       if (e['Named After']) bits.push(e['Named After']);
       if (e.Year) bits.push(e.Year < 0 ? `c. ${-e.Year} BCE` : String(e.Year));
+      if (e.reqs.length) bits.push(`rests on ${e.closure.size} equation${e.closure.size === 1 ? '' : 's'}, ${e.depth} deep`);
+      else if (e.reqBy.length) bits.push('a foundation — requires nothing');
       if (bits.length) { const m = document.createElement('div'); m.className = 'meta'; m.textContent = bits.join(' · '); c.appendChild(m); }
       // three equation-to-equation rows: what it leans on (Requires), what leans on it
       // (Required By, the synced half of the same relation), and the looser Related web
-      const eqRow = (ids, label) => {
-        const rel = (ids || []).map((id) => byId[id]).filter(Boolean)
-          .sort((a, b) => (a.Year ?? 9999) - (b.Year ?? 9999));
-        if (!rel.length) return;
+      const chip = (r) => {
+        const a = document.createElement('a');
+        a.className = 'rlink';
+        a.href = '#' + r.slug;
+        a.textContent = r.Name;
+        a.title = `${r.Field}${r.Year ? ' · ' + (r.Year < 0 ? 'c. ' + (-r.Year) + ' BCE' : r.Year) : ''}`;
+        a.style.setProperty('--rc', COLORS[r.Field] || 'var(--muted)');
+        a.addEventListener('click', (ev) => { ev.preventDefault(); goTo(r.slug); });
+        return a;
+      };
+      const eqRow = (list, label) => {
+        const rel = [...list].sort((a, b) => (a.Year ?? 9999) - (b.Year ?? 9999));
+        if (!rel.length) return null;
         const row = document.createElement('div');
         row.className = 'rel';
         const lbl = document.createElement('span'); lbl.className = 'lbl'; lbl.textContent = label;
         row.appendChild(lbl);
-        for (const r of rel) {
-          const a = document.createElement('a');
-          a.className = 'rlink';
-          a.href = '#' + r.slug;
-          a.textContent = r.Name;
-          a.title = `${r.Field}${r.Year ? ' · ' + (r.Year < 0 ? 'c. ' + (-r.Year) + ' BCE' : r.Year) : ''}`;
-          a.style.setProperty('--rc', COLORS[r.Field] || 'var(--muted)');
-          a.addEventListener('click', (ev) => { ev.preventDefault(); goTo(r.slug); });
-          row.appendChild(a);
-        }
+        for (const r of rel) row.appendChild(chip(r));
         c.appendChild(row);
+        return row;
       };
-      eqRow(e.Requires, 'requires');
-      eqRow(e['Required By'], 'required by');
-      eqRow(e.Related, 'related');
+      const reqRow = eqRow(e.reqs, 'requires');
+      if (reqRow && e.closure.size > e.reqs.length) {
+        // the full path down: every prerequisite, transitively, foundations first
+        const more = document.createElement('button');
+        more.className = 'more'; more.type = 'button';
+        more.textContent = `all ${e.closure.size} first ▸`;
+        more.setAttribute('aria-expanded', 'false');
+        reqRow.appendChild(more);
+        const path = document.createElement('div'); path.className = 'path';
+        const byDepth = new Map();
+        for (const r of e.closure) { if (!byDepth.has(r.depth)) byDepth.set(r.depth, []); byDepth.get(r.depth).push(r); }
+        for (const d of [...byDepth.keys()].sort((a, b) => a - b)) {
+          const lv = document.createElement('div'); lv.className = 'lvl';
+          lv.textContent = d === 0 ? 'foundations' : `then · ${d} deep`;
+          path.appendChild(lv);
+          for (const r of byDepth.get(d).sort((a, b) => (a.Year ?? 9999) - (b.Year ?? 9999))) path.appendChild(chip(r));
+        }
+        more.addEventListener('click', () => {
+          const on = path.classList.toggle('on');
+          more.setAttribute('aria-expanded', String(on));
+          more.textContent = on ? `all ${e.closure.size} first ▾` : `all ${e.closure.size} first ▸`;
+        });
+        c.appendChild(path);
+      }
+      eqRow(e.reqBy, 'required by');
+      eqRow((e.Related || []).map((id) => byId[id]).filter(Boolean), 'related');
       const els = (e.Elements || []).map((id) => EL[id]).filter(Boolean).sort((a, b) => a.z - b.z);
       if (els.length) {
         const row = document.createElement('div');
@@ -510,7 +594,7 @@ __SHARED__
     const fc = document.getElementById('fcount');
     fc.textContent = (activeField || activeDomain)
       ? `${shown} of ${E.length} equations — ${activeField || activeDomain}`
-      : `${E.length} equations across ${present.length} fields, ${DOMAINS.length} domains · 530 BCE to 1995`;
+      : `${E.length} equations across ${present.length} fields, ${DOMAINS.length} domains · ${nFoundations} foundations · 530 BCE to 1995`;
   }
   sync();
 

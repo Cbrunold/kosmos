@@ -224,6 +224,33 @@ TERMS = [
     ("Milling", "Workshop", "Cutting with a rotating multi-toothed tool while the work moves past it — the operation that makes flat faces, slots and pockets, as turning makes round ones.", ""),
     ("Shock wave", "Mechanics", "A pressure front travelling faster than the medium's own speed of sound, across which pressure, density and temperature jump almost discontinuously. Supersonic flight, explosions and supernova remnants all drive one.", "shockwave"),
     ("Control system", "Machines", "A loop that measures what a machine is actually doing, compares it with what was asked, and corrects the difference. Feedback is what makes it hold steady — or, badly tuned, what makes it hunt and oscillate.", "feedback loop"),
+    # ---- the vocabulary seed_foundations introduced: vectors, calculus and the
+    # mechanics of work, energy and rotation. Every one already appears in the
+    # equations, machines or skills prose and traced to nothing. Two names are
+    # qualified on purpose — "Mechanical work" and "Mechanical power" — because
+    # bare "work" and "power" would trace "how it works" and "rocket-powered"
+    # (117 and 63 hits, mostly noise); the aliases carry the physics senses.
+    ("Vector", "Mathematics", "A quantity with a direction as well as a size — velocity, force, a field — written as components along axes. Add them tip to tail; multiply them two ways, dot and cross. A scalar is what it is not.", ""),
+    ("Scalar", "Mathematics", "A quantity that is just a number, with no direction: mass, temperature, energy, pressure. A scalar field gives one at every point in space; its gradient is a vector.", ""),
+    ("Dot product", "Mathematics", "The product of two vectors that gives a number: their lengths times the cosine of the angle between them — how much of one lies along the other. Zero for perpendicular vectors. Work is force dot displacement.", "scalar product"),
+    ("Cross product", "Mathematics", "The product of two vectors that gives a third, at right angles to both, with the parallelogram's area as its length. Torque, angular momentum and the magnetic force are all cross products.", "vector product"),
+    ("Radian", "Mathematics", "The natural measure of angle: arc length divided by radius, so a full turn is 2π and a straight angle π. Not a unit but a ratio, which is why sin θ ≈ θ needs no conversion factor.", ""),
+    ("Solid angle", "Mathematics", "How much of the view something fills, as the area it cuts from a sphere over the radius squared, in steradians; the whole sky is 4π. Every inverse-square law is a statement about solid angle.", "steradian"),
+    ("Gradient", "Mathematics", "Of a scalar field, the vector that points where it rises fastest, with the slope as its length. Heat flows down the temperature gradient; a conservative force is minus the gradient of its potential.", ""),
+    ("Divergence", "Mathematics", "Of a vector field, the net outflow per unit volume at a point — a source if positive, a sink if negative. Integrated over a volume it equals the flux through the boundary, which is Gauss's theorem and Gauss's law.", ""),
+    ("Curl", "Mathematics", "Of a vector field, how much it circulates about a point, as a vector along the axis of rotation. Its flux through a surface equals the circulation round the edge — Stokes' theorem — which is how a changing magnetic field drives a current round a loop.", ""),
+    ("Curvature", "Mathematics", "How sharply a curve or surface bends: one over the radius of the circle that best fits it there. Straight lines have none. In general relativity it is what gravity is — matter tells spacetime how to curve.", "curved, curve"),
+    ("Tensor", "Mathematics", "A vector's bigger relative: an array that turns one vector into another by a single multiplication and keeps its meaning under any rotation of the axes. Stress is one; so is the metric of spacetime.", ""),
+    ("Mechanical work", "Mechanics", "Force times the distance moved along it, in joules — only the component of force along the motion counts, so carrying a load on the level does none. It is what a heat engine delivers and what a pulley system conserves.", "work done, work–energy"),
+    ("Kinetic energy", "Mechanics", "The energy of motion, ½mv² — quadratic in speed, so doubling the speed quadruples it. What the wind hands a turbine, what a crumple zone must absorb, what a bullet carries.", ""),
+    ("Potential energy", "Mechanics", "Energy stored by position or configuration and recoverable as motion: a raised weight, a stretched spring, water behind a dam, a satellite in a high orbit. Kinetic and potential trade back and forth; without friction their sum is fixed.", ""),
+    ("Mechanical power", "Mechanics", "The rate of doing work, in watts — force times velocity, or torque times angular speed. An engine's power, not its force, sets how fast it can climb a hill; a turbine is sold by this number.", "power output, watts, kilowatts, megawatts, gigawatts, horsepower"),
+    ("Torque", "Mechanics", "The turning effect of a force: force times lever arm, at right angles — a longer wrench or a push square to the handle gives more. What a motor delivers to its shaft and a nut is tightened to.", "torques"),
+    ("Angular momentum", "Mechanics", "What a spinning or orbiting body keeps unless a torque acts on it: moment of inertia times angular velocity, or r × p. Why a gyroscope holds, a skater spins up, and a planet sweeps equal areas in equal times.", ""),
+    ("Moment of inertia", "Mechanics", "The rotational counterpart of mass — how hard a body is to spin up — set by how far from the axis its mass sits, squared. A flywheel puts its mass at the rim for exactly this reason.", ""),
+    ("Centripetal acceleration", "Mechanics", "The inward acceleration of anything moving on a curve, v²/r, needed just to keep turning at constant speed. Supplied by gravity for an orbit, by the road for a car, by the tension in a string. \"Centrifugal\" is the same thing seen from the turning frame.", "centripetal, centrifugal"),
+    ("Simple harmonic motion", "Mechanics", "The sinusoidal motion of anything pulled back toward equilibrium in proportion to how far it has strayed — a mass on a spring, a pendulum at small angles, an atom in a lattice. Its period does not depend on the amplitude, which is what makes clocks possible.", "SHM, harmonic oscillator, simple harmonic"),
+    ("Flywheel", "Machines", "A heavy wheel on a shaft that stores rotational energy and smooths a jerky drive: a piston engine fires in pulses and the flywheel carries it between them. Mass at the rim, where the moment of inertia counts most.", "flywheels"),
 ]
 
 

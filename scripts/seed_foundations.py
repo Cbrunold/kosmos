@@ -253,6 +253,21 @@ REQUIRES = {
     "Einstein Field Equations": ["Curvature"],
     "Euler–Lagrange Equation": ["Derivative", "Fundamental Theorem of Calculus"],
     "Schrödinger Equation": ["Derivative"],
+    # the engineering half's equations arrived (seed_engineering) after link_equations
+    # last ran, so the whole cycle family had no equation links at all — wired here
+    "First Law of Thermodynamics": ["Work"],
+    "Ideal Gas Law": ["Boyle's Law", "Charles's Law", "Avogadro's Law"],
+    "Thermal Efficiency": ["First Law of Thermodynamics"],
+    "Carnot Efficiency": ["Second Law of Thermodynamics", "Thermal Efficiency"],
+    "Coefficient of Performance": ["Carnot Efficiency", "First Law of Thermodynamics"],
+    "Adiabatic Relation": ["Ideal Gas Law", "First Law of Thermodynamics"],
+    "Otto Cycle Efficiency": ["Adiabatic Relation", "Thermal Efficiency"],
+    "Diesel Cycle Efficiency": ["Adiabatic Relation", "Thermal Efficiency"],
+    "Brayton Cycle Efficiency": ["Adiabatic Relation", "Thermal Efficiency"],
+    "Transformer Equation": ["Faraday's Law of Induction"],
+    "Joule Heating": ["Ohm's Law", "Power"],
+    "Hubble's Law": ["Cosmological Redshift"],
+    "Schwarzschild Radius": ["Escape Velocity"],
 }
 
 # ------------------------------------------------------------------ hooks into the engineering half
