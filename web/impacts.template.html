@@ -44,6 +44,7 @@ __SHARED__
   .tms { display: flex; flex-wrap: wrap; gap: 4px 5px; margin-top: 9px; align-items: baseline; }
   .tms a { font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; border: 1px solid var(--hairline); border-left: 3px solid var(--c-slate); color: var(--ink-2); border-radius: 4px; padding: 1px 6px 1px 5px; text-decoration: none; white-space: nowrap; }
   .tms a:hover { color: var(--ink); border-color: var(--ink-2); }
+  .tms.eqs a { border-left-color: var(--c-amber); }
   .empty { font-size: 13px; color: var(--muted); padding: 18px 0; }
 </style>
 
@@ -108,6 +109,13 @@ __SHARED__
       for (const g of x.terms) { const a = document.createElement('a'); a.href = '/glossary#' + g.slug; a.textContent = g.term; t.appendChild(a); }
       c.appendChild(t);
     }
+    if ((x.equations || []).length) {   // the physics each mechanism runs on, from the Equations relation
+      const t = document.createElement('div'); t.className = 'tms eqs';
+      const l = document.createElement('span'); l.className = 'lbl'; l.style.margin = '0 4px 0 0'; l.style.display = 'inline'; l.textContent = 'physics';
+      t.appendChild(l);
+      for (const e of x.equations) { const a = document.createElement('a'); a.href = '/equations#' + e.slug; a.textContent = e.name; a.title = `${e.name}${e.field ? ' · ' + e.field : ''} · open on the equations page`; t.appendChild(a); }
+      c.appendChild(t);
+    }
     list.appendChild(c); cards.set(x.slug, c);
   }
 
@@ -115,7 +123,7 @@ __SHARED__
     const needle = fold(q.value.trim());
     let shown = 0;
     for (const x of I) {
-      const hay = [x.name, x.mechanism, x.mitigation, x.case].map(fold).join(' ');
+      const hay = [x.name, x.mechanism, x.mitigation, x.case, ...(x.equations || []).map((e) => e.name)].map(fold).join(' ');
       const on = (!catOn.size || catOn.has(x.category)) && (!tsOn.size || tsOn.has(x.timescale))
         && (!needle || hay.includes(needle) || x.where.some((w) => fold(w.name).includes(needle))
             || x.terms.some((t) => fold(t.term).includes(needle)));

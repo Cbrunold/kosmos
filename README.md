@@ -20,7 +20,7 @@ truth for code and the normalised data snapshots. Sync is one-way, Notion → re
 | `/skills`    | Hands-on techniques with the science behind them — tools, steps, safety, how it fails, how you know it worked; linked to elements, equations and machines |
 | `/glossary`  | The terms the site uses, defined once and traced at build time to every page whose text uses them |
 | `/explainers`| The people, channels and organisations that explain this material — with the glossary terms each covers, computed from the same matcher |
-| `/impacts`   | What extraction costs, by mechanism — how each harm arises, what reduces it, where it is documented, and how many mines on the site it applies to |
+| `/impacts`   | What extraction costs, by mechanism — how each harm arises, what reduces it, where it is documented, how many mines on the site it applies to, and the physics it runs on (Darcy, Stokes, hydrostatics) |
 | `/timeline`  | The universe's history on a log axis of seconds — Planck epoch to heat death, cross-linked to the equations and theories |
 | `/theories`  | Theory shelf from Ptolemy to the holographic principle — status, proponents, and the equations each rests on; sortable chronologically |
 | `/equations` | Equations, laws and definitions with symbols decoded, filterable by domain and field; each shows what it *requires* (with the full path down to the foundations) and what requires it; sortable by year or foundations-first |
@@ -80,7 +80,7 @@ scripts/seed_engineering.py   The engineering half: ~30 machines and ~22 hands-o
                               new DBs, plus the cycle equations (Carnot, Otto, Diesel, Brayton, COP,
                               Betz…) and ~30 inventors they link to. build.py draws each heat
                               engine's p–V cycle from the cycle name
-scripts/seed_glossary.py      Creates + seeds Glossary [DB] (~185 terms with domain, definition,
+scripts/seed_glossary.py      Creates + seeds Glossary [DB] (~195 terms with domain, definition,
                               aliases). "Appears in" links are computed by build.py, never stored
 scripts/seed_nobel.py         Adds a Nobel field to the Researchers DB and marks the laureates on
                               file; `--diff LIST` reports which names in a list are not researchers yet
@@ -96,6 +96,14 @@ scripts/seed_foundations.py   The mathematics the physics is written in, and the
                               from Machines and Skills to torque, power, friction and the rest.
                               Also wires the cycle family (Carnot, Otto, Diesel, Brayton, COP…),
                               which had no equation links at all. Re-runnable: unions, never resets
+scripts/seed_fluids_waves.py  Fluids (12: hydrostatics, Pascal, Archimedes, viscosity, Reynolds,
+                              Poiseuille, Stokes, Darcy, drag, Torricelli, hydraulic power, capillary
+                              rise) and waves (7: v = fλ, standing waves, refractive index, thin lens,
+                              inverse-square, Rayleigh criterion, decibel), with Requires edges into
+                              the foundations and back from Navier–Stokes, Doppler, redshift and the
+                              rest. Hooks: hydro turbines, soldering/brazing/casting, every telescope,
+                              and a new Impacts ↔ Equations dual relation (Darcy on drainage, Stokes
+                              on tailings) that /impacts and /equations both render
 scripts/seed_explainers.py    Creates + seeds Explainers [DB] (~40 people, channels and organisations
                               who explain the material — not the Researchers DB, which is who did the
                               work). The glossary terms each covers are computed by build.py from the

@@ -199,6 +199,7 @@ __SHARED__
 <script id="mindata" type="application/json">__MINERALS__</script>
 <script id="cosdata" type="application/json">__COSMOS__</script>
 <script id="tabdata" type="application/json">__TABLES__</script>
+<script id="impdata" type="application/json">__IMPACTS__</script>
 <script>
   const E = JSON.parse(document.getElementById('data').textContent);
   const TABLES = JSON.parse(document.getElementById('tabdata').textContent);
@@ -260,6 +261,7 @@ __SHARED__
   const EL = JSON.parse(document.getElementById('eldata').textContent);
   const MIN = JSON.parse(document.getElementById('mindata').textContent);
   const COS = JSON.parse(document.getElementById('cosdata').textContent);
+  const IMP = JSON.parse(document.getElementById('impdata').textContent);
   const KIND_ORDER = { object: 0, spectral: 1, instrument: 2, theory: 3 };
   const KIND_LABEL = { object: 'object', spectral: 'stars', instrument: 'instrument', theory: 'theory' };
   const COLORS = {
@@ -585,6 +587,23 @@ __SHARED__
           a.innerHTML = '<span class="k"></span><span class="n"></span>';
           a.querySelector('.k').textContent = KIND_LABEL[x.kind] || x.kind;
           a.querySelector('.n').textContent = x.name.replace(/ \(.*\)$/, '').replace(/-type Stars$/, '');
+          row.appendChild(a);
+        }
+        c.appendChild(row);
+      }
+      const imps = (e.Impacts || []).map((id) => IMP[id]).filter(Boolean).sort((a, b) => a.name.localeCompare(b.name));
+      if (imps.length) {   // mining impacts this equation governs — Darcy on drainage, Stokes on tailings
+        const row = document.createElement('div');
+        row.className = 'rel';
+        const lbl = document.createElement('span'); lbl.className = 'lbl'; lbl.textContent = 'impacts';
+        row.appendChild(lbl);
+        for (const x of imps) {
+          const a = document.createElement('a');
+          a.className = 'rlink';
+          a.href = '/impacts#' + x.slug;
+          a.textContent = x.name;
+          a.title = `${x.name} · open on the mining impacts page`;
+          a.style.setProperty('--rc', 'var(--c-cyan)');
           row.appendChild(a);
         }
         c.appendChild(row);

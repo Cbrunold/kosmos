@@ -36,7 +36,7 @@ TITLE = "Glossary [DB]"
 
 DOMAINS = ["Mechanics", "Thermodynamics", "Electromagnetism", "Quantum", "Relativity", "Cosmology", "Astronomy",
            "Nuclear & Particle", "Chemistry", "Mineralogy", "Mining & Metallurgy", "Machines",
-           "Workshop", "Mathematics", "Measurement"]
+           "Workshop", "Mathematics", "Measurement", "Waves & Fluids"]
 
 # term, domain, definition, aliases (comma-separated, for tracing)
 TERMS = [
@@ -251,6 +251,18 @@ TERMS = [
     ("Centripetal acceleration", "Mechanics", "The inward acceleration of anything moving on a curve, v²/r, needed just to keep turning at constant speed. Supplied by gravity for an orbit, by the road for a car, by the tension in a string. \"Centrifugal\" is the same thing seen from the turning frame.", "centripetal, centrifugal"),
     ("Simple harmonic motion", "Mechanics", "The sinusoidal motion of anything pulled back toward equilibrium in proportion to how far it has strayed — a mass on a spring, a pendulum at small angles, an atom in a lattice. Its period does not depend on the amplitude, which is what makes clocks possible.", "SHM, harmonic oscillator, simple harmonic"),
     ("Flywheel", "Machines", "A heavy wheel on a shaft that stores rotational energy and smooths a jerky drive: a piston engine fires in pulses and the flywheel carries it between them. Mass at the rim, where the moment of inertia counts most.", "flywheels"),
+    # ---- fluids and waves, with seed_fluids_waves. A new domain: these are neither
+    # the mechanics of particles nor electromagnetism, and the wave words serve
+    # sound, light and water alike.
+    ("Buoyancy", "Waves & Fluids", "The upward push a fluid gives anything in it, equal to the weight of fluid displaced. Why a mineral weighs less in water than in air — and by exactly its own volume of water, which is how specific gravity is measured.", "buoyant"),
+    ("Viscosity", "Waves & Fluids", "A fluid's resistance to flowing — the drag between its own layers sliding past each other. Water's is low, honey's high, and it is what makes fine particles settle slowly and pipes lose pressure.", "viscous"),
+    ("Turbulence", "Waves & Fluids", "Flow that has broken into eddies and no longer moves in orderly layers; the alternative is laminar. The Reynolds number says which you get, and turbulence is what mixes, drags and roars.", "turbulent, laminar"),
+    ("Hydraulic head", "Waves & Fluids", "The height of a column of water that would produce a given pressure — the energy of water per unit weight, in metres. Groundwater flows down the head gradient; a dam's power is head times flow.", "head gradient, metres of head"),
+    ("Terminal velocity", "Waves & Fluids", "The steady speed a falling body reaches when drag equals its weight. For a fine particle in water it goes as the radius squared, which is why silt settles in hours and clay in months.", ""),
+    ("Wavelength", "Waves & Fluids", "The distance between one crest of a wave and the next. Times the frequency it gives the wave speed; for light it is what colour means, for sound, pitch.", ""),
+    ("Frequency", "Waves & Fluids", "How many cycles pass a point per second, in hertz. Middle A is 440; visible light is around 5 × 10¹⁴; the energy of a photon is this times Planck's constant.", "hertz, Hz"),
+    ("Standing wave", "Waves & Fluids", "A wave trapped between two boundaries so that only whole numbers of half-wavelengths fit — the fundamental and its harmonics. Strings, pipes, laser cavities and, in a sense, electrons in atoms.", "harmonics, harmonic, resonant frequency"),
+    ("Refraction", "Waves & Fluids", "The bending of a wave where its speed changes — light entering glass, sound crossing warm air, a sea swell reaching the shallows. Snell's law gives the angle; the refractive index gives the speed.", "refract, refracts, refractive index"),
 ]
 
 

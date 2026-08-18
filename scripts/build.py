@@ -708,7 +708,7 @@ def build_glossary_page():
                     "definition": t.get("Definition"), "aliases": names[1:], "appears": appears,
                     "n": sum(a["n"] for a in appears)})
     out.sort(key=lambda x: x["term"].lower())
-    domains = [d for d in ["Mechanics", "Thermodynamics", "Electromagnetism", "Quantum", "Relativity", "Cosmology", "Astronomy",
+    domains = [d for d in ["Mechanics", "Waves & Fluids", "Thermodynamics", "Electromagnetism", "Quantum", "Relativity", "Cosmology", "Astronomy",
                            "Nuclear & Particle", "Chemistry", "Mineralogy", "Mining & Metallurgy", "Machines",
                            "Workshop", "Mathematics", "Measurement"] if any(x["domain"] == d for x in out)]
     write_page("glossary.template.html", "glossary.html", {"terms": out, "domains": domains})
@@ -780,6 +780,7 @@ def build_impacts_page():
             by_type["Open pit"] += 1
             by_type["Underground"] += 1
     matchers = glossary_matchers()
+    eq_lk = eq_lookup_all()
     out, total_terms = [], 0
     for i in rows:
         prose = " ".join(filter(None, [i.get("Mechanism"), i.get("Mitigation"), i.get("Case")]))
@@ -793,7 +794,9 @@ def build_impacts_page():
         out.append({"name": i["Name"], "slug": slugify(i["Name"]), "category": i.get("Category"),
                     "timescale": i.get("Timescale"), "where": where,
                     "mechanism": i.get("Mechanism"), "mitigation": i.get("Mitigation"),
-                    "case": i.get("Case"), "terms": terms})
+                    "case": i.get("Case"), "terms": terms,
+                    # the Equations relation (seed_fluids_waves): Darcy on drainage, Stokes on tailings…
+                    "equations": [eq_lk[x] for x in (i.get("Equations") or []) if x in eq_lk]})
     out.sort(key=lambda x: x["name"].lower())
     CAT_ORDER = ["Water", "Air", "Land", "Health", "Ground", "Energy"]
     cats = [c for c in CAT_ORDER if any(x["category"] == c for x in out)]
@@ -1099,7 +1102,9 @@ if __name__ == "__main__":
                [{k: v for k, v in e.items() if k not in ("url", "lastEdited")}
                 for e in notion.get("equations", [])],
                extra={"__ELEMENTS__": compact(el_lookup), "__MINERALS__": compact(min_lookup),
-                      "__COSMOS__": compact(cosmos_lookup), "__TABLES__": compact(equation_tables())})
+                      "__COSMOS__": compact(cosmos_lookup), "__TABLES__": compact(equation_tables()),
+                      "__IMPACTS__": compact({i["id"]: {"name": i["Name"], "slug": slugify(i["Name"])}
+                                              for i in notion.get("impacts", []) if i.get("Name")})})
     n_timeline, tl_decades = build_timeline_page()
     n_mines, n_mined = build_mines_page()
     n_mach, n_diag = build_machines_page()
