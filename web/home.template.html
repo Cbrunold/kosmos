@@ -13,17 +13,29 @@ __SHARED__
   .wordmark .o { color: var(--heat); }
   .tagline { font-size: 14px; color: var(--ink-2); margin: 8px 0 0; max-width: 56ch; line-height: 1.55; }
 
+  /* ---- sections: four groups, one hue each; the dot on every tile is its group's ---- */
+  .sections { max-width: 1100px; display: flex; flex-direction: column; gap: 30px; }
+  .group { --g: var(--muted); }
+  .ghead {
+    display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap;
+    margin: 0 0 10px; padding-bottom: 6px;
+    border-bottom: 1px solid var(--hairline);
+    font: 700 12px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink);
+  }
+  .ghead .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--g); flex: none; align-self: center; }
+  .ghead .gsub { font: 12px system-ui, sans-serif; letter-spacing: 0; text-transform: none; color: var(--muted); }
   .tiles {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
     gap: 14px;
-    max-width: 1100px;
   }
+  .group.two .tiles { grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); }
   .tile {
     background: var(--panel);
     border: 1px solid var(--hairline);
     border-radius: 12px;
-    padding: 20px 20px 16px;
+    padding: 18px 18px 14px;
     text-decoration: none;
     color: var(--ink);
     display: flex;
@@ -32,17 +44,17 @@ __SHARED__
     min-height: 150px;
     transition: transform 0.12s ease, border-color 0.12s ease;
   }
-  .tile:hover { transform: translateY(-2px); border-color: var(--ink-2); }
-  .tile h2 {
+  .tile:hover { transform: translateY(-2px); border-color: var(--g); }
+  .tile h3 {
     font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
-    font-size: 17px;
+    font-size: 16px;
     font-weight: 700;
     margin: 0;
     display: flex;
     align-items: center;
     gap: 9px;
   }
-  .tile h2 .dot { width: 9px; height: 9px; border-radius: 50%; flex: none; }
+  .tile h3 .dot { width: 9px; height: 9px; border-radius: 50%; flex: none; background: var(--g); }
   .tile p { font-size: 12.5px; color: var(--ink-2); margin: 0; line-height: 1.5; flex: 1; }
   .tile .stat {
     font: 11.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
@@ -50,6 +62,11 @@ __SHARED__
     color: var(--muted);
   }
   .tile .stat b { color: var(--ink); font-weight: 600; }
+  /* the reference row is lookup tools, not destinations: denser */
+  .group.ref .tile { min-height: 0; padding: 14px 16px 12px; gap: 6px; }
+  .group.ref .tile h3 { font-size: 14.5px; }
+  .group.ref .tile p { font-size: 12px; }
+  .group.ref .tile .stat { font-size: 11px; }
   .tile.soon { border-style: dashed; opacity: 0.75; cursor: default; }
   .tile.soon:hover { transform: none; border-color: var(--hairline); }
   @media (prefers-reduced-motion: reduce) { .tile { transition: none; } }
@@ -117,77 +134,102 @@ __SHARED__
   </div>
 </header>
 
-<nav class="tiles" aria-label="Sections">
-  <a class="tile" href="/elements">
-    <h2><span class="dot" style="background:var(--c-blue)"></span>Periodic Table</h2>
-    <p>All 118 elements with nine color lenses, a temperature slider, a discovery time machine — and an AI analyzer that breaks any photographed object into its elements.</p>
-    <span class="stat"><b>118</b> elements · <b>__N_GAPS__</b> with data gaps · photo analyzer live</span>
-  </a>
-  <a class="tile" href="/minerals">
-    <h2><span class="dot" style="background:var(--c-teal)"></span>Minerals &amp; Gemstones</h2>
-    <p>A searchable mineralogy collection — hardness, density, and elemental makeup — plus the gemstone shelf, crystal systems, and the three rock families.</p>
-    <span class="stat"><b>__N_MINERALS__</b> minerals · <b>__N_GEMS__</b> gemstones · <b>7</b> crystal systems</span>
-  </a>
-  <a class="tile" href="/cosmos">
-    <h2><span class="dot" style="background:var(--c-violet)"></span>Cosmic Exploration</h2>
-    <p>A field guide to everything the sky contains: object classes from nebulae to gravitational-wave sources, the stellar spectral sequence, and the instruments that watch it all.</p>
-    <span class="stat"><b>__N_CLASSES__</b> object classes · <b>__N_OBS__</b> observatories · <b>__N_DISC__</b> discoveries</span>
-  </a>
-  <a class="tile" href="/forces">
-    <h2><span class="dot" style="background:var(--c-red)"></span>Forces</h2>
-    <p>The four fundamental interactions — what each one does, how far it reaches, and how they compare in strength.</p>
-    <span class="stat"><b>4</b> fundamental forces</span>
-  </a>
-  <a class="tile" href="/theories">
-    <h2><span class="dot" style="background:var(--c-pink)"></span>Theories</h2>
-    <p>Ideas about how it all fits together — from Ptolemy's spheres to the holographic principle — each tracked with its standing, the people behind it, and the mathematics it rests on.</p>
-    <span class="stat"><b>__N_THEORIES__</b> theories · <b>__N_ACCEPTED__</b> accepted · __TH_SPAN__</span>
-  </a>
-  <a class="tile" href="/timeline">
-    <h2><span class="dot" style="background:var(--c-bronze)"></span>Timeline of the Universe</h2>
-    <p>The whole history, on a log axis of seconds — Planck epoch, inflation, recombination, the first stars, and the long cold stretch after the last black hole evaporates.</p>
-    <span class="stat"><b>__N_TIMELINE__</b> events · <b>__TL_DECADES__</b> orders of magnitude</span>
-  </a>
-  <a class="tile" href="/mines">
-    <h2><span class="dot" style="background:var(--c-bronze)"></span>Mines &amp; Extraction</h2>
-    <p>Where the raw materials come out of the ground — a world map of the flagship mines — and how each one is won: ore minerals, typical grade, how far geology had to enrich it, and the ore-to-metal chain.</p>
-    <span class="stat"><b>__N_MINES__</b> mines · <b>__N_MINED__</b> materials with an extraction story</span>
-  </a>
-  <a class="tile" href="/impacts">
-    <h2><span class="dot" style="background:var(--c-cyan)"></span>Mining Impacts</h2>
-    <p>And what it costs. Acid drainage that outlasts the company, tailings held behind dams, arsenic freed from rock that had held it — by mechanism, with what reduces each and where it has been documented.</p>
-    <span class="stat"><b>__N_IMPACTS__</b> mechanisms · <b>__N_IMPTERMS__</b> glossary terms defined</span>
-  </a>
-  <a class="tile" href="/machines">
-    <h2><span class="dot" style="background:var(--c-amber)"></span>Machines</h2>
-    <p>The engines and machines that turn heat, motion and chemistry into work — how each one does it, its cycle drawn on a p–V diagram, what it keeps of the energy, and what it is built from.</p>
-    <span class="stat"><b>__N_MACHINES__</b> machines · <b>__N_DIAGRAMS__</b> cycle diagrams</span>
-  </a>
-  <a class="tile" href="/skills">
-    <h2><span class="dot" style="background:var(--c-green)"></span>Skills</h2>
-    <p>Hands-on techniques with the science behind them — soldering, welding, heat treatment, casting, machining, electronics, concrete, knots — tools, steps, safety, how it fails, how you know it worked.</p>
-    <span class="stat"><b>__N_SKILLS__</b> skills · with the physics that makes each one work</span>
-  </a>
-  <a class="tile" href="/glossary">
-    <h2><span class="dot" style="background:var(--c-slate)"></span>Glossary</h2>
-    <p>The words the site leans on, each defined once and traced — automatically, at build time — to every equation, theory, machine, skill, epoch, element and mine whose text uses it.</p>
-    <span class="stat"><b>__N_TERMS__</b> terms · <b>__N_TRACES__</b> traced appearances</span>
-  </a>
-  <a class="tile" href="/explainers">
-    <h2><span class="dot" style="background:var(--c-red)"></span>Explainers</h2>
-    <p>Who explains this well — physicists who write and podcast, the channels that build the experiment rather than describe it, machinists, geologists in the field. Not the researchers who did the work: the people who make it land.</p>
-    <span class="stat"><b>__N_EXPL__</b> explainers · <b>__N_EXPLTERMS__</b> glossary terms covered</span>
-  </a>
-  <a class="tile" href="/constants">
-    <h2><span class="dot" style="background:var(--c-teal)"></span>Constants &amp; Units</h2>
-    <p>The numbers everything else is written in — CODATA values with real uncertainties, the seven constants that define the SI, and both sides of the Hubble tension.</p>
-    <span class="stat"><b>__N_CONST__</b> constants · <b>__N_EXACT__</b> exact · <b>__N_UNITS__</b> units</span>
-  </a>
-  <a class="tile" href="/equations">
-    <h2><span class="dot" style="background:var(--c-amber)"></span>Equations</h2>
-    <p>The physical world, stated exactly — from F = ma to the Einstein field equations, each with its symbols decoded and its significance in plain words.</p>
-    <span class="stat"><b>__N_EQ__</b> equations · <b>__N_EQFIELDS__</b> fields · oldest __EQ_OLDEST__</span>
-  </a>
+<nav class="sections" aria-label="Sections">
+
+  <section class="group" style="--g:var(--c-bronze)" aria-labelledby="g-matter">
+    <h2 class="ghead" id="g-matter"><span class="dot"></span>Matter &amp; Earth <span class="gsub">what things are made of, where it comes out of the ground, and what that costs</span></h2>
+    <div class="tiles">
+      <a class="tile" href="/elements">
+        <h3><span class="dot"></span>Periodic Table</h3>
+        <p>All 118 elements with nine color lenses, a temperature slider, a discovery time machine — and an AI analyzer that breaks any photographed object into its elements.</p>
+        <span class="stat"><b>118</b> elements · <b>__N_GAPS__</b> with data gaps · photo analyzer live</span>
+      </a>
+      <a class="tile" href="/minerals">
+        <h3><span class="dot"></span>Minerals &amp; Gemstones</h3>
+        <p>A searchable mineralogy collection — hardness, density, and elemental makeup — plus the gemstone shelf, crystal systems, and the three rock families.</p>
+        <span class="stat"><b>__N_MINERALS__</b> minerals · <b>__N_GEMS__</b> gemstones · <b>7</b> crystal systems</span>
+      </a>
+      <a class="tile" href="/mines">
+        <h3><span class="dot"></span>Mines &amp; Extraction</h3>
+        <p>Where the raw materials come out of the ground — a world map of the flagship mines — and how each one is won: ore minerals, typical grade, how far geology had to enrich it, and the ore-to-metal chain.</p>
+        <span class="stat"><b>__N_MINES__</b> mines · <b>__N_MINED__</b> materials with an extraction story</span>
+      </a>
+      <a class="tile" href="/impacts">
+        <h3><span class="dot"></span>Mining Impacts</h3>
+        <p>And what it costs. Acid drainage that outlasts the company, tailings held behind dams, arsenic freed from rock that had held it — by mechanism, with what reduces each and where it has been documented.</p>
+        <span class="stat"><b>__N_IMPACTS__</b> mechanisms · <b>__N_IMPTERMS__</b> glossary terms defined</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="group" style="--g:var(--c-violet)" aria-labelledby="g-cosmos">
+    <h2 class="ghead" id="g-cosmos"><span class="dot"></span>Cosmos &amp; Physics <span class="gsub">the sky, the forces, the ideas, and the whole history on one axis</span></h2>
+    <div class="tiles">
+      <a class="tile" href="/cosmos">
+        <h3><span class="dot"></span>Cosmic Exploration</h3>
+        <p>A field guide to everything the sky contains: object classes from nebulae to gravitational-wave sources, the stellar spectral sequence, and the instruments that watch it all.</p>
+        <span class="stat"><b>__N_CLASSES__</b> object classes · <b>__N_OBS__</b> observatories · <b>__N_DISC__</b> discoveries</span>
+      </a>
+      <a class="tile" href="/forces">
+        <h3><span class="dot"></span>Forces</h3>
+        <p>The four fundamental interactions — what each one does, how far it reaches, and how they compare in strength.</p>
+        <span class="stat"><b>4</b> fundamental forces</span>
+      </a>
+      <a class="tile" href="/theories">
+        <h3><span class="dot"></span>Theories</h3>
+        <p>Ideas about how it all fits together — from Ptolemy's spheres to the holographic principle — each tracked with its standing, the people behind it, and the mathematics it rests on.</p>
+        <span class="stat"><b>__N_THEORIES__</b> theories · <b>__N_ACCEPTED__</b> accepted · __TH_SPAN__</span>
+      </a>
+      <a class="tile" href="/timeline">
+        <h3><span class="dot"></span>Timeline of the Universe</h3>
+        <p>The whole history, on a log axis of seconds — Planck epoch, inflation, recombination, the first stars, and the long cold stretch after the last black hole evaporates.</p>
+        <span class="stat"><b>__N_TIMELINE__</b> events · <b>__TL_DECADES__</b> orders of magnitude</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="group two" style="--g:var(--c-amber)" aria-labelledby="g-making">
+    <h2 class="ghead" id="g-making"><span class="dot"></span>Making &amp; Doing <span class="gsub">not how the world is, but how to make it do things</span></h2>
+    <div class="tiles">
+      <a class="tile" href="/machines">
+        <h3><span class="dot"></span>Machines</h3>
+        <p>The engines and machines that turn heat, motion and chemistry into work — how each one does it, its cycle drawn on a p–V diagram, what it keeps of the energy, and what it is built from.</p>
+        <span class="stat"><b>__N_MACHINES__</b> machines · <b>__N_DIAGRAMS__</b> cycle diagrams</span>
+      </a>
+      <a class="tile" href="/skills">
+        <h3><span class="dot"></span>Skills</h3>
+        <p>Hands-on techniques with the science behind them — soldering, welding, heat treatment, casting, machining, electronics, concrete, knots — tools, steps, safety, how it fails, how you know it worked.</p>
+        <span class="stat"><b>__N_SKILLS__</b> skills · with the physics that makes each one work</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="group ref" style="--g:var(--c-slate)" aria-labelledby="g-ref">
+    <h2 class="ghead" id="g-ref"><span class="dot"></span>Reference <span class="gsub">the connective tissue — every page above links into these</span></h2>
+    <div class="tiles">
+      <a class="tile" href="/equations">
+        <h3><span class="dot"></span>Equations</h3>
+        <p>The physical world, stated exactly — from F = ma to the Einstein field equations, each with its symbols decoded and its significance in plain words.</p>
+        <span class="stat"><b>__N_EQ__</b> equations · <b>__N_EQFIELDS__</b> fields · oldest __EQ_OLDEST__</span>
+      </a>
+      <a class="tile" href="/constants">
+        <h3><span class="dot"></span>Constants &amp; Units</h3>
+        <p>The numbers everything else is written in — CODATA values with real uncertainties, the seven constants that define the SI, and both sides of the Hubble tension.</p>
+        <span class="stat"><b>__N_CONST__</b> constants · <b>__N_EXACT__</b> exact · <b>__N_UNITS__</b> units</span>
+      </a>
+      <a class="tile" href="/glossary">
+        <h3><span class="dot"></span>Glossary</h3>
+        <p>The words the site leans on, each defined once and traced — automatically, at build time — to every equation, theory, machine, skill, epoch, element and mine whose text uses it.</p>
+        <span class="stat"><b>__N_TERMS__</b> terms · <b>__N_TRACES__</b> traced appearances</span>
+      </a>
+      <a class="tile" href="/explainers">
+        <h3><span class="dot"></span>Explainers</h3>
+        <p>Who explains this well — physicists who write and podcast, the channels that build the experiment rather than describe it, machinists, geologists in the field. Not the researchers who did the work: the people who make it land.</p>
+        <span class="stat"><b>__N_EXPL__</b> explainers · <b>__N_EXPLTERMS__</b> glossary terms covered</span>
+      </a>
+    </div>
+  </section>
+
 </nav>
 
 <p class="kfoot">Kosmos · content authored in <a href="https://notion.so" rel="noopener">Notion</a>, synced one-way to this site · last data sync __SYNC_DATE__</p>
