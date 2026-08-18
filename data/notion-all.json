@@ -10035,6 +10035,81 @@
   ],
   "skills": [
     {
+      "id": "3c0e5275-7b5c-816e-a7c1-e4b15032de57",
+      "url": "https://app.notion.com/p/Using-Side-3c0e52757b5c816ea7c1e4b15032de57",
+      "lastEdited": "2026-08-18T20:28:00.000Z",
+      "Difficulty": "Advanced",
+      "Elements": [],
+      "Safety": "Extreme side needs a chalked tip and a level cue; a miscue at speed sends the ball off the table.",
+      "Done When": "You can pocket a medium cut with a tip of either side and land the cue ball in a called zone off two cushions — and can say beforehand which way the object ball will throw.",
+      "Equations": [
+        "3c0e5275-7b5c-8110-a346-c3cff4711197",
+        "3c0e5275-7b5c-81ae-acad-fd4201783434",
+        "3c0e5275-7b5c-81bd-8cd3-f9a2363b0c47",
+        "3c0e5275-7b5c-81dc-9186-cd5eba92c994",
+        "3c0e5275-7b5c-81e7-9f96-c61ef04a9ff8"
+      ],
+      "Steps": "Straight-in shot, cue level, one tip of right: watch the cue ball squirt left and the object ball throw left — both small, both real.\nSame shot with the cue slightly elevated: swerve brings the cue ball back toward the line. Learn your cue's balance of the two at the speed you play.\nCue ball to a cushion, no object ball: strike with running side and see the angle open; with reverse, close.\nCombine: a cut where the cue ball must go three rails — pick side for the cushions, then aim a touch thicker for the throw.\nPlay the shot without side first, every time; add side only when the position needs it.",
+      "Tools": "Table and cue; chalk; a cue whose squirt you know — most modern low-deflection shafts move the front mass back for exactly this reason.",
+      "The Science": "A tip left or right of centre spins the ball about a vertical axis. On the way to the object ball that spin does almost nothing to the cue ball's path — except squirt, a small deflection off the cue's line that is a property of the cue's front-end mass, and swerve, a curve back the other way from cloth friction if the cue is at all elevated. At the object ball it throws the object ball sideways by friction, up to a few degrees, the opposite way to the spin. At the cushion it adds to or subtracts from the along-rail speed: running side lengthens the rebound and keeps the ball alive, reverse shortens it and kills it. Players use side for the cushions and pay for it at the object ball; the skill is knowing the price.",
+      "How It Fails": "Using side out of habit on shots that need none. Correcting for squirt at one speed and playing at another. Forgetting throw and missing the object ball thick. Elevating the cue for reach and getting swerve you did not plan on. Judging the cushion by a table you played last week.",
+      "Machines": [],
+      "Category": "Cue sports",
+      "Summary": "English — side spin — and the four things it does at once, three of which you did not ask for.",
+      "Name": "Using Side"
+    },
+    {
+      "id": "3c0e5275-7b5c-81da-8bd4-db30b61b183d",
+      "url": "https://app.notion.com/p/Follow-Draw-and-Stun-3c0e52757b5c81da8bd4db30b61b183d",
+      "lastEdited": "2026-08-18T20:28:00.000Z",
+      "Difficulty": "Intermediate",
+      "Elements": [],
+      "Safety": "Keep the bridge hand still and the tip low only as far as the ball allows — a draw stroke that digs into the cloth tears it and can jump the ball.",
+      "Done When": "From a straight-in shot at a metre you can stop the cue ball dead, bring it back a hand's width, and back a metre, on demand.",
+      "Equations": [
+        "3c0e5275-7b5c-8110-a346-c3cff4711197",
+        "3c0e5275-7b5c-8152-92cb-d7594f28f2ed",
+        "3c0e5275-7b5c-815f-b1cf-f6b2424a10f5",
+        "3c0e5275-7b5c-8189-8821-d72a42bf2463",
+        "3c0e5275-7b5c-81a3-855d-d1d1c3821e1f",
+        "3c0e5275-7b5c-81bd-8cd3-f9a2363b0c47",
+        "3c0e5275-7b5c-81e7-9f96-c61ef04a9ff8"
+      ],
+      "Steps": "Set a straight-in shot at a metre. Hit at centre, medium: the cue ball follows a little — it was rolling by contact.\nSame shot a tip below centre: it stops. That is stun; find the height and speed at which it stops dead.\nTwo tips below, firmer: it comes back. Note how far, then hit the same height harder and watch it come back further.\nA tip above centre: it follows through the object ball's place. Watch how it holds the tangent line first, then bends.\nNow at half-ball: stun keeps ninety degrees, follow bends to about thirty, draw pulls back to about ninety the other way.\nPlay position: pick a landing zone before each shot and stop when three in five land there.",
+      "Tools": "A table and cue; chalk; a striped ball, so you can see whether it is skidding or rolling on the way to the object ball.",
+      "The Science": "The tip's height above or below centre gives the ball spin — ⅖ mR² of moment of inertia means half a radius of offset spins it about as fast as it would roll — and the collision does not touch that spin: the object ball takes the line of centres, the cue ball takes the tangent line, and only then does the cloth's friction turn its topspin into forward curve (follow) or its backspin into a return (draw). A ball hit at centre skids first and rolls after losing two-sevenths of its speed; hit it just below centre so it is still sliding at contact and it stops dead on a straight shot — stun. Speed matters as much as height: the same draw stroke at twice the speed pulls back four times as far, because the skid distance goes as the square of it.",
+      "How It Fails": "Decelerating through the ball, so the tip barely spins it. Cueing too low without enough speed: the ball is rolling before it arrives and follows instead of drawing. Judging draw by height alone and ignoring distance — spin dies over a long shot. Elevating the cue to reach below centre, which adds a curve you did not want.",
+      "Machines": [],
+      "Category": "Cue sports",
+      "Summary": "Where the cue ball ends up: controlling it with the height of the tip on the ball.",
+      "Name": "Follow, Draw and Stun"
+    },
+    {
+      "id": "3c0e5275-7b5c-8161-85f6-d77fe25cec2a",
+      "url": "https://app.notion.com/p/The-Cut-Shot-3c0e52757b5c816185f6d77fe25cec2a",
+      "lastEdited": "2026-08-18T20:28:00.000Z",
+      "Difficulty": "Beginner",
+      "Elements": [],
+      "Safety": "Nothing but pride. Chalk the tip before every shot so a miscue does not send the cue ball off the table.",
+      "Done When": "On a half-ball cut you can name, before you shoot, which cushion the cue ball will reach — and it does, ten times in a row.",
+      "Equations": [
+        "3c0e5275-7b5c-815f-b1cf-f6b2424a10f5",
+        "3c0e5275-7b5c-8177-a2c0-d20741b851cb",
+        "3c0e5275-7b5c-81bd-8cd3-f9a2363b0c47",
+        "3c0e5275-7b5c-81cf-9fb5-e2d5973d2c9d",
+        "3c0e5275-7b5c-81dc-9186-cd5eba92c994",
+        "3c0e5275-7b5c-81e5-a7d4-c8ba74770b4d"
+      ],
+      "Steps": "Stand behind the object ball and sight the line from pocket through its centre; mark where the ghost ball must sit.\nAddress the cue ball with the cue on the line to the ghost ball's centre, not to the object ball.\nStroke through with stun (a touch below centre) at medium speed; watch the object ball's line and the cue ball's.\nRepeat at half-ball: the cue ball should leave at ninety degrees and the object ball with three-quarters of the pace.\nOn slow, thin cuts, aim a hair fuller than the geometry says — that is throw.\nWhen it drops ten times running, take the spare ball away and see the ghost without it.",
+      "Tools": "A table, a cue, chalk; a spare ball to stand in for the ghost while learning; a straight edge or a laser to check the tangent line.",
+      "The Science": "The object ball leaves along the line joining the two centres at contact, whatever you do; so aim the cue ball at the ghost-ball position, one ball's width from the object ball on the far side from the pocket. The cue ball leaves along the tangent line at right angles to that (the ninety-degree rule), carrying sin θ of the speed while the object ball takes cos θ. Friction between the balls throws the object ball a degree or two off the geometric line, more on slow shots and thin cuts — allow for it, or the long ones rattle. A rolling cue ball then curves forward off the tangent line to about 30° from where it was going; a stunned one keeps the tangent.",
+      "How It Fails": "Aiming at the object ball's edge instead of the ghost ball's centre — always undercut. Forgetting throw on slow cuts — undercut again. Unintended side from a crooked stroke, which both squirts the cue ball and throws the object ball. Reading the cue ball's line as the aim line and scratching along the tangent.",
+      "Machines": [],
+      "Category": "Cue sports",
+      "Summary": "Pocketing a ball that is not straight in — where to send the cue ball, and where it goes afterwards.",
+      "Name": "The Cut Shot"
+    },
+    {
       "id": "3bee5275-7b5c-8117-b96c-c45487f80a57",
       "url": "https://app.notion.com/p/Squaring-with-the-3-4-5-Rule-3bee52757b5c8117b96cc45487f80a57",
       "lastEdited": "2026-08-18T19:16:00.000Z",
@@ -10619,6 +10694,114 @@
     }
   ],
   "glossary": [
+    {
+      "id": "3c0e5275-7b5c-81d0-8f8b-c726551c0009",
+      "url": "https://app.notion.com/p/Cushion-3c0e52757b5c81d08f8bc726551c0009",
+      "lastEdited": "2026-08-18T20:28:00.000Z",
+      "Definition": "The rubber rail the ball rebounds from. It returns about three-quarters of the energy and drags on what runs along it, so the ball leaves shorter than it arrived — more so at speed, and side spin changes it either way.",
+      "Aliases": "cushions",
+      "Domain": "Cue sports",
+      "Term": "Cushion"
+    },
+    {
+      "id": "3c0e5275-7b5c-8115-9b1c-e6562c96930b",
+      "url": "https://app.notion.com/p/Miscue-3c0e52757b5c81159b1ce6562c96930b",
+      "lastEdited": "2026-08-18T20:28:00.000Z",
+      "Definition": "The tip sliding off the ball instead of gripping it — beyond about half a radius of offset, or with no chalk. The ball goes almost nowhere and sometimes off the table.",
+      "Aliases": "miscues",
+      "Domain": "Cue sports",
+      "Term": "Miscue"
+    },
+    {
+      "id": "3c0e5275-7b5c-8123-9ab2-ff04220bc82c",
+      "url": "https://app.notion.com/p/Backspin-3c0e52757b5c81239ab2ff04220bc82c",
+      "lastEdited": "2026-08-18T20:28:00.000Z",
+      "Definition": "Reverse spin from a tip below centre. After the collision the cloth's friction turns it into a return: the cue ball comes back. Twice the speed pulls back four times as far.",
+      "Aliases": "draw shot",
+      "Domain": "Cue sports",
+      "Term": "Backspin"
+    },
+    {
+      "id": "3c0e5275-7b5c-810a-ab0a-f6283bd700a2",
+      "url": "https://app.notion.com/p/Topspin-3c0e52757b5c810aab0af6283bd700a2",
+      "lastEdited": "2026-08-18T20:28:00.000Z",
+      "Definition": "Forward spin from a tip above centre. It survives the collision and bends the cue ball forward off the tangent line as it takes up roll — the follow shot, and the thirty-degree rule.",
+      "Aliases": "follow shot",
+      "Domain": "Cue sports",
+      "Term": "Topspin"
+    },
+    {
+      "id": "3c0e5275-7b5c-81f5-96d8-dad1ebac3f28",
+      "url": "https://app.notion.com/p/Stun-3c0e52757b5c81f596d8dad1ebac3f28",
+      "lastEdited": "2026-08-18T20:28:00.000Z",
+      "Definition": "A cue ball arriving with no spin — hit slightly below centre so it is still sliding at contact. It stops dead on a straight shot and holds the tangent line on a cut.",
+      "Aliases": "stun shot, stunned",
+      "Domain": "Cue sports",
+      "Term": "Stun"
+    },
+    {
+      "id": "3c0e5275-7b5c-81a2-bcf7-cdcd9670ccfc",
+      "url": "https://app.notion.com/p/Swerve-3c0e52757b5c81a2bcf7cdcd9670ccfc",
+      "lastEdited": "2026-08-18T20:28:00.000Z",
+      "Definition": "The curve of a cue ball hit with side spin and an elevated cue, from friction with the cloth. Small on a level cue, large in a massé; it partly cancels squirt at some speed, and only that speed.",
+      "Aliases": "massé",
+      "Domain": "Cue sports",
+      "Term": "Swerve"
+    },
+    {
+      "id": "3c0e5275-7b5c-81c6-a7f6-c5e958c383da",
+      "url": "https://app.notion.com/p/Squirt-3c0e52757b5c81c6a7f6c5e958c383da",
+      "lastEdited": "2026-08-18T20:28:00.000Z",
+      "Definition": "The cue ball's small deflection off the cue's line when struck with side spin, away from the side the tip was on. A property of the cue's front-end mass, not of the table; low-deflection shafts move that mass back.",
+      "Aliases": "cue-ball deflection",
+      "Domain": "Cue sports",
+      "Term": "Squirt"
+    },
+    {
+      "id": "3c0e5275-7b5c-8142-af36-eac232fbd9c3",
+      "url": "https://app.notion.com/p/Side-spin-3c0e52757b5c8142af36eac232fbd9c3",
+      "lastEdited": "2026-08-18T20:28:00.000Z",
+      "Definition": "Spin about a vertical axis, from a tip left or right of centre. It throws the object ball, alters the rebound off a cushion, and on the way there produces squirt and swerve — four effects for one stroke.",
+      "Aliases": "sidespin, running side, reverse side",
+      "Domain": "Cue sports",
+      "Term": "Side spin"
+    },
+    {
+      "id": "3c0e5275-7b5c-81ce-9c77-d9cc23cdbf29",
+      "url": "https://app.notion.com/p/Throw-3c0e52757b5c81ce9c77d9cc23cdbf29",
+      "lastEdited": "2026-08-18T20:28:00.000Z",
+      "Definition": "The object ball's departure a degree or few off the line of centres, from friction between the balls during contact — forward on a cut, sideways with side spin. Slow shots throw more.",
+      "Aliases": "cut-induced throw, spin-induced throw",
+      "Domain": "Cue sports",
+      "Term": "Throw"
+    },
+    {
+      "id": "3c0e5275-7b5c-8102-b038-dd157ec7fd6e",
+      "url": "https://app.notion.com/p/Cut-angle-3c0e52757b5c8102b038dd157ec7fd6e",
+      "lastEdited": "2026-08-18T20:28:00.000Z",
+      "Definition": "The angle between the cue ball's path and the line of centres at contact — zero for a straight-in shot, 30° for a half-ball hit. It sets how the speed and energy divide between the two balls.",
+      "Aliases": "cut",
+      "Domain": "Cue sports",
+      "Term": "Cut angle"
+    },
+    {
+      "id": "3c0e5275-7b5c-81da-b616-fce760bf429e",
+      "url": "https://app.notion.com/p/Ghost-ball-3c0e52757b5c81dab616fce760bf429e",
+      "lastEdited": "2026-08-18T20:28:00.000Z",
+      "Definition": "The imaginary cue ball frozen where the real one must be at contact: touching the object ball on the far side from the pocket, its centre one ball's width away along the pocket line. Aim at its centre.",
+      "Aliases": null,
+      "Domain": "Cue sports",
+      "Term": "Ghost ball"
+    },
+    {
+      "id": "3c0e5275-7b5c-81c5-ba49-e9d7005efbfb",
+      "url": "https://app.notion.com/p/Tangent-line-3c0e52757b5c81c5ba49e9d7005efbfb",
+      "lastEdited": "2026-08-18T20:28:00.000Z",
+      "Definition": "The line at right angles to the line of centres at contact — where the cue ball goes immediately after hitting the object ball, before any spin acts. The ninety-degree rule, drawn on the cloth.",
+      "Aliases": null,
+      "Domain": "Cue sports",
+      "Term": "Tangent line"
+    },
     {
       "id": "3c0e5275-7b5c-8148-a2ae-c7ddcdb094f8",
       "url": "https://app.notion.com/p/Refraction-3c0e52757b5c8148a2aec7ddcdb094f8",
@@ -502743,6 +502926,331 @@
   ],
   "equations": [
     {
+      "id": "3c0e5275-7b5c-81ee-8da9-eee84aad7342",
+      "url": "https://app.notion.com/p/Cue-to-Ball-Speed-Transfer-3c0e52757b5c81ee8da9eee84aad7342",
+      "lastEdited": "2026-08-18T20:28:00.000Z",
+      "Skills": [],
+      "Equation": "v_ball ≈ v_cue · 2 m_cue / (m_cue + m_ball) · (1 + e)/2",
+      "Minerals": [],
+      "Timeline": [],
+      "Field": "Billiards",
+      "Celestial Objects": [],
+      "Theories": [],
+      "Named After": null,
+      "Machines": [],
+      "Related": [],
+      "Instruments": [],
+      "Constants": [],
+      "Requires": [
+        "3c0e5275-7b5c-8130-ae4d-d929818a0900",
+        "3c0e5275-7b5c-81e5-a7d4-c8ba74770b4d"
+      ],
+      "Impacts": [],
+      "Symbols": "v_cue the cue's speed at impact · m_cue the mass that actually follows through — the cue, or on a loose grip mostly its front end · m_ball 170 g · e tip–ball restitution, about 0.7–0.9",
+      "Spectral Types": [],
+      "Significance": "A heavy cue on a light ball gives the ball more speed than the cue had: with a 540 g cue and a 170 g ball the ideal is about 1.5 times, less the tip's losses. Which is why a firm stroke is about cue speed, not muscle, and why the grip's tightness changes the effective mass but not much else. Momentum conservation and Newton's law of impact, nothing more.",
+      "Year": null,
+      "Required By": [],
+      "Elements": [],
+      "Name": "Cue-to-Ball Speed Transfer"
+    },
+    {
+      "id": "3c0e5275-7b5c-81ae-acad-fd4201783434",
+      "url": "https://app.notion.com/p/Cushion-Rebound-3c0e52757b5c81aeacadfd4201783434",
+      "lastEdited": "2026-08-18T20:28:00.000Z",
+      "Skills": [
+        "3c0e5275-7b5c-816e-a7c1-e4b15032de57"
+      ],
+      "Equation": "v_n,out = e_c v_n,in;  the tangential component and side spin lose to cushion friction",
+      "Minerals": [],
+      "Timeline": [],
+      "Field": "Billiards",
+      "Celestial Objects": [],
+      "Theories": [],
+      "Named After": null,
+      "Machines": [],
+      "Related": [],
+      "Instruments": [],
+      "Constants": [],
+      "Requires": [
+        "3c0e5275-7b5c-8130-ae4d-d929818a0900",
+        "3c0e5275-7b5c-81cf-9fb5-e2d5973d2c9d",
+        "3c0e5275-7b5c-81e7-9f96-c61ef04a9ff8"
+      ],
+      "Impacts": [],
+      "Symbols": "v_n the speed component into the cushion, before and after · e_c the cushion's speed restitution — about 0.87, from retaining ¾ of the energy · the component along the rail is reduced by friction, and side spin is partly converted to it",
+      "Spectral Types": [],
+      "Significance": "The rail gives back most of the speed that hit it square and slows what ran along it, so the ball leaves at a shorter angle than it arrived — more so when it arrives fast. Side spin adds or subtracts to that along-rail component: running english lengthens the angle and keeps the ball moving, reverse shortens it and kills speed. Cushions are rubber, not physics constants; every table plays a little differently, and players test them before a match.",
+      "Year": 1835,
+      "Required By": [],
+      "Elements": [],
+      "Name": "Cushion Rebound"
+    },
+    {
+      "id": "3c0e5275-7b5c-81bc-8253-e138a0e8e378",
+      "url": "https://app.notion.com/p/Rolling-Resistance-3c0e52757b5c81bc8253e138a0e8e378",
+      "lastEdited": "2026-08-18T20:28:00.000Z",
+      "Skills": [],
+      "Equation": "d = v₀² / (2 μ_r g)",
+      "Minerals": [],
+      "Timeline": [],
+      "Field": "Mechanics",
+      "Celestial Objects": [],
+      "Theories": [],
+      "Named After": null,
+      "Machines": [],
+      "Related": [],
+      "Instruments": [],
+      "Constants": [],
+      "Requires": [
+        "3c0e5275-7b5c-81b5-88e0-fe12756b2975",
+        "3c0e5275-7b5c-81e7-9f96-c61ef04a9ff8"
+      ],
+      "Impacts": [],
+      "Symbols": "d the distance a rolling ball travels before stopping · v₀ its starting speed · μ_r rolling resistance coefficient — about 0.01 on worsted cloth, 0.002 for a steel wheel on rail · g gravitational acceleration",
+      "Spectral Types": [],
+      "Significance": "A rolling body loses energy slowly, to the deformation of the surface and the ball, and the deceleration is nearly constant: μ_r g. On a pool table that is a tenth of a metre per second per second, so a ball at 1 m/s rolls about five metres and speed control is a matter of a few percent. Coulomb measured rolling friction in 1781; the work–energy theorem does the rest.",
+      "Year": 1781,
+      "Required By": [],
+      "Elements": [],
+      "Name": "Rolling Resistance"
+    },
+    {
+      "id": "3c0e5275-7b5c-815f-b1cf-f6b2424a10f5",
+      "url": "https://app.notion.com/p/Thirty-Degree-Rule-3c0e52757b5c815fb1cff6b2424a10f5",
+      "lastEdited": "2026-08-18T20:28:00.000Z",
+      "Skills": [
+        "3c0e5275-7b5c-8161-85f6-d77fe25cec2a",
+        "3c0e5275-7b5c-81da-8bd4-db30b61b183d"
+      ],
+      "Equation": "a rolling cue ball leaves a ¼- to ¾-ball hit at about 30° from its original line",
+      "Minerals": [],
+      "Timeline": [],
+      "Field": "Billiards",
+      "Celestial Objects": [],
+      "Theories": [],
+      "Named After": null,
+      "Machines": [],
+      "Related": [],
+      "Instruments": [],
+      "Constants": [],
+      "Requires": [
+        "3c0e5275-7b5c-8152-92cb-d7594f28f2ed",
+        "3c0e5275-7b5c-81bd-8cd3-f9a2363b0c47"
+      ],
+      "Impacts": [],
+      "Symbols": "the deflection of the cue ball's final rolling path from its incoming line, for a naturally rolling cue ball and a medium cut",
+      "Spectral Types": [],
+      "Significance": "Not a law but a consequence: the ninety-degree rule sends the cue ball down the tangent line, then its topspin — which the collision did not touch — bends it forward as it takes up roll again. Over the middle range of cuts that bend lands the ball near 30° from where it was going, which is why a peace sign held at the object ball predicts where the cue ball ends up. Faster shots and thinner or fuller hits break it; stun (no roll) keeps the ninety.",
+      "Year": null,
+      "Required By": [],
+      "Elements": [],
+      "Name": "Thirty-Degree Rule"
+    },
+    {
+      "id": "3c0e5275-7b5c-8152-92cb-d7594f28f2ed",
+      "url": "https://app.notion.com/p/Slide-to-Roll-3c0e52757b5c815292cbd7594f28f2ed",
+      "lastEdited": "2026-08-18T20:28:00.000Z",
+      "Skills": [
+        "3c0e5275-7b5c-81da-8bd4-db30b61b183d"
+      ],
+      "Equation": "rolling when v = ω R;  a stunned ball rolls after t = 2 v₀ / (7 μ_s g), at 5/7 of its speed",
+      "Minerals": [],
+      "Timeline": [],
+      "Field": "Billiards",
+      "Celestial Objects": [],
+      "Theories": [],
+      "Named After": null,
+      "Machines": [],
+      "Related": [],
+      "Instruments": [],
+      "Constants": [],
+      "Requires": [
+        "3c0e5275-7b5c-812b-8ec5-dae78166d0f7",
+        "3c0e5275-7b5c-8189-8821-d72a42bf2463",
+        "3c0e5275-7b5c-818b-97c8-d52070d30162",
+        "3c0e5275-7b5c-81e7-9f96-c61ef04a9ff8"
+      ],
+      "Impacts": [],
+      "Symbols": "v linear speed · ω spin · R radius · v₀ speed at the start of the slide · μ_s sliding friction on cloth, about 0.2 · g gravitational acceleration",
+      "Spectral Types": [],
+      "Significance": "A ball struck at centre skids first — no spin, so the cloth drags its bottom and spins it up while slowing it down — until the surface speed matches the ball's speed and it rolls. It loses two-sevenths of its speed getting there, in a distance that scales with v₀². Topspin shortens the skid, backspin reverses it: a drawn cue ball skids backward-spinning, stops spinning, then rolls back the way it came. Every follow and draw shot is this transition happening after the collision instead of before it.",
+      "Year": 1835,
+      "Required By": [
+        "3c0e5275-7b5c-815f-b1cf-f6b2424a10f5"
+      ],
+      "Elements": [],
+      "Name": "Slide to Roll"
+    },
+    {
+      "id": "3c0e5275-7b5c-8110-a346-c3cff4711197",
+      "url": "https://app.notion.com/p/Tip-Offset-and-Spin-3c0e52757b5c8110a346c3cff4711197",
+      "lastEdited": "2026-08-18T20:28:00.000Z",
+      "Skills": [
+        "3c0e5275-7b5c-81da-8bd4-db30b61b183d",
+        "3c0e5275-7b5c-816e-a7c1-e4b15032de57"
+      ],
+      "Equation": "ω = (5/2) v b / R²  ;  miscue beyond b ≈ R/2",
+      "Minerals": [],
+      "Timeline": [],
+      "Field": "Billiards",
+      "Celestial Objects": [],
+      "Theories": [],
+      "Named After": null,
+      "Machines": [],
+      "Related": [],
+      "Instruments": [],
+      "Constants": [],
+      "Requires": [
+        "3c0e5275-7b5c-8189-8821-d72a42bf2463",
+        "3c0e5275-7b5c-81a3-855d-d1d1c3821e1f",
+        "3c0e5275-7b5c-81c1-928d-f024f2a2484f"
+      ],
+      "Impacts": [],
+      "Symbols": "ω spin imparted, radians per second · v cue-ball speed off the tip · b the tip's offset from the ball's centre, perpendicular to the cue · R ball radius",
+      "Spectral Types": [],
+      "Significance": "Hit off-centre and the impulse has a lever arm; the ball's moment of inertia is ⅖ mR², so the spin is 5/2 · v · b / R². Half a radius of offset — the practical limit before the tip slides off — gives a ball spinning about as fast as it would if it were already rolling at that speed. Above the centre it is follow, below it draw, to the side it is english (and squirt: the cue ball leaves a little off the cue's line, by an amount that is a property of the cue, not the table).",
+      "Year": 1835,
+      "Required By": [],
+      "Elements": [],
+      "Name": "Tip Offset and Spin"
+    },
+    {
+      "id": "3c0e5275-7b5c-81dc-9186-cd5eba92c994",
+      "url": "https://app.notion.com/p/Throw-3c0e52757b5c81dc9186cd5eba92c994",
+      "lastEdited": "2026-08-18T20:28:00.000Z",
+      "Skills": [
+        "3c0e5275-7b5c-8161-85f6-d77fe25cec2a",
+        "3c0e5275-7b5c-816e-a7c1-e4b15032de57"
+      ],
+      "Equation": "throw angle ≈ atan(μ v_t / v_n), up to about 5°",
+      "Minerals": [],
+      "Timeline": [],
+      "Field": "Billiards",
+      "Celestial Objects": [],
+      "Theories": [],
+      "Named After": null,
+      "Machines": [],
+      "Related": [],
+      "Instruments": [],
+      "Constants": [],
+      "Requires": [
+        "3c0e5275-7b5c-8110-a5c1-c471f72f8383",
+        "3c0e5275-7b5c-81bd-8cd3-f9a2363b0c47",
+        "3c0e5275-7b5c-81e7-9f96-c61ef04a9ff8"
+      ],
+      "Impacts": [],
+      "Symbols": "μ ball-to-ball friction, about 0.06 for clean phenolic · v_t the relative speed of the two surfaces across the contact — from the cut angle, from side spin, or both · v_n the closing speed along the line of centres",
+      "Spectral Types": [],
+      "Significance": "During the fifth of a millisecond the balls touch, friction drags the object ball a little off the line of centres, toward the direction the cue ball's surface was sliding. A cut throws the object ball forward of the geometric line (cut-induced throw); side spin throws it left or right (spin-induced throw). Slow shots throw more — the friction has more time relative to the speed — and it saturates once the surfaces stop slipping. Chalk on the contact point can double it. Nobody pockets long, slow cuts without allowing for it.",
+      "Year": null,
+      "Required By": [],
+      "Elements": [],
+      "Name": "Throw"
+    },
+    {
+      "id": "3c0e5275-7b5c-8130-ae4d-d929818a0900",
+      "url": "https://app.notion.com/p/Coefficient-of-Restitution-3c0e52757b5c8130ae4dd929818a0900",
+      "lastEdited": "2026-08-18T20:28:00.000Z",
+      "Skills": [],
+      "Equation": "e = v_separation / v_approach;  head-on, kinetic energy kept = e²",
+      "Minerals": [],
+      "Timeline": [],
+      "Field": "Mechanics",
+      "Celestial Objects": [],
+      "Theories": [],
+      "Named After": "Isaac Newton",
+      "Machines": [],
+      "Related": [],
+      "Instruments": [],
+      "Constants": [],
+      "Requires": [
+        "3c0e5275-7b5c-813b-8d2e-da5484cf3b1c",
+        "3c0e5275-7b5c-81e5-a7d4-c8ba74770b4d"
+      ],
+      "Impacts": [],
+      "Symbols": "e a number between 0 (perfectly inelastic — they stick) and 1 (perfectly elastic — none lost) · v_approach, v_separation the relative speeds along the line of centres before and after",
+      "Spectral Types": [],
+      "Significance": "Newton's experimental law of 1687: how much of the closing speed survives a collision. Phenolic pool balls run about 0.92, so a straight-in stun shot leaves the cue ball creeping forward and the object ball with 85 % of the energy; a cushion returns roughly 0.75 of the energy, so the ball comes off at 87 % of its speed. Steel on steel is 0.9-ish, a superball 0.9, a lump of clay near 0. It is why the ninety-degree rule is really eighty-eight, and why a stop shot needs a touch of draw.",
+      "Year": 1687,
+      "Required By": [
+        "3c0e5275-7b5c-81ae-acad-fd4201783434",
+        "3c0e5275-7b5c-81ee-8da9-eee84aad7342"
+      ],
+      "Elements": [],
+      "Name": "Coefficient of Restitution"
+    },
+    {
+      "id": "3c0e5275-7b5c-8177-a2c0-d20741b851cb",
+      "url": "https://app.notion.com/p/Ghost-Ball-Aim-3c0e52757b5c8177a2c0d20741b851cb",
+      "lastEdited": "2026-08-18T20:28:00.000Z",
+      "Skills": [
+        "3c0e5275-7b5c-8161-85f6-d77fe25cec2a"
+      ],
+      "Equation": "aim the cue ball's centre at the point 2R from the object ball's centre, on the line to the pocket;  ball-hit fraction f = 1 − sin θ",
+      "Minerals": [],
+      "Timeline": [],
+      "Field": "Billiards",
+      "Celestial Objects": [],
+      "Theories": [],
+      "Named After": null,
+      "Machines": [],
+      "Related": [],
+      "Instruments": [],
+      "Constants": [],
+      "Requires": [
+        "3c0e5275-7b5c-8110-a5c1-c471f72f8383",
+        "3c0e5275-7b5c-81bd-8cd3-f9a2363b0c47"
+      ],
+      "Impacts": [],
+      "Symbols": "R ball radius · θ cut angle · f the fraction of the object ball's width the cue ball covers at contact: 1 for a full hit, ½ for a half-ball, ¼ for a quarter-ball",
+      "Spectral Types": [],
+      "Significance": "Picture the cue ball frozen where it must be at contact — touching the object ball on the far side from the pocket. Its centre is one ball's diameter from the object ball's centre along the pocket line; send the real cue ball there. The fraction the two overlap when seen from the cue is 1 − sin θ, which is why a half-ball hit is a 30° cut and a quarter-ball is 48.6°. Pure geometry; throw adds a correction on top.",
+      "Year": 1835,
+      "Required By": [],
+      "Elements": [],
+      "Name": "Ghost-Ball Aim"
+    },
+    {
+      "id": "3c0e5275-7b5c-81bd-8cd3-f9a2363b0c47",
+      "url": "https://app.notion.com/p/Ninety-Degree-Rule-3c0e52757b5c81bd8cd3f9a2363b0c47",
+      "lastEdited": "2026-08-18T20:28:00.000Z",
+      "Skills": [
+        "3c0e5275-7b5c-8161-85f6-d77fe25cec2a",
+        "3c0e5275-7b5c-81da-8bd4-db30b61b183d",
+        "3c0e5275-7b5c-816e-a7c1-e4b15032de57"
+      ],
+      "Equation": "v_OB = v cos θ  (along the line of centres);  v_CB = v sin θ  (along the tangent line)",
+      "Minerals": [],
+      "Timeline": [],
+      "Field": "Billiards",
+      "Celestial Objects": [],
+      "Theories": [],
+      "Named After": null,
+      "Machines": [],
+      "Related": [],
+      "Instruments": [],
+      "Constants": [],
+      "Requires": [
+        "3c0e5275-7b5c-8110-a5c1-c471f72f8383",
+        "3c0e5275-7b5c-813b-8d2e-da5484cf3b1c",
+        "3c0e5275-7b5c-81cf-9fb5-e2d5973d2c9d",
+        "3c0e5275-7b5c-81e5-a7d4-c8ba74770b4d"
+      ],
+      "Impacts": [],
+      "Symbols": "v cue-ball speed at contact · θ the cut angle, between the cue ball's path and the line joining the two centres at contact · v_OB object-ball speed · v_CB cue-ball speed after impact, with no spin acting yet",
+      "Spectral Types": [],
+      "Significance": "Two equal balls, one at rest, no spin: after the hit they separate at a right angle. The object ball leaves along the line of centres — always, whatever else you do — and the cue ball keeps whatever was perpendicular to that. It is momentum and energy conservation with equal masses, and it is a projection: cos θ of the speed goes one way, sin θ the other, cos²θ of the energy to the object ball. A half-ball hit (θ = 30°) sends 75 % of the energy on. Coriolis set it down in 1835. Real balls bend it a degree or two (restitution, throw), and spin bends the cue ball's path afterwards — but the tangent line is where every cue-ball plan starts.",
+      "Year": 1835,
+      "Required By": [
+        "3c0e5275-7b5c-8177-a2c0-d20741b851cb",
+        "3c0e5275-7b5c-81dc-9186-cd5eba92c994",
+        "3c0e5275-7b5c-815f-b1cf-f6b2424a10f5"
+      ],
+      "Elements": [],
+      "Name": "Ninety-Degree Rule"
+    },
+    {
       "id": "3c0e5275-7b5c-813f-9898-c79e692ca2ac",
       "url": "https://app.notion.com/p/Decibel-Scale-3c0e52757b5c813f9898c79e692ca2ac",
       "lastEdited": "2026-08-18T20:03:00.000Z",
@@ -503416,7 +503924,9 @@
         "3bee5275-7b5c-8158-a6d7-e7f397a85c1d",
         "3bee5275-7b5c-8135-adc5-d014f8b34860",
         "3bee5275-7b5c-81d3-ad90-c1a80f5e13ad",
-        "3bee5275-7b5c-8146-bc5f-dfc8858749e6"
+        "3bee5275-7b5c-8146-bc5f-dfc8858749e6",
+        "3c0e5275-7b5c-81da-8bd4-db30b61b183d",
+        "3c0e5275-7b5c-816e-a7c1-e4b15032de57"
       ],
       "Equation": "F_f ≤ μ_s N  (static),  F_f = μ_k N  (sliding)",
       "Minerals": [],
@@ -503435,7 +503945,12 @@
       "Spectral Types": [],
       "Significance": "Friction is proportional to the load and independent of the contact area — Amontons's laws of 1699, which da Vinci had in his notebooks two centuries earlier and Coulomb refined in 1785. Static friction is what a knot, a masonry anchor and a clutch rely on; kinetic friction is what a brake pad and a bearing pay. The coefficients are empirical, and the honest tables give ranges.",
       "Year": 1699,
-      "Required By": [],
+      "Required By": [
+        "3c0e5275-7b5c-81dc-9186-cd5eba92c994",
+        "3c0e5275-7b5c-8152-92cb-d7594f28f2ed",
+        "3c0e5275-7b5c-81bc-8253-e138a0e8e378",
+        "3c0e5275-7b5c-81ae-acad-fd4201783434"
+      ],
       "Elements": [],
       "Name": "Friction"
     },
@@ -503565,7 +504080,8 @@
       "Significance": "What a spinning or orbiting body keeps unless a torque acts on it. Kepler's second law — equal areas in equal times — is its conservation for a planet, seen eighty years before Newton explained why. It is why a gyroscope holds its axis, why a collapsing star spins up into a pulsar, and why a turbine's blades are shaped to change the working fluid's angular momentum as it passes.",
       "Year": 1775,
       "Required By": [
-        "3bbe5275-7b5c-8193-83a5-f551fd37b47c"
+        "3bbe5275-7b5c-8193-83a5-f551fd37b47c",
+        "3c0e5275-7b5c-8152-92cb-d7594f28f2ed"
       ],
       "Elements": [],
       "Name": "Angular Momentum"
@@ -503574,7 +504090,9 @@
       "id": "3c0e5275-7b5c-8189-8821-d72a42bf2463",
       "url": "https://app.notion.com/p/Moment-of-Inertia-3c0e52757b5c81898821d72a42bf2463",
       "lastEdited": "2026-08-18T19:15:00.000Z",
-      "Skills": [],
+      "Skills": [
+        "3c0e5275-7b5c-81da-8bd4-db30b61b183d"
+      ],
       "Equation": "I = Σ m_i r_i² = ∫ r² dm",
       "Minerals": [],
       "Timeline": [],
@@ -503597,7 +504115,9 @@
       "Significance": "The rotational counterpart of mass: how hard a body is to spin up, set not just by how much mass it has but by how far from the axis it sits — hence the square. Euler defined it in 1765. A flywheel puts its mass at the rim for exactly this reason; a figure skater pulls arms in to spin faster; a hollow shaft is nearly as stiff in torsion as a solid one for a fraction of the weight.",
       "Year": 1765,
       "Required By": [
-        "3c0e5275-7b5c-818b-97c8-d52070d30162"
+        "3c0e5275-7b5c-818b-97c8-d52070d30162",
+        "3c0e5275-7b5c-8110-a346-c3cff4711197",
+        "3c0e5275-7b5c-8152-92cb-d7594f28f2ed"
       ],
       "Elements": [],
       "Name": "Moment of Inertia"
@@ -503608,7 +504128,8 @@
       "lastEdited": "2026-08-18T19:16:00.000Z",
       "Skills": [
         "3bee5275-7b5c-81e2-bf83-dd364bc07e64",
-        "3bee5275-7b5c-81ab-982a-ff7c4d67bb4c"
+        "3bee5275-7b5c-81ab-982a-ff7c4d67bb4c",
+        "3c0e5275-7b5c-81da-8bd4-db30b61b183d"
       ],
       "Equation": "τ = r × F,  |τ| = r F sin θ",
       "Minerals": [],
@@ -503638,7 +504159,9 @@
       "Spectral Types": [],
       "Significance": "The turning effect of a force: bigger with a longer arm and a force at right angles to it, zero when you push along the arm. Archimedes had the law of the lever in 250 BCE; the vector form with the cross product is Gibbs's. It is what a motor delivers to its shaft, what a tap wrench applies to a thread, and what a wheel nut is torqued to.",
       "Year": -250,
-      "Required By": [],
+      "Required By": [
+        "3c0e5275-7b5c-8110-a346-c3cff4711197"
+      ],
       "Elements": [],
       "Name": "Torque"
     },
@@ -503777,7 +504300,9 @@
       "Spectral Types": [],
       "Significance": "Net work in equals kinetic energy out — the bookkeeping that ties force to motion without solving for the motion in between. It falls out of F = ma and the chain rule in three lines and is the fastest way to find a speed at the bottom of a hill, a projectile's launch speed, or a bullet's energy from the depth of a hole.",
       "Year": 1829,
-      "Required By": [],
+      "Required By": [
+        "3c0e5275-7b5c-81bc-8253-e138a0e8e378"
+      ],
       "Elements": [],
       "Name": "Work–Energy Theorem"
     },
@@ -503813,7 +504338,9 @@
         "3c0e5275-7b5c-81b5-88e0-fe12756b2975",
         "3c0e5275-7b5c-8173-a3f1-e7c3bd697946",
         "3bee5275-7b5c-8166-8a64-fd5e2ad2d5dc",
-        "3c0e5275-7b5c-81d6-b1de-ec9081641f42"
+        "3c0e5275-7b5c-81d6-b1de-ec9081641f42",
+        "3c0e5275-7b5c-81bd-8cd3-f9a2363b0c47",
+        "3c0e5275-7b5c-8130-ae4d-d929818a0900"
       ],
       "Elements": [],
       "Name": "Kinetic Energy"
@@ -503860,7 +504387,9 @@
       "id": "3c0e5275-7b5c-81e5-a7d4-c8ba74770b4d",
       "url": "https://app.notion.com/p/Conservation-of-Momentum-3c0e52757b5c81e5a7d4c8ba74770b4d",
       "lastEdited": "2026-08-18T19:16:00.000Z",
-      "Skills": [],
+      "Skills": [
+        "3c0e5275-7b5c-8161-85f6-d77fe25cec2a"
+      ],
       "Equation": "Σ p_before = Σ p_after  (no external force)",
       "Minerals": [],
       "Timeline": [],
@@ -503886,7 +504415,10 @@
       "Significance": "In any collision, explosion or separation, the total momentum before equals the total after — Wallis, Wren and Huygens each derived it for the Royal Society in 1668, twenty years before the Principia. It follows from the third law and is what makes a rocket work in vacuum: exhaust goes one way, the ship the other, and the sum stays what it was. Noether's theorem later showed it is the symmetry of space under translation.",
       "Year": 1668,
       "Required By": [
-        "3bde5275-7b5c-81e1-aac4-cc21b9d77b07"
+        "3bde5275-7b5c-81e1-aac4-cc21b9d77b07",
+        "3c0e5275-7b5c-81bd-8cd3-f9a2363b0c47",
+        "3c0e5275-7b5c-8130-ae4d-d929818a0900",
+        "3c0e5275-7b5c-81ee-8da9-eee84aad7342"
       ],
       "Elements": [],
       "Name": "Conservation of Momentum"
@@ -503923,7 +504455,8 @@
         "3c0e5275-7b5c-818b-97c8-d52070d30162",
         "3bbe5275-7b5c-8183-bbd5-ff733704a984",
         "3bde5275-7b5c-81b5-b5ba-ef8abb9338cb",
-        "3bbe5275-7b5c-8170-bd5f-c796d7589e08"
+        "3bbe5275-7b5c-8170-bd5f-c796d7589e08",
+        "3c0e5275-7b5c-8110-a346-c3cff4711197"
       ],
       "Elements": [],
       "Name": "Momentum and Impulse"
@@ -503987,7 +504520,8 @@
       "Year": 1638,
       "Required By": [
         "3c0e5275-7b5c-813b-8d2e-da5484cf3b1c",
-        "3c0e5275-7b5c-815c-be60-d2a80ee3b254"
+        "3c0e5275-7b5c-815c-be60-d2a80ee3b254",
+        "3c0e5275-7b5c-8152-92cb-d7594f28f2ed"
       ],
       "Elements": [],
       "Name": "Kinematic Equations"
@@ -504547,7 +505081,10 @@
         "3bbe5275-7b5c-813d-86cf-c29a346fe2f8",
         "3bbe5275-7b5c-8113-9b17-e6d7efc091ea",
         "3bbe5275-7b5c-8130-a1e2-d4d1fefda7d8",
-        "3c0e5275-7b5c-81ba-9b00-d48bf3cd9936"
+        "3c0e5275-7b5c-81ba-9b00-d48bf3cd9936",
+        "3c0e5275-7b5c-81bd-8cd3-f9a2363b0c47",
+        "3c0e5275-7b5c-8177-a2c0-d20741b851cb",
+        "3c0e5275-7b5c-81dc-9186-cd5eba92c994"
       ],
       "Elements": [],
       "Name": "Trigonometric Ratios"
@@ -504556,7 +505093,9 @@
       "id": "3c0e5275-7b5c-81cf-9fb5-e2d5973d2c9d",
       "url": "https://app.notion.com/p/Vector-Projection-3c0e52757b5c81cf9fb5e2d5973d2c9d",
       "lastEdited": "2026-08-18T19:15:00.000Z",
-      "Skills": [],
+      "Skills": [
+        "3c0e5275-7b5c-8161-85f6-d77fe25cec2a"
+      ],
       "Equation": "proj_b a = (a · b / |b|²) b,  |proj_b a| = |a| cos θ",
       "Minerals": [],
       "Timeline": [],
@@ -504576,7 +505115,10 @@
       "Spectral Types": [],
       "Significance": "How much of a force acts along a slope, how much of a velocity is toward the observer, how much of a field crosses a surface — every 'component along' in physics is a projection, and the dot product does the work. The redshift a spectrograph measures is the projection of a galaxy's velocity onto the line of sight; the rest is invisible to it.",
       "Year": 1881,
-      "Required By": [],
+      "Required By": [
+        "3c0e5275-7b5c-81bd-8cd3-f9a2363b0c47",
+        "3c0e5275-7b5c-81ae-acad-fd4201783434"
+      ],
       "Elements": [],
       "Name": "Vector Projection"
     },
