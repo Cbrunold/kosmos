@@ -353,7 +353,7 @@
   <li><strong>Balls stay on the cloth.</strong> No hop on a firm draw stroke, no jump; the cushion returns the ball in the plane.</li>
   <li><strong>Friction is Coulomb's</strong> — a constant coefficient, except ball–ball friction for throw, which uses Alciatore's measured fit μ = 0.01 + 0.108 e<sup>−1.088 v</sup> because slow shots really do throw more.</li>
   <li><strong>The cue ball's spin is untouched by the collision.</strong> The friction impulse between the balls also nudges the cue ball's spin (it is what makes the object ball pick up a little roll); that second-order effect is dropped, and the object ball leaves without spin.</li>
-  <li><strong>Pockets are a mouth and a shelf, not jaws.</strong> Six 4½″ mouths on a 9-ft table, each with a shelf depth (1⅝″ corner, ⅜″ side — variables in the model): a ball whose centre crosses a mouth drops if it has that much roll left, and hangs in the jaws if not. No rattles or lip-outs — speed never rejects a ball the way a real corner does. Rails rebound live in the main sim with the cushion lab's model — √0.75 of the energy, friction, the ball's side transferring — so banks, kicks and multi-rail routes are real; the jaw region bounces like plain rail.</li>
+  <li><strong>Pockets are a mouth and a shelf, not jaws.</strong> Six 4½″ mouths on a 9-ft table, each with a shelf depth (1⅝″ corner, ⅜″ side — variables in the model): a ball whose centre crosses a mouth drops if it has that much roll left, and hangs in the jaws if not. No rattles or lip-outs — speed never rejects a ball the way a real corner does. Rails rebound live in the main sim with the cushion lab's model — restitution √0.75 at a soft touch, deadening with pace to a floor of 0.55, plus friction and the ball's side transferring — so banks, kicks and multi-rail routes are real and hard shots die in a few rails instead of ricocheting forever; the jaw region bounces like plain rail.</li>
 </ul>
 
 <p class="kfoot">Physics from the Equations shelf; constants from pool-sauce-engine. Coriolis, <em>Théorie mathématique des effets du jeu de billard</em>, 1835, had most of this; the throw model follows Alciatore (<em>The Illustrated Principles of Pool and Billiards</em>, technical proofs). Nothing here is a substitute for a table.</p>
@@ -398,14 +398,15 @@
       const into = r.dir > 0 ? b.v[r.ax] < 0 : b.v[r.ax] > 0;
       if (!past || !into) continue;
       const ta = 1 - r.ax, vn = Math.abs(b.v[r.ax]);
-      const Jn = M * vn * (1 + E_C);
+      const e = Math.max(0.55, E_C - 0.04 * vn);   // rubber deadens with pace: √0.75 at a touch, ~0.55 at a break
+      const Jn = M * vn * (1 + e);
       // sign of the side spin's surface velocity along the rail at this cushion's contact point
       const zs = r.ax === 1 ? r.dir : -r.dir;
       const slip = b.v[ta] + zs * b.z;
       const Jt = Math.sign(slip) * Math.min(MU_C * Jn, (2 / 7) * M * Math.abs(slip));
       b.v[ta] -= Jt / M;
       b.z -= zs * 2.5 * Jt / M;
-      b.v[r.ax] = r.dir * E_C * vn;
+      b.v[r.ax] = r.dir * e * vn;
       b.p[r.ax] = 2 * r.lim - b.p[r.ax];
       return true;
     }
@@ -945,12 +946,13 @@
   function cushion(aDeg, v, side) {
     const a = rad(aDeg);
     const vx = v * Math.cos(a), vy = v * Math.sin(a);           // along the rail, into the rail
+    const e = Math.max(0.55, E_C - 0.04 * vy);                   // same deadening-with-pace as the main sim
     const z = 2.5 * v * side;                                    // surface speed from side spin at the contact
     const slip = vx - z;                                         // running side (z > 0) reduces the slip
-    const Jn = M * vy * (1 + E_C);
+    const Jn = M * vy * (1 + e);
     const Jt = Math.min(MU_C * Jn, (2 / 7) * M * Math.abs(slip)) * (Math.sign(slip) || 0);
-    const vx2 = vx - Jt / M, vy2 = E_C * vy;
-    return { vx, vy, vx2, vy2, out: deg(Math.atan2(vy2, Math.abs(vx2))), reversed: vx2 < 0, speed: Math.hypot(vx2, vy2) / v, noSide: deg(Math.atan2(E_C * vy, Math.max(1e-6, vx - Math.min(MU_C * (1 + E_C) * vy, (2 / 7) * Math.abs(vx))))) };
+    const vx2 = vx - Jt / M, vy2 = e * vy;
+    return { vx, vy, vx2, vy2, e, out: deg(Math.atan2(vy2, Math.abs(vx2))), reversed: vx2 < 0, speed: Math.hypot(vx2, vy2) / v, noSide: deg(Math.atan2(e * vy, Math.max(1e-6, vx - Math.min(MU_C * (1 + e) * vy, (2 / 7) * Math.abs(vx))))) };
   }
   function drawCushion(C, aDeg) {
     csvg.innerHTML = '';
@@ -974,7 +976,7 @@
     const t4 = cel('text', { x: 12, y: 290, ...mono }); t4.textContent = 'top rail · angles measured from the rail · reference: same shot with no side';
     $('cout').innerHTML = dl([
       ['rebound angle', `${fmt(C.out, 1)}° from the rail <small>vs ${fmt(C.noSide, 1)}° with no side; ${aDeg}° in</small>`],
-      ['speed kept', `${fmt(100 * C.speed, 0)} % <small>√0.75 into the rail; friction on the rest</small>`],
+      ['speed kept', `${fmt(100 * C.speed, 0)} % <small>e = ${fmt(C.e, 2)} into the rail — rubber deadens with pace; friction on the rest</small>`],
       ['along the rail', `${fmt(C.vx, 2)} → ${fmt(C.vx2, 2)} m/s${C.reversed ? ' — reversed: the ball comes back' : ''}`],
       ['into the rail', `${fmt(C.vy, 2)} → ${fmt(C.vy2, 2)} m/s`],
     ]);
@@ -1003,7 +1005,7 @@
     nums.innerHTML = '<thead><tr>' + D.table.columns.map((c) => `<th>${c}</th>`).join('') + '</tr></thead><tbody></tbody>';
     const tb = nums.querySelector('tbody');
     for (const r of D.table.rows) { const tr = document.createElement('tr'); r.forEach((c, i) => { const td = document.createElement('td'); td.className = i === 0 ? 'k' : i === 1 ? 'v' : ''; td.textContent = c; tr.appendChild(td); }); tb.appendChild(tr); }
-    const extra = [["Ball–ball friction μ", "≈ 0.06 (0.01–0.12 with speed)", "throw", "Literature — Alciatore's fit; not yet in constants.py"], ["Cushion friction μ_c", "≈ 0.2", "cushion rebound", "Literature; not yet in constants.py"], ["Pocket mouth", "4.5 in = 0.1143 m", "when a ball is down", "WPA corner spec; the lab drops a ball whose centre crosses the mouth"], ["Pocket shelf", "corner 1.63 in · side 0.38 in", "hang or drop", "WPA typicals, a variable per pocket; a ball at the mouth needs that much roll left to fall, or it hangs"], ["Squirt · swerve", "5°/(b/R) · k = 0.08", "side's cost on the aim", "A fixed cue constant and a slight natural elevation; not in constants.py"]];
+    const extra = [["Ball–ball friction μ", "≈ 0.06 (0.01–0.12 with speed)", "throw", "Literature — Alciatore's fit; not yet in constants.py"], ["Cushion friction μ_c", "≈ 0.2", "cushion rebound", "Literature; not yet in constants.py"], ["Pocket mouth", "4.5 in = 0.1143 m", "when a ball is down", "WPA corner spec; the lab drops a ball whose centre crosses the mouth"], ["Pocket shelf", "corner 1.63 in · side 0.38 in", "hang or drop", "WPA typicals, a variable per pocket; a ball at the mouth needs that much roll left to fall, or it hangs"], ["Squirt · swerve", "5°/(b/R) · k = 0.08", "side's cost on the aim", "A fixed cue constant and a slight natural elevation; not in constants.py"], ["Cushion restitution e_c", "0.87 − 0.04·v, floor 0.55", "rebound speed", "√0.75 at a soft touch, deadening with pace — the engine's value is the soft limit"]];
     for (const r of extra) { const tr = document.createElement('tr'); r.forEach((c, i) => { const td = document.createElement('td'); td.className = i === 0 ? 'k' : i === 1 ? 'v' : ''; td.textContent = c; if (i === 3) td.style.color = 'var(--muted)'; tr.appendChild(td); }); tb.appendChild(tr); }
   }
 
