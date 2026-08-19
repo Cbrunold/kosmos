@@ -543,6 +543,25 @@ __SHARED__
     bumpScore(pot, S.cbTrace.pocket != null);
   }
 
+  // ---- the sight picture: Dr Dave's protractor, live. For the current cue line, the ball-overlap the
+  // shooter sees, the cut it offers, the ball-hit fraction (1 − sin θ) and its clock call (0° = 12:00,
+  // 30° = 1:00 half-ball, 90° = 3:00 edge; left cuts run 12:00 back to 9:00).
+  function sightPicture(dir) {
+    const rel = vsub(state.ob, state.cb), pd = perp(dir);
+    const along = vdot(rel, dir), lat = vdot(rel, pd);
+    if (along < 2 * R) return null;                     // the object ball is beside or behind the tip
+    const s = lat / (2 * R);
+    if (Math.abs(s) >= 1) return { miss: true, by: Math.abs(lat) - 2 * R };
+    const th = Math.asin(Math.abs(s)), f = 1 - Math.abs(s);
+    const m = Math.round(deg(th) / 90 * 180 / 5) * 5;   // minutes from 12:00, to the nearest 5
+    const tot = lat < 0 ? m : (720 - m) % 720;          // aim point sits opposite the ball's apparent offset
+    const hh = Math.floor(tot / 60) || 12, mm = tot % 60;
+    const clock = `${hh}:${mm < 10 ? '0' : ''}${mm}`;
+    const names = [[1, 'full ball'], [0.875, '⅞ ball'], [0.75, '¾ ball'], [0.625, '⅝ ball'], [0.5, '½ ball'], [0.375, '⅜ ball'], [0.25, '¼ ball'], [0.125, '⅛ ball'], [0, 'edge']];
+    let name = names[0]; for (const nn of names) if (Math.abs(nn[0] - f) < Math.abs(name[0] - f)) name = nn;
+    return { th, f, s, clock, name: name[1] };
+  }
+
   // ---- down on the shot: the view from behind the cue ball along the aim
   const pov = $('pov');
   function drawView(dir, tip, side, ghost) {
@@ -572,6 +591,23 @@ __SHARED__
     vel('line', { x1: c[0], x2: c[0], y1: c[1] - r, y2: c[1] + r, stroke: 'var(--hairline)', 'stroke-width': 1 });
     vel('circle', { cx: c[0] + side * r, cy: c[1] - tip * r, r: 4.5, fill: 'var(--c-red)' });
     const cap = vel('text', { x: 12, y: 254, ...mono, opacity: 0.8 }); cap.textContent = 'down on the shot · red dot = your tip contact on the cue ball';
+    // the sight picture, top-left: the overlap this cue line offers, with its fraction and clock call
+    const sp = sightPicture(dir);
+    vel('rect', { x: 10, y: 10, width: 236, height: 66, rx: 6, fill: 'var(--panel)', stroke: 'var(--hairline)' });
+    if (!sp) {
+      const t = vel('text', { x: 22, y: 46, ...mono }); t.textContent = 'no ball ahead of the cue';
+    } else if (sp.miss) {
+      const t = vel('text', { x: 22, y: 40, ...mono, fill: 'var(--c-red)' }); t.textContent = 'no contact on this line';
+      const t2 = vel('text', { x: 22, y: 56, ...mono }); t2.textContent = `misses by ${fmt(100 * sp.by, 1)} cm`;
+    } else {
+      const bx = 52, by2 = 43, br = 22;
+      vel('circle', { cx: bx + sp.s * 2 * br, cy: by2, r: br, fill: 'var(--c-amber)' });
+      vel('circle', { cx: bx, cy: by2, r: br, fill: 'color-mix(in oklab, var(--panel) 82%, #fff)', stroke: 'var(--ink)', 'stroke-width': 1.3 });
+      vel('line', { x1: bx, x2: bx, y1: by2 - br - 6, y2: by2 + br + 6, stroke: 'var(--muted)', 'stroke-width': 1, 'stroke-dasharray': '2 3' });
+      const t1 = vel('text', { x: 118, y: 30, ...mono, fill: 'var(--ink)' }); t1.textContent = `cut ${fmt(deg(sp.th), 1)}°`;
+      const t2 = vel('text', { x: 118, y: 47, ...mono, fill: 'var(--ink)' }); t2.textContent = `${sp.name} · f ${fmt(sp.f, 2)}`;
+      const t3 = vel('text', { x: 118, y: 64, 'font-family': 'ui-monospace, "SF Mono", Consolas, monospace', 'font-size': 15, 'font-weight': 700, fill: 'var(--c-amber)' }); t3.textContent = sp.clock;
+    }
   }
 
   const dl = (rows) => rows.map(([k, v, cls]) => `<dt>${k}</dt><dd${cls ? ` class="${cls}"` : ''}>${v}</dd>`).join('');
@@ -832,15 +868,17 @@ __SHARED__
       drawStrip(sweepOutcomes(v.tip, v.side), v.spd);
       if (S.feasible) scheduleHeatmap(v.tip, v.side, v.spd); else { hmToken++; $('hmap').getContext('2d').clearRect(0, 0, HW, HH); }
       drawSlide(S, v.spd, v.tip);
+      const spP = S.feasible ? sightPicture(S.dAim) : null;
       $('shotinfo').textContent = S.feasible
-        ? `cut ${fmt(deg(Math.acos(Math.max(-1, Math.min(1, vdot(S.dAim, S.n))))), 1)}° · ${fmt(S.dst, 2)} m to the ball · aimed at the ${S.name} pocket`
+        ? `cut ${fmt(deg(Math.acos(Math.max(-1, Math.min(1, vdot(S.dAim, S.n))))), 1)}°${spP && !spP.miss ? ` · ${spP.name} (${spP.clock})` : ''} · ${fmt(S.dst, 2)} m to the ball · aimed at the ${S.name} pocket`
         : `no line to the ${S.name} pocket from here`;
       drawView(S.feasible ? S.dAim : vunit(vsub(state.ob, state.cb)), v.tip, v.side, S.feasible ? S.ghost : null);
     } else {
       drawProTable();
       $('ob').innerHTML = dl([['—', 'prepare the sauce, then execute']]);
       $('cb').innerHTML = dl([['—', 'the table will tell']]);
-      $('shotinfo').textContent = `aim ${fmt(state.aimDeg, 1)}° · strike ${fmt(v.spd, 1)} · tip ${v.tip >= 0 ? '+' : ''}${fmt(v.tip, 2)} · side ${v.side >= 0 ? '+' : ''}${fmt(v.side, 2)}`;
+      const a2 = rad(state.aimDeg), spQ = sightPicture([Math.cos(a2), Math.sin(a2)]);
+      $('shotinfo').textContent = `aim ${fmt(state.aimDeg, 1)}° · ${spQ ? (spQ.miss ? 'no contact on this line' : `offering ${spQ.name} (${spQ.clock})`) : 'no ball ahead'} · strike ${fmt(v.spd, 1)} · tip ${v.tip >= 0 ? '+' : ''}${fmt(v.tip, 2)} · side ${v.side >= 0 ? '+' : ''}${fmt(v.side, 2)}`;
       $('aimv').textContent = `aim ${fmt(state.aimDeg, 1)}°`;
       showScore();
       drawSlide(currentShot(true), v.spd, v.tip);
