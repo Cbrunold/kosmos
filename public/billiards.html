@@ -220,6 +220,7 @@
   .aimbtns button { font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; border: 1px solid var(--hairline); background: transparent; color: var(--ink-2); border-radius: 6px; padding: 4px 8px; cursor: pointer; }
   .aimbtns button:hover { color: var(--ink); border-color: var(--ink-2); }
   .aimbtns .v { flex: 1; text-align: center; min-width: 0; }
+  .aimbtns select { flex: 2; min-width: 0; font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; background: transparent; color: var(--ink); border: 1px solid var(--hairline); border-radius: 6px; padding: 4px; }
   .ctl.pro .prac-only { display: none; }
   .ctl:not(.pro) .pro-only { display: none; }
   .tblwrap { min-width: 0; }
@@ -302,6 +303,9 @@
       <div class="hint">Left of centre is negative, seen from behind the cue. Side squirts the cue ball off the aim at the tip, then swerves it back while it slides — the longer and softer the shot, the bigger the curve. It also throws the object ball, and it matters at the rail.</div></div>
     <div class="row"><button id="exec" type="button" class="exec">▶ execute the shot</button>
       <div class="hint pro-only" id="score"></div></div>
+    <div class="row"><label>drills — progressive, after Dr Dave</label>
+      <div class="aimbtns"><select id="drill"></select><button type="button" id="dlm">−</button><span class="v" id="drilllvl">—</span><button type="button" id="dlp">+</button></div>
+      <div class="hint">Pick a drill and the table sets itself up; 10 levels, each a little harder. In pro mode a pot moves you up a level, a miss moves you down — the progressive format from <a href="https://drdavepoolinfo.com/resources/drills/" target="_blank" rel="noopener" style="color:inherit">Dr Dave's drills &amp; exam library</a>.</div></div>
     <div class="presets prac-only" id="presets"></div>
   </div>
 </div>
@@ -734,6 +738,12 @@
       ['off the ball', S.deflect === null ? 'stops dead' : `${fmt(S.deflect, 1)}° from its arrival line`],
     ]);
     bumpScore(pot, S.cbTrace.pocket != null);
+    if (state.drill != null) {   // progressive: the table answers your result with the next level
+      state.dlevel = Math.max(1, Math.min(10, state.dlevel + (pot ? 1 : -1)));
+      $('drilllvl').textContent = `L${state.dlevel} ${pot ? '▲' : '▼'}`;
+      clearTimeout(drillTimer);
+      drillTimer = setTimeout(applyDrill, 2400);
+    }
   }
 
   // ---- the sight picture: Dr Dave's protractor, live. For the current cue line, the ball-overlap the
@@ -1046,7 +1056,7 @@
   }
 
   // ---- wiring: ball positions, the aimed pocket (practice) and the aim line (pro) live in state
-  const state = { cb: [0.9, 0.56], ob: [1.75, 0.5], pk: 2, mode: 'practice', aimDeg: 0 };
+  const state = { cb: [0.9, 0.56], ob: [1.75, 0.5], pk: 2, mode: 'practice', aimDeg: 0, drill: null, dlevel: 1 };
   const ids = ['spd', 'tip', 'side'];
   const units = { spd: (v) => `${fmt(v, 1)} / 10`, tip: (v) => `${v >= 0 ? '+' : ''}${fmt(v, 2)}`, side: (v) => `${v >= 0 ? '+' : ''}${fmt(v, 2)}` };
   const sliders = () => Object.fromEntries(ids.map((k) => [k, +$(k).value]));
@@ -1055,6 +1065,7 @@
     stopAnim();
     const v = sliders();
     for (const k of ids) $(k + 'v').textContent = units[k](v[k]);
+    $('drilllvl').textContent = state.drill == null ? '—' : `L${state.dlevel}/10`;
     if (state.mode === 'practice') {
       const S = currentShot(false);
       drawShot(S); report(S);
@@ -1194,6 +1205,33 @@
     ['straight follow — a scratch', { spd: 3, tip: 0.4, side: 0 }, [2.2, 0.3, 2, 0, 0.9]],
   ];
   for (const [name, sl, pl] of PRESETS) { const b = document.createElement('button'); b.type = 'button'; b.textContent = name; b.addEventListener('click', () => { for (const k in sl) $(k).value = sl[k]; place(...pl); run(); }); $('presets').appendChild(b); }
+  // ---- drills: Dr Dave's progressive-practice format on demand. Ten levels each; the gen()
+  // lays the table out for a level. In pro, a pot climbs a level and a miss drops one.
+  const DRILLS = [
+    { name: 'stop-shot ladder', gen: (n) => ({ ob: [1.9, 0.28], pk: 2, cut: 0, dist: 0.35 + 0.125 * n }) },
+    { name: 'draw ladder', gen: (n) => ({ ob: [1.9, 0.3], pk: 2, cut: 0, dist: 0.35 + 0.125 * n }) },
+    { name: 'follow ladder', gen: (n) => ({ ob: [1.85, 0.35], pk: 2, cut: 6, dist: 0.35 + 0.125 * n }) },
+    { name: 'cut rainbow', gen: (n) => ({ ob: [1.75, 0.5], pk: 2, cut: (n % 2 ? 1 : -1) * (8 + 6.5 * n), dist: 0.7 }) },
+    { name: 'bank ladder', gen: (n) => ({ ob: [0.55 + 0.1 * n, 0.42], pk: 4, cut: 0, dist: 0.55, cbAt: [1.7, 0.95] }) },
+  ];
+  let drillTimer = 0;
+  function applyDrill() {
+    if (state.drill == null) return;
+    const s = DRILLS[state.drill].gen(state.dlevel);
+    if (s.cbAt) { state.ob = clampBall(s.ob, s.cbAt); state.pk = s.pk; state.cb = clampBall(s.cbAt, state.ob); }
+    else place(s.ob[0], s.ob[1], s.pk, s.cut, s.dist);
+    if (state.mode === 'pro') { const dv = vsub(state.ob, state.cb); state.aimDeg = deg(Math.atan2(dv[1], dv[0])); }
+    run();
+  }
+  {
+    const sel = $('drill');
+    const o0 = document.createElement('option'); o0.value = ''; o0.textContent = 'no drill — free table'; sel.appendChild(o0);
+    DRILLS.forEach((d, i) => { const o = document.createElement('option'); o.value = i; o.textContent = d.name; sel.appendChild(o); });
+    sel.addEventListener('change', () => { clearTimeout(drillTimer); state.drill = sel.value === '' ? null : +sel.value; state.dlevel = 1; if (state.drill == null) run(); else applyDrill(); });
+    $('dlm').addEventListener('click', () => { if (state.drill != null) { state.dlevel = Math.max(1, state.dlevel - 1); applyDrill(); } });
+    $('dlp').addEventListener('click', () => { if (state.drill != null) { state.dlevel = Math.min(10, state.dlevel + 1); applyDrill(); } });
+  }
+
   if (!loadHash()) place(...PRESETS[0][2]);
   run();
 
