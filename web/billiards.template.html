@@ -18,6 +18,7 @@ __SHARED__
   .presets { display: flex; flex-wrap: wrap; gap: 5px; }
   .presets button { font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; border: 1px solid var(--hairline); background: transparent; color: var(--ink-2); border-radius: 99px; padding: 3px 10px; cursor: pointer; }
   .presets button:hover { color: var(--ink); border-color: var(--ink-2); }
+  .presets button.on { border-color: var(--c-amber); color: var(--ink); background: color-mix(in oklab, var(--c-amber) 16%, transparent); }
   .modes { display: flex; gap: 5px; grid-column: 1 / -1; }
   .modes button { flex: 1; font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; border: 1px solid var(--hairline); background: transparent; color: var(--ink-2); border-radius: 6px; padding: 5px 8px; cursor: pointer; }
   .modes button.on { border-color: var(--c-felt); color: var(--ink); background: color-mix(in oklab, var(--c-felt) 12%, transparent); }
@@ -113,6 +114,10 @@ __SHARED__
     <div class="row"><label>balls on the table</label>
       <div class="aimbtns"><button type="button" id="rack9">9-ball</button><button type="button" id="rack8">8-ball</button><button type="button" id="ballplus">+ ball</button><button type="button" id="ballminus">− ball</button><button type="button" id="justtwo">just two</button></div>
       <div class="hint">Every ball is live — combos, caroms, clusters and full breaks. Drag any ball; practice aims the ghost-ball line at the lowest number still up (ringed). Presets and drills reset to two balls.</div></div>
+    <div class="row"><label>conditions — stack the contract</label>
+      <div class="presets" id="conds"></div>
+      <div class="hint" id="condres"></div>
+      <div class="hint">Pick any set: practice grades them live, pro grades on execute. Conditions that fight each other make the best shots.</div></div>
     <div class="row"><label>drills — progressive, after Dr Dave</label>
       <div class="aimbtns"><select id="drill"></select><button type="button" id="dlm">−</button><span class="v" id="drilllvl">—</span><button type="button" id="dlp">+</button></div>
       <div class="hint">Pick a drill and the table sets itself up; 10 levels, each a little harder. In pro mode a pot moves you up a level, a miss moves you down — the progressive format from <a href="https://drdavepoolinfo.com/resources/drills/" target="_blank" rel="noopener" style="color:inherit">Dr Dave's drills &amp; exam library</a>.</div></div>
@@ -355,7 +360,7 @@ __SHARED__
     const tgt = state.tgtIdx();
     const bodies = state.balls.map((b, i) => ({
       n: b.n, p: i === 0 ? cbP.slice() : i === tgt ? obP.slice() : b.p.slice(),
-      v: [0, 0], s: [0, 0], z: 0, slid: 0, len: 0, pocket: null, hang: null, potStep: 0, dropSpeed: 0,
+      v: [0, 0], s: [0, 0], z: 0, slid: 0, len: 0, rails: 0, pocket: null, hang: null, potStep: 0, dropSpeed: 0,
       minPD: Infinity, pts: lite ? null : [], moving: false,
     }));
     const cue = bodies[0], obB = bodies[tgt];
@@ -364,7 +369,8 @@ __SHARED__
     if (!lite) for (const b of bodies) b.pts.push(b.p.slice());
     const dt = lite ? 0.005 : 0.002;
     const maxI = lite ? 3000 : 14000;
-    let hit = null, contactStep = null;
+    let hit = null, contactStep = null, cueRailsPre = 0;
+    const cueContacts = [];   // every ball the cue ball touches, in order — the conditions' ledger
     for (let i = 0; i < maxI; i++) {
       let any = false;
       for (const b of bodies) {
@@ -387,7 +393,8 @@ __SHARED__
           const ev = collide(A, B);
           if (ev) {
             if (vlen(B.v) > 1e-3) { B.moving = true; any = true; }
-            if (hit == null && a === 0) { hit = { ...ev, ball: B.n, isTarget: c === tgt }; contactStep = i; cue.slid = 0; }
+            if (a === 0) cueContacts.push(B.n); else if (c === 0) cueContacts.push(A.n);
+            if (hit == null && a === 0) { hit = { ...ev, ball: B.n, isTarget: c === tgt }; contactStep = i; cue.slid = 0; cueRailsPre = cue.rails; }
           }
         }
       }
@@ -401,14 +408,14 @@ __SHARED__
           b.potStep = i; b.moving = false; b.v = [0, 0];
           continue;
         }
-        bounce(b);
+        if (bounce(b)) b.rails++;
       }
       if (!any) break;
     }
     const cs = contactStep == null ? null : contactStep + 1;
     const mkTrace = (b, from) => ({ pts: lite ? null : b.pts.slice(from), pocket: b.pocket, hang: b.hang, dropSpeed: b.dropSpeed, len: b.len, minPD: b.minPD, slid: b.slid, dt, potStep: b.potStep });
     if (hit == null) {
-      return { ...base, pre: lite ? [cbP] : cue.pts, preDt: dt, dt, reached: false, cbPre: cue.pocket, cbPreHang: cue.hang, simBalls: bodies, tgtIdx: tgt };
+      return { ...base, pre: lite ? [cbP] : cue.pts, preDt: dt, dt, reached: false, cbPre: cue.pocket, cbPreHang: cue.hang, simBalls: bodies, tgtIdx: tgt, cueContacts, cueRails: cue.rails, cueRailsPre: cue.rails };
     }
     // ---- report data, from the cue ball's first contact
     const cbAfter = { v: hit.vA, s: hit.sA };
@@ -425,6 +432,7 @@ __SHARED__
       eOB: hit.vc > 1e-6 ? vlen(hit.vB) ** 2 / (hit.vc * hit.vc) : 0, fraction: 1 - Math.sin(hit.th),
       deflect: vlen(vfCB) > 1e-3 ? deg(Math.acos(Math.max(-1, Math.min(1, vdot(vunit(vfCB), hit.dc))))) : null,
       firstBall: hit.ball, firstIsTarget: hit.isTarget, simBalls: bodies, tgtIdx: tgt, contactStep: cs,
+      cueContacts, cueRails: cue.rails, cueRailsPre,
     };
   }
 
@@ -602,6 +610,8 @@ __SHARED__
         ['cue ball', S.cbPre != null ? `<b>SCRATCH</b> — falls in the ${POCKETS[S.cbPre].name}` : S.cbPreHang != null ? `hangs in the jaws of the ${POCKETS[S.cbPreHang].name}` : `dies on the cloth — ${zone(S.pre[S.pre.length - 1])}`, S.cbPre != null ? 'warn' : undefined],
         ['the aim', `${fmt(state.aimDeg, 1)}°${sqTxt}`],
       ]);
+      bumpScore(false, S.cbPre != null);
+      gradeConditions(S);
       return;
     }
     const pot = S.obTrace.pocket != null, hang = S.obTrace.hang != null;
@@ -619,6 +629,7 @@ __SHARED__
       ['off the ball', S.deflect === null ? 'stops dead' : `${fmt(S.deflect, 1)}° from its arrival line`],
     ]);
     bumpScore(pot, S.cbTrace.pocket != null);
+    gradeConditions(S);
     if (state.drill != null) {   // progressive: the table answers your result with the next level
       state.dlevel = Math.max(1, Math.min(10, state.dlevel + (pot ? 1 : -1)));
       $('drilllvl').textContent = `L${state.dlevel} ${pot ? '▲' : '▼'}`;
@@ -1004,6 +1015,7 @@ __SHARED__
       $('shotinfo').textContent = S.feasible
         ? `cut ${fmt(deg(Math.acos(Math.max(-1, Math.min(1, vdot(S.dAim, S.n))))), 1)}°${spP && !spP.miss ? ` · ${spP.name} (${spP.clock})` : ''} · ${fmt(S.dst, 2)} m to the ball · aimed at the ${S.name} pocket`
         : `no line to the ${S.name} pocket from here`;
+      gradeConditions(S);
       drawView(S.feasible ? S.dAim : vunit(vsub(state.ob, state.cb)), v.tip, v.side, S.feasible ? S.ghost : null);
     } else {
       drawProTable();
@@ -1012,6 +1024,8 @@ __SHARED__
       const a2 = rad(state.aimDeg), spQ = sightPicture([Math.cos(a2), Math.sin(a2)]);
       $('shotinfo').textContent = `aim ${fmt(state.aimDeg, 1)}° · ${spQ ? (spQ.miss ? 'no contact on this line' : `offering ${spQ.name} (${spQ.clock})`) : 'no ball ahead'} · strike ${fmt(v.spd, 1)} · tip ${v.tip >= 0 ? '+' : ''}${fmt(v.tip, 2)} · side ${v.side >= 0 ? '+' : ''}${fmt(v.side, 2)}`;
       $('aimv').textContent = `aim ${fmt(state.aimDeg, 1)}°`;
+      if (state.conds && state.conds.size) $('condres').textContent = 'execute to grade the contract';
+      else if (state.conds) $('condres').innerHTML = '';
       showScore();
       drawSlide(currentShot(true), v.spd, v.tip);
       const a = rad(state.aimDeg);
@@ -1098,11 +1112,12 @@ __SHARED__
     const tgt = state.tgtIdx();
     const parts = [state.mode === 'pro' ? 1 : 0, fmt(state.cb[0], 3), fmt(state.cb[1], 3), fmt(state.ob[0], 3), fmt(state.ob[1], 3), state.pk, fmt(state.aimDeg, 2), v.spd, v.tip, v.side];
     state.balls.forEach((b, i) => { if (i !== 0 && i !== tgt) parts.push(b.n, fmt(b.p[0], 3), fmt(b.p[1], 3)); });
-    return '#s=' + parts.join(',');
+    return '#s=' + parts.join(',') + (state.conds.size ? '!' + [...state.conds].join('.') : '');
   }
   function loadHash() {
-    const m = location.hash.match(/^#s=(.+)$/);
+    const m = location.hash.match(/^#s=([^!]+)(?:!([a-z0-9.]+))?$/);
     if (!m) return false;
+    if (m[2]) for (const id of m[2].split('.')) if (CONDITIONS.some((c) => c.id === id)) state.conds.add(id);
     const a = m[1].split(',').map(Number);
     if (a.length < 10 || a.some((x) => Number.isNaN(x))) return false;
     state.mode = a[0] ? 'pro' : 'practice';
@@ -1169,6 +1184,62 @@ __SHARED__
     $('dlp').addEventListener('click', () => { if (state.drill != null) { state.dlevel = Math.min(10, state.dlevel + 1); applyDrill(); } });
   }
 
+  // ---- conditions: stackable contracts graded against the sim's ledger
+  // can the cue ball (radius R) reach any face of the target in a straight line past the blockers?
+  function visibleFrac(from, targetP, blockers) {
+    const dvec = vsub(targetP, from), dl = vlen(dvec);
+    if (dl < 1e-6) return 1;
+    const pd = perp(vmul(dvec, 1 / dl));
+    let clear = 0;
+    const K = 21;
+    for (let k = 0; k < K; k++) {
+      const p1 = vadd(targetP, vmul(pd, (k / (K - 1) * 2 - 1) * R * 0.95));
+      const seg = vsub(p1, from), segLL = Math.max(1e-9, vdot(seg, seg));
+      let ok = true;
+      for (const q of blockers) {
+        const t2 = Math.max(0, Math.min(1, vdot(vsub(q, from), seg) / segLL));
+        if (dist2(vadd(from, vmul(seg, t2)), q) < 2 * R * 0.95) { ok = false; break; }
+      }
+      if (ok) clear++;
+    }
+    return clear / K;
+  }
+  const CONDITIONS = [
+    { id: 'clean', label: 'clean hit', chk: (S) => { const t = S.simBalls[S.tgtIdx].n; const bad = (S.cueContacts || []).filter((x) => x !== t); return { ok: !!S.reached && bad.length === 0, detail: bad.length ? `also touched ${[...new Set(bad)].join(', ')}` : S.reached ? 'only the target' : 'never arrived' }; } },
+    { id: 'norail', label: 'no rail (cue)', chk: (S) => ({ ok: (S.cueRails || 0) === 0, detail: `${S.cueRails || 0} rail${(S.cueRails || 0) === 1 ? '' : 's'} touched` }) },
+    { id: 'kick', label: 'kick first', chk: (S) => ({ ok: !!S.reached && (S.cueRailsPre || 0) >= 1, detail: `${S.cueRailsPre || 0} rail${(S.cueRailsPre || 0) === 1 ? '' : 's'} before contact` }) },
+    { id: 'rails3', label: '3 rails after', chk: (S) => { const rp = Math.max(0, (S.cueRails || 0) - (S.cueRailsPre || 0)); return { ok: !!S.reached && rp >= 3, detail: `${rp} after contact` }; } },
+    { id: 'called', label: 'called pocket', chk: (S) => ({ ok: !!S.reached && S.obTrace && S.obTrace.pocket === state.pk, detail: S.obTrace && S.obTrace.pocket != null ? `in the ${POCKETS[S.obTrace.pocket].name}` : 'stayed up' }) },
+    { id: 'soft', label: 'pocket speed', chk: (S) => { const dn = S.obTrace && S.obTrace.pocket != null; return { ok: !!dn && S.obTrace.dropSpeed <= 1.2, detail: dn ? `drops at ${fmt(S.obTrace.dropSpeed, 2)} m/s (≤ 1.2)` : 'no drop' }; } },
+    { id: 'carom', label: 'carom after', chk: (S) => { const cc = S.cueContacts || []; const ok2 = cc.length > 1 && cc.slice(1).some((x) => x !== cc[0]); return { ok: !!S.reached && ok2, detail: cc.length > 1 ? `then ${[...new Set(cc.slice(1))].join(', ')}` : 'no second ball' }; } },
+    { id: 'still', label: 'nothing else moves', chk: (S) => { const mv = S.simBalls.filter((b, i) => i !== 0 && i !== S.tgtIdx && b.len > 0.03).map((b) => b.n); return { ok: mv.length === 0, detail: mv.length ? `${mv.join(', ')} moved` : 'surgical' }; } },
+    { id: 'safety', label: 'safety', chk: (S) => {
+      const cue = S.simBalls[0];
+      if (cue.pocket != null) return { ok: false, detail: 'cue ball down' };
+      const up = S.simBalls.filter((b, i) => i !== 0 && b.pocket == null);
+      if (!up.length) return { ok: false, detail: 'nothing left to hide' };
+      let low = up[0]; for (const b of up) if (b.n < low.n) low = b;
+      const blockers = S.simBalls.filter((b, i) => i !== 0 && b !== low && b.pocket == null).map((b) => b.p);
+      const vis = visibleFrac(cue.p, low.p, blockers);
+      return { ok: vis === 0, detail: `${fmt(100 * (1 - vis), 0)} % of the ${low.n} hidden` };
+    } },
+  ];
+  state.conds = new Set();
+  for (const c of CONDITIONS) {
+    const btn = document.createElement('button'); btn.type = 'button'; btn.textContent = c.label; btn.dataset.cid = c.id;
+    btn.addEventListener('click', () => { if (state.conds.has(c.id)) state.conds.delete(c.id); else state.conds.add(c.id); syncCondBtns(); schedule(); });
+    $('conds').appendChild(btn);
+  }
+  function syncCondBtns() { for (const b of $('conds').children) b.classList.toggle('on', state.conds.has(b.dataset.cid)); }
+  function gradeConditions(S) {
+    if (!state.conds.size) { $('condres').innerHTML = ''; return; }
+    if (!S || !S.feasible || !S.simBalls) { $('condres').textContent = '—'; return; }
+    const res = [...state.conds].map((id) => { const c = CONDITIONS.find((x) => x.id === id); return { c, r: c.chk(S) }; });
+    const okN = res.filter((x) => x.r.ok).length;
+    $('condres').innerHTML = res.map(({ c, r }) => `<span style="color:${r.ok ? 'var(--c-amber)' : 'var(--c-red)'}">${r.ok ? '✓' : '✗'} ${c.label}</span> <small>${r.detail}</small>`).join(' · ')
+      + ` — <b>${okN}/${res.length}</b> met`;
+  }
+
   // ---- racks and roster management
   function setRack(count) {
     const fx = TABLE_L * 0.72, fy = TABLE_W / 2, g = 2 * R + 0.001;
@@ -1204,6 +1275,7 @@ __SHARED__
   $('justtwo').addEventListener('click', () => { resetRoster(state.cb.slice(), state.ob.slice()); run(); });
 
   if (!loadHash()) place(...PRESETS[0][2]);
+  syncCondBtns();
   run();
 
   function runC() {
