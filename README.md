@@ -191,6 +191,19 @@ also recovers the state an interrupted run leaves behind (data synced but
 uncommitted), and refuses to run if anything outside `data/` and `public/` is
 dirty, because that clone is a deploy target, not a workspace.
 
+**Push-to-deploy**: `.github/workflows/deploy.yml` runs the same
+`./deploy.sh --no-fetch` over SSH on every push to `main` (and on demand from
+the Actions tab, where the arguments can be changed — e.g. to run seeds).
+It needs three repository secrets — `DEPLOY_SSH_KEY` (a dedicated
+`ssh-keygen -t ed25519` private key whose public half is in the VPS user's
+`authorized_keys`), `DEPLOY_HOST`, `DEPLOY_USER` — plus optional
+`DEPLOY_PORT`, `DEPLOY_DIR` (default `/srv/kosmos`) and `DEPLOY_KNOWN_HOSTS`
+(`ssh-keyscan <host>`; without it the first connection trusts-on-first-use).
+Until the secrets exist the job exits green with a warning instead of failing
+every push. The workflow skips commits starting with `Sync from Notion`, so
+the push `deploy.sh` itself makes at the end of a run does not re-trigger it,
+and a concurrency group queues overlapping deploys instead of racing them.
+
 By hand, the equivalent is:
 
 ```

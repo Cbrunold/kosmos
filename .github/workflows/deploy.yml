@@ -1,0 +1,76 @@
+# Push-to-deploy: every push to main SSHes into the VPS and runs ./deploy.sh
+# there — the same script, the same checks, just fired by GitHub instead of a
+# hand. The script itself pulls, builds, ships, restarts and verifies /health,
+# so this workflow is nothing but the ssh call.
+#
+# Setup (repository → Settings → Secrets and variables → Actions):
+#   DEPLOY_SSH_KEY      private key whose public half is in the VPS user's
+#                       ~/.ssh/authorized_keys (make a dedicated keypair:
+#                       ssh-keygen -t ed25519 -f deploy_key -N "")
+#   DEPLOY_HOST         the VPS hostname or IP
+#   DEPLOY_USER         the unix user owning /srv/kosmos
+#   DEPLOY_PORT         optional, default 22
+#   DEPLOY_DIR          optional, default /srv/kosmos
+#   DEPLOY_KNOWN_HOSTS  optional but recommended: output of
+#                       ssh-keyscan <host>; without it the first connection
+#                       trusts-on-first-use (accept-new)
+#
+# Until the secrets exist the job exits green with a warning, so pushes are
+# not painted red on an unconfigured fork.
+
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      args:
+        description: "Arguments passed to deploy.sh (e.g. --no-fetch, or seed names to run first)"
+        required: false
+        default: "--no-fetch"
+
+permissions:
+  contents: read
+
+# deploy.sh must never run twice at once on the VPS; queue, don't cancel
+concurrency:
+  group: deploy-kosmos
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    # deploy.sh pushes "Sync from Notion" commits back to main — don't loop on them
+    if: github.event_name == 'workflow_dispatch' || !startsWith(github.event.head_commit.message, 'Sync from Notion')
+    env:
+      SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+      SSH_HOST: ${{ secrets.DEPLOY_HOST }}
+      SSH_USER: ${{ secrets.DEPLOY_USER }}
+      SSH_PORT: ${{ secrets.DEPLOY_PORT }}
+      KNOWN_HOSTS: ${{ secrets.DEPLOY_KNOWN_HOSTS }}
+      DEPLOY_DIR: ${{ secrets.DEPLOY_DIR }}
+      ARGS: ${{ github.event_name == 'workflow_dispatch' && inputs.args || '--no-fetch' }}
+    steps:
+      - name: Run deploy.sh on the VPS
+        run: |
+          if [ -z "$SSH_KEY" ] || [ -z "$SSH_HOST" ] || [ -z "$SSH_USER" ]; then
+            echo "::warning::Deploy skipped — set the DEPLOY_SSH_KEY, DEPLOY_HOST and DEPLOY_USER repository secrets (see the header of .github/workflows/deploy.yml)."
+            exit 0
+          fi
+          mkdir -p ~/.ssh
+          printf '%s\n' "$SSH_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          if [ -n "$KNOWN_HOSTS" ]; then
+            printf '%s\n' "$KNOWN_HOSTS" > ~/.ssh/known_hosts
+            HOSTCHECK=yes
+          else
+            HOSTCHECK=accept-new
+          fi
+          ssh -i ~/.ssh/deploy_key \
+              -p "${SSH_PORT:-22}" \
+              -o StrictHostKeyChecking=$HOSTCHECK \
+              -o ConnectTimeout=15 \
+              "$SSH_USER@$SSH_HOST" \
+              "cd '${DEPLOY_DIR:-/srv/kosmos}' && ./deploy.sh $ARGS"
