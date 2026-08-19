@@ -76,7 +76,7 @@ __SHARED__
     <div class="row"><label>outcome by speed — this shot, every speed</label>
       <svg id="vstrip" viewBox="0 0 550 22" preserveAspectRatio="none"></svg>
       <div class="hint" id="potv"></div>
-      <div class="hint"><b>solid amber</b>: the object ball drops · <b>faint amber</b>: it stays up · <b>grey</b>: the cue ball never gets there · <b>red strip</b>: the cue ball scratches</div></div>
+      <div class="hint"><b>solid amber</b>: the object ball drops · <b>mid amber</b>: it hangs in the jaws · <b>faint amber</b>: it stays up · <b>grey</b>: the cue ball never gets there · <b>red strip</b>: the cue ball scratches</div></div>
     <div class="row"><label for="tip">tip height, b/R</label><input id="tip" type="range" min="-0.5" max="0.5" step="0.02" value="0.4"><span class="v" id="tipv"></span>
       <div class="hint">+0.4 is natural roll from the start; 0 is a centre-ball hit; below 0 is draw. ±0.5 is the miscue limit.</div></div>
     <div class="row"><label for="side">side, b/R</label><input id="side" type="range" min="-0.5" max="0.5" step="0.02" value="0"><span class="v" id="sidev"></span>
@@ -124,7 +124,7 @@ __SHARED__
   <li><strong>Balls stay on the cloth.</strong> No hop on a firm draw stroke, no jump; the cushion returns the ball in the plane.</li>
   <li><strong>Friction is Coulomb's</strong> — a constant coefficient, except ball–ball friction for throw, which uses Alciatore's measured fit μ = 0.01 + 0.108 e<sup>−1.088 v</sup> because slow shots really do throw more.</li>
   <li><strong>The cue ball's spin is untouched by the collision.</strong> The friction impulse between the balls also nudges the cue ball's spin (it is what makes the object ball pick up a little roll); that second-order effect is dropped, and the object ball leaves without spin.</li>
-  <li><strong>Pockets are holes, not jaws.</strong> Six 4½″ mouths on a 9-ft table; a ball whose centre crosses a mouth is down — no rattles, no lip-outs, no slop, and speed never rejects a ball the way a real corner does. Paths elsewhere stop where they meet a rail — rails are the cushion lab's business.</li>
+  <li><strong>Pockets are a mouth and a shelf, not jaws.</strong> Six 4½″ mouths on a 9-ft table, each with a shelf depth (1⅝″ corner, ⅜″ side — variables in the model): a ball whose centre crosses a mouth drops if it has that much roll left, and hangs in the jaws if not. No rattles or lip-outs — speed never rejects a ball the way a real corner does — and paths elsewhere stop where they meet a rail; rails are the cushion lab's business.</li>
 </ul>
 
 <p class="kfoot">Physics from the Equations shelf; constants from pool-sauce-engine. Coriolis, <em>Théorie mathématique des effets du jeu de billard</em>, 1835, had most of this; the throw model follows Alciatore (<em>The Illustrated Principles of Pool and Billiards</em>, technical proofs). Nothing here is a substitute for a table.</p>
@@ -141,9 +141,10 @@ __SHARED__
   const muBB = (v) => 0.01 + 0.108 * Math.exp(-1.088 * v);   // Alciatore's fit — literature
   const TABLE_L = 2.54, TABLE_W = 1.27;
   const RP = 0.05715;                // 4½ in mouth → 0.0572 m capture radius on the ball's centre
+  const SHELF_C = 0.0413, SHELF_S = 0.0095;   // pocket shelf depth, a per-pocket variable: 1⅝ in corner, ⅜ in side (WPA typicals)
   const POCKETS = [
-    { p: [0, 0], name: 'top-left corner' }, { p: [TABLE_L / 2, 0], name: 'top side' }, { p: [TABLE_L, 0], name: 'top-right corner' },
-    { p: [0, TABLE_W], name: 'bottom-left corner' }, { p: [TABLE_L / 2, TABLE_W], name: 'bottom side' }, { p: [TABLE_L, TABLE_W], name: 'bottom-right corner' },
+    { p: [0, 0], name: 'top-left corner', shelf: SHELF_C }, { p: [TABLE_L / 2, 0], name: 'top side', shelf: SHELF_S }, { p: [TABLE_L, 0], name: 'top-right corner', shelf: SHELF_C },
+    { p: [0, TABLE_W], name: 'bottom-left corner', shelf: SHELF_C }, { p: [TABLE_L / 2, TABLE_W], name: 'bottom side', shelf: SHELF_S }, { p: [TABLE_L, TABLE_W], name: 'bottom-right corner', shelf: SHELF_C },
   ];
 
   const $ = (id) => document.getElementById(id);
@@ -192,20 +193,21 @@ __SHARED__
     if (ul > 1e-4) { const t = 2 * ul / (7 * MU_S * G); d += vlen(vsub(vmul(b.v, t), vmul(vunit(u), 0.5 * MU_S * G * t * t))); }
     return d + vlen(vf) ** 2 / (2 * MU_R * G);
   };
-  // roll a ball until it stops, leaves the cloth, or drops; track the closest approach to the target pocket
+  // roll a ball until it stops, leaves the cloth, or reaches a mouth; track the closest approach to the target
+  // pocket. At a mouth it drops only with the roll left to carry that pocket's shelf — else it hangs in the jaws.
   const trace = (b, dt, keep, P) => {
     const pts = keep ? [b.p.slice()] : null;
-    let off = false, pocket = null, dropSpeed = 0, minPD = P ? dist2(b.p, P) : Infinity;
+    let off = false, pocket = null, hang = null, dropSpeed = 0, minPD = P ? dist2(b.p, P) : Infinity;
     for (let i = 0; i < 9000; i++) {
       step(b, dt);
       if (keep) pts.push(b.p.slice());
       if (P) { const dd = dist2(b.p, P); if (dd < minPD) minPD = dd; }
       const pk = pocketAt(b.p);
-      if (pk >= 0) { pocket = pk; dropSpeed = vlen(b.v); break; }
+      if (pk >= 0) { if (stopDistance(b) >= POCKETS[pk].shelf) { pocket = pk; dropSpeed = vlen(b.v); } else hang = pk; break; }
       if (!inside(b.p)) { off = true; break; }
       if (vlen(b.v) < 1e-3) break;
     }
-    return { pts, off, pocket, dropSpeed, minPD, slid: b.slid, dt };
+    return { pts, off, pocket, hang, dropSpeed, minPD, slid: b.slid, dt };
   };
 
   // ---- the shot: cue ball at cbP, object ball at obP, aimed (ghost-ball aim) at pocket pkI
@@ -228,7 +230,7 @@ __SHARED__
       if (!lite) pre.push(cb.p.slice());
       if (vdot(vsub(cb.p, ghost), d) >= 0) { reached = true; break; }
       const pk = pocketAt(cb.p);
-      if (pk >= 0) { cbPre = pk; break; }
+      if (pk >= 0) { if (stopDistance(cb) >= POCKETS[pk].shelf) cbPre = pk; break; }
       if (vlen(cb.v) < 1e-3) break;
     }
     if (!reached) return { ...base, pre, reached: false, cbPre };
@@ -313,8 +315,10 @@ __SHARED__
       const potLabel = (pk, dy, s, fill) => text([Math.min(Math.max(POCKETS[pk].p[0], 0.13), TABLE_L - 0.13), POCKETS[pk].p[1] + (pk < 3 ? dy : -dy + 0.03)], s, { ...mono, fill, 'text-anchor': 'middle' });
       if (S.obTrace.pocket == null) ball(endOB, { fill: 'none', stroke: 'var(--c-amber)', 'stroke-width': 1.2, 'stroke-dasharray': '3 3' });
       else potLabel(S.obTrace.pocket, 0.115, 'drops', 'var(--c-amber)');
+      if (S.obTrace.hang != null) potLabel(S.obTrace.hang, 0.115, 'hangs', 'var(--c-amber)');
       if (S.cbTrace.pocket == null) ball(endCB, { fill: 'none', stroke: 'var(--c-felt)', 'stroke-width': 1.2, 'stroke-dasharray': '3 3' });
       else potLabel(S.cbTrace.pocket, 0.155, 'scratch!', 'var(--c-red)');
+      if (S.cbTrace.hang != null) potLabel(S.cbTrace.hang, 0.155, 'cue hangs', 'var(--c-felt)');
       // ghost ball at contact
       ball(S.ghost, { fill: 'none', stroke: 'var(--ink)', 'stroke-width': 1.2, 'stroke-dasharray': '2 3', opacity: 0.8 });
       text(vadd(S.ghost, [-0.02, 0.075]), 'ghost ball', { ...mono, 'text-anchor': 'middle' });
@@ -365,14 +369,14 @@ __SHARED__
       ['direction', `pocket line${S.throwDeg > 0.05 ? ` rotated ${fmt(S.throwDeg, 1)}° ${toward === null ? 'by the side spin' : toward ? 'toward the cue ball\'s line <small>plays fuller than aimed</small>' : 'away from the cue ball\'s line <small>plays thinner than aimed</small>'}` : ' — no throw'}`],
       ['throw', `${fmt(S.throwDeg, 2)}° <small>μ = ${fmt(S.mu, 3)} at ${fmt(S.ul, 2)} m/s surface slip${S.Jh >= M * Math.abs(S.vt - S.cbz) / 7 - 1e-9 && S.Jh > 0 ? ' · gearing limit' : ''}</small>`],
       ['ball-hit fraction', `${fmt(S.fraction, 2)} <small>1 − sin θ</small>`],
-      ['the pocket', potted ? `<b>drops</b> — falls in the ${S.name} at ${fmt(S.obTrace.dropSpeed, 2)} m/s` : S.obTrace.pocket != null ? `falls in the <em>wrong</em> pocket — the ${POCKETS[S.obTrace.pocket].name}` : `stays up — ${S.obTrace.off ? 'reaches the rail' : `dies after ${fmt(S.stopOB, 2)} m`}, ${missCm} cm from the mouth at its closest`, potted ? 'good' : 'warn'],
+      ['the pocket', potted ? `<b>drops</b> — falls in the ${S.name} at ${fmt(S.obTrace.dropSpeed, 2)} m/s` : S.obTrace.pocket != null ? `falls in the <em>wrong</em> pocket — the ${POCKETS[S.obTrace.pocket].name}` : S.obTrace.hang != null ? `<b>hangs in the jaws</b> of the ${POCKETS[S.obTrace.hang].name} — reaches the mouth without the roll to carry its ${fmt(1000 * POCKETS[S.obTrace.hang].shelf, 0)} mm shelf` : `stays up — ${S.obTrace.off ? 'reaches the rail' : `dies after ${fmt(S.stopOB, 2)} m`}, ${missCm} cm from the mouth at its closest`, potted ? 'good' : 'warn'],
     ]);
     $('cb').innerHTML = dl([
       ['at contact', `${fmt(S.vc)} m/s · ${spinWord}${S.cbz ? ` · side ${fmt(Math.abs(S.cbz) / (2.5 * S.vc) * 100, 0)} %` : ''}`],
       ['off the tangent line', `${fmt(vlen(S.vCB))} m/s <small>v sin θ, plus (1−e)/2 forward</small>`],
       ['final direction', S.deflect === null ? 'none — stops dead at contact' : `${fmt(S.deflect, 1)}° from its original line${S.deflect > 90 ? ' — coming back' : S.deflect < 0.5 ? ' — straight on' : ', away from the object ball'} <small>${S.deflect > 20 && S.deflect < 40 && S.rollingAtContact && S.th > 0.1 ? '— the thirty-degree rule' : Math.abs(S.deflect - (90 - deg(S.th))) < 2 && S.th > 0.1 ? '— holds the tangent line' : ''}</small>`],
       ['slides', S.slideLen > 0.01 ? `${fmt(S.slideLen, 2)} m before it rolls` : 'not at all — rolling from contact'],
-      ['comes to rest', S.cbTrace.pocket != null ? `it doesn't — <b>scratches</b>, falling in the ${POCKETS[S.cbTrace.pocket].name} pocket` : S.cbTrace.off ? `at the rail (would roll ${fmt(S.stopCB, 1)} m)` : `after ${fmt(S.stopCB, 2)} m`, S.cbTrace.pocket != null ? 'warn' : undefined],
+      ['comes to rest', S.cbTrace.pocket != null ? `it doesn't — <b>scratches</b>, falling in the ${POCKETS[S.cbTrace.pocket].name} pocket` : S.cbTrace.hang != null ? `in the jaws of the ${POCKETS[S.cbTrace.hang].name} pocket — short of the shelf, no scratch` : S.cbTrace.off ? `at the rail (would roll ${fmt(S.stopCB, 1)} m)` : `after ${fmt(S.stopCB, 2)} m`, S.cbTrace.pocket != null ? 'warn' : undefined],
       ['restitution', `e = ${E_BB}: separation ${fmt(100 * (1 - E_BB) / 2, 0)} % short of the ninety-degree rule`],
     ]);
   }
@@ -387,6 +391,7 @@ __SHARED__
       out.push({
         v,
         pot: !!S.reached && S.obTrace.pocket === S.pkI,
+        hang: !!S.reached && S.obTrace.hang === S.pkI,
         scratch: S.cbPre != null || (!!S.reached && S.cbTrace.pocket != null),
         reached: !!S.reached,
       });
@@ -400,16 +405,17 @@ __SHARED__
     if (!sw) { $('potv').textContent = '—'; return; }
     for (const o of sw) {
       const x0 = x(o.v - 0.05);
-      el('rect', { x: x0, y: 0, width: w, height: 15, fill: o.pot ? 'var(--c-amber)' : o.reached ? 'color-mix(in oklab, var(--c-amber) 22%, transparent)' : 'color-mix(in oklab, var(--muted) 25%, transparent)' }, s);
+      el('rect', { x: x0, y: 0, width: w, height: 15, fill: o.pot ? 'var(--c-amber)' : o.hang ? 'color-mix(in oklab, var(--c-amber) 55%, transparent)' : o.reached ? 'color-mix(in oklab, var(--c-amber) 22%, transparent)' : 'color-mix(in oklab, var(--muted) 25%, transparent)' }, s);
       if (o.scratch) el('rect', { x: x0, y: 16, width: w, height: 6, fill: 'var(--c-red)' }, s);
     }
     el('line', { x1: x(cur), x2: x(cur), y1: 0, y2: 22, stroke: 'var(--ink)', 'stroke-width': 1.5 }, s);
     const ranges = []; let a = null, b = null;
     for (const o of sw) { if (o.pot) { if (a == null) a = o.v; b = o.v; } else if (a != null) { ranges.push([a, b]); a = null; } }
     if (a != null) ranges.push([a, b]);
-    const scr = sw.filter((o) => o.pot && o.scratch).length;
+    const scr = sw.filter((o) => o.pot && o.scratch).length, hangs = sw.filter((o) => o.hang).length;
     $('potv').textContent = ranges.length
-      ? `pots at ${ranges.map(([p, q]) => p === q ? `${fmt(p, 1)}` : `${fmt(p, 1)}–${fmt(q, 1)}`).join(', ')} m/s${scr ? ` — but scratches on ${scr} of those speeds` : ''}`
+      ? `pots at ${ranges.map(([p, q]) => p === q ? `${fmt(p, 1)}` : `${fmt(p, 1)}–${fmt(q, 1)}`).join(', ')} m/s${scr ? ` — but scratches on ${scr} of those speeds` : ''}${hangs ? ` · hangs in the jaws on ${hangs}` : ''}`
+      : hangs ? 'no speed drops it — the best of them hang in the jaws, short of the shelf'
       : 'no speed on the slider pots this shot as aimed — throw, or the angle, carries it wide';
   }
 
@@ -476,7 +482,7 @@ __SHARED__
     nums.innerHTML = '<thead><tr>' + D.table.columns.map((c) => `<th>${c}</th>`).join('') + '</tr></thead><tbody></tbody>';
     const tb = nums.querySelector('tbody');
     for (const r of D.table.rows) { const tr = document.createElement('tr'); r.forEach((c, i) => { const td = document.createElement('td'); td.className = i === 0 ? 'k' : i === 1 ? 'v' : ''; td.textContent = c; tr.appendChild(td); }); tb.appendChild(tr); }
-    const extra = [["Ball–ball friction μ", "≈ 0.06 (0.01–0.12 with speed)", "throw", "Literature — Alciatore's fit; not yet in constants.py"], ["Cushion friction μ_c", "≈ 0.2", "cushion rebound", "Literature; not yet in constants.py"], ["Pocket mouth", "4.5 in = 0.1143 m", "when a ball is down", "WPA corner spec; the lab drops a ball whose centre crosses the mouth"]];
+    const extra = [["Ball–ball friction μ", "≈ 0.06 (0.01–0.12 with speed)", "throw", "Literature — Alciatore's fit; not yet in constants.py"], ["Cushion friction μ_c", "≈ 0.2", "cushion rebound", "Literature; not yet in constants.py"], ["Pocket mouth", "4.5 in = 0.1143 m", "when a ball is down", "WPA corner spec; the lab drops a ball whose centre crosses the mouth"], ["Pocket shelf", "corner 1.63 in · side 0.38 in", "hang or drop", "WPA typicals, a variable per pocket; a ball at the mouth needs that much roll left to fall, or it hangs"]];
     for (const r of extra) { const tr = document.createElement('tr'); r.forEach((c, i) => { const td = document.createElement('td'); td.className = i === 0 ? 'k' : i === 1 ? 'v' : ''; td.textContent = c; if (i === 3) td.style.color = 'var(--muted)'; tr.appendChild(td); }); tb.appendChild(tr); }
   }
 
