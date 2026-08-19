@@ -59,6 +59,11 @@ jobs:
             echo "::warning::Deploy skipped — set the DEPLOY_SSH_KEY, DEPLOY_HOST and DEPLOY_USER repository secrets (see the header of .github/workflows/deploy.yml)."
             exit 0
           fi
+          # forgive common paste extras in the secrets: whitespace/newlines, a "user@" prefix in the host,
+          # or a "@host" suffix in the user
+          SSH_HOST="$(printf '%s' "$SSH_HOST" | tr -d '[:space:]')"; SSH_HOST="${SSH_HOST##*@}"
+          SSH_USER="$(printf '%s' "$SSH_USER" | tr -d '[:space:]')"; SSH_USER="${SSH_USER%%@*}"
+          SSH_PORT="$(printf '%s' "$SSH_PORT" | tr -d '[:space:]')"
           mkdir -p ~/.ssh
           printf '%s\n' "$SSH_KEY" > ~/.ssh/deploy_key
           chmod 600 ~/.ssh/deploy_key
