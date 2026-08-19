@@ -59,11 +59,22 @@ jobs:
             echo "::warning::Deploy skipped — set the DEPLOY_SSH_KEY, DEPLOY_HOST and DEPLOY_USER repository secrets (see the header of .github/workflows/deploy.yml)."
             exit 0
           fi
-          # forgive common paste extras in the secrets: whitespace/newlines, a "user@" prefix in the host,
-          # or a "@host" suffix in the user
-          SSH_HOST="$(printf '%s' "$SSH_HOST" | tr -d '[:space:]')"; SSH_HOST="${SSH_HOST##*@}"
-          SSH_USER="$(printf '%s' "$SSH_USER" | tr -d '[:space:]')"; SSH_USER="${SSH_USER%%@*}"
+          # forgive common paste extras in the secrets: whitespace/newlines, quotes and backticks,
+          # a "user@" prefix in the host, an "@host" suffix in the user, or host/user swapped
+          SSH_HOST="$(printf '%s' "$SSH_HOST" | tr -d '[:space:]')"
+          SSH_HOST="${SSH_HOST//\"/}"; SSH_HOST="${SSH_HOST//\'/}"; SSH_HOST="${SSH_HOST//\`/}"; SSH_HOST="${SSH_HOST##*@}"
+          SSH_USER="$(printf '%s' "$SSH_USER" | tr -d '[:space:]')"
+          SSH_USER="${SSH_USER//\"/}"; SSH_USER="${SSH_USER//\'/}"; SSH_USER="${SSH_USER//\`/}"; SSH_USER="${SSH_USER%%@*}"
           SSH_PORT="$(printf '%s' "$SSH_PORT" | tr -d '[:space:]')"
+          ipv4='^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$'
+          if [[ "$SSH_USER" =~ $ipv4 && ! "$SSH_HOST" =~ $ipv4 ]]; then
+            echo "::warning::DEPLOY_USER looks like an IP and DEPLOY_HOST does not — using them swapped for this run. Please fix the two secrets."
+            t="$SSH_HOST"; SSH_HOST="$SSH_USER"; SSH_USER="$t"
+          fi
+          if ! [[ "$SSH_HOST" =~ ^[A-Za-z0-9.-]+$ ]]; then
+            echo "::error::DEPLOY_HOST is not a plain hostname or IP even after cleanup (length ${#SSH_HOST}). Edit the secret so it contains exactly the server IP — e.g. 5.78.43.168 — nothing else."
+            exit 1
+          fi
           mkdir -p ~/.ssh
           printf '%s\n' "$SSH_KEY" > ~/.ssh/deploy_key
           chmod 600 ~/.ssh/deploy_key
