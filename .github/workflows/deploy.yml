@@ -75,6 +75,17 @@ jobs:
             echo "::error::DEPLOY_HOST is not a plain hostname or IP even after cleanup (length ${#SSH_HOST}). Edit the secret so it contains exactly the server IP — e.g. 5.78.43.168 — nothing else."
             exit 1
           fi
+          # repair a key mangled in transit: Windows CRLF line endings, or newlines collapsed to spaces
+          SSH_KEY="${SSH_KEY//$'\r'/}"
+          if [ "$(printf '%s' "$SSH_KEY" | wc -l)" -lt 3 ] && [[ "$SSH_KEY" == *"-----BEGIN OPENSSH PRIVATE KEY-----"* ]]; then
+            body="${SSH_KEY#*-----BEGIN OPENSSH PRIVATE KEY-----}"
+            body="${body%%-----END OPENSSH PRIVATE KEY-----*}"
+            body="$(printf '%s' "$body" | tr -d '[:space:]')"
+            if [ -n "$body" ]; then
+              SSH_KEY="$(printf -- '-----BEGIN OPENSSH PRIVATE KEY-----\n%s\n-----END OPENSSH PRIVATE KEY-----' "$(printf '%s' "$body" | fold -w 70)")"
+              echo "::warning::DEPLOY_SSH_KEY arrived as a single line; rebuilt its line breaks for this run. Please re-save the secret with the key's original line breaks."
+            fi
+          fi
           mkdir -p ~/.ssh
           printf '%s\n' "$SSH_KEY" > ~/.ssh/deploy_key
           chmod 600 ~/.ssh/deploy_key
