@@ -776,13 +776,38 @@
     const mono = { 'font-family': 'ui-monospace, "SF Mono", Consolas, monospace', 'font-size': 11, fill: 'var(--muted)' };
     vel('rect', { x: 0, y: 0, width: 900, height: 260, fill: 'var(--panel)' });
     vel('rect', { x: 0, y: HOR, width: 900, height: 260 - HOR, fill: 'color-mix(in oklab, var(--c-felt) 13%, var(--panel))' });
+    // pocket mouths: heavily foreshortened slivers at the rail base, visible through the cushion gaps
+    for (const q of POCKETS) {
+      const pr = proj(q.p, 0);
+      if (!pr) continue;
+      const fd = FPX / pr[2];
+      if (fd < 0.3) continue;                            // too close underfoot — out of the frame's business
+      const rx = Math.min(64, RP * pr[2]);
+      const ry = Math.max(1.5, Math.min(rx * 0.4, RP * FPX * EYEH / (fd * fd) * 1.6));
+      vel('ellipse', { cx: pr[0], cy: pr[1], rx, ry, fill: 'color-mix(in oklab, #000 60%, var(--c-felt))', opacity: Math.min(1, (fd - 0.3) / 0.5) });
+    }
+    // the cushions: filled bands with height, broken at the pocket mouths — the walls that seat the scene
+    const RAIL_H = 0.045;
+    const pkGap = (p) => { for (const q of POCKETS) if (dist2(p, q.p) <= RP * 1.15) return true; return false; };
     const edges = [[[0, 0], [TABLE_L, 0]], [[TABLE_L, 0], [TABLE_L, TABLE_W]], [[TABLE_L, TABLE_W], [0, TABLE_W]], [[0, TABLE_W], [0, 0]]];
     for (const [A, B] of edges) {
-      let path = '', pen = false;
-      for (let i = 0; i <= 24; i++) { const q = proj(vadd(A, vmul(vsub(B, A), i / 24)), 0.035); if (!q) { pen = false; continue; } path += `${pen ? 'L' : 'M'}${fmt(q[0], 1)} ${fmt(q[1], 1)} `; pen = true; }
-      if (path) vel('path', { d: path, fill: 'none', stroke: 'color-mix(in oklab, var(--c-felt) 45%, var(--hairline))', 'stroke-width': 3 });
+      let run = [];
+      const flush = () => {
+        if (run.length > 1) {
+          const top = run.map((s) => `${fmt(s[0], 1)},${fmt(s[1], 1)}`).join(' ');
+          const base = run.slice().reverse().map((s) => `${fmt(s[2], 1)},${fmt(s[3], 1)}`).join(' ');
+          vel('polygon', { points: `${top} ${base}`, fill: 'color-mix(in oklab, var(--c-felt) 42%, var(--hairline))', stroke: 'color-mix(in oklab, var(--c-felt) 30%, var(--ink-2))', 'stroke-width': 0.5 });
+        }
+        run = [];
+      };
+      for (let i = 0; i <= 36; i++) {
+        const p = vadd(A, vmul(vsub(B, A), i / 36));
+        const qt = proj(p, RAIL_H), qb = proj(p, 0);
+        if (!qt || !qb || pkGap(p)) { flush(); continue; }
+        run.push([qt[0], qt[1], qb[0], qb[1]]);
+      }
+      flush();
     }
-    for (const q of POCKETS) { const pr = proj(q.p, 0); if (pr) vel('ellipse', { cx: pr[0], cy: pr[1], rx: Math.min(180, RP * pr[2]), ry: Math.min(60, RP * pr[2] * 0.32), fill: 'color-mix(in oklab, #000 55%, var(--c-felt))' }); }
     if (ghost) { const g = proj(ghost, R); if (g) vel('circle', { cx: g[0], cy: g[1], r: Math.min(200, R * g[2]), fill: 'none', stroke: 'var(--ink)', 'stroke-width': 1.2, 'stroke-dasharray': '3 3', opacity: 0.8 }); }
     const o = proj(state.ob, R);
     if (o) vel('circle', { cx: o[0], cy: o[1], r: Math.min(220, R * o[2]), fill: 'var(--c-amber)', stroke: 'color-mix(in oklab, var(--c-amber) 60%, #000)', 'stroke-width': 1.5 });
