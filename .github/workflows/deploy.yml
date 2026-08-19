@@ -75,6 +75,11 @@ jobs:
             echo "::error::DEPLOY_HOST is not a plain hostname or IP even after cleanup (length ${#SSH_HOST}). Edit the secret so it contains exactly the server IP — e.g. 5.78.43.168 — nothing else."
             exit 1
           fi
+          # accept a base64-wrapped key — the paste-proof way to store it:  base64 -w0 <keyfile>  → one clean line
+          if [[ "$SSH_KEY" != *"PRIVATE KEY"* ]]; then
+            dec="$(printf '%s' "$SSH_KEY" | tr -d '[:space:]' | base64 -d 2>/dev/null || true)"
+            if [[ "$dec" == *"PRIVATE KEY"* ]]; then SSH_KEY="$dec"; fi
+          fi
           # repair a key mangled in transit: Windows CRLF line endings, or newlines collapsed to spaces
           SSH_KEY="${SSH_KEY//$'\r'/}"
           if [ "$(printf '%s' "$SSH_KEY" | wc -l)" -lt 3 ] && [[ "$SSH_KEY" == *"-----BEGIN OPENSSH PRIVATE KEY-----"* ]]; then
@@ -89,6 +94,13 @@ jobs:
           mkdir -p ~/.ssh
           printf '%s\n' "$SSH_KEY" > ~/.ssh/deploy_key
           chmod 600 ~/.ssh/deploy_key
+          if ! ssh-keygen -y -f ~/.ssh/deploy_key > /dev/null 2>&1; then
+            lines=$(wc -l < ~/.ssh/deploy_key)
+            hasb=$([[ "$SSH_KEY" == *"BEGIN OPENSSH PRIVATE KEY"* ]] && echo yes || echo no)
+            hase=$([[ "$SSH_KEY" == *"END OPENSSH PRIVATE KEY"* ]] && echo yes || echo no)
+            echo "::error::DEPLOY_SSH_KEY is not a valid private key (lines: $lines, BEGIN marker: $hasb, END marker: $hase — likely truncated or reflowed in the paste). Paste-proof fix: on your machine run  base64 -w0 ~/.ssh/kosmos_deploy  and save that single output line as the DEPLOY_SSH_KEY secret; the workflow decodes it."
+            exit 1
+          fi
           if [ -n "$KNOWN_HOSTS" ]; then
             printf '%s\n' "$KNOWN_HOSTS" > ~/.ssh/known_hosts
             HOSTCHECK=yes
