@@ -1870,20 +1870,28 @@
       if (s != null && s > 15) cand.push({ p: [x, y], s });
     }
     cand.sort((a, b) => b.s - a.s);
+    // One blob is one ball, and that is a fact about the picture, not about the table. Every table
+    // position along the camera's sight line through a ball projects its centre to nearly the same
+    // pixel, so the score runs as a ridge down that line — and those points are a comfortable ten
+    // centimetres apart on the cloth. Separating them by table distance alone rings one ball three
+    // times; they have to be separated by where they land in the image.
+    const same = (a, b) => dist2(a.p, b.p) < 1.92 * R
+      || Math.hypot(a.c[0] - b.c[0], a.c[1] - b.c[1]) < 1.35 * Math.max(a.r, b.r);
+    const mark = (q, sc) => ({ p: q, s: sc, c: phCentre(q), r: phBallRadius(q) });
     const picked = [];
     for (const c of cand) {
-      if (picked.some((o) => dist2(o.p, c.p) < 1.92 * R)) continue;
-      let best = c;                                          // walk it onto the peak: the grid is coarser than a ball
-      for (let k = 0; k < 3; k++) {
+      let best = mark(c.p, c.s);
+      if (picked.some((o) => same(o, best))) continue;
+      for (let k = 0; k < 3; k++) {                          // walk it onto the peak: the grid is coarser than a ball
         const h = step / (2 * (k + 1));
         for (const [dx, dy] of [[h, 0], [-h, 0], [0, h], [0, -h], [h, h], [-h, -h], [h, -h], [-h, h]]) {
           const q = [best.p[0] + dx, best.p[1] + dy];
           if (q[0] < IE || q[0] > TABLE_L - IE || q[1] < IE || q[1] > TABLE_W - IE) continue;   // never walk onto the cushion
           const s2 = score(q);
-          if (s2 != null && s2 > best.s) best = { p: q, s: s2 };
+          if (s2 != null && s2 > best.s) best = mark(q, s2);
         }
       }
-      if (picked.some((o) => dist2(o.p, best.p) < 1.92 * R)) continue;
+      if (picked.some((o) => same(o, best))) continue;
       picked.push(best);
       if (picked.length >= 16) break;
     }
@@ -2023,7 +2031,7 @@
     run();
   });
 
-  window.kosmosPhoto = { ph, phSolve, phGround, phCentre, phDetect, phDraw, phcv };   // dev hook: the photo importer
+  window.kosmosPhoto = { ph, phSolve, phGround, phCentre, phBallRadius, phDetect, phDraw, phcv };   // dev hook: the photo importer
 
   // ---- the run-out: clear the table one executed shot at a time, the balls living where they land.
   // Lowest ball first or it's a foul — scratch gives ball in hand, a fouled money ball respots — and
