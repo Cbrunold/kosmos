@@ -331,9 +331,10 @@
 </div>
 <div class="kcard ctl" id="photobox" hidden style="max-width:1240px;margin-top:14px">
   <div class="row"><label>replicate a table from a photo</label>
-    <div class="presets" style="grid-column:1/-1"><button type="button" id="phreset">restart the corners</button><button type="button" id="phapply">place on the table</button><button type="button" id="phclose">close</button></div>
-    <div class="hint" id="phhint"></div>
-    <canvas id="phcv" style="grid-column:1/-1;width:100%;border:1px solid var(--hairline);border-radius:6px;cursor:crosshair;touch-action:none"></canvas></div>
+    <div class="presets" style="grid-column:1/-1"><button type="button" id="phapply">place on the table</button><button type="button" id="phfind">find the balls again</button><button type="button" id="phclear">clear the balls</button><button type="button" id="phreset">redo the corners</button><button type="button" id="phclose">close</button></div>
+    <canvas id="phcv" style="grid-column:1/-1;width:100%;border:1px solid var(--hairline);border-radius:6px;cursor:crosshair;touch-action:none"></canvas>
+    <div class="presets" id="phnums" style="grid-column:1/-1"></div>
+    <div class="hint" id="phhint"></div></div>
 </div>
 <div class="legend">
   <span style="--lc:var(--ink)">cue ball, before</span>
@@ -1598,11 +1599,14 @@
   });
   $('justtwo').addEventListener('click', () => { resetRoster(state.cb.slice(), state.ob.slice()); run(); });
 
-  // ---- replicate a table from a photo. Four clicked corners of the cloth give the perspective map
-  // (a plane-to-plane homography — any reasonable camera angle works); everything on the cloth that
-  // isn't cloth-coloured and is about a ball's size becomes a ball, numbered by its colour. A click
-  // adds a missed ball, a click on a marker removes a wrong one; then the layout lands in the lab.
-  const ph = { img: null, corners: [], balls: [], Hti: null, Hit: null };
+  // ---- replicate a table from a photo.
+  // Four corners of the cloth give the plane-to-plane homography — and from that same homography the
+  // camera itself is recovered: the table's two axes give two vanishing points, and orthogonal vanishing
+  // points fix the focal length. That matters more than it sounds. A ball's centre floats one radius
+  // above the cloth, so pushing that centre straight through a plane map lands it well past where the
+  // ball really sits — half a ball at a gentle angle, several at a low one. With the camera known, every
+  // ball is pulled back down its own sight line to the point where it actually touches the cloth.
+  const ph = { img: null, corners: [], balls: [], Hti: null, Hit: null, cam: null, sel: -1, drag: null };
   const phcv = $('phcv'), phx = phcv.getContext('2d');
   function homography(src, dst) {   // 4 point pairs -> 3x3 (as 8 coefficients, h9 = 1), by Gaussian elimination
     const A = [], b = [];
@@ -1627,32 +1631,123 @@
   const hApply = (H, p) => { const w = H[6] * p[0] + H[7] * p[1] + 1; return [(H[0] * p[0] + H[1] * p[1] + H[2]) / w, (H[3] * p[0] + H[4] * p[1] + H[5]) / w]; };
   const CLOTH_CORNERS = [[0, 0], [TABLE_L, 0], [TABLE_L, TABLE_W], [0, TABLE_W]];
   const CORNER_WORDS = ['top-left', 'top-right', 'bottom-right', 'bottom-left'];
-  function phHint() {
-    $('phhint').innerHTML = ph.corners.length < 4
-      ? `Click the <b>${CORNER_WORDS[ph.corners.length]}</b> corner of the cloth — the inside of the cushions, ${ph.corners.length + 1} of 4, clockwise from top-left.`
-      : `<b>${ph.balls.length}</b> ball${ph.balls.length === 1 ? '' : 's'} found. Click the photo to add one it missed, click a marker to remove it, then <b>place on the table</b>. The whitest ball is the cue; colours guess the numbers.`;
+
+  function phPose(H, f) {   // the camera pose implied by this homography at this focal length
+    const cx = phcv.width / 2, cy = phcv.height / 2;
+    const b1 = [(H[0] - cx * H[6]) / f, (H[3] - cy * H[6]) / f, H[6]];         // K⁻¹H, column by column
+    const b2 = [(H[1] - cx * H[7]) / f, (H[4] - cy * H[7]) / f, H[7]];
+    const b3 = [(H[2] - cx) / f, (H[5] - cy) / f, 1];
+    const n1 = Math.hypot(b1[0], b1[1], b1[2]), n2 = Math.hypot(b2[0], b2[1], b2[2]);
+    if (!(n1 > 1e-12 && n2 > 1e-12)) return null;
+    const lam = 2 / (n1 + n2);                   // the two rotation columns must be unit length
+    const r1 = b1.map((x) => x * lam), r2 = b2.map((x) => x * lam), t = b3.map((x) => x * lam);
+    const r3 = [r1[1] * r2[2] - r1[2] * r2[1], r1[2] * r2[0] - r1[0] * r2[2], r1[0] * r2[1] - r1[1] * r2[0]];
+    const C = [   // the camera centre, C = −Rᵀt
+      -(r1[0] * t[0] + r1[1] * t[1] + r1[2] * t[2]),
+      -(r2[0] * t[0] + r2[1] * t[1] + r2[2] * t[2]),
+      -(r3[0] * t[0] + r3[1] * t[1] + r3[2] * t[2]),
+    ];
+    const h = Math.abs(C[2]);
+    if (!isFinite(h) || !isFinite(C[0]) || !isFinite(C[1])) return null;
+    return { xy: [C[0], C[1]], h, f };
   }
-  function phDraw() {
-    phx.drawImage(ph.img, 0, 0, phcv.width, phcv.height);
-    phx.lineWidth = 2;
-    ph.corners.forEach((c, i) => {
-      phx.strokeStyle = '#ffb020'; phx.beginPath(); phx.arc(c[0], c[1], 7, 0, 7); phx.stroke();
-      phx.fillStyle = '#ffb020'; phx.font = 'bold 13px ui-monospace, monospace'; phx.fillText(String(i + 1), c[0] + 10, c[1] - 6);
-    });
-    if (ph.corners.length === 4) {
-      phx.strokeStyle = 'rgba(255,176,32,0.85)'; phx.beginPath();
-      ph.corners.forEach((c, i) => phx[i ? 'lineTo' : 'moveTo'](c[0], c[1])); phx.closePath(); phx.stroke();
-      for (const bll of ph.balls) {
-        const q = hApply(ph.Hti, bll.p);
-        phx.strokeStyle = bll.n === 0 ? '#fff' : (BALL_COL[bll.n] || '#f2b705'); phx.lineWidth = 2.5;
-        phx.beginPath(); phx.arc(q[0], q[1], 11, 0, 7); phx.stroke();
-        phx.fillStyle = '#fff'; phx.font = 'bold 12px ui-monospace, monospace';
-        phx.fillText(bll.n === 0 ? 'cue' : String(bll.n), q[0] + 13, q[1] + 4);
+  function phCamera(H) {   // H: table metres -> image pixels. Returns where the camera stands, in table coords.
+    const cx = phcv.width / 2, cy = phcv.height / 2;
+    const vp = (a, b) => {                       // the vanishing point of the table direction (a, b)
+      const w = H[6] * a + H[7] * b;
+      if (Math.abs(w) < 1e-9) return null;       // that axis stayed parallel in the image — its point is at infinity
+      return [(H[0] * a + H[1] * b) / w, (H[3] * a + H[4] * b) / w];
+    };
+    const plausible = (c) => c && c.h > 0.25 && c.h < 6 && Math.abs(c.xy[0]) < 40 && Math.abs(c.xy[1]) < 40;
+    const v1 = vp(1, 0), v2 = vp(0, 1);
+    // two orthogonal vanishing points fix the focal length outright — when both are finite and well clear
+    // of the principal point. Shoot straight down the table's centre line and one runs off to infinity,
+    // which is common enough (it is the natural place to stand) that it needs its own answer: assume the
+    // lens instead. A typical phone is near f = 1.15 × the frame width, and a height that is close beats
+    // no correction at all — the drop line under each ball shows what it did, so the eye can check it.
+    if (v1 && v2) {
+      const f2 = -((v1[0] - cx) * (v2[0] - cx) + (v1[1] - cy) * (v2[1] - cy));
+      if (f2 > 1) {
+        const cam = phPose(H, Math.sqrt(f2));
+        if (plausible(cam)) return cam;
       }
     }
+    const guess = phPose(H, 1.15 * phcv.width);
+    if (plausible(guess)) { guess.assumed = true; return guess; }
+    return null;
   }
-  function phDetect() {   // cloth-colour segmentation on a table-space grid
-    const id = phx.getImageData(0, 0, phcv.width, phcv.height).data;   // markers not yet drawn at call time
+  const phK = () => (ph.cam ? (ph.cam.h - R) / ph.cam.h : 1);
+  const phGround = (q) => {   // a pixel on a ball -> where that ball touches the cloth
+    const Q = hApply(ph.Hit, q);
+    if (!ph.cam) return Q;
+    const k = phK(), c = ph.cam.xy;
+    return [c[0] + (Q[0] - c[0]) * k, c[1] + (Q[1] - c[1]) * k];
+  };
+  const phCentre = (p) => {   // a contact point on the cloth -> the pixel where that ball's centre appears
+    if (!ph.cam) return hApply(ph.Hti, p);
+    const k = phK(), c = ph.cam.xy;
+    return hApply(ph.Hti, [c[0] + (p[0] - c[0]) / k, c[1] + (p[1] - c[1]) / k]);
+  };
+  function phSolve() {
+    ph.Hti = homography(CLOTH_CORNERS, ph.corners);
+    ph.Hit = ph.Hti ? homography(ph.corners, CLOTH_CORNERS) : null;
+    ph.cam = ph.Hti ? phCamera(ph.Hti) : null;
+    return !!(ph.Hti && ph.Hit);
+  }
+
+  function phHint() {
+    const view = ph.cam ? `camera ${ph.cam.assumed ? 'taken to be' : 'measured at'} ${fmt(ph.cam.h, 2)} m above the cloth, so every ball is dropped to where it really touches${ph.cam.assumed ? ' (the lens could not be solved from this angle, so a typical one is assumed — nudge a ball if it looks off)' : ''}` : 'read as a flat view — no height correction needed';
+    $('phhint').innerHTML = ph.corners.length < 4
+      ? `Click the <b>${CORNER_WORDS[ph.corners.length]}</b> corner of the playing surface — where the two cushion faces meet, ${ph.corners.length + 1} of 4, clockwise from top-left.`
+      : `<b>Drag a corner</b> until the drawn rails and diamonds sit on the real ones — that is the whole calibration. Then drag any ball to place it, click bare cloth to add one, click a ball to pick its number. <b>${ph.balls.length}</b> ball${ph.balls.length === 1 ? '' : 's'} · ${view}.`;
+  }
+  function phNums() {
+    const box = $('phnums');
+    const lab = (t) => `<span style="font:10px ui-monospace,monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);align-self:center">${t}</span>`;
+    // the row is always here, selected or not — a palette that appears would shove the photo down under the cursor
+    if (ph.sel < 0 || !ph.balls[ph.sel]) { box.innerHTML = lab('click a ball to set its number') + '<button type="button" disabled style="visibility:hidden">0</button>'; return; }
+    const cur = ph.balls[ph.sel].n;
+    box.innerHTML = lab('this ball')
+      + [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].map((n) => `<button type="button" data-n="${n}"${n === cur ? ' class="on"' : ''}>${n === 0 ? 'cue' : n}</button>`).join('')
+      + '<button type="button" data-del="1">remove</button>';
+  }
+  function phDraw() {
+    if (!ph.img) return;
+    phx.drawImage(ph.img, 0, 0, phcv.width, phcv.height);
+    if (ph.corners.length === 4 && ph.Hti) {
+      const seg = (a, b, st, w) => { const p = hApply(ph.Hti, a), q = hApply(ph.Hti, b); phx.strokeStyle = st; phx.lineWidth = w; phx.beginPath(); phx.moveTo(p[0], p[1]); phx.lineTo(q[0], q[1]); phx.stroke(); };
+      const amber = 'rgba(255,176,32,0.9)', faint = 'rgba(255,176,32,0.42)';
+      seg([0, 0], [TABLE_L, 0], amber, 2); seg([TABLE_L, 0], [TABLE_L, TABLE_W], amber, 2);
+      seg([TABLE_L, TABLE_W], [0, TABLE_W], amber, 2); seg([0, TABLE_W], [0, 0], amber, 2);
+      const D = TABLE_L / 8, tick = 0.055;
+      for (let k = 1; k <= 7; k++) { seg([k * D, 0], [k * D, tick], faint, 1.5); seg([k * D, TABLE_W], [k * D, TABLE_W - tick], faint, 1.5); }
+      for (let k = 1; k <= 3; k++) { seg([0, k * D], [tick, k * D], faint, 1.5); seg([TABLE_L, k * D], [TABLE_L - tick, k * D], faint, 1.5); }
+      seg([TABLE_L / 4, 0], [TABLE_L / 4, TABLE_W], 'rgba(255,176,32,0.3)', 1);      // the head string
+      const fs = hApply(ph.Hti, [TABLE_L * 0.75, TABLE_W / 2]);                       // the foot spot
+      phx.strokeStyle = faint; phx.lineWidth = 1.5; phx.beginPath(); phx.arc(fs[0], fs[1], 4, 0, 7); phx.stroke();
+      for (let i = 0; i < ph.balls.length; i++) {
+        const bl = ph.balls[i], q = phCentre(bl.p), g = hApply(ph.Hti, bl.p);
+        const on = i === ph.sel;
+        phx.strokeStyle = 'rgba(255,255,255,0.55)'; phx.lineWidth = 1;                // the drop to the cloth
+        phx.beginPath(); phx.moveTo(q[0], q[1]); phx.lineTo(g[0], g[1]); phx.stroke();
+        phx.beginPath(); phx.ellipse(g[0], g[1], 7, 3, 0, 0, 7); phx.stroke();
+        phx.strokeStyle = bl.n === 0 ? '#fff' : (BALL_COL[bl.n] || '#f2b705');
+        phx.lineWidth = on ? 4 : 2.5;
+        phx.beginPath(); phx.arc(q[0], q[1], on ? 14 : 11, 0, 7); phx.stroke();
+        phx.fillStyle = '#fff'; phx.font = `bold ${on ? 14 : 12}px ui-monospace, monospace`;
+        phx.fillText(bl.n === 0 ? 'cue' : String(bl.n), q[0] + (on ? 17 : 13), q[1] + 4);
+      }
+    }
+    ph.corners.forEach((c, i) => {
+      phx.strokeStyle = '#ffb020'; phx.lineWidth = 2;
+      phx.beginPath(); phx.arc(c[0], c[1], 8, 0, 7); phx.stroke();
+      phx.beginPath(); phx.moveTo(c[0] - 12, c[1]); phx.lineTo(c[0] + 12, c[1]); phx.moveTo(c[0], c[1] - 12); phx.lineTo(c[0], c[1] + 12); phx.stroke();
+      phx.fillStyle = '#ffb020'; phx.font = 'bold 13px ui-monospace, monospace'; phx.fillText(String(i + 1), c[0] + 12, c[1] - 8);
+    });
+  }
+  function phDetect() {   // cloth-colour segmentation, sampled on a grid laid over the cloth itself
+    phx.drawImage(ph.img, 0, 0, phcv.width, phcv.height);   // read clean pixels, before any marker is drawn
+    const id = phx.getImageData(0, 0, phcv.width, phcv.height).data;
     const gs = 0.012, nx = Math.round(TABLE_L / gs) + 1, ny = Math.round(TABLE_W / gs) + 1;
     const px2 = new Int32Array(nx * ny).fill(-1), rr = [], gg = [], bb2 = [];
     for (let j = 0; j < ny; j++) for (let i = 0; i < nx; i++) {
@@ -1683,14 +1778,21 @@
           if (hot[nk] && !seen[nk]) { seen[nk] = 1; stack.push(nk); }
         }
       }
-      if (cells.length < 5 || cells.length > 110) continue;   // a ball is ~18 cells; allow shadow and shine
+      // a ball covers ~18 cells seen square-on and stretches along the sight line on an angled shot
+      if (cells.length < 6 || cells.length > 220) continue;
       let sx = 0, sy = 0, cr = 0, cg = 0, cb = 0;
       for (const c of cells) { sx += (c % nx) * gs; sy += ((c / nx) | 0) * gs; const o = px2[c]; cr += id[o]; cg += id[o + 1]; cb += id[o + 2]; }
-      comps.push({ p: [sx / cells.length, sy / cells.length], col: [cr / cells.length, cg / cells.length, cb / cells.length], size: cells.length });
+      comps.push({ q: [sx / cells.length, sy / cells.length], col: [cr / cells.length, cg / cells.length, cb / cells.length], size: cells.length });
     }
     comps.sort((a, b3) => b3.size - a.size);
     const picked = [];
-    for (const c of comps) { if (picked.every((q) => dist2(q.p, c.p) > 2.2 * R)) picked.push(c); if (picked.length >= 16) break; }
+    for (const c of comps) {
+      const p = phGround(hApply(ph.Hti, c.q));   // the blob centroid is the ball's centre: drop it to the cloth
+      if (p[0] < R * 0.5 || p[0] > TABLE_L - R * 0.5 || p[1] < R * 0.5 || p[1] > TABLE_W - R * 0.5) continue;
+      if (picked.some((o) => dist2(o.p, p) < 1.6 * R)) continue;
+      picked.push({ p, col: c.col });
+      if (picked.length >= 16) break;
+    }
     const hex = (h) => [parseInt(h.slice(1, 3), 16), parseInt(h.slice(3, 5), 16), parseInt(h.slice(5, 7), 16)];
     const taken = new Set();
     const numberFor = (col) => {
@@ -1702,39 +1804,69 @@
       if (taken.has(n2)) { if (n2 >= 1 && n2 <= 7 && !taken.has(n2 + 8)) n2 += 8; else { let f = 1; while (taken.has(f)) f++; n2 = f; } }
       taken.add(n2); return n2;
     };
-    ph.balls = picked.map((c) => ({ p: c.p, n: numberFor(c.col) }))
-      .sort((a, b3) => a.n - b3.n);
+    ph.balls = picked.map((c) => ({ p: c.p, n: numberFor(c.col) })).sort((a, b3) => a.n - b3.n);
+    ph.sel = -1;
   }
   function phSetup(img) {
-    ph.img = img; ph.corners = []; ph.balls = []; ph.Hti = null; ph.Hit = null;
+    ph.img = img; ph.corners = []; ph.balls = []; ph.Hti = null; ph.Hit = null; ph.cam = null; ph.sel = -1;
     const w = Math.min(img.naturalWidth, 1400);
     phcv.width = w; phcv.height = Math.round(w * img.naturalHeight / img.naturalWidth);
-    $('photobox').hidden = false; phDraw(); phHint();
+    $('photobox').hidden = false; phDraw(); phHint(); phNums();
     $('photobox').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   }
+  const phPt = (e) => { const r2 = phcv.getBoundingClientRect(); return [(e.clientX - r2.left) * phcv.width / r2.width, (e.clientY - r2.top) * phcv.height / r2.height]; };
+  const phScale = () => phcv.width / Math.max(1, phcv.getBoundingClientRect().width);   // grab radii in image pixels
   phcv.addEventListener('pointerdown', (e) => {
     if (!ph.img) return;
-    const r2 = phcv.getBoundingClientRect();
-    const q = [(e.clientX - r2.left) * phcv.width / r2.width, (e.clientY - r2.top) * phcv.height / r2.height];
+    const q = phPt(e), grab = 15 * phScale();
     if (ph.corners.length < 4) {
       ph.corners.push(q);
       if (ph.corners.length === 4) {
-        ph.Hti = homography(CLOTH_CORNERS, ph.corners); ph.Hit = homography(ph.corners, CLOTH_CORNERS);
-        if (!ph.Hti || !ph.Hit) { ph.corners = []; $('phhint').textContent = 'those four points are degenerate — restart the corners'; phDraw(); return; }
-        phDraw();   // markers overwrite pixels — detect from the clean image first
-        phx.drawImage(ph.img, 0, 0, phcv.width, phcv.height); phDetect(); phDraw();
-      } else phDraw();
-    } else {
-      const p = hApply(ph.Hit, q);
-      const hitI = ph.balls.findIndex((b3) => dist2(b3.p, p) < 3 * R);
-      if (hitI >= 0) ph.balls.splice(hitI, 1);
-      else if (p[0] > -0.05 && p[0] < TABLE_L + 0.05 && p[1] > -0.05 && p[1] < TABLE_W + 0.05 && ph.balls.length < 16) {
-        const used = new Set(ph.balls.map((b3) => b3.n)); let nn = 1; while (used.has(nn)) nn++;
-        ph.balls.push({ p, n: used.has(0) ? nn : 0 });   // first added ball becomes the cue if none was found
+        if (!phSolve()) { ph.corners = []; ph.Hti = ph.Hit = ph.cam = null; $('phhint').textContent = 'those four points are degenerate — click the four corners again'; phDraw(); return; }
+        phDetect();
       }
-      phDraw();
+      phDraw(); phHint(); phNums(); return;
     }
-    phHint();
+    let ci = -1, cd = grab;
+    ph.corners.forEach((c, i) => { const d = Math.hypot(c[0] - q[0], c[1] - q[1]); if (d < cd) { cd = d; ci = i; } });
+    if (ci >= 0) { ph.drag = { kind: 'corner', i: ci }; phcv.setPointerCapture(e.pointerId); e.preventDefault(); return; }
+    let bi = -1, bd = 18 * phScale();
+    ph.balls.forEach((bl, i) => { const c = phCentre(bl.p); const d = Math.hypot(c[0] - q[0], c[1] - q[1]); if (d < bd) { bd = d; bi = i; } });
+    if (bi >= 0) { ph.sel = bi; ph.drag = { kind: 'ball', i: bi }; }
+    else {
+      const p = phGround(q);
+      if (p[0] > 0 && p[0] < TABLE_L && p[1] > 0 && p[1] < TABLE_W && ph.balls.length < 16) {
+        const used = new Set(ph.balls.map((b3) => b3.n));
+        let nn = used.has(0) ? 1 : 0; while (used.has(nn)) nn++;
+        ph.balls.push({ p, n: nn });
+        ph.sel = ph.balls.length - 1;
+        ph.drag = { kind: 'ball', i: ph.sel };
+      } else ph.sel = -1;
+    }
+    phcv.setPointerCapture(e.pointerId); e.preventDefault();
+    phDraw(); phHint(); phNums();
+  });
+  phcv.addEventListener('pointermove', (e) => {
+    if (!ph.drag) return;
+    const q = phPt(e);
+    if (ph.drag.kind === 'corner') { ph.corners[ph.drag.i] = q; if (!phSolve()) return; }
+    else { const p = phGround(q); ph.balls[ph.drag.i].p = [Math.min(Math.max(p[0], R), TABLE_L - R), Math.min(Math.max(p[1], R), TABLE_W - R)]; }
+    phDraw(); phHint();
+  });
+  const phEnd = () => { ph.drag = null; };
+  phcv.addEventListener('pointerup', phEnd);
+  phcv.addEventListener('pointercancel', phEnd);
+  $('phnums').addEventListener('click', (e) => {
+    const b3 = e.target.closest('button');
+    if (!b3 || ph.sel < 0 || !ph.balls[ph.sel]) return;
+    if (b3.dataset.del) { ph.balls.splice(ph.sel, 1); ph.sel = -1; }
+    else {
+      const n = +b3.dataset.n;
+      const other = ph.balls.findIndex((x, i) => i !== ph.sel && x.n === n);
+      if (other >= 0) ph.balls[other].n = ph.balls[ph.sel].n;   // numbers are unique: swap, never duplicate
+      ph.balls[ph.sel].n = n;
+    }
+    phDraw(); phHint(); phNums();
   });
   $('photobtn').addEventListener('click', () => $('photofile').click());
   $('photofile').addEventListener('change', () => {
@@ -1745,7 +1877,9 @@
     img.src = URL.createObjectURL(f);
     $('photofile').value = '';
   });
-  $('phreset').addEventListener('click', () => { if (ph.img) { ph.corners = []; ph.balls = []; ph.Hti = null; ph.Hit = null; phDraw(); phHint(); } });
+  $('phreset').addEventListener('click', () => { if (ph.img) { ph.corners = []; ph.balls = []; ph.Hti = ph.Hit = ph.cam = null; ph.sel = -1; phDraw(); phHint(); phNums(); } });
+  $('phfind').addEventListener('click', () => { if (ph.Hti) { phDetect(); phDraw(); phHint(); phNums(); } });
+  $('phclear').addEventListener('click', () => { ph.balls = []; ph.sel = -1; phDraw(); phHint(); phNums(); });
   $('phclose').addEventListener('click', () => { $('photobox').hidden = true; });
   $('phapply').addEventListener('click', () => {
     if (!ph.balls.length) return;
@@ -1762,6 +1896,8 @@
     $('photobox').hidden = true;
     run();
   });
+
+  window.kosmosPhoto = { ph, phSolve, phGround, phCentre, phDetect, phDraw, phcv };   // dev hook: the photo importer
 
   // ---- the run-out: clear the table one executed shot at a time, the balls living where they land.
   // Lowest ball first or it's a foul — scratch gives ball in hand, a fouled money ball respots — and
