@@ -331,7 +331,7 @@
 </div>
 <div class="kcard ctl" id="photobox" hidden style="max-width:1240px;margin-top:14px">
   <div class="row"><label>replicate a table from a photo</label>
-    <div class="presets" style="grid-column:1/-1"><button type="button" id="phapply">place on the table</button><button type="button" id="phfind">find the balls again</button><button type="button" id="phclear">clear the balls</button><button type="button" id="phreset">redo the corners</button><button type="button" id="phclose">close</button></div>
+    <div class="presets" style="grid-column:1/-1"><button type="button" id="phapply">place on the table</button><button type="button" id="phfind">find the balls again</button><button type="button" id="phfewer">− fewer</button><button type="button" id="phmore">+ more</button><button type="button" id="phclear">clear the balls</button><button type="button" id="phreset">redo the corners</button><button type="button" id="phclose">close</button></div>
     <canvas id="phcv" style="grid-column:1/-1;width:100%;border:1px solid var(--hairline);border-radius:6px;cursor:crosshair;touch-action:none"></canvas>
     <div class="presets" id="phnums" style="grid-column:1/-1"></div>
     <div class="hint" id="phhint"></div></div>
@@ -757,6 +757,18 @@
   const text = (p, s, attrs) => { const [x, y] = px(p); const e = el('text', { x, y, ...attrs }); e.textContent = s; return e; };
   const clipLine = (p, dir, len) => vadd(p, vmul(dir, len));
 
+  // A break-speed cue ball really does cross the table six or seven times, and drawn at one weight that
+  // reads as a thicket rather than a path. Later cloth is drawn fainter: the shot is still all there,
+  // but the eye follows it in the order it happened.
+  function fadePoly(pts, attrs, from) {
+    if (!pts || pts.length < 2) return;
+    const N = 5, seg = Math.ceil((pts.length - 1) / N);
+    for (let k = 0; k < N; k++) {
+      const a = k * seg, b = Math.min(pts.length, (k + 1) * seg + 1);
+      if (b - a < 2) break;
+      poly(pts.slice(a, b), { ...attrs, opacity: (from || 0.95) * (1 - 0.72 * k / (N - 1)) });
+    }
+  }
   function drawShot(S) {
     svg.innerHTML = '';
     el('rect', { x: 0, y: 0, width: 900, height: 470, fill: 'color-mix(in oklab, var(--c-felt) 9%, var(--panel))' });
@@ -801,8 +813,8 @@
       text(vadd(q, [flip ? -0.03 : 0.03, 0.055]), 'natural roll from here', { ...mono, 'text-anchor': flip ? 'end' : 'start' });
     }
     if (S.reached) {
-      poly(S.obTrace.pts, { stroke: 'var(--c-amber)', 'stroke-width': 2.4 });
-      poly(S.cbTrace.pts, { stroke: 'var(--c-felt)', 'stroke-width': 2.4 });
+      fadePoly(S.obTrace.pts, { stroke: 'var(--c-amber)', 'stroke-width': 2.4 });
+      fadePoly(S.cbTrace.pts, { stroke: 'var(--c-felt)', 'stroke-width': 2.4 });
       // where the slide ends
       const sl = S.cbTrace.pts[Math.min(S.cbTrace.pts.length - 1, Math.round(S.cbTrace.slid / S.cbTrace.dt))];
       if (S.slideLen > 0.01 && sl) { const [cx, cy] = px(sl); el('circle', { cx, cy, r: 3.5, fill: 'var(--c-felt)' }); const flip = sl[0] > TABLE_L - 0.45; text(vadd(sl, [flip ? -0.03 : 0.03, -0.02]), 'rolls from here', { ...mono, fill: 'var(--c-felt)', 'text-anchor': flip ? 'end' : 'start' }); }
@@ -1606,7 +1618,7 @@
   // above the cloth, so pushing that centre straight through a plane map lands it well past where the
   // ball really sits — half a ball at a gentle angle, several at a low one. With the camera known, every
   // ball is pulled back down its own sight line to the point where it actually touches the cloth.
-  const ph = { img: null, corners: [], balls: [], Hti: null, Hit: null, cam: null, sel: -1, drag: null };
+  const ph = { img: null, corners: [], balls: [], Hti: null, Hit: null, cam: null, sel: -1, drag: null, sens: 0 };
   const phcv = $('phcv'), phx = phcv.getContext('2d');
   function homography(src, dst) {   // 4 point pairs -> 3x3 (as 8 coefficients, h9 = 1), by Gaussian elimination
     const A = [], b = [];
@@ -1867,7 +1879,7 @@
     const IE = 1.6 * R;                                       // the inset the detector will trust
     for (let y = IE; y <= TABLE_W - IE; y += step) for (let x = IE; x <= TABLE_L - IE; x += step) {
       const s = score([x, y]);
-      if (s != null && s > 15) cand.push({ p: [x, y], s });
+      if (s != null && s > 15 * Math.pow(1.75, -ph.sens)) cand.push({ p: [x, y], s });
     }
     cand.sort((a, b) => b.s - a.s);
     // One blob is one ball, and that is a fact about the picture, not about the table. Every table
@@ -1882,7 +1894,8 @@
       if (dist2(a.p, b.p) < 1.92 * R) return true;
       const dx = a.c[0] - b.c[0], dy = a.c[1] - b.c[1], rr = Math.max(a.r, b.r);
       const u = a.u;
-      return Math.abs(dx * u[0] + dy * u[1]) < 2.5 * rr && Math.abs(dx * u[1] - dy * u[0]) < 0.85 * rr;
+      const grow = 1 - 0.16 * ph.sens;   // fewer balls: judge more blobs to be the same ball
+      return Math.abs(dx * u[0] + dy * u[1]) < 2.5 * grow * rr && Math.abs(dx * u[1] - dy * u[0]) < 0.85 * grow * rr;
     };
     // What sits a ball's height above this one? Over a ball there is cloth; over a shadow there is the
     // ball casting it. Score cannot tell them apart — a dark shadow on pale cloth outscores the white
@@ -2033,6 +2046,15 @@
   });
   $('phreset').addEventListener('click', () => { if (ph.img) { ph.corners = []; ph.balls = []; ph.Hti = ph.Hit = ph.cam = null; ph.sel = -1; phDraw(); phHint(); phNums(); } });
   $('phfind').addEventListener('click', () => { if (ph.Hti) { phDetect(); phDraw(); phHint(); phNums(); } });
+  // No detector wins on every photograph, and the person holding the photograph can see the answer.
+  // Fewer raises the bar and treats nearer blobs as one ball; more lowers it. It re-reads the picture,
+  // so it costs nothing to try both ways.
+  const phSens = (d) => {
+    ph.sens = Math.max(-3, Math.min(3, ph.sens + d));
+    if (ph.Hti) { phDetect(); phDraw(); phHint(); phNums(); }
+  };
+  $('phfewer').addEventListener('click', () => phSens(-1));
+  $('phmore').addEventListener('click', () => phSens(1));
   $('phclear').addEventListener('click', () => { ph.balls = []; ph.sel = -1; phDraw(); phHint(); phNums(); });
   $('phclose').addEventListener('click', () => { $('photobox').hidden = true; });
   $('phapply').addEventListener('click', () => {
