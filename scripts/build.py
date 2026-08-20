@@ -51,9 +51,22 @@ def glossary_matchers():
 
 
 def slugify(s: str) -> str:
-    """Same slug rule as the equations page (card anchors) — keep in sync."""
+    """Must produce exactly what the pages' JS slug() produces, since half the
+    anchors on this site are written by Python and the other half by the
+    browser, and search.json links from one to the other.
+
+    They used to disagree. The old version went through .encode("ascii",
+    "ignore"), which DELETES a character JS merely treats as a separator, so
+    every unspaced dash collapsed: "Einstein–Hilbert Action" became
+    einsteinhilbert-action in the search index and einstein-hilbert-action in
+    the page. 96 anchors were wrong, and every one of them was a search result
+    that landed on the right page and then failed to scroll to anything.
+
+    Strip combining marks, lowercase, and let everything else become a hyphen —
+    which is what the JS does."""
     import unicodedata
-    s = unicodedata.normalize("NFD", s or "").encode("ascii", "ignore").decode().lower()
+    s = unicodedata.normalize("NFD", s or "").lower()
+    s = "".join(c for c in s if not unicodedata.combining(c))
     return re.sub(r"^-|-$", "", re.sub(r"[^a-z0-9]+", "-", s))
 
 
@@ -878,6 +891,51 @@ def build_impacts_page():
 
 
 # ---------------- the ladder of scale ----------------
+# Planck 2018 TT,TE,EE+lowE+lensing+BAO. Named here rather than buried, because
+# every distance derived below moves with it: swap in SH0ES (73.0) and the whole
+# ladder above z ~ 0.01 stretches by about 8%.
+COSMOLOGY = {"name": "Planck 2018", "H0": 67.36, "Om": 0.3153, "OL": 0.6847}
+C_KMS = 299792.458
+LY_PER_MPC = 3.26156e6
+
+
+def lcdm_comoving(z: float, H0=None, Om=None) -> float:
+    """Comoving distance to redshift z in light-years, flat LCDM, by Simpson.
+
+    The page quotes comoving distances throughout. This recomputes them from the
+    redshift so the two columns can be checked against each other instead of
+    both being taken on trust -- which is how the Hercules-Corona Borealis wall
+    was caught being quoted as a light-travel distance.
+
+    Matter and Lambda only: radiation is neglected, which is worth less than
+    0.1% everywhere on this page except the last-scattering surface, where it
+    makes the computed distance about 0.5% too large. The page says so."""
+    H0 = H0 or COSMOLOGY["H0"]
+    Om = Om if Om is not None else COSMOLOGY["Om"]
+    n = 2000                                    # even; Simpson over [0, z]
+    h = z / n
+    def E(zz):
+        return 1.0 / math.sqrt(Om * (1 + zz) ** 3 + (1 - Om))
+    total = E(0) + E(z)
+    for i in range(1, n):
+        total += E(i * h) * (4 if i % 2 else 2)
+    return (C_KMS / H0) * (h / 3) * total * LY_PER_MPC
+
+
+def parse_z(v):
+    """Redshift is text, because a real structure spans a range ("1.6-2.1").
+    Returns (midpoint, is_range) or (None, False)."""
+    if isinstance(v, (int, float)):
+        return float(v), False
+    if not isinstance(v, str):
+        return None, False
+    nums = re.findall(r"\d+(?:\.\d+)?(?:[eE][-+]?\d+)?", v.replace("\u2212", "-"))
+    if not nums:
+        return None, False                      # "\u221e at the horizon"
+    vals = [float(x) for x in nums]
+    return (sum(vals) / len(vals), len(vals) > 1)
+
+
 def build_scales_page():
     """Everything from the heliopause to the horizon on one log axis. Sizes and
     distances stay in light-years in the data; the page picks the unit."""
@@ -885,13 +943,20 @@ def build_scales_page():
     for r in notion.get("cosmicStructures", []):
         if not r.get("Name") or r.get("Size (ly)") is None:
             continue
-        rows.append({
+        z, z_range = parse_z(r.get("Redshift"))
+        row = {
             "name": r["Name"], "slug": slugify(r["Name"]), "kind": r.get("Kind"),
             "size": r["Size (ly)"], "dist": r.get("Distance (ly)"),
-            "z": r.get("Redshift"), "pop": r.get("Population"),
+            "z": r.get("Redshift"), "zNum": z, "zRange": z_range, "pop": r.get("Population"),
             "within": r.get("Within") if r.get("Within") not in (None, "\u2014") else None,
             "year": r.get("Recognised"), "notes": r.get("Notes"),
-        })
+        }
+        # the check: a row quoting both a redshift and a distance is making a
+        # claim that LCDM can test. Recompute and keep the residual, pass or fail.
+        if z and z > 0 and row["dist"]:
+            row["dLCDM"] = round(lcdm_comoving(z))
+            row["ratio"] = round(row["dist"] / row["dLCDM"], 3)
+        rows.append(row)
     rows.sort(key=lambda x: x["size"])
     by_name = {r["name"]: r for r in rows}
     for r in rows:
@@ -905,7 +970,19 @@ def build_scales_page():
         cur = by_name[cur]["within"]
     kinds = [k for k in ["Local", "Galaxy", "Group", "Cluster", "Supercluster", "Filament",
                          "Void", "Attractor", "Cosmological"] if any(r["kind"] == k for r in rows)]
-    write_page("scales.template.html", "scales.html", {"structures": rows, "chain": chain, "kinds": kinds})
+    checked = [r for r in rows if "ratio" in r]
+    # 25% is the band inside which quoted literature distances, peculiar
+    # velocities and the redshift range of an extended structure all live.
+    # Outside it, something is wrong or something is interesting -- either way
+    # the page names the row rather than quietly rounding it into line.
+    off = sorted((r for r in checked if not 0.75 < r["ratio"] < 1.25),
+                 key=lambda r: abs(math.log10(r["ratio"])), reverse=True)
+    for r in off:
+        print(f"  scales: {r['name']} is {r['ratio']}x the LCDM distance for z={r['z']}")
+    write_page("scales.template.html", "scales.html",
+               {"structures": rows, "chain": chain, "kinds": kinds,
+                "cosmology": COSMOLOGY, "nChecked": len(checked),
+                "nOff": len(off), "offSlugs": [r["slug"] for r in off]})
     span = math.log10(rows[-1]["size"] / rows[0]["size"]) if len(rows) > 1 else 0
     return len(rows), round(span)
 

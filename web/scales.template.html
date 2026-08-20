@@ -92,6 +92,57 @@ __SHARED__
   .facts a { color: var(--ink-2); text-decoration: none; border-bottom: 1px solid var(--hairline); }
   .facts a:hover { color: var(--ink); border-bottom-color: var(--ink); }
   .empty { font-size: 12px; color: var(--muted); }
+
+  /* ---- the build-time check ---- */
+  .check {
+    background: var(--panel); border: 1px solid var(--hairline);
+    border-left: 3px solid var(--c-teal);
+    border-radius: 8px; padding: 12px 15px; margin: 0 0 22px;
+    font-size: 12px; color: var(--ink-2); line-height: 1.65;
+  }
+  .check b { color: var(--ink); font-weight: 600; }
+  .check code {
+    font: 11px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    color: var(--ink); background: color-mix(in oklab, var(--ink) 7%, transparent);
+    border-radius: 3px; padding: 1px 4px;
+  }
+  .resid {
+    display: block; margin-top: 8px; padding-top: 8px;
+    border-top: 1px dashed var(--hairline);
+    font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    font-variant-numeric: tabular-nums; color: var(--muted); line-height: 1.6;
+  }
+  .resid .ok { color: var(--c-forest); }
+  .resid .warn { color: var(--c-rust); }
+  .resid .num { color: var(--ink-2); }
+
+  /* ---- open questions ---- */
+  .open {
+    margin: 34px 0 0; padding: 16px 18px;
+    background: var(--panel); border: 1px solid var(--hairline);
+    border-left: 3px solid var(--c-amber); border-radius: 8px;
+  }
+  .open h2 {
+    font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    font-size: 13px; font-weight: 700; color: var(--ink); margin: 0 0 4px;
+  }
+  .open > p { font-size: 12.5px; color: var(--ink-2); line-height: 1.65; margin: 0 0 12px; }
+  .open ol { margin: 0; padding-left: 20px; }
+  .open li { font-size: 12.5px; color: var(--ink-2); line-height: 1.7; margin-bottom: 9px; }
+  .open li b { color: var(--ink); font-weight: 600; }
+  .worst {
+    margin: 12px 0 0; width: 100%; border-collapse: collapse;
+    font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    font-variant-numeric: tabular-nums;
+  }
+  .worst th {
+    text-align: left; font-weight: 400; color: var(--muted);
+    border-bottom: 1px solid var(--hairline); padding: 4px 8px 4px 0;
+  }
+  .worst td { padding: 4px 8px 4px 0; color: var(--ink-2); border-bottom: 1px solid var(--hairline); }
+  .worst td.r { text-align: right; }
+  .worst a { color: var(--ink-2); text-decoration: none; border-bottom: 1px solid var(--hairline); }
+  .worst a:hover { color: var(--ink); }
 </style>
 
 <h1 class="ktitle">The Ladder of Scale</h1>
@@ -108,17 +159,31 @@ __SHARED__
     <div class="chain" id="chain"></div>
   </div>
 
+  <p class="check" id="check" hidden></p>
   <div class="kinds" id="kinds"></div>
   <div id="list"></div>
   <p class="empty" id="empty" hidden>Nothing matches that filter.</p>
+  <section class="open">
+    <h2>Where this is soft</h2>
+    <p>The numbers below are the ones this page is least able to defend. They are listed because a page that only shows what it is confident about is not showing you very much — and because these are the questions worth putting to someone who works on this.</p>
+    <ol>
+      <li><b>Nothing here carries a citation.</b> Not one of the 44 rows names where its number came from. The redshifts and distances are literature values entered by hand; the arithmetic connecting them is checked, the sources are not.</li>
+      <li><b>Redshift is stored as text, because real structures span a range</b> — the CfA2 wall runs from about 0.015 to 0.03. The check uses the midpoint, which for a wall 500 million light-years deep is a fiction of convenience. A proper treatment would carry the range through and quote a distance range too.</li>
+      <li><b>There is no uncertainty column</b>, because for most of these there is no agreed measurement to attach one to. A cluster's distance has an error bar. A supercluster's <em>size</em> mostly has a convention.</li>
+      <li><b>Sizes above the galactic scale are definitions, not measurements.</b> Laniakea's 520 million light-years is the span of a velocity-flow basin; the voids are quoted as effective-sphere diameters; the walls are longest extents. These are not the same kind of number, and the page currently prints them in the same column.</li>
+      <li><b>Three structures here may not be structures</b> — the Hercules–Corona Borealis Great Wall, the Giant GRB Ring and, on the strongest reading, Quipu. They are included with the argument in their notes. Whether that is the right call, or whether they belong in a separate register, is a judgement this page has made without authority.</li>
+    </ol>
+    <div id="worstwrap"></div>
+  </section>
 </div>
 
-<p class="kfoot">From the Cosmic Structures database in Notion. Sizes above the galactic scale are soft: a supercluster has no edge, and the figures quoted are the longest extent usually cited, not a measured boundary. Distances are proper distances today where a redshift is known, comoving otherwise, on Planck 2018 parameters. Structures whose reality is still argued over say so in their notes rather than being left out.</p>
+<p class="kfoot">From the Cosmic Structures database in Notion. <b>Distances are comoving</b> — the separation today, not the light-travel time; at z&nbsp;=&nbsp;1.6 the two differ by more than half. Sizes above the galactic scale are soft: a supercluster has no edge, and the figures quoted are the longest extent usually cited, not a measured boundary. Structures whose reality is still argued over say so in their notes rather than being left out.</p>
 
 <script id="data" type="application/json">__DATA__</script>
 <script>
   const D = JSON.parse(document.getElementById('data').textContent);
   const ST = D.structures || [], CHAIN = D.chain || [], KINDS = D.kinds || [];
+  const COSMO = D.cosmology || {}, N_CHECKED = D.nChecked || 0, N_OFF = D.nOff || 0;
 
   const KIND_COLOR = {
     Local: 'var(--c-green)',
@@ -279,6 +344,28 @@ __SHARED__
       if (s.year) fact(f, 'recognised', String(s.year));
       card.appendChild(f);
 
+      // A row quoting both a redshift and a distance is making a checkable
+      // claim. Show the check, passed or failed, rather than asking to be
+      // believed — the two rows that used to fail it are why this page exists.
+      if (r.ratio != null) {
+        const ok = r.ratio > 0.75 && r.ratio < 1.25;
+        const d = document.createElement('span');
+        d.className = 'resid';
+        const mark = document.createElement('span');
+        mark.className = ok ? 'ok' : 'warn';
+        mark.textContent = ok ? '✓ checked  ' : '⚠ disagrees  ';
+        d.appendChild(mark);
+        const body = document.createElement('span');
+        body.textContent = `z ${r.z}${r.zRange ? ' (midpoint)' : ''} gives `;
+        d.appendChild(body);
+        const n = document.createElement('span');
+        n.className = 'num'; n.textContent = ly(r.dLCDM);
+        d.appendChild(n);
+        d.appendChild(document.createTextNode(
+          ` under ${COSMO.name} ΛCDM — this row states ${r.ratio}× that.`));
+        card.appendChild(d);
+      }
+
       wrap.append(head, card);
       box.appendChild(wrap);
     }
@@ -318,7 +405,57 @@ __SHARED__
     history.replaceState(null, '', '#' + id);
   }
 
+  function buildCheck() {
+    if (!N_CHECKED) return;
+    const el = document.getElementById('check');
+    el.innerHTML =
+      `<b>${N_CHECKED} of ${ST.length} rows quote both a redshift and a distance</b>, which is a claim `
+      + `arithmetic can test. Each one is recomputed at build time from flat ΛCDM — `
+      + `<code>H₀ = ${COSMO.H0}</code>, <code>Ω<sub>m</sub> = ${COSMO.Om}</code>, ${COSMO.name} — and shown `
+      + `with its residual on the row. `
+      + (N_OFF === 0
+          ? 'All of them agree to within 25%.'
+          : `<b>${N_OFF}</b> disagree by more than 25% and say so.`)
+      + ' Distances here are <b>comoving</b>. Radiation is neglected, which costs about 0.5% at the '
+      + 'last-scattering surface and nothing anywhere else.';
+    el.hidden = false;
+  }
+
+  // The five largest residuals, named. If this page is wrong somewhere, it is
+  // most likely to be wrong here, so this is where an expert eye should start.
+  function buildWorst() {
+    const checked = ST.filter((r) => r.ratio != null);
+    if (checked.length < 3) return;
+    const worst = checked
+      .map((r) => ({ r, off: Math.abs(Math.log10(r.ratio)) }))
+      .sort((a, b) => b.off - a.off).slice(0, 5).map((x) => x.r);
+    const t = document.createElement('table');
+    t.className = 'worst';
+    t.innerHTML = '<caption class="herelbl" style="text-align:left;margin:6px 0 6px">'
+      + 'largest remaining residuals</caption>'
+      + '<tr><th>structure</th><th>z</th><th class="r">stated</th>'
+      + '<th class="r">ΛCDM</th><th class="r">ratio</th></tr>';
+    for (const r of worst) {
+      const tr = document.createElement('tr');
+      const a = document.createElement('a');
+      a.href = '#' + r.slug; a.textContent = r.name;
+      a.addEventListener('click', (e) => { e.preventDefault(); goTo(r.slug); });
+      const td = document.createElement('td'); td.appendChild(a);
+      tr.appendChild(td);
+      for (const [v, cls] of [[r.z, ''], [ly(r.dist), 'r'], [ly(r.dLCDM), 'r'],
+                              [r.ratio.toFixed(2) + '×', 'r']]) {
+        const c = document.createElement('td');
+        c.className = cls; c.textContent = v;
+        tr.appendChild(c);
+      }
+      t.appendChild(tr);
+    }
+    document.getElementById('worstwrap').appendChild(t);
+  }
+
   buildAxis();
+  buildCheck();
+  buildWorst();
   buildChain();
   buildKinds();
   render();

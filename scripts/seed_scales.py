@@ -6,7 +6,9 @@ voids, the cosmic web, the horizon itself — was missing, which is four more
 orders of magnitude than the site covered.
 
 Every row carries a Size and, where we are not inside it, a Distance, both in
-light-years. The page converts to whatever unit suits the number (AU → ly →
+light-years and both COMOVING — the separation today, not the light-travel
+time. The two differ by 55% at z = 1.6, so the convention has to be stated;
+seed_scales_fix.py exists because one row was quoted the other way. The page converts to whatever unit suits the number (AU → ly →
 thousand → million → billion, with parsecs alongside, since that is what the
 literature quotes) — the unit changes down the ladder, the stored number never
 does.
@@ -60,7 +62,7 @@ STRUCTURES = [
      "An enormous emptiness beginning right at our doorstep and stretching away behind Sagittarius. Its lack of matter pushes the Local Sheet away at about 260 km/s — we are being repelled as much as attracted."),
     ("Local Volume", "Group", 33000000, None, None, "~600 known galaxies", "Local Supercluster (Virgo)", None,
      "The observational sphere of about 10 megaparsecs in which individual galaxies can be resolved into stars, which makes it the region where distances are measured rather than inferred."),
-    ("Virgo Cluster", "Cluster", 15000000, 65000000, "0.0036", "~1,500 galaxies", "Local Supercluster (Virgo)", 1781,
+    ("Virgo Cluster", "Cluster", 15000000, 54000000, "0.0036", "~1,500 galaxies", "Local Supercluster (Virgo)", 1781,
      "The nearest large cluster and the gravitational anchor of our supercluster, with the giant elliptical M87 — and its imaged black hole — at the centre. Catalogued as a knot of nebulae by Messier long before anyone knew what it was."),
     ("Fornax Cluster", "Cluster", 6000000, 62000000, "0.0046", "~60 large galaxies", "Local Supercluster (Virgo)", None,
      "The second-nearest cluster, small but well studied because it sits in a clean part of the southern sky."),
@@ -98,15 +100,15 @@ STRUCTURES = [
     ("Corona Borealis Supercluster", "Supercluster", 100000000, 950000000, "0.07", "several rich clusters", "—", None,
      "Unusually compact and massive for its size, and probably still collapsing under its own gravity rather than expanding with everything else."),
 
-    ("CfA2 Great Wall", "Filament", 500000000, 200000000, "0.02", "thousands of galaxies", "—", 1989,
+    ("CfA2 Great Wall", "Filament", 500000000, 300000000, "0.015–0.03", "thousands of galaxies", "—", 1989,
      "The first structure found that was too big for anyone's model: Geller and Huchra's redshift survey turned up a sheet of galaxies 500 million light-years long and only 15 million thick. It ended the assumption that the universe was smooth on any scale you cared to look at."),
     ("Sloan Great Wall", "Filament", 1370000000, 1000000000, "0.08", "a wall of superclusters", "—", 2003,
      "Found in Sloan Digital Sky Survey data and nearly three times the length of the CfA2 wall — big enough that whether it counts as one structure or several is a question about definitions rather than observation."),
     ("South Pole Wall", "Filament", 1400000000, 500000000, None, "a wall of galaxies", "—", 2020,
      "Hidden behind the Milky Way in the southern sky and only mapped in 2020, by inferring where mass must be from how nearby galaxies move rather than by seeing it."),
-    ("Quipu Superstructure", "Filament", 1300000000, 1900000000, "0.03–0.06", "~200 clusters, 2 × 10¹⁷ solar masses", "—", 2025,
+    ("Quipu Superstructure", "Filament", 1300000000, 650000000, "0.03–0.06", "~200 clusters, 2 × 10¹⁷ solar masses", "—", 2025,
      "Reported in 2025 as the most massive structure yet identified, named for the Andean knotted cords it resembles. As with every claimed 'largest structure', how much of it is one object depends on where you draw the line."),
-    ("Hercules–Corona Borealis Great Wall", "Filament", 10000000000, 9800000000, "1.6–2.1", "a concentration of gamma-ray bursts", "—", 2013,
+    ("Hercules–Corona Borealis Great Wall", "Filament", 10000000000, 15200000000, "1.6–2.1", "a concentration of gamma-ray bursts", "—", 2013,
      "Claimed from a clustering of gamma-ray bursts and, at 10 billion light-years, far larger than the scale at which the universe is supposed to be uniform. Whether it is real or an artefact of how bursts are found is genuinely unsettled."),
     ("Boötes Void", "Void", 330000000, 700000000, "0.05", "about 60 galaxies where thousands were expected", "—", 1981,
      "The Great Nothing: a hole 330 million light-years across with almost nothing in it. As Greg Aldering put it, if the Milky Way had been in its centre we would not have known there were other galaxies until the 1960s."),
