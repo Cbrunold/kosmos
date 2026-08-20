@@ -102,7 +102,8 @@ __SHARED__
       <div class="hint pro-only">Drag the empty cloth to point the cue; drag a ball to move it.</div>
       <div class="presets" style="grid-column:1/-1"><button id="share" type="button">copy a link to this shot</button></div></div>
     <div class="row pro-only"><label>aim — fine trim</label>
-      <div class="aimbtns"><button type="button" data-n="-1">−1°</button><button type="button" data-n="-0.1">−0.1°</button><span class="v" id="aimv"></span><button type="button" data-n="0.1">+0.1°</button><button type="button" data-n="1">+1°</button></div></div>
+      <div class="aimbtns"><button type="button" data-n="-1">−1°</button><button type="button" data-n="-0.1">−0.1°</button><span class="v" id="aimv"></span><button type="button" data-n="0.1">+0.1°</button><button type="button" data-n="1">+1°</button></div>
+      <div class="hint"><b>← →</b> steer the cue 1° per press — <b>shift</b> for 0.1° — thinner or fuller without touching the cloth.</div></div>
     <div class="row"><label for="spd">strike — 1 soft, 10 break</label><input id="spd" type="range" min="0.5" max="10" step="0.1" value="2.5"><span class="v" id="spdv"></span>
       <div class="hint">Also the cue ball's speed in m/s: 2–3 pot weight, 5 firm, 8+ a break.</div></div>
     <div class="row"><label for="tip">tip height, b/R</label><input id="tip" type="range" min="-0.5" max="0.5" step="0.02" value="0.4"><span class="v" id="tipv"></span>
@@ -1161,7 +1162,18 @@ __SHARED__
   svg.addEventListener('pointercancel', () => { drag = null; });
 
   // aim trim, execute, and the two modes
-  for (const b of document.querySelectorAll('.aimbtns button')) b.addEventListener('click', () => { let a = state.aimDeg + +b.dataset.n; a = ((a + 180) % 360 + 360) % 360 - 180; state.aimDeg = a; schedule(); });
+  const trimAim = (d2) => { let a = state.aimDeg + d2; a = ((a + 180) % 360 + 360) % 360 - 180; state.aimDeg = a; schedule(); };
+  for (const b of document.querySelectorAll('.aimbtns button[data-n]')) b.addEventListener('click', () => trimAim(+b.dataset.n));
+  // arrow keys steer the cue in pro mode: ← → a degree per press, shift for a tenth — thinner or fuller
+  // one notch at a time, no cloth-dragging. Left in the shooter's view is left (the table is seen from above).
+  document.addEventListener('keydown', (e) => {
+    if (state.mode !== 'pro' || (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight')) return;
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    const tg = e.target && e.target.tagName;
+    if (tg === 'INPUT' || tg === 'SELECT' || tg === 'TEXTAREA') return;   // sliders keep their native arrows
+    e.preventDefault();
+    trimAim((e.key === 'ArrowRight' ? 1 : -1) * (e.shiftKey ? 0.1 : 1));
+  });
   $('exec').addEventListener('click', () => {
     if (animId) return;
     const S = currentShot(false);
