@@ -281,11 +281,12 @@ def equation_tables():
 
 
 def build_cosmos_page():
+    # the Sun is the one catalogued star; everything else in the DB is the Local
+    # Group. Before the galaxies were seeded this loop took the last row it saw,
+    # which was harmless with one row and wrong with forty-five.
     sun = None
     for o in notion["celestialObjects"]:
-        # "Object ID" was the title property until it was renamed to "Name" on
-        # 2026-08-15; accept either so a stale data snapshot still builds
-        if obj_name(o):
+        if obj_name(o) and (o.get("Type") == "Star" or obj_name(o) == "Sun"):
             mass = o.get("Mass")
             exp = int(f"{mass:e}".split("e")[1]) if mass else None
             mant = mass / 10 ** exp if mass else None
@@ -297,6 +298,7 @@ def build_cosmos_page():
                 "type": o.get("Type") or "?",
                 "equations": o.get("Equations") or [],
             }
+
     spectral = []
     for s in notion["spectralTypes"]:
         name = s.get("Name") or ""
@@ -358,6 +360,24 @@ def build_cosmos_page():
         })
     discoveries.sort(key=lambda d: (d["year"] is None, d["year"] or 0))
 
+    # ---- the Local Group: everything catalogued that is not a star
+    MSUN = 1.989e30
+    local = []
+    for o in notion["celestialObjects"]:
+        nm = obj_name(o)
+        if not nm or o.get("Type") == "Star" or o.get("Distance from Earth") is None:
+            continue
+        m_kg = o.get("Mass")
+        local.append({
+            "name": nm, "slug": slugify(nm),
+            "morph": o.get("Morphology"), "sub": o.get("Subgroup"),
+            "dist": o.get("Distance from Earth"),
+            "diam": o.get("Diameter (ly)"),
+            "msun": round(m_kg / MSUN) if m_kg else None,
+            "notes": o.get("Notes"),
+        })
+    local.sort(key=lambda x: x["dist"])
+
     missions = [{
         "name": m["Name"],
         "launch": m.get("Launch Date"),
@@ -372,10 +392,10 @@ def build_cosmos_page():
     data = {"sun": sun, "spectral": spectral, "types": types,
             "instruments": instruments, "researchers": researchers,
             "observatories": observatories, "discoveries": discoveries,
-            "missions": missions, "equations": eq_lookup_all()}
+            "missions": missions, "localGroup": local, "equations": eq_lookup_all()}
     write_page("cosmos.template.html", "cosmos.html", data)
     return (len(types), len(spectral), len(instruments), len(observatories),
-            len(discoveries), len(missions))
+            len(discoveries), len(missions), len(local))
 
 
 # ---------------- cosmic timeline ----------------
@@ -691,6 +711,10 @@ def build_glossary_page():
     for m in notion.get("missions", []):
         if m.get("Name"):
             corpus.append(("mission", m["Name"], f"/cosmos#mission-{slugify(m['Name'])}", " ".join(filter(None, [m["Name"], m.get("Objective")]))))
+    for o in notion.get("celestialObjects", []):
+        nm = obj_name(o)
+        if nm and o.get("Notes"):
+            corpus.append(("galaxy", nm, f"/cosmos#lg-{slugify(nm)}", " ".join([nm, o["Notes"]])))
     for e in elements:
         txt = " ".join(filter(None, [e.get("extraction"), e.get("oreMinerals")]))
         if txt:
@@ -983,6 +1007,14 @@ def build_search_index():
             add("mine", m["Name"], " · ".join(filter(None, [m.get("Country"), m.get("Type")])),
                 m.get("Notes"), f"/mines#{slugify(m['Name'])}")
 
+    for o in notion.get("celestialObjects", []):
+        nm = obj_name(o)
+        if nm and o.get("Type") != "Star" and o.get("Distance from Earth") is not None:
+            d = o["Distance from Earth"]
+            when = f"{d/1e6:.2f} million ly" if d >= 1e6 else (f"{d/1000:,.0f} thousand ly" if d else "here")
+            add("galaxy", nm, " · ".join(filter(None, [o.get("Morphology"), when])),
+                o.get("Notes"), f"/cosmos#lg-{slugify(nm)}")
+
     for m in notion.get("machines", []):
         if m.get("Name"):
             add("machine", m["Name"], " · ".join(filter(None, [m.get("Kind"), str(m["Year"]) if m.get("Year") else None,
@@ -1081,6 +1113,7 @@ def build_home(n_min, n_gems, n_classes, n_spectral, n_instr, n_timeline, tl_dec
         "__N_BILL_SKILLS__": n_bill_skills,
         "__N_TERMS__": n_terms,
         "__N_TRACES__": f"{n_traces:,}",
+        "__N_LOCAL__": n_local,
         "__N_EXPL__": n_expl,
         "__N_EXPLTERMS__": f"{n_expl_terms:,}",
         "__N_IMPACTS__": n_imp,
@@ -1099,7 +1132,7 @@ def build_home(n_min, n_gems, n_classes, n_spectral, n_instr, n_timeline, tl_dec
 if __name__ == "__main__":
     n_min, n_gems = build_minerals_page()   # fills ELEMENT_MINERALS
     build_elements_page()
-    n_classes, n_spectral, n_instr, n_obs, n_disc, n_miss = build_cosmos_page()
+    n_classes, n_spectral, n_instr, n_obs, n_disc, n_miss, n_local = build_cosmos_page()
     write_page("forces.template.html", "forces.html",
                [{k: v for k, v in f.items() if k != "id"} for f in notion["forces"]])
     # theories carry a Proponent relation into the Researchers DB — resolve it to

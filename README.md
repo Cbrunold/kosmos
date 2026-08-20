@@ -13,7 +13,7 @@ truth for code and the normalised data snapshots. Sync is one-way, Notion → re
 | `/`          | Tile launcher in four groups (Matter & Earth, Cosmos & Physics, Making & Doing, Reference) with live stats per section, and a search bar over everything the site holds (`/` to focus, `?q=` to deep-link a query) |
 | `/elements`  | Interactive periodic table (11 lenses incl. crustal rarity and concentration factor, temperature + discovery sliders), sources & extraction per element, and the AI photo analyzer |
 | `/minerals`  | 3,100+ minerals with formula, elemental makeup (mass %), hardness and density, filterable by contained element; gemstone shelf, rock families, silicate classes |
-| `/cosmos`    | Field guide to celestial object classes, the stellar spectral sequence, observatories, a discovery timeline, instruments and researchers |
+| `/cosmos`    | The Local Group mapped by true distance (log-radial, 44 members), celestial object classes, the stellar spectral sequence, observatories, a discovery timeline, missions, instruments and researchers |
 | `/forces`    | The four fundamental interactions |
 | `/mines`     | World map of ~90 flagship mines, and for each raw material its ore minerals, typical grade, concentration factor, and ore-to-product process |
 | `/machines`  | The canonical engines and machines — how each works, its cycle drawn as a p–V loop, efficiency, materials, inventors; cross-linked to equations, elements and skills |
@@ -87,6 +87,11 @@ scripts/seed_glossary.py      Creates + seeds Glossary [DB] (~205 terms with dom
                               aliases). "Appears in" links are computed by build.py, never stored
 scripts/seed_nobel.py         Adds a Nobel field to the Researchers DB and marks the laureates on
                               file; `--diff LIST` reports which names in a list are not researchers yet
+scripts/seed_localgroup.py    Seeds the Local Group (44 members) into Celestial_Objects — distance in
+                              light-years, morphology, subgroup, notes. build.py draws the log-radial
+                              map on /cosmos; uncertain masses are left blank
+scripts/notion_peek.py        Read-only: prints the schema, row count and sample rows of any Notion
+                              data source whose title matches — for writing seeds against unseen DBs
 scripts/seed_impacts.py       Creates + seeds Mining Impacts [DB] (18 mechanisms — acid mine drainage,
                               tailings dam failure, silicosis…) with mechanism, mitigation and a
                               documented case. Where names mine Types, so build.py counts how many

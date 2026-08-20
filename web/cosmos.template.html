@@ -51,6 +51,32 @@ __SHARED__
   .pchp[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--page); }
   .pchp[aria-pressed="true"] .n { color: color-mix(in oklab, var(--page) 65%, var(--ink)); }
 
+  /* ---- Local Group map ---- */
+  .lgwrap { position: relative; border: 1px solid var(--hairline); border-radius: 10px; background: var(--panel); overflow: hidden; }
+  .lgwrap svg { display: block; width: 100%; height: auto; }
+  .lgring { fill: none; stroke: color-mix(in oklab, var(--ink) 14%, transparent); stroke-width: 0.6; }
+  .lgrl { font: 8.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; fill: var(--muted); }
+  .lgspoke { stroke: color-mix(in oklab, var(--ink) 7%, transparent); stroke-width: 0.5; }
+  .lgdot { cursor: pointer; }
+  .lgdot circle { fill: var(--gc, var(--muted)); stroke: var(--panel); stroke-width: 0.8; transition: r .1s; }
+  .lgdot:hover circle, .lgdot.on circle { stroke: var(--ink); stroke-width: 1.4; }
+  .lgdot.dim { opacity: .15; pointer-events: none; }
+  .lglab { font: 8px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; fill: var(--ink-2); pointer-events: none; }
+  .lgleg { display: flex; flex-wrap: wrap; gap: 12px; padding: 8px 12px; border-top: 1px solid var(--hairline); font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; color: var(--muted); }
+  .lgleg .sw { display: inline-block; width: 9px; height: 9px; border-radius: 50%; vertical-align: -1px; margin-right: 5px; }
+  .lgchips { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 12px; }
+  .lgchp { font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; background: var(--panel); border: 1px solid var(--hairline); border-left: 3px solid var(--gc, var(--muted)); color: var(--ink-2); border-radius: 5px; padding: 4px 9px; cursor: pointer; display: inline-flex; gap: 6px; align-items: baseline; }
+  .lgchp .n { font-size: 9px; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .lgchp[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--page); }
+  .lgchp[aria-pressed="true"] .n { color: color-mix(in oklab, var(--page) 65%, var(--ink)); }
+  .lglist { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 12px; margin-top: 16px; }
+  .lgcard { border-left: 3px solid var(--gc, var(--muted)); scroll-margin-top: 16px; }
+  .lgcard[hidden] { display: none; }
+  .lgcard.flash { outline: 2px solid var(--c-pink); outline-offset: 3px; }
+  .lgcard h3 { font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; font-size: 13.5px; margin: 0 0 3px; }
+  .lgcard .meta { font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; color: var(--muted); font-variant-numeric: tabular-nums; margin-bottom: 7px; }
+  .lgcard p { font-size: 12.5px; color: var(--ink-2); line-height: 1.5; margin: 0; }
+
   .obs { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; }
   .obs .kcard { border-left: 3px solid var(--oc, var(--muted)); }
   .obs h3 { font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; font-size: 13.5px; margin: 0 0 3px; }
@@ -97,6 +123,16 @@ __SHARED__
 
 <h2 class="ksec" id="catalogue">The catalogue so far</h2>
 <div class="kcard sunrow" id="sunrow"></div>
+
+<h2 class="ksec" id="localgroup">The Local Group</h2>
+<p class="klede" style="margin-bottom:14px">Everything gravitationally bound to us: two big spirals, a third smaller one, and forty-odd dwarfs strung out to the edge of the group's reach. Radius on the map is true distance on a log scale — each ring is ten times further out than it looks — and the angle groups objects by what they orbit, so it is not a direction on the sky.</p>
+<div class="lgchips" id="lgchips"></div>
+<div class="lgwrap">
+  <svg id="lgmap" viewBox="0 0 620 620" role="img" aria-label="Map of the Local Group by distance"></svg>
+  <div class="tip" id="lgtip"></div>
+  <div class="lgleg" id="lgleg"></div>
+</div>
+<div class="lglist" id="lglist"></div>
 
 <h2 class="ksec" id="spectral-h">The stellar spectral sequence — hottest to coolest</h2>
 <div class="spectral" id="spectral"></div>
@@ -206,6 +242,129 @@ __SHARED__
     const r = eqRow(it.equations, 'physics it tests');
     if (r) card.appendChild(r);
     instr.appendChild(card);
+  }
+
+  // -- the Local Group: log-radial map + cards --
+  {
+    const LG = D.localGroup || [];
+    const GC = { 'Milky Way': 'var(--c-amber)', 'Andromeda': 'var(--c-violet)', 'Independent': 'var(--c-cyan)', 'Outlying': 'var(--c-slate)' };
+    const SUBS = ['Milky Way', 'Andromeda', 'Independent', 'Outlying'];
+    const svg = document.getElementById('lgmap'), tip = document.getElementById('lgtip');
+    const listBox = document.getElementById('lglist'), chips = document.getElementById('lgchips');
+    if (LG.length) {
+      const C = 310, RMAX = 288, D_MIN = 2e4, D_MAX = 1e7;
+      const lr = (d) => Math.log10(Math.max(d, D_MIN));
+      const L0 = lr(D_MIN), L1 = lr(D_MAX);
+      const rad = (d) => (d <= 0 ? 0 : 26 + ((lr(d) - L0) / (L1 - L0)) * (RMAX - 26));
+      const NS = 'http://www.w3.org/2000/svg';
+      const el = (t, a, txt) => { const n = document.createElementNS(NS, t); for (const k in a) n.setAttribute(k, a[k]); if (txt != null) n.textContent = txt; return n; };
+      const fmtD = (d) => (d <= 0 ? 'we are here' : d >= 1e6 ? `${(d / 1e6).toFixed(2)} million ly` : `${Math.round(d / 1000).toLocaleString('en')} thousand ly`);
+
+      // rings at decade-ish distances
+      for (const [d, lab] of [[1e5, '100 thousand ly'], [1e6, '1 million ly'], [3e6, '3 million ly'], [1e7, '10 million ly']]) {
+        const r = rad(d);
+        svg.appendChild(el('circle', { class: 'lgring', cx: C, cy: C, r }));
+        svg.appendChild(el('text', { class: 'lgrl', x: C, y: C - r - 3, 'text-anchor': 'middle' }, lab));
+      }
+      // one spoke per subgroup sector
+      const arc = (2 * Math.PI) / SUBS.length;
+      for (let i = 0; i < SUBS.length; i++) {
+        const a = i * arc - Math.PI / 2;
+        svg.appendChild(el('line', { class: 'lgspoke', x1: C, y1: C, x2: C + Math.cos(a) * RMAX, y2: C + Math.sin(a) * RMAX }));
+      }
+
+      // place: radius = true distance, angle spread within the object's subgroup sector
+      const bySub = new Map();
+      for (const g of LG) { if (!bySub.has(g.sub)) bySub.set(g.sub, []); bySub.get(g.sub).push(g); }
+      const pos = new Map();
+      for (const [sub, members] of bySub) {
+        const i = Math.max(0, SUBS.indexOf(sub));
+        members.forEach((g, k) => {
+          const t = members.length === 1 ? 0.5 : (k + 0.5) / members.length;
+          const a = (i + 0.08 + t * 0.84) * arc - Math.PI / 2;
+          const r = rad(g.dist);
+          pos.set(g.slug, [C + Math.cos(a) * r, C + Math.sin(a) * r, a]);
+        });
+      }
+      const dots = new Map(), cards = new Map();
+      const size = (g) => (g.diam ? Math.max(2.6, Math.min(9, 2.2 + Math.log10(g.diam) * 1.35)) : 2.6);
+      const gmap = el('g', {});
+      for (const g of LG) {
+        const [x, y] = pos.get(g.slug);
+        const d = el('g', { class: 'lgdot', transform: `translate(${x.toFixed(1)} ${y.toFixed(1)})` });
+        d.style.setProperty('--gc', GC[g.sub] || 'var(--muted)');
+        d.appendChild(el('circle', { r: size(g) }));
+        d.addEventListener('mousemove', () => {
+          const b = svg.getBoundingClientRect();
+          tip.style.left = ((x / 620) * b.width) + 'px'; tip.style.top = ((y / 620) * b.height) + 'px';
+          tip.innerHTML = '<b></b> · <span></span>'; tip.firstChild.textContent = g.name; tip.lastChild.textContent = fmtD(g.dist);
+          tip.classList.add('on');
+        });
+        d.addEventListener('mouseleave', () => tip.classList.remove('on'));
+        d.addEventListener('click', () => goLG(g.slug));
+        gmap.appendChild(d); dots.set(g.slug, d);
+        if (g.diam && g.diam >= 15000) {   // label only the ones big enough to name without clutter
+          const [lx, ly, a] = pos.get(g.slug);
+          const right = Math.cos(a) >= 0;
+          gmap.appendChild(el('text', { class: 'lglab', x: lx + (right ? 8 : -8), y: ly + 3, 'text-anchor': right ? 'start' : 'end' }, g.name.replace(/ \(.*\)$/, '')));
+        }
+      }
+      svg.appendChild(gmap);
+      svg.appendChild(el('circle', { cx: C, cy: C, r: 3, fill: 'var(--ink)' }));
+      svg.appendChild(el('text', { class: 'lglab', x: C, y: C - 7, 'text-anchor': 'middle' }, 'Milky Way'));
+
+      const leg = document.getElementById('lgleg');
+      for (const sub of SUBS) {
+        if (!bySub.has(sub)) continue;
+        const s2 = document.createElement('span');
+        const sw = document.createElement('span'); sw.className = 'sw'; sw.style.background = GC[sub];
+        s2.append(sw, document.createTextNode(sub === 'Independent' ? 'independent members' : sub === 'Outlying' ? 'outlying, at the edge' : `${sub} satellites`));
+        leg.appendChild(s2);
+      }
+      const l2 = document.createElement('span'); l2.textContent = 'dot size ∝ diameter · radius is true distance, log scale'; leg.appendChild(l2);
+
+      for (const g of LG) {
+        const c = document.createElement('article');
+        c.className = 'kcard lgcard'; c.id = 'lg-' + g.slug;
+        c.style.setProperty('--gc', GC[g.sub] || 'var(--muted)');
+        const h = document.createElement('h3'); h.textContent = g.name;
+        const meta = document.createElement('div'); meta.className = 'meta';
+        meta.textContent = [g.morph, fmtD(g.dist), g.diam ? `${g.diam.toLocaleString('en')} ly across` : null,
+                            g.msun ? `${g.msun.toExponential(1).replace('e+', ' × 10^')} M☉` : null].filter(Boolean).join(' · ');
+        const p = document.createElement('p'); p.textContent = g.notes || '';
+        c.append(h, meta, p); listBox.appendChild(c); cards.set(g.slug, c);
+      }
+
+      let act = null;
+      const applyLG = () => {
+        for (const g of LG) {
+          const on = !act || g.sub === act;
+          dots.get(g.slug).classList.toggle('dim', !on);
+          cards.get(g.slug).hidden = !on;
+        }
+      };
+      for (const sub of SUBS) {
+        if (!bySub.has(sub)) continue;
+        const b = document.createElement('button'); b.className = 'lgchp'; b.type = 'button'; b.setAttribute('aria-pressed', 'false');
+        b.style.setProperty('--gc', GC[sub]);
+        b.innerHTML = '<span></span><span class="n"></span>';
+        b.firstChild.textContent = sub === 'Independent' ? 'independent' : sub === 'Outlying' ? 'outlying' : sub;
+        b.lastChild.textContent = bySub.get(sub).length;
+        b.addEventListener('click', () => {
+          act = act === sub ? null : sub;
+          for (const x of chips.children) x.setAttribute('aria-pressed', String(x === b && act === sub));
+          applyLG();
+        });
+        chips.appendChild(b);
+      }
+      window.goLG = (slug) => {
+        const c = cards.get(slug); if (!c) return;
+        if (c.hidden) { act = null; for (const x of chips.children) x.setAttribute('aria-pressed', 'false'); applyLG(); }
+        c.scrollIntoView({ block: 'center', behavior: 'smooth' });
+        c.classList.add('flash'); setTimeout(() => c.classList.remove('flash'), 1700);
+        for (const [k, d] of dots) d.classList.toggle('on', k === slug);
+      };
+    }
   }
 
   // -- observatories, oldest first --
