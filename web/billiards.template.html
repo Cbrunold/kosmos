@@ -31,6 +31,13 @@ __SHARED__
   .aimbtns select { flex: 2; min-width: 0; font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; background: transparent; color: var(--ink); border: 1px solid var(--hairline); border-radius: 6px; padding: 4px; }
   .ctl.pro .prac-only { display: none; }
   .ctl:not(.pro) .pro-only { display: none; }
+  .ctl details { border-top: 1px solid var(--hairline); padding-top: 9px; }
+  .ctl details summary { cursor: pointer; font: 10px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); user-select: none; }
+  .ctl details summary:hover { color: var(--ink); }
+  .ctl details summary .cnt { color: var(--c-amber); }
+  .ctl details .row { margin-top: 9px; }
+  #solspace { margin-top: 14px; }
+  #solspace[hidden] { display: none; }
   .tblwrap { min-width: 0; }
   .tblwrap #pov { margin-top: 10px; }
   .out { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 14px; max-width: 1240px; }
@@ -89,39 +96,35 @@ __SHARED__
   <div class="kcard ctl" id="ctlbox">
     <div class="row"><label>mode</label>
       <div class="modes"><button id="mprac" type="button" class="on">practice — guides live</button><button id="mpro" type="button">pro — just the balls</button></div>
-      <div class="hint pro-only">No guides, neutral defaults. Prepare the sauce — aim, strike, tip, side — then execute. You need the recipe, and an aim that pays for throw, squirt and swerve.</div></div>
+      <div class="hint pro-only">No guides, neutral defaults. The aim must pay for throw, squirt and swerve.</div></div>
     <div class="row"><label>the shot</label><div id="shotinfo"></div>
-      <div class="hint prac-only">Drag either ball to move it; click a pocket to aim there.</div>
+      <div class="hint prac-only">Drag either ball; click a pocket to aim there. The outcome maps live under the table.</div>
       <div class="hint pro-only">Drag the empty cloth to point the cue; drag a ball to move it.</div>
       <div class="presets" style="grid-column:1/-1"><button id="share" type="button">copy a link to this shot</button></div></div>
     <div class="row pro-only"><label>aim — fine trim</label>
       <div class="aimbtns"><button type="button" data-n="-1">−1°</button><button type="button" data-n="-0.1">−0.1°</button><span class="v" id="aimv"></span><button type="button" data-n="0.1">+0.1°</button><button type="button" data-n="1">+1°</button></div></div>
-    <div class="row"><label for="spd">strike intensity — 1 soft, 10 break</label><input id="spd" type="range" min="0.5" max="10" step="0.1" value="2.5"><span class="v" id="spdv"></span>
-      <div class="hint">Calibrated so the number is also the cue ball's speed in m/s off the tip: 1 a soft roll, 2–3 pot weight, 5 firm, 8–10 a break.</div></div>
-    <div class="row prac-only"><label>outcome by strike — this shot, every strength</label>
-      <svg id="vstrip" viewBox="0 0 550 22" preserveAspectRatio="none"></svg>
-      <div class="hint" id="potv"></div>
-      <div class="hint"><b>solid amber</b>: the object ball drops · <b>mid amber</b>: it hangs in the jaws · <b>faint amber</b>: it stays up · <b>grey</b>: the cue ball never gets there · <b>red strip</b>: the cue ball scratches</div></div>
-    <div class="row prac-only"><label>solution space — aim × strike, this layout</label>
-      <canvas id="hmap" width="486" height="120" style="width:100%;height:120px;grid-column:1/-1;border:1px solid var(--hairline);border-radius:4px"></canvas>
-      <div class="hint">Every pixel is a simulated shot: <b>amber</b> pots · <b>dim amber</b> hangs · <b>red-edged</b> pots but scratches · <b>red</b> scratches · x: aim, ±5° around the ghost-ball line (centre tick) · y: strike, 0.5 at the bottom to 10 at the top (line = your strike). Watch the window drift off centre as you add side or length — that drift is the compensation you must aim.</div></div>
+    <div class="row"><label for="spd">strike — 1 soft, 10 break</label><input id="spd" type="range" min="0.5" max="10" step="0.1" value="2.5"><span class="v" id="spdv"></span>
+      <div class="hint">Also the cue ball's speed in m/s: 2–3 pot weight, 5 firm, 8+ a break.</div></div>
     <div class="row"><label for="tip">tip height, b/R</label><input id="tip" type="range" min="-0.5" max="0.5" step="0.02" value="0.4"><span class="v" id="tipv"></span>
-      <div class="hint">+0.4 is natural roll from the start; 0 is a centre-ball hit; below 0 is draw. ±0.5 is the miscue limit.</div></div>
+      <div class="hint">+0.4 natural roll · 0 stun · −0.5 draw · ±0.5 is the miscue limit.</div></div>
     <div class="row"><label for="side">side, b/R</label><input id="side" type="range" min="-0.5" max="0.5" step="0.02" value="0"><span class="v" id="sidev"></span>
-      <div class="hint">Left of centre is negative, seen from behind the cue. Side squirts the cue ball off the aim at the tip, then swerves it back while it slides — the longer and softer the shot, the bigger the curve. It also throws the object ball, and it matters at the rail.</div></div>
+      <div class="hint">Negative is left of centre. Side squirts the cue ball off the aim, swerves it back while it slides, and throws the object ball.</div></div>
     <div class="row"><button id="exec" type="button" class="exec">▶ execute the shot</button>
       <div class="hint pro-only" id="score"></div></div>
-    <div class="row"><label>balls on the table</label>
-      <div class="aimbtns"><button type="button" id="rack9">9-ball</button><button type="button" id="rack8">8-ball</button><button type="button" id="ballplus">+ ball</button><button type="button" id="ballminus">− ball</button><button type="button" id="justtwo">just two</button></div>
-      <div class="hint">Every ball is live — combos, caroms, clusters and full breaks. Drag any ball; practice aims the ghost-ball line at the lowest number still up (ringed). Presets and drills reset to two balls.</div></div>
-    <div class="row"><label>conditions — stack the contract</label>
-      <div class="presets" id="conds"></div>
-      <div class="hint" id="condres"></div>
-      <div class="hint">Pick any set: practice grades them live, pro grades on execute. Conditions that fight each other make the best shots.</div></div>
-    <div class="row"><label>drills — progressive, after Dr Dave</label>
-      <div class="aimbtns"><select id="drill"></select><button type="button" id="dlm">−</button><span class="v" id="drilllvl">—</span><button type="button" id="dlp">+</button></div>
-      <div class="hint">Pick a drill and the table sets itself up; 10 levels, each a little harder. In pro mode a pot moves you up a level, a miss moves you down — the progressive format from <a href="https://drdavepoolinfo.com/resources/drills/" target="_blank" rel="noopener" style="color:inherit">Dr Dave's drills &amp; exam library</a>.</div></div>
     <div class="presets prac-only" id="presets"></div>
+    <details><summary>balls on the table</summary>
+      <div class="row">
+        <div class="aimbtns"><button type="button" id="rack9">9-ball</button><button type="button" id="rack8">8-ball</button><button type="button" id="ballplus">+ ball</button><button type="button" id="ballminus">− ball</button><button type="button" id="justtwo">just two</button></div>
+        <div class="hint">Every ball is live — combos, caroms, full breaks. Practice aims at the lowest number still up (ringed).</div></div></details>
+    <details id="condbox"><summary>conditions — the contract <span class="cnt" id="condsum"></span></summary>
+      <div class="row">
+        <div class="presets" id="conds"></div>
+        <div class="hint" id="condres"></div>
+        <div class="hint">Practice grades live, pro on execute. Conditions that fight each other make the best shots.</div></div></details>
+    <details><summary>drills — after Dr Dave</summary>
+      <div class="row">
+        <div class="aimbtns"><select id="drill"></select><button type="button" id="dlm">−</button><span class="v" id="drilllvl">—</span><button type="button" id="dlp">+</button></div>
+        <div class="hint">The table sets itself up; 10 levels each. In pro a pot moves you up, a miss down — the format of <a href="https://drdavepoolinfo.com/resources/drills/" target="_blank" rel="noopener" style="color:inherit">Dr Dave's drills &amp; exam library</a>.</div></div></details>
   </div>
 </div>
 <div class="legend">
@@ -130,6 +133,19 @@ __SHARED__
   <span style="--lc:var(--c-amber)">object ball</span>
   <span style="--lc:var(--muted); --ls:dashed">tangent line · line of centres · aim line</span>
   <span style="--lc:var(--c-red); --ls:dotted">object ball with no throw</span>
+</div>
+<div class="out" id="solspace">
+  <div class="kcard ctl">
+    <div class="row"><label>outcome by strike — this shot, every strength</label>
+      <svg id="vstrip" viewBox="0 0 550 22" preserveAspectRatio="none"></svg>
+      <div class="hint" id="potv"></div>
+      <div class="hint"><b>solid amber</b>: the object ball drops · <b>mid amber</b>: it hangs in the jaws · <b>faint amber</b>: it stays up · <b>grey</b>: the cue ball never gets there · <b>red strip</b>: the cue ball scratches</div></div>
+  </div>
+  <div class="kcard ctl">
+    <div class="row"><label>solution space — aim × strike, this layout</label>
+      <canvas id="hmap" width="486" height="120" style="width:100%;height:120px;grid-column:1/-1;border:1px solid var(--hairline);border-radius:4px"></canvas>
+      <div class="hint">Every pixel is a simulated shot: <b>amber</b> pots · <b>dim amber</b> hangs · <b>red-edged</b> pots but scratches · <b>red</b> scratches · x: aim ±5° around the ghost-ball line (centre tick) · y: strike 0.5→10 (line = yours). The pot window drifting off centre is the compensation you must aim.</div></div>
+  </div>
 </div>
 <div class="out">
   <div class="kcard"><h3><span class="dot" style="background:var(--c-amber)"></span>Object ball</h3><dl id="ob"></dl></div>
@@ -1082,6 +1098,7 @@ __SHARED__
     state.mode = m; stopAnim();
     $('mprac').classList.toggle('on', m === 'practice'); $('mpro').classList.toggle('on', m === 'pro');
     $('ctlbox').classList.toggle('pro', m === 'pro');
+    $('solspace').hidden = m === 'pro';
     if (m === 'pro') {   // neutral hit: centre ball, no side, medium strike; aim at the object ball's centre
       $('tip').value = 0; $('side').value = 0; $('spd').value = 2.5;
       const dv = vsub(state.ob, state.cb); state.aimDeg = deg(Math.atan2(dv[1], dv[0]));
@@ -1126,7 +1143,7 @@ __SHARED__
     state.balls.forEach((b, i) => { b.p = clampBall(b.p, state.balls.filter((_, j) => j !== i).map((x) => x.p)); });
     state.pk = Math.min(5, Math.max(0, a[5] | 0)); state.aimDeg = a[6];
     $('spd').value = Math.min(10, Math.max(0.5, a[7])); $('tip').value = Math.min(0.5, Math.max(-0.5, a[8])); $('side').value = Math.min(0.5, Math.max(-0.5, a[9]));
-    if (state.mode === 'pro') { $('mprac').classList.remove('on'); $('mpro').classList.add('on'); $('ctlbox').classList.add('pro'); }
+    if (state.mode === 'pro') { $('mprac').classList.remove('on'); $('mpro').classList.add('on'); $('ctlbox').classList.add('pro'); $('solspace').hidden = true; }
     return true;
   }
   $('share').addEventListener('click', () => {
@@ -1230,7 +1247,11 @@ __SHARED__
     btn.addEventListener('click', () => { if (state.conds.has(c.id)) state.conds.delete(c.id); else state.conds.add(c.id); syncCondBtns(); schedule(); });
     $('conds').appendChild(btn);
   }
-  function syncCondBtns() { for (const b of $('conds').children) b.classList.toggle('on', state.conds.has(b.dataset.cid)); }
+  function syncCondBtns() {
+    for (const b of $('conds').children) b.classList.toggle('on', state.conds.has(b.dataset.cid));
+    $('condsum').textContent = state.conds.size ? `· ${state.conds.size} on` : '';
+    if (state.conds.size) $('condbox').open = true;   // a shared contract arrives visible
+  }
   function gradeConditions(S) {
     if (!state.conds.size) { $('condres').innerHTML = ''; return; }
     if (!S || !S.feasible || !S.simBalls) { $('condres').textContent = '—'; return; }
