@@ -1789,68 +1789,101 @@
     const dc = (a, b) => (Math.abs(a[0] - b[0]) + Math.abs(a[1] - b[1]) + Math.abs(a[2] - b[2])) / 3;
     // the baize, as it is lit here and not as a single colour: a coarse median map, so a gradient across
     // the table (and it always is a gradient) doesn't read as a difference
+    // What the baize looks like where it is actually lit — sampled well inside the cushions, because at
+    // the far end perspective crushes many rows of cloth into the pixels right against the rail, and a
+    // background map that swallows rail colour will happily certify a rail as "surrounded by cloth".
+    const IN = 2.2 * R;
     const BX = 16, BY = 8, buckets = [];
     for (let i = 0; i < BX * BY; i++) buckets.push([[], [], []]);
     for (let j = 0; j <= 60; j++) for (let i = 0; i <= 120; i++) {
-      const p = [i / 120 * TABLE_L, j / 60 * TABLE_W];
+      const p = [IN + i / 120 * (TABLE_L - 2 * IN), IN + j / 60 * (TABLE_W - 2 * IN)];
       const s = at(...hApply(ph.Hti, p));
       if (!s) continue;
       const bi = Math.min(BX - 1, (p[0] / TABLE_L * BX) | 0) + BX * Math.min(BY - 1, (p[1] / TABLE_W * BY) | 0);
       for (let k = 0; k < 3; k++) buckets[bi][k].push(s[k]);
     }
     const med = (a) => { if (!a.length) return null; const t = a.slice().sort((x, y) => x - y); return t[t.length >> 1]; };
-    const bg = buckets.map((ch) => (ch[0].length ? [med(ch[0]), med(ch[1]), med(ch[2])] : null));
+    const all = [[], [], []];
+    for (const ch of buckets) for (let k = 0; k < 3; k++) for (const v of ch[k]) all[k].push(v);
+    const globalBg = all[0].length ? [med(all[0]), med(all[1]), med(all[2])] : null;
+    const bg = buckets.map((ch) => (ch[0].length > 8 ? [med(ch[0]), med(ch[1]), med(ch[2])] : globalBg));
     const bgAt = (p) => bg[Math.min(BX - 1, (p[0] / TABLE_L * BX) | 0) + BX * Math.min(BY - 1, (p[1] / TABLE_W * BY) | 0)];
+    // is this pixel standing on the cloth at all? The rails, the diamonds set into them and the room
+    // beyond all fail, and that is the whole difference between a ball and a cushion feature.
+    const onCloth = (x, y) => {
+      const t = hApply(ph.Hit, [x, y]);
+      return t[0] > 0.004 && t[0] < TABLE_L - 0.004 && t[1] > 0.004 && t[1] < TABLE_W - 0.004;
+    };
+    const ringOnCloth = (c, r0, r1, n, base) => {   // the surroundings, counted only where they are really baize
+      let sr = 0, sg = 0, sb = 0, sl = 0, sl2 = 0, cnt = 0, tot = 0;
+      for (let i = 0; i < n; i++) {
+        const rr = r0 + (r1 - r0) * Math.sqrt((i + 0.5) / n), th = i * GA;
+        const qx = c[0] + rr * Math.cos(th), qy = c[1] + rr * Math.sin(th);
+        const s = at(qx, qy);
+        if (!s) continue;
+        tot++;
+        if (!onCloth(qx, qy) || dc(s, base) > 40) continue;   // inside the quad AND the colour of baize
+        sr += s[0]; sg += s[1]; sb += s[2];
+        const l = 0.299 * s[0] + 0.587 * s[1] + 0.114 * s[2];
+        sl += l; sl2 += l * l; cnt++;
+      }
+      if (tot < n * 0.5 || cnt < tot * 0.55 || cnt < 14) return null;   // not enough cloth around it to judge
+      const m = sl / cnt;
+      return { c: [sr / cnt, sg / cnt, sb / cnt], sd: Math.sqrt(Math.max(0, sl2 / cnt - m * m)) };
+    };
     // a ball has an edge the whole way round. A cue stick lying on the baize is just as un-cloth-like in
     // the middle of the disc, and its surroundings are cloth too — but it only breaks the rim at the two
-    // points where it crosses, so asking how much of the rim is an edge is what tells them apart.
+    // points where it crosses, so asking how much of the rim is an edge is what tells them apart. Spokes
+    // that point off the cloth are not asked: the cushion line is an edge, and it is not a ball's edge.
     const rimCover = (c, r) => {
       const K = 24;
       let hit = 0, tot = 0;
       for (let k = 0; k < K; k++) {
         const th = k * 2 * Math.PI / K, cs = Math.cos(th), sn = Math.sin(th);
+        const ox = c[0] + 1.60 * r * cs, oy = c[1] + 1.60 * r * sn;
         const a = at(c[0] + 0.70 * r * cs, c[1] + 0.70 * r * sn);
-        const b = at(c[0] + 1.60 * r * cs, c[1] + 1.60 * r * sn);
-        if (!a || !b) continue;
+        const b = at(ox, oy);
+        if (!a || !b || !onCloth(ox, oy)) continue;
         tot++;
         if (dc(a, b) > 12) hit++;
       }
-      return tot >= K * 0.6 ? hit / tot : 0;
+      return tot >= K * 0.45 ? hit / tot : 0;
     };
     const score = (p) => {
       const r = phBallRadius(p);
-      if (!(r > 2.2)) return null;                           // too far away to tell a ball from a speck
+      if (!(r > 3)) return null;                             // too far away to tell a ball from a speck
       const c = phCentre(p);
-      const disc = patch(c, 0, r * 0.82, 44, false);
-      const ring = patch(c, r * 1.45, r * 2.25, 60, false);
-      if (!disc || !ring) return null;
       const base = bgAt(p);
-      if (!base || dc(ring.c, base) > 46) return null;       // no cloth around it: the arm, a rail, the crowd
+      if (!base) return null;
+      const disc = patch(c, 0, r * 0.82, 44, false);
+      const ring = ringOnCloth(c, r * 1.45, r * 2.25, 60, base);
+      if (!disc || !ring) return null;                       // no cloth around it: the arm, a rail, the crowd
       const cover = rimCover(c, r);
       if (cover < 0.55) return null;                         // an edge on only part of the rim: not a ball
       return (dc(disc.c, ring.c) + 0.9 * Math.max(0, disc.sd - ring.sd)) * cover;
     };
     const cand = [];
     const step = 0.012;
-    for (let y = R; y < TABLE_W - R * 0.6; y += step) for (let x = R; x < TABLE_L - R * 0.6; x += step) {
+    const IE = 1.6 * R;                                       // the inset the detector will trust
+    for (let y = IE; y <= TABLE_W - IE; y += step) for (let x = IE; x <= TABLE_L - IE; x += step) {
       const s = score([x, y]);
       if (s != null && s > 15) cand.push({ p: [x, y], s });
     }
     cand.sort((a, b) => b.s - a.s);
     const picked = [];
     for (const c of cand) {
-      if (picked.some((o) => dist2(o.p, c.p) < 1.7 * R)) continue;
+      if (picked.some((o) => dist2(o.p, c.p) < 1.92 * R)) continue;
       let best = c;                                          // walk it onto the peak: the grid is coarser than a ball
       for (let k = 0; k < 3; k++) {
         const h = step / (2 * (k + 1));
         for (const [dx, dy] of [[h, 0], [-h, 0], [0, h], [0, -h], [h, h], [-h, -h], [h, -h], [-h, h]]) {
           const q = [best.p[0] + dx, best.p[1] + dy];
-          if (q[0] < R * 0.5 || q[0] > TABLE_L - R * 0.5 || q[1] < R * 0.5 || q[1] > TABLE_W - R * 0.5) continue;
+          if (q[0] < IE || q[0] > TABLE_L - IE || q[1] < IE || q[1] > TABLE_W - IE) continue;   // never walk onto the cushion
           const s2 = score(q);
           if (s2 != null && s2 > best.s) best = { p: q, s: s2 };
         }
       }
-      if (picked.some((o) => dist2(o.p, best.p) < 1.7 * R)) continue;
+      if (picked.some((o) => dist2(o.p, best.p) < 1.92 * R)) continue;
       picked.push(best);
       if (picked.length >= 16) break;
     }
