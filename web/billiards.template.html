@@ -1682,13 +1682,32 @@ __SHARED__
     // pixel, so the score runs as a ridge down that line — and those points are a comfortable ten
     // centimetres apart on the cloth. Separating them by table distance alone rings one ball three
     // times; they have to be separated by where they land in the image.
-    const same = (a, b) => dist2(a.p, b.p) < 1.92 * R
-      || Math.hypot(a.c[0] - b.c[0], a.c[1] - b.c[1]) < 1.35 * Math.max(a.r, b.r);
-    const mark = (q, sc) => ({ p: q, s: sc, c: phCentre(q), r: phBallRadius(q) });
+    // Two blobs stacked along the lift direction are one ball and the shadow it casts, so the window is
+    // generous that way and tight across it — two balls frozen side by side sit across that direction,
+    // and must stay two balls.
+    const same = (a, b) => {
+      if (dist2(a.p, b.p) < 1.92 * R) return true;
+      const dx = a.c[0] - b.c[0], dy = a.c[1] - b.c[1], rr = Math.max(a.r, b.r);
+      const u = a.u;
+      return Math.abs(dx * u[0] + dy * u[1]) < 2.5 * rr && Math.abs(dx * u[1] - dy * u[0]) < 0.85 * rr;
+    };
+    // What sits a ball's height above this one? Over a ball there is cloth; over a shadow there is the
+    // ball casting it. Score cannot tell them apart — a dark shadow on pale cloth outscores the white
+    // ball above it — but this can, and it does not shift where the ball is reported.
+    const mark = (q, sc) => {
+      const c = phCentre(q), g = hApply(ph.Hti, q);          // where its centre shows, and where it touches
+      const l = Math.hypot(c[0] - g[0], c[1] - g[1]) || 1;
+      const r = phBallRadius(q), u = [(c[0] - g[0]) / l, (c[1] - g[1]) / l];
+      const base = bgAt(q);
+      const up = patch([c[0] + u[0] * 1.5 * r, c[1] + u[1] * 1.5 * r], 0, r * 0.7, 32, false);
+      return { p: q, s: sc, c, r, u, above: !!(base && up && dc(up.c, base) > 44) };
+    };
+    const better = (a, b) => (a.above !== b.above ? (a.above ? b : a) : (a.s >= b.s ? a : b));
     const picked = [];
     for (const c of cand) {
       let best = mark(c.p, c.s);
-      if (picked.some((o) => same(o, best))) continue;
+      const j0 = picked.findIndex((o) => same(o, best));
+      if (j0 >= 0) { picked[j0] = better(picked[j0], best); continue; }
       for (let k = 0; k < 3; k++) {                          // walk it onto the peak: the grid is coarser than a ball
         const h = step / (2 * (k + 1));
         for (const [dx, dy] of [[h, 0], [-h, 0], [0, h], [0, -h], [h, h], [-h, -h], [h, -h], [-h, h]]) {
@@ -1698,7 +1717,8 @@ __SHARED__
           if (s2 != null && s2 > best.s) best = mark(q, s2);
         }
       }
-      if (picked.some((o) => same(o, best))) continue;
+      const j = picked.findIndex((o) => same(o, best));
+      if (j >= 0) { picked[j] = better(picked[j], best); continue; }
       picked.push(best);
       if (picked.length >= 16) break;
     }
