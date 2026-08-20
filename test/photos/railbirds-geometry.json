@@ -1,0 +1,67 @@
+{
+ "note": "positions read by eye off the Railbirds/Budweiser broadcast still, in the original 2000x783 frame | corners re-ordered so the table length runs away from the camera (side pockets are on the left/right edges)",
+ "imgW": 2000,
+ "imgH": 783,
+ "corners": [
+  [
+   1888,
+   706
+  ],
+  [
+   150,
+   700
+  ],
+  [
+   505,
+   108
+  ],
+  [
+   1462,
+   100
+  ]
+ ],
+ "balls": [
+  {
+   "name": "cue",
+   "px": [
+    525,
+    455
+   ]
+  },
+  {
+   "name": "orange",
+   "px": [
+    830,
+    458
+   ]
+  },
+  {
+   "name": "black 8",
+   "px": [
+    1050,
+    190
+   ]
+  },
+  {
+   "name": "yellow",
+   "px": [
+    1118,
+    385
+   ]
+  },
+  {
+   "name": "purple",
+   "px": [
+    1057,
+    578
+   ]
+  },
+  {
+   "name": "green",
+   "px": [
+    1410,
+    528
+   ]
+  }
+ ]
+}

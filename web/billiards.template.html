@@ -1478,13 +1478,39 @@ __SHARED__
       return [(H[0] * a + H[1] * b) / w, (H[3] * a + H[4] * b) / w];
     };
     const plausible = (c) => c && c.h > 0.25 && c.h < 6 && Math.abs(c.xy[0]) < 40 && Math.abs(c.xy[1]) < 40;
+    // The cloth is a rectangle whose proportions we know exactly — 2.54 by 1.27 — and that alone fixes
+    // the lens. Writing H = K [r1 r2 t], the two columns that carry the table's axes must come out of K
+    // equal in length and at right angles, which is two equations in one unknown. Solving both together
+    // matters: shoot square-on to the end rail, as anyone filming a match does, and the across-the-table
+    // vanishing point runs to infinity and takes the right-angle equation with it — but the equal-length
+    // equation is untouched and still answers. That case used to fall through to assuming a phone lens,
+    // which is a poor description of a camera up on a tripod at the end of an arena table.
+    const col = (u, v, w) => [u - cx * w, v - cy * w, w];
+    const g1 = col(H[0], H[3], H[6]), g2 = col(H[1], H[4], H[7]);
+    const eq = [
+      [g1[0] * g2[0] + g1[1] * g2[1], g1[2] * g2[2]],                                   // at right angles
+      [g1[0] * g1[0] + g1[1] * g1[1] - g2[0] * g2[0] - g2[1] * g2[1], g1[2] * g1[2] - g2[2] * g2[2]],
+    ];
+    let num = 0, den = 0;
+    for (const [A, B] of eq) { num -= A * B; den += A * A; }
+    if (den > 1e-12) {
+      const X = num / den;                                   // X = 1/f²; a degenerate equation contributes ~0 to both
+      if (X > 1e-12) {
+        const cam = phPose(H, 1 / Math.sqrt(X));
+        if (plausible(cam)) {
+          // How well do the two equations agree? On a 2:1 rectangle read the right way round they give
+          // the same lens; read the wrong way round — the length laid along the short rail — they do
+          // not. That disagreement is what tells the two readings apart, and it is a measurement
+          // rather than a guess about where photographers stand.
+          const sc = g1[0] * g1[0] + g1[1] * g1[1] + g2[0] * g2[0] + g2[1] * g2[1] || 1;
+          const solo = eq.map(([A, B]) => (Math.abs(A) / sc > 2e-3 ? -B / A : null)).filter((x) => x != null && x > 0);
+          cam.fit = solo.length === 2 ? Math.abs(solo[0] - solo[1]) / Math.max(solo[0], solo[1]) : 0.5;
+          return cam;
+        }
+      }
+    }
     const v1 = vp(1, 0), v2 = vp(0, 1);
-    // two orthogonal vanishing points fix the focal length outright — when both are finite and well clear
-    // of the principal point. Shoot straight down the table's centre line and one runs off to infinity,
-    // which is common enough (it is the natural place to stand) that it needs its own answer: assume the
-    // lens instead. A typical phone is near f = 1.15 × the frame width, and a height that is close beats
-    // no correction at all — the drop line under each ball shows what it did, so the eye can check it.
-    if (v1 && v2) {
+    if (v1 && v2) {   // the same answer from the two vanishing points, kept as a second opinion
       const f2 = -((v1[0] - cx) * (v2[0] - cx) + (v1[1] - cy) * (v2[1] - cy));
       if (f2 > 1) {
         const cam = phPose(H, Math.sqrt(f2));
@@ -1507,10 +1533,38 @@ __SHARED__
     const k = phK(), c = ph.cam.xy;
     return hApply(ph.Hti, [c[0] + (p[0] - c[0]) / k, c[1] + (p[1] - c[1]) / k]);
   };
+  // Which pair of clicked corners is the long rail? Asking for them "clockwise from top-left" quietly
+  // assumes the table lies across the frame, and a photograph taken from behind the end rail — the
+  // ordinary place to film from — has its length running away into the picture instead. Get that
+  // backwards and the 2.54 m length is laid along a 1.27 m rail, which no amount of dragging can fix.
+  // So try it both ways round and keep the one that puts the camera somewhere a camera can be.
   function phSolve() {
-    ph.Hti = homography(CLOTH_CORNERS, ph.corners);
-    ph.Hit = ph.Hti ? homography(ph.corners, CLOTH_CORNERS) : null;
-    ph.cam = ph.Hti ? phCamera(ph.Hti) : null;
+    const rot = ph.corners.slice(1).concat(ph.corners.slice(0, 1));
+    const tries = [ph.corners, rot].map((c) => {
+      const H = homography(CLOTH_CORNERS, c);
+      return H ? { c, H, cam: phCamera(H) } : null;
+    }).filter(Boolean);
+    // a camera off the end of the table, at a sensible height, beats one standing on the cloth
+    const elen = (a, b) => Math.hypot(a[0] - b[0], a[1] - b[1]);
+    const rank = (t) => {
+      if (!t.cam) return -1e9;
+      // nobody stands inside the table at head height; hovering above it at three metres is fine
+      const inside = t.cam.xy[0] > 0 && t.cam.xy[0] < TABLE_L && t.cam.xy[1] > 0 && t.cam.xy[1] < TABLE_W;
+      // and when the view is nearly overhead there is little perspective for the lens equations to bite
+      // on — but then the picture shows the cloth close to its true proportions, so its shape decides.
+      const lng = (elen(t.c[0], t.c[1]) + elen(t.c[2], t.c[3])) / 2;
+      const shrt = (elen(t.c[1], t.c[2]) + elen(t.c[3], t.c[0])) / 2;
+      const shape = shrt > 1 ? -Math.abs(Math.log((lng / shrt) / (TABLE_L / TABLE_W))) : -3;
+      return (inside && t.cam.h < 1.8 ? -100 : 0) + (t.cam.assumed ? -50 : 0)
+        - 20 * (t.cam.fit == null ? 0.5 : t.cam.fit) + 3 * shape;
+    };
+    tries.sort((a, b) => rank(b) - rank(a));
+    const best = tries[0];
+    if (!best) { ph.Hti = ph.Hit = ph.cam = null; return false; }
+    ph.corners = best.c;
+    ph.Hti = best.H;
+    ph.Hit = homography(best.c, CLOTH_CORNERS);
+    ph.cam = best.cam;
     return !!(ph.Hti && ph.Hit);
   }
 
