@@ -87,7 +87,7 @@ __SHARED__
 <p class="klede">Two equal spheres, a cloth and a rubber rail — and every one of the shelf's mechanics equations turned into a shot. Momentum and energy give the <a href="/glossary#tangent-line">tangent line</a>; friction between the balls gives <a href="/glossary#throw">throw</a>; the tip's offset gives spin; the cloth turns that spin into follow, draw and stun. The lab below runs those equations live — set the shot up yourself: drag both balls, pick a pocket, and watch what speed does. It is the same physics, and the same numbers, that the <em>Pool Sauce</em> engine integrates.</p>
 
 <h2 class="ksec">The shot lab</h2>
-<p class="knote" style="max-width:72ch;margin:0 0 10px">Drag the cue ball or the object ball anywhere on the cloth; click one of the six 4½″ pockets to aim at it. The cue is always aimed at the <a href="/glossary#ghost-ball" style="color:inherit">ghost ball</a> — whether the shot actually drops is then up to speed, spin and throw.</p>
+<p class="knote" style="max-width:72ch;margin:0 0 10px">Drag the cue ball or the object ball anywhere on the cloth; click one of the six 4½″ pockets to aim at it. The cue is always aimed at the <a href="/glossary#ghost-ball" style="color:inherit">ghost ball</a> — and when the cue ball is on the wrong side for a direct pot, the lab aims a one-rail <b>bank</b> instead, with the cushion's real rebound (not a mirror) solved into the contact point. Whether the shot actually drops is then up to speed, spin and throw.</p>
 <div class="lab">
   <div class="tblwrap">
     <svg class="felt" id="lab" viewBox="0 0 900 470" role="img" aria-label="Top view of a pool table with six pockets: drag the cue ball and object ball; in practice mode all guides are drawn, in pro mode only the balls"></svg>
@@ -115,6 +115,8 @@ __SHARED__
     <details><summary>balls on the table</summary>
       <div class="row">
         <div class="aimbtns"><button type="button" id="rack9">9-ball</button><button type="button" id="rack8">8-ball</button><button type="button" id="ballplus">+ ball</button><button type="button" id="ballminus">− ball</button><button type="button" id="justtwo">just two</button></div>
+        <div class="presets" style="grid-column:1/-1"><button type="button" id="photobtn">replicate a real table from a photo…</button></div>
+        <input type="file" id="photofile" accept="image/*" hidden>
         <div class="hint">Every ball is live — combos, caroms, full breaks. Practice aims at the lowest number still up (ringed).</div></div></details>
     <details id="condbox"><summary>conditions — the contract <span class="cnt" id="condsum"></span></summary>
       <div class="row">
@@ -126,6 +128,12 @@ __SHARED__
         <div class="aimbtns"><select id="drill"></select><button type="button" id="dlm">−</button><span class="v" id="drilllvl">—</span><button type="button" id="dlp">+</button></div>
         <div class="hint">The table sets itself up; 10 levels each. In pro a pot moves you up, a miss down — the format of <a href="https://drdavepoolinfo.com/resources/drills/" target="_blank" rel="noopener" style="color:inherit">Dr Dave's drills &amp; exam library</a>.</div></div></details>
   </div>
+</div>
+<div class="kcard ctl" id="photobox" hidden style="max-width:1240px;margin-top:14px">
+  <div class="row"><label>replicate a table from a photo</label>
+    <div class="presets" style="grid-column:1/-1"><button type="button" id="phreset">restart the corners</button><button type="button" id="phapply">place on the table</button><button type="button" id="phclose">close</button></div>
+    <div class="hint" id="phhint"></div>
+    <canvas id="phcv" style="grid-column:1/-1;width:100%;border:1px solid var(--hairline);border-radius:6px;cursor:crosshair;touch-action:none"></canvas></div>
 </div>
 <div class="legend">
   <span style="--lc:var(--ink)">cue ball, before</span>
@@ -353,6 +361,60 @@ __SHARED__
     return { nc, tc, dc, th, vc, sc, rollingAtContact, vn: vnr, vt, Jn, Jh, throwDeg: Jn > 1e-9 ? deg(Math.atan2(Jh / M, Jn / M)) : 0, throwDir: td, mu, ul, contactP: A.p.slice(), vA: A.v.slice(), vB: B.v.slice(), sA, zA };
   }
 
+  // ---- a one-rail bank: when the direct line to the pocket is dead, send the object ball off a cushion
+  // instead. A cushion is no mirror — restitution deadens with pace, cloth friction shortens the rebound, and
+  // the roll the ball carries into the rail bends it long again — so the contact point is solved numerically:
+  // the sim's own single-ball trace, run at a nominal pace over candidate points, picks the one that drops.
+  // The plan is geometry (cue-independent), so it's cached per object-ball position and pocket.
+  const BANK_V = 1.5;
+  const bankCache = new Map();
+  function bankCandidates(obP, P, pkI) {
+    const key = pkI + '|' + obP[0].toFixed(3) + ',' + obP[1].toFixed(3);
+    const hitC = bankCache.get(key);
+    if (hitC) return hitC;
+    const out = [];
+    for (const r of RAILS) {
+      const ax = r.ax, ta = 1 - ax, lim = r.lim, span = ta === 0 ? TABLE_L : TABLE_W;
+      const ho = Math.abs(obP[ax] - lim), hk = Math.abs(P[ax] - lim);
+      if (ho < 0.03 || hk < 0.08) continue;                       // ball frozen to that rail, or the pocket sits on it
+      if ((obP[ax] - lim) * (P[ax] - lim) < 0) continue;
+      const tryB = (Bta) => {                                     // roll the object ball at that rail point, watch where it goes
+        if (Bta < R + 0.01 || Bta > span - R - 0.01) return null;
+        const B = [0, 0]; B[ax] = lim; B[ta] = Bta;
+        if (pocketAt(B) >= 0) return null;                        // that's a mouth, not rubber
+        const d = vunit(vsub(B, obP));
+        const tr = trace({ p: obP.slice(), v: vmul(d, BANK_V), s: [0, 0], z: 0, slid: 0 }, 0.004, false, P, 4000);
+        return { B, d, pot: tr.pocket === pkI, hang: tr.hang === pkI, miss: tr.minPD };
+      };
+      const bAt = (rho) => obP[ta] + (P[ta] - obP[ta]) * ho / (ho + rho * hk);   // rho 1 = mirror, big = flat
+      let best = null;
+      const consider = (c) => { if (c && (!best || (c.pot && !best.pot) || (c.pot === best.pot && c.miss < best.miss))) best = c; };
+      for (let i = 0; i <= 20; i++) consider(tryB(bAt(0.7 + i * (5 - 0.7) / 20)));
+      if (best) {                                                 // refine around the winner
+        const step2 = Math.abs(bAt(5) - bAt(0.7)) / 20;
+        for (let i = -4; i <= 4; i++) if (i) consider(tryB(best.B[ta] + i * step2 / 4));
+      }
+      if (best && (best.pot || best.hang || best.miss < RP * 2))
+        out.push({ ...best, rail: ax === 0 ? (r.dir > 0 ? 'left' : 'right') : (r.dir > 0 ? 'top' : 'bottom') });
+    }
+    if (bankCache.size > 40) bankCache.clear();
+    bankCache.set(key, out);
+    return out;
+  }
+  function planBank(cbP, obP, P, pkI) {
+    const cands = [];
+    for (const c of bankCandidates(obP, P, pkI)) {
+      const ghost = vsub(obP, vmul(c.d, 2 * R));
+      const dv = vsub(ghost, cbP), dst = vlen(dv), dAim = vunit(dv);
+      const cut = vdot(dAim, c.d);
+      if (!(cut > Math.cos(rad(88)) && dst > 0.03)) continue;
+      cands.push({ B: c.B, d: c.d, ghost, dAim, dst, cut, pot: c.pot, rail: c.rail });
+    }
+    if (!cands.length) return null;
+    cands.sort((a, b) => (b.pot - a.pot) || (b.cut - a.cut));   // a dropping bank first, then the fullest hit
+    return cands[0];
+  }
+
   // ---- the shot. aim = {pk} for practice (ghost-ball aim at a pocket) or {deg} for pro (the player's own line).
   // Every ball on the table is live: the cue ball is launched and the whole roster plays out — combos, caroms,
   // clusters and breaks. The reports describe the cue ball's first contact.
@@ -360,14 +422,20 @@ __SHARED__
     const pro = aim.deg !== undefined;
     const pkI = pro ? null : aim.pk;
     const P = pkI == null ? null : POCKETS[pkI].p, name = pkI == null ? null : POCKETS[pkI].name;
-    const n = P ? vunit(vsub(P, obP)) : null;            // pocket line (practice guides + target classification)
-    const t = n ? perp(n) : null;
-    const ghost = n ? vsub(obP, vmul(n, 2 * R)) : null;
-    let dAim, dst;
+    let n = P ? vunit(vsub(P, obP)) : null;              // pocket line (practice guides + target classification)
+    let ghost = n ? vsub(obP, vmul(n, 2 * R)) : null;
+    let dAim, dst, bank = null;
     if (pro) { const a = rad(aim.deg); dAim = [Math.cos(a), Math.sin(a)]; dst = Math.max(0.001, dist2(cbP, obP) - 2 * R); }
-    else { const dv = vsub(ghost, cbP); dst = vlen(dv); dAim = vunit(dv); }
+    else {
+      const dv = vsub(ghost, cbP); dst = vlen(dv); dAim = vunit(dv);
+      if (!(vdot(dAim, n) > Math.cos(rad(88)) && dst > 0.03)) {
+        const bk = planBank(cbP, obP, P, pkI);   // no direct line — go for the bank
+        if (bk) { bank = bk; n = bk.d; ghost = bk.ghost; dAim = bk.dAim; dst = bk.dst; }
+      }
+    }
+    const t = n ? perp(n) : null;
     const feasible = pro || (vdot(dAim, n) > Math.cos(rad(88)) && dst > 0.03);
-    const base = { pro, feasible, ghost, ob0: obP, n, t, dAim, P, pkI, name, dst, v0, side };
+    const base = { pro, feasible, ghost, ob0: obP, n, t, dAim, P, pkI, name, dst, v0, side, bank };
     if (!feasible) return base;
     if (aim.off) { const o = rad(aim.off); dAim = [dAim[0] * Math.cos(o) - dAim[1] * Math.sin(o), dAim[0] * Math.sin(o) + dAim[1] * Math.cos(o)]; }
     const sq = -SQ_R * side;                             // squirt: the cue ball leaves opposite the side used
@@ -486,13 +554,20 @@ __SHARED__
       ball(S.ob0, { fill: 'var(--c-amber)', stroke: 'var(--page)', 'stroke-width': 1.5, style: 'cursor:grab' });
       ball(S.pre ? S.pre[0] : state.cb, { fill: 'var(--panel)', stroke: 'var(--ink)', 'stroke-width': 1.5, style: 'cursor:grab' });
       line(S.ob0, S.P, { stroke: 'var(--c-red)', 'stroke-width': 1.2, 'stroke-dasharray': '2 4', opacity: 0.8 });
-      text([TABLE_L / 2, TABLE_W / 2], 'no shot — the cue ball is on the wrong side of the object ball for that pocket', { ...mono, fill: 'var(--c-red)', 'text-anchor': 'middle' });
+      text([TABLE_L / 2, TABLE_W / 2], 'no shot — no direct line and no one-rail bank to that pocket', { ...mono, fill: 'var(--c-red)', 'text-anchor': 'middle' });
       text([TABLE_L / 2, TABLE_W / 2 + 0.07], 'drag a ball, or click another pocket', { ...mono, 'text-anchor': 'middle' });
       return;
     }
-    // line of centres (dashed) and the no-throw path to the pocket (red dotted)
+    // line of centres (dashed) and the intended no-throw path to the pocket (red dotted) — via the cushion on a bank
     line(vsub(S.ghost, vmul(S.n, 0.18)), S.ob0, { stroke: 'var(--muted)', 'stroke-width': 1, 'stroke-dasharray': '6 5', opacity: 0.6 });
-    line(S.ob0, S.P, { stroke: 'var(--c-red)', 'stroke-width': 1.2, 'stroke-dasharray': '2 4', opacity: 0.8 });
+    if (S.bank) {
+      line(S.ob0, S.bank.B, { stroke: 'var(--c-red)', 'stroke-width': 1.2, 'stroke-dasharray': '2 4', opacity: 0.8 });
+      line(S.bank.B, S.P, { stroke: 'var(--c-red)', 'stroke-width': 1.2, 'stroke-dasharray': '2 4', opacity: 0.8 });
+      const off = { top: [0, 0.09], bottom: [0, -0.06], left: [0.05, 0.01], right: [-0.05, 0.01] }[S.bank.rail];
+      text(vadd(S.bank.B, off), 'bank', { ...mono, fill: 'var(--c-red)', 'text-anchor': S.bank.rail === 'left' ? 'start' : S.bank.rail === 'right' ? 'end' : 'middle', opacity: 0.9 });
+    } else {
+      line(S.ob0, S.P, { stroke: 'var(--c-red)', 'stroke-width': 1.2, 'stroke-dasharray': '2 4', opacity: 0.8 });
+    }
     // aim line, and the tangent line through the ghost ball
     line(state.cb, S.ghost, { stroke: 'var(--muted)', 'stroke-width': 1, 'stroke-dasharray': '6 5', opacity: 0.5 });
     line(vsub(S.ghost, vmul(S.t, 1.2)), vadd(S.ghost, vmul(S.t, 1.2)), { stroke: 'var(--muted)', 'stroke-width': 1, 'stroke-dasharray': '3 5', opacity: 0.7 });
@@ -762,7 +837,7 @@ __SHARED__
   const dl = (rows) => rows.map(([k, v, cls]) => `<dt>${k}</dt><dd${cls ? ` class="${cls}"` : ''}>${v}</dd>`).join('');
   function report(S) {
     if (!S.feasible) {
-      $('ob').innerHTML = dl([['—', `No line to the ${S.name} pocket: the cue ball is on the wrong side of the object ball. Drag a ball, or click another pocket.`, 'warn']]);
+      $('ob').innerHTML = dl([['—', `No line to the ${S.name} pocket — the direct path is blocked by geometry and no one-rail bank reaches it either. Drag a ball, or click another pocket.`, 'warn']]);
       $('cb').innerHTML = dl([['—', 'waiting on a possible shot']]);
       return;
     }
@@ -783,7 +858,7 @@ __SHARED__
     $('ob').innerHTML = dl([
       ['speed', `${fmt(vlen(S.vOB))} m/s <small>= v cos θ · (1+e)/2</small>`],
       ['energy share', `${fmt(100 * S.eOB, 0)} % <small>cos²θ = ${fmt(100 * Math.cos(S.th) ** 2, 0)} % before restitution</small>`],
-      ['direction', `pocket line${S.throwDeg > 0.05 ? ` rotated ${fmt(S.throwDeg, 1)}° ${toward === null ? 'by the side spin' : toward ? 'toward the cue ball\'s line <small>plays fuller than aimed</small>' : 'away from the cue ball\'s line <small>plays thinner than aimed</small>'}` : ' — no throw'}`],
+      ['direction', `${S.bank ? `bank line, off the ${S.bank.rail} rail` : 'pocket line'}${S.throwDeg > 0.05 ? ` rotated ${fmt(S.throwDeg, 1)}° ${toward === null ? 'by the side spin' : toward ? 'toward the cue ball\'s line <small>plays fuller than aimed</small>' : 'away from the cue ball\'s line <small>plays thinner than aimed</small>'}` : ' — no throw'}`],
       ['throw', `${fmt(S.throwDeg, 2)}° <small>μ = ${fmt(S.mu, 3)} at ${fmt(S.ul, 2)} m/s surface slip${S.Jh >= M * Math.abs(S.vt - S.cbz) / 7 - 1e-9 && S.Jh > 0 ? ' · gearing limit' : ''}</small>`],
       ['ball-hit fraction', `${fmt(S.fraction, 2)} <small>1 − sin θ</small>`],
       ['the pocket', potted ? `<b>drops</b> — falls in the ${S.name} at ${fmt(S.obTrace.dropSpeed, 2)} m/s` : S.obTrace.pocket != null ? `falls in the <em>wrong</em> pocket — the ${POCKETS[S.obTrace.pocket].name}` : S.obTrace.hang != null ? `<b>hangs in the jaws</b> of the ${POCKETS[S.obTrace.hang].name} — reaches the mouth without the roll to carry its ${fmt(1000 * POCKETS[S.obTrace.hang].shelf, 0)} mm shelf` : `stays up — dies after ${fmt(S.obTrace.len, 2)} m of cloth, ${missCm} cm from the mouth at its closest`, potted ? 'good' : 'warn'],
@@ -1029,8 +1104,8 @@ __SHARED__
       drawSlide(S, v.spd, v.tip);
       const spP = S.feasible ? sightPicture(S.dAim) : null;
       $('shotinfo').textContent = S.feasible
-        ? `cut ${fmt(deg(Math.acos(Math.max(-1, Math.min(1, vdot(S.dAim, S.n))))), 1)}°${spP && !spP.miss ? ` · ${spP.name} (${spP.clock})` : ''} · ${fmt(S.dst, 2)} m to the ball · aimed at the ${S.name} pocket`
-        : `no line to the ${S.name} pocket from here`;
+        ? `cut ${fmt(deg(Math.acos(Math.max(-1, Math.min(1, vdot(S.dAim, S.n))))), 1)}°${spP && !spP.miss ? ` · ${spP.name} (${spP.clock})` : ''} · ${fmt(S.dst, 2)} m to the ball · ${S.bank ? `banked off the ${S.bank.rail} rail into` : 'aimed at'} the ${S.name} pocket`
+        : `no line to the ${S.name} pocket from here — not even off one rail`;
       gradeConditions(S);
       drawView(S.feasible ? S.dAim : vunit(vsub(state.ob, state.cb)), v.tip, v.side, S.feasible ? S.ghost : null);
     } else {
@@ -1294,6 +1369,171 @@ __SHARED__
     run();
   });
   $('justtwo').addEventListener('click', () => { resetRoster(state.cb.slice(), state.ob.slice()); run(); });
+
+  // ---- replicate a table from a photo. Four clicked corners of the cloth give the perspective map
+  // (a plane-to-plane homography — any reasonable camera angle works); everything on the cloth that
+  // isn't cloth-coloured and is about a ball's size becomes a ball, numbered by its colour. A click
+  // adds a missed ball, a click on a marker removes a wrong one; then the layout lands in the lab.
+  const ph = { img: null, corners: [], balls: [], Hti: null, Hit: null };
+  const phcv = $('phcv'), phx = phcv.getContext('2d');
+  function homography(src, dst) {   // 4 point pairs -> 3x3 (as 8 coefficients, h9 = 1), by Gaussian elimination
+    const A = [], b = [];
+    for (let i = 0; i < 4; i++) {
+      const [X, Y] = src[i], [u, v] = dst[i];
+      A.push([X, Y, 1, 0, 0, 0, -u * X, -u * Y]); b.push(u);
+      A.push([0, 0, 0, X, Y, 1, -v * X, -v * Y]); b.push(v);
+    }
+    for (let c = 0; c < 8; c++) {
+      let piv = c; for (let r2 = c + 1; r2 < 8; r2++) if (Math.abs(A[r2][c]) > Math.abs(A[piv][c])) piv = r2;
+      [A[c], A[piv]] = [A[piv], A[c]]; [b[c], b[piv]] = [b[piv], b[c]];
+      if (Math.abs(A[c][c]) < 1e-12) return null;
+      for (let r2 = 0; r2 < 8; r2++) {
+        if (r2 === c) continue;
+        const f = A[r2][c] / A[c][c];
+        for (let k = c; k < 8; k++) A[r2][k] -= f * A[c][k];
+        b[r2] -= f * b[c];
+      }
+    }
+    return A.map((row, i) => b[i] / row[i]).concat(1);
+  }
+  const hApply = (H, p) => { const w = H[6] * p[0] + H[7] * p[1] + 1; return [(H[0] * p[0] + H[1] * p[1] + H[2]) / w, (H[3] * p[0] + H[4] * p[1] + H[5]) / w]; };
+  const CLOTH_CORNERS = [[0, 0], [TABLE_L, 0], [TABLE_L, TABLE_W], [0, TABLE_W]];
+  const CORNER_WORDS = ['top-left', 'top-right', 'bottom-right', 'bottom-left'];
+  function phHint() {
+    $('phhint').innerHTML = ph.corners.length < 4
+      ? `Click the <b>${CORNER_WORDS[ph.corners.length]}</b> corner of the cloth — the inside of the cushions, ${ph.corners.length + 1} of 4, clockwise from top-left.`
+      : `<b>${ph.balls.length}</b> ball${ph.balls.length === 1 ? '' : 's'} found. Click the photo to add one it missed, click a marker to remove it, then <b>place on the table</b>. The whitest ball is the cue; colours guess the numbers.`;
+  }
+  function phDraw() {
+    phx.drawImage(ph.img, 0, 0, phcv.width, phcv.height);
+    phx.lineWidth = 2;
+    ph.corners.forEach((c, i) => {
+      phx.strokeStyle = '#ffb020'; phx.beginPath(); phx.arc(c[0], c[1], 7, 0, 7); phx.stroke();
+      phx.fillStyle = '#ffb020'; phx.font = 'bold 13px ui-monospace, monospace'; phx.fillText(String(i + 1), c[0] + 10, c[1] - 6);
+    });
+    if (ph.corners.length === 4) {
+      phx.strokeStyle = 'rgba(255,176,32,0.85)'; phx.beginPath();
+      ph.corners.forEach((c, i) => phx[i ? 'lineTo' : 'moveTo'](c[0], c[1])); phx.closePath(); phx.stroke();
+      for (const bll of ph.balls) {
+        const q = hApply(ph.Hti, bll.p);
+        phx.strokeStyle = bll.n === 0 ? '#fff' : (BALL_COL[bll.n] || '#f2b705'); phx.lineWidth = 2.5;
+        phx.beginPath(); phx.arc(q[0], q[1], 11, 0, 7); phx.stroke();
+        phx.fillStyle = '#fff'; phx.font = 'bold 12px ui-monospace, monospace';
+        phx.fillText(bll.n === 0 ? 'cue' : String(bll.n), q[0] + 13, q[1] + 4);
+      }
+    }
+  }
+  function phDetect() {   // cloth-colour segmentation on a table-space grid
+    const id = phx.getImageData(0, 0, phcv.width, phcv.height).data;   // markers not yet drawn at call time
+    const gs = 0.012, nx = Math.round(TABLE_L / gs) + 1, ny = Math.round(TABLE_W / gs) + 1;
+    const px2 = new Int32Array(nx * ny).fill(-1), rr = [], gg = [], bb2 = [];
+    for (let j = 0; j < ny; j++) for (let i = 0; i < nx; i++) {
+      const q = hApply(ph.Hti, [i * gs, j * gs]);
+      const x = Math.round(q[0]), y = Math.round(q[1]);
+      if (x < 0 || y < 0 || x >= phcv.width || y >= phcv.height) continue;
+      const o = 4 * (y * phcv.width + x);
+      px2[j * nx + i] = o; rr.push(id[o]); gg.push(id[o + 1]); bb2.push(id[o + 2]);
+    }
+    const med = (a) => { const s = a.slice().sort((p, q) => p - q); return s[s.length >> 1] || 0; };
+    const mr = med(rr), mg = med(gg), mb = med(bb2);
+    const dist = (o) => Math.abs(id[o] - mr) + Math.abs(id[o + 1] - mg) + Math.abs(id[o + 2] - mb);
+    const ds = []; for (let k = 0; k < px2.length; k++) if (px2[k] >= 0) ds.push(dist(px2[k]));
+    const thr = Math.max(70, 3.2 * med(ds));
+    const hot = new Uint8Array(nx * ny);
+    for (let k = 0; k < px2.length; k++) if (px2[k] >= 0 && dist(px2[k]) > thr) hot[k] = 1;
+    const seen = new Uint8Array(nx * ny), comps = [];
+    for (let k = 0; k < hot.length; k++) {
+      if (!hot[k] || seen[k]) continue;
+      const stack = [k], cells = []; seen[k] = 1;
+      while (stack.length) {
+        const c = stack.pop(); cells.push(c);
+        const ci = c % nx, cj = (c / nx) | 0;
+        for (const [di, dj] of [[1, 0], [-1, 0], [0, 1], [0, -1]]) {
+          const ni = ci + di, nj = cj + dj;
+          if (ni < 0 || nj < 0 || ni >= nx || nj >= ny) continue;
+          const nk = nj * nx + ni;
+          if (hot[nk] && !seen[nk]) { seen[nk] = 1; stack.push(nk); }
+        }
+      }
+      if (cells.length < 5 || cells.length > 110) continue;   // a ball is ~18 cells; allow shadow and shine
+      let sx = 0, sy = 0, cr = 0, cg = 0, cb = 0;
+      for (const c of cells) { sx += (c % nx) * gs; sy += ((c / nx) | 0) * gs; const o = px2[c]; cr += id[o]; cg += id[o + 1]; cb += id[o + 2]; }
+      comps.push({ p: [sx / cells.length, sy / cells.length], col: [cr / cells.length, cg / cells.length, cb / cells.length], size: cells.length });
+    }
+    comps.sort((a, b3) => b3.size - a.size);
+    const picked = [];
+    for (const c of comps) { if (picked.every((q) => dist2(q.p, c.p) > 2.2 * R)) picked.push(c); if (picked.length >= 16) break; }
+    const hex = (h) => [parseInt(h.slice(1, 3), 16), parseInt(h.slice(3, 5), 16), parseInt(h.slice(5, 7), 16)];
+    const taken = new Set();
+    const numberFor = (col) => {
+      const [r2, g2, b3] = col, mx = Math.max(r2, g2, b3), mn = Math.min(r2, g2, b3);
+      let n2;
+      if (mn > 145 && mx - mn < 60) n2 = 0;                    // the whitest blob: the cue ball
+      else if (mx < 70) n2 = 8;
+      else { let bd = 1e9; for (let k2 = 1; k2 <= 8; k2++) { const e2 = hex(BALL_COL[k2]); const dd = (r2 - e2[0]) ** 2 + (g2 - e2[1]) ** 2 + (b3 - e2[2]) ** 2; if (dd < bd) { bd = dd; n2 = k2; } } }
+      if (taken.has(n2)) { if (n2 >= 1 && n2 <= 7 && !taken.has(n2 + 8)) n2 += 8; else { let f = 1; while (taken.has(f)) f++; n2 = f; } }
+      taken.add(n2); return n2;
+    };
+    ph.balls = picked.map((c) => ({ p: c.p, n: numberFor(c.col) }))
+      .sort((a, b3) => a.n - b3.n);
+  }
+  function phSetup(img) {
+    ph.img = img; ph.corners = []; ph.balls = []; ph.Hti = null; ph.Hit = null;
+    const w = Math.min(img.naturalWidth, 1400);
+    phcv.width = w; phcv.height = Math.round(w * img.naturalHeight / img.naturalWidth);
+    $('photobox').hidden = false; phDraw(); phHint();
+    $('photobox').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+  phcv.addEventListener('pointerdown', (e) => {
+    if (!ph.img) return;
+    const r2 = phcv.getBoundingClientRect();
+    const q = [(e.clientX - r2.left) * phcv.width / r2.width, (e.clientY - r2.top) * phcv.height / r2.height];
+    if (ph.corners.length < 4) {
+      ph.corners.push(q);
+      if (ph.corners.length === 4) {
+        ph.Hti = homography(CLOTH_CORNERS, ph.corners); ph.Hit = homography(ph.corners, CLOTH_CORNERS);
+        if (!ph.Hti || !ph.Hit) { ph.corners = []; $('phhint').textContent = 'those four points are degenerate — restart the corners'; phDraw(); return; }
+        phDraw();   // markers overwrite pixels — detect from the clean image first
+        phx.drawImage(ph.img, 0, 0, phcv.width, phcv.height); phDetect(); phDraw();
+      } else phDraw();
+    } else {
+      const p = hApply(ph.Hit, q);
+      const hitI = ph.balls.findIndex((b3) => dist2(b3.p, p) < 3 * R);
+      if (hitI >= 0) ph.balls.splice(hitI, 1);
+      else if (p[0] > -0.05 && p[0] < TABLE_L + 0.05 && p[1] > -0.05 && p[1] < TABLE_W + 0.05 && ph.balls.length < 16) {
+        const used = new Set(ph.balls.map((b3) => b3.n)); let nn = 1; while (used.has(nn)) nn++;
+        ph.balls.push({ p, n: used.has(0) ? nn : 0 });   // first added ball becomes the cue if none was found
+      }
+      phDraw();
+    }
+    phHint();
+  });
+  $('photobtn').addEventListener('click', () => $('photofile').click());
+  $('photofile').addEventListener('change', () => {
+    const f = $('photofile').files[0];
+    if (!f) return;
+    const img = new Image();
+    img.onload = () => { phSetup(img); URL.revokeObjectURL(img.src); };
+    img.src = URL.createObjectURL(f);
+    $('photofile').value = '';
+  });
+  $('phreset').addEventListener('click', () => { if (ph.img) { ph.corners = []; ph.balls = []; ph.Hti = null; ph.Hit = null; phDraw(); phHint(); } });
+  $('phclose').addEventListener('click', () => { $('photobox').hidden = true; });
+  $('phapply').addEventListener('click', () => {
+    if (!ph.balls.length) return;
+    let roster = ph.balls.slice(0, 16);
+    if (!roster.some((b3) => b3.n === 0)) {   // no white found: put the cue on the head spot
+      roster = [{ n: 0, p: [0.64, TABLE_W / 2] }].concat(roster).slice(0, 16);
+    }
+    roster.sort((a, b3) => a.n - b3.n);
+    if (roster.length < 2) roster.push({ n: 1, p: [TABLE_L * 0.7, TABLE_W / 2] });   // the lab needs an object ball
+    const placed = [];
+    for (const b3 of roster) placed.push({ n: b3.n, p: clampBall(b3.p, placed.map((x) => x.p)) });
+    state.balls = placed;
+    state.drill = null; $('drill').value = ''; clearTimeout(drillTimer);
+    $('photobox').hidden = true;
+    run();
+  });
 
   if (!loadHash()) place(...PRESETS[0][2]);
   syncCondBtns();
