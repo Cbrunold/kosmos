@@ -711,6 +711,9 @@ def build_glossary_page():
     for m in notion.get("missions", []):
         if m.get("Name"):
             corpus.append(("mission", m["Name"], f"/cosmos#mission-{slugify(m['Name'])}", " ".join(filter(None, [m["Name"], m.get("Objective")]))))
+    for r in notion.get("cosmicStructures", []):
+        if r.get("Name") and r.get("Notes"):
+            corpus.append(("structure", r["Name"], f"/scales#{slugify(r['Name'])}", " ".join([r["Name"], r["Notes"]])))
     for o in notion.get("celestialObjects", []):
         nm = obj_name(o)
         if nm and o.get("Notes"):
@@ -749,7 +752,7 @@ def build_glossary_page():
                            " ".join(filter(None, [i["Name"], i.get("Mechanism"), i.get("Mitigation"), i.get("Case")]))))
     # the databases left out have no prose to search: minerals, gemstones, units,
     # celestialTypes and spectralTypes are numeric or single-word lookup tables.
-    KIND_ORDER = ["equation", "theory", "machine", "skill", "event", "element", "mine", "observatory",
+    KIND_ORDER = ["equation", "theory", "machine", "skill", "event", "element", "structure", "galaxy", "mine", "observatory",
                   "discovery", "mission", "constant", "researcher", "force", "instrument", "rock",
                   "explainer", "impact"]
     PER_KIND = 8
@@ -874,6 +877,39 @@ def build_impacts_page():
     return len(out), total_terms
 
 
+# ---------------- the ladder of scale ----------------
+def build_scales_page():
+    """Everything from the heliopause to the horizon on one log axis. Sizes and
+    distances stay in light-years in the data; the page picks the unit."""
+    rows = []
+    for r in notion.get("cosmicStructures", []):
+        if not r.get("Name") or r.get("Size (ly)") is None:
+            continue
+        rows.append({
+            "name": r["Name"], "slug": slugify(r["Name"]), "kind": r.get("Kind"),
+            "size": r["Size (ly)"], "dist": r.get("Distance (ly)"),
+            "z": r.get("Redshift"), "pop": r.get("Population"),
+            "within": r.get("Within") if r.get("Within") not in (None, "\u2014") else None,
+            "year": r.get("Recognised"), "notes": r.get("Notes"),
+        })
+    rows.sort(key=lambda x: x["size"])
+    by_name = {r["name"]: r for r in rows}
+    for r in rows:
+        r["withinSlug"] = by_name[r["within"]]["slug"] if r["within"] in by_name else None
+    # the "you are here" spine: walk Within upward from the smallest thing on the ladder
+    chain, seen = [], set()
+    cur = rows[0]["name"] if rows else None
+    while cur and cur in by_name and cur not in seen:
+        seen.add(cur)
+        chain.append({"name": cur, "slug": by_name[cur]["slug"], "size": by_name[cur]["size"]})
+        cur = by_name[cur]["within"]
+    kinds = [k for k in ["Local", "Galaxy", "Group", "Cluster", "Supercluster", "Filament",
+                         "Void", "Attractor", "Cosmological"] if any(r["kind"] == k for r in rows)]
+    write_page("scales.template.html", "scales.html", {"structures": rows, "chain": chain, "kinds": kinds})
+    span = math.log10(rows[-1]["size"] / rows[0]["size"]) if len(rows) > 1 else 0
+    return len(rows), round(span)
+
+
 # ---------------- search index ----------------
 def _clip(s, n=170) -> str:
     s = " ".join((s or "").split())
@@ -906,6 +942,7 @@ def build_search_index():
         ("/machines", "Machines", "the canonical engines and machines: how each works, its cycle, efficiency, materials"),
         ("/skills", "Skills", "hands-on techniques with the science behind them: tools, steps, safety, how it fails"),
         ("/glossary", "Glossary", "the terms the site uses, each traced to every page that uses it"),
+        ("/scales", "The Ladder of Scale", "from the heliopause to the horizon on one log axis: clusters, superclusters, Laniakea, the walls and voids, the observable universe"),
         ("/explainers", "Explainers", "the people, channels and organisations that explain this material"),
         ("/impacts", "Mining Impacts", "what extraction costs — mechanism, mitigation and documented cases"),
         ("/billiards", "Billiards", "the physics of the pool table — a live shot lab, the cushion, and the numbers Pool Sauce runs on"),
@@ -1021,6 +1058,15 @@ def build_search_index():
                                                              None if (m.get("Cycle") in (None, "None")) else f"{m['Cycle']} cycle"])),
                 m.get("How It Works"), f"/machines#{slugify(m['Name'])}")
 
+    for r in notion.get("cosmicStructures", []):
+        if r.get("Name") and r.get("Size (ly)") is not None:
+            v = r["Size (ly)"]
+            sz = (f"{v/1e9:g} billion ly" if v >= 1e9 else f"{v/1e6:g} million ly" if v >= 1e6
+                  else f"{v/1e3:g} thousand ly" if v >= 1e3 else f"{v:g} ly" if v >= 0.05
+                  else f"{v*63241.077:.0f} AU")   # same unit ladder the page uses
+            add("structure", r["Name"], " \u00b7 ".join(filter(None, [r.get("Kind"), sz])),
+                r.get("Notes"), f"/scales#{slugify(r['Name'])}")
+
     for g in notion.get("glossary", []):
         if g.get("Term"):
             add("term", g["Term"], g.get("Domain") or "", g.get("Definition"), f"/glossary#{slugify(g['Term'])}")
@@ -1114,6 +1160,8 @@ def build_home(n_min, n_gems, n_classes, n_spectral, n_instr, n_timeline, tl_dec
         "__N_TERMS__": n_terms,
         "__N_TRACES__": f"{n_traces:,}",
         "__N_LOCAL__": n_local,
+        "__N_SCALES__": n_scales,
+        "__N_ORDERS__": n_orders,
         "__N_EXPL__": n_expl,
         "__N_EXPLTERMS__": f"{n_expl_terms:,}",
         "__N_IMPACTS__": n_imp,
@@ -1188,6 +1236,7 @@ if __name__ == "__main__":
     n_mines, n_mined = build_mines_page()
     n_mach, n_diag = build_machines_page()
     n_skills = build_skills_page()
+    n_scales, n_orders = build_scales_page()
     n_terms, n_traces = build_glossary_page()
     n_expl, n_expl_terms = build_explainers_page()
     n_imp, n_imp_terms = build_impacts_page()

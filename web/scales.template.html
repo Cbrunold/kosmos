@@ -1,0 +1,327 @@
+<title>Kosmos · The Ladder of Scale</title>
+<style>
+__SHARED__
+
+  .wrap { max-width: 880px; }
+
+  /* ---- log axis, in light-years ---- */
+  .axis { margin: 0 0 24px; }
+  .axisbar {
+    position: relative; height: 46px;
+    border: 1px solid var(--hairline); border-radius: 6px;
+    background: var(--panel); overflow: hidden;
+  }
+  .tick { position: absolute; top: 0; bottom: 0; width: 1px; background: var(--hairline); }
+  .ticklbl {
+    position: absolute; bottom: 2px; transform: translateX(-50%);
+    font: 8.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    color: var(--muted); white-space: nowrap;
+  }
+  .pin {
+    position: absolute; top: 9px;
+    width: 7px; height: 7px; margin-left: -3.5px;
+    border-radius: 50%; background: var(--pc, var(--muted));
+    border: none; padding: 0; cursor: pointer;
+  }
+  .pin:hover, .pin:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+  .axisnote { font-size: 11px; color: var(--muted); margin: 7px 0 0; line-height: 1.5; }
+
+  /* ---- you are here ---- */
+  .here {
+    background: var(--panel); border: 1px solid var(--hairline);
+    border-radius: 8px; padding: 13px 15px; margin: 0 0 22px;
+  }
+  .herelbl {
+    font: 10px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted);
+    margin: 0 0 9px; display: block;
+  }
+  .chain { display: flex; flex-wrap: wrap; align-items: baseline; gap: 3px 2px; }
+  .rung {
+    font: 11.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    color: var(--ink-2); text-decoration: none;
+    border-bottom: 1px solid var(--hairline); padding: 1px 2px;
+  }
+  .rung:hover { color: var(--ink); border-bottom-color: var(--ink); }
+  .rung .sz { color: var(--muted); font-size: 9.5px; font-variant-numeric: tabular-nums; }
+  .arrow { color: var(--muted); font-size: 10px; padding: 0 3px; }
+
+  /* ---- kind filter ---- */
+  .kinds { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 18px; }
+  .kchip {
+    font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    background: var(--panel); border: 1px solid var(--hairline);
+    border-left: 3px solid var(--kc, var(--muted));
+    color: var(--ink-2); border-radius: 5px; padding: 4px 9px; cursor: pointer;
+    display: inline-flex; align-items: baseline; gap: 6px;
+  }
+  .kchip:hover { color: var(--ink); border-color: var(--ink-2); }
+  .kchip .n { font-size: 9px; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .kchip[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--page); }
+  .kchip[aria-pressed="true"] .n { color: color-mix(in oklab, var(--page) 65%, var(--ink)); }
+
+  /* ---- structures ---- */
+  .st {
+    position: relative; padding: 0 0 22px 26px;
+    border-left: 1px solid var(--hairline); margin-left: 6px;
+  }
+  .st:last-child { border-left-color: transparent; padding-bottom: 0; }
+  .st::before {
+    content: ''; position: absolute; left: -5.5px; top: 5px;
+    width: 10px; height: 10px; border-radius: 50%;
+    background: var(--page); border: 2px solid var(--kc, var(--muted));
+  }
+  .st.flash > .stcard { outline: 2px solid var(--c-pink); outline-offset: 3px; }
+  .sthead { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; margin-bottom: 5px; }
+  .stsize {
+    font: 11px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    font-variant-numeric: tabular-nums; color: var(--kc, var(--muted)); letter-spacing: 0.02em;
+  }
+  .stname {
+    font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    font-size: 15px; font-weight: 700; color: var(--ink); margin: 0;
+  }
+  .stcard { background: var(--panel); border: 1px solid var(--hairline); border-radius: 8px; padding: 13px 15px; }
+  .stnotes { font-size: 13px; color: var(--ink-2); line-height: 1.6; margin: 0; }
+  .facts {
+    display: flex; flex-wrap: wrap; gap: 4px 14px; margin-top: 10px;
+    font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    font-variant-numeric: tabular-nums; color: var(--muted);
+  }
+  .facts b { font-weight: 400; color: var(--ink-2); }
+  .facts a { color: var(--ink-2); text-decoration: none; border-bottom: 1px solid var(--hairline); }
+  .facts a:hover { color: var(--ink); border-bottom-color: var(--ink); }
+  .empty { font-size: 12px; color: var(--muted); }
+</style>
+
+<h1 class="ktitle">The Ladder of Scale</h1>
+<p class="klede">Everything between the edge of the solar wind and the edge of what light has had time to reach, ordered on the only axis that can hold it: the logarithm of light-years. The unit shifts as you climb — astronomical units, light-years, thousands, millions, billions — because no single one survives the whole climb. Parsecs are given alongside, since that is what the literature quotes.</p>
+
+<div class="wrap">
+  <div class="axis">
+    <div class="axisbar" id="axis"></div>
+    <p class="axisnote" id="axisnote"></p>
+  </div>
+
+  <div class="here" id="here" hidden>
+    <span class="herelbl">you are here</span>
+    <div class="chain" id="chain"></div>
+  </div>
+
+  <div class="kinds" id="kinds"></div>
+  <div id="list"></div>
+  <p class="empty" id="empty" hidden>Nothing matches that filter.</p>
+</div>
+
+<p class="kfoot">From the Cosmic Structures database in Notion. Sizes above the galactic scale are soft: a supercluster has no edge, and the figures quoted are the longest extent usually cited, not a measured boundary. Distances are proper distances today where a redshift is known, comoving otherwise, on Planck 2018 parameters. Structures whose reality is still argued over say so in their notes rather than being left out.</p>
+
+<script id="data" type="application/json">__DATA__</script>
+<script>
+  const D = JSON.parse(document.getElementById('data').textContent);
+  const ST = D.structures || [], CHAIN = D.chain || [], KINDS = D.kinds || [];
+
+  const KIND_COLOR = {
+    Local: 'var(--c-green)',
+    Galaxy: 'var(--c-amber)',
+    Group: 'var(--c-blue)',
+    Cluster: 'var(--c-violet)',
+    Supercluster: 'var(--c-pink)',
+    Filament: 'var(--c-rust)',
+    Void: 'var(--c-slate)',
+    Attractor: 'var(--c-wine)',
+    Cosmological: 'var(--c-teal)',
+  };
+  const kc = (k) => KIND_COLOR[k] || 'var(--muted)';
+
+  const sup = (n) => String(n).replace('-', '⁻').replace(/\d/g, (c) => '⁰¹²³⁴⁵⁶⁷⁸⁹'[+c]);
+  const sig = (v) => String(+v.toPrecision(3));
+
+  // The whole point of the page: one stored number in light-years, rendered in
+  // whatever unit a human can still picture at that rung of the ladder.
+  const AU_PER_LY = 63241.077;
+  const LY_PER_PC = 3.26156;
+  function ly(v) {
+    if (v == null) return null;
+    if (v < 0.05) return sig(v * AU_PER_LY) + ' AU';
+    if (v < 1e3) return sig(v) + ' ly';
+    if (v < 1e6) return sig(v / 1e3) + ' thousand ly';
+    if (v < 1e9) return sig(v / 1e6) + ' million ly';
+    return sig(v / 1e9) + ' billion ly';
+  }
+  function pc(v) {
+    if (v == null) return null;
+    const p = v / LY_PER_PC;
+    if (p < 1) return null;                       // below a parsec nobody quotes parsecs
+    if (p < 1e3) return sig(p) + ' pc';
+    if (p < 1e6) return sig(p / 1e3) + ' kpc';
+    if (p < 1e9) return sig(p / 1e6) + ' Mpc';
+    return sig(p / 1e9) + ' Gpc';
+  }
+  const both = (v) => { const a = ly(v), b = pc(v); return b ? `${a} (${b})` : a; };
+
+  const box = document.getElementById('list');
+  const empty = document.getElementById('empty');
+  const active = new Set();
+  const bySlug = new Map(ST.map((s) => [s.slug, s]));
+
+  // ---------- log axis ----------
+  const L = ST.filter((s) => s.size > 0).map((s) => Math.log10(s.size));
+  const HAS_AXIS = L.length > 1;
+  const LO = HAS_AXIS ? Math.floor(Math.min(...L)) : 0;
+  const HI = HAS_AXIS ? Math.ceil(Math.max(...L)) : 1;
+  const pos = (v) => ((Math.log10(v) - LO) / (HI - LO)) * 100;
+
+  function buildAxis() {
+    const ax = document.getElementById('axis');
+    if (!HAS_AXIS) { document.querySelector('.axis').hidden = true; return; }
+    for (let d = LO; d <= HI; d += 2) {
+      const x = ((d - LO) / (HI - LO)) * 100;
+      const t = document.createElement('div');
+      t.className = 'tick'; t.style.left = x + '%';
+      const l = document.createElement('span');
+      l.className = 'ticklbl'; l.style.left = x + '%';
+      l.textContent = d === 0 ? '1 ly' : `10${sup(d)} ly`;
+      ax.append(t, l);
+    }
+    for (const s of ST) {
+      if (!(s.size > 0)) continue;
+      const b = document.createElement('button');
+      b.className = 'pin';
+      b.type = 'button';
+      b.style.left = pos(s.size) + '%';
+      b.style.setProperty('--pc', kc(s.kind));
+      b.title = `${s.name} — ${ly(s.size)} across`;
+      b.setAttribute('aria-label', `Jump to ${s.name}`);
+      b.addEventListener('click', () => goTo(s.slug));
+      ax.appendChild(b);
+    }
+    document.getElementById('axisnote').textContent =
+      `${HI - LO} orders of magnitude, from ${ly(ST[0].size)} to ${ly(ST[ST.length - 1].size)}. `
+      + 'Each dot is a structure — click one to jump to it. Half the ladder is above the Local Group, '
+      + 'which is where most maps of the universe stop.';
+  }
+
+  // ---------- you are here ----------
+  function buildChain() {
+    if (CHAIN.length < 2) return;
+    const c = document.getElementById('chain');
+    CHAIN.forEach((r, i) => {
+      if (i) {
+        const a = document.createElement('span');
+        a.className = 'arrow'; a.textContent = '›';
+        c.appendChild(a);
+      }
+      const a = document.createElement('a');
+      a.className = 'rung';
+      a.href = '#' + r.slug;
+      a.append(document.createTextNode(r.name + ' '));
+      const s = document.createElement('span');
+      s.className = 'sz'; s.textContent = ly(r.size);
+      a.appendChild(s);
+      a.addEventListener('click', (e) => { e.preventDefault(); goTo(r.slug); });
+      c.appendChild(a);
+    });
+    document.getElementById('here').hidden = false;
+  }
+
+  // ---------- structures ----------
+  function fact(row, label, value, href) {
+    const s = document.createElement('span');
+    const b = document.createElement('b');
+    b.textContent = label + ' ';
+    s.appendChild(b);
+    if (href) {
+      const a = document.createElement('a');
+      a.href = href; a.textContent = value;
+      a.addEventListener('click', (e) => { e.preventDefault(); goTo(href.slice(1)); });
+      s.appendChild(a);
+    } else {
+      s.appendChild(document.createTextNode(value));
+    }
+    row.appendChild(s);
+  }
+
+  function render() {
+    box.textContent = '';
+    const rows = ST.filter((s) => !active.size || active.has(s.kind));
+    empty.hidden = rows.length > 0;
+    for (const s of rows) {
+      const wrap = document.createElement('div');
+      wrap.className = 'st';
+      wrap.id = s.slug;
+      wrap.style.setProperty('--kc', kc(s.kind));
+
+      const head = document.createElement('div');
+      head.className = 'sthead';
+      const sz = document.createElement('span');
+      sz.className = 'stsize'; sz.textContent = ly(s.size) + ' across';
+      const h = document.createElement('h2');
+      h.className = 'stname'; h.textContent = s.name;
+      head.append(sz, h);
+
+      const card = document.createElement('div');
+      card.className = 'stcard';
+      const p = document.createElement('p');
+      p.className = 'stnotes'; p.textContent = s.notes || '';
+      card.appendChild(p);
+
+      const f = document.createElement('div');
+      f.className = 'facts';
+      if (s.kind) fact(f, 'kind', s.kind.toLowerCase());
+      fact(f, 'size', both(s.size));
+      // no distance means we are inside it — that is information, not a gap
+      if (s.dist != null) fact(f, 'distance', both(s.dist));
+      else fact(f, 'distance', 'we are inside it');
+      if (s.z != null) fact(f, 'redshift', 'z = ' + (s.z < 0.001 ? s.z.toExponential(1) : sig(s.z)));
+      if (s.pop) fact(f, 'holds', s.pop);
+      if (s.withinSlug && bySlug.has(s.withinSlug)) fact(f, 'sits within', s.within, '#' + s.withinSlug);
+      else if (s.within) fact(f, 'sits within', s.within);
+      if (s.year) fact(f, 'recognised', String(s.year));
+      card.appendChild(f);
+
+      wrap.append(head, card);
+      box.appendChild(wrap);
+    }
+  }
+
+  function buildKinds() {
+    const c = document.getElementById('kinds');
+    const counts = new Map();
+    for (const s of ST) counts.set(s.kind, (counts.get(s.kind) || 0) + 1);
+    for (const k of KINDS) {
+      const b = document.createElement('button');
+      b.className = 'kchip';
+      b.type = 'button';
+      b.setAttribute('aria-pressed', 'false');
+      b.style.setProperty('--kc', kc(k));
+      b.innerHTML = '<span></span><span class="n"></span>';
+      b.firstChild.textContent = k.toLowerCase();
+      b.lastChild.textContent = counts.get(k) || 0;
+      b.addEventListener('click', () => {
+        if (active.has(k)) active.delete(k); else active.add(k);
+        b.setAttribute('aria-pressed', active.has(k) ? 'true' : 'false');
+        render();
+      });
+      c.appendChild(b);
+    }
+  }
+
+  function goTo(id) {
+    active.clear();                       // a filter must never hide the thing being jumped to
+    for (const b of document.getElementById('kinds').children) b.setAttribute('aria-pressed', 'false');
+    render();
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.scrollIntoView({ block: 'center', behavior: 'smooth' });
+    el.classList.add('flash');
+    setTimeout(() => el.classList.remove('flash'), 1700);
+    history.replaceState(null, '', '#' + id);
+  }
+
+  buildAxis();
+  buildChain();
+  buildKinds();
+  render();
+  if (location.hash.length > 1) goTo(location.hash.slice(1));
+  addEventListener('hashchange', () => goTo(location.hash.slice(1)));
+</script>

@@ -20,6 +20,7 @@ const PAGES = {
   '/machines': 'machines.html',
   '/skills': 'skills.html',
   '/glossary': 'glossary.html',
+  '/scales': 'scales.html',
   '/explainers': 'explainers.html',
   '/impacts': 'impacts.html',
   '/billiards': 'billiards.html',

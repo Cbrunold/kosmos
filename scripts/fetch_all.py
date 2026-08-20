@@ -28,7 +28,8 @@ SOURCES = {
     "mines": "dd711986-067e-43f9-9a74-dd471ac4bcc6",
     "machines": "f6c4e3cc-bfe0-4fb8-b807-3693cbcf4e88",
     "skills": "804e17aa-435b-4306-acbb-2ec926b87b10",
-    "glossary": {"title": "Glossary [DB]"},   # created by seed_glossary.py; resolved by title at fetch time
+    "glossary": {"title": "Glossary [DB]"},
+    "cosmicStructures": {"title": "Cosmic Structures [DB]"},   # created by seed_scales.py; resolved by title at fetch time
     "explainers": {"title": "Explainers [DB]"},   # created by seed_explainers.py; likewise
     "impacts": {"title": "Mining Impacts [DB]"},   # created by seed_impacts.py; likewise
     "spectralTypes": "6128c15c-25dd-47fb-bf00-ce737ca1d3e6",
