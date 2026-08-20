@@ -124,6 +124,11 @@ __SHARED__
         <div class="presets" id="conds"></div>
         <div class="hint" id="condres"></div>
         <div class="hint">Practice grades live, pro on execute. Conditions that fight each other make the best shots.</div></div></details>
+    <details id="runbox"><summary>run out — one shot at a time <span class="cnt" id="runsum"></span></summary>
+      <div class="row">
+        <div class="presets"><button type="button" id="runstart">start the run-out</button><button type="button" id="runstop">end it</button></div>
+        <div class="hint" id="runres"></div>
+        <div class="hint">Every executed shot advances the table — the balls live where they land. Lowest ball first or it's a foul (ball in hand; a fouled 9 respots); the run ends when the 9 drops, or the cloth is bare. Par is a ball a shot. Import a break from a photo and clear it.</div></div></details>
     <details><summary>drills — after Dr Dave</summary>
       <div class="row">
         <div class="aimbtns"><select id="drill"></select><button type="button" id="dlm">−</button><span class="v" id="drilllvl">—</span><button type="button" id="dlp">+</button></div>
@@ -1178,7 +1183,7 @@ __SHARED__
     if (animId) return;
     const S = currentShot(false);
     if (!S.feasible) return;
-    playback(S, () => { if (state.mode === 'pro') reportPro(S); });
+    playback(S, () => { if (state.mode === 'pro') reportPro(S); finishRunout(S); });
   });
   function setMode(m) {
     if (state.mode === m) return;
@@ -1546,6 +1551,70 @@ __SHARED__
     $('photobox').hidden = true;
     run();
   });
+
+  // ---- the run-out: clear the table one executed shot at a time, the balls living where they land.
+  // Lowest ball first or it's a foul — scratch gives ball in hand, a fouled money ball respots — and
+  // the run ends when the 9 drops (any legal way, combos included) or, with no 9 up, when the cloth
+  // is bare. Shots count golf-style: par is a ball a shot, fouls are strokes you feel.
+  function runoutStatus(extra) {
+    const ro = state.runout;
+    $('runsum').textContent = ro && !ro.over ? `· shot ${ro.shots + 1}` : '';
+    if (!ro) { $('runres').innerHTML = ''; return; }
+    if (ro.over) { $('runres').innerHTML = `<b>${extra}</b>`; return; }
+    const left = state.balls.filter((b) => b.n > 0);
+    const low = left.length ? Math.min(...left.map((b) => b.n)) : null;
+    $('runres').innerHTML = `${extra ? extra + '<br>' : ''}<b>shot ${ro.shots + 1}</b> · ${ro.pots} down · ${ro.fouls} foul${ro.fouls === 1 ? '' : 's'}${low != null ? ` · lowest up: the <b>${low}</b>` : ''}${ro.money ? ` · the ${ro.money} ends it` : ''}`;
+  }
+  function finishRunout(S) {
+    const ro = state.runout;
+    if (!ro || ro.over || !S.simBalls) return;
+    ro.shots++;
+    const target = S.simBalls[S.tgtIdx] ? S.simBalls[S.tgtIdx].n : null;
+    const scratch = S.cbPre != null || (S.reached && S.cbTrace && S.cbTrace.pocket != null);
+    const foul = scratch || !S.reached || !S.firstIsTarget;
+    if (foul) ro.fouls++;
+    const dropped = S.simBalls.filter((b) => b.n > 0 && b.pocket != null).map((b) => b.n);
+    const moneyBack = foul && ro.money != null && dropped.includes(ro.money);
+    const roster = S.simBalls.filter((b) => b.pocket == null && !(scratch && b.n === 0)).map((b) => ({ n: b.n, p: b.p.slice() }));
+    if (moneyBack) roster.push({ n: ro.money, p: [TABLE_L * 0.72, TABLE_W / 2] });   // the foot spot
+    if (!roster.some((b) => b.n === 0)) roster.unshift({ n: 0, p: [0.64, TABLE_W / 2] });   // ball in hand starts on the head spot
+    roster.sort((a, b) => (a.n === 0 ? -1 : b.n === 0 ? 1 : 0));
+    const placed = [];
+    for (const b of roster) placed.push({ n: b.n, p: clampBall(b.p, placed.map((x) => x.p)) });
+    ro.pots += dropped.length - (moneyBack ? 1 : 0);
+    const win = !foul && (ro.money != null ? dropped.includes(ro.money) : placed.filter((b) => b.n > 0).length === 0);
+    let respotLast = null;
+    if (!win && !placed.some((b) => b.n > 0) && dropped.length) {   // the last ball can't fall on a foul: it respots
+      respotLast = Math.min(...dropped);
+      placed.push({ n: respotLast, p: clampBall([TABLE_L * 0.72, TABLE_W / 2], placed.map((x) => x.p)) });
+      ro.pots--;
+    }
+    state.balls = placed;
+    let msg;
+    if (win) {
+      ro.over = true;
+      const over = ro.shots - ro.par;
+      msg = `run out — ${ro.money != null ? `the ${ro.money} drops` : 'the cloth is bare'} in ${ro.shots} shot${ro.shots === 1 ? '' : 's'} (${over <= 0 ? 'par!' : `+${over}`}), ${ro.fouls} foul${ro.fouls === 1 ? '' : 's'}`;
+      if (state.balls.length < 2) state.balls = [{ n: 0, p: [0.64, TABLE_W / 2] }, { n: ro.money != null ? ro.money : 9, p: [TABLE_L * 0.72, TABLE_W / 2] }];   // the table racks fresh under the banner
+    } else if (foul) {
+      msg = `<span style="color:var(--c-red)">foul — ${scratch ? 'scratch: ball in hand, drag the cue ball anywhere' : !S.reached ? 'the cue ball never reached a ball' : `first contact was the ${S.firstBall}, not the ${target}`}${moneyBack ? ` · the ${ro.money} respots` : ''}${respotLast != null && respotLast !== ro.money ? ` · the ${respotLast} respots` : ''}</span>`;
+    } else if (dropped.length) {
+      msg = `<span style="color:var(--c-amber)">the ${dropped.join(' and the ')} down — shoot again</span>`;
+    } else {
+      msg = `dry — the ${target} stays up, play it from where the cue ball lies`;
+    }
+    if (state.mode === 'pro' && state.balls.length > 1) { const dv = vsub(state.ob, state.cb); state.aimDeg = deg(Math.atan2(dv[1], dv[0])); }
+    run();
+    runoutStatus(msg);
+  }
+  $('runstart').addEventListener('click', () => {
+    const left = state.balls.filter((b) => b.n > 0);
+    if (!left.length) return;
+    state.runout = { shots: 0, pots: 0, fouls: 0, over: false, money: left.some((b) => b.n === 9) ? 9 : null, par: left.length };
+    $('runbox').open = true;
+    runoutStatus(`the table is yours — ${left.length} ball${left.length === 1 ? '' : 's'} up. Execute.`);
+  });
+  $('runstop').addEventListener('click', () => { state.runout = null; runoutStatus(''); });
 
   if (!loadHash()) place(...PRESETS[0][2]);
   syncCondBtns();
