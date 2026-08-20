@@ -31,6 +31,7 @@ __SHARED__
   .aimbtns select { flex: 2; min-width: 0; font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; background: transparent; color: var(--ink); border: 1px solid var(--hairline); border-radius: 6px; padding: 4px; }
   .ctl.pro .prac-only { display: none; }
   .ctl:not(.pro) .pro-only { display: none; }
+  .ctl.sys2 .sys3-only { display: none; }
   .ctl details { border-top: 1px solid var(--hairline); padding-top: 9px; }
   .ctl details summary { cursor: pointer; font: 10px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); user-select: none; }
   .ctl details summary:hover { color: var(--ink); }
@@ -186,6 +187,23 @@ __SHARED__
   </div>
 </div>
 
+<h2 class="ksec">Kicks and banks — the diamond systems</h2>
+<p class="knote" style="max-width:72ch;margin:0 0 10px">The diamonds are a calculator bolted to the rails. Two systems that use it are drawn here — the <b>two-rail mirror</b>, which is pure geometry, and <b>corner five</b>, the three-rail system every carom player learns — and both are run against the same cushion model as the rest of the page. That is the point: the mirror is exact only for a ball that loses nothing at the rail, and corner five is an <em>empirical</em> system, calibrated for running side at one particular pace. Drag the balls, then move the speed and the side and watch the arithmetic drift out from under you.</p>
+<div class="lab">
+  <div class="tblwrap"><svg class="felt" id="dsys" viewBox="-36 -36 972 542" role="img" aria-label="A pool table with numbered diamonds: the system's prescribed aim line and the ball's real path across the rails"></svg>
+    <div class="legend" id="dslegend"></div></div>
+  <div class="kcard ctl" id="dsysctl">
+    <div class="row"><label>the system</label>
+      <div class="modes"><button id="dsysb2" type="button">two rails — the mirror</button><button id="dsysb3" type="button" class="on">three rails — corner five</button></div>
+      <div class="hint" id="dshelp"></div></div>
+    <div class="row sys3-only"><label for="darr">arrival — where you want the third rail</label><input id="darr" type="range" min="0.4" max="5" step="0.1" value="2"><span class="v" id="darrv"></span></div>
+    <div class="row"><label for="dspd">speed into the first rail</label><input id="dspd" type="range" min="1" max="6" step="0.1" value="2.8"><span class="v" id="dspdv"></span></div>
+    <div class="row"><label for="dside">side — running (+) or reverse (−)</label><input id="dside" type="range" min="-0.5" max="0.5" step="0.02" value="0.3"><span class="v" id="dsidev"></span>
+      <div class="hint">Corner five is taught with running side at a firm, even pace — that english is part of the system, not a decoration. Zero it and watch the numbers stop working.</div></div>
+    <dl id="dsout" style="margin-top:4px"></dl>
+  </div>
+</div>
+
 <h2 class="ksec">The numbers</h2>
 <p class="knote" style="max-width:72ch;margin:0 0 10px">The lab runs on these — quoted from <code>poolsauce/constants.py</code> in the pool-sauce-engine repository, so the page and the engine never disagree on one. Where the engine has no value yet (ball–ball friction, cushion friction) the literature's is used and marked.</p>
 <div class="numswrap"><table class="nums" id="nums"></table></div>
@@ -241,7 +259,7 @@ __SHARED__
 
   // ---- the rails, live in the main sim: the cushion model (restitution √0.75, friction, side)
   // applied at whichever rail the ball crosses. Side spin transfers: running lengthens, reverse checks.
-  const RAILS = [{ ax: 0, lim: R, dir: 1 }, { ax: 0, lim: TABLE_L - R, dir: -1 }, { ax: 1, lim: R, dir: 1 }, { ax: 1, lim: TABLE_W - R, dir: -1 }];
+  const RAILS = [{ ax: 0, lim: R, dir: 1, name: 'left' }, { ax: 0, lim: TABLE_L - R, dir: -1, name: 'right' }, { ax: 1, lim: R, dir: 1, name: 'top' }, { ax: 1, lim: TABLE_W - R, dir: -1, name: 'bottom' }];
   function bounce(b) {
     for (const r of RAILS) {
       const past = r.dir > 0 ? b.p[r.ax] < r.lim : b.p[r.ax] > r.lim;
@@ -258,9 +276,9 @@ __SHARED__
       b.z -= zs * 2.5 * Jt / M;
       b.v[r.ax] = r.dir * e * vn;
       b.p[r.ax] = 2 * r.lim - b.p[r.ax];
-      return true;
+      return r;   // truthy for the counters; the rail itself for anything numbering the cushions
     }
-    return false;
+    return null;
   }
 
   // ---- one ball on cloth: velocity v, "spin surface velocity" s (the velocity the spin would give at the
@@ -1615,6 +1633,266 @@ __SHARED__
     runoutStatus(`the table is yours — ${left.length} ball${left.length === 1 ? '' : 's'} up. Execute.`);
   });
   $('runstop').addEventListener('click', () => { state.runout = null; runoutStatus(''); });
+
+  // ---- kicks and banks: the diamond systems, run on the same cloth as every other shot on this page.
+  // A system is arithmetic bolted to the rails — it assumes a rebound. The cushion model here doesn't
+  // assume one, it computes it, so the gap between the system's promise and the ball's real path is
+  // the honest answer to "does this system work at this speed, with this side?"
+  const DIA = TABLE_L / 8;                                   // one diamond — and the short rail is exactly four
+  const RX0 = R, RX1 = TABLE_L - R, RY0 = R, RY1 = TABLE_W - R;
+  const RAILDEF = [
+    { ax: 0, lim: RX0, dir: 1, name: 'left' }, { ax: 0, lim: RX1, dir: -1, name: 'right' },
+    { ax: 1, lim: RY0, dir: 1, name: 'top' }, { ax: 1, lim: RY1, dir: -1, name: 'bottom' },
+  ];
+  const zsOf = (r) => (r.ax === 1 ? r.dir : -r.dir);         // sign of side's surface speed along that cushion
+  const dsvg = $('dsys');
+  const DS = { sys: 3, cb: [TABLE_L - R, TABLE_W - R], cb2: [1.90, 0.95], tgt: [1.10, 0.30], arr: 2 };
+  const dFlip = () => DS.cb[0] < TABLE_L / 2;                // canonical frame keeps the cue ball bottom-right
+  const cF = (p) => (dFlip() ? [TABLE_L - p[0], p[1]] : [p[0], p[1]]);   // self-inverse
+
+  function nextRail(p, d) {   // the next cushion an ideal ray meets, and where
+    let best = null;
+    for (const r of RAILDEF) {
+      if (Math.abs(d[r.ax]) < 1e-9) continue;
+      const t = (r.lim - p[r.ax]) / d[r.ax];
+      if (t < 1e-6) continue;
+      const o = 1 - r.ax, q = vadd(p, vmul(d, t));
+      const lo = o === 0 ? RX0 : RY0, hi = o === 0 ? RX1 : RY1;
+      if (q[o] < lo - 1e-7 || q[o] > hi + 1e-7) continue;
+      if (!best || t < best.t) best = { t, r, q };
+    }
+    return best;
+  }
+  const mirrorPt = (p, r) => { const q = p.slice(); q[r.ax] = 2 * r.lim - q[r.ax]; return q; };
+
+  // the real thing: a rolling ball sent down a line, every rail live. Side is applied as running (+)
+  // about the first cushion it will meet, so the slider's sign means the same whichever way the shot goes.
+  function railRun(p0, dir, v, side, keep, stopAfter, extra) {
+    const b = { p: p0.slice(), v: vmul(dir, v), s: vmul(dir, v), z: 0, slid: 0 };
+    const f = nextRail(p0, dir);
+    if (f && side) { const ta = 1 - f.r.ax; b.z = -Math.sign(b.v[ta] || 1) * zsOf(f.r) * 2.5 * v * side; }
+    const pts = keep ? [b.p.slice()] : null;
+    const hits = [];
+    let pocket = null, stopped = false, tail = 0;
+    for (let i = 0; i < 6000; i++) {
+      const q0 = b.p.slice();
+      step(b, 0.003);
+      if (keep) pts.push(b.p.slice());
+      const pk = pocketAt(b.p);
+      if (pk >= 0) { pocket = pk; break; }
+      const r = bounce(b);
+      if (r) hits.push({ r, p: b.p.slice(), idx: keep ? pts.length - 1 : i });
+      if (vlen(b.v) < 1e-3) { stopped = true; break; }
+      if (stopAfter && hits.length >= stopAfter) {   // the system's rails are shot — draw a tail, then stop
+        tail += dist2(q0, b.p);
+        if (tail > (extra || 0.3)) break;
+      }
+    }
+    return { pts, hits, end: b.p.slice(), pocket, stopped };
+  }
+
+  // corner five's scales: the corner is 5, the long rail falls half a unit a diamond, the short rail climbs one
+  function posNum(pc) {
+    const dx = pc[0] / DIA, dy = pc[1] / DIA;
+    return (8 - dx) < (4 - dy) ? 5 + (4 - dy) : 5 - 0.5 * (8 - dx);
+  }
+  function snapRail(p) {   // corner five reads positions off a rail, so the cue ball lives on one
+    const q = p.slice();
+    if ((TABLE_L - R) - q[0] < (TABLE_W - R) - q[1]) q[0] = RX1; else q[1] = RY1;
+    return clampBall(q, []);
+  }
+
+  // the two-rail mirror: reflect the target across the second rail, then the first, and shoot at the image
+  function solve2(cb, tgt) {
+    let best = null;
+    for (const r1 of RAILDEF) for (const r2 of RAILDEF) {
+      if (r1 === r2) continue;
+      const img2 = mirrorPt(tgt, r2), img1 = mirrorPt(img2, r1);
+      const d = vsub(img1, cb);
+      if (vlen(d) < 1e-6) continue;
+      const dir = vunit(d);
+      const h1 = nextRail(cb, dir);
+      if (!h1 || h1.r !== r1) continue;
+      const d2 = dir.slice(); d2[r1.ax] = -d2[r1.ax];
+      const h2 = nextRail(h1.q, d2);
+      if (!h2 || h2.r !== r2) continue;
+      const d3 = d2.slice(); d3[r2.ax] = -d3[r2.ax];
+      const h3 = nextRail(h2.q, d3), tt = vdot(vsub(tgt, h2.q), d3);
+      if (tt < 0 || (h3 && tt > h3.t + 1e-6)) continue;                      // the target must lie on that last leg
+      if (dist2(vadd(h2.q, vmul(d3, tt)), tgt) > 1e-4) continue;
+      const len = h1.t + h2.t + tt;
+      if (pocketAt(h1.q) >= 0 || pocketAt(h2.q) >= 0) continue;               // a mouth is not rubber
+      // a route that rolls through a mouth on the way isn't a kick, it's a scratch — keep it, but last
+      const legs = [[cb, h1.q], [h1.q, h2.q], [h2.q, tgt]];
+      let clean = true;
+      for (const [a, b2] of legs) {
+        const n2 = Math.max(2, Math.ceil(dist2(a, b2) / 0.02));
+        for (let s = 1; s < n2; s++) {
+          const q = vadd(a, vmul(vsub(b2, a), s / n2));
+          if (dist2(q, tgt) < 2 * R) break;
+          if (pocketAt(q) >= 0) { clean = false; break; }
+        }
+        if (!clean) break;
+      }
+      const cand = { dir, r1, r2, h1: h1.q, h2: h2.q, img1, img2, len, clean };
+      if (!best || (cand.clean && !best.clean) || (cand.clean === best.clean && len < best.len)) best = cand;
+    }
+    return best;
+  }
+
+  const dmono = { 'font-family': 'ui-monospace, "SF Mono", Consolas, monospace', 'font-size': 11, fill: 'var(--muted)' };
+  const de = (tag, attrs) => el(tag, attrs, dsvg);
+  const dline = (a, b, attrs) => { const [x1, y1] = px(a), [x2, y2] = px(b); return de('line', { x1, y1, x2, y2, ...attrs }); };
+  const dtext = (p, s, attrs) => { const [x, y] = px(p); const e2 = de('text', { x, y, ...attrs }); e2.textContent = s; return e2; };
+  const dpoly = (pts, attrs) => de('polyline', { points: pts.map(px).map((q) => q.join(',')).join(' '), fill: 'none', ...attrs });
+  const dball = (p, attrs) => { const [cx, cy] = px(p); return de('circle', { cx, cy, r: R * SX, ...attrs }); };
+
+  function drawSysTable(flip) {
+    dsvg.innerHTML = '';
+    de('rect', { x: 0, y: 0, width: 900, height: 470, fill: 'color-mix(in oklab, var(--c-felt) 9%, var(--panel))' });
+    de('rect', { x: 0.5, y: 0.5, width: 899, height: 469, fill: 'none', stroke: 'color-mix(in oklab, var(--c-felt) 40%, var(--hairline))', 'stroke-width': 3 });
+    for (const q of POCKETS) { const [cx, cy] = px(q.p); de('circle', { cx, cy, r: RP * SX, fill: 'color-mix(in oklab, #000 55%, var(--c-felt))', stroke: 'color-mix(in oklab, var(--c-felt) 45%, var(--hairline))', 'stroke-width': 1.5 }); }
+    const dm = (p) => { const [cx, cy] = px(p); de('rect', { x: cx - 3, y: cy - 3, width: 6, height: 6, transform: `rotate(45 ${cx} ${cy})`, fill: 'none', stroke: 'color-mix(in oklab, var(--c-felt) 55%, var(--hairline))', 'stroke-width': 1.2 }); };
+    for (let k = 1; k <= 7; k++) { dm([k * DIA, -0.022]); dm([k * DIA, TABLE_W + 0.022]); }
+    for (let k = 1; k <= 3; k++) { dm([-0.022, k * DIA]); dm([TABLE_L + 0.022, k * DIA]); }
+    if (DS.sys !== 3) return;
+    // corner five's three scales: positions outside the near rails, arrivals on the cloth, aims above the far rail
+    const fx = (dx) => (flip ? TABLE_L - dx * DIA : dx * DIA);
+    for (let k = 0; k <= 8; k++) {
+      const P = 5 - 0.5 * (8 - k);
+      dtext([fx(k), TABLE_W + 0.075], fmt(P, P % 1 ? 1 : 0), { ...dmono, 'text-anchor': 'middle', fill: k >= 3 ? 'var(--ink-2)' : 'var(--muted)', opacity: k >= 3 ? 1 : 0.5 });
+    }
+    for (let k = 0; k <= 4; k++) dtext([flip ? -0.055 : TABLE_L + 0.055, k * DIA + 0.012], String(5 + (4 - k)), { ...dmono, 'text-anchor': 'middle', fill: 'var(--ink-2)' });
+    for (let k = 1; k <= 7; k++) dtext([fx(k), -0.032], String(k), { ...dmono, 'text-anchor': 'middle', fill: k <= 5 ? 'var(--c-felt)' : 'var(--muted)', opacity: k <= 5 ? 1 : 0.45 });
+    for (let k = 1; k <= 7; k++) dtext([fx(k), TABLE_W - 0.045], String(k), { ...dmono, 'text-anchor': 'middle', fill: 'var(--c-amber)', opacity: 0.75 });
+  }
+
+  function runSystems() {
+    const v = +$('dspd').value, side = +$('dside').value;
+    DS.arr = +$('darr').value;
+    $('dspdv').textContent = `${fmt(v, 1)} m/s`;
+    $('dsidev').textContent = `${side >= 0 ? '+' : ''}${fmt(side, 2)}`;
+    $('darrv').textContent = `${fmt(DS.arr, 1)} · diamonds`;
+    const flip = dFlip();
+    drawSysTable(flip);
+    $('dslegend').innerHTML = DS.sys === 3
+      ? '<span style="--lc:var(--c-felt)">first rail — the aim numbers, above the far long rail</span><span style="--lc:var(--c-amber)">third rail — the arrival numbers, on the cloth</span><span style="--lc:var(--muted)">cue ball position — outside the near rails, the corner is 5</span><span style="--lc:var(--muted); --ls:dashed">the system\'s line</span>'
+      : '<span style="--lc:var(--muted); --ls:dashed">the mirror\'s path</span><span style="--lc:var(--c-red); --ls:dotted">the line to the image, straight through the rails</span><span style="--lc:var(--c-felt)">what the cloth really does</span>';
+    if (DS.sys === 3) {
+      const cbC = cF(DS.cb), P = posNum(cbC), N = DS.arr, A = P - N;
+      const aimC = [A * DIA, RY0], aim = cF(aimC);
+      const dirC = vunit(vsub(aimC, cbC)), dir = flip ? [-dirC[0], dirC[1]] : dirC;
+      const promised = cF([N * DIA, RY1]);
+      dline(DS.cb, aim, { stroke: 'var(--muted)', 'stroke-width': 1.2, 'stroke-dasharray': '6 5', opacity: 0.75 });
+      const [ax2, ay2] = px(aim); de('circle', { cx: ax2, cy: ay2, r: 5, fill: 'none', stroke: 'var(--c-felt)', 'stroke-width': 1.8 });
+      const [nx2, ny2] = px(promised); de('circle', { cx: nx2, cy: ny2, r: 6, fill: 'none', stroke: 'var(--c-amber)', 'stroke-width': 1.8, 'stroke-dasharray': '2 2' });
+      const inRange = A > 0.15 && A < 7.85;
+      const S = inRange ? railRun(DS.cb, dir, v, side, true, 3, 0.34) : null;
+      let arrived = null, patternOK = false;
+      if (S) {
+        dpoly(S.pts, { stroke: 'var(--c-felt)', 'stroke-width': 2.2, opacity: 0.95 });
+        S.hits.slice(0, 4).forEach((h, i) => { const [hx, hy] = px(h.p); de('circle', { cx: hx, cy: hy, r: 8, fill: 'none', stroke: 'var(--ink-2)', 'stroke-width': 1 }); const t2 = de('text', { x: hx, y: hy + 3.5, ...dmono, fill: 'var(--ink)', 'text-anchor': 'middle' }); t2.textContent = i + 1; });
+        const want = [RY0, flip ? RX1 : RX0, RY1];
+        patternOK = S.hits.length >= 3 && S.hits.slice(0, 3).every((h, i) => h.r.lim === want[i]);
+        if (patternOK) arrived = cF(S.hits[2].p)[0] / DIA;
+      }
+      dball(DS.cb, { fill: 'var(--panel)', stroke: 'var(--ink)', 'stroke-width': 1.5, style: 'cursor:grab' });
+      const err = arrived == null ? null : arrived - N;
+      $('dsout').innerHTML = dl([
+        ['the arithmetic', `position <b>${fmt(P, 1)}</b> − aim <b>${fmt(A, 1)}</b> = arrival <b>${fmt(N, 1)}</b>`],
+        ['aim at', inRange ? `the <b>${fmt(A, 1)}</b> on the far long rail — ${fmt(A, 1)} diamond${A === 1 ? '' : 's'} from the far corner, and shoot <em>through</em> the diamond` : `<span class="warn">off the table — position ${fmt(P, 1)} can't reach arrival ${fmt(N, 1)}. Drag the cue ball or the arrival marker.</span>`],
+        ['the cloth says', !S ? '—'
+          : patternOK ? `third rail at <b>${fmt(arrived, 1)}</b> — ${Math.abs(err) < 0.15 ? 'the system is right here' : `${fmt(Math.abs(err), 1)} diamond${Math.abs(err) > 0.95 && Math.abs(err) < 1.05 ? '' : 's'} ${err > 0 ? 'long' : 'short'}`}${S.pocket != null ? ` <small>— and rolls on into the ${POCKETS[S.pocket].name} pocket</small>` : ''}`
+          : S.pocket != null ? `<span class="warn">the ball drops in the ${POCKETS[S.pocket].name} pocket before the third rail</span>`
+          : `<span class="warn">not the system's path — the ball took the ${S.hits.slice(0, 3).map((h) => h.r.name).join(', then the ') || 'no'} rail${S.hits.length === 1 ? '' : 's'}</span>`, patternOK && Math.abs(err) < 0.5 ? 'good' : 'warn'],
+        ['the system holds', 'with running side at a firm pace. It is a fit to a real table, not a theorem — the numbers were measured, and they hold only near the stroke they were measured with.'],
+      ]);
+      $('dshelp').innerHTML = 'Drag the cue ball along the near rails to set its position number; drag the amber marker on the far long rail to pick where you want the third rail. The system does the subtraction.';
+    } else {
+      const sol = solve2(DS.cb2, DS.tgt);
+      let miss = null, missP = null, S = null, died = false;
+      if (sol) {
+        dline(DS.cb2, sol.h1, { stroke: 'var(--muted)', 'stroke-width': 1.2, 'stroke-dasharray': '6 5', opacity: 0.75 });
+        dline(sol.h1, sol.h2, { stroke: 'var(--muted)', 'stroke-width': 1.2, 'stroke-dasharray': '6 5', opacity: 0.75 });
+        dline(sol.h2, DS.tgt, { stroke: 'var(--muted)', 'stroke-width': 1.2, 'stroke-dasharray': '6 5', opacity: 0.75 });
+        // the line to the image runs straight through the rails — draw as much of it as stays on the picture
+        const onView = (q) => q[0] > -0.09 && q[0] < TABLE_L + 0.09 && q[1] > -0.09 && q[1] < TABLE_W + 0.09;
+        const far = dist2(DS.cb2, sol.img1);
+        let stub = sol.img1, shown = onView(sol.img1);
+        if (!shown) { const d = vunit(vsub(sol.img1, DS.cb2)); let t2 = dist2(DS.cb2, sol.h1); while (t2 < far && onView(vadd(DS.cb2, vmul(d, t2 + 0.02)))) t2 += 0.02; stub = vadd(DS.cb2, vmul(d, t2)); }
+        dline(DS.cb2, stub, { stroke: 'var(--c-red)', 'stroke-width': 1, 'stroke-dasharray': '2 4', opacity: 0.5 });
+        if (shown) {
+          for (const im of [sol.img1, sol.img2]) if (onView(im)) dball(im, { fill: 'none', stroke: 'var(--c-red)', 'stroke-width': 1.2, 'stroke-dasharray': '2 3', opacity: 0.6 });
+          dtext(vadd(sol.img1, [0, -0.075]), 'the image — aim here', { ...dmono, fill: 'var(--c-red)', 'text-anchor': 'middle', opacity: 0.8 });
+        } else {
+          const back = vunit(vsub(DS.cb2, stub));
+          const lab = vadd(vadd(stub, vmul(back, 0.34)), [0, stub[1] < TABLE_W / 2 ? 0.10 : -0.07]);
+          lab[0] = Math.min(Math.max(lab[0], 0.42), TABLE_L - 0.42);
+          dtext(lab, `image: ${fmt(far - dist2(DS.cb2, sol.h1), 2)} m on`, { ...dmono, fill: 'var(--c-red)', 'text-anchor': 'middle', opacity: 0.85 });
+        }
+        S = railRun(DS.cb2, sol.dir, v, side, true, 3, 0.05);   // two rails and the whole leg to the target
+        dpoly(S.pts, { stroke: 'var(--c-felt)', 'stroke-width': 2.2, opacity: 0.95 });
+        S.hits.slice(0, 2).forEach((h, i) => { const [hx, hy] = px(h.p); de('circle', { cx: hx, cy: hy, r: 8, fill: 'none', stroke: 'var(--ink-2)', 'stroke-width': 1 }); const t2 = de('text', { x: hx, y: hy + 3.5, ...dmono, fill: 'var(--ink)', 'text-anchor': 'middle' }); t2.textContent = i + 1; });
+        if (S.hits.length >= 2) {
+          miss = Infinity;
+          let mk = 0;
+          for (let k = S.hits[1].idx; k < S.pts.length; k++) { const dd = dist2(S.pts[k], DS.tgt); if (dd < miss) { miss = dd; missP = S.pts[k]; mk = k; } }
+          died = S.stopped && mk >= S.pts.length - 2;   // closest where it came to rest: it stalled, it didn't miss
+        }
+      }
+      dball(DS.tgt, { fill: 'var(--c-amber)', stroke: 'var(--page)', 'stroke-width': 1.2, style: 'cursor:grab' });
+      dball(DS.cb2, { fill: 'var(--panel)', stroke: 'var(--ink)', 'stroke-width': 1.5, style: 'cursor:grab' });
+      const hit = miss != null && miss < 2 * R;
+      $('dsout').innerHTML = dl([
+        ['the construction', sol ? `mirror the target through the <b>${sol.r2.name}</b> rail, then through the <b>${sol.r1.name}</b> — and shoot at that image` : '<span class="warn">no two-rail line from here — drag either ball</span>'],
+        ['the rails', sol ? `${sol.r1.name}, then ${sol.r2.name} · ${fmt(sol.len, 2)} m of cloth on the ideal line` : '—'],
+        ['the cloth says', !S ? '—'
+          : miss != null ? (hit ? `<b>it hits</b> — ${fmt(1000 * miss, 0)} mm centre to centre at the closest` : died ? `<span class="warn">the ball runs out of legs ${fmt(100 * (miss - 2 * R), 1)} cm short — the line is fine, the pace isn't</span>` : `misses by ${fmt(100 * (miss - 2 * R), 1)} cm of gap${S.pocket != null ? `, then drops in the ${POCKETS[S.pocket].name} pocket` : ''}`)
+          : S.pocket != null ? `<span class="warn">the ball drops in the ${POCKETS[S.pocket].name} pocket before the second rail</span>`
+          : '<span class="warn">the ball died before the second rail</span>', hit ? 'good' : 'warn'],
+        ['why it misses', 'The mirror assumes the rail gives back the angle it was handed. Rubber does not: it keeps only <em>e</em> of the speed into the cushion and friction drags the rest along the rail, so every real rebound comes off flatter than the image says — more so the harder you hit it. Running side pays some of that back.'],
+      ]);
+      $('dshelp').innerHTML = 'Drag either ball. The lab picks the shortest two-rail route and builds the mirror image; the solid line is what the cloth actually does with it.';
+    }
+  }
+
+  let dsDrag = null;
+  const dsPt = (e) => {   // through the SVG's own transform, so the padded viewBox can't skew it
+    const m = dsvg.getScreenCTM();
+    if (!m) return [0, 0];
+    const q = dsvg.createSVGPoint(); q.x = e.clientX; q.y = e.clientY;
+    const u = q.matrixTransform(m.inverse());
+    return [u.x / SX, u.y / SY];
+  };
+  dsvg.addEventListener('pointerdown', (e) => {
+    const p = dsPt(e);
+    dsDrag = DS.sys === 3 ? 'cb' : (dist2(p, DS.cb2) < dist2(p, DS.tgt) ? 'cb' : 'tgt');
+    dsMove(p);
+    dsvg.setPointerCapture(e.pointerId); e.preventDefault();
+  });
+  function dsMove(p) {
+    if (dsDrag === 'cb') { if (DS.sys === 3) DS.cb = snapRail(p); else DS.cb2 = clampBall(p, [DS.tgt]); }
+    else if (dsDrag === 'tgt') DS.tgt = clampBall(p, [DS.cb2]);
+    runSystems();
+  }
+  dsvg.addEventListener('pointermove', (e) => { if (dsDrag) dsMove(dsPt(e)); });
+  dsvg.addEventListener('pointerup', () => { dsDrag = null; });
+  dsvg.addEventListener('pointercancel', () => { dsDrag = null; });
+  for (const k of ['dspd', 'dside', 'darr']) $(k).addEventListener('input', runSystems);
+  const setSys = (n) => {
+    DS.sys = n;
+    $('dsysb2').classList.toggle('on', n === 2); $('dsysb3').classList.toggle('on', n === 3);
+    $('dsysctl').classList.toggle('sys2', n === 2);
+    $('dside').value = n === 3 ? 0.3 : 0;                    // the mirror is a no-side construction; corner five isn't
+    if (n === 3) DS.cb = snapRail(DS.cb);
+    runSystems();
+  };
+  $('dsysb2').addEventListener('click', () => setSys(2));
+  $('dsysb3').addEventListener('click', () => setSys(3));
+
+  DS.cb = snapRail(DS.cb);
+  runSystems();
+  window.kosmosSys = { DS, railRun, solve2, runSystems, posNum };   // dev hook for the systems bench
 
   if (!loadHash()) place(...PRESETS[0][2]);
   syncCondBtns();
