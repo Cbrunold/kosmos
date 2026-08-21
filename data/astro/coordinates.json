@@ -1,0 +1,436 @@
+{
+  "Andromeda (M31)": {
+    "ra": 10.68471,
+    "dec": 41.26875,
+    "resolver": "Sc",
+    "id": "M  31",
+    "queried": "M 31"
+  },
+  "Antlia Dwarf": {
+    "ra": 151.01667,
+    "dec": -27.332,
+    "resolver": "N",
+    "id": "Antlia Dwarf Galaxy",
+    "queried": "Antlia Dwarf"
+  },
+  "Aquarius Dwarf (DDO 210)": {
+    "ra": 311.71542,
+    "dec": -12.84833,
+    "resolver": "Sc",
+    "id": "MCG-02-53-003",
+    "queried": "DDO 210"
+  },
+  "Bootes I": {
+    "ra": 210.0,
+    "dec": 14.5,
+    "resolver": "Sc",
+    "id": "NAME Bootes Dwarf Spheroidal Galaxy",
+    "queried": "Bootes I"
+  },
+  "Canes Venatici I": {
+    "ra": 202.01458,
+    "dec": 33.55583,
+    "resolver": "Sc",
+    "id": "NAME CVn I dSph",
+    "queried": "Canes Venatici I dSph"
+  },
+  "Canis Major Dwarf": {
+    "ra": 108.14583,
+    "dec": -27.66667,
+    "resolver": "N",
+    "id": "CMa Dwarf",
+    "queried": "Canis Major Dwarf"
+  },
+  "Carina Dwarf": {
+    "ra": 100.40292,
+    "dec": -50.96611,
+    "resolver": "Sc",
+    "id": "ESO 206-20A",
+    "queried": "Carina dSph"
+  },
+  "Cetus Dwarf": {
+    "ra": 6.545,
+    "dec": -11.05389,
+    "resolver": "Sc",
+    "id": "NAME Cetus Dwarf Galaxy",
+    "queried": "Cetus dSph"
+  },
+  "Crater 2": {
+    "ra": 177.31,
+    "dec": -18.413,
+    "resolver": "N",
+    "id": "Crater II Dwarf",
+    "queried": "Crater II"
+  },
+  "Draco Dwarf": {
+    "ra": 260.05973,
+    "dec": 57.92122,
+    "resolver": "Sc",
+    "id": "Z 300-12",
+    "queried": "Draco dSph"
+  },
+  "ESO 294-010": {
+    "ra": 6.63905,
+    "dec": -41.8553,
+    "resolver": "Sc",
+    "id": "ESO 294-10",
+    "queried": "ESO 294-10"
+  },
+  "Fornax Dwarf": {
+    "ra": 39.99708,
+    "dec": -34.44917,
+    "resolver": "Sc",
+    "id": "MCG-06-07-001",
+    "queried": "Fornax dSph"
+  },
+  "IC 10": {
+    "ra": 5.07223,
+    "dec": 59.30379,
+    "resolver": "Sc",
+    "id": "IC   10",
+    "queried": "IC 10"
+  },
+  "IC 1613": {
+    "ra": 16.2017,
+    "dec": 2.1195,
+    "resolver": "Sc",
+    "id": "IC 1613",
+    "queried": "IC 1613"
+  },
+  "IC 4662": {
+    "ra": 266.7883,
+    "dec": -64.63868,
+    "resolver": "Sc",
+    "id": "IC 4662",
+    "queried": "IC 4662"
+  },
+  "IC 5152": {
+    "ra": 330.673,
+    "dec": -51.29644,
+    "resolver": "Sc",
+    "id": "IC 5152",
+    "queried": "IC 5152"
+  },
+  "KKR 25": {
+    "ra": 243.45,
+    "dec": 54.37111,
+    "resolver": "N",
+    "id": "KKR 25",
+    "queried": "KKR 25"
+  },
+  "LGS 3": {
+    "ra": 15.9792,
+    "dec": 21.885,
+    "resolver": "Sc",
+    "id": "NAME Pisces I",
+    "queried": "LGS 3"
+  },
+  "Large Magellanic Cloud": {
+    "ra": 80.89417,
+    "dec": -69.75611,
+    "resolver": "Sc",
+    "id": "NAME LMC",
+    "queried": "LMC"
+  },
+  "Leo A": {
+    "ra": 149.86025,
+    "dec": 30.74639,
+    "resolver": "Sc",
+    "id": "Z 153-10",
+    "queried": "Leo A"
+  },
+  "Leo I": {
+    "ra": 152.11717,
+    "dec": 12.3065,
+    "resolver": "Sc",
+    "id": "Z  64-73",
+    "queried": "Leo I dSph"
+  },
+  "Leo II": {
+    "ra": 168.36721,
+    "dec": 22.15281,
+    "resolver": "Sc",
+    "id": "Z 126-111",
+    "queried": "Leo II dSph"
+  },
+  "Leo P": {
+    "ra": 155.43801,
+    "dec": 18.08802,
+    "resolver": "Sc",
+    "id": "NAME Leo P",
+    "queried": "Leo P"
+  },
+  "Leo T": {
+    "ra": 143.7225,
+    "dec": 17.05139,
+    "resolver": "Sc",
+    "id": "NAME Leo T",
+    "queried": "Leo T"
+  },
+  "M110 (NGC 205)": {
+    "ra": 10.09191,
+    "dec": 41.68542,
+    "resolver": "Sc",
+    "id": "M 110",
+    "queried": "NGC 205"
+  },
+  "M32": {
+    "ra": 10.67427,
+    "dec": 40.86517,
+    "resolver": "Sc",
+    "id": "M  32",
+    "queried": "M 32"
+  },
+  "NGC 147": {
+    "ra": 8.3005,
+    "dec": 48.50874,
+    "resolver": "Sc",
+    "id": "NGC   147",
+    "queried": "NGC 147"
+  },
+  "NGC 185": {
+    "ra": 9.74142,
+    "dec": 48.33751,
+    "resolver": "Sc",
+    "id": "NGC   185",
+    "queried": "NGC 185"
+  },
+  "NGC 3109": {
+    "ra": 150.77865,
+    "dec": -26.15957,
+    "resolver": "Sc",
+    "id": "NGC  3109",
+    "queried": "NGC 3109"
+  },
+  "NGC 6822 (Barnard's Galaxy)": {
+    "ra": 296.23416,
+    "dec": -14.79758,
+    "resolver": "Sc",
+    "id": "NGC  6822",
+    "queried": "NGC 6822"
+  },
+  "Pegasus Dwarf Irregular": {
+    "ra": 352.14667,
+    "dec": 14.74306,
+    "resolver": "Sc",
+    "id": "Z 431-72",
+    "queried": "DDO 216"
+  },
+  "Phoenix Dwarf": {
+    "ra": 27.77625,
+    "dec": -44.44472,
+    "resolver": "Sc",
+    "id": "NAME Phoenix Dwarf Galaxy",
+    "queried": "Phoenix Dwarf Galaxy"
+  },
+  "Reticulum II": {
+    "ra": 53.92542,
+    "dec": -54.04917,
+    "resolver": "Sc",
+    "id": "NAME Reticulum II",
+    "queried": "Reticulum II"
+  },
+  "Sagittarius Dwarf Irregular (SagDIG)": {
+    "ra": 292.49583,
+    "dec": -17.679,
+    "resolver": "N",
+    "id": "Sagittarius Dwarf Irregular",
+    "queried": "SagDIG"
+  },
+  "Sagittarius Dwarf Spheroidal": {
+    "ra": 283.8292,
+    "dec": -30.5453,
+    "resolver": "Sc",
+    "id": "NAME SDG",
+    "queried": "Sgr dSph"
+  },
+  "Sculptor Dwarf": {
+    "ra": 15.03917,
+    "dec": -33.70889,
+    "resolver": "Sc",
+    "id": "NAME Sculptor Dwarf Galaxy",
+    "queried": "Sculptor dSph"
+  },
+  "Segue 1": {
+    "ra": 151.76333,
+    "dec": 16.07361,
+    "resolver": "Sc",
+    "id": "NAME Segue 1",
+    "queried": "Segue 1"
+  },
+  "Sextans Dwarf": {
+    "ra": 153.26208,
+    "dec": -1.61472,
+    "resolver": "Si",
+    "id": "NAME Sextans dSph",
+    "queried": "Sextans dSph"
+  },
+  "Small Magellanic Cloud": {
+    "ra": 13.15833,
+    "dec": -72.80028,
+    "resolver": "Sc",
+    "id": "NAME SMC",
+    "queried": "SMC"
+  },
+  "Triangulum (M33)": {
+    "ra": 23.46207,
+    "dec": 30.66018,
+    "resolver": "Sc",
+    "id": "M  33",
+    "queried": "M 33"
+  },
+  "Tucana Dwarf": {
+    "ra": 340.45667,
+    "dec": -64.41944,
+    "resolver": "N",
+    "id": "Tucana Dwarf",
+    "queried": "Tucana Dwarf"
+  },
+  "Ursa Minor Dwarf": {
+    "ra": 227.2833,
+    "dec": 67.2225,
+    "resolver": "Sc",
+    "id": "Z 318-18",
+    "queried": "UMi dSph"
+  },
+  "WLM (Wolf–Lundmark–Melotte)": {
+    "ra": 0.49125,
+    "dec": -15.46389,
+    "resolver": "Sc",
+    "id": "MCG-03-01-015",
+    "queried": "DDO 221"
+  },
+  "Virgo Cluster": {
+    "ra": 187.6991,
+    "dec": 12.3852,
+    "resolver": "Sc",
+    "id": "NAME Virgo Cluster",
+    "queried": "Virgo Cluster"
+  },
+  "Local Supercluster (Virgo)": {
+    "ra": 187.6991,
+    "dec": 12.3852,
+    "resolver": "Sc",
+    "id": "NAME Virgo Cluster",
+    "queried": "Virgo Cluster"
+  },
+  "Fornax Cluster": {
+    "ra": 54.6225,
+    "dec": -35.4522,
+    "resolver": "Sc",
+    "id": "ACO S  373",
+    "queried": "Fornax Cluster"
+  },
+  "Coma Cluster": {
+    "ra": 194.93502,
+    "dec": 27.91246,
+    "resolver": "Sc",
+    "id": "ACO  1656",
+    "queried": "Coma Cluster"
+  },
+  "Coma Supercluster": {
+    "ra": 170.75,
+    "dec": 23.9,
+    "resolver": "Sc",
+    "id": "NAME Coma Supercluster",
+    "queried": "Coma Supercluster"
+  },
+  "Centaurus Cluster": {
+    "ra": 192.2051,
+    "dec": -41.3047,
+    "resolver": "Sc",
+    "id": "ACO  3526",
+    "queried": "Centaurus Cluster"
+  },
+  "Norma Cluster (Abell 3627)": {
+    "ra": 243.59375,
+    "dec": -60.86861,
+    "resolver": "Sc",
+    "id": "ACO  3627",
+    "queried": "ACO 3627"
+  },
+  "Great Attractor": {
+    "ra": 158.0,
+    "dec": -46.0,
+    "resolver": "Sc",
+    "id": "NAME Great Attractor",
+    "queried": "Great Attractor"
+  },
+  "Shapley Supercluster": {
+    "ra": 196.5,
+    "dec": -33.06667,
+    "resolver": "Sc",
+    "id": "NAME Shapley Supercluster",
+    "queried": "Shapley Supercluster"
+  },
+  "Hydra–Centaurus Supercluster": {
+    "ra": 198.5,
+    "dec": -33.3,
+    "resolver": "Sc",
+    "id": "NAME HYA-CEN SUPERCL",
+    "queried": "Hydra-Centaurus Supercluster"
+  },
+  "Perseus–Pisces Supercluster": {
+    "ra": 49.9482,
+    "dec": 41.515,
+    "resolver": "Sc",
+    "id": "ACO   426",
+    "queried": "Perseus Cluster"
+  },
+  "Hercules Superclusters": {
+    "ra": 236.75,
+    "dec": 18.2,
+    "resolver": "Sc",
+    "id": "NAME Hercules Supercluster",
+    "queried": "Hercules Supercluster"
+  },
+  "Corona Borealis Supercluster": {
+    "ra": 231.25,
+    "dec": 29.5,
+    "resolver": "Sc",
+    "id": "NAME CrB Supercluster",
+    "queried": "Corona Borealis Supercluster"
+  },
+  "Horologium Supercluster": {
+    "ra": 48.99781,
+    "dec": -49.11655,
+    "resolver": "N",
+    "id": "Horologium-Retic. Supercluster",
+    "queried": "Horologium Supercluster"
+  },
+  "Sculptor Supercluster": {
+    "ra": 7.925,
+    "dec": -29.81667,
+    "resolver": "Sc",
+    "id": "NAME SCULPTOR SUPERCL",
+    "queried": "Sculptor Supercluster"
+  },
+  "Boötes Void": {
+    "ra": 222.94584,
+    "dec": 45.79553,
+    "resolver": "Sc",
+    "id": "NAME Bootes Void",
+    "queried": "Bootes Void"
+  },
+  "Pisces–Cetus Supercluster Complex": {
+    "ra": 8.25,
+    "dec": -21.0,
+    "resolver": "Sc",
+    "id": "NAME PSC-CET SUPERCL",
+    "queried": "Pisces-Cetus Supercluster"
+  },
+  "Ursa Major Supercluster": {
+    "ra": 177.75,
+    "dec": 54.7,
+    "resolver": "Sc",
+    "id": "NAME SUPERCL UMA",
+    "queried": "Ursa Major Supercluster"
+  },
+  "Leo Supercluster": {
+    "ra": 165.86561,
+    "dec": 19.63046,
+    "resolver": "N",
+    "id": "Leo Supercluster",
+    "queried": "Leo Supercluster"
+  }
+}

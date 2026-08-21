@@ -1,0 +1,618 @@
+<title>Kosmos · The Universe in Three Dimensions</title>
+<style>
+  :root {
+    color-scheme: light;
+    --page: #f2f4f5;
+    --panel: #fbfcfc;
+    --ink: #17212b;
+    --ink-2: #4c5a66;
+    --muted: #8595a1;
+    --hairline: #dde4e8;
+    --ring: rgba(23, 33, 43, 0.85);
+    --c-blue: #2a78d6;
+    --c-teal: #0f9b9b;
+    --c-red: #c23434;
+    --c-amber: #e39a00;
+    --c-green: #33a047;
+    --c-violet: #6b50c8;
+    --c-pink: #e05e8f;
+    --c-bronze: #8a5314;
+    --c-cyan: #0b87b8;
+    --c-indigo: #4a58c8;
+    --c-olive: #737a16;
+    --c-rust: #bd5b1c;
+    --c-plum: #a23a9a;
+    --c-slate: #52688a;
+    --c-wine: #8f2b4e;
+    --c-forest: #1f7050;
+    --c-steel: #4a6474;
+    --c-fuchsia: #b81f7a;
+    --c-lime: #5f9e14;
+    --c-yellow: #a89a00;
+    --c-aubergine: #702f9e;
+    --c-navy: #24457e;
+    --c-mint: #0c8f66;
+    --c-mauve: #8d5765;
+    --c-coral: #c14f36;
+    --c-periwinkle: #5e6fd0;
+    --c-ice: #2f93bb;
+    --c-storm: #5c5a7a;
+    --c-ochre: #96690f;
+    --c-tangerine: #d4700a;
+    --c-clay: #9c6249;
+    --c-deepsea: #14586e;
+    --c-cerulean: #1a7fc4;
+    --c-gold: #b07d12;
+    --c-ember: #c8461a;
+    --c-terracotta: #a8502f;
+    --c-silver: #6b7884;
+    --c-moss: #4f7a1e;
+    --c-lavender: #7d5fc0;
+    --c-magenta: #b3268e;
+    --c-cobalt: #2f4bb0;
+    --c-felt: #2e7d4f;
+    --heat: #2a78d6;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --page: #0e1116;
+      --panel: #14181d;
+      --ink: #e9edf2;
+      --ink-2: #aab8c4;
+      --muted: #74828e;
+      --hairline: #242b33;
+      --ring: rgba(233, 237, 242, 0.9);
+      --c-blue: #4a90e8;
+      --c-teal: #0aa085;
+      --c-red: #e75570;
+      --c-amber: #b98800;
+      --c-green: #46a850;
+      --c-violet: #8b74e0;
+      --c-pink: #dc5f83;
+      --c-bronze: #a4671f;
+      --c-cyan: #38a8d8;
+      --heat: #5598e7;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --page: #0e1116;
+    --panel: #14181d;
+    --ink: #e9edf2;
+    --ink-2: #aab8c4;
+    --muted: #74828e;
+    --hairline: #242b33;
+    --ring: rgba(233, 237, 242, 0.9);
+    --c-blue: #4a90e8;
+    --c-teal: #0aa085;
+    --c-red: #e75570;
+    --c-amber: #b98800;
+    --c-green: #46a850;
+    --c-violet: #8b74e0;
+    --c-pink: #dc5f83;
+    --c-bronze: #a4671f;
+    --c-cyan: #38a8d8;
+    --c-indigo: #7b87e8;
+    --c-olive: #9aa32e;
+    --c-rust: #d97a3c;
+    --c-plum: #c85fc0;
+    --c-slate: #8ca3c0;
+    --c-wine: #c25572;
+    --c-forest: #3f9a72;
+    --c-steel: #83a0b2;
+    --c-fuchsia: #d94fa3;
+    --c-lime: #93bf3a;
+    --c-yellow: #ccc039;
+    --c-aubergine: #a374d6;
+    --c-navy: #7f9bd4;
+    --c-mint: #3fbd92;
+    --c-mauve: #bd8a98;
+    --c-coral: #e58a76;
+    --c-periwinkle: #98a5ef;
+    --c-ice: #8ed2ea;
+    --c-storm: #918fb5;
+    --c-ochre: #bb8f2e;
+    --c-tangerine: #ee9440;
+    --c-clay: #c9967e;
+    --c-deepsea: #4c9cb4;
+    --c-cerulean: #5fb0f0;
+    --c-gold: #d9a441;
+    --c-ember: #e8683a;
+    --c-terracotta: #d1795a;
+    --c-silver: #a4b0bc;
+    --c-moss: #7fa84a;
+    --c-lavender: #b49ae6;
+    --c-magenta: #e06ac4;
+    --c-cobalt: #7a8ee6;
+    --c-felt: #5fb083;
+    --heat: #5598e7;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--page);
+    color: var(--ink);
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    margin: 0;
+    padding: 20px clamp(14px, 3vw, 40px) 56px;
+  }
+  .mono { font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; }
+
+  .knav {
+    font: 11px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 18px;
+    display: flex;
+    gap: 8px;
+    align-items: baseline;
+  }
+  .knav a { color: var(--ink-2); text-decoration: none; }
+  .knav a:hover { color: var(--ink); }
+  .knav .cur { color: var(--ink); }
+
+  h1.ktitle {
+    font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    font-size: clamp(22px, 3vw, 30px);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin: 0 0 6px;
+    text-wrap: balance;
+  }
+  .klede { font-size: 14px; color: var(--ink-2); max-width: 62ch; line-height: 1.55; margin: 0 0 22px; }
+  .klede a { color: inherit; }
+
+  h2.ksec {
+    font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 34px 0 12px;
+    border-bottom: 1px solid var(--hairline);
+    padding-bottom: 7px;
+  }
+
+  .kcard {
+    background: var(--panel);
+    border: 1px solid var(--hairline);
+    border-radius: 10px;
+    padding: 16px;
+  }
+  .kchip {
+    font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    border: 1px solid var(--hairline);
+    color: var(--ink-2);
+    border-radius: 99px;
+    padding: 2px 9px;
+    white-space: nowrap;
+  }
+  .knote { font-size: 11px; color: var(--muted); line-height: 1.5; }
+  .kfoot { margin-top: 42px; font-size: 11px; color: var(--muted); border-top: 1px solid var(--hairline); padding-top: 12px; }
+  .kfoot a { color: inherit; }
+  a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; }
+
+
+  .wrap { max-width: 1000px; }
+  .stage {
+    position: relative; border: 1px solid var(--hairline); border-radius: 10px;
+    background: var(--panel); overflow: hidden; touch-action: none; cursor: grab;
+  }
+  .stage.drag { cursor: grabbing; }
+  .stage:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+  .stage canvas { display: block; width: 100%; height: auto; }
+
+  .hud {
+    position: absolute; left: 10px; top: 10px;
+    font: 10px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    color: var(--muted); line-height: 1.7; pointer-events: none;
+    text-shadow: 0 0 4px var(--panel), 0 0 4px var(--panel);
+  }
+  .hud b { color: var(--ink-2); font-weight: 600; }
+
+  .tip {
+    position: absolute; pointer-events: none; opacity: 0; transition: opacity .12s;
+    background: var(--page); border: 1px solid var(--hairline); border-radius: 7px;
+    padding: 8px 11px; max-width: 260px; box-shadow: 0 4px 18px rgba(0,0,0,.14);
+  }
+  .tip.on { opacity: 1; }
+  .tip h4 {
+    margin: 0 0 3px; font: 700 12px ui-monospace, "SF Mono", Consolas, Menlo, monospace;
+    color: var(--ink);
+  }
+  .tip p {
+    margin: 0; font: 10px ui-monospace, "SF Mono", Consolas, Menlo, monospace;
+    color: var(--muted); line-height: 1.6;
+  }
+
+  .ctrl { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0 0; align-items: center; }
+  .cbtn {
+    font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    background: var(--panel); border: 1px solid var(--hairline); color: var(--ink-2);
+    border-radius: 5px; padding: 5px 10px; cursor: pointer;
+  }
+  .cbtn:hover { color: var(--ink); border-color: var(--ink-2); }
+  .cbtn[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--page); }
+  .ctrl .sep { flex: 1 1 12px; }
+  .help {
+    font-size: 11px; color: var(--muted); line-height: 1.65; margin: 12px 0 0; max-width: 74ch;
+  }
+  .help b { color: var(--ink-2); font-weight: 600; }
+  .help kbd {
+    font: 10px ui-monospace, Consolas, Menlo, monospace; color: var(--ink);
+    background: color-mix(in oklab, var(--ink) 8%, transparent);
+    border-radius: 3px; padding: 1px 5px;
+  }
+
+  .open {
+    margin: 30px 0 0; padding: 16px 18px;
+    background: var(--panel); border: 1px solid var(--hairline);
+    border-left: 3px solid var(--c-amber); border-radius: 8px;
+  }
+  .open h2 {
+    font-family: ui-monospace, "SF Mono", Consolas, Menlo, monospace;
+    font-size: 13px; font-weight: 700; color: var(--ink); margin: 0 0 4px;
+  }
+  .open > p { font-size: 12.5px; color: var(--ink-2); line-height: 1.65; margin: 0 0 12px; }
+  .open ol { margin: 0; padding-left: 20px; }
+  .open li { font-size: 12.5px; color: var(--ink-2); line-height: 1.7; margin-bottom: 9px; }
+  .open li b { color: var(--ink); font-weight: 600; }
+  .open li em { font-style: italic; }
+</style>
+
+<h1 class="ktitle">The Universe in Three Dimensions</h1>
+<p class="klede">Everything catalogued here, placed by the direction it lies in and the distance to it, on a single radial axis that is logarithmic because nothing else could hold both the Oort Cloud and the horizon. Drag to turn it over. The rings are decades — each one is ten times further out than the last.</p>
+
+<div class="wrap">
+  <div class="stage" id="stage" tabindex="0" role="application"
+       aria-label="Three-dimensional map of catalogued objects. Drag to rotate, scroll or pinch to zoom. Arrow keys turn it, plus and minus zoom, zero resets.">
+    <canvas id="sky" width="1900" height="1180"></canvas>
+    <div class="hud" id="hud"></div>
+    <div class="tip" id="tip"></div>
+  </div>
+
+  <div class="ctrl" id="ctrl"></div>
+
+  <p class="help">
+    <b>Drag</b> to turn the sky over. <b>Scroll</b> or <b>pinch</b> to fly in and out through the
+    scales. On a touchscreen, <b>two fingers</b> work the way they do on a map — pinch to zoom,
+    twist to swing the bearing, slide up and down to tilt. <kbd>←</kbd> <kbd>→</kbd> swing,
+    <kbd>↑</kbd> <kbd>↓</kbd> tilt, <kbd>+</kbd> <kbd>−</kbd> zoom, <kbd>0</kbd> resets.
+    Tap anything to open its entry.
+  </p>
+
+  <section class="open">
+    <h2>What this map does and does not know</h2>
+    <p>The radial axis is honest and the angles are honest, but they are not honest in the same way, and the difference is drawn rather than hidden.</p>
+    <ol>
+      <li><b>A dot means we know which way it lies.</b> The direction comes from the name resolver at Strasbourg — SIMBAD, then NED — not from anybody's memory, and every position on the page traces back to a catalogue entry.</li>
+      <li><b>A ring means we know how far but not which way</b>, so the map draws the whole sphere that the distance allows. The Sloan and CfA2 Great Walls are rings because they are tens of degrees across and have no single position to resolve. Structures we are <em>inside</em> are rings too, drawn at half their extent, which is where their edge actually is from here.</li>
+      <li><b>The radius is the logarithm of distance</b>, so shapes are wrong on purpose. A sphere is still a sphere and directions are exact, but anything with real extent is squashed toward us — the near side of a supercluster is pushed out and the far side pulled in. This is the only projection in which the Oort Cloud and the horizon appear in one picture, and the cost is that no volume here is the right shape.</li>
+      <li><b>Everything is drawn as it is now</b>, not as it looks. Light from the far rings left before the Earth existed. A map of where things <em>are</em> and a map of what you <em>see</em> diverge completely past the Local Group, and this is the first.</li>
+      <li><b>Distance is comoving</b>, matching <a href="/scales">the ladder</a>. Redshift is not converted to a light-travel time anywhere on this page.</li>
+    </ol>
+  </section>
+</div>
+
+<p class="kfoot">From the Celestial Objects and Cosmic Structures databases in Notion, with positions resolved through CDS Sesame. Sizes set the dot size only; nothing here is drawn to scale, and at these ranges nothing could be.</p>
+
+<script id="data" type="application/json">{"items":[{"name":"Solar System (to the heliopause)","kind":"local","dist":0.0019,"size":0.0038,"ra":null,"dec":null,"href":"/scales#solar-system-to-the-heliopause","inside":true,"form":"shell","notes":"Where the solar wind gives way to the interstellar medium, about 120 astronomical units out. Voyager 1 crossed it in 2012 and is the only object to have sent back a measurement fro","slug":"solar-system-to-the-heliopause"},{"name":"Oort Cloud","kind":"local","dist":1.6,"size":3.2,"ra":null,"dec":null,"href":"/scales#oort-cloud","inside":true,"form":"shell","notes":"A shell of icy bodies half way to the nearest star, inferred entirely from where long-period comets come from — nothing in it has ever been seen directly.","slug":"oort-cloud"},{"name":"Local Interstellar Cloud","kind":"local","dist":15.0,"size":30,"ra":null,"dec":null,"href":"/scales#local-interstellar-cloud","inside":true,"form":"shell","notes":"The wisp of warm interstellar gas the Sun happens to be passing through, and will leave in a few thousand years.","slug":"local-interstellar-cloud"},{"name":"Local Bubble","kind":"local","dist":500.0,"size":1000,"ra":null,"dec":null,"href":"/scales#local-bubble","inside":true,"form":"shell","notes":"A cavity blown in the interstellar medium by supernovae about 14 million years ago, which is why the sky nearby is unusually clear of dust. Its surface is where most nearby star fo","slug":"local-bubble"},{"name":"Orion Arm","kind":"local","dist":5000.0,"size":10000,"ra":null,"dec":null,"href":"/scales#orion-arm","inside":true,"form":"shell","notes":"The spur of the Milky Way's spiral we sit in, between the Sagittarius and Perseus arms — not a major arm, which was only established once radio surveys could map the gas.","slug":"orion-arm"},{"name":"Canis Major Dwarf","kind":"galaxy","dist":25000,"size":null,"ra":null,"dec":null,"href":"/cosmos#lg-canis-major-dwarf","inside":false,"form":"shell","notes":"The closest claimed satellite, on the far side of the galactic disc and so obscured that its existence as a distinct galaxy is still disputed — it may be a warp in the Milky Way's ","slug":"canis-major-dwarf"},{"name":"Milky Way","kind":"galaxy","dist":52500.0,"size":105000,"ra":null,"dec":null,"href":"/scales#milky-way","inside":true,"form":"shell","notes":"Our galaxy, seen edge-on from inside — the reason its shape took until the 1920s to settle. A supermassive black hole of 4.3 million solar masses sits at the centre.","slug":"milky-way"},{"name":"Sagittarius Dwarf Spheroidal","kind":"galaxy","dist":65000,"size":10000,"ra":null,"dec":null,"href":"/cosmos#lg-sagittarius-dwarf-spheroidal","inside":false,"form":"shell","notes":"Caught mid-destruction: it is passing through the Milky Way's disc and being pulled into a stream of stars that wraps right around the sky. Found only in 1994, because it is behind","slug":"sagittarius-dwarf-spheroidal"},{"name":"Segue 1","kind":"galaxy","dist":75000,"size":null,"ra":null,"dec":null,"href":"/cosmos#lg-segue-1","inside":false,"form":"shell","notes":"About a thousand times fainter than a normal dwarf galaxy and perhaps the most dark-matter-dominated object known — a few hundred stars held together by roughly a thousand times th","slug":"segue-1"},{"name":"Reticulum II","kind":"galaxy","dist":100000,"size":null,"ra":null,"dec":null,"href":"/cosmos#lg-reticulum-ii","inside":false,"form":"shell","notes":"Found in Dark Energy Survey images in 2015. Its stars are unusually rich in r-process elements, which is evidence that a single neutron-star merger enriched the whole galaxy.","slug":"reticulum-ii"},{"name":"Large Magellanic Cloud","kind":"galaxy","dist":163000,"size":32200,"ra":null,"dec":null,"href":"/cosmos#lg-large-magellanic-cloud","inside":false,"form":"shell","notes":"The largest satellite, visible to the naked eye from the southern hemisphere as a detached piece of the Milky Way. It hosts the Tarantula Nebula, the most active star-forming regio","slug":"large-magellanic-cloud"},{"name":"Bootes I","kind":"galaxy","dist":197000,"size":null,"ra":null,"dec":null,"href":"/cosmos#lg-bootes-i","inside":false,"form":"shell","notes":"One of the Sloan Digital Sky Survey's haul of ultra-faint companions, found in 2006 by spotting a slight over-density of stars rather than by seeing anything.","slug":"bootes-i"},{"name":"Small Magellanic Cloud","kind":"galaxy","dist":200000,"size":18900,"ra":null,"dec":null,"href":"/cosmos#lg-small-magellanic-cloud","inside":false,"form":"shell","notes":"The LMC's smaller companion, being torn apart by it: the Magellanic Stream of gas trailing both clouds is the evidence. Henrietta Leavitt found the Cepheid period–luminosity law in","slug":"small-magellanic-cloud"},{"name":"Ursa Minor Dwarf","kind":"galaxy","dist":200000,"size":2000,"ra":null,"dec":null,"href":"/cosmos#lg-ursa-minor-dwarf","inside":false,"form":"shell","notes":"One of the original faint companions found on photographic plates in the 1950s; almost entirely old stars, with no gas and no recent star formation.","slug":"ursa-minor-dwarf"},{"name":"Draco Dwarf","kind":"galaxy","dist":260000,"size":2700,"ra":null,"dec":null,"href":"/cosmos#lg-draco-dwarf","inside":false,"form":"shell","notes":"Very high mass-to-light ratio — its stars move far faster than their own gravity explains — which made it one of the first strong cases for dark matter in a small galaxy.","slug":"draco-dwarf"},{"name":"Sextans Dwarf","kind":"galaxy","dist":290000,"size":8400,"ra":null,"dec":null,"href":"/cosmos#lg-sextans-dwarf","inside":false,"form":"shell","notes":"Extremely diffuse — spread over a degree of sky but so faint it went unnoticed until 1990.","slug":"sextans-dwarf"},{"name":"Sculptor Dwarf","kind":"galaxy","dist":290000,"size":1600,"ra":null,"dec":null,"href":"/cosmos#lg-sculptor-dwarf","inside":false,"form":"shell","notes":"The first dwarf spheroidal ever found, by Harlow Shapley in 1937 on plates from Boyden Observatory; the class was defined around it.","slug":"sculptor-dwarf"},{"name":"Carina Dwarf","kind":"galaxy","dist":330000,"size":1600,"ra":null,"dec":null,"href":"/cosmos#lg-carina-dwarf","inside":false,"form":"shell","notes":"Unusual among the dwarf spheroidals for having formed stars in several distinct bursts rather than all at once, which its colour-magnitude diagram records as separate populations.","slug":"carina-dwarf"},{"name":"Crater 2","kind":"galaxy","dist":380000,"size":7000,"ra":null,"dec":null,"href":"/cosmos#lg-crater-2","inside":false,"form":"shell","notes":"The 'feeble giant': one of the largest satellites by size but among the faintest, with stars moving so slowly that it appears to hold much less dark matter than its neighbours.","slug":"crater-2"},{"name":"Fornax Dwarf","kind":"galaxy","dist":460000,"size":6000,"ra":null,"dec":null,"href":"/cosmos#lg-fornax-dwarf","inside":false,"form":"shell","notes":"The brightest of the Milky Way's dwarf spheroidals, and the only one with its own globular clusters — six of them, which is hard to explain for a galaxy this small.","slug":"fornax-dwarf"},{"name":"Leo II","kind":"galaxy","dist":690000,"size":4000,"ra":null,"dec":null,"href":"/cosmos#lg-leo-ii","inside":false,"form":"shell","notes":"A distant, old companion that stopped forming stars billions of years ago; almost all its light comes from stars older than 8 billion years.","slug":"leo-ii"},{"name":"Canes Venatici I","kind":"galaxy","dist":720000,"size":null,"ra":null,"dec":null,"href":"/cosmos#lg-canes-venatici-i","inside":false,"form":"shell","notes":"Found in Sloan data in 2006, out at the edge of the Milky Way's satellite system.","slug":"canes-venatici-i"},{"name":"Leo I","kind":"galaxy","dist":820000,"size":2000,"ra":null,"dec":null,"href":"/cosmos#lg-leo-i","inside":false,"form":"shell","notes":"The most distant satellite still bound to the Milky Way, and moving fast enough that its orbit is used to weigh the galaxy's dark halo.","slug":"leo-i"},{"name":"Milky Way dark halo","kind":"galaxy","dist":1000000.0,"size":2000000,"ra":null,"dec":null,"href":"/scales#milky-way-dark-halo","inside":true,"form":"shell","notes":"The invisible mass the galaxy actually sits in, five times heavier than everything that shines and reaching far past the visible disc. Its size is inferred from how the outer satel","slug":"milky-way-dark-halo"},{"name":"Phoenix Dwarf","kind":"galaxy","dist":1400000,"size":3000,"ra":null,"dec":null,"href":"/cosmos#lg-phoenix-dwarf","inside":false,"form":"shell","notes":"Another transitional dwarf, with an old stellar body and a detached cloud of gas that may have been blown out of it.","slug":"phoenix-dwarf"},{"name":"Leo T","kind":"galaxy","dist":1400000,"size":2000,"ra":null,"dec":null,"href":"/cosmos#lg-leo-t","inside":false,"form":"shell","notes":"The faintest known galaxy still holding neutral hydrogen, sitting right at the boundary where a galaxy's gas is stripped away by its surroundings.","slug":"leo-t"},{"name":"NGC 6822 (Barnard's Galaxy)","kind":"galaxy","dist":1600000,"size":7000,"ra":null,"dec":null,"href":"/cosmos#lg-ngc-6822-barnard-s-galaxy","inside":false,"form":"shell","notes":"Found by E. E. Barnard in 1884 with a 5-inch refractor. Hubble's 1925 study of its Cepheids was the first to place a galaxy firmly outside the Milky Way.","slug":"ngc-6822-barnard-s-galaxy"},{"name":"NGC 185","kind":"galaxy","dist":2080000,"size":8000,"ra":null,"dec":null,"href":"/cosmos#lg-ngc-185","inside":false,"form":"shell","notes":"A satellite of Andromeda with an unusual amount of gas and dust for a dwarf elliptical, and a small amount of ongoing star formation.","slug":"ngc-185"},{"name":"IC 10","kind":"galaxy","dist":2200000,"size":5000,"ra":null,"dec":null,"href":"/cosmos#lg-ic-10","inside":false,"form":"shell","notes":"The only starburst galaxy in the Local Group — forming stars far faster than its size suggests — hidden behind the Milky Way's dust, which is why it was catalogued late.","slug":"ic-10"},{"name":"IC 1613","kind":"galaxy","dist":2380000,"size":10000,"ra":null,"dec":null,"href":"/cosmos#lg-ic-1613","inside":false,"form":"shell","notes":"Unusually free of dust, which makes its stars easy to measure individually; it is one of the standard laboratories for calibrating the distance ladder.","slug":"ic-1613"},{"name":"Cetus Dwarf","kind":"galaxy","dist":2500000,"size":3000,"ra":null,"dec":null,"href":"/cosmos#lg-cetus-dwarf","inside":false,"form":"shell","notes":"An isolated dwarf spheroidal — rare, since almost all of them orbit a large galaxy, and evidence that a galaxy can lose its gas without a big neighbour to strip it.","slug":"cetus-dwarf"},{"name":"NGC 147","kind":"galaxy","dist":2530000,"size":10000,"ra":null,"dec":null,"href":"/cosmos#lg-ngc-147","inside":false,"form":"shell","notes":"A companion to NGC 185 as well as to Andromeda; the pair orbit each other.","slug":"ngc-147"},{"name":"Andromeda (M31)","kind":"galaxy","dist":2540000,"size":152000,"ra":null,"dec":null,"href":"/cosmos#lg-andromeda-m31","inside":false,"form":"shell","notes":"The largest galaxy in the Local Group and the most distant thing visible to the naked eye. Hubble's Cepheids in it proved in 1924 that the spiral nebulae are other galaxies; it is ","slug":"andromeda-m31"},{"name":"Leo A","kind":"galaxy","dist":2600000,"size":4000,"ra":null,"dec":null,"href":"/cosmos#lg-leo-a","inside":false,"form":"shell","notes":"Very metal-poor and still forming stars, which makes it a nearby stand-in for the kind of galaxy that was common in the early universe.","slug":"leo-a"},{"name":"LGS 3","kind":"galaxy","dist":2600000,"size":5000,"ra":null,"dec":null,"href":"/cosmos#lg-lgs-3","inside":false,"form":"shell","notes":"A transitional object between a dwarf irregular and a dwarf spheroidal — it still holds gas but has nearly stopped forming stars.","slug":"lgs-3"},{"name":"M32","kind":"galaxy","dist":2650000,"size":6500,"ra":null,"dec":null,"href":"/cosmos#lg-m32","inside":false,"form":"shell","notes":"A rare compact elliptical: extraordinarily dense, and probably the stripped core of a larger galaxy that Andromeda has already eaten.","slug":"m32"},{"name":"M110 (NGC 205)","kind":"galaxy","dist":2690000,"size":17000,"ra":null,"dec":null,"href":"/cosmos#lg-m110-ngc-205","inside":false,"form":"shell","notes":"Andromeda's other bright companion, with dust lanes and young stars in its core — unusual for a dwarf elliptical, and a sign of recent gas accretion.","slug":"m110-ngc-205"},{"name":"Triangulum (M33)","kind":"galaxy","dist":2730000,"size":60000,"ra":null,"dec":null,"href":"/cosmos#lg-triangulum-m33","inside":false,"form":"shell","notes":"The third-largest member and the smallest spiral, possibly a satellite of Andromeda on a long orbit. Under a dark sky it is at the edge of naked-eye visibility.","slug":"triangulum-m33"},{"name":"Pegasus Dwarf Irregular","kind":"galaxy","dist":3000000,"size":7000,"ra":null,"dec":null,"href":"/cosmos#lg-pegasus-dwarf-irregular","inside":false,"form":"shell","notes":"An isolated dwarf on the far side of the Local Group from the Milky Way.","slug":"pegasus-dwarf-irregular"},{"name":"WLM (Wolf–Lundmark–Melotte)","kind":"galaxy","dist":3040000,"size":8000,"ra":null,"dec":null,"href":"/cosmos#lg-wlm-wolf-lundmark-melotte","inside":false,"form":"shell","notes":"One of the most isolated members, which makes it useful: whatever shaped it, it was not a large neighbour.","slug":"wlm-wolf-lundmark-melotte"},{"name":"Tucana Dwarf","kind":"galaxy","dist":3200000,"size":3000,"ra":null,"dec":null,"href":"/cosmos#lg-tucana-dwarf","inside":false,"form":"shell","notes":"The most isolated dwarf spheroidal known, out at the far edge of the group with no obvious galaxy to have stripped it.","slug":"tucana-dwarf"},{"name":"Aquarius Dwarf (DDO 210)","kind":"galaxy","dist":3200000,"size":3000,"ra":null,"dec":null,"href":"/cosmos#lg-aquarius-dwarf-ddo-210","inside":false,"form":"shell","notes":"A small, gas-rich dwarf far from either large galaxy, moving slowly enough that it may not be bound to the group at all.","slug":"aquarius-dwarf-ddo-210"},{"name":"Sagittarius Dwarf Irregular (SagDIG)","kind":"galaxy","dist":3400000,"size":5000,"ra":null,"dec":null,"href":"/cosmos#lg-sagittarius-dwarf-irregular-sagdig","inside":false,"form":"shell","notes":"The most metal-poor galaxy in the Local Group — its stars formed from gas that has barely been enriched by earlier generations.","slug":"sagittarius-dwarf-irregular-sagdig"},{"name":"NGC 3109","kind":"galaxy","dist":4300000,"size":25000,"ra":null,"dec":null,"href":"/cosmos#lg-ngc-3109","inside":false,"form":"shell","notes":"Large enough to have a rotating disc, at the very edge of the Local Group — some analyses put it and its companions outside the group entirely, on their way past.","slug":"ngc-3109"},{"name":"Antlia Dwarf","kind":"galaxy","dist":4300000,"size":3000,"ra":null,"dec":null,"href":"/cosmos#lg-antlia-dwarf","inside":false,"form":"shell","notes":"Paired with NGC 3109 out beyond the group's main body; the two may have passed close to each other in the past.","slug":"antlia-dwarf"},{"name":"Local Group","kind":"group","dist":5000000.0,"size":10000000,"ra":null,"dec":null,"href":"/scales#local-group","inside":true,"form":"shell","notes":"Everything gravitationally bound to us: the Milky Way, Andromeda, Triangulum and a swarm of dwarfs. Named by Hubble. It is falling toward Virgo at about 600 km/s.","slug":"local-group"},{"name":"Leo P","kind":"galaxy","dist":5300000,"size":3000,"ra":null,"dec":null,"href":"/cosmos#lg-leo-p","inside":false,"form":"shell","notes":"Found in 2013 by a radio survey looking for gas rather than light. Extremely metal-poor and still forming stars — about as close to a pristine galaxy as anything nearby.","slug":"leo-p"},{"name":"IC 5152","kind":"galaxy","dist":5800000,"size":8000,"ra":null,"dec":null,"href":"/cosmos#lg-ic-5152","inside":false,"form":"shell","notes":"An outlying dwarf with a bright foreground star sitting almost on top of it, which complicated its study for decades.","slug":"ic-5152"},{"name":"ESO 294-010","kind":"galaxy","dist":6100000,"size":3000,"ra":null,"dec":null,"href":"/cosmos#lg-eso-294-010","inside":false,"form":"shell","notes":"A transitional dwarf on the group's outskirts, holding a small pocket of gas.","slug":"eso-294-010"},{"name":"KKR 25","kind":"galaxy","dist":6400000,"size":3000,"ra":null,"dec":null,"href":"/cosmos#lg-kkr-25","inside":false,"form":"shell","notes":"One of the most isolated dwarf spheroidals known, with no large galaxy within millions of light-years.","slug":"kkr-25"},{"name":"IC 4662","kind":"galaxy","dist":8000000,"size":10000,"ra":null,"dec":null,"href":"/cosmos#lg-ic-4662","inside":false,"form":"shell","notes":"A starburst dwarf at the far edge of the group's gravitational reach, forming stars vigorously despite its isolation.","slug":"ic-4662"},{"name":"Local Sheet","kind":"group","dist":11500000.0,"size":23000000,"ra":null,"dec":null,"href":"/scales#local-sheet","inside":true,"form":"shell","notes":"A flattened sheet of galaxies, only about 5 million light-years thick, that the Local Group sits inside and moves with. It faces the Local Void, which is pushing it.","slug":"local-sheet"},{"name":"Local Volume","kind":"group","dist":16500000.0,"size":33000000,"ra":null,"dec":null,"href":"/scales#local-volume","inside":true,"form":"shell","notes":"The observational sphere of about 10 megaparsecs in which individual galaxies can be resolved into stars, which makes it the region where distances are measured rather than inferre","slug":"local-volume"},{"name":"Local Void","kind":"void","dist":23000000,"size":150000000,"ra":null,"dec":null,"href":"/scales#local-void","inside":false,"form":"shell","notes":"An enormous emptiness beginning right at our doorstep and stretching away behind Sagittarius. Its lack of matter pushes the Local Sheet away at about 260 km/s — we are being repell","slug":"local-void"},{"name":"Virgo Cluster","kind":"cluster","dist":54000000,"size":15000000,"ra":null,"dec":null,"href":"/scales#virgo-cluster","inside":false,"form":"shell","notes":"The nearest large cluster and the gravitational anchor of our supercluster, with the giant elliptical M87 — and its imaged black hole — at the centre. Catalogued as a knot of nebul","slug":"virgo-cluster"},{"name":"Local Supercluster (Virgo)","kind":"supercluster","dist":55000000.0,"size":110000000,"ra":null,"dec":null,"href":"/scales#local-supercluster-virgo","inside":true,"form":"shell","notes":"The flattened concentration of groups centred on the Virgo Cluster, mapped by Gérard de Vaucouleurs when the idea that clusters themselves cluster was still controversial. We are o","slug":"local-supercluster-virgo"},{"name":"Fornax Cluster","kind":"cluster","dist":62000000,"size":6000000,"ra":null,"dec":null,"href":"/scales#fornax-cluster","inside":false,"form":"shell","notes":"The second-nearest cluster, small but well studied because it sits in a clean part of the southern sky.","slug":"fornax-cluster"},{"name":"Centaurus Cluster","kind":"cluster","dist":155000000,"size":15000000,"ra":null,"dec":null,"href":"/scales#centaurus-cluster","inside":false,"form":"shell","notes":"One of the nearest rich clusters, and one of the brightest X-ray sources in the sky because of the hot gas trapped between its galaxies.","slug":"centaurus-cluster"},{"name":"Hydra–Centaurus Supercluster","kind":"supercluster","dist":160000000,"size":300000000,"ra":null,"dec":null,"href":"/scales#hydra-centaurus-supercluster","inside":false,"form":"shell","notes":"The nearest neighbouring supercluster, now understood as part of Laniakea rather than separate from it — the redrawing that Laniakea's flow map forced.","slug":"hydra-centaurus-supercluster"},{"name":"Pavo–Indus Supercluster","kind":"supercluster","dist":200000000,"size":300000000,"ra":null,"dec":null,"href":"/scales#pavo-indus-supercluster","inside":false,"form":"shell","notes":"A southern arm of Laniakea, running through the constellations Pavo, Indus and Telescopium.","slug":"pavo-indus-supercluster"},{"name":"Norma Cluster (Abell 3627)","kind":"cluster","dist":220000000,"size":20000000,"ra":null,"dec":null,"href":"/scales#norma-cluster-abell-3627","inside":false,"form":"shell","notes":"The densest thing at the heart of the Great Attractor, hidden behind our own galaxy's dust and only properly measured in the 1990s.","slug":"norma-cluster-abell-3627"},{"name":"Perseus–Pisces Supercluster","kind":"supercluster","dist":250000000,"size":300000000,"ra":null,"dec":null,"href":"/scales#perseus-pisces-supercluster","inside":false,"form":"shell","notes":"One of the most striking filaments in the nearby universe: a chain of clusters strung out over 300 million light-years, nearly end-on to us.","slug":"perseus-pisces-supercluster"},{"name":"Great Attractor","kind":"attractor","dist":250000000,"size":100000000,"ra":null,"dec":null,"href":"/scales#great-attractor","inside":false,"form":"shell","notes":"The gravitational low point Laniakea drains toward, lying behind the plane of the Milky Way — the 'Zone of Avoidance' — which is why it took infrared and X-ray surveys to find at a","slug":"great-attractor"},{"name":"Laniakea Supercluster","kind":"supercluster","dist":260000000.0,"size":520000000,"ra":null,"dec":null,"href":"/scales#laniakea-supercluster","inside":true,"form":"shell","notes":"Defined not by where galaxies are but by where they are going: Tully and colleagues mapped the peculiar velocities of 8,000 galaxies and drew the boundary where flows diverge. Ever","slug":"laniakea-supercluster"},{"name":"CfA2 Great Wall","kind":"filament","dist":300000000,"size":500000000,"ra":null,"dec":null,"href":"/scales#cfa2-great-wall","inside":false,"form":"shell","notes":"The first structure found that was too big for anyone's model: Geller and Huchra's redshift survey turned up a sheet of galaxies 500 million light-years long and only 15 million th","slug":"cfa2-great-wall"},{"name":"Coma Supercluster","kind":"supercluster","dist":300000000,"size":300000000,"ra":null,"dec":null,"href":"/scales#coma-supercluster","inside":false,"form":"shell","notes":"Coma and Leo together, sitting at the densest point of the first great wall ever mapped.","slug":"coma-supercluster"},{"name":"Coma Cluster","kind":"cluster","dist":320000000,"size":20000000,"ra":null,"dec":null,"href":"/scales#coma-cluster","inside":false,"form":"shell","notes":"Where dark matter was found. Zwicky weighed it in 1933 from how fast its galaxies move and concluded that most of its mass is invisible — a result ignored for forty years.","slug":"coma-cluster"},{"name":"The cosmic web","kind":"cosmological","dist":500000000.0,"size":1000000000,"ra":null,"dec":null,"href":"/scales#the-cosmic-web","inside":true,"form":"shell","notes":"The pattern everything above belongs to: matter drawn by gravity into sheets, then filaments, then knots at the intersections, with voids opening between them. Simulations grow it ","slug":"the-cosmic-web"},{"name":"Pisces–Cetus Supercluster Complex","kind":"filament","dist":500000000.0,"size":1000000000,"ra":null,"dec":null,"href":"/scales#pisces-cetus-supercluster-complex","inside":true,"form":"shell","notes":"The galaxy filament Laniakea itself is one strand of, about a billion light-years long — the largest structure we can say we are part of.","slug":"pisces-cetus-supercluster-complex"},{"name":"South Pole Wall","kind":"filament","dist":500000000,"size":1400000000,"ra":null,"dec":null,"href":"/scales#south-pole-wall","inside":false,"form":"shell","notes":"Hidden behind the Milky Way in the southern sky and only mapped in 2020, by inferring where mass must be from how nearby galaxies move rather than by seeing it.","slug":"south-pole-wall"},{"name":"Sculptor Supercluster","kind":"supercluster","dist":500000000,"size":300000000,"ra":null,"dec":null,"href":"/scales#sculptor-supercluster","inside":false,"form":"shell","notes":"A long southern filament, part of the complex that Laniakea itself belongs to.","slug":"sculptor-supercluster"},{"name":"Hercules Superclusters","kind":"supercluster","dist":500000000,"size":300000000,"ra":null,"dec":null,"href":"/scales#hercules-superclusters","inside":false,"form":"shell","notes":"A pair of superclusters embedded in the CfA2 Great Wall, at the far end from Coma.","slug":"hercules-superclusters"},{"name":"Homogeneity scale","kind":"cosmological","dist":600000000.0,"size":1200000000,"ra":null,"dec":null,"href":"/scales#homogeneity-scale","inside":true,"form":"shell","notes":"Above about 250–370 megaparsecs the universe stops looking clumpy and starts looking the same everywhere — the assumption cosmology is built on, and a measurement rather than an ar","slug":"homogeneity-scale"},{"name":"Quipu Superstructure","kind":"filament","dist":650000000,"size":1300000000,"ra":null,"dec":null,"href":"/scales#quipu-superstructure","inside":false,"form":"shell","notes":"Reported in 2025 as the most massive structure yet identified, named for the Andean knotted cords it resembles. As with every claimed 'largest structure', how much of it is one obj","slug":"quipu-superstructure"},{"name":"Shapley Supercluster","kind":"supercluster","dist":650000000,"size":650000000,"ra":null,"dec":null,"href":"/scales#shapley-supercluster","inside":false,"form":"shell","notes":"The largest concentration of mass in the nearby universe, and the direction Laniakea itself appears to be heading. Harlow Shapley found the over-density in the 1930s; its full exte","slug":"shapley-supercluster"},{"name":"Boötes Void","kind":"void","dist":700000000,"size":330000000,"ra":null,"dec":null,"href":"/scales#bootes-void","inside":false,"form":"shell","notes":"The Great Nothing: a hole 330 million light-years across with almost nothing in it. As Greg Aldering put it, if the Milky Way had been in its centre we would not have known there w","slug":"bootes-void"},{"name":"Horologium Supercluster","kind":"supercluster","dist":700000000,"size":550000000,"ra":null,"dec":null,"href":"/scales#horologium-supercluster","inside":false,"form":"shell","notes":"One of the largest superclusters known, in the far southern sky.","slug":"horologium-supercluster"},{"name":"Dipole Repeller","kind":"attractor","dist":800000000,"size":300000000,"ra":null,"dec":null,"href":"/scales#dipole-repeller","inside":false,"form":"shell","notes":"Not a thing but the lack of one: an underdense region on the opposite side of the sky from the Great Attractor, pushing us away as effectively as the Attractor pulls. Our motion re","slug":"dipole-repeller"},{"name":"Corona Borealis Supercluster","kind":"supercluster","dist":950000000,"size":100000000,"ra":null,"dec":null,"href":"/scales#corona-borealis-supercluster","inside":false,"form":"shell","notes":"Unusually compact and massive for its size, and probably still collapsing under its own gravity rather than expanding with everything else.","slug":"corona-borealis-supercluster"},{"name":"KBC Void (Local Hole)","kind":"void","dist":1000000000.0,"size":2000000000,"ra":null,"dec":null,"href":"/scales#kbc-void-local-hole","inside":true,"form":"shell","notes":"The claim that the Milky Way sits near the centre of a region emptier than average by about a fifth, which if true would bias every local measurement of the expansion rate — one pr","slug":"kbc-void-local-hole"},{"name":"Sloan Great Wall","kind":"filament","dist":1000000000,"size":1370000000,"ra":null,"dec":null,"href":"/scales#sloan-great-wall","inside":false,"form":"shell","notes":"Found in Sloan Digital Sky Survey data and nearly three times the length of the CfA2 wall — big enough that whether it counts as one structure or several is a question about defini","slug":"sloan-great-wall"},{"name":"Giant Void (Canes Venatici)","kind":"void","dist":1500000000,"size":1300000000,"ra":null,"dec":null,"href":"/scales#giant-void-canes-venatici","inside":false,"form":"shell","notes":"One of the largest confirmed voids, and a reminder that most of the universe's volume is empty even though most of its mass is not.","slug":"giant-void-canes-venatici"},{"name":"Eridanus Supervoid","kind":"void","dist":3000000000,"size":1800000000,"ra":null,"dec":null,"href":"/scales#eridanus-supervoid","inside":false,"form":"shell","notes":"Proposed to explain the CMB Cold Spot — an unusually cool patch of the microwave background — as light losing energy crossing a vast emptiness. The explanation is still argued over","slug":"eridanus-supervoid"},{"name":"Hubble sphere","kind":"cosmological","dist":14400000000.0,"size":28800000000,"ra":null,"dec":null,"href":"/scales#hubble-sphere","inside":true,"form":"shell","notes":"The distance at which space is receding from us at the speed of light — 14.4 billion light-years out. Counter-intuitively we can still see things beyond it, because the sphere itse","slug":"hubble-sphere"},{"name":"Hercules–Corona Borealis Great Wall","kind":"filament","dist":15200000000,"size":10000000000,"ra":null,"dec":null,"href":"/scales#hercules-corona-borealis-great-wall","inside":false,"form":"shell","notes":"Claimed from a clustering of gamma-ray bursts and far larger than the scale at which the universe is supposed to be uniform. Whether it is real or an artefact of how bursts are fou","slug":"hercules-corona-borealis-great-wall"},{"name":"Surface of last scattering","kind":"cosmological","dist":45600000000,"size":91200000000,"ra":null,"dec":null,"href":"/scales#surface-of-last-scattering","inside":false,"form":"shell","notes":"The shell we see the microwave background coming from: where the universe became transparent 380,000 years in. It is not an object, it is a time we are looking back at — and it is ","slug":"surface-of-last-scattering"},{"name":"Observable universe","kind":"cosmological","dist":46500000000.0,"size":93000000000,"ra":null,"dec":null,"href":"/scales#observable-universe","inside":true,"form":"shell","notes":"Everything whose light has had time to reach us: a sphere 46.5 billion light-years in radius, larger than the 13.8 billion years of travel would suggest because it expanded on the ","slug":"observable-universe"}],"lo":-3,"hi":11,"nPoint":0,"nShell":87}</script>
+<script>
+  const D = JSON.parse(document.getElementById('data').textContent);
+  const ITEMS = D.items || [], LO = D.lo, HI = D.hi;
+
+  const KC = {
+    galaxy: '#e39a00', local: '#33a047', group: '#2a78d6', cluster: '#6b50c8',
+    supercluster: '#e05e8f', filament: '#bd5b1c', void: '#52688a',
+    attractor: '#8f2b4e', cosmological: '#0f9b9b', structure: '#8a8a8a',
+  };
+  const kc = (k) => KC[k] || KC.structure;
+
+  const AU = 63241.077, PCLY = 3.26156;
+  const sig = (v) => String(+v.toPrecision(3));
+  const ly = (v) => v < 0.05 ? sig(v * AU) + ' AU'
+    : v < 1e3 ? sig(v) + ' ly'
+    : v < 1e6 ? sig(v / 1e3) + ' thousand ly'
+    : v < 1e9 ? sig(v / 1e6) + ' million ly'
+    : sig(v / 1e9) + ' billion ly';
+
+  const cv = document.getElementById('sky');
+  const stage = document.getElementById('stage');
+  const tipEl = document.getElementById('tip');
+  const ctx = cv.getContext('2d');
+  const RAD = Math.PI / 180;
+
+  // ---- camera ----
+  // Home zoom is derived from the span of the data, not typed: the whole
+  // ladder has to fit on first paint or the outer decades are silently cropped,
+  // which on this page means losing exactly the part nobody has seen before.
+  const DECADES = Math.max(1, HI - LO);
+  const HOME = { yaw: 35, pitch: 24, pxPerDecade: 44 };
+  let cam = { ...HOME };
+  function fitZoom() {
+    const half = Math.min(cv.width, cv.height) / 2;
+    return (half * 0.86) / DECADES / (cv.width / 950);
+  }
+  let showShells = true, showLabels = true;
+
+  const css = () => ({ w: cv.width, h: cv.height });
+  const theme = () => getComputedStyle(document.body);
+
+  // Direction unit vector from right ascension and declination.
+  for (const it of ITEMS) {
+    if (it.ra != null && it.dec != null) {
+      const a = it.ra * RAD, d = it.dec * RAD;
+      it.u = [Math.cos(d) * Math.cos(a), Math.cos(d) * Math.sin(a), Math.sin(d)];
+    }
+    it.R = Math.log10(it.dist);              // radius in decades — the whole trick
+  }
+
+  // Rotate by bearing about the polar axis, then tilt toward the viewer.
+  function project(u, R, S, cx, cy) {
+    const y = cam.yaw * RAD, p = cam.pitch * RAD;
+    const cy_ = Math.cos(y), sy = Math.sin(y), cp = Math.cos(p), sp = Math.sin(p);
+    const x1 = u[0] * cy_ - u[1] * sy;
+    const y1 = u[0] * sy + u[1] * cy_;
+    const z1 = u[2];
+    const y2 = y1 * cp - z1 * sp;
+    const z2 = y1 * sp + z1 * cp;
+    const r = (R - LO) * S;
+    return { x: cx + x1 * r, y: cy - z2 * r, depth: y2 * r };
+  }
+
+  function draw() {
+    const { w, h } = css();
+    const t = theme();
+    const ink = t.getPropertyValue('--ink').trim() || '#111';
+    const hair = t.getPropertyValue('--hairline').trim() || '#ddd';
+    const muted = t.getPropertyValue('--muted').trim() || '#888';
+    const panel = t.getPropertyValue('--panel').trim() || '#fafafa';
+    ctx.clearRect(0, 0, w, h);
+    ctx.fillStyle = panel; ctx.fillRect(0, 0, w, h);
+
+    const cx = w / 2, cy = h / 2;
+    const S = cam.pxPerDecade * (w / 950);           // canvas is 2x for retina
+    const sp = Math.sin(cam.pitch * RAD);
+
+    // decade rings: the scale bar, and the only thing that makes the log axis legible
+    ctx.lineWidth = 1.2;
+    for (let d = LO; d <= HI; d++) {
+      const r = (d - LO) * S;
+      if (r < 6 || r > Math.hypot(w, h)) continue;
+      ctx.strokeStyle = hair;
+      ctx.globalAlpha = 0.85;
+      ctx.beginPath(); ctx.ellipse(cx, cy, r, r * Math.abs(sp), 0, 0, Math.PI * 2); ctx.stroke();
+      ctx.globalAlpha = 1;
+      // label on the ring's right edge, but only where the canvas still is —
+      // zoomed in, the outer rings run off and an unseen label is just cost
+      if (cx + r + 96 < w) {
+        ctx.fillStyle = muted;
+        ctx.font = '17px ui-monospace, Menlo, monospace';
+        ctx.textAlign = 'left';
+        ctx.fillText(ly(Math.pow(10, d)), cx + r + 7, cy + 5);
+      }
+    }
+
+    // shells: a distance with no direction is a sphere, so draw the sphere
+    if (showShells) {
+      for (const it of ITEMS) {
+        if (it.form !== 'shell') continue;
+        const r = (it.R - LO) * S;
+        if (r < 3 || r > Math.hypot(w, h) * 1.6) continue;
+        ctx.strokeStyle = kc(it.kind);
+        ctx.globalAlpha = it.inside ? 0.5 : 0.32;
+        ctx.lineWidth = it.inside ? 2.2 : 1.4;
+        ctx.setLineDash(it.inside ? [] : [7, 7]);
+        ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.stroke();
+        ctx.globalAlpha = it.inside ? 0.3 : 0.18;
+        ctx.beginPath(); ctx.ellipse(cx, cy, r, r * Math.abs(sp), 0, 0, Math.PI * 2); ctx.stroke();
+        ctx.setLineDash([]);
+        ctx.globalAlpha = 1;
+      }
+    }
+
+    // points, far ones first so near ones land on top
+    const pts = [];
+    for (const it of ITEMS) it._sx = null;   // clear last frame: a culled item must stop being clickable
+    for (const it of ITEMS) {
+      if (it.form !== 'point' || !it.u) continue;
+      const p = project(it.u, it.R, S, cx, cy);
+      if (p.x < -200 || p.x > w + 200 || p.y < -200 || p.y > h + 200) continue;
+      pts.push({ it, ...p });
+    }
+    pts.sort((a, b) => b.depth - a.depth);
+    for (const p of pts) {
+      const it = p.it;
+      const rad = it.size ? Math.max(3, Math.min(13, 2.5 + Math.log10(it.size) * 1.5)) : 3.4;
+      const behind = p.depth > 0;
+      ctx.globalAlpha = behind ? 0.42 : 1;
+      ctx.fillStyle = kc(it.kind);
+      ctx.beginPath(); ctx.arc(p.x, p.y, rad, 0, Math.PI * 2); ctx.fill();
+      ctx.strokeStyle = panel; ctx.lineWidth = 1.6; ctx.stroke();
+      it._sx = p.x; it._sy = p.y; it._sr = rad;
+      ctx.globalAlpha = 1;
+    }
+
+    // labels, biggest first, skipping any that would collide
+    if (showLabels) {
+      const taken = [];
+      ctx.font = '600 18px ui-monospace, Menlo, monospace';
+      ctx.textAlign = 'left';
+      const byBig = pts.slice().sort((a, b) => (b.it.size || 0) - (a.it.size || 0));
+      for (const p of byBig) {
+        if (p.depth > 0) continue;
+        const lbl = p.it.name.replace(/\s*\(.*\)$/, '');
+        const wpx = ctx.measureText(lbl).width;
+        const box = [p.x + 9, p.y - 12, wpx + 6, 22];
+        if (taken.some((b) => box[0] < b[0] + b[2] && b[0] < box[0] + box[2]
+                           && box[1] < b[1] + b[3] && b[1] < box[1] + box[3])) continue;
+        taken.push(box);
+        ctx.fillStyle = panel; ctx.globalAlpha = 0.8;
+        ctx.fillRect(box[0] - 2, box[1], box[2], box[3]);
+        ctx.globalAlpha = 1; ctx.fillStyle = ink;
+        ctx.fillText(lbl, p.x + 10, p.y + 5);
+        if (taken.length > 26) break;
+      }
+    }
+
+    // the observer
+    ctx.fillStyle = ink;
+    ctx.beginPath(); ctx.arc(cx, cy, 4.5, 0, Math.PI * 2); ctx.fill();
+    ctx.strokeStyle = panel; ctx.lineWidth = 2; ctx.stroke();
+    ctx.fillStyle = muted; ctx.font = '16px ui-monospace, Menlo, monospace';
+    ctx.fillText('here', cx + 9, cy - 8);
+
+    document.getElementById('hud').innerHTML =
+      `bearing <b>${Math.round(((cam.yaw % 360) + 360) % 360)}°</b> · `
+      + `tilt <b>${Math.round(cam.pitch)}°</b> · `
+      + `<b>${(cam.pxPerDecade / HOME.pxPerDecade).toFixed(1)}×</b><br>`
+      + `<b>${D.nPoint}</b> placed by direction · <b>${D.nShell}</b> drawn as shells`;
+  }
+
+  // ---- gestures: one finger turns, two fingers behave like a map ----
+  const ptrs = new Map();
+  let last2 = null;
+
+  const rect = () => stage.getBoundingClientRect();
+  const scaleF = () => cv.width / rect().width;
+
+  let multi = false;                 // any gesture that ever had two fingers is not a tap
+  stage.addEventListener('pointerdown', (e) => {
+    stage.setPointerCapture(e.pointerId);
+    ptrs.set(e.pointerId, { x: e.clientX, y: e.clientY, x0: e.clientX, y0: e.clientY, t: Date.now() });
+    if (ptrs.size > 1) multi = true;
+    stage.focus({ preventScroll: true });
+    stage.classList.add('drag');
+    last2 = null;
+  });
+
+  stage.addEventListener('pointermove', (e) => {
+    const p = ptrs.get(e.pointerId);
+    if (p) { p.px = p.x; p.py = p.y; p.x = e.clientX; p.y = e.clientY; }
+    if (ptrs.size === 1 && p) {
+      cam.yaw -= (p.x - p.px) * 0.32;
+      cam.pitch = Math.max(-89, Math.min(89, cam.pitch + (p.y - p.py) * 0.28));
+      draw();
+    } else if (ptrs.size === 2) {
+      const [a, b] = [...ptrs.values()];
+      const dist = Math.hypot(a.x - b.x, a.y - b.y);
+      const ang = Math.atan2(b.y - a.y, b.x - a.x) / RAD;
+      const midY = (a.y + b.y) / 2;
+      if (last2) {
+        if (last2.dist > 12) cam.pxPerDecade = clampZoom(cam.pxPerDecade * (dist / last2.dist));
+        let dA = ang - last2.ang;
+        if (dA > 180) dA -= 360; if (dA < -180) dA += 360;
+        cam.yaw += dA;                                        // twist swings the bearing
+        cam.pitch = Math.max(-89, Math.min(89, cam.pitch + (midY - last2.midY) * 0.3));
+        draw();
+      }
+      last2 = { dist, ang, midY };
+    }
+  });
+
+  const endPtr = (e) => {
+    const p = ptrs.get(e.pointerId);
+    // a quick press that barely moved is a tap, not a drag
+    if (!multi && p && Date.now() - p.t < 400 && Math.hypot(p.x - p.x0, p.y - p.y0) < 6) pick(e, true);
+    ptrs.delete(e.pointerId);
+    if (ptrs.size < 2) last2 = null;
+    if (!ptrs.size) { stage.classList.remove('drag'); multi = false; }
+  };
+  stage.addEventListener('pointerup', endPtr);
+  stage.addEventListener('pointercancel', endPtr);
+  stage.addEventListener('pointerleave', () => { tipEl.classList.remove('on'); });
+
+  const clampZoom = (v) => Math.max(14, Math.min(1400, v));
+
+  stage.addEventListener('wheel', (e) => {
+    e.preventDefault();
+    cam.pxPerDecade = clampZoom(cam.pxPerDecade * Math.exp(-e.deltaY * 0.0016));
+    draw();
+  }, { passive: false });
+
+  function nearest(e) {
+    const r = rect(), f = scaleF();
+    const mx = (e.clientX - r.left) * f, my = (e.clientY - r.top) * f;
+    let best = null, bd = 26 * f;
+    for (const it of ITEMS) {
+      if (it._sx == null) continue;
+      const d = Math.hypot(it._sx - mx, it._sy - my);
+      if (d < bd + it._sr) { bd = d; best = it; }
+    }
+    return best;
+  }
+
+  function hover(e) {
+    const it = nearest(e);
+    if (!it) { tipEl.classList.remove('on'); return; }
+    const r = rect();
+    tipEl.innerHTML = '<h4></h4><p></p>';
+    tipEl.querySelector('h4').textContent = it.name;
+    tipEl.querySelector('p').textContent =
+      `${it.kind} · ${ly(it.dist)} away${it.size ? ` · ${ly(it.size)} across` : ''}`;
+    tipEl.style.left = Math.min(r.width - 270, e.clientX - r.left + 14) + 'px';
+    tipEl.style.top = Math.max(4, e.clientY - r.top - 10) + 'px';
+    tipEl.classList.add('on');
+  }
+  stage.addEventListener('pointermove', (e) => { if (!ptrs.size) hover(e); });
+
+  function pick(e, go) {
+    const it = nearest(e);
+    if (it && go) location.href = it.href;
+  }
+
+  stage.addEventListener('keydown', (e) => {
+    const k = e.key;
+    if (k === 'ArrowLeft') cam.yaw -= 5;
+    else if (k === 'ArrowRight') cam.yaw += 5;
+    else if (k === 'ArrowUp') cam.pitch = Math.min(89, cam.pitch + 4);
+    else if (k === 'ArrowDown') cam.pitch = Math.max(-89, cam.pitch - 4);
+    else if (k === '+' || k === '=') cam.pxPerDecade = clampZoom(cam.pxPerDecade * 1.2);
+    else if (k === '-' || k === '_') cam.pxPerDecade = clampZoom(cam.pxPerDecade / 1.2);
+    else if (k === '0') cam = { ...HOME, pxPerDecade: fitZoom() };
+    else return;
+    e.preventDefault(); draw();
+  });
+
+  // ---- controls ----
+  function buildCtrl() {
+    const c = document.getElementById('ctrl');
+    const mk = (label, fn, pressed) => {
+      const b = document.createElement('button');
+      b.className = 'cbtn'; b.type = 'button'; b.textContent = label;
+      if (pressed !== undefined) b.setAttribute('aria-pressed', String(pressed));
+      b.addEventListener('click', () => fn(b));
+      c.appendChild(b); return b;
+    };
+    mk('reset view', () => { cam = { ...HOME, pxPerDecade: fitZoom() }; draw(); });
+    mk('top down', () => { cam.pitch = 89; draw(); });
+    mk('edge on', () => { cam.pitch = 0; draw(); });
+    const sep = document.createElement('span'); sep.className = 'sep'; c.appendChild(sep);
+    mk('shells', (b) => { showShells = !showShells; b.setAttribute('aria-pressed', String(showShells)); draw(); }, true);
+    mk('labels', (b) => { showLabels = !showLabels; b.setAttribute('aria-pressed', String(showLabels)); draw(); }, true);
+    // the zoom control, stepped in multiples of the fitted view rather than in
+    // pixels, so the steps mean the same thing on a phone and on a monitor
+    for (const [label, mult] of [['all of it', 1], ['superclusters', 2.4], ['Local Group', 7], ['solar', 26]]) {
+      mk(label, () => { cam.pxPerDecade = clampZoom(fitZoom() * mult); draw(); });
+    }
+  }
+
+  let fitted = false;
+  function fit() {
+    const w = Math.max(320, stage.clientWidth);
+    const prev = fitted ? cam.pxPerDecade / fitZoom() : 1;   // keep the zoom level across a resize
+    cv.width = Math.round(w * 2);
+    cv.height = Math.round(Math.min(760, Math.max(420, w * 0.62)) * 2);
+    HOME.pxPerDecade = fitZoom();
+    cam.pxPerDecade = clampZoom(HOME.pxPerDecade * prev);
+    fitted = true;
+    draw();
+  }
+
+  buildCtrl();
+  addEventListener('resize', fit);
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change', draw);
+  fit();
+</script>

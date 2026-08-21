@@ -1107,6 +1107,63 @@ def build_scales_page():
     return len(rows), round(span)
 
 
+# ---------------- the universe in three dimensions ----------------
+def build_universe_page():
+    """Everything catalogued, placed by direction and distance on one log-radial
+    axis: heliopause to horizon in a single scene you can turn over.
+
+    Three renderings, and which one a thing gets is a statement about what is
+    known, not a style choice:
+      point  -- we are outside it and know which way it lies
+      shell  -- we are outside it but not which way (a distance alone is a
+                sphere, not a place), so it is drawn as that sphere
+      shell  -- we are inside it, drawn at half its extent around us
+    """
+    items = []
+
+    def add(name, kind, dist, size, ra, dec, href, notes, inside=False):
+        if not dist or dist <= 0:
+            return
+        items.append({
+            "name": name, "kind": kind, "dist": dist, "size": size,
+            "ra": ra, "dec": dec, "href": href, "inside": inside,
+            "form": "point" if (ra is not None and not inside) else "shell",
+            "notes": (notes or "")[:180],
+        })
+
+    for o in notion.get("celestialObjects", []):
+        nm = obj_name(o)
+        if not nm or o.get("Type") == "Star":
+            continue
+        d = o.get("Distance from Earth")
+        if not d:
+            continue                              # the Milky Way itself sits at the origin
+        add(nm, "galaxy", d, o.get("Diameter (ly)"), o.get("RA (deg)"), o.get("Dec (deg)"),
+            f"/cosmos#lg-{slugify(nm)}", o.get("Notes"))
+
+    for r in notion.get("cosmicStructures", []):
+        nm = r.get("Name")
+        if not nm or not r.get("Size (ly)"):
+            continue
+        dist, inside = r.get("Distance (ly)"), r.get("Distance (ly)") is None
+        # inside it: there is no distance to it, so draw it around us at half
+        # its extent -- which is where its edge actually is from here
+        add(nm, (r.get("Kind") or "structure").lower(), dist or r["Size (ly)"] / 2,
+            r["Size (ly)"], r.get("RA (deg)"), r.get("Dec (deg)"),
+            f"/scales#{slugify(nm)}", r.get("Notes"), inside=inside)
+
+    items.sort(key=lambda i: i["dist"])
+    for i in items:
+        i["slug"] = slugify(i["name"])
+    lo = math.floor(math.log10(items[0]["dist"])) if items else 0
+    hi = math.ceil(math.log10(items[-1]["dist"])) if items else 1
+    n_point = sum(1 for i in items if i["form"] == "point")
+    write_page("universe.template.html", "universe.html",
+               {"items": items, "lo": lo, "hi": hi,
+                "nPoint": n_point, "nShell": len(items) - n_point})
+    return len(items), n_point
+
+
 # ---------------- search index ----------------
 def _clip(s, n=170) -> str:
     s = " ".join((s or "").split())
@@ -1139,6 +1196,8 @@ def build_search_index():
         ("/machines", "Machines", "the canonical engines and machines: how each works, its cycle, efficiency, materials"),
         ("/skills", "Skills", "hands-on techniques with the science behind them: tools, steps, safety, how it fails"),
         ("/glossary", "Glossary", "the terms the site uses, each traced to every page that uses it"),
+        ("/universe", "The Universe in Three Dimensions",
+         "every catalogued object placed by direction and distance on one log-radial map you can turn over, from the heliopause to the horizon"),
         ("/scales", "The Ladder of Scale", "from the heliopause to the horizon on one log axis: clusters, superclusters, Laniakea, the walls and voids, the observable universe"),
         ("/explainers", "Explainers", "the people, channels and organisations that explain this material"),
         ("/impacts", "Mining Impacts", "what extraction costs — mechanism, mitigation and documented cases"),
@@ -1358,6 +1417,8 @@ def build_home(n_min, n_gems, n_classes, n_spectral, n_instr, n_timeline, tl_dec
         "__N_TRACES__": f"{n_traces:,}",
         "__N_LOCAL__": n_local,
         "__N_SCALES__": n_scales,
+        "__N_UNI__": n_uni,
+        "__N_UNI_PLACED__": n_uni_placed,
         "__N_ORDERS__": n_orders,
         "__N_EXPL__": n_expl,
         "__N_EXPLTERMS__": f"{n_expl_terms:,}",
@@ -1434,6 +1495,7 @@ if __name__ == "__main__":
     n_mach, n_diag = build_machines_page()
     n_skills = build_skills_page()
     n_scales, n_orders = build_scales_page()
+    n_uni, n_uni_placed = build_universe_page()
     n_terms, n_traces = build_glossary_page()
     n_expl, n_expl_terms = build_explainers_page()
     n_imp, n_imp_terms = build_impacts_page()
