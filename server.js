@@ -21,6 +21,7 @@ const PAGES = {
   '/skills': 'skills.html',
   '/glossary': 'glossary.html',
   '/scales': 'scales.html',
+  '/universe': 'universe.html',
   '/explainers': 'explainers.html',
   '/impacts': 'impacts.html',
   '/billiards': 'billiards.html',

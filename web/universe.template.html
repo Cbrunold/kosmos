@@ -1,0 +1,402 @@
+<title>Kosmos · The Universe in Three Dimensions</title>
+<style>
+__SHARED__
+
+  .wrap { max-width: 1000px; }
+  .stage {
+    position: relative; border: 1px solid var(--hairline); border-radius: 10px;
+    background: var(--panel); overflow: hidden; touch-action: none; cursor: grab;
+  }
+  .stage.drag { cursor: grabbing; }
+  .stage canvas { display: block; width: 100%; height: auto; }
+
+  .hud {
+    position: absolute; left: 10px; top: 10px;
+    font: 10px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    color: var(--muted); line-height: 1.7; pointer-events: none;
+    text-shadow: 0 0 4px var(--panel), 0 0 4px var(--panel);
+  }
+  .hud b { color: var(--ink-2); font-weight: 600; }
+
+  .tip {
+    position: absolute; pointer-events: none; opacity: 0; transition: opacity .12s;
+    background: var(--page); border: 1px solid var(--hairline); border-radius: 7px;
+    padding: 8px 11px; max-width: 260px; box-shadow: 0 4px 18px rgba(0,0,0,.14);
+  }
+  .tip.on { opacity: 1; }
+  .tip h4 {
+    margin: 0 0 3px; font: 700 12px ui-monospace, "SF Mono", Consolas, Menlo, monospace;
+    color: var(--ink);
+  }
+  .tip p {
+    margin: 0; font: 10px ui-monospace, "SF Mono", Consolas, Menlo, monospace;
+    color: var(--muted); line-height: 1.6;
+  }
+
+  .ctrl { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0 0; align-items: center; }
+  .cbtn {
+    font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    background: var(--panel); border: 1px solid var(--hairline); color: var(--ink-2);
+    border-radius: 5px; padding: 5px 10px; cursor: pointer;
+  }
+  .cbtn:hover { color: var(--ink); border-color: var(--ink-2); }
+  .cbtn[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--page); }
+  .ctrl .sep { flex: 1 1 12px; }
+  .help {
+    font-size: 11px; color: var(--muted); line-height: 1.65; margin: 12px 0 0; max-width: 74ch;
+  }
+  .help b { color: var(--ink-2); font-weight: 600; }
+  .help kbd {
+    font: 10px ui-monospace, Consolas, Menlo, monospace; color: var(--ink);
+    background: color-mix(in oklab, var(--ink) 8%, transparent);
+    border-radius: 3px; padding: 1px 5px;
+  }
+
+  .open {
+    margin: 30px 0 0; padding: 16px 18px;
+    background: var(--panel); border: 1px solid var(--hairline);
+    border-left: 3px solid var(--c-amber); border-radius: 8px;
+  }
+  .open h2 {
+    font-family: ui-monospace, "SF Mono", Consolas, Menlo, monospace;
+    font-size: 13px; font-weight: 700; color: var(--ink); margin: 0 0 4px;
+  }
+  .open > p { font-size: 12.5px; color: var(--ink-2); line-height: 1.65; margin: 0 0 12px; }
+  .open ol { margin: 0; padding-left: 20px; }
+  .open li { font-size: 12.5px; color: var(--ink-2); line-height: 1.7; margin-bottom: 9px; }
+  .open li b { color: var(--ink); font-weight: 600; }
+  .open li em { font-style: italic; }
+</style>
+
+<h1 class="ktitle">The Universe in Three Dimensions</h1>
+<p class="klede">Everything catalogued here, placed by the direction it lies in and the distance to it, on a single radial axis that is logarithmic because nothing else could hold both the Oort Cloud and the horizon. Drag to turn it over. The rings are decades — each one is ten times further out than the last.</p>
+
+<div class="wrap">
+  <div class="stage" id="stage">
+    <canvas id="sky" width="1900" height="1180"></canvas>
+    <div class="hud" id="hud"></div>
+    <div class="tip" id="tip"></div>
+  </div>
+
+  <div class="ctrl" id="ctrl"></div>
+
+  <p class="help">
+    <b>Drag</b> to turn the sky over. <b>Scroll</b> or <b>pinch</b> to fly in and out through the
+    scales. On a touchscreen, <b>two fingers</b> work the way they do on a map — pinch to zoom,
+    twist to swing the bearing, slide up and down to tilt. <kbd>←</kbd> <kbd>→</kbd> swing,
+    <kbd>↑</kbd> <kbd>↓</kbd> tilt, <kbd>+</kbd> <kbd>−</kbd> zoom, <kbd>0</kbd> resets.
+    Tap anything to open its entry.
+  </p>
+
+  <section class="open">
+    <h2>What this map does and does not know</h2>
+    <p>The radial axis is honest and the angles are honest, but they are not honest in the same way, and the difference is drawn rather than hidden.</p>
+    <ol>
+      <li><b>A dot means we know which way it lies.</b> The direction comes from the name resolver at Strasbourg — SIMBAD, then NED — not from anybody's memory, and every position on the page traces back to a catalogue entry.</li>
+      <li><b>A ring means we know how far but not which way</b>, so the map draws the whole sphere that the distance allows. The Sloan and CfA2 Great Walls are rings because they are tens of degrees across and have no single position to resolve. Structures we are <em>inside</em> are rings too, drawn at half their extent, which is where their edge actually is from here.</li>
+      <li><b>The radius is the logarithm of distance</b>, so shapes are wrong on purpose. A sphere is still a sphere and directions are exact, but anything with real extent is squashed toward us — the near side of a supercluster is pushed out and the far side pulled in. This is the only projection in which the Oort Cloud and the horizon appear in one picture, and the cost is that no volume here is the right shape.</li>
+      <li><b>Everything is drawn as it is now</b>, not as it looks. Light from the far rings left before the Earth existed. A map of where things <em>are</em> and a map of what you <em>see</em> diverge completely past the Local Group, and this is the first.</li>
+      <li><b>Distance is comoving</b>, matching <a href="/scales">the ladder</a>. Redshift is not converted to a light-travel time anywhere on this page.</li>
+    </ol>
+  </section>
+</div>
+
+<p class="kfoot">From the Celestial Objects and Cosmic Structures databases in Notion, with positions resolved through CDS Sesame. Sizes set the dot size only; nothing here is drawn to scale, and at these ranges nothing could be.</p>
+
+<script id="data" type="application/json">__DATA__</script>
+<script>
+  const D = JSON.parse(document.getElementById('data').textContent);
+  const ITEMS = D.items || [], LO = D.lo, HI = D.hi;
+
+  const KC = {
+    galaxy: '#e39a00', local: '#33a047', group: '#2a78d6', cluster: '#6b50c8',
+    supercluster: '#e05e8f', filament: '#bd5b1c', void: '#52688a',
+    attractor: '#8f2b4e', cosmological: '#0f9b9b', structure: '#8a8a8a',
+  };
+  const kc = (k) => KC[k] || KC.structure;
+
+  const AU = 63241.077, PCLY = 3.26156;
+  const sig = (v) => String(+v.toPrecision(3));
+  const ly = (v) => v < 0.05 ? sig(v * AU) + ' AU'
+    : v < 1e3 ? sig(v) + ' ly'
+    : v < 1e6 ? sig(v / 1e3) + ' thousand ly'
+    : v < 1e9 ? sig(v / 1e6) + ' million ly'
+    : sig(v / 1e9) + ' billion ly';
+
+  const cv = document.getElementById('sky');
+  const stage = document.getElementById('stage');
+  const tipEl = document.getElementById('tip');
+  const ctx = cv.getContext('2d');
+  const RAD = Math.PI / 180;
+
+  // ---- camera ----
+  const HOME = { yaw: 35, pitch: 24, pxPerDecade: 44 };
+  let cam = { ...HOME };
+  let showShells = true, showLabels = true;
+
+  const css = () => ({ w: cv.width, h: cv.height });
+  const theme = () => getComputedStyle(document.body);
+
+  // Direction unit vector from right ascension and declination.
+  for (const it of ITEMS) {
+    if (it.ra != null && it.dec != null) {
+      const a = it.ra * RAD, d = it.dec * RAD;
+      it.u = [Math.cos(d) * Math.cos(a), Math.cos(d) * Math.sin(a), Math.sin(d)];
+    }
+    it.R = Math.log10(it.dist);              // radius in decades — the whole trick
+  }
+
+  // Rotate by bearing about the polar axis, then tilt toward the viewer.
+  function project(u, R, S, cx, cy) {
+    const y = cam.yaw * RAD, p = cam.pitch * RAD;
+    const cy_ = Math.cos(y), sy = Math.sin(y), cp = Math.cos(p), sp = Math.sin(p);
+    const x1 = u[0] * cy_ - u[1] * sy;
+    const y1 = u[0] * sy + u[1] * cy_;
+    const z1 = u[2];
+    const y2 = y1 * cp - z1 * sp;
+    const z2 = y1 * sp + z1 * cp;
+    const r = (R - LO) * S;
+    return { x: cx + x1 * r, y: cy - z2 * r, depth: y2 * r };
+  }
+
+  function draw() {
+    const { w, h } = css();
+    const t = theme();
+    const ink = t.getPropertyValue('--ink').trim() || '#111';
+    const hair = t.getPropertyValue('--hairline').trim() || '#ddd';
+    const muted = t.getPropertyValue('--muted').trim() || '#888';
+    const panel = t.getPropertyValue('--panel').trim() || '#fafafa';
+    ctx.clearRect(0, 0, w, h);
+    ctx.fillStyle = panel; ctx.fillRect(0, 0, w, h);
+
+    const cx = w / 2, cy = h / 2;
+    const S = cam.pxPerDecade * (w / 950);           // canvas is 2x for retina
+    const sp = Math.sin(cam.pitch * RAD);
+
+    // decade rings: the scale bar, and the only thing that makes the log axis legible
+    ctx.lineWidth = 1.2;
+    for (let d = LO; d <= HI; d++) {
+      const r = (d - LO) * S;
+      if (r < 6 || r > Math.hypot(w, h)) continue;
+      ctx.strokeStyle = hair;
+      ctx.globalAlpha = 0.85;
+      ctx.beginPath(); ctx.ellipse(cx, cy, r, r * Math.abs(sp), 0, 0, Math.PI * 2); ctx.stroke();
+      ctx.globalAlpha = 1;
+      ctx.fillStyle = muted;
+      ctx.font = '17px ui-monospace, Menlo, monospace';
+      ctx.textAlign = 'left';
+      ctx.fillText(ly(Math.pow(10, d)), cx + r + 7, cy + 5);
+    }
+
+    // shells: a distance with no direction is a sphere, so draw the sphere
+    if (showShells) {
+      for (const it of ITEMS) {
+        if (it.form !== 'shell') continue;
+        const r = (it.R - LO) * S;
+        if (r < 3 || r > Math.hypot(w, h) * 1.6) continue;
+        ctx.strokeStyle = kc(it.kind);
+        ctx.globalAlpha = it.inside ? 0.5 : 0.32;
+        ctx.lineWidth = it.inside ? 2.2 : 1.4;
+        ctx.setLineDash(it.inside ? [] : [7, 7]);
+        ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.stroke();
+        ctx.globalAlpha = it.inside ? 0.3 : 0.18;
+        ctx.beginPath(); ctx.ellipse(cx, cy, r, r * Math.abs(sp), 0, 0, Math.PI * 2); ctx.stroke();
+        ctx.setLineDash([]);
+        ctx.globalAlpha = 1;
+      }
+    }
+
+    // points, far ones first so near ones land on top
+    const pts = [];
+    for (const it of ITEMS) {
+      if (it.form !== 'point' || !it.u) continue;
+      const p = project(it.u, it.R, S, cx, cy);
+      if (p.x < -200 || p.x > w + 200 || p.y < -200 || p.y > h + 200) continue;
+      pts.push({ it, ...p });
+    }
+    pts.sort((a, b) => b.depth - a.depth);
+    for (const p of pts) {
+      const it = p.it;
+      const rad = it.size ? Math.max(3, Math.min(13, 2.5 + Math.log10(it.size) * 1.5)) : 3.4;
+      const behind = p.depth > 0;
+      ctx.globalAlpha = behind ? 0.42 : 1;
+      ctx.fillStyle = kc(it.kind);
+      ctx.beginPath(); ctx.arc(p.x, p.y, rad, 0, Math.PI * 2); ctx.fill();
+      ctx.strokeStyle = panel; ctx.lineWidth = 1.6; ctx.stroke();
+      it._sx = p.x; it._sy = p.y; it._sr = rad;
+      ctx.globalAlpha = 1;
+    }
+
+    // labels, biggest first, skipping any that would collide
+    if (showLabels) {
+      const taken = [];
+      ctx.font = '600 18px ui-monospace, Menlo, monospace';
+      ctx.textAlign = 'left';
+      const byBig = pts.slice().sort((a, b) => (b.it.size || 0) - (a.it.size || 0));
+      for (const p of byBig) {
+        if (p.depth > 0) continue;
+        const lbl = p.it.name.replace(/\s*\(.*\)$/, '');
+        const wpx = ctx.measureText(lbl).width;
+        const box = [p.x + 9, p.y - 12, wpx + 6, 22];
+        if (taken.some((b) => box[0] < b[0] + b[2] && b[0] < box[0] + box[2]
+                           && box[1] < b[1] + b[3] && b[1] < box[1] + box[3])) continue;
+        taken.push(box);
+        ctx.fillStyle = panel; ctx.globalAlpha = 0.8;
+        ctx.fillRect(box[0] - 2, box[1], box[2], box[3]);
+        ctx.globalAlpha = 1; ctx.fillStyle = ink;
+        ctx.fillText(lbl, p.x + 10, p.y + 5);
+        if (taken.length > 26) break;
+      }
+    }
+
+    // the observer
+    ctx.fillStyle = ink;
+    ctx.beginPath(); ctx.arc(cx, cy, 4.5, 0, Math.PI * 2); ctx.fill();
+    ctx.strokeStyle = panel; ctx.lineWidth = 2; ctx.stroke();
+    ctx.fillStyle = muted; ctx.font = '16px ui-monospace, Menlo, monospace';
+    ctx.fillText('here', cx + 9, cy - 8);
+
+    document.getElementById('hud').innerHTML =
+      `bearing <b>${Math.round(((cam.yaw % 360) + 360) % 360)}°</b> · `
+      + `tilt <b>${Math.round(cam.pitch)}°</b> · `
+      + `<b>${(cam.pxPerDecade / HOME.pxPerDecade).toFixed(1)}×</b><br>`
+      + `<b>${D.nPoint}</b> placed by direction · <b>${D.nShell}</b> drawn as shells`;
+  }
+
+  // ---- gestures: one finger turns, two fingers behave like a map ----
+  const ptrs = new Map();
+  let last2 = null;
+
+  const rect = () => stage.getBoundingClientRect();
+  const scaleF = () => cv.width / rect().width;
+
+  stage.addEventListener('pointerdown', (e) => {
+    stage.setPointerCapture(e.pointerId);
+    ptrs.set(e.pointerId, { x: e.clientX, y: e.clientY, x0: e.clientX, y0: e.clientY, t: Date.now() });
+    stage.classList.add('drag');
+    last2 = null;
+  });
+
+  stage.addEventListener('pointermove', (e) => {
+    const p = ptrs.get(e.pointerId);
+    if (p) { p.px = p.x; p.py = p.y; p.x = e.clientX; p.y = e.clientY; }
+    if (ptrs.size === 1 && p) {
+      cam.yaw -= (p.x - p.px) * 0.32;
+      cam.pitch = Math.max(-89, Math.min(89, cam.pitch + (p.y - p.py) * 0.28));
+      draw();
+    } else if (ptrs.size === 2) {
+      const [a, b] = [...ptrs.values()];
+      const dist = Math.hypot(a.x - b.x, a.y - b.y);
+      const ang = Math.atan2(b.y - a.y, b.x - a.x) / RAD;
+      const midY = (a.y + b.y) / 2;
+      if (last2) {
+        if (last2.dist > 12) cam.pxPerDecade = clampZoom(cam.pxPerDecade * (dist / last2.dist));
+        let dA = ang - last2.ang;
+        if (dA > 180) dA -= 360; if (dA < -180) dA += 360;
+        cam.yaw += dA;                                        // twist swings the bearing
+        cam.pitch = Math.max(-89, Math.min(89, cam.pitch + (midY - last2.midY) * 0.3));
+        draw();
+      }
+      last2 = { dist, ang, midY };
+    }
+    if (!ptrs.size) hover(e);
+  });
+
+  const endPtr = (e) => {
+    const p = ptrs.get(e.pointerId);
+    // a quick press that barely moved is a tap, not a drag
+    if (p && Date.now() - p.t < 400 && Math.hypot(p.x - p.x0, p.y - p.y0) < 6) pick(e, true);
+    ptrs.delete(e.pointerId);
+    if (ptrs.size < 2) last2 = null;
+    if (!ptrs.size) stage.classList.remove('drag');
+  };
+  stage.addEventListener('pointerup', endPtr);
+  stage.addEventListener('pointercancel', endPtr);
+  stage.addEventListener('pointerleave', () => { tipEl.classList.remove('on'); });
+
+  const clampZoom = (v) => Math.max(14, Math.min(1400, v));
+
+  stage.addEventListener('wheel', (e) => {
+    e.preventDefault();
+    cam.pxPerDecade = clampZoom(cam.pxPerDecade * Math.exp(-e.deltaY * 0.0016));
+    draw();
+  }, { passive: false });
+
+  function nearest(e) {
+    const r = rect(), f = scaleF();
+    const mx = (e.clientX - r.left) * f, my = (e.clientY - r.top) * f;
+    let best = null, bd = 26 * f;
+    for (const it of ITEMS) {
+      if (it._sx == null) continue;
+      const d = Math.hypot(it._sx - mx, it._sy - my);
+      if (d < bd + it._sr) { bd = d; best = it; }
+    }
+    return best;
+  }
+
+  function hover(e) {
+    const it = nearest(e);
+    if (!it) { tipEl.classList.remove('on'); return; }
+    const r = rect();
+    tipEl.innerHTML = '<h4></h4><p></p>';
+    tipEl.querySelector('h4').textContent = it.name;
+    tipEl.querySelector('p').textContent =
+      `${it.kind} · ${ly(it.dist)} away${it.size ? ` · ${ly(it.size)} across` : ''}`;
+    tipEl.style.left = Math.min(r.width - 270, e.clientX - r.left + 14) + 'px';
+    tipEl.style.top = Math.max(4, e.clientY - r.top - 10) + 'px';
+    tipEl.classList.add('on');
+  }
+  stage.addEventListener('pointermove', (e) => { if (!ptrs.size) hover(e); });
+
+  function pick(e, go) {
+    const it = nearest(e);
+    if (it && go) location.href = it.href;
+  }
+
+  addEventListener('keydown', (e) => {
+    const k = e.key;
+    if (k === 'ArrowLeft') cam.yaw -= 5;
+    else if (k === 'ArrowRight') cam.yaw += 5;
+    else if (k === 'ArrowUp') cam.pitch = Math.min(89, cam.pitch + 4);
+    else if (k === 'ArrowDown') cam.pitch = Math.max(-89, cam.pitch - 4);
+    else if (k === '+' || k === '=') cam.pxPerDecade = clampZoom(cam.pxPerDecade * 1.2);
+    else if (k === '-' || k === '_') cam.pxPerDecade = clampZoom(cam.pxPerDecade / 1.2);
+    else if (k === '0') cam = { ...HOME };
+    else return;
+    e.preventDefault(); draw();
+  });
+
+  // ---- controls ----
+  function buildCtrl() {
+    const c = document.getElementById('ctrl');
+    const mk = (label, fn, pressed) => {
+      const b = document.createElement('button');
+      b.className = 'cbtn'; b.type = 'button'; b.textContent = label;
+      if (pressed !== undefined) b.setAttribute('aria-pressed', String(pressed));
+      b.addEventListener('click', () => fn(b));
+      c.appendChild(b); return b;
+    };
+    mk('reset view', () => { cam = { ...HOME }; draw(); });
+    mk('top down', () => { cam.pitch = 89; draw(); });
+    mk('edge on', () => { cam.pitch = 0; draw(); });
+    const sep = document.createElement('span'); sep.className = 'sep'; c.appendChild(sep);
+    mk('shells', (b) => { showShells = !showShells; b.setAttribute('aria-pressed', String(showShells)); draw(); }, true);
+    mk('labels', (b) => { showLabels = !showLabels; b.setAttribute('aria-pressed', String(showLabels)); draw(); }, true);
+    // fly out to each decade the way a zoom control steps
+    for (const [label, px] of [['solar', 620], ['Local Group', 150], ['superclusters', 60], ['all of it', 30]]) {
+      mk(label, () => { cam.pxPerDecade = px; draw(); });
+    }
+  }
+
+  function fit() {
+    const w = Math.max(320, stage.clientWidth);
+    cv.width = Math.round(w * 2);
+    cv.height = Math.round(Math.min(760, Math.max(420, w * 0.62)) * 2);
+    draw();
+  }
+
+  buildCtrl();
+  addEventListener('resize', fit);
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change', draw);
+  fit();
+</script>
