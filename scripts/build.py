@@ -323,6 +323,35 @@ def build_cosmos_page():
         })
     spectral.sort(key=lambda s: SPECTRAL_ORDER.index(s["letter"]) if s["letter"] in SPECTRAL_ORDER else 99)
 
+    # The spectral sequence is a partition of the temperature line: every star
+    # has exactly one class, so the bands must tile it with no gap and no
+    # overlap. They did not -- M-type was written "< 3,700 K" with no floor,
+    # which swallowed L, T and Y whole and gave a 1,000 K brown dwarf two
+    # classes at once.
+    def band(txt):
+        if not txt:
+            return None
+        n = [float(x.replace(",", "")) for x in re.findall(r"[\d,]+(?:\.\d+)?", txt)]
+        if not n:
+            return None
+        if "<" in txt:
+            return (0.0, n[0])
+        if ">" in txt:
+            return (n[0], float("inf"))
+        return (min(n), max(n)) if len(n) > 1 else (n[0], n[0])
+
+    for sp in spectral:
+        sp["band"] = band(sp["temp"])
+    ladder = sorted((sp for sp in spectral if sp["band"]), key=lambda sp: sp["band"][0])
+    sp_gaps = []
+    for a, b in zip(ladder, ladder[1:]):
+        if b["band"][0] > a["band"][1]:
+            sp_gaps.append(f"gap {a['band'][1]:g}–{b['band'][0]:g} K between {a['letter']} and {b['letter']}")
+        elif b["band"][0] < a["band"][1]:
+            sp_gaps.append(f"{a['letter']} and {b['letter']} overlap below {a['band'][1]:g} K")
+    for g in sp_gaps:
+        print(f"  cosmos: spectral sequence — {g}")
+
     groups = defaultdict(list)
     for t in notion["celestialTypes"]:
         if t.get("Name"):
@@ -381,14 +410,29 @@ def build_cosmos_page():
         if not nm or o.get("Type") == "Star" or o.get("Distance from Earth") is None:
             continue
         m_kg = o.get("Mass")
-        local.append({
+        row = {
             "name": nm, "slug": slugify(nm),
             "morph": o.get("Morphology"), "sub": o.get("Subgroup"),
             "dist": o.get("Distance from Earth"),
             "diam": o.get("Diameter (ly)"),
             "msun": round(m_kg / MSUN) if m_kg else None,
             "notes": o.get("Notes"),
-        })
+        }
+        # How big it looks, derived rather than stored — two numbers already in
+        # the row determine it exactly, and it is the only one of the three a
+        # person can picture. It doubles as the check: a wrong diameter or a
+        # wrong distance puts a dwarf across half the sky.
+        if row["diam"] and row["dist"]:
+            row["deg"] = round(math.degrees(2 * math.atan(row["diam"] / 2 / row["dist"])), 3)
+            row["moons"] = round(row["deg"] / 0.517, 2)      # the Moon, for scale
+        # Mean density catches a unit slip in either column: everything from a
+        # compact elliptical to a diffuse dwarf lives inside two orders of
+        # magnitude, so anything outside that is arithmetic, not astronomy.
+        if row["msun"] and row["diam"]:
+            rho = row["msun"] / ((4 / 3) * math.pi * (row["diam"] / 2) ** 3)
+            row["rho"] = float(f"{rho:.3g}")
+            row["rhoOK"] = 1e-5 < rho < 1e0
+        local.append(row)
     local.sort(key=lambda x: x["dist"])
 
     missions = [{
@@ -405,7 +449,11 @@ def build_cosmos_page():
     data = {"sun": sun, "spectral": spectral, "types": types,
             "instruments": instruments, "researchers": researchers,
             "observatories": observatories, "discoveries": discoveries,
-            "missions": missions, "localGroup": local, "equations": eq_lookup_all()}
+            "missions": missions, "localGroup": local, "equations": eq_lookup_all(),
+            "lgChecks": {"nDeg": sum(1 for r in local if "deg" in r),
+                         "nRho": sum(1 for r in local if "rho" in r),
+                         "nRhoOff": sum(1 for r in local if r.get("rhoOK") is False),
+                         "spectralGaps": sp_gaps}}
     write_page("cosmos.template.html", "cosmos.html", data)
     return (len(types), len(spectral), len(instruments), len(observatories),
             len(discoveries), len(missions), len(local))
