@@ -441,11 +441,47 @@ def build_timeline_page():
             "theories": r.get("Theories") or [],
             "people": r.get("Researchers") or [],
         })
+        e = events[-1]
+        z, z_lo, z_hi = parse_z(r.get("Redshift"))
+        t, T = e["secs"], e["temp"]
+
+        # CHECK 1 -- T = T0(1 + z). Exact, and the easiest thing on this page
+        # to get wrong. An epoch spanning a redshift range spans a temperature
+        # range, so the row passes if its temperature lands anywhere inside it.
+        if z and T:
+            e["tempFromZ"] = round(T_CMB * (1 + z), 4)
+            e["tLo"], e["tHi"] = round(T_CMB * (1 + z_lo), 4), round(T_CMB * (1 + z_hi), 4)
+            e["tempRatio"] = round(T / e["tempFromZ"], 3)
+            e["tempOK"] = e["tLo"] * 0.85 <= T <= e["tHi"] * 1.15
+
+        # CHECK 2 -- the radiation era, where age follows from temperature
+        # alone. Only applies once the universe is radiation-dominated AND
+        # after reheating: between inflation and reheating the relation does
+        # not hold at all, which is the whole reason reheating has a name.
+        # Bounded above by the electroweak scale, not by inflation: above ~1 TeV
+        # both the time and the temperature are model-dependent extrapolations,
+        # and checking one against the other would only be checking an
+        # assumption against itself. Bounded below by matter-radiation equality.
+        if t and T and T < 1e16 and t <= 1e12:
+            e["ageFromT"] = radiation_era_time(T)
+            e["ageRatio"] = round(t / e["ageFromT"], 3)
+            e["ageOK"] = 0.1 <= e["ageRatio"] <= 10        # g* steps make this order-of-magnitude
     # sort on the number, not the prose — that is what the column is for
     events.sort(key=lambda e: (e["secs"] is None, e["secs"] if e["secs"] is not None else 0))
     data = {"events": events, "equations": eq_lookup_all(), "theories": th_lookup,
             "people": people,
             "eras": [e for e in ERA_ORDER if any(x["era"] == e for x in events)]}
+    bad_T = [e for e in events if e.get("tempOK") is False]
+    bad_t = [e for e in events if e.get("ageOK") is False]
+    for e in bad_T:
+        print(f"  timeline: {e['event']} is {e['tempRatio']}x the temperature its redshift implies")
+    for e in bad_t:
+        print(f"  timeline: {e['event']} is {e['ageRatio']}x the age its temperature implies")
+    data["checks"] = {
+        "nTemp": sum(1 for e in events if "tempRatio" in e), "nTempOff": len(bad_T),
+        "nAge": sum(1 for e in events if "ageRatio" in e), "nAgeOff": len(bad_t),
+        "T0": T_CMB,
+    }
     write_page("timeline.template.html", "timeline.html", data)
     secs = [e["secs"] for e in events if isinstance(e["secs"], (int, float)) and e["secs"] > 0]
     decades = (math.ceil(math.log10(max(secs))) - math.floor(math.log10(min(secs)))) if len(secs) > 1 else 0
@@ -923,17 +959,48 @@ def lcdm_comoving(z: float, H0=None, Om=None) -> float:
 
 
 def parse_z(v):
-    """Redshift is text, because a real structure spans a range ("1.6-2.1").
-    Returns (midpoint, is_range) or (None, False)."""
+    """Redshift is text, because a real structure or epoch spans a range
+    ("1.6-2.1", "1100 - 20"). Returns (midpoint, lo, hi) or (None, None, None).
+
+    Checking a range at its midpoint is what made the Dark Ages look like a
+    hundredfold error when it is simply an epoch: z from 1100 to 20 means a
+    temperature from 3000 K to 57 K, and 60 K sits inside that. Callers get
+    the bounds so they can test containment rather than a point."""
     if isinstance(v, (int, float)):
-        return float(v), False
+        return float(v), float(v), float(v)
     if not isinstance(v, str):
-        return None, False
+        return None, None, None
     nums = re.findall(r"\d+(?:\.\d+)?(?:[eE][-+]?\d+)?", v.replace("\u2212", "-"))
     if not nums:
-        return None, False                      # "\u221e at the horizon"
-    vals = [float(x) for x in nums]
-    return (sum(vals) / len(vals), len(vals) > 1)
+        return None, None, None                 # "\u221e at the horizon", "\u2014"
+    vals = sorted(float(x) for x in nums)
+    return sum(vals) / len(vals), vals[0], vals[-1]
+
+
+T_CMB = 2.7255                    # K, FIRAS. The one number the whole timeline hangs off.
+MEV_K = 1.1605e10                 # K per MeV
+
+
+def gstar(T_k: float) -> float:
+    """Relativistic degrees of freedom, Standard Model, as a step function of
+    temperature. Crude on purpose: it enters t as g*^-1/2, so even getting a
+    threshold wrong moves the answer by tens of percent, not orders."""
+    mev = T_k / MEV_K
+    if mev > 3e5:                 # above the top quark: everything
+        return 106.75
+    if mev > 1e2:                 # above the QCD transition
+        return 96.25
+    if mev > 1e0:                 # hadrons gone, muons still around
+        return 61.75
+    if mev > 0.5:                 # e+e- pairs still around
+        return 10.75
+    return 3.36                   # photons and three neutrino species
+
+
+def radiation_era_time(T_k: float) -> float:
+    """Age in seconds when the universe was at temperature T, radiation-
+    dominated. t = 2.42 g*^-1/2 (1 MeV / T)^2."""
+    return 2.42 * gstar(T_k) ** -0.5 * (MEV_K / T_k) ** 2
 
 
 def build_scales_page():
@@ -943,11 +1010,11 @@ def build_scales_page():
     for r in notion.get("cosmicStructures", []):
         if not r.get("Name") or r.get("Size (ly)") is None:
             continue
-        z, z_range = parse_z(r.get("Redshift"))
+        z, z_lo, z_hi = parse_z(r.get("Redshift"))
         row = {
             "name": r["Name"], "slug": slugify(r["Name"]), "kind": r.get("Kind"),
             "size": r["Size (ly)"], "dist": r.get("Distance (ly)"),
-            "z": r.get("Redshift"), "zNum": z, "zRange": z_range, "pop": r.get("Population"),
+            "z": r.get("Redshift"), "zNum": z, "zRange": z_lo != z_hi, "pop": r.get("Population"),
             "within": r.get("Within") if r.get("Within") not in (None, "\u2014") else None,
             "year": r.get("Recognised"), "notes": r.get("Notes"),
         }
@@ -956,6 +1023,11 @@ def build_scales_page():
         if z and z > 0 and row["dist"]:
             row["dLCDM"] = round(lcdm_comoving(z))
             row["ratio"] = round(row["dist"] / row["dLCDM"], 3)
+            # a structure spanning a redshift range spans a distance range;
+            # the row passes if its stated distance lands anywhere inside it
+            lo, hi = lcdm_comoving(z_lo), lcdm_comoving(z_hi)
+            row["dLo"], row["dHi"] = round(lo), round(hi)
+            row["inBand"] = lo * 0.75 <= row["dist"] <= hi * 1.25
         rows.append(row)
     rows.sort(key=lambda x: x["size"])
     by_name = {r["name"]: r for r in rows}
@@ -975,7 +1047,7 @@ def build_scales_page():
     # velocities and the redshift range of an extended structure all live.
     # Outside it, something is wrong or something is interesting -- either way
     # the page names the row rather than quietly rounding it into line.
-    off = sorted((r for r in checked if not 0.75 < r["ratio"] < 1.25),
+    off = sorted((r for r in checked if not r["inBand"]),
                  key=lambda r: abs(math.log10(r["ratio"])), reverse=True)
     for r in off:
         print(f"  scales: {r['name']} is {r['ratio']}x the LCDM distance for z={r['z']}")

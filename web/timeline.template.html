@@ -30,6 +30,44 @@ __SHARED__
   .pin:hover, .pin:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
   .axisnote { font-size: 11px; color: var(--muted); margin: 7px 0 0; line-height: 1.5; }
 
+  /* ---- the build-time checks ---- */
+  .check {
+    background: var(--panel); border: 1px solid var(--hairline);
+    border-left: 3px solid var(--c-teal); border-radius: 8px;
+    padding: 12px 15px; margin: 0 0 20px; font-size: 12px;
+    color: var(--ink-2); line-height: 1.65;
+  }
+  .check b { color: var(--ink); font-weight: 600; }
+  .check code {
+    font: 11px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    color: var(--ink); background: color-mix(in oklab, var(--ink) 7%, transparent);
+    border-radius: 3px; padding: 1px 4px;
+  }
+  .resid {
+    display: block; margin-top: 9px; padding-top: 8px;
+    border-top: 1px dashed var(--hairline);
+    font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    font-variant-numeric: tabular-nums; color: var(--muted); line-height: 1.7;
+  }
+  .resid .ok { color: var(--c-forest); }
+  .resid .warn { color: var(--c-rust); }
+  .resid .num { color: var(--ink-2); }
+  .resid div + div { margin-top: 3px; }
+
+  .open {
+    margin: 34px 0 0; padding: 16px 18px;
+    background: var(--panel); border: 1px solid var(--hairline);
+    border-left: 3px solid var(--c-amber); border-radius: 8px;
+  }
+  .open h2 {
+    font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    font-size: 13px; font-weight: 700; color: var(--ink); margin: 0 0 4px;
+  }
+  .open > p { font-size: 12.5px; color: var(--ink-2); line-height: 1.65; margin: 0 0 12px; }
+  .open ol { margin: 0; padding-left: 20px; }
+  .open li { font-size: 12.5px; color: var(--ink-2); line-height: 1.7; margin-bottom: 9px; }
+  .open li b { color: var(--ink); font-weight: 600; }
+
   /* ---- era filter ---- */
   .eras { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 18px; }
   .echip {
@@ -105,9 +143,22 @@ __SHARED__
     <div class="axisbar" id="axis"></div>
     <p class="axisnote" id="axisnote"></p>
   </div>
+  <p class="check" id="check" hidden></p>
   <div class="eras" id="eras"></div>
   <div class="events" id="events"></div>
   <p class="empty" id="empty" hidden>Nothing matches that filter.</p>
+
+  <section class="open">
+    <h2>Where this is soft</h2>
+    <p>Two relations are checked above. What they cannot reach is listed here, because the gaps are more interesting than the passes.</p>
+    <ol>
+      <li><b>Baryogenesis and electroweak symmetry breaking carry the same temperature and different times.</b> In electroweak baryogenesis they are the same event, so one of those two claims is wrong — but which one depends on a mechanism nobody has settled, so the rows are left as they are rather than being quietly reconciled.</li>
+      <li><b>Nothing before the electroweak scale is checked at all.</b> Above roughly a TeV the age and the temperature are both extrapolations from the same assumed history, so testing one against the other would only confirm the assumption. The Planck epoch, grand unification, inflation and reheating are shown, not verified.</li>
+      <li><b>Between inflation and reheating the age–temperature relation genuinely breaks</b> — the universe cools by expansion and then is reheated, which is the whole reason reheating has a name. No arithmetic here can span that gap.</li>
+      <li><b>Rows that are epochs, not instants</b> — the Dark Ages, Reionization, the Quark Epoch — carry one time and one temperature for something that lasted a factor of a thousand in both. The checks use the redshift range where one is given, but the single time in the column is still a choice nobody documented.</li>
+      <li><b>The far future is a projection, not a measurement</b>, and rests on dark energy being an actual constant. If it is not, everything past the present day is wrong in a way no check here can detect.</li>
+    </ol>
+  </section>
 </div>
 
 <p class="kfoot">From the Cosmic Timeline database in Notion. Times and temperatures follow the standard ΛCDM chronology on Planck 2018 parameters. Everything past the present day is a projection, not a measurement — the far-future entries are order-of-magnitude estimates, and at least one of them (proton decay) may never happen at all.</p>
@@ -116,6 +167,7 @@ __SHARED__
 <script>
   const D = JSON.parse(document.getElementById('data').textContent);
   const EV = D.events, EQ = D.equations || {}, TH = D.theories || {}, PEOPLE = D.people || {}, ERAS = D.eras || [];
+  const CHK = D.checks || {};
   const ERA_COLOR = {
     'Very Early Universe': 'var(--c-violet)',
     'Radiation Era': 'var(--c-amber)',
@@ -260,6 +312,41 @@ __SHARED__
                        title: [p.life, p.field, p.known].filter(Boolean).join(' · ') }));
       if (who.length) card.appendChild(chipRow('the people', who, 'var(--c-violet)'));
 
+      // The checks, shown per row. A page that asserts a temperature and a
+      // redshift is making two claims that constrain each other exactly; this
+      // is that constraint, evaluated, rather than a request to be believed.
+      if (e.tempRatio != null || e.ageRatio != null) {
+        const d = document.createElement('span');
+        d.className = 'resid';
+        if (e.tempRatio != null) {
+          const line = document.createElement('div');
+          const m = document.createElement('span');
+          m.className = e.tempOK ? 'ok' : 'warn';
+          m.textContent = e.tempOK ? '✓ ' : '⚠ ';
+          line.appendChild(m);
+          line.appendChild(document.createTextNode(`T₀(1+z) at z ${e.z} gives `));
+          const n = document.createElement('span');
+          n.className = 'num'; n.textContent = fmtTemp(e.tempFromZ);
+          line.appendChild(n);
+          line.appendChild(document.createTextNode(` — this row states ${e.tempRatio}× that.`));
+          d.appendChild(line);
+        }
+        if (e.ageRatio != null) {
+          const line = document.createElement('div');
+          const m = document.createElement('span');
+          m.className = e.ageOK ? 'ok' : 'warn';
+          m.textContent = e.ageOK ? '✓ ' : '⚠ ';
+          line.appendChild(m);
+          line.appendChild(document.createTextNode('radiation-era age at that temperature is '));
+          const n = document.createElement('span');
+          n.className = 'num'; n.textContent = `${(+e.ageFromT.toPrecision(3))} s`;
+          line.appendChild(n);
+          line.appendChild(document.createTextNode(` — this row states ${e.ageRatio}× that.`));
+          d.appendChild(line);
+        }
+        card.appendChild(d);
+      }
+
       wrap.append(head, card);
       box.appendChild(wrap);
     }
@@ -299,7 +386,27 @@ __SHARED__
     history.replaceState(null, '', '#' + id);
   }
 
+  function buildCheck() {
+    if (!CHK.nTemp && !CHK.nAge) return;
+    const el = document.getElementById('check');
+    const bits = [];
+    if (CHK.nTemp) {
+      bits.push(`<b>${CHK.nTemp} rows state both a temperature and a redshift</b>, which fixes each `
+        + `other exactly: <code>T = T₀(1 + z)</code> with <code>T₀ = ${CHK.T0} K</code>. `
+        + (CHK.nTempOff ? `<b>${CHK.nTempOff}</b> disagree and say so.` : 'All of them agree.'));
+    }
+    if (CHK.nAge) {
+      bits.push(`<b>${CHK.nAge} rows sit in the radiation era</b>, where the age follows from the `
+        + `temperature alone — <code>t = 2.42 g<sub>*</sub><sup>−1/2</sup> (1 MeV / T)²</code>. `
+        + (CHK.nAgeOff ? `<b>${CHK.nAgeOff}</b> disagree and say so.` : 'All of them agree to within a factor of a few, which is as well as the step approximation for g<sub>*</sub> can do.'));
+    }
+    el.innerHTML = bits.join(' ') + ' Both are recomputed at build time and shown on the row. '
+      + 'Nothing above the electroweak scale is checked — see below for why.';
+    el.hidden = false;
+  }
+
   buildAxis();
+  buildCheck();
   buildEras();
   render();
   if (location.hash.length > 1) goTo(location.hash.slice(1));
