@@ -1,5 +1,5 @@
 <!doctype html><html lang="fr"><meta charset="utf-8">
-<title>Kosmos · Billiards</title>
+<title>Kosmos · Billard</title>
 <style>
   :root {
     color-scheme: light;
@@ -284,11 +284,11 @@
 </style>
 <div class="klang" aria-label="Language · Langue"><a href="/billiards" hreflang="en" lang="en">EN</a><a href="/fr/billiards" hreflang="fr" lang="fr" class="on">FR</a></div>
 
-<nav class="knav"><a href="/fr/">KOSMOS</a><span>/</span><span class="cur">Billiards</span></nav>
-<h1 class="ktitle">Billiards</h1>
+<nav class="knav"><a href="/fr/">KOSMOS</a><span>/</span><span class="cur">Billard</span></nav>
+<h1 class="ktitle">Billard</h1>
 <p class="klede">Two equal spheres, a cloth and a rubber rail — and every one of the shelf's mechanics equations turned into a shot. Momentum and energy give the <a href="/fr/glossary#tangent-line">tangent line</a>; friction between the balls gives <a href="/fr/glossary#throw">throw</a>; the tip's offset gives spin; the cloth turns that spin into follow, draw and stun. The lab below runs those equations live — set the shot up yourself: drag both balls, pick a pocket, and watch what speed does. It is the same physics, and the same numbers, that the <em>Pool Sauce</em> engine integrates.</p>
 
-<h2 class="ksec">The shot lab</h2>
+<h2 class="ksec">Le laboratoire du coup</h2>
 <p class="knote" style="max-width:72ch;margin:0 0 10px">Drag the cue ball or the object ball anywhere on the cloth; click one of the six 4½″ pockets to aim at it. The cue is always aimed at the <a href="/fr/glossary#ghost-ball" style="color:inherit">ghost ball</a> — and when the cue ball is on the wrong side for a direct pot, the lab aims a one-rail <b>bank</b> instead, with the cushion's real rebound (not a mirror) solved into the contact point. Whether the shot actually drops is then up to speed, spin and throw.</p>
 <div class="lab">
   <div class="tblwrap">
@@ -297,49 +297,49 @@
   </div>
   <div class="kcard ctl" id="ctlbox">
     <div class="row"><label>mode</label>
-      <div class="modes"><button id="mprac" type="button" class="on">practice — guides live</button><button id="mpro" type="button">pro — just the balls</button></div>
-      <div class="hint pro-only">No guides, neutral defaults. The aim must pay for throw, squirt and swerve.</div></div>
-    <div class="row"><label>the shot</label><div id="shotinfo"></div>
-      <div class="hint prac-only">Drag either ball; click a pocket to aim there. The outcome maps live under the table.</div>
-      <div class="hint pro-only">Drag the empty cloth to point the cue; drag a ball to move it.</div>
-      <div class="presets" style="grid-column:1/-1"><button id="share" type="button">copy a link to this shot</button></div></div>
-    <div class="row pro-only"><label>aim — fine trim</label>
+      <div class="modes"><button id="mprac" type="button" class="on">entraînement — guides en ligne</button><button id="mpro" type="button">pro — seulement les billes</button></div>
+      <div class="hint pro-only">Aucun repère, réglages neutres. La visée doit compenser la déviation par frottement, la déviation au départ et la courbe.</div></div>
+    <div class="row"><label>le coup</label><div id="shotinfo"></div>
+      <div class="hint prac-only">Faites glisser l'une ou l'autre bille ; cliquez sur une poche pour y viser. Les cartes de résultats sont sous la table.</div>
+      <div class="hint pro-only">Faites glisser le tapis vide pour orienter la queue ; faites glisser une bille pour la déplacer.</div>
+      <div class="presets" style="grid-column:1/-1"><button id="share" type="button">copier un lien vers ce coup</button></div></div>
+    <div class="row pro-only"><label>visée — réglage fin</label>
       <div class="aimbtns"><button type="button" data-n="-1">−1°</button><button type="button" data-n="-0.1">−0.1°</button><span class="v" id="aimv"></span><button type="button" data-n="0.1">+0.1°</button><button type="button" data-n="1">+1°</button></div>
-      <div class="hint"><b>← →</b> steer the cue 1° per press — <b>shift</b> for 0.1° — thinner or fuller without touching the cloth.</div></div>
-    <div class="row"><label for="spd">strike — 1 soft, 10 break</label><input id="spd" type="range" min="0.5" max="10" step="0.1" value="2.5"><span class="v" id="spdv"></span>
-      <div class="hint">Also the cue ball's speed in m/s: 2–3 pot weight, 5 firm, 8+ a break.</div></div>
-    <div class="row"><label for="tip">tip height, b/R</label><input id="tip" type="range" min="-0.5" max="0.5" step="0.02" value="0.4"><span class="v" id="tipv"></span>
-      <div class="hint">+0.4 natural roll · 0 stun · −0.5 draw · ±0.5 is the miscue limit.</div></div>
-    <div class="row"><label for="side">side, b/R</label><input id="side" type="range" min="-0.5" max="0.5" step="0.02" value="0"><span class="v" id="sidev"></span>
-      <div class="hint">Negative is left of centre. Side squirts the cue ball off the aim, swerves it back while it slides, and throws the object ball.</div></div>
-    <div class="row"><button id="exec" type="button" class="exec">▶ execute the shot</button>
+      <div class="hint"><b>← →</b> orientent la queue de 1° par appui — <b>shift</b> pour 0.1° — plus fin ou plus plein sans toucher le tapis.</div></div>
+    <div class="row"><label for="spd">frappe — 1 douce, 10 casse</label><input id="spd" type="range" min="0.5" max="10" step="0.1" value="2.5"><span class="v" id="spdv"></span>
+      <div class="hint">Aussi la vitesse de la bille blanche en m/s : 2–3 pour empocher, 5 ferme, 8+ une casse.</div></div>
+    <div class="row"><label for="tip">hauteur du procédé, b/R</label><input id="tip" type="range" min="-0.5" max="0.5" step="0.02" value="0.4"><span class="v" id="tipv"></span>
+      <div class="hint">+0.4 roulement naturel · 0 bille arrêtée · −0.5 rétro · ±0.5 est la limite de fausse queue.</div></div>
+    <div class="row"><label for="side">côté, b/R</label><input id="side" type="range" min="-0.5" max="0.5" step="0.02" value="0"><span class="v" id="sidev"></span>
+      <div class="hint">Le négatif est à gauche du centre. L'effet latéral fait fuir la bille blanche hors de la ligne de visée, la fait revenir en courbe pendant qu'elle glisse, et dévie la bille visée par frottement.</div></div>
+    <div class="row"><button id="exec" type="button" class="exec">▶ exécuter le coup</button>
       <div class="hint pro-only" id="score"></div></div>
     <div class="presets prac-only" id="presets"></div>
-    <details><summary>balls on the table</summary>
+    <details><summary>billes sur la table</summary>
       <div class="row">
-        <div class="aimbtns"><button type="button" id="rack9">9-ball</button><button type="button" id="rack8">8-ball</button><button type="button" id="ballplus">+ ball</button><button type="button" id="ballminus">− ball</button><button type="button" id="justtwo">just two</button></div>
-        <div class="presets" style="grid-column:1/-1"><button type="button" id="photobtn">replicate a real table from a photo…</button></div>
+        <div class="aimbtns"><button type="button" id="rack9">9-ball</button><button type="button" id="rack8">8-ball</button><button type="button" id="ballplus">+ bille</button><button type="button" id="ballminus">− bille</button><button type="button" id="justtwo">seulement deux</button></div>
+        <div class="presets" style="grid-column:1/-1"><button type="button" id="photobtn">reproduire une vraie table à partir d'une photo…</button></div>
         <input type="file" id="photofile" accept="image/*" hidden>
-        <div class="hint">Every ball is live — combos, caroms, full breaks. Practice aims at the lowest number still up (ringed).</div></div></details>
-    <details id="condbox"><summary>conditions — the contract <span class="cnt" id="condsum"></span></summary>
+        <div class="hint">Toutes les billes sont jouables — combinaisons, carambolages, casses complètes. L'entraînement vise le plus petit numéro encore en jeu (entouré).</div></div></details>
+    <details id="condbox"><summary>conditions — le contrat <span class="cnt" id="condsum"></span></summary>
       <div class="row">
         <div class="presets" id="conds"></div>
         <div class="hint" id="condres"></div>
-        <div class="hint">Practice grades live, pro on execute. Conditions that fight each other make the best shots.</div></div></details>
-    <details id="runbox"><summary>run out — one shot at a time <span class="cnt" id="runsum"></span></summary>
+        <div class="hint">L'entraînement note en direct, le mode pro à l'exécution. Les conditions qui se contrarient font les meilleurs coups.</div></div></details>
+    <details id="runbox"><summary>finir la table — un coup à la fois <span class="cnt" id="runsum"></span></summary>
       <div class="row">
-        <div class="presets"><button type="button" id="runstart">start the run-out</button><button type="button" id="runstop">end it</button></div>
+        <div class="presets"><button type="button" id="runstart">amorcer la série</button><button type="button" id="runstop">terminer</button></div>
         <div class="hint" id="runres"></div>
         <div class="hint">Every executed shot advances the table — the balls live where they land. Lowest ball first or it's a foul (ball in hand; a fouled 9 respots); the run ends when the 9 drops, or the cloth is bare. Par is a ball a shot. Import a break from a photo and clear it.</div></div></details>
-    <details><summary>drills — after Dr Dave</summary>
+    <details><summary>exercices — d'après Dr Dave</summary>
       <div class="row">
         <div class="aimbtns"><select id="drill"></select><button type="button" id="dlm">−</button><span class="v" id="drilllvl">—</span><button type="button" id="dlp">+</button></div>
         <div class="hint">The table sets itself up; 10 levels each. In pro a pot moves you up, a miss down — the format of <a href="https://drdavepoolinfo.com/resources/drills/" target="_blank" rel="noopener" style="color:inherit">Dr Dave's drills &amp; exam library</a>.</div></div></details>
   </div>
 </div>
 <div class="kcard ctl" id="photobox" hidden style="max-width:1240px;margin-top:14px">
-  <div class="row"><label>replicate a table from a photo</label>
-    <div class="presets" style="grid-column:1/-1"><button type="button" id="phapply">place on the table</button><button type="button" id="phfind">find the balls again</button><button type="button" id="phfewer">− fewer</button><button type="button" id="phmore">+ more</button><button type="button" id="phclear">clear the balls</button><button type="button" id="phreset">redo the corners</button><button type="button" id="phclose">close</button></div>
+  <div class="row"><label>reproduire une table à partir d'une photo</label>
+    <div class="presets" style="grid-column:1/-1"><button type="button" id="phapply">placer sur la table</button><button type="button" id="phfind">retrouver les billes</button><button type="button" id="phfewer">− moins</button><button type="button" id="phmore">+ plus</button><button type="button" id="phclear">dégager les billes</button><button type="button" id="phreset">refaire les coins</button><button type="button" id="phclose">fermer</button></div>
     <canvas id="phcv" style="grid-column:1/-1;width:100%;border:1px solid var(--hairline);border-radius:6px;cursor:crosshair;touch-action:none"></canvas>
     <div class="presets" id="phnums" style="grid-column:1/-1"></div>
     <div class="hint" id="phhint"></div></div>
@@ -353,23 +353,23 @@
 </div>
 <div class="out" id="solspace">
   <div class="kcard ctl">
-    <div class="row"><label>outcome by strike — this shot, every strength</label>
+    <div class="row"><label>résultat selon la frappe — ce coup, toutes les puissances</label>
       <svg id="vstrip" viewBox="0 0 550 22" preserveAspectRatio="none"></svg>
       <div class="hint" id="potv"></div>
       <div class="hint"><b>solid amber</b>: the object ball drops · <b>mid amber</b>: it hangs in the jaws · <b>faint amber</b>: it stays up · <b>grey</b>: the cue ball never gets there · <b>red strip</b>: the cue ball scratches</div></div>
   </div>
   <div class="kcard ctl">
-    <div class="row"><label>solution space — aim × strike, this layout</label>
+    <div class="row"><label>espace des solutions — visée × frappe, cette configuration</label>
       <canvas id="hmap" width="486" height="120" style="width:100%;height:120px;grid-column:1/-1;border:1px solid var(--hairline);border-radius:4px"></canvas>
       <div class="hint">Every pixel is a simulated shot: <b>amber</b> pots · <b>dim amber</b> hangs · <b>red-edged</b> pots but scratches · <b>red</b> scratches · x: aim ±5° around the ghost-ball line (centre tick) · y: strike 0.5→10 (line = yours). The pot window drifting off centre is the compensation you must aim.</div></div>
   </div>
 </div>
 <div class="out">
-  <div class="kcard"><h3><span class="dot" style="background:var(--c-amber)"></span>Object ball</h3><dl id="ob"></dl></div>
-  <div class="kcard"><h3><span class="dot" style="background:var(--c-felt)"></span>Cue ball</h3><dl id="cb"></dl></div>
+  <div class="kcard"><h3><span class="dot" style="background:var(--c-amber)"></span>Bille visée</h3><dl id="ob"></dl></div>
+  <div class="kcard"><h3><span class="dot" style="background:var(--c-felt)"></span>Bille blanche</h3><dl id="cb"></dl></div>
 </div>
 
-<h2 class="ksec">Slide → roll</h2>
+<h2 class="ksec">Glissement → roulement</h2>
 <p class="knote" style="max-width:72ch;margin:0 0 10px">How quickly a struck ball becomes a rolling ball. Off the tip the ball slides; cloth friction eats the slip until surface speed matches ball speed — natural roll — and the slide distance grows with the <em>square</em> of the strike: double the strike, four times the slide. The amber line is your object ball at its current distance. Left of the crossing the cloth has taken the shot over before contact; right of it the cue ball arrives still sliding — which is where stun and draw live.</p>
 <div class="cush">
   <svg class="felt" id="slide" viewBox="0 0 900 300" role="img" aria-label="Slide distance before natural roll, plotted against strike intensity, with the object ball's distance marked"></svg>
@@ -377,49 +377,49 @@
     <div class="hint">Follows the shot lab live — tip height, strike and the dragged distance to the object ball. Stun (tip 0) and full draw (−0.5) drawn for reference.</div></div>
 </div>
 
-<h2 class="ksec">The cushion</h2>
+<h2 class="ksec">La bande</h2>
 <div class="cush">
   <svg class="felt" id="cushion" viewBox="0 0 900 300" role="img" aria-label="A ball approaching a cushion and rebounding"></svg>
   <div class="kcard ctl">
-    <div class="row"><label for="ca">approach angle, from the rail</label><input id="ca" type="range" min="10" max="85" step="1" value="45"><span class="v" id="cav"></span></div>
-    <div class="row"><label for="cs">speed into the rail</label><input id="cs" type="range" min="0.5" max="6" step="0.1" value="2"><span class="v" id="csv"></span></div>
-    <div class="row"><label for="cside">side — running (+) or reverse (−)</label><input id="cside" type="range" min="-0.5" max="0.5" step="0.02" value="0"><span class="v" id="csidev"></span>
+    <div class="row"><label for="ca">angle d'approche, depuis la bande</label><input id="ca" type="range" min="10" max="85" step="1" value="45"><span class="v" id="cav"></span></div>
+    <div class="row"><label for="cs">vitesse à l'impact sur la bande</label><input id="cs" type="range" min="0.5" max="6" step="0.1" value="2"><span class="v" id="csv"></span></div>
+    <div class="row"><label for="cside">effet latéral — naturel (+) ou contraire (−)</label><input id="cside" type="range" min="-0.5" max="0.5" step="0.02" value="0"><span class="v" id="csidev"></span>
       <div class="hint">Running side has the ball's surface moving against its travel at the rail, so friction speeds it along; reverse does the opposite.</div></div>
     <dl id="cout" style="margin-top:6px"></dl>
   </div>
 </div>
 
-<h2 class="ksec">Kicks and banks — the diamond systems</h2>
+<h2 class="ksec">Kicks et bandes — les systèmes de diamants</h2>
 <p class="knote" style="max-width:72ch;margin:0 0 10px">The diamonds are a calculator bolted to the rails. Two systems that use it are drawn here — the <b>two-rail mirror</b>, which is pure geometry, and <b>corner five</b>, the three-rail system every carom player learns — and both are run against the same cushion model as the rest of the page. That is the point: the mirror is exact only for a ball that loses nothing at the rail, and corner five is an <em>empirical</em> system, calibrated for running side at one particular pace. Drag the balls, then move the speed and the side and watch the arithmetic drift out from under you.</p>
 <div class="lab">
   <div class="tblwrap"><svg class="felt" id="dsys" viewBox="-36 -36 972 542" role="img" aria-label="A pool table with numbered diamonds: the system's prescribed aim line and the ball's real path across the rails"></svg>
     <div class="legend" id="dslegend"></div></div>
   <div class="kcard ctl" id="dsysctl">
-    <div class="row"><label>the system</label>
-      <div class="modes"><button id="dsysb2" type="button">two rails — the mirror</button><button id="dsysb3" type="button" class="on">three rails — corner five</button></div>
+    <div class="row"><label>le système</label>
+      <div class="modes"><button id="dsysb2" type="button">deux bandes — le miroir</button><button id="dsysb3" type="button" class="on">trois bandes — coin cinq</button></div>
       <div class="hint" id="dshelp"></div></div>
-    <div class="row sys3-only"><label for="darr">arrival — where you want the third rail</label><input id="darr" type="range" min="0.4" max="5" step="0.1" value="2"><span class="v" id="darrv"></span></div>
-    <div class="row"><label for="dspd">speed into the first rail</label><input id="dspd" type="range" min="1" max="6" step="0.1" value="2.8"><span class="v" id="dspdv"></span></div>
-    <div class="row"><label for="dside">side — running (+) or reverse (−)</label><input id="dside" type="range" min="-0.5" max="0.5" step="0.02" value="0.3"><span class="v" id="dsidev"></span>
+    <div class="row sys3-only"><label for="darr">arrivée — là où vous voulez la troisième bande</label><input id="darr" type="range" min="0.4" max="5" step="0.1" value="2"><span class="v" id="darrv"></span></div>
+    <div class="row"><label for="dspd">vitesse à la première bande</label><input id="dspd" type="range" min="1" max="6" step="0.1" value="2.8"><span class="v" id="dspdv"></span></div>
+    <div class="row"><label for="dside">effet latéral — naturel (+) ou contraire (−)</label><input id="dside" type="range" min="-0.5" max="0.5" step="0.02" value="0.3"><span class="v" id="dsidev"></span>
       <div class="hint">Corner five is taught with running side at a firm, even pace — that english is part of the system, not a decoration. Zero it and watch the numbers stop working.</div></div>
     <dl id="dsout" style="margin-top:4px"></dl>
   </div>
 </div>
 
-<h2 class="ksec">The numbers</h2>
+<h2 class="ksec">Les nombres</h2>
 <p class="knote" style="max-width:72ch;margin:0 0 10px">The lab runs on these — quoted from <code>poolsauce/constants.py</code> in the pool-sauce-engine repository, so the page and the engine never disagree on one. Where the engine has no value yet (ball–ball friction, cushion friction) the literature's is used and marked.</p>
 <div class="numswrap"><table class="nums" id="nums"></table></div>
 
-<h2 class="ksec">The equations</h2>
+<h2 class="ksec">Les équations</h2>
 <div class="shelf" id="shelf"></div>
 
-<h2 class="ksec">The skills</h2>
+<h2 class="ksec">Les savoir-faire</h2>
 <div class="skills" id="skills"></div>
 
-<h2 class="ksec">What the lab leaves out</h2>
+<h2 class="ksec">Ce que le laboratoire laisse de côté</h2>
 <ul class="assume">
   <li><strong>The cue is almost level.</strong> Real strokes carry a few degrees of elevation, so side spin gets its real costs: <em>squirt</em> pushes the cue ball off the aim at the tip (≈2.5° at maximum side, a fixed mid-stiffness-shaft constant) and <em>swerve</em> curves it back while it slides — long, soft shots with side bend visibly, short firm ones barely. Full massé stays out of scope, and the collision now happens wherever the cue ball actually arrives, not where it was aimed.</li>
-  <li><strong>Balls stay on the cloth.</strong> No hop on a firm draw stroke, no jump; the cushion returns the ball in the plane.</li>
+  <li><strong>Les billes restent sur le tapis.</strong> Pas de saut sur un coup de rétro appuyé, pas de bille sautée ; la bande renvoie la bille dans le plan.</li>
   <li><strong>Friction is Coulomb's</strong> — a constant coefficient, except ball–ball friction for throw, which uses Alciatore's measured fit μ = 0.01 + 0.108 e<sup>−1.088 v</sup> because slow shots really do throw more.</li>
   <li><strong>Spin doesn't cross a collision.</strong> Every ball on the table is live — collisions between any two balls, both possibly moving, carry the full impulse-and-throw model — but the friction nudge each contact gives the striker's spin is dropped, and a struck ball leaves without spin of its own.</li>
   <li><strong>Pockets are a mouth and a shelf, not jaws.</strong> Six 4½″ mouths on a 9-ft table, each with a shelf depth (1⅝″ corner, ⅜″ side — variables in the model): a ball whose centre crosses a mouth drops if it has that much roll left, and hangs in the jaws if not. No rattles or lip-outs — speed never rejects a ball the way a real corner does. Rails rebound live in the main sim with the cushion lab's model — restitution √0.75 at a soft touch, deadening with pace to a floor of 0.55, plus friction and the ball's side transferring — so banks, kicks and multi-rail routes are real and hard shots die in a few rails instead of ricocheting forever; the jaw region bounces like plain rail.</li>
@@ -427,7 +427,7 @@
 
 <p class="kfoot">Physics from the Equations shelf; constants from pool-sauce-engine. Coriolis, <em>Théorie mathématique des effets du jeu de billard</em>, 1835, had most of this; the throw model follows Alciatore (<em>The Illustrated Principles of Pool and Billiards</em>, technical proofs). Nothing here is a substitute for a table.</p>
 
-<script id="data" type="application/json">{"equations":[{"name":"Cushion Rebound","slug":"cushion-rebound","field":"Billiards","equation":"v_n,out = e_c v_n,in;  the tangential component and side spin lose to cushion friction","significance":"The rail gives back most of the speed that hit it square and slows what ran along it, so the ball leaves at a shorter angle than it arrived — more so when it arrives fast. Side spin adds or subtracts to that along-rail component: running english lengthens the angle and keeps the ball moving, reverse shortens it and kills speed. Cushions are rubber, not physics constants; every table plays a little differently, and players test them before a match.","year":1835,"requires":3},{"name":"Ghost-Ball Aim","slug":"ghost-ball-aim","field":"Billiards","equation":"aim the cue ball's centre at the point 2R from the object ball's centre, on the line to the pocket;  ball-hit fraction f = 1 − sin θ","significance":"Picture the cue ball frozen where it must be at contact — touching the object ball on the far side from the pocket. Its centre is one ball's diameter from the object ball's centre along the pocket line; send the real cue ball there. The fraction the two overlap when seen from the cue is 1 − sin θ, which is why a half-ball hit is a 30° cut and a quarter-ball is 48.6°. Pure geometry; throw adds a correction on top.","year":1835,"requires":2},{"name":"Ninety-Degree Rule","slug":"ninety-degree-rule","field":"Billiards","equation":"v_OB = v cos θ  (along the line of centres);  v_CB = v sin θ  (along the tangent line)","significance":"Two equal balls, one at rest, no spin: after the hit they separate at a right angle. The object ball leaves along the line of centres — always, whatever else you do — and the cue ball keeps whatever was perpendicular to that. It is momentum and energy conservation with equal masses, and it is a projection: cos θ of the speed goes one way, sin θ the other, cos²θ of the energy to the object ball. A half-ball hit (θ = 30°) sends 75 % of the energy on. Coriolis set it down in 1835. Real balls bend it a degree or two (restitution, throw), and spin bends the cue ball's path afterwards — but the tangent line is where every cue-ball plan starts.","year":1835,"requires":4},{"name":"Slide to Roll","slug":"slide-to-roll","field":"Billiards","equation":"rolling when v = ω R;  a stunned ball rolls after t = 2 v₀ / (7 μ_s g), at 5/7 of its speed","significance":"A ball struck at centre skids first — no spin, so the cloth drags its bottom and spins it up while slowing it down — until the surface speed matches the ball's speed and it rolls. It loses two-sevenths of its speed getting there, in a distance that scales with v₀². Topspin shortens the skid, backspin reverses it: a drawn cue ball skids backward-spinning, stops spinning, then rolls back the way it came. Every follow and draw shot is this transition happening after the collision instead of before it.","year":1835,"requires":4},{"name":"Tip Offset and Spin","slug":"tip-offset-and-spin","field":"Billiards","equation":"ω = (5/2) v b / R²  ;  miscue beyond b ≈ R/2","significance":"Hit off-centre and the impulse has a lever arm; the ball's moment of inertia is ⅖ mR², so the spin is 5/2 · v · b / R². Half a radius of offset — the practical limit before the tip slides off — gives a ball spinning about as fast as it would if it were already rolling at that speed. Above the centre it is follow, below it draw, to the side it is english (and squirt: the cue ball leaves a little off the cue's line, by an amount that is a property of the cue, not the table).","year":1835,"requires":3},{"name":"Cue-to-Ball Speed Transfer","slug":"cue-to-ball-speed-transfer","field":"Billiards","equation":"v_ball ≈ v_cue · 2 m_cue / (m_cue + m_ball) · (1 + e)/2","significance":"A heavy cue on a light ball gives the ball more speed than the cue had: with a 540 g cue and a 170 g ball the ideal is about 1.5 times, less the tip's losses. Which is why a firm stroke is about cue speed, not muscle, and why the grip's tightness changes the effective mass but not much else. Momentum conservation and Newton's law of impact, nothing more.","year":null,"requires":2},{"name":"Thirty-Degree Rule","slug":"thirty-degree-rule","field":"Billiards","equation":"a rolling cue ball leaves a ¼- to ¾-ball hit at about 30° from its original line","significance":"Not a law but a consequence: the ninety-degree rule sends the cue ball down the tangent line, then its topspin — which the collision did not touch — bends it forward as it takes up roll again. Over the middle range of cuts that bend lands the ball near 30° from where it was going, which is why a peace sign held at the object ball predicts where the cue ball ends up. Faster shots and thinner or fuller hits break it; stun (no roll) keeps the ninety.","year":null,"requires":2},{"name":"Throw","slug":"throw","field":"Billiards","equation":"throw angle ≈ atan(μ v_t / v_n), up to about 5°","significance":"During the fifth of a millisecond the balls touch, friction drags the object ball a little off the line of centres, toward the direction the cue ball's surface was sliding. A cut throws the object ball forward of the geometric line (cut-induced throw); side spin throws it left or right (spin-induced throw). Slow shots throw more — the friction has more time relative to the speed — and it saturates once the surfaces stop slipping. Chalk on the contact point can double it. Nobody pockets long, slow cuts without allowing for it.","year":null,"requires":3},{"name":"Coefficient of Restitution","slug":"coefficient-of-restitution","field":"Mechanics","equation":"e = v_separation / v_approach;  head-on, kinetic energy kept = e²","significance":"Newton's experimental law of 1687: how much of the closing speed survives a collision. Phenolic pool balls run about 0.92, so a straight-in stun shot leaves the cue ball creeping forward and the object ball with 85 % of the energy; a cushion returns roughly 0.75 of the energy, so the ball comes off at 87 % of its speed. Steel on steel is 0.9-ish, a superball 0.9, a lump of clay near 0. It is why the ninety-degree rule is really eighty-eight, and why a stop shot needs a touch of draw.","year":1687,"requires":2},{"name":"Rolling Resistance","slug":"rolling-resistance","field":"Mechanics","equation":"d = v₀² / (2 μ_r g)","significance":"A rolling body loses energy slowly, to the deformation of the surface and the ball, and the deceleration is nearly constant: μ_r g. On a pool table that is a tenth of a metre per second per second, so a ball at 1 m/s rolls about five metres and speed control is a matter of a few percent. Coulomb measured rolling friction in 1781; the work–energy theorem does the rest.","year":1781,"requires":2}],"skills":[{"name":"Using Side","slug":"using-side","summary":"English — side spin — and the four things it does at once, three of which you did not ask for.","difficulty":"Advanced"},{"name":"Follow, Draw and Stun","slug":"follow-draw-and-stun","summary":"Where the cue ball ends up: controlling it with the height of the tip on the ball.","difficulty":"Intermediate"},{"name":"The Cut Shot","slug":"the-cut-shot","summary":"Pocketing a ball that is not straight in — where to send the cue ball, and where it goes afterwards.","difficulty":"Beginner"}],"table":{"caption":"The numbers a pool table runs on — the same values the Pool Sauce engine (pool-sauce-engine, poolsauce/constants.py) integrates with, so the shelf and the engine never disagree on one.","columns":["Quantity","Value","Enters","Note"],"rows":[["Ball radius R","28.575 mm","ghost-ball aim, tip offset, slide-to-roll","A 2¼-inch ball. Snooker's are 52.5 mm; carom 61.5 mm."],["Ball mass m","170 g","speed transfer, momentum","Phenolic resin; matched to a gram in a set."],["Ball–ball restitution e","0.92","restitution, ninety-degree rule","So a stun stop shot still creeps forward — a touch of draw fixes it."],["Ball–ball friction μ","≈ 0.06","throw","Clean balls. Chalk on the contact point can double it."],["Cloth sliding friction μ_s","0.2","slide-to-roll, draw distance","Worsted tournament cloth; napped cloth is higher."],["Cloth rolling resistance μ_r","0.01","rolling resistance","A ball at 1 m/s rolls about 5 m."],["Cloth spinning friction","0.044","how long side spin lasts","Torque on a ball spinning in place about a vertical axis."],["Cushion efficiency","0.75 of energy → 0.87 of speed","cushion rebound","Rubber; varies table to table and with speed. Test before a match."],["9-ft playing surface","2.54 × 1.27 m","distance, speed control","Inside the cushion noses; a 7-ft bar table is 1.98 × 0.99 m."]],"note":"Where the engine and the literature differ the engine's value is quoted, because that is the number the shots on the channel are computed with."}}</script>
+<script id="data" type="application/json">{"equations":[{"name":"Rebond sur la bande","slug":"cushion-rebound","field":"Billiards","equation":"v_n,out = e_c v_n,in;  the tangential component and side spin lose to cushion friction","significance":"The rail gives back most of the speed that hit it square and slows what ran along it, so the ball leaves at a shorter angle than it arrived — more so when it arrives fast. Side spin adds or subtracts to that along-rail component: running english lengthens the angle and keeps the ball moving, reverse shortens it and kills speed. Cushions are rubber, not physics constants; every table plays a little differently, and players test them before a match.","year":1835,"requires":3},{"name":"Visée à la bille fantôme","slug":"ghost-ball-aim","field":"Billiards","equation":"aim the cue ball's centre at the point 2R from the object ball's centre, on the line to the pocket;  ball-hit fraction f = 1 − sin θ","significance":"Picture the cue ball frozen where it must be at contact — touching the object ball on the far side from the pocket. Its centre is one ball's diameter from the object ball's centre along the pocket line; send the real cue ball there. The fraction the two overlap when seen from the cue is 1 − sin θ, which is why a half-ball hit is a 30° cut and a quarter-ball is 48.6°. Pure geometry; throw adds a correction on top.","year":1835,"requires":2},{"name":"Règle des quatre-vingt-dix degrés","slug":"ninety-degree-rule","field":"Billiards","equation":"v_OB = v cos θ  (along the line of centres);  v_CB = v sin θ  (along the tangent line)","significance":"Two equal balls, one at rest, no spin: after the hit they separate at a right angle. The object ball leaves along the line of centres — always, whatever else you do — and the cue ball keeps whatever was perpendicular to that. It is momentum and energy conservation with equal masses, and it is a projection: cos θ of the speed goes one way, sin θ the other, cos²θ of the energy to the object ball. A half-ball hit (θ = 30°) sends 75 % of the energy on. Coriolis set it down in 1835. Real balls bend it a degree or two (restitution, throw), and spin bends the cue ball's path afterwards — but the tangent line is where every cue-ball plan starts.","year":1835,"requires":4},{"name":"Du glissement au roulement","slug":"slide-to-roll","field":"Billiards","equation":"rolling when v = ω R;  a stunned ball rolls after t = 2 v₀ / (7 μ_s g), at 5/7 of its speed","significance":"A ball struck at centre skids first — no spin, so the cloth drags its bottom and spins it up while slowing it down — until the surface speed matches the ball's speed and it rolls. It loses two-sevenths of its speed getting there, in a distance that scales with v₀². Topspin shortens the skid, backspin reverses it: a drawn cue ball skids backward-spinning, stops spinning, then rolls back the way it came. Every follow and draw shot is this transition happening after the collision instead of before it.","year":1835,"requires":4},{"name":"Décentrage du procédé et effet","slug":"tip-offset-and-spin","field":"Billiards","equation":"ω = (5/2) v b / R²  ;  miscue beyond b ≈ R/2","significance":"Hit off-centre and the impulse has a lever arm; the ball's moment of inertia is ⅖ mR², so the spin is 5/2 · v · b / R². Half a radius of offset — the practical limit before the tip slides off — gives a ball spinning about as fast as it would if it were already rolling at that speed. Above the centre it is follow, below it draw, to the side it is english (and squirt: the cue ball leaves a little off the cue's line, by an amount that is a property of the cue, not the table).","year":1835,"requires":3},{"name":"Transfert de vitesse de la queue à la bille","slug":"cue-to-ball-speed-transfer","field":"Billiards","equation":"v_ball ≈ v_cue · 2 m_cue / (m_cue + m_ball) · (1 + e)/2","significance":"A heavy cue on a light ball gives the ball more speed than the cue had: with a 540 g cue and a 170 g ball the ideal is about 1.5 times, less the tip's losses. Which is why a firm stroke is about cue speed, not muscle, and why the grip's tightness changes the effective mass but not much else. Momentum conservation and Newton's law of impact, nothing more.","year":null,"requires":2},{"name":"Règle des trente degrés","slug":"thirty-degree-rule","field":"Billiards","equation":"a rolling cue ball leaves a ¼- to ¾-ball hit at about 30° from its original line","significance":"Not a law but a consequence: the ninety-degree rule sends the cue ball down the tangent line, then its topspin — which the collision did not touch — bends it forward as it takes up roll again. Over the middle range of cuts that bend lands the ball near 30° from where it was going, which is why a peace sign held at the object ball predicts where the cue ball ends up. Faster shots and thinner or fuller hits break it; stun (no roll) keeps the ninety.","year":null,"requires":2},{"name":"Déviation par frottement","slug":"throw","field":"Billiards","equation":"throw angle ≈ atan(μ v_t / v_n), up to about 5°","significance":"During the fifth of a millisecond the balls touch, friction drags the object ball a little off the line of centres, toward the direction the cue ball's surface was sliding. A cut throws the object ball forward of the geometric line (cut-induced throw); side spin throws it left or right (spin-induced throw). Slow shots throw more — the friction has more time relative to the speed — and it saturates once the surfaces stop slipping. Chalk on the contact point can double it. Nobody pockets long, slow cuts without allowing for it.","year":null,"requires":3},{"name":"Coefficient de restitution","slug":"coefficient-of-restitution","field":"Mechanics","equation":"e = v_separation / v_approach;  head-on, kinetic energy kept = e²","significance":"Newton's experimental law of 1687: how much of the closing speed survives a collision. Phenolic pool balls run about 0.92, so a straight-in stun shot leaves the cue ball creeping forward and the object ball with 85 % of the energy; a cushion returns roughly 0.75 of the energy, so the ball comes off at 87 % of its speed. Steel on steel is 0.9-ish, a superball 0.9, a lump of clay near 0. It is why the ninety-degree rule is really eighty-eight, and why a stop shot needs a touch of draw.","year":1687,"requires":2},{"name":"Résistance au roulement","slug":"rolling-resistance","field":"Mechanics","equation":"d = v₀² / (2 μ_r g)","significance":"A rolling body loses energy slowly, to the deformation of the surface and the ball, and the deceleration is nearly constant: μ_r g. On a pool table that is a tenth of a metre per second per second, so a ball at 1 m/s rolls about five metres and speed control is a matter of a few percent. Coulomb measured rolling friction in 1781; the work–energy theorem does the rest.","year":1781,"requires":2}],"skills":[{"name":"Utiliser l'effet latéral","slug":"using-side","summary":"L'effet latéral — et les quatre choses qu'il fait à la fois, dont trois que vous n'aviez pas demandées.","difficulty":"Advanced"},{"name":"Coulé, rétro et bille arrêtée","slug":"follow-draw-and-stun","summary":"Où finit la bille blanche : la contrôler par la hauteur du procédé sur la bille.","difficulty":"Intermediate"},{"name":"Le coup coupé","slug":"the-cut-shot","summary":"Empocher une bille qui n'est pas dans l'axe — où envoyer la bille blanche, et où elle va ensuite.","difficulty":"Beginner"}],"table":{"caption":"The numbers a pool table runs on — the same values the Pool Sauce engine (pool-sauce-engine, poolsauce/constants.py) integrates with, so the shelf and the engine never disagree on one.","columns":["Grandeur","Valeur","Entre","Note"],"rows":[["Rayon de la bille R","28,575 mm","visée par bille fantôme, décalage du procédé, glissement puis roulement","Une bille de 2¼ pouces. Celles du snooker font 52.5 mm ; le carambole 61.5 mm."],["Masse de la bille m","170 g","transfert de vitesse, quantité de mouvement","Résine phénolique ; appariées au gramme dans un jeu."],["Restitution bille–bille e","0.92","restitution, règle des quatre-vingt-dix degrés","Ainsi un coup d'arrêt à bille arrêtée avance encore un peu — une pointe de rétro y remédie."],["Frottement bille–bille μ","≈ 0.06","déviation par frottement","Des billes propres. De la craie au point de contact peut la doubler."],["Frottement de glissement du tapis μ_s","0.2","glissement-roulement, distance de rétro","Drap peigné de tournoi ; un drap pelucheux donne plus élevé."],["Résistance au roulement du tapis μ_r","0.01","résistance au roulement","Une bille à 1 m/s roule environ 5 m."],["Frottement de rotation sur le tapis","0.044","durée de l'effet latéral","Couple sur une bille tournant sur place autour d'un axe vertical."],["Efficacité de la bande","0.75 de l'énergie → 0.87 de la vitesse","rebond sur la bande","Caoutchouc ; varie d'une table à l'autre et avec la vitesse. À tester avant un match."],["surface de jeu de 9 ft","2.54 × 1.27 m","distance, contrôle de la vitesse","Entre les nez de bande ; une table de bar de 7 ft fait 1.98 × 0.99 m."]],"note":"Where the engine and the literature differ the engine's value is quoted, because that is the number the shots on the channel are computed with."}}</script>
 <script>
   const D = JSON.parse(document.getElementById('data').textContent);
   // ---- constants: pool-sauce-engine/poolsauce/constants.py, plus two literature values marked below
@@ -934,10 +934,10 @@
     const side = +$('side').value;
     const sqTxt = side ? ` · squirt took ${fmt(Math.abs(deg(SQ_R) * side), 2)}° off it` : '';
     if (!S.reached) {
-      $('ob').innerHTML = dl([['outcome', S.cbPre != null ? 'never touched — the cue ball scratched on the way' : 'never touched — a clean miss', 'warn']]);
+      $('ob').innerHTML = dl([['résultat', S.cbPre != null ? 'never touched — the cue ball scratched on the way' : 'never touched — a clean miss', 'warn']]);
       $('cb').innerHTML = dl([
-        ['cue ball', S.cbPre != null ? `<b>SCRATCH</b> — falls in the ${POCKETS[S.cbPre].name}` : S.cbPreHang != null ? `hangs in the jaws of the ${POCKETS[S.cbPreHang].name}` : `dies on the cloth — ${zone(S.pre[S.pre.length - 1])}`, S.cbPre != null ? 'warn' : undefined],
-        ['the aim', `${fmt(state.aimDeg, 1)}°${sqTxt}`],
+        ['bille blanche', S.cbPre != null ? `<b>SCRATCH</b> — falls in the ${POCKETS[S.cbPre].name}` : S.cbPreHang != null ? `hangs in the jaws of the ${POCKETS[S.cbPreHang].name}` : `dies on the cloth — ${zone(S.pre[S.pre.length - 1])}`, S.cbPre != null ? 'warn' : undefined],
+        ['la visée', `${fmt(state.aimDeg, 1)}°${sqTxt}`],
       ]);
       bumpScore(false, S.cbPre != null);
       gradeConditions(S);
@@ -948,14 +948,14 @@
     const dn = S.simBalls.filter((b, i) => i !== 0 && i !== S.tgtIdx && b.pocket != null);
     $('ob').innerHTML = dl([
       ['outcome', pot ? `<b>POTTED</b> — drops in the ${POCKETS[S.obTrace.pocket].name} at ${fmt(S.obTrace.dropSpeed, 2)} m/s` : hang ? `hangs in the jaws of the ${POCKETS[S.obTrace.hang].name}` : `stays up — ${zone(endOB)}`, pot ? 'good' : 'warn'],
-      ['the contact', `${S.firstIsTarget ? '' : `ball ${S.firstBall} first! `}cut ${fmt(deg(S.th), 1)}° · ball-hit fraction ${fmt(S.fraction, 2)} · arriving at ${fmt(S.vc, 2)} m/s`, S.firstIsTarget ? undefined : 'warn'],
-      ['throw', `${fmt(S.throwDeg, 2)}° off the line of centres`],
+      ['le contact', `${S.firstIsTarget ? '' : `ball ${S.firstBall} first! `}cut ${fmt(deg(S.th), 1)}° · ball-hit fraction ${fmt(S.fraction, 2)} · arriving at ${fmt(S.vc, 2)} m/s`, S.firstIsTarget ? undefined : 'warn'],
+      ['déviation par frottement', `${fmt(S.throwDeg, 2)}° off the line of centres`],
       ...(dn.length ? [['also down', dn.map((b) => `${b.n} in the ${POCKETS[b.pocket].name}`).join(' · ')]] : []),
     ]);
     $('cb').innerHTML = dl([
-      ['cue ball', S.cbTrace.pocket != null ? `<b>SCRATCH</b> — falls in the ${POCKETS[S.cbTrace.pocket].name}` : S.cbTrace.hang != null ? `in the jaws of the ${POCKETS[S.cbTrace.hang].name}` : `lands ${zone(endCB)}`, S.cbTrace.pocket != null ? 'warn' : undefined],
-      ['at contact', `${S.rollingAtContact ? 'rolling naturally' : Math.abs(S.sc) <= 0.05 * S.vc ? 'stun' : S.sc > 0 ? 'sliding with topspin' : 'carrying backspin'}${S.cbz ? ' · side on' : ''}${sqTxt}`],
-      ['off the ball', S.deflect === null ? 'stops dead' : `${fmt(S.deflect, 1)}° from its arrival line`],
+      ['bille blanche', S.cbTrace.pocket != null ? `<b>SCRATCH</b> — falls in the ${POCKETS[S.cbTrace.pocket].name}` : S.cbTrace.hang != null ? `in the jaws of the ${POCKETS[S.cbTrace.hang].name}` : `lands ${zone(endCB)}`, S.cbTrace.pocket != null ? 'warn' : undefined],
+      ['au contact', `${S.rollingAtContact ? 'rolling naturally' : Math.abs(S.sc) <= 0.05 * S.vc ? 'stun' : S.sc > 0 ? 'sliding with topspin' : 'carrying backspin'}${S.cbz ? ' · side on' : ''}${sqTxt}`],
+      ['après la bille', S.deflect === null ? 'stops dead' : `${fmt(S.deflect, 1)}° from its arrival line`],
     ]);
     bumpScore(pot, S.cbTrace.pocket != null);
     gradeConditions(S);
@@ -1052,21 +1052,21 @@
     vel('line', { x1: c[0] - r, x2: c[0] + r, y1: c[1], y2: c[1], stroke: 'var(--hairline)', 'stroke-width': 1 });
     vel('line', { x1: c[0], x2: c[0], y1: c[1] - r, y2: c[1] + r, stroke: 'var(--hairline)', 'stroke-width': 1 });
     vel('circle', { cx: c[0] + side * r, cy: c[1] - tip * r, r: 4.5, fill: 'var(--c-red)' });
-    const cap = vel('text', { x: 12, y: 254, ...mono, opacity: 0.8 }); cap.textContent = 'down on the shot · red dot = your tip contact on the cue ball';
+    const cap = vel('text', { x: 12, y: 254, ...mono, opacity: 0.8 }); cap.textContent = 'en bas sur le coup · point rouge = le contact de votre procédé sur la bille blanche';
     // the sight picture, top-left: the overlap this cue line offers, with its fraction and clock call
     const sp = sightPicture(dir);
     vel('rect', { x: 10, y: 10, width: 236, height: 66, rx: 6, fill: 'var(--panel)', stroke: 'var(--hairline)' });
     if (!sp) {
-      const t = vel('text', { x: 22, y: 46, ...mono }); t.textContent = 'no ball ahead of the cue';
+      const t = vel('text', { x: 22, y: 46, ...mono }); t.textContent = 'aucune bille devant la blanche';
     } else if (sp.miss) {
       const t = vel('text', { x: 22, y: 40, ...mono, fill: 'var(--c-red)' }); t.textContent = 'no contact on this line';
-      const t2 = vel('text', { x: 22, y: 56, ...mono }); t2.textContent = `misses by ${fmt(100 * sp.by, 1)} cm`;
+      const t2 = vel('text', { x: 22, y: 56, ...mono }); t2.textContent = `manque de ${fmt(100 * sp.by, 1)} cm`;
     } else {
       const bx = 52, by2 = 43, br = 22;
       vel('circle', { cx: bx + sp.s * 2 * br, cy: by2, r: br, fill: 'var(--c-amber)' });
       vel('circle', { cx: bx, cy: by2, r: br, fill: 'color-mix(in oklab, var(--panel) 82%, #fff)', stroke: 'var(--ink)', 'stroke-width': 1.3 });
       vel('line', { x1: bx, x2: bx, y1: by2 - br - 6, y2: by2 + br + 6, stroke: 'var(--muted)', 'stroke-width': 1, 'stroke-dasharray': '2 3' });
-      const t1 = vel('text', { x: 118, y: 30, ...mono, fill: 'var(--ink)' }); t1.textContent = `cut ${fmt(deg(sp.th), 1)}°`;
+      const t1 = vel('text', { x: 118, y: 30, ...mono, fill: 'var(--ink)' }); t1.textContent = `coupe ${fmt(deg(sp.th), 1)}°`;
       const t2 = vel('text', { x: 118, y: 47, ...mono, fill: 'var(--ink)' }); t2.textContent = `${sp.name} · f ${fmt(sp.f, 2)}`;
       const t3 = vel('text', { x: 118, y: 64, 'font-family': 'ui-monospace, "SF Mono", Consolas, monospace', 'font-size': 15, 'font-weight': 700, fill: 'var(--c-amber)' }); t3.textContent = sp.clock;
     }
@@ -1081,7 +1081,7 @@
     }
     if (S.cbPre != null) {
       $('ob').innerHTML = dl([['—', 'Never touched.', 'warn']]);
-      $('cb').innerHTML = dl([['scratches', `rolls into the ${POCKETS[S.cbPre].name} pocket on the way to the ball`, 'warn']]);
+      $('cb').innerHTML = dl([['fautes', `rolls into the ${POCKETS[S.cbPre].name} pocket on the way to the ball`, 'warn']]);
       return;
     }
     if (!S.reached) {
@@ -1094,21 +1094,21 @@
     const potted = S.obTrace.pocket === S.pkI;
     const missCm = fmt(100 * S.obTrace.minPD, 0);
     $('ob').innerHTML = dl([
-      ['speed', `${fmt(vlen(S.vOB))} m/s <small>= v cos θ · (1+e)/2</small>`],
-      ['energy share', `${fmt(100 * S.eOB, 0)} % <small>cos²θ = ${fmt(100 * Math.cos(S.th) ** 2, 0)} % before restitution</small>`],
+      ['vitesse', `${fmt(vlen(S.vOB))} m/s <small>= v cos θ · (1+e)/2</small>`],
+      ['part d'énergie', `${fmt(100 * S.eOB, 0)} % <small>cos²θ = ${fmt(100 * Math.cos(S.th) ** 2, 0)} % before restitution</small>`],
       ['direction', `${S.bank ? `bank line, off the ${S.bank.rail} rail` : 'pocket line'}${S.throwDeg > 0.05 ? ` rotated ${fmt(S.throwDeg, 1)}° ${toward === null ? 'by the side spin' : toward ? 'toward the cue ball\'s line <small>plays fuller than aimed</small>' : 'away from the cue ball\'s line <small>plays thinner than aimed</small>'}` : ' — no throw'}`],
-      ['throw', `${fmt(S.throwDeg, 2)}° <small>μ = ${fmt(S.mu, 3)} at ${fmt(S.ul, 2)} m/s surface slip${S.Jh >= M * Math.abs(S.vt - S.cbz) / 7 - 1e-9 && S.Jh > 0 ? ' · gearing limit' : ''}</small>`],
-      ['ball-hit fraction', `${fmt(S.fraction, 2)} <small>1 − sin θ</small>`],
+      ['déviation par frottement', `${fmt(S.throwDeg, 2)}° <small>μ = ${fmt(S.mu, 3)} at ${fmt(S.ul, 2)} m/s surface slip${S.Jh >= M * Math.abs(S.vt - S.cbz) / 7 - 1e-9 && S.Jh > 0 ? ' · gearing limit' : ''}</small>`],
+      ['fraction de bille touchée', `${fmt(S.fraction, 2)} <small>1 − sin θ</small>`],
       ['the pocket', potted ? `<b>drops</b> — falls in the ${S.name} at ${fmt(S.obTrace.dropSpeed, 2)} m/s` : S.obTrace.pocket != null ? `falls in the <em>wrong</em> pocket — the ${POCKETS[S.obTrace.pocket].name}` : S.obTrace.hang != null ? `<b>hangs in the jaws</b> of the ${POCKETS[S.obTrace.hang].name} — reaches the mouth without the roll to carry its ${fmt(1000 * POCKETS[S.obTrace.hang].shelf, 0)} mm shelf` : `stays up — dies after ${fmt(S.obTrace.len, 2)} m of cloth, ${missCm} cm from the mouth at its closest`, potted ? 'good' : 'warn'],
-      ...(S.firstIsTarget ? [] : [['first contact', `the ${S.firstBall} ball, not the target — everything above describes that hit`, 'warn']]),
+      ...(S.firstIsTarget ? [] : [['premier contact', `the ${S.firstBall} ball, not the target — everything above describes that hit`, 'warn']]),
       ...((() => { const dn = S.simBalls.filter((b, i) => i !== 0 && i !== S.tgtIdx && b.pocket != null); return dn.length ? [['also down', dn.map((b) => `${b.n} in the ${POCKETS[b.pocket].name}`).join(' · ')]] : []; })()),
     ]);
     $('cb').innerHTML = dl([
-      ['at contact', `${fmt(S.vc)} m/s · ${spinWord}${S.cbz ? ` · side ${fmt(Math.abs(S.cbz) / (2.5 * S.vc) * 100, 0)} %` : ''}`],
-      ['off the tangent line', `${fmt(vlen(S.vCB))} m/s <small>v sin θ, plus (1−e)/2 forward</small>`],
-      ['final direction', S.deflect === null ? 'none — stops dead at contact' : `${fmt(S.deflect, 1)}° from its original line${S.deflect > 90 ? ' — coming back' : S.deflect < 0.5 ? ' — straight on' : ', away from the object ball'} <small>${S.deflect > 20 && S.deflect < 40 && S.rollingAtContact && S.th > 0.1 ? '— the thirty-degree rule' : Math.abs(S.deflect - (90 - deg(S.th))) < 2 && S.th > 0.1 ? '— holds the tangent line' : ''}</small>`],
-      ['slides', S.slideLen > 0.01 ? `${fmt(S.slideLen, 2)} m before it rolls` : 'not at all — rolling from contact'],
-      ['comes to rest', S.cbTrace.pocket != null ? `it doesn't — <b>scratches</b>, falling in the ${POCKETS[S.cbTrace.pocket].name} pocket` : S.cbTrace.hang != null ? `in the jaws of the ${POCKETS[S.cbTrace.hang].name} pocket — short of the shelf, no scratch` : `after ${fmt(S.cbTrace.len, 2)} m of cloth — ${zone(S.cbTrace.pts[S.cbTrace.pts.length - 1])}`, S.cbTrace.pocket != null ? 'warn' : undefined],
+      ['au contact', `${fmt(S.vc)} m/s · ${spinWord}${S.cbz ? ` · side ${fmt(Math.abs(S.cbz) / (2.5 * S.vc) * 100, 0)} %` : ''}`],
+      ['hors de la ligne tangente', `${fmt(vlen(S.vCB))} m/s <small>v sin θ, plus (1−e)/2 forward</small>`],
+      ['direction finale', S.deflect === null ? 'none — stops dead at contact' : `${fmt(S.deflect, 1)}° from its original line${S.deflect > 90 ? ' — coming back' : S.deflect < 0.5 ? ' — straight on' : ', away from the object ball'} <small>${S.deflect > 20 && S.deflect < 40 && S.rollingAtContact && S.th > 0.1 ? '— the thirty-degree rule' : Math.abs(S.deflect - (90 - deg(S.th))) < 2 && S.th > 0.1 ? '— holds the tangent line' : ''}</small>`],
+      ['glisse', S.slideLen > 0.01 ? `${fmt(S.slideLen, 2)} m before it rolls` : 'not at all — rolling from contact'],
+      ['s'immobilise', S.cbTrace.pocket != null ? `it doesn't — <b>scratches</b>, falling in the ${POCKETS[S.cbTrace.pocket].name} pocket` : S.cbTrace.hang != null ? `in the jaws of the ${POCKETS[S.cbTrace.hang].name} pocket — short of the shelf, no scratch` : `after ${fmt(S.cbTrace.len, 2)} m of cloth — ${zone(S.cbTrace.pts[S.cbTrace.pts.length - 1])}`, S.cbTrace.pocket != null ? 'warn' : undefined],
       ['restitution', `e = ${E_BB}: separation ${fmt(100 * (1 - E_BB) / 2, 0)} % short of the ninety-degree rule`],
     ]);
   }
@@ -1163,7 +1163,7 @@
     for (let g = 1; g <= 10; g++) { sel('line', { x1: X(g), x2: X(g), y1: Y0, y2: Y0 + 4, stroke: 'var(--muted)' }); const tx = sel('text', { x: X(g), y: Y0 + 16, ...mono, 'text-anchor': 'middle' }); tx.textContent = g; }
     for (let dd = 0; dd <= DMAX - 0.05; dd += 0.5) { sel('line', { x1: X0 - 4, x2: X1, y1: Y(dd), y2: Y(dd), stroke: 'color-mix(in oklab, var(--hairline) 55%, transparent)' }); const tx = sel('text', { x: X0 - 8, y: Y(dd) + 3.5, ...mono, 'text-anchor': 'end' }); tx.textContent = fmt(dd, 1); }
     const xl = sel('text', { x: (X0 + X1) / 2, y: 294, ...mono, 'text-anchor': 'middle' }); xl.textContent = 'strike intensity';
-    const yl = sel('text', { x: 6, y: 12, ...mono }); yl.textContent = 'metres of slide before natural roll';
+    const yl = sel('text', { x: 6, y: 12, ...mono }); yl.textContent = 'mètres de glissement avant le roulement naturel';
     const curve = (tp, attrs) => {   // returns the last plotted point, for labels
       const pts = []; let last = null;
       for (let v = 0.5; v <= 10.001; v += 0.1) {
@@ -1176,13 +1176,13 @@
     };
     const pStun = curve(0, { stroke: 'var(--muted)', 'stroke-width': 1 });
     const pDraw = curve(-0.5, { stroke: 'var(--muted)', 'stroke-width': 1, 'stroke-dasharray': '3 4' });
-    const t1 = sel('text', { x: pDraw[0] - 6, y: Math.max(pDraw[1], 28) + 2, ...mono, 'text-anchor': 'end' }); t1.textContent = 'full draw −0.5';
-    const t2 = sel('text', { x: pStun[0] + 6, y: Math.max(pStun[1], 28) + 2, ...mono }); t2.textContent = 'stun 0';
+    const t1 = sel('text', { x: pDraw[0] - 6, y: Math.max(pDraw[1], 28) + 2, ...mono, 'text-anchor': 'end' }); t1.textContent = 'rétro maximal −0.5';
+    const t2 = sel('text', { x: pStun[0] + 6, y: Math.max(pStun[1], 28) + 2, ...mono }); t2.textContent = 'bille arrêtée 0';
     const pCur = curve(tip, { stroke: 'var(--c-felt)', 'stroke-width': 2.2 });
-    const t3 = sel('text', { x: Math.min(pCur[0] + 6, X1 - 90), y: Math.max(pCur[1], 28) - 6, ...mono, fill: 'var(--c-felt)' }); t3.textContent = `your tip ${tip >= 0 ? '+' : ''}${fmt(tip, 2)}`;
+    const t3 = sel('text', { x: Math.min(pCur[0] + 6, X1 - 90), y: Math.max(pCur[1], 28) - 6, ...mono, fill: 'var(--c-felt)' }); t3.textContent = `votre procédé ${tip >= 0 ? '+' : ''}${fmt(tip, 2)}`;
     if (S.dst <= DMAX) {   // the object ball's distance, and where the current tip's curve crosses it
       sel('line', { x1: X0, x2: X1, y1: Y(S.dst), y2: Y(S.dst), stroke: 'var(--c-amber)', 'stroke-width': 1.2, 'stroke-dasharray': '6 5' });
-      const t4 = sel('text', { x: X1 - 4, y: Y(S.dst) - 5, ...mono, fill: 'var(--c-amber)', 'text-anchor': 'end' }); t4.textContent = `object ball · ${fmt(S.dst, 2)} m away`;
+      const t4 = sel('text', { x: X1 - 4, y: Y(S.dst) - 5, ...mono, fill: 'var(--c-amber)', 'text-anchor': 'end' }); t4.textContent = `bille visée · à ${fmt(S.dst, 2)} m`;
       const d1 = slideOut(1, tip).d;
       if (d1 > 1e-6) { const vs = Math.sqrt(S.dst / d1); if (vs >= 0.5 && vs <= 10) sel('circle', { cx: X(vs), cy: Y(S.dst), r: 4.5, fill: 'none', stroke: 'var(--c-amber)', 'stroke-width': 1.6 }); }
     }
@@ -1277,15 +1277,15 @@
     const nsA = rad(C.noSide), pn = [cx + L * Math.cos(nsA), cy + L * Math.sin(nsA)];
     cel('line', { x1: cx, y1: cy, x2: pn[0], y2: pn[1], stroke: 'var(--muted)', 'stroke-width': 1, 'stroke-dasharray': '3 5' });
     cel('circle', { cx, cy, r: R * SX, fill: 'var(--panel)', stroke: 'var(--ink)', 'stroke-width': 1.5 });
-    const t1 = cel('text', { x: p0[0] - 6, y: p0[1] + 16, ...mono, 'text-anchor': 'middle' }); t1.textContent = `in · ${aDeg}° from the rail`;
-    const t2 = cel('text', { x: p1[0] + 6 * sgn, y: p1[1] + 16, ...mono, fill: 'var(--c-felt)', 'text-anchor': 'middle' }); t2.textContent = `out · ${fmt(C.out, 0)}° · ${fmt(100 * C.speed, 0)} % of the speed`;
-    const t3 = cel('text', { x: pn[0] + 6, y: pn[1] + 30, ...mono, 'text-anchor': 'middle' }); t3.textContent = `no side: ${fmt(C.noSide, 0)}°`;
-    const t4 = cel('text', { x: 12, y: 290, ...mono }); t4.textContent = 'top rail · angles measured from the rail · reference: same shot with no side';
+    const t1 = cel('text', { x: p0[0] - 6, y: p0[1] + 16, ...mono, 'text-anchor': 'middle' }); t1.textContent = `in · ${aDeg}° de la bande`;
+    const t2 = cel('text', { x: p1[0] + 6 * sgn, y: p1[1] + 16, ...mono, fill: 'var(--c-felt)', 'text-anchor': 'middle' }); t2.textContent = `sortie · ${fmt(C.out, 0)}° · ${fmt(100 * C.speed, 0)} % de la vitesse`;
+    const t3 = cel('text', { x: pn[0] + 6, y: pn[1] + 30, ...mono, 'text-anchor': 'middle' }); t3.textContent = `sans effet : ${fmt(C.noSide, 0)}°`;
+    const t4 = cel('text', { x: 12, y: 290, ...mono }); t4.textContent = 'bande supérieure · angles mesurés depuis la bande · référence : le même coup sans effet latéral';
     $('cout').innerHTML = dl([
-      ['rebound angle', `${fmt(C.out, 1)}° from the rail <small>vs ${fmt(C.noSide, 1)}° with no side; ${aDeg}° in</small>`],
-      ['speed kept', `${fmt(100 * C.speed, 0)} % <small>e = ${fmt(C.e, 2)} into the rail — rubber deadens with pace; friction on the rest</small>`],
-      ['along the rail', `${fmt(C.vx, 2)} → ${fmt(C.vx2, 2)} m/s${C.reversed ? ' — reversed: the ball comes back' : ''}`],
-      ['into the rail', `${fmt(C.vy, 2)} → ${fmt(C.vy2, 2)} m/s`],
+      ['angle de rebond', `${fmt(C.out, 1)}° from the rail <small>vs ${fmt(C.noSide, 1)}° with no side; ${aDeg}° in</small>`],
+      ['vitesse conservée', `${fmt(100 * C.speed, 0)} % <small>e = ${fmt(C.e, 2)} into the rail — rubber deadens with pace; friction on the rest</small>`],
+      ['le long de la bande', `${fmt(C.vx, 2)} → ${fmt(C.vx2, 2)} m/s${C.reversed ? ' — reversed: the ball comes back' : ''}`],
+      ['dans la bande', `${fmt(C.vy, 2)} → ${fmt(C.vy2, 2)} m/s`],
     ]);
   }
 
@@ -1351,9 +1351,9 @@
       $('ob').innerHTML = dl([['—', 'prepare the sauce, then execute']]);
       $('cb').innerHTML = dl([['—', 'the table will tell']]);
       const a2 = rad(state.aimDeg), spQ = sightPicture([Math.cos(a2), Math.sin(a2)]);
-      $('shotinfo').textContent = `aim ${fmt(state.aimDeg, 1)}° · ${spQ ? (spQ.miss ? 'no contact on this line' : `offering ${spQ.name} (${spQ.clock})`) : 'no ball ahead'} · strike ${fmt(v.spd, 1)} · tip ${v.tip >= 0 ? '+' : ''}${fmt(v.tip, 2)} · side ${v.side >= 0 ? '+' : ''}${fmt(v.side, 2)}`;
-      $('aimv').textContent = `aim ${fmt(state.aimDeg, 1)}°`;
-      if (state.conds && state.conds.size) $('condres').textContent = 'execute to grade the contract';
+      $('shotinfo').textContent = `visée ${fmt(state.aimDeg, 1)}° · ${spQ ? (spQ.miss ? 'pas de contact sur cette ligne' : `offering ${spQ.name} (${spQ.clock})`) : 'no ball ahead'} · strike ${fmt(v.spd, 1)} · tip ${v.tip >= 0 ? '+' : ''}${fmt(v.tip, 2)} · side ${v.side >= 0 ? '+' : ''}${fmt(v.side, 2)}`;
+      $('aimv').textContent = `visée ${fmt(state.aimDeg, 1)}°`;
+      if (state.conds && state.conds.size) $('condres').textContent = 'exécuter pour évaluer le contrat';
       else if (state.conds) $('condres').innerHTML = '';
       showScore();
       drawSlide(currentShot(true), v.spd, v.tip);
@@ -1473,7 +1473,7 @@
   $('share').addEventListener('click', () => {
     const url = location.origin + location.pathname + shotHash();
     history.replaceState(null, '', shotHash());
-    const done = () => { $('share').textContent = 'copied ✓'; setTimeout(() => { $('share').textContent = 'copy a link to this shot'; }, 1500); };
+    const done = () => { $('share').textContent = 'copié ✓'; setTimeout(() => { $('share').textContent = 'copier un lien vers ce coup'; }, 1500); };
     if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(url).then(done, done); else done();
   });
 
@@ -1518,7 +1518,7 @@
   }
   {
     const sel = $('drill');
-    const o0 = document.createElement('option'); o0.value = ''; o0.textContent = 'no drill — free table'; sel.appendChild(o0);
+    const o0 = document.createElement('option'); o0.value = ''; o0.textContent = 'pas d'exercice — table libre'; sel.appendChild(o0);
     DRILLS.forEach((d, i) => { const o = document.createElement('option'); o.value = i; o.textContent = d.name; sel.appendChild(o); });
     sel.addEventListener('change', () => { clearTimeout(drillTimer); state.drill = sel.value === '' ? null : +sel.value; state.dlevel = 1; if (state.drill == null) run(); else applyDrill(); });
     $('dlm').addEventListener('click', () => { if (state.drill != null) { state.dlevel = Math.max(1, state.dlevel - 1); applyDrill(); } });
@@ -1547,14 +1547,14 @@
   }
   const CONDITIONS = [
     { id: 'clean', label: 'clean hit', chk: (S) => { const t = S.simBalls[S.tgtIdx].n; const bad = (S.cueContacts || []).filter((x) => x !== t); return { ok: !!S.reached && bad.length === 0, detail: bad.length ? `also touched ${[...new Set(bad)].join(', ')}` : S.reached ? 'only the target' : 'never arrived' }; } },
-    { id: 'norail', label: 'no rail (cue)', chk: (S) => ({ ok: (S.cueRails || 0) === 0, detail: `${S.cueRails || 0} rail${(S.cueRails || 0) === 1 ? '' : 's'} touched` }) },
+    { id: 'norail', label: 'sans bande (blanche)', chk: (S) => ({ ok: (S.cueRails || 0) === 0, detail: `${S.cueRails || 0} rail${(S.cueRails || 0) === 1 ? '' : 's'} touched` }) },
     { id: 'kick', label: 'kick first', chk: (S) => ({ ok: !!S.reached && (S.cueRailsPre || 0) >= 1, detail: `${S.cueRailsPre || 0} rail${(S.cueRailsPre || 0) === 1 ? '' : 's'} before contact` }) },
-    { id: 'rails3', label: '3 rails after', chk: (S) => { const rp = Math.max(0, (S.cueRails || 0) - (S.cueRailsPre || 0)); return { ok: !!S.reached && rp >= 3, detail: `${rp} after contact` }; } },
+    { id: 'rails3', label: '3 bandes après', chk: (S) => { const rp = Math.max(0, (S.cueRails || 0) - (S.cueRailsPre || 0)); return { ok: !!S.reached && rp >= 3, detail: `${rp} after contact` }; } },
     { id: 'called', label: 'called pocket', chk: (S) => ({ ok: !!S.reached && S.obTrace && S.obTrace.pocket === state.pk, detail: S.obTrace && S.obTrace.pocket != null ? `in the ${POCKETS[S.obTrace.pocket].name}` : 'stayed up' }) },
     { id: 'soft', label: 'pocket speed', chk: (S) => { const dn = S.obTrace && S.obTrace.pocket != null; return { ok: !!dn && S.obTrace.dropSpeed <= 1.2, detail: dn ? `drops at ${fmt(S.obTrace.dropSpeed, 2)} m/s (≤ 1.2)` : 'no drop' }; } },
     { id: 'carom', label: 'carom after', chk: (S) => { const cc = S.cueContacts || []; const ok2 = cc.length > 1 && cc.slice(1).some((x) => x !== cc[0]); return { ok: !!S.reached && ok2, detail: cc.length > 1 ? `then ${[...new Set(cc.slice(1))].join(', ')}` : 'no second ball' }; } },
     { id: 'still', label: 'nothing else moves', chk: (S) => { const mv = S.simBalls.filter((b, i) => i !== 0 && i !== S.tgtIdx && b.len > 0.03).map((b) => b.n); return { ok: mv.length === 0, detail: mv.length ? `${mv.join(', ')} moved` : 'surgical' }; } },
-    { id: 'safety', label: 'safety', chk: (S) => {
+    { id: 'safety', label: 'sécurité', chk: (S) => {
       const cue = S.simBalls[0];
       if (cue.pocket != null) return { ok: false, detail: 'cue ball down' };
       const up = S.simBalls.filter((b, i) => i !== 0 && b.pocket == null);
@@ -2051,7 +2051,7 @@
     if (ph.corners.length < 4) {
       ph.corners.push(q);
       if (ph.corners.length === 4) {
-        if (!phSolve()) { ph.corners = []; ph.Hti = ph.Hit = ph.cam = null; $('phhint').textContent = 'those four points are degenerate — click the four corners again'; phDraw(); return; }
+        if (!phSolve()) { ph.corners = []; ph.Hti = ph.Hit = ph.cam = null; $('phhint').textContent = 'ces quatre points sont dégénérés — cliquez de nouveau les quatre coins'; phDraw(); return; }
         phDetect();
       }
       phDraw(); phHint(); phNums(); return;
@@ -2339,7 +2339,7 @@
     DS.arr = +$('darr').value;
     $('dspdv').textContent = `${fmt(v, 1)} m/s`;
     $('dsidev').textContent = `${side >= 0 ? '+' : ''}${fmt(side, 2)}`;
-    $('darrv').textContent = `${fmt(DS.arr, 1)} · diamonds`;
+    $('darrv').textContent = `${fmt(DS.arr, 1)} · diamants`;
     const flip = dFlip();
     drawSysTable(flip);
     $('dslegend').innerHTML = DS.sys === 3
@@ -2366,7 +2366,7 @@
       dball(DS.cb, { fill: 'var(--panel)', stroke: 'var(--ink)', 'stroke-width': 1.5, style: 'cursor:grab' });
       const err = arrived == null ? null : arrived - N;
       $('dsout').innerHTML = dl([
-        ['the arithmetic', `position <b>${fmt(P, 1)}</b> − aim <b>${fmt(A, 1)}</b> = arrival <b>${fmt(N, 1)}</b>`],
+        ['l'arithmétique', `position <b>${fmt(P, 1)}</b> − aim <b>${fmt(A, 1)}</b> = arrival <b>${fmt(N, 1)}</b>`],
         ['aim at', inRange ? `the <b>${fmt(A, 1)}</b> on the far long rail — ${fmt(A, 1)} diamond${A === 1 ? '' : 's'} from the far corner, and shoot <em>through</em> the diamond` : `<span class="warn">off the table — position ${fmt(P, 1)} can't reach arrival ${fmt(N, 1)}. Drag the cue ball or the arrival marker.</span>`],
         ['the cloth says', !S ? '—'
           : patternOK ? `third rail at <b>${fmt(arrived, 1)}</b> — ${Math.abs(err) < 0.15 ? 'the system is right here' : `${fmt(Math.abs(err), 1)} diamond${Math.abs(err) > 0.95 && Math.abs(err) < 1.05 ? '' : 's'} ${err > 0 ? 'long' : 'short'}`}${S.pocket != null ? ` <small>— and rolls on into the ${POCKETS[S.pocket].name} pocket</small>` : ''}`
