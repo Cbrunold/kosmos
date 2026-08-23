@@ -382,7 +382,7 @@ __SHARED__
       b.setAttribute('aria-pressed', 'false');
       b.style.setProperty('--kc', kc(k));
       b.innerHTML = '<span></span><span class="n"></span>';
-      b.firstChild.textContent = k.toLowerCase();
+      b.firstChild.textContent = vocab(k).toLowerCase();
       b.lastChild.textContent = counts.get(k) || 0;
       b.addEventListener('click', () => {
         if (active.has(k)) active.delete(k); else active.add(k);

@@ -137,7 +137,7 @@ __SHARED__
       h.appendChild(name);
       const s = document.createElement('span');
       s.className = 'status ' + (t.Status || 'none');
-      s.textContent = t.Status || 'no status yet';
+      s.textContent = vocab(t.Status) || 'no status yet';
       h.appendChild(s);
       const y = yearOf(t);
       if (y != null) {
@@ -161,7 +161,7 @@ __SHARED__
           const el = document.createElement('span');
           el.className = 'who';
           el.textContent = person.name;
-          el.title = [person.life, person.field, person.known].filter(Boolean).join(' · ');
+          el.title = [person.life, vocab(person.field), person.known].filter(Boolean).join(' · ');
           row.appendChild(el);
         }
         card.appendChild(row);
@@ -176,7 +176,7 @@ __SHARED__
         row.appendChild(l);
         for (const q of eqs) {
           const a = document.createElement('a');
-          a.className = 'ceq'; a.href = '/equations#' + q.slug; a.textContent = q.name; a.title = q.field || '';
+          a.className = 'ceq'; a.href = '/equations#' + q.slug; a.textContent = q.name; a.title = vocab(q.field) || '';
           row.appendChild(a);
         }
         card.appendChild(row);

@@ -85,8 +85,8 @@ __SHARED__
     const c = document.createElement('article'); c.className = 'kcard im'; c.id = x.slug;
     const h2 = document.createElement('h2');
     const nm = document.createElement('span'); nm.textContent = x.name; h2.appendChild(nm);
-    if (x.category) { const k = document.createElement('span'); k.className = 'cat'; k.style.setProperty('--kc', KC[x.category] || 'var(--muted)'); k.textContent = x.category; h2.appendChild(k); }
-    if (x.timescale) { const t = document.createElement('span'); t.className = 'ts'; t.textContent = x.timescale; h2.appendChild(t); }
+    if (x.category) { const k = document.createElement('span'); k.className = 'cat'; k.style.setProperty('--kc', KC[x.category] || 'var(--muted)'); k.textContent = vocab(x.category); h2.appendChild(k); }
+    if (x.timescale) { const t = document.createElement('span'); t.className = 'ts'; t.textContent = vocab(x.timescale); h2.appendChild(t); }
     c.appendChild(h2);
     if (x.mechanism) c.appendChild(para('', '', x.mechanism));
     if (x.mitigation) c.appendChild(para('', 'what reduces it', x.mitigation));
@@ -139,13 +139,13 @@ __SHARED__
   for (const x of I) { cc.set(x.category, (cc.get(x.category) || 0) + 1); tc.set(x.timescale, (tc.get(x.timescale) || 0) + 1); }
   for (const c of D.categories) {
     const b = document.createElement('button'); b.className = 'chp'; b.type = 'button'; b.setAttribute('aria-pressed', 'false');
-    b.innerHTML = '<span></span><span class="n"></span>'; b.firstChild.textContent = c.toLowerCase(); b.lastChild.textContent = cc.get(c) || 0;
+    b.innerHTML = '<span></span><span class="n"></span>'; b.firstChild.textContent = vocab(c).toLowerCase(); b.lastChild.textContent = cc.get(c) || 0;
     b.addEventListener('click', () => { if (catOn.has(c)) catOn.delete(c); else catOn.add(c); b.setAttribute('aria-pressed', String(catOn.has(c))); render(); });
     row.appendChild(b);
   }
   for (const t of D.timescales) {
     const b = document.createElement('button'); b.className = 'chp tchp'; b.type = 'button'; b.setAttribute('aria-pressed', 'false');
-    b.innerHTML = '<span></span><span class="n"></span>'; b.firstChild.textContent = t.toLowerCase(); b.lastChild.textContent = tc.get(t) || 0;
+    b.innerHTML = '<span></span><span class="n"></span>'; b.firstChild.textContent = vocab(t).toLowerCase(); b.lastChild.textContent = tc.get(t) || 0;
     b.addEventListener('click', () => { if (tsOn.has(t)) tsOn.delete(t); else tsOn.add(t); b.setAttribute('aria-pressed', String(tsOn.has(t))); render(); });
     row.appendChild(b);
   }

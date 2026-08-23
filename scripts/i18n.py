@@ -73,15 +73,22 @@ class Translator:
             self.cache = d.get("fr", {})
             self.source = d.get("en", {})
         self.pending: dict[str, str] = {}   # sha -> English
+        self.kinds: dict[str, str] = {}     # sha -> "prose" | "vocab", to pick the prompt
         self.misses = 0
 
     def get(self, s: str) -> str | None:
         return self.cache.get(key_of(s))
 
-    def want(self, s: str):
+    def want(self, s: str, kind: str = "prose"):
         k = key_of(s)
         if k not in self.cache and k not in self.pending:
             self.pending[k] = s
+        # a word that is both a filter label and prose is asked for as vocabulary: the
+        # vocabulary prompt is the one that needs the context, and one translation serves both
+        if kind == "vocab":
+            self.kinds[k] = kind
+        else:
+            self.kinds.setdefault(k, kind)
 
     def lookup(self, s: str) -> str:
         """French if cached, else the English unchanged (counted as a miss)."""
@@ -242,9 +249,11 @@ PAGE_JS_EXTRA = {
     "equations.html": [r"""\b(?:object|spectral|instrument|theory):\s*'([^']+)'""",   # KIND_LABEL
                        r"""const SORTS = \{ year: '([^']+)'""", r"""\bdepth: '([^']+)' \}""",
                        r"""lv\.textContent = d === 0 \? '([^']+)'""",
-                       r"""eqRow\([^,]+,\s*'([^']+)'\)"""],
+                       r"""eqRow\([^,]+,\s*'([^']+)'\)""",
+                       r"""\{ name: '([^']+)', color:"""],           # the six domain names
     "billiards.html": [r"""\['([A-Za-z][^'`]+)',\s*`""", r"""\['([a-z][a-z ,\-]+)',\s*(?:S\.|`|\$)""",   # dl labels, presets
                        r"""\['([^']+)',\s*\{ cut:"""],
+    "universe.html": [r"""mk\('([^']+)'"""],                       # the view buttons
 }
 
 # ---- JSON rules: which keys are prose, which are names (with an EN shadow when a template
@@ -274,6 +283,16 @@ NAME_RULES = {
 }
 NAME_KINDS = {"equation", "theory", "machine", "skill", "event", "force", "impact", "constant", "unit",
               "structure", "element", "term", "section", "page", "object class", "spectral type"}
+
+# ---- the fixed vocabulary: values the page scripts filter, group and colour by. These are
+# NOT translated in the data — every comparison would break — but they are translated for
+# display, through the vocab() helper build.py puts on every page and the __VOCAB__ map
+# apply() writes into the French ones. Collected from the same data blocks.
+VOCAB_KEYS = {"Field", "field", "fields", "kind", "Kind", "kinds", "cat", "cats", "Category", "category",
+              "categories", "Status", "status", "level", "difficulty", "domain", "Domain", "domains",
+              "type", "Type", "era", "eras", "morph", "timescale", "timescales", "media", "Medium"}
+# values that only ever key something internal, or read the same in French, or are not words
+VOCAB_SKIP = re.compile(r"^(?:#|\d+:|f-block)|^(?:Other|Local|Star|Type [IV]+|SI |Accepted with SI)")
 NEVER_KEYS = {"slug", "id", "href", "url", "kind", "field", "type", "status", "category", "cat", "level",
               "domain", "era", "sub", "formula", "Symbol", "Unit", "Equation", "Named After", "pageUrl", "pageId",
               "lastEdited", "within_slug", "withinSlug"}
@@ -341,6 +360,30 @@ def _json_list(page, lst, fn):
 JSON_BLOCK = re.compile(r"(<script id=\"[a-z]+\" type=\"application/json\">)(.*?)(</script>)", re.S)
 
 
+def vocab_values(html: str) -> set:
+    """Every distinct enum value in a page's data blocks — the words its filters are made of."""
+    out = set()
+
+    def walk(o):
+        if isinstance(o, dict):
+            for k, v in o.items():
+                if k in VOCAB_KEYS:
+                    for x in (v if isinstance(v, list) else [v]):
+                        if isinstance(x, str) and HAS_LETTERS.search(x) and not VOCAB_SKIP.match(x):
+                            out.add(x)
+                if isinstance(v, (dict, list)):
+                    walk(v)
+        elif isinstance(o, list):
+            for x in o:
+                walk(x)
+    for m in JSON_BLOCK.finditer(html):
+        try:
+            walk(json.loads(m.group(2)))
+        except json.JSONDecodeError:
+            continue
+    return out
+
+
 def extract(html: str, page: str):
     """(spans, json_strings): spans are (start, end, text) over the HTML; json_strings the set of
     strings inside the data blocks that the rules select."""
@@ -348,7 +391,7 @@ def extract(html: str, page: str):
     m = re.search(r"<title>(.*?)</title>", html, re.S)
     if m and HAS_LETTERS.search(m.group(1)):
         spans.append((m.start(1), m.end(1), m.group(1), None))
-    strings = set()
+    strings = vocab_values(html)          # the filter vocabulary is translated for display only
     for jm in JSON_BLOCK.finditer(html):
         try:
             data = json.loads(jm.group(2))
@@ -417,6 +460,14 @@ def apply(html: str, page: str, tr: Translator) -> str:
         return m.group(1) + json.dumps(data, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/") + m.group(3)
     out = JSON_BLOCK.sub(fix_json, out)
     out = LINK_RE.sub(lambda m: m.group(1) + "/fr/" + (m.group(2) or ""), out)
+    # the filter vocabulary, for display only: the data keeps its English values so every
+    # comparison, colour lookup and grouping in the page's own script still works
+    vocab = {s: tr.lookup(s) for s in vocab_values(html)}
+    vocab = {k: v for k, v in vocab.items() if v != k}
+    if vocab:
+        out = out.replace("</style>", "</style>\n<script>window.__VOCAB__ = "
+                          + json.dumps(vocab, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
+                          + ";</script>", 1)
     out = add_switch(out, page, "fr")
     return '<!doctype html><html lang="fr"><meta charset="utf-8">\n' + out
 
@@ -450,13 +501,29 @@ def _api_key() -> str:
     return key
 
 
-def _call_api(texts: list[str], model: str, key: str, tries: int = 4) -> list[str]:
+VOCAB_BRIEF = """These are the site's FILTER LABELS — the fixed vocabulary its chips, tags and headings are
+made of, one or two words each, with no sentence around them. They name: fields of science (Thermodynamics,
+Fluid Dynamics, Vectors & Geometry), classes of celestial object (Nebulae, Pulsars and Magnetars, Void,
+Filament, Group as in a galaxy group), kinds of machine (Heat engine, Turbine, Reactor, Rocket, Power source),
+kinds of explainer (Person, Channel, Organisation, Podcast, Book, Blog, Course, Lectures), mine kinds and
+states (Open pit, Underground, Placer, Quarry, Brine, Active, Closed, Development), mission states (Completed,
+Failed, On-going), the standing of a theory (Accepted, Superseded, Disproved, Speculative), skill categories
+and levels (Metalwork, Joining, Rigging, Cue sports, Beginner, Intermediate, Advanced), glossary domains,
+mining-impact categories (Water, Air, Land, Health, Ground, Energy) and timescales (During operation, After
+closure, Both), and epochs of the universe (Radiation Era, Dark Ages, Structure Formation, Present as in the
+present epoch, Far Future). Translate each as the term a French scientific site would put on that chip — short,
+no article, no explanation. Where a word has an everyday sense and a technical one, the technical one is meant.
+"""
+
+
+def _call_api(texts: list[str], model: str, key: str, tries: int = 4, kind: str = "prose") -> list[str]:
+    brief = VOCAB_BRIEF if kind == "vocab" else ""
     body = {
         "model": model,
         "max_tokens": 16000,
         "system": SYSTEM,
         "output_config": {"effort": "medium"},
-        "messages": [{"role": "user", "content": "Translate each string of this JSON array into French. "
+        "messages": [{"role": "user", "content": brief + "Translate each string of this JSON array into French. "
                                                   "Return a JSON array of the same length.\n\n"
                                                   + json.dumps(texts, ensure_ascii=False)}],
     }
@@ -496,10 +563,13 @@ class OutOfCredit(Exception):
 def translate_pending(tr: Translator, model: str = "claude-opus-5", batch: int = 30, workers: int = 6,
                       progress=print) -> int:
     key = _api_key()
-    items = sorted(tr.pending.items(), key=lambda kv: len(kv[1]))
+    # vocabulary and prose are batched apart: the filter labels are single words whose
+    # everyday sense is usually the wrong one, and they get a prompt that says so
+    items = sorted(tr.pending.items(), key=lambda kv: (tr.kinds.get(kv[0], "prose"), len(kv[1])))
     batches, cur, cur_len = [], [], 0
     for k, s in items:
-        if cur and (len(cur) >= batch or cur_len + len(s) > 9000):
+        kind = tr.kinds.get(k, "prose")
+        if cur and (len(cur) >= batch or cur_len + len(s) > 9000 or tr.kinds.get(cur[0][0], "prose") != kind):
             batches.append(cur); cur, cur_len = [], 0
         cur.append((k, s)); cur_len += len(s)
     if cur:
@@ -511,10 +581,11 @@ def translate_pending(tr: Translator, model: str = "claude-opus-5", batch: int =
 
     def run(b):
         texts = [s for _, s in b]
+        kind = tr.kinds.get(b[0][0], "prose")
         if stop["out"]:
             return b, [None] * len(b)
         try:
-            fr = _call_api(texts, model, key)
+            fr = _call_api(texts, model, key, kind=kind)
         except OutOfCredit as e:
             stop["out"] = str(e); return b, [None] * len(b)
         except Exception as e:          # one batch failing must not lose the rest
@@ -524,7 +595,7 @@ def translate_pending(tr: Translator, model: str = "claude-opus-5", batch: int =
                 if stop["out"]:
                     fr.append(None); continue
                 try:
-                    fr.append(_call_api([t], model, key)[0])
+                    fr.append(_call_api([t], model, key, kind=kind)[0])
                 except OutOfCredit as e2:
                     stop["out"] = str(e2); fr.append(None)
                 except Exception as e2:

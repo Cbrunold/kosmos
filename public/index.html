@@ -997,7 +997,7 @@
           a.className = 'dmine';
           a.href = '/mines#' + m.slug;
           a.textContent = m.name;
-          a.title = `${m.country} · ${m.type}`;
+          a.title = `${m.country} · ${vocab(m.type)}`;
           list.appendChild(a);
         }
         const all = document.createElement('a');
@@ -1024,7 +1024,7 @@
         const a = document.createElement('a');
         a.className = 'deq';
         a.href = '/equations#' + q.slug;
-        a.title = q.field || '';
+        a.title = vocab(q.field) || '';
         a.textContent = q.name;
         list.appendChild(a);
       }

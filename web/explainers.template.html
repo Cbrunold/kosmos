@@ -74,14 +74,14 @@ __SHARED__
     const nm = x.url ? document.createElement('a') : document.createElement('span');
     if (x.url) { nm.href = x.url; nm.rel = 'noopener'; nm.target = '_blank'; }
     nm.textContent = x.name; h2.appendChild(nm);
-    if (x.kind) { const k = document.createElement('span'); k.className = 'knd'; k.style.setProperty('--kc', KC[x.kind] || 'var(--muted)'); k.textContent = x.kind; h2.appendChild(k); }
-    if (x.field) { const f = document.createElement('span'); f.className = 'fld'; f.textContent = x.field; h2.appendChild(f); }
+    if (x.kind) { const k = document.createElement('span'); k.className = 'knd'; k.style.setProperty('--kc', KC[x.kind] || 'var(--muted)'); k.textContent = vocab(x.kind); h2.appendChild(k); }
+    if (x.field) { const f = document.createElement('span'); f.className = 'fld'; f.textContent = vocab(x.field); h2.appendChild(f); }
     c.appendChild(h2);
     if (x.behind) { const b = document.createElement('p'); b.className = 'by'; b.textContent = x.behind; c.appendChild(b); }
     const p = document.createElement('p'); p.className = 'cov'; p.textContent = x.covers || ''; c.appendChild(p);
     if (x.media.length) {
       const m = document.createElement('div'); m.className = 'med';
-      for (const t of x.media) { const s = document.createElement('span'); s.textContent = t; m.appendChild(s); }
+      for (const t of x.media) { const s = document.createElement('span'); s.textContent = vocab(t); m.appendChild(s); }
       c.appendChild(m);
     }
     if (x.terms.length) {
@@ -113,13 +113,13 @@ __SHARED__
   for (const x of X) { fc.set(x.field, (fc.get(x.field) || 0) + 1); kc.set(x.kind, (kc.get(x.kind) || 0) + 1); }
   for (const f of D.fields) {
     const b = document.createElement('button'); b.className = 'chp'; b.type = 'button'; b.setAttribute('aria-pressed', 'false');
-    b.innerHTML = '<span></span><span class="n"></span>'; b.firstChild.textContent = f.toLowerCase(); b.lastChild.textContent = fc.get(f) || 0;
+    b.innerHTML = '<span></span><span class="n"></span>'; b.firstChild.textContent = vocab(f).toLowerCase(); b.lastChild.textContent = fc.get(f) || 0;
     b.addEventListener('click', () => { if (fieldOn.has(f)) fieldOn.delete(f); else fieldOn.add(f); b.setAttribute('aria-pressed', String(fieldOn.has(f))); render(); });
     row.appendChild(b);
   }
   for (const k of D.kinds) {
     const b = document.createElement('button'); b.className = 'chp kchp'; b.type = 'button'; b.setAttribute('aria-pressed', 'false');
-    b.innerHTML = '<span></span><span class="n"></span>'; b.firstChild.textContent = k.toLowerCase(); b.lastChild.textContent = kc.get(k) || 0;
+    b.innerHTML = '<span></span><span class="n"></span>'; b.firstChild.textContent = vocab(k).toLowerCase(); b.lastChild.textContent = kc.get(k) || 0;
     b.addEventListener('click', () => { if (kindOn.has(k)) kindOn.delete(k); else kindOn.add(k); b.setAttribute('aria-pressed', String(kindOn.has(k))); render(); });
     row.appendChild(b);
   }

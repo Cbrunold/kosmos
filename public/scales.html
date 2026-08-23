@@ -344,6 +344,7 @@
   @media print { .klang { display: none; } }
 </style>
 <div class="klang" aria-label="Language · Langue"><a href="/scales" hreflang="en" lang="en" class="on">EN</a><a href="/fr/scales" hreflang="fr" lang="fr">FR</a></div>
+<script>const VOCAB = window.__VOCAB__ || {}; const vocab = (s) => (s == null ? s : (VOCAB[s] || s));</script>
 
 <h1 class="ktitle">The Ladder of Scale</h1>
 <p class="klede">Everything between the edge of the solar wind and the edge of what light has had time to reach, ordered on the only axis that can hold it: the logarithm of light-years. The unit shifts as you climb — astronomical units, light-years, thousands, millions, billions — because no single one survives the whole climb. Parsecs are given alongside, since that is what the literature quotes.</p>
@@ -582,7 +583,7 @@
       b.setAttribute('aria-pressed', 'false');
       b.style.setProperty('--kc', kc(k));
       b.innerHTML = '<span></span><span class="n"></span>';
-      b.firstChild.textContent = k.toLowerCase();
+      b.firstChild.textContent = vocab(k).toLowerCase();
       b.lastChild.textContent = counts.get(k) || 0;
       b.addEventListener('click', () => {
         if (active.has(k)) active.delete(k); else active.add(k);

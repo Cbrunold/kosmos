@@ -70,9 +70,19 @@ def slugify(s: str) -> str:
     return re.sub(r"^-|-$", "", re.sub(r"[^a-z0-9]+", "-", s))
 
 
+# Every page gets this, in both languages. vocab() translates the fixed vocabulary the
+# pages filter and colour by — Field, kind, category, status, level, domain, era — for
+# DISPLAY only: the data keeps the English values, so every comparison, colour lookup and
+# grouping in the page scripts goes on working untouched. On an English page __VOCAB__ is
+# absent and vocab() is the identity; scripts/i18n.py fills it on the French ones.
+VOCAB_JS = ("<script>const VOCAB = window.__VOCAB__ || {};"
+            " const vocab = (s) => (s == null ? s : (VOCAB[s] || s));</script>")
+
+
 def write_page(template: str, out: str, data=None, extra: dict | None = None):
     tpl = (WEB / template).read_text()
     tpl = tpl.replace("__SHARED__", SHARED)
+    tpl = tpl.replace("</style>", "</style>\n" + VOCAB_JS, 1)
     if data is not None:
         tpl = tpl.replace("__DATA__", compact(data))
     for k, v in (extra or {}).items():

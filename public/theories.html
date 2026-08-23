@@ -286,6 +286,7 @@
   @media print { .klang { display: none; } }
 </style>
 <div class="klang" aria-label="Language · Langue"><a href="/theories" hreflang="en" lang="en" class="on">EN</a><a href="/fr/theories" hreflang="fr" lang="fr">FR</a></div>
+<script>const VOCAB = window.__VOCAB__ || {}; const vocab = (s) => (s == null ? s : (VOCAB[s] || s));</script>
 
 <nav class="knav"><a href="/">KOSMOS</a><span>/</span><span class="cur">Theories</span></nav>
 <h1 class="ktitle">Theories</h1>
@@ -337,7 +338,7 @@
       h.appendChild(name);
       const s = document.createElement('span');
       s.className = 'status ' + (t.Status || 'none');
-      s.textContent = t.Status || 'no status yet';
+      s.textContent = vocab(t.Status) || 'no status yet';
       h.appendChild(s);
       const y = yearOf(t);
       if (y != null) {
@@ -361,7 +362,7 @@
           const el = document.createElement('span');
           el.className = 'who';
           el.textContent = person.name;
-          el.title = [person.life, person.field, person.known].filter(Boolean).join(' · ');
+          el.title = [person.life, vocab(person.field), person.known].filter(Boolean).join(' · ');
           row.appendChild(el);
         }
         card.appendChild(row);
@@ -376,7 +377,7 @@
         row.appendChild(l);
         for (const q of eqs) {
           const a = document.createElement('a');
-          a.className = 'ceq'; a.href = '/equations#' + q.slug; a.textContent = q.name; a.title = q.field || '';
+          a.className = 'ceq'; a.href = '/equations#' + q.slug; a.textContent = q.name; a.title = vocab(q.field) || '';
           row.appendChild(a);
         }
         card.appendChild(row);

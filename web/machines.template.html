@@ -118,7 +118,7 @@ __SHARED__
     c.style.setProperty('--kc', KC[m.kind] || 'var(--muted)');
     const h = document.createElement('h2');
     const nm = document.createElement('span'); nm.textContent = m.name; h.appendChild(nm);
-    if (m.kind) { const t = document.createElement('span'); t.className = 'tag'; t.textContent = m.kind; h.appendChild(t); }
+    if (m.kind) { const t = document.createElement('span'); t.className = 'tag'; t.textContent = vocab(m.kind); h.appendChild(t); }
     if (m.cycle && m.cycle !== 'None') { const t = document.createElement('span'); t.className = 'tag cyc'; t.textContent = m.cycle + ' cycle'; h.appendChild(t); }
     if (m.year) { const y = document.createElement('span'); y.className = 'yr'; y.textContent = m.year; h.appendChild(y); }
     c.appendChild(h);
@@ -134,7 +134,7 @@ __SHARED__
     if (dl.children.length) left.appendChild(dl);
     const inv = chips('built first by', m.inventors, 'var(--c-violet)', (p) => '/cosmos#' + p.slug, (p) => [p.life, p.known].filter(Boolean).join(' · '));
     if (inv) left.appendChild(inv);
-    const eq = chips('the mathematics', m.equations, 'var(--c-amber)', (q) => '/equations#' + q.slug, (q) => q.field);
+    const eq = chips('the mathematics', m.equations, 'var(--c-amber)', (q) => '/equations#' + q.slug, (q) => vocab(q.field));
     if (eq) left.appendChild(eq);
     const els = chips('made with', m.elements.map((e) => ({ name: `${e.sym} · ${e.name}`, sym: e.sym })), 'var(--c-blue)', (e) => '/elements#' + e.sym);
     if (els) left.appendChild(els);
@@ -163,7 +163,7 @@ __SHARED__
     if (!counts.has(k)) continue;
     const b = document.createElement('button'); b.className = 'kchp'; b.type = 'button'; b.setAttribute('aria-pressed', 'false');
     b.style.setProperty('--kc', KC[k]);
-    b.innerHTML = '<span></span><span class="n"></span>'; b.firstChild.textContent = k.toLowerCase(); b.lastChild.textContent = counts.get(k);
+    b.innerHTML = '<span></span><span class="n"></span>'; b.firstChild.textContent = vocab(k).toLowerCase(); b.lastChild.textContent = counts.get(k);
     b.addEventListener('click', () => { if (active.has(k)) active.delete(k); else active.add(k); b.setAttribute('aria-pressed', String(active.has(k))); render(); });
     kinds.appendChild(b);
   }

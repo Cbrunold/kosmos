@@ -243,6 +243,7 @@
   @media print { .klang { display: none; } }
 </style>
 <div class="klang" aria-label="Language · Langue"><a href="/skills" hreflang="en" lang="en" class="on">EN</a><a href="/fr/skills" hreflang="fr" lang="fr">FR</a></div>
+<script>const VOCAB = window.__VOCAB__ || {}; const vocab = (s) => (s == null ? s : (VOCAB[s] || s));</script>
 
 <nav class="knav"><a href="/">KOSMOS</a><span>/</span><span class="cur">Skills</span></nav>
 <h1 class="ktitle">Skills</h1>
@@ -289,8 +290,8 @@
     c.className = 'kcard skill'; c.id = s.slug; c.style.setProperty('--cc', CC[s.cat] || 'var(--muted)');
     const h = document.createElement('h2');
     const nm = document.createElement('span'); nm.textContent = s.name; h.appendChild(nm);
-    if (s.cat) { const t = document.createElement('span'); t.className = 'tag'; t.textContent = s.cat; h.appendChild(t); }
-    if (s.level) { const t = document.createElement('span'); t.className = 'tag ' + s.level; t.textContent = s.level; h.appendChild(t); }
+    if (s.cat) { const t = document.createElement('span'); t.className = 'tag'; t.textContent = vocab(s.cat); h.appendChild(t); }
+    if (s.level) { const t = document.createElement('span'); t.className = 'tag ' + s.level; t.textContent = vocab(s.level); h.appendChild(t); }
     c.appendChild(h);
     if (s.summary) { const p = document.createElement('p'); p.className = 'sum'; p.textContent = s.summary; c.appendChild(p); }
     if (s.science) { const p = document.createElement('p'); p.className = 'sci'; p.innerHTML = '<b></b>'; p.firstChild.textContent = 'the science'; p.appendChild(document.createTextNode(s.science)); c.appendChild(p); }
@@ -310,7 +311,7 @@
     }
     g.append(left, right); c.appendChild(g);
 
-    const eq = chips('the mathematics', s.equations, 'var(--c-amber)', (q) => '/equations#' + q.slug, (q) => q.field);
+    const eq = chips('the mathematics', s.equations, 'var(--c-amber)', (q) => '/equations#' + q.slug, (q) => vocab(q.field));
     if (eq) c.appendChild(eq);
     const els = chips('materials', s.elements.map((e) => ({ name: `${e.sym} · ${e.name}`, sym: e.sym })), 'var(--c-blue)', (e) => '/elements#' + e.sym);
     if (els) c.appendChild(els);
@@ -332,7 +333,7 @@
   for (const k of D.cats) {
     const b = document.createElement('button'); b.className = 'cchp'; b.type = 'button'; b.setAttribute('aria-pressed', 'false');
     b.style.setProperty('--cc', CC[k]); b.innerHTML = '<span></span><span class="n"></span>';
-    b.firstChild.textContent = k.toLowerCase(); b.lastChild.textContent = counts.get(k) || 0;
+    b.firstChild.textContent = vocab(k).toLowerCase(); b.lastChild.textContent = counts.get(k) || 0;
     b.addEventListener('click', () => { if (active.has(k)) active.delete(k); else active.add(k); b.setAttribute('aria-pressed', String(active.has(k))); render(); });
     cats.appendChild(b);
   }
@@ -342,7 +343,7 @@
   for (const L of ['Beginner', 'Intermediate', 'Advanced']) {
     const b = document.createElement('button'); b.className = 'cchp'; b.type = 'button'; b.setAttribute('aria-pressed', 'false');
     b.style.setProperty('--cc', L === 'Beginner' ? 'var(--c-green)' : L === 'Intermediate' ? 'var(--c-amber)' : 'var(--c-red)');
-    b.textContent = L.toLowerCase();
+    b.textContent = vocab(L).toLowerCase();
     b.addEventListener('click', () => { level = level === L ? null : L; for (const x of lvlBtns) x.setAttribute('aria-pressed', String(x === b && level === L)); render(); });
     lvlBtns.push(b); cats.appendChild(b);
   }

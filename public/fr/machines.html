@@ -246,6 +246,8 @@
   @media print { .klang { display: none; } }
 </style>
 <div class="klang" aria-label="Language · Langue"><a href="/machines" hreflang="en" lang="en">EN</a><a href="/fr/machines" hreflang="fr" lang="fr" class="on">FR</a></div>
+<script>window.__VOCAB__ = {"Special Relativity":"Relativité restreinte","Heat engine":"Machine thermique","Quantum":"Quantique"};</script>
+<script>const VOCAB = window.__VOCAB__ || {}; const vocab = (s) => (s == null ? s : (VOCAB[s] || s));</script>
 
 <nav class="knav"><a href="/fr/">KOSMOS</a><span>/</span><span class="cur">Machines</span></nav>
 <h1 class="ktitle">Machines</h1>
@@ -319,7 +321,7 @@
     c.style.setProperty('--kc', KC[m.kind] || 'var(--muted)');
     const h = document.createElement('h2');
     const nm = document.createElement('span'); nm.textContent = m.name; h.appendChild(nm);
-    if (m.kind) { const t = document.createElement('span'); t.className = 'tag'; t.textContent = m.kind; h.appendChild(t); }
+    if (m.kind) { const t = document.createElement('span'); t.className = 'tag'; t.textContent = vocab(m.kind); h.appendChild(t); }
     if (m.cycle && m.cycle !== 'None') { const t = document.createElement('span'); t.className = 'tag cyc'; t.textContent = m.cycle + ' cycle'; h.appendChild(t); }
     if (m.year) { const y = document.createElement('span'); y.className = 'yr'; y.textContent = m.year; h.appendChild(y); }
     c.appendChild(h);
@@ -335,7 +337,7 @@
     if (dl.children.length) left.appendChild(dl);
     const inv = chips('built first by', m.inventors, 'var(--c-violet)', (p) => '/fr/cosmos#' + p.slug, (p) => [p.life, p.known].filter(Boolean).join(' · '));
     if (inv) left.appendChild(inv);
-    const eq = chips('the mathematics', m.equations, 'var(--c-amber)', (q) => '/fr/equations#' + q.slug, (q) => q.field);
+    const eq = chips('the mathematics', m.equations, 'var(--c-amber)', (q) => '/fr/equations#' + q.slug, (q) => vocab(q.field));
     if (eq) left.appendChild(eq);
     const els = chips('made with', m.elements.map((e) => ({ name: `${e.sym} · ${e.name}`, sym: e.sym })), 'var(--c-blue)', (e) => '/fr/elements#' + e.sym);
     if (els) left.appendChild(els);
@@ -364,7 +366,7 @@
     if (!counts.has(k)) continue;
     const b = document.createElement('button'); b.className = 'kchp'; b.type = 'button'; b.setAttribute('aria-pressed', 'false');
     b.style.setProperty('--kc', KC[k]);
-    b.innerHTML = '<span></span><span class="n"></span>'; b.firstChild.textContent = k.toLowerCase(); b.lastChild.textContent = counts.get(k);
+    b.innerHTML = '<span></span><span class="n"></span>'; b.firstChild.textContent = vocab(k).toLowerCase(); b.lastChild.textContent = counts.get(k);
     b.addEventListener('click', () => { if (active.has(k)) active.delete(k); else active.add(k); b.setAttribute('aria-pressed', String(active.has(k))); render(); });
     kinds.appendChild(b);
   }

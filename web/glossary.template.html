@@ -82,7 +82,7 @@ __SHARED__
     const c = document.createElement('article'); c.className = 'kcard term'; c.id = t.slug; c.dataset.letter = L;
     const h2 = document.createElement('h2');
     const nm = document.createElement('span'); nm.textContent = t.term; h2.appendChild(nm);
-    if (t.domain) { const d = document.createElement('span'); d.className = 'dom'; d.textContent = t.domain; h2.appendChild(d); }
+    if (t.domain) { const d = document.createElement('span'); d.className = 'dom'; d.textContent = vocab(t.domain); h2.appendChild(d); }
     if (t.aliases.length) { const a = document.createElement('span'); a.className = 'al'; a.textContent = 'also: ' + t.aliases.join(', '); h2.appendChild(a); }
     c.appendChild(h2);
     const p = document.createElement('p'); p.textContent = t.definition || ''; c.appendChild(p);
@@ -90,7 +90,7 @@ __SHARED__
       const tr = document.createElement('div'); tr.className = 'trace';
       const l = document.createElement('span'); l.className = 'lbl'; l.textContent = `appears in ${t.n}`; tr.appendChild(l);
       for (const g of t.appears) {
-        const kd = document.createElement('span'); kd.className = 'kd'; kd.style.setProperty('--kc', KC[g.kind]); kd.textContent = KL[g.kind] || g.kind; tr.appendChild(kd);
+        const kd = document.createElement('span'); kd.className = 'kd'; kd.style.setProperty('--kc', KC[g.kind]); kd.textContent = vocab(KL[g.kind] || g.kind); tr.appendChild(kd);
         for (const it of g.items) { const a = document.createElement('a'); a.className = 'lnk'; a.href = it.href; a.textContent = it.name; a.style.setProperty('--kc', KC[g.kind]); tr.appendChild(a); }
         if (g.n > g.items.length) { const m = document.createElement('span'); m.className = 'more'; m.textContent = `+${g.n - g.items.length}`; tr.appendChild(m); }
       }
@@ -119,7 +119,7 @@ __SHARED__
   const counts = new Map(); for (const t of T) counts.set(t.domain, (counts.get(t.domain) || 0) + 1);
   for (const d of D.domains) {
     const b = document.createElement('button'); b.className = 'dchp'; b.type = 'button'; b.setAttribute('aria-pressed', 'false');
-    b.innerHTML = '<span></span><span class="n"></span>'; b.firstChild.textContent = d.toLowerCase(); b.lastChild.textContent = counts.get(d) || 0;
+    b.innerHTML = '<span></span><span class="n"></span>'; b.firstChild.textContent = vocab(d).toLowerCase(); b.lastChild.textContent = counts.get(d) || 0;
     b.addEventListener('click', () => { if (active.has(d)) active.delete(d); else active.add(d); b.setAttribute('aria-pressed', String(active.has(d))); render(); });
     doms.appendChild(b);
   }

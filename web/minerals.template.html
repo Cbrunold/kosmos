@@ -209,7 +209,7 @@ __SHARED__
         const box = document.createElement('span'); box.className = 'eqs';
         for (const q of eqIds) {
           const a = document.createElement('a'); a.className = 'meq';
-          a.href = '/equations#' + q.slug; a.textContent = q.name; a.title = q.field || '';
+          a.href = '/equations#' + q.slug; a.textContent = q.name; a.title = vocab(q.field) || '';
           box.appendChild(a);
         }
         nm.appendChild(box);
@@ -293,7 +293,7 @@ __SHARED__
     const h = document.createElement('h3');
     const nm = document.createElement('span'); nm.textContent = g.name;
     h.appendChild(nm);
-    if (g.kind) { const k = document.createElement('span'); k.className = 'kind'; k.textContent = g.kind; h.appendChild(k); }
+    if (g.kind) { const k = document.createElement('span'); k.className = 'kind'; k.textContent = vocab(g.kind); h.appendChild(k); }
     c.appendChild(h);
     const hr = document.createElement('div'); hr.className = 'hrow';
     if (g.hardness != null) {

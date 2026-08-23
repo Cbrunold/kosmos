@@ -381,6 +381,7 @@
   @media print { .klang { display: none; } }
 </style>
 <div class="klang" aria-label="Language · Langue"><a href="/equations" hreflang="en" lang="en" class="on">EN</a><a href="/fr/equations" hreflang="fr" lang="fr">FR</a></div>
+<script>const VOCAB = window.__VOCAB__ || {}; const vocab = (s) => (s == null ? s : (VOCAB[s] || s));</script>
 
 <nav class="knav"><a href="/">KOSMOS</a><span>/</span><span class="cur">Equations</span></nav>
 <h1 class="ktitle">Equations</h1>
@@ -597,7 +598,7 @@
     b.dataset.domain = d.name;
     b.title = d.blurb + ` — ${d.fields.length} fields`;
     b.innerHTML = '<span class="lbl"></span><span class="n"></span><span class="caret">▾</span>';
-    b.querySelector('.lbl').textContent = d.name;
+    b.querySelector('.lbl').textContent = vocab(d.name);
     b.querySelector('.n').textContent = d.count;
     b.setAttribute('aria-pressed', 'false');
     b.setAttribute('aria-expanded', 'false');
@@ -628,7 +629,7 @@
       b.dataset.field = f;
       b.style.setProperty('--fc2', COLORS[f] || 'var(--muted)');
       b.innerHTML = '<span class="lbl"></span><span class="n"></span>';
-      b.querySelector('.lbl').textContent = f;
+      b.querySelector('.lbl').textContent = vocab(f);
       b.querySelector('.n').textContent = counts[f];
       b.setAttribute('aria-pressed', String(activeField === f));
       b.addEventListener('click', () => {
@@ -674,7 +675,7 @@
       const h = document.createElement('h2');
       const nm = document.createElement('span'); nm.textContent = e.Name || 'Untitled';
       h.appendChild(nm);
-      if (e.Field) { const f = document.createElement('span'); f.className = 'fld'; f.textContent = e.Field; h.appendChild(f); }
+      if (e.Field) { const f = document.createElement('span'); f.className = 'fld'; f.textContent = vocab(e.Field); h.appendChild(f); }
       const formula = document.createElement('div'); formula.className = 'formula'; formula.textContent = e.Equation || '';
       const sym = document.createElement('div'); sym.className = 'sym'; sym.textContent = e.Symbols || '';
       const sig = document.createElement('p'); sig.className = 'sig'; sig.textContent = e.Significance || '';
@@ -694,7 +695,7 @@
         a.className = 'rlink';
         a.href = '#' + r.slug;
         a.textContent = r.Name;
-        a.title = `${r.Field}${r.Year ? ' · ' + (r.Year < 0 ? 'c. ' + (-r.Year) + ' BCE' : r.Year) : ''}`;
+        a.title = `${vocab(r.Field)}${r.Year ? ' · ' + (r.Year < 0 ? 'c. ' + (-r.Year) + ' BCE' : r.Year) : ''}`;
         a.style.setProperty('--rc', COLORS[r.Field] || 'var(--muted)');
         a.addEventListener('click', (ev) => { ev.preventDefault(); goTo(r.slug); });
         return a;
@@ -783,9 +784,9 @@
           const a = document.createElement('a');
           a.className = 'clink';
           a.href = x.href;
-          a.title = `${x.name} · ${x.kind} · open on the ${x.kind === 'theory' ? 'theories' : 'cosmos'} page`;
+          a.title = `${x.name} · ${vocab(x.kind)} · open on the ${x.kind === 'theory' ? 'theories' : 'cosmos'} page`;
           a.innerHTML = '<span class="k"></span><span class="n"></span>';
-          a.querySelector('.k').textContent = KIND_LABEL[x.kind] || x.kind;
+          a.querySelector('.k').textContent = vocab(KIND_LABEL[x.kind] || x.kind);
           a.querySelector('.n').textContent = x.name.replace(/ \(.*\)$/, '').replace(/-type Stars$/, '');
           row.appendChild(a);
         }

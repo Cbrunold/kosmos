@@ -39,14 +39,16 @@ def main(argv):
         f = ROOT / "public" / page
         if not f.exists():
             continue
-        spans, strs = i18n.extract(f.read_text(), page)
+        html = f.read_text()
+        spans, strs = i18n.extract(html, page)
         texts = {x[2] for x in spans} | strs
+        voc = i18n.vocab_values(html)      # filter labels: single words, and a prompt of their own
         new = 0
         for t in texts:
             k = i18n.key_of(t)
             live.add(k)
             if k not in tr.cache:
-                tr.want(t); new += 1
+                tr.want(t, "vocab" if t in voc else "prose"); new += 1
         per_page.append((page, len(texts), new))
     pruned = tr.prune(live)
     for page, n, new in per_page:

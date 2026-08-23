@@ -334,6 +334,8 @@
   @media print { .klang { display: none; } }
 </style>
 <div class="klang" aria-label="Language · Langue"><a href="/timeline" hreflang="en" lang="en">EN</a><a href="/fr/timeline" hreflang="fr" lang="fr" class="on">FR</a></div>
+<script>window.__VOCAB__ = {"Special Relativity":"Relativité restreinte","Quantum Gravity":"Gravité quantique","General Relativity":"La relativité générale","Radiation":"Rayonnement","String Theory":"Théorie des cordes","Billiards":"Billard","Statistical Mechanics":"Physique statistique","Superconductivity":"Supraconductivité","Information Theory":"Théorie de l'information","Quantum Mechanics":"Mécanique quantique","Quantum":"Quantique"};</script>
+<script>const VOCAB = window.__VOCAB__ || {}; const vocab = (s) => (s == null ? s : (VOCAB[s] || s));</script>
 
 <nav class="knav"><a href="/fr/">KOSMOS</a><span>/</span><span class="cur">Chronologie</span></nav>
 <h1 class="ktitle">Chronologie de l'Univers</h1>
@@ -498,19 +500,19 @@
 
       const eqs = (e.equations || []).map((id) => EQ[id]).filter(Boolean)
         .sort((a, b) => a.name.localeCompare(b.name))
-        .map((q) => ({ name: q.name, href: '/fr/equations#' + q.slug, title: q.field || '' }));
+        .map((q) => ({ name: q.name, href: '/fr/equations#' + q.slug, title: vocab(q.field) || '' }));
       if (eqs.length) card.appendChild(chipRow('the mathematics', eqs, 'var(--c-amber)'));
 
       const ths = (e.theories || []).map((id) => TH[id]).filter(Boolean)
         .sort((a, b) => a.name.localeCompare(b.name))
-        .map((t) => ({ name: t.name, href: '/fr/theories#' + t.slug, title: t.status || '' }));
+        .map((t) => ({ name: t.name, href: '/fr/theories#' + t.slug, title: vocab(t.status) || '' }));
       if (ths.length) card.appendChild(chipRow('the theory', ths, 'var(--c-pink)'));
 
       // people whose work is about this epoch — not its proposers, that is the theory row
       const who = (e.people || []).map((id) => PEOPLE[id]).filter(Boolean)
         .sort((a, b) => a.name.split(' ').pop().localeCompare(b.name.split(' ').pop()))
         .map((p) => ({ name: p.name, href: '/fr/cosmos#' + p.slug,
-                       title: [p.life, p.field, p.known].filter(Boolean).join(' · ') }));
+                       title: [p.life, vocab(p.field), p.known].filter(Boolean).join(' · ') }));
       if (who.length) card.appendChild(chipRow('the people', who, 'var(--c-violet)'));
 
       // The checks, shown per row. A page that asserts a temperature and a
@@ -564,7 +566,7 @@
       b.setAttribute('aria-pressed', 'false');
       b.style.setProperty('--ec', ERA_COLOR[era] || 'var(--muted)');
       b.innerHTML = '<span></span><span class="n"></span>';
-      b.firstChild.textContent = era.toLowerCase();
+      b.firstChild.textContent = vocab(era).toLowerCase();
       b.lastChild.textContent = counts.get(era) || 0;
       b.addEventListener('click', () => {
         if (active.has(era)) active.delete(era); else active.add(era);

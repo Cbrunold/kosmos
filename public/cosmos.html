@@ -337,6 +337,7 @@
   @media print { .klang { display: none; } }
 </style>
 <div class="klang" aria-label="Language · Langue"><a href="/cosmos" hreflang="en" lang="en" class="on">EN</a><a href="/fr/cosmos" hreflang="fr" lang="fr">FR</a></div>
+<script>const VOCAB = window.__VOCAB__ || {}; const vocab = (s) => (s == null ? s : (VOCAB[s] || s));</script>
 
 <nav class="knav"><a href="/">KOSMOS</a><span>/</span><span class="cur">Cosmic Exploration</span></nav>
 <h1 class="ktitle">Cosmic Exploration</h1>
@@ -408,7 +409,7 @@
     row.appendChild(l);
     for (const q of eqs) {
       const a = document.createElement('a');
-      a.className = 'ceq'; a.href = '/equations#' + q.slug; a.textContent = q.name; a.title = q.field || '';
+      a.className = 'ceq'; a.href = '/equations#' + q.slug; a.textContent = q.name; a.title = vocab(q.field) || '';
       row.appendChild(a);
     }
     return row;
@@ -454,7 +455,7 @@
   for (const g of D.types) {
     const card = document.createElement('div'); card.className = 'kcard gclass';
     card.id = 'class-' + slug(g.type);
-    const h = document.createElement('h3'); h.textContent = g.type;
+    const h = document.createElement('h3'); h.textContent = vocab(g.type);
     const ul = document.createElement('ul');
     for (const e of g.entries) { const li = document.createElement('li'); li.textContent = e; ul.appendChild(li); }
     card.append(h, ul);
@@ -468,7 +469,7 @@
     card.className = 'kcard';
     card.id = 'instr-' + slug(it.name);
     card.innerHTML = '<h3></h3><p></p><div class="chips"></div>';
-    card.querySelector('h3').textContent = it.name + (it.type ? ` · ${it.type}` : '');
+    card.querySelector('h3').textContent = it.name + (it.type ? ` · ${vocab(it.type)}` : '');
     card.querySelector('p').textContent = it.desc || '';
     const chips = card.querySelector('.chips');
     for (const w of it.wavelengths || []) { const c = document.createElement('span'); c.className = 'kchip'; c.textContent = w; chips.appendChild(c); }
@@ -578,7 +579,7 @@
         c.style.setProperty('--gc', GC[g.sub] || 'var(--muted)');
         const h = document.createElement('h3'); h.textContent = g.name;
         const meta = document.createElement('div'); meta.className = 'meta';
-        meta.textContent = [g.morph, fmtD(g.dist), g.diam ? `${g.diam.toLocaleString('en')} ly across` : null,
+        meta.textContent = [vocab(g.morph), fmtD(g.dist), g.diam ? `${g.diam.toLocaleString('en')} ly across` : null,
                             g.msun ? `${g.msun.toExponential(1).replace('e+', ' × 10^')} M☉` : null].filter(Boolean).join(' · ');
         const p = document.createElement('p'); p.textContent = g.notes || '';
         c.append(h, meta, p);
@@ -692,7 +693,7 @@
     const nm = document.createElement('span'); nm.textContent = m.name;
     h.appendChild(nm);
     if (m.status) {
-      const s = document.createElement('span'); s.className = 'st'; s.textContent = m.status;
+      const s = document.createElement('span'); s.className = 'st'; s.textContent = vocab(m.status);
       h.appendChild(s);
     }
     const span = m.end ? (yr(m.launch) === yr(m.end) ? yr(m.launch) : `${yr(m.launch)}–${yr(m.end)}`)

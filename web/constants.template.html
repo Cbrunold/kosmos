@@ -186,7 +186,7 @@ __SHARED__
       row.appendChild(l);
       for (const q of eqs) {
         const a = document.createElement('a');
-        a.className = 'keq'; a.href = '/equations#' + q.slug; a.textContent = q.name; a.title = q.field || '';
+        a.className = 'keq'; a.href = '/equations#' + q.slug; a.textContent = q.name; a.title = vocab(q.field) || '';
         row.appendChild(a);
       }
       el.appendChild(row);
@@ -210,7 +210,7 @@ __SHARED__
   catsBox.appendChild(all);
   for (const c of cats) {
     const b = document.createElement('button');
-    b.className = 'cchip'; b.textContent = c; b.dataset.cat = c; b.setAttribute('aria-pressed', 'false');
+    b.className = 'cchip'; b.textContent = vocab(c); b.dataset.cat = c; b.setAttribute('aria-pressed', 'false');
     b.addEventListener('click', () => { active = active === c ? null : c; sync(); });
     catsBox.appendChild(b);
   }

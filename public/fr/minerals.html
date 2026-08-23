@@ -297,6 +297,8 @@
   @media print { .klang { display: none; } }
 </style>
 <div class="klang" aria-label="Language · Langue"><a href="/minerals" hreflang="en" lang="en">EN</a><a href="/fr/minerals" hreflang="fr" lang="fr" class="on">FR</a></div>
+<script>window.__VOCAB__ = {"Special Relativity":"Relativité restreinte","General Relativity":"La relativité générale","Radiation":"Rayonnement","Billiards":"Billard","Statistical Mechanics":"Physique statistique","Superconductivity":"Supraconductivité","Information Theory":"Théorie de l'information","Quantum":"Quantique"};</script>
+<script>const VOCAB = window.__VOCAB__ || {}; const vocab = (s) => (s == null ? s : (VOCAB[s] || s));</script>
 
 <nav class="knav"><a href="/fr/">KOSMOS</a><span>/</span><span class="cur">Minéraux &amp; pierres précieuses</span></nav>
 <h1 class="ktitle">Minéraux &amp; pierres précieuses</h1>
@@ -410,7 +412,7 @@
         const box = document.createElement('span'); box.className = 'eqs';
         for (const q of eqIds) {
           const a = document.createElement('a'); a.className = 'meq';
-          a.href = '/fr/equations#' + q.slug; a.textContent = q.name; a.title = q.field || '';
+          a.href = '/fr/equations#' + q.slug; a.textContent = q.name; a.title = vocab(q.field) || '';
           box.appendChild(a);
         }
         nm.appendChild(box);
@@ -494,7 +496,7 @@
     const h = document.createElement('h3');
     const nm = document.createElement('span'); nm.textContent = g.name;
     h.appendChild(nm);
-    if (g.kind) { const k = document.createElement('span'); k.className = 'kind'; k.textContent = g.kind; h.appendChild(k); }
+    if (g.kind) { const k = document.createElement('span'); k.className = 'kind'; k.textContent = vocab(g.kind); h.appendChild(k); }
     c.appendChild(h);
     const hr = document.createElement('div'); hr.className = 'hrow';
     if (g.hardness != null) {

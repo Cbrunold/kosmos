@@ -274,6 +274,8 @@
   @media print { .klang { display: none; } }
 </style>
 <div class="klang" aria-label="Language · Langue"><a href="/mines" hreflang="en" lang="en">EN</a><a href="/fr/mines" hreflang="fr" lang="fr" class="on">FR</a></div>
+<script>window.__VOCAB__ = {"Quarry":"Carrière","Brine":"Saumure","Underground":"Souterrain","In-situ leach":"Lixiviation in situ","Open pit":"Mine à ciel ouvert"};</script>
+<script>const VOCAB = window.__VOCAB__ || {}; const vocab = (s) => (s == null ? s : (VOCAB[s] || s));</script>
 
 <nav class="knav"><a href="/fr/">KOSMOS</a><span>/</span><span class="cur">Mines &amp; extraction</span></nav>
 <h1 class="ktitle">Mines &amp; extraction</h1>
@@ -376,10 +378,10 @@
     const h = document.createElement('h3');
     const nm = document.createElement('span'); nm.textContent = m.name; h.appendChild(nm);
     if (m.status && m.status !== 'Active') {
-      const st = document.createElement('span'); st.className = 'st ' + (m.status === 'Closed' ? 'closed' : 'dev'); st.textContent = m.status; h.appendChild(st);
+      const st = document.createElement('span'); st.className = 'st ' + (m.status === 'Closed' ? 'closed' : 'dev'); st.textContent = vocab(m.status); h.appendChild(st);
     }
     const meta = document.createElement('div'); meta.className = 'meta';
-    meta.textContent = [m.region ? `${m.region}, ${m.country}` : m.country, m.type, m.opened ? `since ${m.opened}` : null].filter(Boolean).join(' · ');
+    meta.textContent = [m.region ? `${m.region}, ${m.country}` : m.country, vocab(m.type), m.opened ? `since ${m.opened}` : null].filter(Boolean).join(' · ');
     const p = document.createElement('p'); p.textContent = m.notes || '';
     c.append(h, meta, p);
     if (m.syms.length) {

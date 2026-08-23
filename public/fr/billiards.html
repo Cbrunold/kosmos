@@ -283,6 +283,8 @@
   @media print { .klang { display: none; } }
 </style>
 <div class="klang" aria-label="Language · Langue"><a href="/billiards" hreflang="en" lang="en">EN</a><a href="/fr/billiards" hreflang="fr" lang="fr" class="on">FR</a></div>
+<script>window.__VOCAB__ = {"Billiards":"Billard"};</script>
+<script>const VOCAB = window.__VOCAB__ || {}; const vocab = (s) => (s == null ? s : (VOCAB[s] || s));</script>
 
 <nav class="knav"><a href="/fr/">KOSMOS</a><span>/</span><span class="cur">Billard</span></nav>
 <h1 class="ktitle">Billard</h1>
@@ -1295,7 +1297,7 @@
   for (const e of D.equations) {
     const a = document.createElement('a'); a.className = 'kcard eq'; a.href = '/fr/equations#' + e.slug; a.style.setProperty('--fc', COLORS[e.field] || 'var(--muted)');
     a.innerHTML = '<h3><span class="n"></span><span class="fld"></span></h3><div class="formula"></div><p class="sig"></p><div class="meta"></div>';
-    a.querySelector('.n').textContent = e.name; a.querySelector('.fld').textContent = e.field || '';
+    a.querySelector('.n').textContent = e.name; a.querySelector('.fld').textContent = vocab(e.field) || '';
     a.querySelector('.formula').textContent = e.equation || ''; a.querySelector('.sig').textContent = e.significance || '';
     a.querySelector('.meta').textContent = [e.year ? (e.year < 0 ? `c. ${-e.year} BCE` : e.year) : null, e.requires ? `rests on ${e.requires} equation${e.requires === 1 ? '' : 's'}` : null, 'open on the equations page →'].filter(Boolean).join(' · ');
     shelf.appendChild(a);
@@ -1304,7 +1306,7 @@
   for (const s of D.skills) {
     const a = document.createElement('a'); a.className = 'kcard'; a.href = '/fr/skills#' + s.slug;
     a.innerHTML = '<h3><span class="n"></span><span class="d"></span></h3><p></p>';
-    a.querySelector('.n').textContent = s.name; a.querySelector('.d').textContent = s.difficulty || ''; a.querySelector('p').textContent = s.summary || '';
+    a.querySelector('.n').textContent = s.name; a.querySelector('.d').textContent = vocab(s.difficulty) || ''; a.querySelector('p').textContent = s.summary || '';
     sk.appendChild(a);
   }
   const nums = $('nums');

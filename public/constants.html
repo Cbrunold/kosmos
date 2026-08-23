@@ -316,6 +316,7 @@
   @media print { .klang { display: none; } }
 </style>
 <div class="klang" aria-label="Language · Langue"><a href="/constants" hreflang="en" lang="en" class="on">EN</a><a href="/fr/constants" hreflang="fr" lang="fr">FR</a></div>
+<script>const VOCAB = window.__VOCAB__ || {}; const vocab = (s) => (s == null ? s : (VOCAB[s] || s));</script>
 
 <nav class="knav"><a href="/">KOSMOS</a><span>/</span><span class="cur">Constants &amp; Units</span></nav>
 <h1 class="ktitle">Constants &amp; Units</h1>
@@ -386,7 +387,7 @@
       row.appendChild(l);
       for (const q of eqs) {
         const a = document.createElement('a');
-        a.className = 'keq'; a.href = '/equations#' + q.slug; a.textContent = q.name; a.title = q.field || '';
+        a.className = 'keq'; a.href = '/equations#' + q.slug; a.textContent = q.name; a.title = vocab(q.field) || '';
         row.appendChild(a);
       }
       el.appendChild(row);
@@ -410,7 +411,7 @@
   catsBox.appendChild(all);
   for (const c of cats) {
     const b = document.createElement('button');
-    b.className = 'cchip'; b.textContent = c; b.dataset.cat = c; b.setAttribute('aria-pressed', 'false');
+    b.className = 'cchip'; b.textContent = vocab(c); b.dataset.cat = c; b.setAttribute('aria-pressed', 'false');
     b.addEventListener('click', () => { active = active === c ? null : c; sync(); });
     catsBox.appendChild(b);
   }
