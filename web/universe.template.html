@@ -97,6 +97,7 @@ __SHARED__
       <li><b>A dot means we know which way it lies.</b> The direction comes from the name resolver at Strasbourg — SIMBAD, then NED — not from anybody's memory, and every position on the page traces back to a catalogue entry.</li>
       <li><b>A ring means we know how far but not which way</b>, so the map draws the whole sphere that the distance allows. The Sloan and CfA2 Great Walls are rings because they are tens of degrees across and have no single position to resolve. Structures we are <em>inside</em> are rings too, drawn at half their extent, which is where their edge actually is from here.</li>
       <li><b>The radius is the logarithm of distance</b>, so shapes are wrong on purpose. A sphere is still a sphere and directions are exact, but anything with real extent is squashed toward us — the near side of a supercluster is pushed out and the far side pulled in. This is the only projection in which the Oort Cloud and the horizon appear in one picture, and the cost is that no volume here is the right shape.</li>
+      <li><b>The planets are orbits, not places, and they go round the centre rather than round you.</b> A planet's direction changes through the year and its distance from us changes with it, so a dot would state a position that is not a fact; what does not change is its distance from the Sun. Zoom in far enough and the label at the centre stops reading <em>here</em> and reads <em>the Sun</em> — this is the one point on the map where the origin and the observer come apart, and the Earth is the third ring out. Each orbit is drawn as a circle at its mean distance, in the plane of the ecliptic: eccentricity is not drawn (Mercury's is the only one you would notice — it really runs between 0.31 and 0.47 AU), and neither are the inclinations, which are 7.0° for Mercury, 3.4° for Venus and under 2.5° for the rest. The asteroid and Kuiper belts are bands, because a belt has no orbit and a single ring would claim one.</li>
       <li><b>Everything is drawn as it is now</b>, not as it looks. Light from the far rings left before the Earth existed. A map of where things <em>are</em> and a map of what you <em>see</em> diverge completely past the Local Group, and this is the first.</li>
       <li><b>Distance is comoving</b>, matching <a href="/scales">the ladder</a>. Redshift is not converted to a light-travel time anywhere on this page.</li>
     </ol>
@@ -142,7 +143,54 @@ __SHARED__
     const half = Math.min(cv.width, cv.height) / 2;
     return (half * 0.86) / DECADES / (cv.width / 950);
   }
-  let showShells = true, showLabels = true;
+  // the zoom at which something this far away sits near the edge of the frame
+  function zoomFor(ly) {
+    const half = Math.min(cv.width, cv.height) / 2;
+    return (half * 0.78) / Math.max(0.35, Math.log10(ly) - LO) / (cv.width / 950);
+  }
+  // each stop is a distance in light years, or null for "fit everything"
+  // A log axis anchored six decades inside the Earth's orbit puts anything beyond a
+  // few hundred million light years within a whisker of the fitted view — a
+  // "superclusters" stop would have moved the picture by 5% and looked broken. These
+  // are the five that actually separate.
+  const ZOOMS = [
+    ['all of it', null],
+    ['Local Group', 5e6],
+    ['nearby stars', 500],
+    ['Oort cloud', 1.6],
+    ['solar system', 5e-4],      // ≈ 32 AU: Neptune just inside the frame
+  ];
+  let showShells = true, showLabels = true, showSolar = true;
+
+  // ---- the solar system ----
+  // Everything else on this page is placed by where it lies from here. The planets
+  // cannot be: a planet's direction changes through the year, and its distance from
+  // us changes with it. What does not change is its distance from the Sun — so the
+  // orbits are drawn around the centre, which at this scale is the Sun rather than
+  // us, and the Earth becomes one of the rings. It is the one place on the map where
+  // the origin and the observer come apart, and the note under the map says so.
+  const SS = D.solar || { orbits: [], bands: [] };
+  const SUN = '#c9932c';                       // reads on both themes; not in the KC palette
+  // one per line, and named: this is how scripts/i18n.py finds them for the French build
+  const HERE_LABEL = 'here';
+  const SUN_LABEL = 'the Sun';
+  const EPS = (SS.obliquity || 23.4393) * RAD;
+  // A circle in the ecliptic plane as equatorial unit vectors. The two frames share
+  // the vernal equinox, so x is common to both and the tilt falls on y and z.
+  const ECL = [];
+  for (let i = 0; i <= 192; i++) {
+    const l = i / 192 * Math.PI * 2;
+    ECL.push([Math.cos(l), Math.sin(l) * Math.cos(EPS), Math.sin(l) * Math.sin(EPS)]);
+  }
+  const ringPts = (lyv, S, cx, cy) => {
+    const R = Math.log10(lyv);
+    return ECL.map((u) => project(u, R, S, cx, cy));
+  };
+  const trace = (pts) => {
+    ctx.beginPath();
+    pts.forEach((p, i) => (i ? ctx.lineTo(p.x, p.y) : ctx.moveTo(p.x, p.y)));
+    ctx.closePath();
+  };
 
   const css = () => ({ w: cv.width, h: cv.height });
   const theme = () => getComputedStyle(document.body);
@@ -169,6 +217,94 @@ __SHARED__
     return { x: cx + x1 * r, y: cy - z2 * r, depth: y2 * r };
   }
 
+  function drawSolar(S, cx, cy, muted, ink, panel) {
+    const rOf = (lyv) => (Math.log10(lyv) - LO) * S;
+    // belts first, under the orbits: a population with no orbit of its own, so the
+    // map draws the ground it occupies rather than a line it does not follow
+    for (const b of SS.bands || []) {
+      if (rOf(b.ly1) < 5) continue;
+      trace(ringPts(b.ly1, S, cx, cy));
+      const inner = ringPts(b.ly0, S, cx, cy);
+      for (let i = inner.length - 1; i >= 0; i--) {
+        const p = inner[i];
+        i === inner.length - 1 ? ctx.moveTo(p.x, p.y) : ctx.lineTo(p.x, p.y);
+      }
+      ctx.closePath();
+      ctx.fillStyle = SUN; ctx.globalAlpha = 0.13; ctx.fill('evenodd');
+      ctx.globalAlpha = 1;
+    }
+    // orbits, each split into the half in front of the centre and the half behind,
+    // so a tilted ring reads as a ring and not as a flat oval
+    const drawn = [];
+    for (const o of SS.orbits || []) {
+      const r = rOf(o.ly);
+      if (r < 3) continue;
+      const pts = ringPts(o.ly, S, cx, cy);
+      for (const behind of [true, false]) {
+        ctx.beginPath();
+        let pen = false;
+        for (const p of pts) {
+          if ((p.depth > 0) !== behind) { pen = false; continue; }
+          pen ? ctx.lineTo(p.x, p.y) : ctx.moveTo(p.x, p.y);
+          pen = true;
+        }
+        ctx.strokeStyle = SUN;
+        ctx.globalAlpha = behind ? 0.45 : 0.9;
+        ctx.lineWidth = behind ? 1.2 : 1.5;
+        ctx.stroke();
+      }
+      ctx.globalAlpha = 1;
+      // the leftmost point of the ring as drawn, which is where its name can sit on it.
+      // Not cx - r: the ellipse is tilted, so its left edge is nowhere near the centre line.
+      let left = pts[0], right = pts[0];
+      for (const p of pts) {
+        if (p.x < left.x) left = p;
+        if (p.x > right.x) right = p;
+      }
+      drawn.push({ o, r, left, right });
+    }
+    // names down the left, where the decade labels are not. Only where the rings have
+    // come far enough apart to tell which name belongs to which — zoomed out they are
+    // a nest a few pixels wide, and eight labels on it would say nothing.
+    // Names only once the system is big enough to read. Zoomed out it is a nest a few
+    // dozen pixels across, and a name on it points at nothing you can see.
+    const span = drawn.length ? drawn[drawn.length - 1].r - drawn[0].r : 0;
+    if (showLabels && span > 150) {
+      ctx.font = '16px ui-monospace, Menlo, monospace';
+      const taken = [];
+      const clear = (b) => !taken.some((t) => b[0] < t[0] + t[2] && t[0] < b[0] + b[2]
+                                           && b[1] < t[1] + t[3] && t[1] < b[1] + b[3]);
+      for (const { o, left, right } of drawn) {
+        const lbl = o.name;
+        const wpx = ctx.measureText(lbl).width;
+        // on the ring, outside it: the left edge first, then the right if that is taken.
+        // Nested rings crowd one side, and half the planets went unnamed on one alone.
+        const places = [
+          { box: [left.x - 8 - wpx, left.y - 11, wpx + 8, 22], x: left.x - 6, y: left.y + 5, align: 'right' },
+          { box: [right.x + 2, right.y - 11, wpx + 8, 22], x: right.x + 6, y: right.y + 5, align: 'left' },
+        ];
+        const put = places.find((p) => p.box[0] > 2 && p.box[0] + p.box[2] < cv.width - 2 && clear(p.box));
+        if (!put) continue;
+        taken.push(put.box);
+        ctx.fillStyle = panel; ctx.globalAlpha = 0.78;
+        ctx.fillRect(put.box[0], put.box[1], put.box[2], put.box[3]);
+        ctx.globalAlpha = 1; ctx.fillStyle = SUN;
+        ctx.textAlign = put.align;
+        ctx.fillText(lbl, put.x, put.y);
+      }
+      for (const b of SS.bands || []) {
+        const r = rOf(b.ly1);
+        if (r < 34 || cx - r - 90 < 0) continue;
+        ctx.fillStyle = SUN; ctx.globalAlpha = 0.75;
+        ctx.textAlign = 'left';
+        ctx.fillText(b.name, cx + 8, cy - Math.abs(rOf(b.ly1) * Math.sin(cam.pitch * RAD)) - 8);
+        ctx.globalAlpha = 1;
+      }
+      ctx.textAlign = 'left';
+    }
+    return drawn.length;
+  }
+
   function draw() {
     const { w, h } = css();
     const t = theme();
@@ -185,6 +321,7 @@ __SHARED__
 
     // decade rings: the scale bar, and the only thing that makes the log axis legible
     ctx.lineWidth = 1.2;
+    let decadeEnd = -1e9;                    // right edge of the last label written
     for (let d = LO; d <= HI; d++) {
       const r = (d - LO) * S;
       if (r < 6 || r > Math.hypot(w, h)) continue;
@@ -193,14 +330,24 @@ __SHARED__
       ctx.beginPath(); ctx.ellipse(cx, cy, r, r * Math.abs(sp), 0, 0, Math.PI * 2); ctx.stroke();
       ctx.globalAlpha = 1;
       // label on the ring's right edge, but only where the canvas still is —
-      // zoomed in, the outer rings run off and an unseen label is just cost
+      // zoomed in, the outer rings run off and an unseen label is just cost.
+      // Zoomed out the rings crowd until the labels overlap into a smear, so a
+      // label also waits until the last one has ended.
       if (cx + r + 96 < w) {
         ctx.fillStyle = muted;
         ctx.font = '17px ui-monospace, Menlo, monospace';
         ctx.textAlign = 'left';
-        ctx.fillText(ly(Math.pow(10, d)), cx + r + 7, cy + 5);
+        const txt = ly(Math.pow(10, d));
+        if (cx + r + 7 >= decadeEnd) {
+          ctx.fillText(txt, cx + r + 7, cy + 5);
+          decadeEnd = cx + r + 7 + ctx.measureText(txt).width + 10;
+        }
       }
     }
+
+    // the solar system: rings in the ecliptic plane, so they tilt with the camera
+    // rather than sitting flat on the screen the way the decade rings do
+    if (showSolar) drawSolar(S, cx, cy, muted, ink, panel);
 
     // shells: a distance with no direction is a sphere, so draw the sphere
     if (showShells) {
@@ -268,14 +415,20 @@ __SHARED__
     ctx.fillStyle = ink;
     ctx.beginPath(); ctx.arc(cx, cy, 4.5, 0, Math.PI * 2); ctx.fill();
     ctx.strokeStyle = panel; ctx.lineWidth = 2; ctx.stroke();
+    // Zoomed out, the centre is where the observer stands. Zoomed in far enough that
+    // the Earth's own orbit is a ring around it, calling that point "here" would be
+    // false — at that scale it is the Sun, and we are on the third ring out.
+    const home = (SS.orbits || []).find((o) => o.home);
+    const solarScale = showSolar && home && (Math.log10(home.ly) - LO) * S > 40;
     ctx.fillStyle = muted; ctx.font = '16px ui-monospace, Menlo, monospace';
-    ctx.fillText('here', cx + 9, cy - 8);
+    ctx.fillText(solarScale ? SUN_LABEL : HERE_LABEL, cx + 9, cy - 8);
 
     document.getElementById('hud').innerHTML =
       `bearing <b>${Math.round(((cam.yaw % 360) + 360) % 360)}°</b> · `
       + `tilt <b>${Math.round(cam.pitch)}°</b> · `
       + `<b>${(cam.pxPerDecade / HOME.pxPerDecade).toFixed(1)}×</b><br>`
-      + `<b>${D.nPoint}</b> placed by direction · <b>${D.nShell}</b> drawn as shells`;
+      + `<b>${D.nPoint}</b> placed by direction · <b>${D.nShell}</b> drawn as shells`
+      + (showSolar ? ` · <b>${D.nOrbit}</b> orbits round the Sun` : '');
   }
 
   // ---- gestures: one finger turns, two fingers behave like a map ----
@@ -397,12 +550,16 @@ __SHARED__
     mk('top down', () => { cam.pitch = 89; draw(); });
     mk('edge on', () => { cam.pitch = 0; draw(); });
     const sep = document.createElement('span'); sep.className = 'sep'; c.appendChild(sep);
+    mk('orbits', (b) => { showSolar = !showSolar; b.setAttribute('aria-pressed', String(showSolar)); draw(); }, true);
     mk('shells', (b) => { showShells = !showShells; b.setAttribute('aria-pressed', String(showShells)); draw(); }, true);
     mk('labels', (b) => { showLabels = !showLabels; b.setAttribute('aria-pressed', String(showLabels)); draw(); }, true);
-    // the zoom control, stepped in multiples of the fitted view rather than in
-    // pixels, so the steps mean the same thing on a phone and on a monitor
-    for (const [label, mult] of [['all of it', 1], ['superclusters', 2.4], ['Local Group', 7], ['solar', 26]]) {
-      mk(label, () => { cam.pxPerDecade = clampZoom(fitZoom() * mult); draw(); });
+    // The zoom stops name a distance and put it near the edge of the frame, rather
+    // than naming a multiple of the fitted view. Multiples were quietly tied to the
+    // span of the axis: when the solar system extended it by three decades every one
+    // of them pointed somewhere else, and "superclusters" flew past the superclusters.
+    // A distance cannot drift like that — it is a place, and the arithmetic finds it.
+    for (const [label, ly] of ZOOMS) {
+      mk(label, () => { cam.pxPerDecade = clampZoom(ly == null ? fitZoom() : zoomFor(ly)); draw(); });
     }
   }
 

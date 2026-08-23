@@ -1118,6 +1118,31 @@ def build_scales_page():
 
 
 # ---------------- the universe in three dimensions ----------------
+# ---------------- the solar system, for the 3-D map ----------------
+# Semi-major axes in astronomical units, J2000 mean elements. These are reference
+# numbers, not authored content, so they live here rather than in Notion — like the
+# CODATA values the constants page quotes, but too few and too fixed to be worth a
+# database. What the map draws from them is a circle in the ecliptic plane, which
+# leaves out two things the page says out loud rather than implying:
+#   eccentricity — every orbit is drawn at its mean distance. Mercury's 0.21 is the
+#     only one a reader would notice: it actually runs between 0.31 and 0.47 AU.
+#   inclination  — Mercury 7.0°, Venus 3.4°, the rest under 2.5°, all to the ecliptic.
+# Both are far smaller than the thickness of the line at any zoom this page allows.
+AU_PER_LY = 63241.077
+SOLAR_ORBITS = [
+    ("Mercury", 0.38710), ("Venus", 0.72333), ("Earth", 1.00000), ("Mars", 1.52371),
+    ("Jupiter", 5.20288), ("Saturn", 9.53667), ("Uranus", 19.18916), ("Neptune", 30.06992),
+]
+# Inner and outer edge in AU. Both are populations rather than objects, so they are
+# drawn as bands: a belt has no orbit, and a single ring would claim one.
+# The heliopause and the Oort cloud are deliberately absent — they are already on the
+# page, as shells, from the Cosmic Structures database, like every other shell here.
+SOLAR_BANDS = [
+    ("Asteroid belt", 2.1, 3.3),
+    ("Kuiper belt", 30.0, 50.0),
+]
+
+
 def build_universe_page():
     """Everything catalogued, placed by direction and distance on one log-radial
     axis: heliopause to horizon in a single scene you can turn over.
@@ -1165,12 +1190,23 @@ def build_universe_page():
     items.sort(key=lambda i: i["dist"])
     for i in items:
         i["slug"] = slugify(i["name"])
-    lo = math.floor(math.log10(items[0]["dist"])) if items else 0
+    solar = {
+        # "home" rather than a name test in the page: the names are translated on /fr
+        "orbits": [{"name": n, "au": a, "ly": a / AU_PER_LY, "home": n == "Earth"}
+                   for n, a in SOLAR_ORBITS],
+        "bands": [{"name": n, "au0": a0, "au1": a1, "ly0": a0 / AU_PER_LY, "ly1": a1 / AU_PER_LY}
+                  for n, a0, a1 in SOLAR_BANDS],
+        "obliquity": 23.4393,          # of the ecliptic to the equator, the frame everything else uses
+    }
+    # the axis has to reach the innermost orbit, or Mercury is drawn on top of the Sun
+    inner = min([i["dist"] for i in items] + [o["ly"] for o in solar["orbits"]])
+    lo = math.floor(math.log10(inner)) if items else 0
     hi = math.ceil(math.log10(items[-1]["dist"])) if items else 1
     n_point = sum(1 for i in items if i["form"] == "point")
     write_page("universe.template.html", "universe.html",
-               {"items": items, "lo": lo, "hi": hi,
-                "nPoint": n_point, "nShell": len(items) - n_point})
+               {"items": items, "lo": lo, "hi": hi, "solar": solar,
+                "nPoint": n_point, "nShell": len(items) - n_point,
+                "nOrbit": len(solar["orbits"])})
     return len(items), n_point
 
 
