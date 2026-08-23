@@ -224,7 +224,8 @@
   .aimbtns select { flex: 2; min-width: 0; font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; background: transparent; color: var(--ink); border: 1px solid var(--hairline); border-radius: 6px; padding: 4px; }
   .ctl.pro .prac-only { display: none; }
   .ctl:not(.pro) .pro-only { display: none; }
-  .ctl.sys2 .sys3-only { display: none; }
+  .ctl.sys2 .sys3-only, .ctl.sys4 .sys3-only { display: none; }
+  .ctl:not(.sys4) .scratch-only { display: none; }
   .ctl details { border-top: 1px solid var(--hairline); padding-top: 9px; }
   .ctl details summary { cursor: pointer; font: 10px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); user-select: none; }
   .ctl details summary:hover { color: var(--ink); }
@@ -396,8 +397,11 @@
     <div class="legend" id="dslegend"></div></div>
   <div class="kcard ctl" id="dsysctl">
     <div class="row"><label>the system</label>
-      <div class="modes"><button id="dsysb2" type="button">two rails — the mirror</button><button id="dsysb3" type="button" class="on">three rails — corner five</button></div>
+      <div class="modes"><button id="dsysb2" type="button">two rails — the mirror</button><button id="dsysb3" type="button" class="on">three rails — corner five</button><button id="dsysb4" type="button">three rails — scratch it</button></div>
       <div class="hint" id="dshelp"></div></div>
+    <div class="row scratch-only"><label>the pocket to scratch in</label>
+      <div class="presets" id="dspockets"></div>
+      <button type="button" class="exec" id="dsexec" style="margin-top:6px">▶ execute the shot</button></div>
     <div class="row sys3-only"><label for="darr">arrival — where you want the third rail</label><input id="darr" type="range" min="0.4" max="5" step="0.1" value="2"><span class="v" id="darrv"></span></div>
     <div class="row"><label for="dspd">speed into the first rail</label><input id="dspd" type="range" min="1" max="6" step="0.1" value="2.8"><span class="v" id="dspdv"></span></div>
     <div class="row"><label for="dside">side — running (+) or reverse (−)</label><input id="dside" type="range" min="-0.5" max="0.5" step="0.02" value="0.3"><span class="v" id="dsidev"></span>
@@ -2213,7 +2217,7 @@
   ];
   const zsOf = (r) => (r.ax === 1 ? r.dir : -r.dir);         // sign of side's surface speed along that cushion
   const dsvg = $('dsys');
-  const DS = { sys: 3, cb: [TABLE_L - R, TABLE_W - R], cb2: [1.90, 0.95], tgt: [1.10, 0.30], arr: 2 };
+  const DS = { sys: 3, pk: 0, play: null, cb: [TABLE_L - R, TABLE_W - R], cb2: [1.90, 0.95], tgt: [1.10, 0.30], arr: 2 };
   const dFlip = () => DS.cb[0] < TABLE_L / 2;                // canonical frame keeps the cue ball bottom-right
   const cF = (p) => (dFlip() ? [TABLE_L - p[0], p[1]] : [p[0], p[1]]);   // self-inverse
 
@@ -2263,10 +2267,54 @@
     const dx = pc[0] / DIA, dy = pc[1] / DIA;
     return (8 - dx) < (4 - dy) ? 5 + (4 - dy) : 5 - 0.5 * (8 - dx);
   }
-  function snapRail(p) {   // corner five reads positions off a rail, so the cue ball lives on one
-    const q = p.slice();
-    if ((TABLE_L - R) - q[0] < (TABLE_W - R) - q[1]) q[0] = RX1; else q[1] = RY1;
-    return clampBall(q, []);
+  // Where the line of the shot, run back from the cue ball, crosses the rails the positions are numbered
+  // on. For a ball sitting on the cushion that is just the ball; out in the open it is the point the
+  // number is really read at — which is why a cue ball anywhere on the cloth still has a position number.
+  function backCross(p, d) {
+    const out = [];
+    if (d[1] > 1e-9) { const t = (RY1 - p[1]) / d[1], x = p[0] + d[0] * t; if (t > 0 && x > -0.03 && x < TABLE_L + 0.03) out.push({ t, q: [Math.min(Math.max(x, 0), TABLE_L), RY1] }); }
+    if (d[0] > 1e-9) { const t = (RX1 - p[0]) / d[0], y = p[1] + d[1] * t; if (t > 0 && y > -0.03 && y < TABLE_W + 0.03) out.push({ t, q: [RX1, Math.min(Math.max(y, 0), TABLE_W)] }); }
+    out.sort((a, b) => a.t - b.t);
+    return out.length ? out[0].q : null;
+  }
+  // The position number depends on the aim and the aim depends on the position number, so it is settled
+  // by going round a few times — which is exactly how it is settled at the table.
+  function cornerFive(cbC, N) {
+    let P = posNum(cbC), A = P - N, aimC = null, dirC = null, back = null;
+    for (let k = 0; k < 6; k++) {
+      A = P - N;
+      aimC = [A * DIA, RY0];
+      const d = vsub(aimC, cbC);
+      if (vlen(d) < 1e-6) break;
+      dirC = vunit(d);
+      const b2 = backCross(cbC, vmul(dirC, -1));
+      if (!b2) break;
+      back = b2;
+      const P2 = posNum(b2);
+      if (Math.abs(P2 - P) < 0.002) { P = P2; A = P - N; aimC = [A * DIA, RY0]; dirC = vunit(vsub(aimC, cbC)); break; }
+      P = P2;
+    }
+    return { P, A, aimC, dirC, back };
+  }
+  // A three-rail scratch: send the cue ball round the table and into a named pocket. There is no
+  // arithmetic for this one — the aim is searched for against the same cushions the shot will meet.
+  function solveScratch(cb, pk, v, side) {
+    let best = null;
+    const test = (a) => {
+      const dir = [Math.cos(a), Math.sin(a)];
+      const S = railRun(cb, dir, v, side, false, 7, 0.02);
+      if (S.pocket !== pk || S.hits.length < 3) return null;
+      return { a, dir, rails: S.hits.length };
+    };
+    for (let i = 0; i < 240; i++) {
+      const c = test(i * Math.PI / 120);
+      if (c && (!best || c.rails < best.rails)) best = c;
+    }
+    if (best) for (let i = -12; i <= 12; i++) {           // walk in on the coarse hit
+      const c = test(best.a + i * Math.PI / 1440);
+      if (c && c.rails <= best.rails) { best = c; break; }
+    }
+    return best;
   }
 
   // the two-rail mirror: reflect the target across the second rail, then the first, and shoot at the image
@@ -2342,14 +2390,21 @@
     $('darrv').textContent = `${fmt(DS.arr, 1)} · diamonds`;
     const flip = dFlip();
     drawSysTable(flip);
-    $('dslegend').innerHTML = DS.sys === 3
+    $('dslegend').innerHTML = DS.sys === 4
+      ? '<span style="--lc:var(--c-red)">the pocket you called</span><span style="--lc:var(--muted); --ls:dashed">the line to shoot</span><span style="--lc:var(--c-felt)">what the cloth really does</span>'
+      : DS.sys === 3
       ? '<span style="--lc:var(--c-felt)">first rail — the aim numbers, above the far long rail</span><span style="--lc:var(--c-amber)">third rail — the arrival numbers, on the cloth</span><span style="--lc:var(--muted)">cue ball position — outside the near rails, the corner is 5</span><span style="--lc:var(--muted); --ls:dashed">the system\'s line</span>'
       : '<span style="--lc:var(--muted); --ls:dashed">the mirror\'s path</span><span style="--lc:var(--c-red); --ls:dotted">the line to the image, straight through the rails</span><span style="--lc:var(--c-felt)">what the cloth really does</span>';
     if (DS.sys === 3) {
-      const cbC = cF(DS.cb), P = posNum(cbC), N = DS.arr, A = P - N;
-      const aimC = [A * DIA, RY0], aim = cF(aimC);
-      const dirC = vunit(vsub(aimC, cbC)), dir = flip ? [-dirC[0], dirC[1]] : dirC;
+      const cbC = cF(DS.cb), N = DS.arr;
+      const CF = cornerFive(cbC, N), P = CF.P, A = CF.A;
+      const aimC = CF.aimC, aim = cF(aimC);
+      const dirC = CF.dirC || vunit(vsub(aimC, cbC)), dir = flip ? [-dirC[0], dirC[1]] : dirC;
       const promised = cF([N * DIA, RY1]);
+      if (CF.back && dist2(CF.back, cbC) > 0.02) {   // the line run back to where its number is read
+        dline(DS.cb, cF(CF.back), { stroke: 'var(--muted)', 'stroke-width': 1, 'stroke-dasharray': '2 5', opacity: 0.5 });
+        const [bx2, by2] = px(cF(CF.back)); de('circle', { cx: bx2, cy: by2, r: 4, fill: 'none', stroke: 'var(--muted)', 'stroke-width': 1.4 });
+      }
       dline(DS.cb, aim, { stroke: 'var(--muted)', 'stroke-width': 1.2, 'stroke-dasharray': '6 5', opacity: 0.75 });
       const [ax2, ay2] = px(aim); de('circle', { cx: ax2, cy: ay2, r: 5, fill: 'none', stroke: 'var(--c-felt)', 'stroke-width': 1.8 });
       const [nx2, ny2] = px(promised); de('circle', { cx: nx2, cy: ny2, r: 6, fill: 'none', stroke: 'var(--c-amber)', 'stroke-width': 1.8, 'stroke-dasharray': '2 2' });
@@ -2374,7 +2429,42 @@
           : `<span class="warn">not the system's path — the ball took the ${S.hits.slice(0, 3).map((h) => h.r.name).join(', then the ') || 'no'} rail${S.hits.length === 1 ? '' : 's'}</span>`, patternOK && Math.abs(err) < 0.5 ? 'good' : 'warn'],
         ['the system holds', 'with running side at a firm pace. It is a fit to a real table, not a theorem — the numbers were measured, and they hold only near the stroke they were measured with.'],
       ]);
-      $('dshelp').innerHTML = 'Drag the cue ball along the near rails to set its position number; drag the amber marker on the far long rail to pick where you want the third rail. The system does the subtraction.';
+      $('dshelp').innerHTML = 'Drag the cue ball anywhere on the cloth. Off the cushion its position number is read where the shot line, run back, meets the near rails — the faint dotted line. Set the arrival you want and the system does the subtraction.';
+    } else if (DS.sys === 4) {
+      const pk = DS.pk, target = POCKETS[pk];
+      const [tx2, ty2] = px(target.p);
+      de('circle', { cx: tx2, cy: ty2, r: RP * SX + 5, fill: 'none', stroke: 'var(--c-red)', 'stroke-width': 2.5 });
+      const sol = solveScratch(DS.cb, pk, v, side);
+      let S = null;
+      if (sol) {
+        S = railRun(DS.cb, sol.dir, v, side, true, 7, 0.02);
+        dline(DS.cb, vadd(DS.cb, vmul(sol.dir, 0.34)), { stroke: 'var(--muted)', 'stroke-width': 1.2, 'stroke-dasharray': '6 5', opacity: 0.8 });
+        dpoly(S.pts, { stroke: 'var(--c-felt)', 'stroke-width': 2.2, opacity: 0.95 });
+        S.hits.slice(0, 5).forEach((h, i) => {
+          const [hx, hy] = px(h.p);
+          de('circle', { cx: hx, cy: hy, r: 8, fill: 'none', stroke: 'var(--ink-2)', 'stroke-width': 1 });
+          const t3 = de('text', { x: hx, y: hy + 3.5, ...dmono, fill: 'var(--ink)', 'text-anchor': 'middle' }); t3.textContent = i + 1;
+        });
+      }
+      DS.play = S && S.pts ? S.pts : null;
+      dball(DS.cb, { fill: 'var(--panel)', stroke: 'var(--ink)', 'stroke-width': 1.5, style: 'cursor:grab' });
+      // read the same shot in corner five's numbers, where the route is the system's own
+      const cbC = cF(DS.cb);
+      let five = null;
+      if (S && S.hits.length >= 3) {
+        const want = [RY0, flip ? RX1 : RX0, RY1];
+        if (S.hits.slice(0, 3).every((h, i) => h.r.lim === want[i])) {
+          const arr = cF(S.hits[2].p)[0] / DIA, pos = posNum(cbC);
+          five = { pos, arr, aim: pos - arr };
+        }
+      }
+      $('dsout').innerHTML = dl([
+        ['the pocket', `the <b>${target.name}</b> — click another on the table, or use the chips`],
+        ['the line', sol ? `aim ${fmt(deg(Math.atan2(sol.dir[1], sol.dir[0])), 1)}° · ${sol.rails} rail${sol.rails === 1 ? '' : 's'} on the way in` : `<span class="warn">no three-rail route into that pocket at this speed — try another pocket, another pace, or move the cue ball</span>`],
+        ['in corner five', five ? `position <b>${fmt(five.pos, 1)}</b> − aim <b>${fmt(five.aim, 1)}</b> = arrival <b>${fmt(five.arr, 1)}</b> <small>— it takes the system's own route, so the numbers describe it</small>` : 'the route does not follow the system\'s three rails, so its numbers do not describe this one'],
+        ['the drill', 'Pick a pocket, execute, and watch it go. Then move the cue ball and do it again — scratching on purpose is the cheapest way to learn where the cue ball goes when you did not mean to.', sol ? 'good' : 'warn'],
+      ]);
+      $('dshelp').innerHTML = 'Drag the cue ball anywhere; click a pocket on the table (or a chip) to call it. The aim is searched against the real cushions — there is no diamond arithmetic for a scratch.';
     } else {
       const sol = solve2(DS.cb2, DS.tgt);
       let miss = null, missP = null, S = null, died = false;
@@ -2431,14 +2521,39 @@
     const u = q.matrixTransform(m.inverse());
     return [u.x / SX, u.y / SY];
   };
+  let dsAnim = 0;
+  function dsPlay(pts) {                                    // send it round, at something like real pace
+    if (dsAnim) cancelAnimationFrame(dsAnim);
+    if (!pts || pts.length < 2) return;
+    const dot = de('circle', { r: R * SX, fill: 'var(--panel)', stroke: 'var(--ink)', 'stroke-width': 1.5 });
+    const T = Math.min(6000, pts.length * 3), t0 = performance.now();
+    const frame = (now) => {
+      const f = Math.max(0, Math.min(1, (now - t0) / T));
+      const [qx, qy] = px(pts[Math.round(f * (pts.length - 1))]);
+      dot.setAttribute('cx', qx); dot.setAttribute('cy', qy);
+      dsAnim = f < 1 ? requestAnimationFrame(frame) : 0;
+    };
+    dsAnim = requestAnimationFrame(frame);
+  }
+  POCKETS.forEach((q, i) => {
+    const btn = document.createElement('button'); btn.type = 'button'; btn.textContent = q.name;
+    btn.addEventListener('click', () => { DS.pk = i; syncPockets(); runSystems(); });
+    $('dspockets').appendChild(btn);
+  });
+  const syncPockets = () => { [...$('dspockets').children].forEach((b, i) => b.classList.toggle('on', i === DS.pk)); };
+  $('dsexec').addEventListener('click', () => dsPlay(DS.play));
   dsvg.addEventListener('pointerdown', (e) => {
     const p = dsPt(e);
-    dsDrag = DS.sys === 3 ? 'cb' : (dist2(p, DS.cb2) < dist2(p, DS.tgt) ? 'cb' : 'tgt');
+    if (DS.sys === 4) {                                     // calling a pocket beats dragging, if you hit one
+      const hit = POCKETS.findIndex((q) => dist2(p, q.p) < RP * 1.8);
+      if (hit >= 0) { DS.pk = hit; syncPockets(); runSystems(); return; }
+    }
+    dsDrag = DS.sys === 2 ? (dist2(p, DS.cb2) < dist2(p, DS.tgt) ? 'cb' : 'tgt') : 'cb';
     dsMove(p);
     dsvg.setPointerCapture(e.pointerId); e.preventDefault();
   });
   function dsMove(p) {
-    if (dsDrag === 'cb') { if (DS.sys === 3) DS.cb = snapRail(p); else DS.cb2 = clampBall(p, [DS.tgt]); }
+    if (dsDrag === 'cb') { if (DS.sys === 2) DS.cb2 = clampBall(p, [DS.tgt]); else DS.cb = clampBall(p, []); }
     else if (dsDrag === 'tgt') DS.tgt = clampBall(p, [DS.cb2]);
     runSystems();
   }
@@ -2448,16 +2563,16 @@
   for (const k of ['dspd', 'dside', 'darr']) $(k).addEventListener('input', runSystems);
   const setSys = (n) => {
     DS.sys = n;
-    $('dsysb2').classList.toggle('on', n === 2); $('dsysb3').classList.toggle('on', n === 3);
-    $('dsysctl').classList.toggle('sys2', n === 2);
-    $('dside').value = n === 3 ? 0.3 : 0;                    // the mirror is a no-side construction; corner five isn't
-    if (n === 3) DS.cb = snapRail(DS.cb);
+    $('dsysb2').classList.toggle('on', n === 2); $('dsysb3').classList.toggle('on', n === 3); $('dsysb4').classList.toggle('on', n === 4);
+    $('dsysctl').classList.toggle('sys2', n === 2); $('dsysctl').classList.toggle('sys4', n === 4);
+    $('dside').value = n === 2 ? 0 : 0.3;                    // the mirror is a no-side construction; corner five isn't
     runSystems();
   };
   $('dsysb2').addEventListener('click', () => setSys(2));
   $('dsysb3').addEventListener('click', () => setSys(3));
+  $('dsysb4').addEventListener('click', () => setSys(4));
 
-  DS.cb = snapRail(DS.cb);
+  syncPockets();
   runSystems();
   window.kosmosSys = { DS, railRun, solve2, runSystems, posNum };   // dev hook for the systems bench
 
