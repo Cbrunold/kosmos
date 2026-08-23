@@ -182,6 +182,15 @@ def _attrs_in(html, lo, hi):
     return out
 
 
+def keep_placeholders(en: str, fr: str) -> str:
+    """A translation that lost or altered a ${…} would render as literal text or throw.
+    The translator is told to keep them; this makes sure of it, and keeps the English if not.
+    Order may legitimately change — French word order — so compare as a multiset."""
+    if "${" not in en:
+        return fr
+    return fr if sorted(SUBST.findall(en)) == sorted(SUBST.findall(fr)) else en
+
+
 def escape_for(text: str, ctx: str | None) -> str:
     """Make a translation safe for the context it is dropped into.
 
@@ -196,9 +205,17 @@ def escape_for(text: str, ctx: str | None) -> str:
         return text
     if ctx == '"attr':
         return text.replace('"', "&quot;")
-    q = ctx                                            # a JS literal, delimited by q
-    return (text.replace("\\", "\\\\").replace(q, "\\" + q)
-                .replace("\r", "\\r").replace("\n", "\\n"))
+    # A JS literal, delimited by q. The text is raw source, so it may already carry \' or \`
+    # from the English; escape only a delimiter that is not escaped already, and never touch
+    # backslashes — doubling them would corrupt every \n and \' that was correct to begin with.
+    if ctx == "`":
+        # Nothing: a template literal may hold another one inside a ${…} expression
+        # (`${x ? `a ${y}` : ''}`), and escaping those backticks would break the expression.
+        # What protects this one is keep_placeholders — the ${…} come back unaltered or the
+        # English is kept — and check_fr, which parses every built page before it ships.
+        return text
+    out = re.sub(r"(?<!\\)" + re.escape(ctx), "\\\\" + ctx, text)
+    return out.replace("\r", "\\r").replace("\n", "\\n")
 
 
 # JS string literals that reach the screen. Each pattern's first group is the opening
@@ -212,6 +229,69 @@ JS_CONTEXTS = [
     r"""document\.createTextNode\(\s*(['"`])((?:\\.|(?!\1).)*?)\1""",
 ]
 JS_CONTEXT_RE = [re.compile(p, re.S) for p in JS_CONTEXTS]
+
+# ---- template literals. Most of the interactive prose is in them — "${shown} of ${E.length}
+# equations", "${n} rail${…} touched" — and no context pattern can see them, because they are
+# assigned inside ternaries, returned from helpers or pushed into arrays. A regex cannot read
+# them either: their ${…} may hold quotes and further template literals. So walk the source.
+SUBST = re.compile(r"\$\{(?:[^{}]|\{[^{}]*\})*\}")
+WORDY = re.compile(r"[A-Za-z]{3,}")
+CODEY = re.compile(r"""^\s*(?:[.#][\w-]+[\[\.#]|[a-z-]+\(|translate|matrix|rgba?\()""")
+
+
+def template_literals(js: str):
+    """(start, end, text) for every complete template literal, nesting-aware. Nested ones live
+    inside a ${…} of the outer, so only the outermost is returned — it is the whole sentence."""
+    out = []
+    i, n = 0, len(js)
+    stack, start = [], None
+    while i < n:
+        c = js[i]
+        if not stack:
+            if c == "`":
+                stack.append("`"); start = i
+            elif c in "'\"":
+                q = c; i += 1
+                while i < n and js[i] != q:
+                    i += 2 if js[i] == "\\" else 1
+            elif c == "/" and i + 1 < n and js[i + 1] == "/":
+                while i < n and js[i] != "\n":
+                    i += 1
+            elif c == "/" and i + 1 < n and js[i + 1] == "*":
+                j = js.find("*/", i + 2); i = j + 1 if j > 0 else n
+            i += 1
+            continue
+        if c == "\\":
+            i += 2; continue
+        if stack[-1] == "`":
+            if c == "`":
+                stack.pop()
+                if not stack:
+                    out.append((start, i + 1, js[start + 1:i]))
+            elif c == "$" and i + 1 < n and js[i + 1] == "{":
+                stack.append("${"); i += 1
+        else:                                          # inside ${ … }
+            if c == "}":
+                stack.pop()
+            elif c == "{":
+                stack.append("{")
+            elif c == "`":
+                stack.append("`")
+            elif c in "'\"":
+                q = c; i += 1
+                while i < n and js[i] != q:
+                    i += 2 if js[i] == "\\" else 1
+        i += 1
+    return out
+
+
+def prose_like(t: str) -> bool:
+    """Is this literal something a reader sees, rather than a selector or a transform?"""
+    outside = SUBST.sub("", t)
+    if CODEY.match(outside):
+        return False
+    text = re.sub(r"&[a-z]+;", " ", re.sub(r"<[^>]*>", " ", outside))
+    return bool(WORDY.search(text))
 JS_SKIP_CLASSY = re.compile(r"^[a-z][a-z0-9-]*( [a-z][a-z0-9-]*)+$")   # 'kcard eq' — class lists
 
 
@@ -233,6 +313,11 @@ def _js_spans(html: str, page: str):
                     continue
                 seen.add((s, e))
                 out.append((s, e, txt, lm.group(1)))
+        for a, b, t in template_literals(body):
+            s, e = base + a + 1, base + b - 1
+            if (s, e) in seen or not prose_like(t):
+                continue
+            seen.add((s, e)); out.append((s, e, t, "`"))
         for extra in PAGE_JS_EXTRA.get(page, []):
             for lm in re.finditer(extra, body, re.S | re.M):
                 s, e, txt = base + lm.start(1), base + lm.end(1), lm.group(1)
@@ -443,7 +528,7 @@ def apply(html: str, page: str, tr: Translator) -> str:
     spans, _ = extract(html, page)
     out = html
     for s, e, t, ctx in reversed(spans):
-        out = out[:s] + escape_for(tr.lookup(t), ctx) + out[e:]
+        out = out[:s] + escape_for(keep_placeholders(t, tr.lookup(t)), ctx) + out[e:]
 
     def fix_json(m):
         try:
