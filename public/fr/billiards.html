@@ -1095,7 +1095,7 @@
     const missCm = fmt(100 * S.obTrace.minPD, 0);
     $('ob').innerHTML = dl([
       ['vitesse', `${fmt(vlen(S.vOB))} m/s <small>= v cos θ · (1+e)/2</small>`],
-      ['part d'énergie', `${fmt(100 * S.eOB, 0)} % <small>cos²θ = ${fmt(100 * Math.cos(S.th) ** 2, 0)} % before restitution</small>`],
+      ['part d\'énergie', `${fmt(100 * S.eOB, 0)} % <small>cos²θ = ${fmt(100 * Math.cos(S.th) ** 2, 0)} % before restitution</small>`],
       ['direction', `${S.bank ? `bank line, off the ${S.bank.rail} rail` : 'pocket line'}${S.throwDeg > 0.05 ? ` rotated ${fmt(S.throwDeg, 1)}° ${toward === null ? 'by the side spin' : toward ? 'toward the cue ball\'s line <small>plays fuller than aimed</small>' : 'away from the cue ball\'s line <small>plays thinner than aimed</small>'}` : ' — no throw'}`],
       ['déviation par frottement', `${fmt(S.throwDeg, 2)}° <small>μ = ${fmt(S.mu, 3)} at ${fmt(S.ul, 2)} m/s surface slip${S.Jh >= M * Math.abs(S.vt - S.cbz) / 7 - 1e-9 && S.Jh > 0 ? ' · gearing limit' : ''}</small>`],
       ['fraction de bille touchée', `${fmt(S.fraction, 2)} <small>1 − sin θ</small>`],
@@ -1108,7 +1108,7 @@
       ['hors de la ligne tangente', `${fmt(vlen(S.vCB))} m/s <small>v sin θ, plus (1−e)/2 forward</small>`],
       ['direction finale', S.deflect === null ? 'none — stops dead at contact' : `${fmt(S.deflect, 1)}° from its original line${S.deflect > 90 ? ' — coming back' : S.deflect < 0.5 ? ' — straight on' : ', away from the object ball'} <small>${S.deflect > 20 && S.deflect < 40 && S.rollingAtContact && S.th > 0.1 ? '— the thirty-degree rule' : Math.abs(S.deflect - (90 - deg(S.th))) < 2 && S.th > 0.1 ? '— holds the tangent line' : ''}</small>`],
       ['glisse', S.slideLen > 0.01 ? `${fmt(S.slideLen, 2)} m before it rolls` : 'not at all — rolling from contact'],
-      ['s'immobilise', S.cbTrace.pocket != null ? `it doesn't — <b>scratches</b>, falling in the ${POCKETS[S.cbTrace.pocket].name} pocket` : S.cbTrace.hang != null ? `in the jaws of the ${POCKETS[S.cbTrace.hang].name} pocket — short of the shelf, no scratch` : `after ${fmt(S.cbTrace.len, 2)} m of cloth — ${zone(S.cbTrace.pts[S.cbTrace.pts.length - 1])}`, S.cbTrace.pocket != null ? 'warn' : undefined],
+      ['s\'immobilise', S.cbTrace.pocket != null ? `it doesn't — <b>scratches</b>, falling in the ${POCKETS[S.cbTrace.pocket].name} pocket` : S.cbTrace.hang != null ? `in the jaws of the ${POCKETS[S.cbTrace.hang].name} pocket — short of the shelf, no scratch` : `after ${fmt(S.cbTrace.len, 2)} m of cloth — ${zone(S.cbTrace.pts[S.cbTrace.pts.length - 1])}`, S.cbTrace.pocket != null ? 'warn' : undefined],
       ['restitution', `e = ${E_BB}: separation ${fmt(100 * (1 - E_BB) / 2, 0)} % short of the ninety-degree rule`],
     ]);
   }
@@ -1518,7 +1518,7 @@
   }
   {
     const sel = $('drill');
-    const o0 = document.createElement('option'); o0.value = ''; o0.textContent = 'pas d'exercice — table libre'; sel.appendChild(o0);
+    const o0 = document.createElement('option'); o0.value = ''; o0.textContent = 'pas d\'exercice — table libre'; sel.appendChild(o0);
     DRILLS.forEach((d, i) => { const o = document.createElement('option'); o.value = i; o.textContent = d.name; sel.appendChild(o); });
     sel.addEventListener('change', () => { clearTimeout(drillTimer); state.drill = sel.value === '' ? null : +sel.value; state.dlevel = 1; if (state.drill == null) run(); else applyDrill(); });
     $('dlm').addEventListener('click', () => { if (state.drill != null) { state.dlevel = Math.max(1, state.dlevel - 1); applyDrill(); } });
@@ -2366,7 +2366,7 @@
       dball(DS.cb, { fill: 'var(--panel)', stroke: 'var(--ink)', 'stroke-width': 1.5, style: 'cursor:grab' });
       const err = arrived == null ? null : arrived - N;
       $('dsout').innerHTML = dl([
-        ['l'arithmétique', `position <b>${fmt(P, 1)}</b> − aim <b>${fmt(A, 1)}</b> = arrival <b>${fmt(N, 1)}</b>`],
+        ['l\'arithmétique', `position <b>${fmt(P, 1)}</b> − aim <b>${fmt(A, 1)}</b> = arrival <b>${fmt(N, 1)}</b>`],
         ['aim at', inRange ? `the <b>${fmt(A, 1)}</b> on the far long rail — ${fmt(A, 1)} diamond${A === 1 ? '' : 's'} from the far corner, and shoot <em>through</em> the diamond` : `<span class="warn">off the table — position ${fmt(P, 1)} can't reach arrival ${fmt(N, 1)}. Drag the cue ball or the arrival marker.</span>`],
         ['the cloth says', !S ? '—'
           : patternOK ? `third rail at <b>${fmt(arrived, 1)}</b> — ${Math.abs(err) < 0.15 ? 'the system is right here' : `${fmt(Math.abs(err), 1)} diamond${Math.abs(err) > 0.95 && Math.abs(err) < 1.05 ? '' : 's'} ${err > 0 ? 'long' : 'short'}`}${S.pocket != null ? ` <small>— and rolls on into the ${POCKETS[S.pocket].name} pocket</small>` : ''}`

@@ -525,7 +525,7 @@
   const nFoundations = E.filter((e) => !e.reqs.length && e.reqBy.length).length;
 
   let sortMode = 'year';           // 'year' | 'depth'
-  const SORTS = { year: 'par année', depth: 'les fondations d'abord' };
+  const SORTS = { year: 'par année', depth: 'les fondations d\'abord' };
   const sortRow = document.getElementById('sortrow');
   for (const [k, label] of Object.entries(SORTS)) {
     const b = document.createElement('button');
@@ -540,11 +540,11 @@
   // ---- filters: six physical domains, fields collapsed underneath ----
   const DOMAINS = [
     { name: 'Foundations', color: 'var(--c-pink)',
-      blurb: 'les mathématiques et les principes dans lesquels tout le reste s'écrit',
+      blurb: 'les mathématiques et les principes dans lesquels tout le reste s\'écrit',
       fields: ['Vectors & Geometry', 'Calculus', 'Mathematics', 'Classical Field Theory',
                'Information Theory', 'Nonlinear Dynamics'] },
     { name: 'Matter & Motion', color: 'var(--c-blue)',
-      blurb: 'ce qui bouge, s'écoule, vibre et casse',
+      blurb: 'ce qui bouge, s\'écoule, vibre et casse',
       fields: ['Mechanics', 'Billiards', 'Celestial Mechanics', 'Rocketry', 'Fluid Dynamics', 'Acoustics',
                'Materials Science', 'Geophysics'] },
     { name: 'Heat, Chemistry & Life', color: 'var(--c-amber)',
@@ -556,11 +556,11 @@
       fields: ['Electrostatics', 'Electromagnetism', 'Circuits', 'Waves & Optics', 'Photonics',
                'Radiation', 'Thermoelectrics', 'Plasma Physics', 'Magnetohydrodynamics'] },
     { name: 'Quantum & Structure of Matter', color: 'var(--c-teal)',
-      blurb: 'du qubit à l'atome jusqu'au Modèle standard',
+      blurb: 'du qubit à l\'atome jusqu\'au Modèle standard',
       fields: ['Quantum', 'Atomic Physics', 'Nuclear Physics', 'Particle Physics',
                'Quantum Field Theory', 'Condensed Matter', 'Superconductivity', 'Quantum Computing'] },
     { name: 'Relativity & Cosmos', color: 'var(--c-navy)',
-      blurb: 'l'espace-temps, les étoiles et l'univers dans son ensemble',
+      blurb: 'l\'espace-temps, les étoiles et l\'univers dans son ensemble',
       fields: ['Special Relativity', 'General Relativity', 'Astrophysics', 'Cosmology'] },
   ];
 

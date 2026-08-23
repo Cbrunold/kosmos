@@ -152,7 +152,7 @@ def _runs(html: str, lo: int, hi: int):
         txt = html[a2:b2]
         if not txt or not HAS_LETTERS.search(re.sub(r"<[^>]+>", "", txt)):
             continue
-        out.append((a2, b2, txt))
+        out.append((a2, b2, txt, None))
     return out
 
 
@@ -171,8 +171,27 @@ def _attrs_in(html, lo, hi):
         for a in ATTR.finditer(t.group(3)):
             if HAS_LETTERS.search(a.group(3)):
                 s = t.start(3) + a.start(3)
-                out.append((s, s + len(a.group(3)), a.group(3)))
+                out.append((s, s + len(a.group(3)), a.group(3), '"attr'))
     return out
+
+
+def escape_for(text: str, ctx: str | None) -> str:
+    """Make a translation safe for the context it is dropped into.
+
+    French is full of apostrophes — l'énergie, d'un, qu'il — and the first full run put
+    one inside a single-quoted JS literal, which took the page's whole script down with
+    a SyntaxError. So a JS literal gets its own delimiter escaped (and any backslash,
+    and newlines); ${...} placeholders are left live, because the translations are asked
+    to keep them and the templates need them. An attribute value gets its double quote
+    escaped. HTML text gets nothing: translations legitimately carry <em>, links and
+    entities, and escaping those would print the markup."""
+    if ctx is None:
+        return text
+    if ctx == '"attr':
+        return text.replace('"', "&quot;")
+    q = ctx                                            # a JS literal, delimited by q
+    return (text.replace("\\", "\\\\").replace(q, "\\" + q)
+                .replace("\r", "\\r").replace("\n", "\\n"))
 
 
 # JS string literals that reach the screen. Each pattern's first group is the opening
@@ -191,7 +210,9 @@ JS_SKIP_CLASSY = re.compile(r"^[a-z][a-z0-9-]*( [a-z][a-z0-9-]*)+$")   # 'kcard 
 
 def _js_spans(html: str, page: str):
     out = []
-    for m in re.finditer(r"<script(?![^>]*type=\"application/json\")[^>]*>(.*?)</script>", html, re.S):
+    # real JavaScript only — a typed script holds data, not code (the mines basemap is text/plain)
+    for m in re.finditer(r"""<script(?![^>]*\btype=(?!["'](?:text/javascript|module)))[^>]*>(.*?)</script>""",
+                         html, re.S):
         base, body = m.start(1), m.group(1)
         seen = set()
         for rx in JS_CONTEXT_RE:
@@ -204,13 +225,14 @@ def _js_spans(html: str, page: str):
                 if JS_SKIP_CLASSY.match(txt) and len(txt) < 24:
                     continue
                 seen.add((s, e))
-                out.append((s, e, txt))
+                out.append((s, e, txt, lm.group(1)))
         for extra in PAGE_JS_EXTRA.get(page, []):
             for lm in re.finditer(extra, body, re.S | re.M):
                 s, e, txt = base + lm.start(1), base + lm.end(1), lm.group(1)
                 if (s, e) in seen or not HAS_LETTERS.search(txt):
                     continue
-                seen.add((s, e)); out.append((s, e, txt))
+                # the hand-listed patterns capture the text only; the delimiter is the char before it
+                seen.add((s, e)); out.append((s, e, txt, body[lm.start(1) - 1] if lm.start(1) else "'"))
     return out
 
 
@@ -325,7 +347,7 @@ def extract(html: str, page: str):
     spans = _html_spans(html) + _attr_spans(html) + _js_spans(html, page)
     m = re.search(r"<title>(.*?)</title>", html, re.S)
     if m and HAS_LETTERS.search(m.group(1)):
-        spans.append((m.start(1), m.end(1), m.group(1)))
+        spans.append((m.start(1), m.end(1), m.group(1), None))
     strings = set()
     for jm in JSON_BLOCK.finditer(html):
         try:
@@ -335,10 +357,10 @@ def extract(html: str, page: str):
         _json_walk(page, data, lambda c, k, v, sh: strings.add(v))
     spans.sort()
     out, last_end = [], -1
-    for s, e, t in spans:          # drop a span nested in another (an attr inside an inline run)
+    for s, e, t, ctx in spans:     # drop a span nested in another (an attr inside an inline run)
         if s < last_end:
             continue
-        out.append((s, e, t)); last_end = e
+        out.append((s, e, t, ctx)); last_end = e
     return out, strings
 
 
@@ -377,8 +399,8 @@ def apply(html: str, page: str, tr: Translator) -> str:
     """The French page from the English one, using the cache only."""
     spans, _ = extract(html, page)
     out = html
-    for s, e, t in reversed(spans):
-        out = out[:s] + tr.lookup(t) + out[e:]
+    for s, e, t, ctx in reversed(spans):
+        out = out[:s] + escape_for(tr.lookup(t), ctx) + out[e:]
 
     def fix_json(m):
         try:

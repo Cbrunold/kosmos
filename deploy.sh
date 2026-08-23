@@ -16,8 +16,10 @@
 #   2. pull      — git pull --rebase
 #   3. seeds     — python3 scripts/<name>.py for each argument, in order
 #   4. fetch     — fetch_elements.py + fetch_all.py   (unless --no-fetch)
-#   5. build     — build.py
-#   6. ship      — public/*.html + *.json -> $APP_DIR/public/, server.js -> $APP_DIR/
+#   5. build     — build.py, then check_fr.py: the French pages' scripts must parse
+#                  and their data blocks must match the English ones, because a
+#                  translated apostrophe inside a JS literal breaks a page silently
+#   6. ship      — public/*.html + *.json + public/fr -> $APP_DIR/public/, server.js -> $APP_DIR/
 #   7. restart   — $RESTART, then poll /health until it answers ok:true with
 #                  no missing pages
 #   8. commit    — data/ + public/ if changed, then push
@@ -112,6 +114,9 @@ fi
 # ---- 5. build
 step "build"
 python3 scripts/build.py
+
+step "check french"
+python3 scripts/check_fr.py
 
 # ---- 6. ship
 step "ship"

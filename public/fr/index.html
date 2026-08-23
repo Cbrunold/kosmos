@@ -799,7 +799,7 @@
       lg.append(mk(lo), bar, mk(hi));
       const n = E.filter((e) => L.t(e) == null).length;
       if (n) { const s = document.createElement('span'); s.innerHTML = `<span class="chip"><span class="dot hollowdot"></span>aucune donnée (${n})</span>`; lg.append(s); }
-      if (lens === 'disc') { const s = document.createElement('span'); s.textContent = 'faites glisser l'année pour remonter le temps'; lg.append(s); }
+      if (lens === 'disc') { const s = document.createElement('span'); s.textContent = 'faites glisser l\'année pour remonter le temps'; lg.append(s); }
     } else {
       for (const item of L.legend()) {
         const c = document.createElement('span');
@@ -864,7 +864,7 @@
     if (ev.key === 'Escape' && sel) {
       tiles[sel].classList.remove('sel');
       sel = null;
-      document.getElementById('detail').innerHTML = '<p class="empty">Choisissez un élément pour l'examiner.</p>';
+      document.getElementById('detail').innerHTML = '<p class="empty">Choisissez un élément pour l\'examiner.</p>';
     }
   });
 
@@ -892,9 +892,7 @@
       `<dt>${k}</dt><dd class="${v == null ? 'none' : ''}">${v == null ? '— not in Notion' : v}</dd>`).join('');
     const tags = [...e.families, ...(e.unknownProps ? ['#Unknown Chemical Properties'] : [])]
       .map((t) => `<span class="tag"></span>`);
-    d.innerHTML = `
-      <div class="dhead">
-        <div class="dsym" style="${color ? `--tile-bg: color-mix(in oklab, ${color} 30%, var(--panel)); --tile-bd: color-mix(in oklab, ${color} 60%, var(--panel));` : ''}">
+    d.innerHTML = `\n      <div class="dhead">\n        <div class="dsym" style="${color ? `--tile-bg: color-mix(in oklab, ${color} 30%, var(--panel)); --tile-bd: color-mix(in oklab, ${color} 60%, var(--panel));` : ''}">
           <span class="s"></span><span class="n"></span>
         </div>
         <div>

@@ -351,7 +351,7 @@
     b.setAttribute('aria-pressed', 'false');
     b.innerHTML = `⚛ avec équations <span class="n"></span>`;
     b.querySelector('.n').textContent = nWithEq;
-    b.title = 'Seulement les minéraux liés à des équations de l'étagère Équations';
+    b.title = 'Seulement les minéraux liés à des équations de l\'étagère Équations';
     b.addEventListener('click', () => { onlyEq = !onlyEq; b.setAttribute('aria-pressed', String(onlyEq)); render(); });
     chipsBox.appendChild(b);
   }

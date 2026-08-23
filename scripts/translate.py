@@ -40,7 +40,7 @@ def main(argv):
         if not f.exists():
             continue
         spans, strs = i18n.extract(f.read_text(), page)
-        texts = {t for _, _, t in spans} | strs
+        texts = {x[2] for x in spans} | strs
         new = 0
         for t in texts:
             k = i18n.key_of(t)
