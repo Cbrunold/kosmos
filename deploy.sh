@@ -13,7 +13,7 @@
 #   1. recover   — a previous partial run leaves data/ synced but uncommitted
 #                  and public/ rebuilt; commit the data, discard public/
 #                  (it is generated), refuse if anything else is dirty
-#   2. pull      — git pull --rebase
+#   2. pull      — git fetch + rebase (one run at a time: see the lock below)
 #   3. seeds     — python3 scripts/<name>.py for each argument, in order
 #   4. fetch     — fetch_elements.py + fetch_all.py   (unless --no-fetch)
 #   5. build     — build.py, then check_fr.py: the French pages' scripts must parse
@@ -33,7 +33,19 @@ set -euo pipefail
 # git pull that can update deploy.sh itself: bash reads scripts incrementally,
 # and on 2026-08-16 an older copy of this file was mid-run when the pull
 # replaced it — it kept executing stale lines and shipped without search.json.
+#
+# One run at a time. A push to main fires .github/workflows/deploy.yml, which ssh's in
+# and runs this script — so a hand-run here can land on top of one already in flight, and
+# two deploys sharing a git working tree corrupt each other (on 2026-08-23 that left a
+# committed file sitting untracked and blocked the next pull). The Action serialises its
+# own runs; this serialises everything. Waits rather than fails: a queued deploy is fine,
+# a skipped one is a deploy that did not happen.
 main() {
+LOCK="${LOCK:-/tmp/kosmos-deploy.lock}"
+if [[ -z "${DEPLOY_LOCKED:-}" ]]; then
+  exec env DEPLOY_LOCKED=1 flock --wait 1800 "$LOCK" bash "$0" "$@"
+fi
+
 APP_DIR="${APP_DIR:-/opt/kosmos}"
 PORT="${PORT:-3002}"
 RESTART="${RESTART:-systemctl restart kosmos}"
@@ -83,7 +95,11 @@ fi
 # ---- 2. pull
 step "pull"
 before="$(git rev-parse HEAD:deploy.sh 2>/dev/null || true)"
-git pull --rebase origin main
+# Not `git pull --rebase origin main`: the remote's own refspec already fetches main, so
+# naming it again writes it into FETCH_HEAD twice, and git 2.53 refuses to rebase onto
+# two branches ("Cannot rebase onto multiple branches"). Fetch once, rebase onto that.
+git fetch origin main
+git rebase FETCH_HEAD
 after="$(git rev-parse HEAD:deploy.sh 2>/dev/null || true)"
 if [[ "$before" != "$after" && -z "${DEPLOY_REEXEC:-}" ]]; then
   echo "deploy.sh itself was updated by the pull — re-running with the new version"
