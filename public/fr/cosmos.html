@@ -1,3 +1,4 @@
+<!doctype html><html lang="fr"><meta charset="utf-8">
 <title>Kosmos · Cosmic Exploration</title>
 <style>
   :root {
@@ -336,9 +337,9 @@
   .klang a:hover:not(.on) { color: var(--ink); }
   @media print { .klang { display: none; } }
 </style>
-<div class="klang" aria-label="Language · Langue"><a href="/cosmos" hreflang="en" lang="en" class="on">EN</a><a href="/fr/cosmos" hreflang="fr" lang="fr">FR</a></div>
+<div class="klang" aria-label="Language · Langue"><a href="/cosmos" hreflang="en" lang="en">EN</a><a href="/fr/cosmos" hreflang="fr" lang="fr" class="on">FR</a></div>
 
-<nav class="knav"><a href="/">KOSMOS</a><span>/</span><span class="cur">Cosmic Exploration</span></nav>
+<nav class="knav"><a href="/fr/">KOSMOS</a><span>/</span><span class="cur">Cosmic Exploration</span></nav>
 <h1 class="ktitle">Cosmic Exploration</h1>
 <p class="klede">A field guide to what the sky contains — the classes of objects out there, the stellar spectral sequence from hottest to coolest, and the instruments humanity points at all of it. The object catalogue itself is just getting started.</p>
 
@@ -408,7 +409,7 @@
     row.appendChild(l);
     for (const q of eqs) {
       const a = document.createElement('a');
-      a.className = 'ceq'; a.href = '/equations#' + q.slug; a.textContent = q.name; a.title = q.field || '';
+      a.className = 'ceq'; a.href = '/fr/equations#' + q.slug; a.textContent = q.name; a.title = q.field || '';
       row.appendChild(a);
     }
     return row;

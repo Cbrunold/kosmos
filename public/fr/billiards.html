@@ -1,3 +1,4 @@
+<!doctype html><html lang="fr"><meta charset="utf-8">
 <title>Kosmos · Billiards</title>
 <style>
   :root {
@@ -281,14 +282,14 @@
   .klang a:hover:not(.on) { color: var(--ink); }
   @media print { .klang { display: none; } }
 </style>
-<div class="klang" aria-label="Language · Langue"><a href="/billiards" hreflang="en" lang="en" class="on">EN</a><a href="/fr/billiards" hreflang="fr" lang="fr">FR</a></div>
+<div class="klang" aria-label="Language · Langue"><a href="/billiards" hreflang="en" lang="en">EN</a><a href="/fr/billiards" hreflang="fr" lang="fr" class="on">FR</a></div>
 
-<nav class="knav"><a href="/">KOSMOS</a><span>/</span><span class="cur">Billiards</span></nav>
+<nav class="knav"><a href="/fr/">KOSMOS</a><span>/</span><span class="cur">Billiards</span></nav>
 <h1 class="ktitle">Billiards</h1>
-<p class="klede">Two equal spheres, a cloth and a rubber rail — and every one of the shelf's mechanics equations turned into a shot. Momentum and energy give the <a href="/glossary#tangent-line">tangent line</a>; friction between the balls gives <a href="/glossary#throw">throw</a>; the tip's offset gives spin; the cloth turns that spin into follow, draw and stun. The lab below runs those equations live — set the shot up yourself: drag both balls, pick a pocket, and watch what speed does. It is the same physics, and the same numbers, that the <em>Pool Sauce</em> engine integrates.</p>
+<p class="klede">Two equal spheres, a cloth and a rubber rail — and every one of the shelf's mechanics equations turned into a shot. Momentum and energy give the <a href="/fr/glossary#tangent-line">tangent line</a>; friction between the balls gives <a href="/fr/glossary#throw">throw</a>; the tip's offset gives spin; the cloth turns that spin into follow, draw and stun. The lab below runs those equations live — set the shot up yourself: drag both balls, pick a pocket, and watch what speed does. It is the same physics, and the same numbers, that the <em>Pool Sauce</em> engine integrates.</p>
 
 <h2 class="ksec">The shot lab</h2>
-<p class="knote" style="max-width:72ch;margin:0 0 10px">Drag the cue ball or the object ball anywhere on the cloth; click one of the six 4½″ pockets to aim at it. The cue is always aimed at the <a href="/glossary#ghost-ball" style="color:inherit">ghost ball</a> — and when the cue ball is on the wrong side for a direct pot, the lab aims a one-rail <b>bank</b> instead, with the cushion's real rebound (not a mirror) solved into the contact point. Whether the shot actually drops is then up to speed, spin and throw.</p>
+<p class="knote" style="max-width:72ch;margin:0 0 10px">Drag the cue ball or the object ball anywhere on the cloth; click one of the six 4½″ pockets to aim at it. The cue is always aimed at the <a href="/fr/glossary#ghost-ball" style="color:inherit">ghost ball</a> — and when the cue ball is on the wrong side for a direct pot, the lab aims a one-rail <b>bank</b> instead, with the cushion's real rebound (not a mirror) solved into the contact point. Whether the shot actually drops is then up to speed, spin and throw.</p>
 <div class="lab">
   <div class="tblwrap">
     <svg class="felt" id="lab" viewBox="0 0 900 470" role="img" aria-label="Top view of a pool table with six pockets: drag the cue ball and object ball; in practice mode all guides are drawn, in pro mode only the balls"></svg>
@@ -1292,7 +1293,7 @@
   const COLORS = { Billiards: 'var(--c-felt)', Mechanics: 'var(--c-blue)' };
   const shelf = $('shelf');
   for (const e of D.equations) {
-    const a = document.createElement('a'); a.className = 'kcard eq'; a.href = '/equations#' + e.slug; a.style.setProperty('--fc', COLORS[e.field] || 'var(--muted)');
+    const a = document.createElement('a'); a.className = 'kcard eq'; a.href = '/fr/equations#' + e.slug; a.style.setProperty('--fc', COLORS[e.field] || 'var(--muted)');
     a.innerHTML = '<h3><span class="n"></span><span class="fld"></span></h3><div class="formula"></div><p class="sig"></p><div class="meta"></div>';
     a.querySelector('.n').textContent = e.name; a.querySelector('.fld').textContent = e.field || '';
     a.querySelector('.formula').textContent = e.equation || ''; a.querySelector('.sig').textContent = e.significance || '';
@@ -1301,7 +1302,7 @@
   }
   const sk = $('skills');
   for (const s of D.skills) {
-    const a = document.createElement('a'); a.className = 'kcard'; a.href = '/skills#' + s.slug;
+    const a = document.createElement('a'); a.className = 'kcard'; a.href = '/fr/skills#' + s.slug;
     a.innerHTML = '<h3><span class="n"></span><span class="d"></span></h3><p></p>';
     a.querySelector('.n').textContent = s.name; a.querySelector('.d').textContent = s.difficulty || ''; a.querySelector('p').textContent = s.summary || '';
     sk.appendChild(a);

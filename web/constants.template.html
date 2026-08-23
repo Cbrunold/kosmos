@@ -165,7 +165,7 @@ __SHARED__
   function card(c) {
     const el = document.createElement('article');
     el.className = 'kcard konst';
-    el.id = slug(c.Symbol && c.Symbol !== '—' ? c.Symbol + '-' + c.Name : c.Name);
+    el.id = slug(c.Symbol && c.Symbol !== '—' ? c.Symbol + '-' + (c.NameEN || c.Name) : (c.NameEN || c.Name));
     el.style.setProperty('--cc', COLORS[c.Category] || 'var(--muted)');
     const top = document.createElement('div'); top.className = 'top';
     const sym = document.createElement('span'); sym.className = 'sym'; sym.textContent = c.Symbol || '';

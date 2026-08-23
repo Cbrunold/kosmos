@@ -1,3 +1,4 @@
+<!doctype html><html lang="fr"><meta charset="utf-8">
 <title>Kosmos · Mines & Extraction</title>
 <style>
   :root {
@@ -272,9 +273,9 @@
   .klang a:hover:not(.on) { color: var(--ink); }
   @media print { .klang { display: none; } }
 </style>
-<div class="klang" aria-label="Language · Langue"><a href="/mines" hreflang="en" lang="en" class="on">EN</a><a href="/fr/mines" hreflang="fr" lang="fr">FR</a></div>
+<div class="klang" aria-label="Language · Langue"><a href="/mines" hreflang="en" lang="en">EN</a><a href="/fr/mines" hreflang="fr" lang="fr" class="on">FR</a></div>
 
-<nav class="knav"><a href="/">KOSMOS</a><span>/</span><span class="cur">Mines &amp; Extraction</span></nav>
+<nav class="knav"><a href="/fr/">KOSMOS</a><span>/</span><span class="cur">Mines &amp; Extraction</span></nav>
 <h1 class="ktitle">Mines &amp; Extraction</h1>
 <p class="klede">Where the raw materials actually come out of the ground, and how each one is turned from rock into something usable. Pick a commodity to read its extraction story and light up the mines that produce it; click a dot or a card for the site. Every mine here is a flagship — the one that defines its commodity, not a complete register.</p>
 
@@ -384,7 +385,7 @@
     if (m.syms.length) {
       const chips = document.createElement('div'); chips.className = 'chips';
       for (const s of m.syms) {
-        const a = document.createElement('a'); a.className = 'elch'; a.href = '/elements#' + s;
+        const a = document.createElement('a'); a.className = 'elch'; a.href = '/fr/elements#' + s;
         a.textContent = EXT[s] ? `${s} · ${EXT[s].name}` : s;
         a.title = 'open on the periodic table';
         chips.appendChild(a);
@@ -433,7 +434,7 @@
       if (x.minerals) { const p0 = document.createElement('p'); p0.innerHTML = '<b>Ore minerals:</b> '; p0.appendChild(document.createTextNode(x.minerals)); story.appendChild(p0); }
       if (x.text) { const p = document.createElement('p'); p.textContent = x.text; p.style.marginTop = '6px'; story.appendChild(p); }
       const e = document.createElement('div'); e.className = 'el';
-      const a = document.createElement('a'); a.href = '/elements#' + sym; a.textContent = `${x.name} on the periodic table →`; e.appendChild(a);
+      const a = document.createElement('a'); a.href = '/fr/elements#' + sym; a.textContent = `${x.name} on the periodic table →`; e.appendChild(a);
       story.appendChild(e);
     } else {
       story.hidden = true;

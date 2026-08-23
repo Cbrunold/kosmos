@@ -1,3 +1,4 @@
+<!doctype html><html lang="fr"><meta charset="utf-8">
 <title>Kosmos · Mining Impacts</title>
 <style>
   :root {
@@ -246,9 +247,9 @@
   .klang a:hover:not(.on) { color: var(--ink); }
   @media print { .klang { display: none; } }
 </style>
-<div class="klang" aria-label="Language · Langue"><a href="/impacts" hreflang="en" lang="en" class="on">EN</a><a href="/fr/impacts" hreflang="fr" lang="fr">FR</a></div>
+<div class="klang" aria-label="Language · Langue"><a href="/impacts" hreflang="en" lang="en">EN</a><a href="/fr/impacts" hreflang="fr" lang="fr" class="on">FR</a></div>
 
-<nav class="knav"><a href="/">KOSMOS</a><span>/</span><span class="cur">Mining Impacts</span></nav>
+<nav class="knav"><a href="/fr/">KOSMOS</a><span>/</span><span class="cur">Mining Impacts</span></nav>
 <h1 class="ktitle">Mining Impacts</h1>
 <p class="klede">The mines page says how each metal is won. This one says what winning it costs — by mechanism rather than by site, because a mechanism travels and a site does not. Each entry gives how the harm arises, what reduces it, and where it has been documented; the mine types it attaches to carry a count of how many of the sites on this site are of that type.</p>
 
@@ -295,7 +296,7 @@
       const w = document.createElement('div'); w.className = 'whr';
       for (const t of x.where) {
         const el = t.n ? document.createElement('a') : document.createElement('span');
-        if (t.n) el.href = '/mines';
+        if (t.n) el.href = '/fr/mines';
         el.textContent = t.name;
         if (t.n) { const n = document.createElement('span'); n.className = 'c'; n.textContent = ' ' + t.n; el.appendChild(n); }
         w.appendChild(el);
@@ -306,14 +307,14 @@
       const t = document.createElement('div'); t.className = 'tms';
       const l = document.createElement('span'); l.className = 'lbl'; l.style.margin = '0 4px 0 0'; l.style.display = 'inline'; l.textContent = 'defined';
       t.appendChild(l);
-      for (const g of x.terms) { const a = document.createElement('a'); a.href = '/glossary#' + g.slug; a.textContent = g.term; t.appendChild(a); }
+      for (const g of x.terms) { const a = document.createElement('a'); a.href = '/fr/glossary#' + g.slug; a.textContent = g.term; t.appendChild(a); }
       c.appendChild(t);
     }
     if ((x.equations || []).length) {   // the physics each mechanism runs on, from the Equations relation
       const t = document.createElement('div'); t.className = 'tms eqs';
       const l = document.createElement('span'); l.className = 'lbl'; l.style.margin = '0 4px 0 0'; l.style.display = 'inline'; l.textContent = 'physics';
       t.appendChild(l);
-      for (const e of x.equations) { const a = document.createElement('a'); a.href = '/equations#' + e.slug; a.textContent = e.name; a.title = `${e.name}${e.field ? ' · ' + e.field : ''} · open on the equations page`; t.appendChild(a); }
+      for (const e of x.equations) { const a = document.createElement('a'); a.href = '/fr/equations#' + e.slug; a.textContent = e.name; a.title = `${e.name}${e.field ? ' · ' + e.field : ''} · open on the equations page`; t.appendChild(a); }
       c.appendChild(t);
     }
     list.appendChild(c); cards.set(x.slug, c);

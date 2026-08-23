@@ -1,3 +1,4 @@
+<!doctype html><html lang="fr"><meta charset="utf-8">
 <title>Kosmos · Machines</title>
 <style>
   :root {
@@ -244,9 +245,9 @@
   .klang a:hover:not(.on) { color: var(--ink); }
   @media print { .klang { display: none; } }
 </style>
-<div class="klang" aria-label="Language · Langue"><a href="/machines" hreflang="en" lang="en" class="on">EN</a><a href="/fr/machines" hreflang="fr" lang="fr">FR</a></div>
+<div class="klang" aria-label="Language · Langue"><a href="/machines" hreflang="en" lang="en">EN</a><a href="/fr/machines" hreflang="fr" lang="fr" class="on">FR</a></div>
 
-<nav class="knav"><a href="/">KOSMOS</a><span>/</span><span class="cur">Machines</span></nav>
+<nav class="knav"><a href="/fr/">KOSMOS</a><span>/</span><span class="cur">Machines</span></nav>
 <h1 class="ktitle">Machines</h1>
 <p class="klede">The engines and machines that turn heat, motion and chemistry into work and back — how each one does it, the cycle it runs on, what it manages to keep of the energy it is given, and what it is made of. Every heat engine here carries its cycle drawn on a p–V diagram: the area inside the loop is the work you get per cycle, and the shape is the whole story.</p>
 
@@ -332,13 +333,13 @@
       const dt = document.createElement('dt'); dt.textContent = k; const dd = document.createElement('dd'); dd.textContent = v; dl.append(dt, dd);
     }
     if (dl.children.length) left.appendChild(dl);
-    const inv = chips('built first by', m.inventors, 'var(--c-violet)', (p) => '/cosmos#' + p.slug, (p) => [p.life, p.known].filter(Boolean).join(' · '));
+    const inv = chips('built first by', m.inventors, 'var(--c-violet)', (p) => '/fr/cosmos#' + p.slug, (p) => [p.life, p.known].filter(Boolean).join(' · '));
     if (inv) left.appendChild(inv);
-    const eq = chips('the mathematics', m.equations, 'var(--c-amber)', (q) => '/equations#' + q.slug, (q) => q.field);
+    const eq = chips('the mathematics', m.equations, 'var(--c-amber)', (q) => '/fr/equations#' + q.slug, (q) => q.field);
     if (eq) left.appendChild(eq);
-    const els = chips('made with', m.elements.map((e) => ({ name: `${e.sym} · ${e.name}`, sym: e.sym })), 'var(--c-blue)', (e) => '/elements#' + e.sym);
+    const els = chips('made with', m.elements.map((e) => ({ name: `${e.sym} · ${e.name}`, sym: e.sym })), 'var(--c-blue)', (e) => '/fr/elements#' + e.sym);
     if (els) left.appendChild(els);
-    const sk = chips('skills', m.skills, 'var(--c-green)', (s) => '/skills#' + s.slug);
+    const sk = chips('skills', m.skills, 'var(--c-green)', (s) => '/fr/skills#' + s.slug);
     if (sk) left.appendChild(sk);
     body.appendChild(left);
 

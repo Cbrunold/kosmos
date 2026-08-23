@@ -1435,6 +1435,29 @@ def build_home(n_min, n_gems, n_classes, n_spectral, n_instr, n_timeline, tl_dec
     })
 
 
+# ---------------- French mirror ----------------
+def build_fr():
+    """public/fr/*.html from public/*.html, through scripts/i18n.py and data/i18n/fr.json —
+    and the EN · FR switch onto the English pages. Needs no API key: a string the cache
+    lacks stays English and is counted, and scripts/translate.py fills the cache."""
+    import i18n
+    tr = i18n.Translator()
+    (PUB / "fr").mkdir(exist_ok=True)
+    n = 0
+    for page in i18n.PAGE_FILES:
+        src = PUB / page
+        if not src.exists():
+            continue
+        html = src.read_text()
+        en = i18n.add_switch(html, page, "en")
+        if en != html:
+            src.write_text(en)
+        (PUB / "fr" / page).write_text(i18n.apply(html, page, tr))
+        n += 1
+    print(f"wrote {n} French pages -> public/fr/"
+          + (f"  ({tr.misses} strings not yet in data/i18n/fr.json stay English — run scripts/translate.py)" if tr.misses else ""))
+
+
 if __name__ == "__main__":
     n_min, n_gems = build_minerals_page()   # fills ELEMENT_MINERALS
     build_elements_page()
@@ -1504,3 +1527,4 @@ if __name__ == "__main__":
     build_home(n_min, n_gems, n_classes, n_spectral, n_instr, n_timeline, tl_decades,
                n_obs, n_disc, n_miss, n_search, n_mines, n_mined, n_mach, n_diag, n_skills, n_terms, n_traces,
                n_expl, n_expl_terms, n_imp, n_imp_terms, n_bill_eq, n_bill_skills)
+    build_fr()

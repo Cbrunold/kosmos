@@ -289,7 +289,7 @@ __SHARED__
   const slug = (s) => (s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '')
     .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
   const byId = Object.fromEntries(E.map((e) => [e.id, e]));
-  for (const e of E) e.slug = slug(e.Name);
+  for (const e of E) e.slug = slug(e.NameEN || e.Name);   // NameEN: the French build keeps the English beside the translation, so anchors do not move
 
   // ---- the Requires graph: everything an equation rests on, transitively, and how
   // deep the chain goes. depth 0 = a foundation (requires nothing); depth n = the

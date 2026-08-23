@@ -117,8 +117,10 @@ python3 scripts/build.py
 step "ship"
 mkdir -p "$APP_DIR/public"
 cp public/*.html public/*.json "$APP_DIR/public/"
+mkdir -p "$APP_DIR/public/fr"
+cp public/fr/*.html "$APP_DIR/public/fr/"
 cp server.js "$APP_DIR/"
-echo "copied $(ls public/*.html public/*.json | wc -l) files -> $APP_DIR/public/, server.js -> $APP_DIR/"
+echo "copied $(ls public/*.html public/*.json | wc -l) files -> $APP_DIR/public/, $(ls public/fr/*.html | wc -l) -> $APP_DIR/public/fr/, server.js -> $APP_DIR/"
 
 # ---- 7. restart + health
 step "restart"

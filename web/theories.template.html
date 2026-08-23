@@ -128,7 +128,7 @@ __SHARED__
     for (const t of rows) {
       const card = document.createElement('article');
       card.className = 'kcard theory';
-      if (t.Name) card.id = slug(t.Name);
+      if (t.Name) card.id = slug(t.NameEN || t.Name);
 
       const h = document.createElement('h2');
       const name = document.createElement('span');

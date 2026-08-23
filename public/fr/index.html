@@ -1,3 +1,4 @@
+<!doctype html><html lang="fr"><meta charset="utf-8">
 <title>Kosmos · Periodic Table</title>
 <style>
   :root {
@@ -486,10 +487,10 @@
   .klang a:hover:not(.on) { color: var(--ink); }
   @media print { .klang { display: none; } }
 </style>
-<div class="klang" aria-label="Language · Langue"><a href="/elements" hreflang="en" lang="en" class="on">EN</a><a href="/fr/elements" hreflang="fr" lang="fr">FR</a></div>
+<div class="klang" aria-label="Language · Langue"><a href="/elements" hreflang="en" lang="en">EN</a><a href="/fr/elements" hreflang="fr" lang="fr" class="on">FR</a></div>
 
 <header class="top">
-  <div class="eyebrow"><a href="/" style="color: inherit; text-decoration: none">KOSMOS</a> / Chemistry · synced live from Notion</div>
+  <div class="eyebrow"><a href="/fr/" style="color: inherit; text-decoration: none">KOSMOS</a> / Chemistry · synced live from Notion</div>
   <h1>Periodic Table</h1>
   <div class="provenance" id="prov"></div>
   <input class="searchbox" id="q" type="search" placeholder="find element…" aria-label="Find element by name, symbol or number" />
@@ -937,13 +938,13 @@
       for (const nm of mi.examples) {
         const a = document.createElement('a');
         a.className = 'dmin';
-        a.href = '/minerals#' + encodeURIComponent(nm.toLowerCase());
+        a.href = '/fr/minerals#' + encodeURIComponent(nm.toLowerCase());
         a.textContent = nm;
         list.appendChild(a);
       }
       const all = document.createElement('a');
       all.className = 'dmin all';
-      all.href = '/minerals?el=' + e.sym;
+      all.href = '/fr/minerals?el=' + e.sym;
       all.textContent = mi.n > mi.examples.length ? `all ${mi.n.toLocaleString('en')} →` : 'browse →';
       all.title = `Filter the minerals collection to ${e.name}-bearing minerals`;
       list.appendChild(all);
@@ -995,14 +996,14 @@
         for (const m of sites) {
           const a = document.createElement('a');
           a.className = 'dmine';
-          a.href = '/mines#' + m.slug;
+          a.href = '/fr/mines#' + m.slug;
           a.textContent = m.name;
           a.title = `${m.country} · ${m.type}`;
           list.appendChild(a);
         }
         const all = document.createElement('a');
         all.className = 'dmine all';
-        all.href = '/mines?el=' + e.sym;
+        all.href = '/fr/mines?el=' + e.sym;
         all.textContent = 'on the map →';
         list.appendChild(all);
         box.appendChild(list);
@@ -1023,7 +1024,7 @@
       for (const q of eqs) {
         const a = document.createElement('a');
         a.className = 'deq';
-        a.href = '/equations#' + q.slug;
+        a.href = '/fr/equations#' + q.slug;
         a.title = q.field || '';
         a.textContent = q.name;
         list.appendChild(a);

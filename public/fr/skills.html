@@ -1,3 +1,4 @@
+<!doctype html><html lang="fr"><meta charset="utf-8">
 <title>Kosmos · Skills</title>
 <style>
   :root {
@@ -242,9 +243,9 @@
   .klang a:hover:not(.on) { color: var(--ink); }
   @media print { .klang { display: none; } }
 </style>
-<div class="klang" aria-label="Language · Langue"><a href="/skills" hreflang="en" lang="en" class="on">EN</a><a href="/fr/skills" hreflang="fr" lang="fr">FR</a></div>
+<div class="klang" aria-label="Language · Langue"><a href="/skills" hreflang="en" lang="en">EN</a><a href="/fr/skills" hreflang="fr" lang="fr" class="on">FR</a></div>
 
-<nav class="knav"><a href="/">KOSMOS</a><span>/</span><span class="cur">Skills</span></nav>
+<nav class="knav"><a href="/fr/">KOSMOS</a><span>/</span><span class="cur">Skills</span></nav>
 <h1 class="ktitle">Skills</h1>
 <p class="klede">Hands-on techniques, each with the physics or chemistry that makes it work — because knowing <em>why</em> the solder balls up or the weld goes porous is what turns a recipe into a skill. Tools, the steps in order, what will hurt you, how it fails, and how you know it worked.</p>
 
@@ -310,11 +311,11 @@
     }
     g.append(left, right); c.appendChild(g);
 
-    const eq = chips('the mathematics', s.equations, 'var(--c-amber)', (q) => '/equations#' + q.slug, (q) => q.field);
+    const eq = chips('the mathematics', s.equations, 'var(--c-amber)', (q) => '/fr/equations#' + q.slug, (q) => q.field);
     if (eq) c.appendChild(eq);
-    const els = chips('materials', s.elements.map((e) => ({ name: `${e.sym} · ${e.name}`, sym: e.sym })), 'var(--c-blue)', (e) => '/elements#' + e.sym);
+    const els = chips('materials', s.elements.map((e) => ({ name: `${e.sym} · ${e.name}`, sym: e.sym })), 'var(--c-blue)', (e) => '/fr/elements#' + e.sym);
     if (els) c.appendChild(els);
-    const mc = chips('machines', s.machines, 'var(--c-bronze)', (m) => '/machines#' + m.slug);
+    const mc = chips('machines', s.machines, 'var(--c-bronze)', (m) => '/fr/machines#' + m.slug);
     if (mc) c.appendChild(mc);
     list.appendChild(c); cards.set(s.slug, c);
   }

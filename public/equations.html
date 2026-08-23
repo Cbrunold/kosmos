@@ -373,7 +373,14 @@
     @keyframes eqflash { 0% { outline-color: var(--fc, var(--ring)); } 100% { outline-color: transparent; } }
   }
   .eq:target { scroll-margin-top: 16px; }
+
+  .klang { position: fixed; top: 9px; right: 12px; z-index: 60; display: flex; gap: 0; border: 1px solid var(--hairline); border-radius: 99px; background: color-mix(in oklab, var(--panel) 88%, transparent); backdrop-filter: blur(4px); overflow: hidden; font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; letter-spacing: 0.08em; }
+  .klang a { color: var(--muted); text-decoration: none; padding: 4px 9px; }
+  .klang a.on { color: var(--page); background: var(--ink); }
+  .klang a:hover:not(.on) { color: var(--ink); }
+  @media print { .klang { display: none; } }
 </style>
+<div class="klang" aria-label="Language · Langue"><a href="/equations" hreflang="en" lang="en" class="on">EN</a><a href="/fr/equations" hreflang="fr" lang="fr">FR</a></div>
 
 <nav class="knav"><a href="/">KOSMOS</a><span>/</span><span class="cur">Equations</span></nav>
 <h1 class="ktitle">Equations</h1>
@@ -482,7 +489,7 @@
   const slug = (s) => (s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '')
     .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
   const byId = Object.fromEntries(E.map((e) => [e.id, e]));
-  for (const e of E) e.slug = slug(e.Name);
+  for (const e of E) e.slug = slug(e.NameEN || e.Name);   // NameEN: the French build keeps the English beside the translation, so anchors do not move
 
   // ---- the Requires graph: everything an equation rests on, transitively, and how
   // deep the chain goes. depth 0 = a foundation (requires nothing); depth n = the

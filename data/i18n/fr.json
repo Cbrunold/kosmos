@@ -1,0 +1,5 @@
+{
+"_": "English -> French, keyed by sha1 of the English. Edit a French value by hand and it sticks until the English changes. Written by scripts/translate.py; read by scripts/build.py.",
+"en": {},
+"fr": {}
+}

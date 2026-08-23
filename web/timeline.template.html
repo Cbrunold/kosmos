@@ -224,7 +224,7 @@ __SHARED__
       b.style.setProperty('--pc', ERA_COLOR[e.era] || 'var(--muted)');
       b.title = `${e.event} — ${e.when || ''}`;
       b.setAttribute('aria-label', `Jump to ${e.event}`);
-      b.addEventListener('click', () => goTo(slug(e.event)));
+      b.addEventListener('click', () => goTo(slug(e.eventEN || e.event)));
       ax.appendChild(b);
     }
     document.getElementById('axisnote').textContent =
@@ -258,7 +258,7 @@ __SHARED__
     for (const e of rows) {
       const wrap = document.createElement('div');
       wrap.className = 'ev';
-      wrap.id = slug(e.event);
+      wrap.id = slug(e.eventEN || e.event);
       wrap.style.setProperty('--ec', ERA_COLOR[e.era] || 'var(--muted)');
 
       const head = document.createElement('div');

@@ -260,7 +260,14 @@
   .open li { font-size: 12.5px; color: var(--ink-2); line-height: 1.7; margin-bottom: 9px; }
   .open li b { color: var(--ink); font-weight: 600; }
   .open li em { font-style: italic; }
+
+  .klang { position: fixed; top: 9px; right: 12px; z-index: 60; display: flex; gap: 0; border: 1px solid var(--hairline); border-radius: 99px; background: color-mix(in oklab, var(--panel) 88%, transparent); backdrop-filter: blur(4px); overflow: hidden; font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; letter-spacing: 0.08em; }
+  .klang a { color: var(--muted); text-decoration: none; padding: 4px 9px; }
+  .klang a.on { color: var(--page); background: var(--ink); }
+  .klang a:hover:not(.on) { color: var(--ink); }
+  @media print { .klang { display: none; } }
 </style>
+<div class="klang" aria-label="Language · Langue"><a href="/universe" hreflang="en" lang="en" class="on">EN</a><a href="/fr/universe" hreflang="fr" lang="fr">FR</a></div>
 
 <h1 class="ktitle">The Universe in Three Dimensions</h1>
 <p class="klede">Everything catalogued here, placed by the direction it lies in and the distance to it, on a single radial axis that is logarithmic because nothing else could hold both the Oort Cloud and the horizon. Drag to turn it over. The rings are decades — each one is ten times further out than the last.</p>

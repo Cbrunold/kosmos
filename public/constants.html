@@ -308,7 +308,14 @@
   .pfx b { font-size: 13px; }
   .pfx .f { color: var(--muted); font-variant-numeric: tabular-nums; }
   .count { font: 11.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; color: var(--muted); margin: 10px 2px 0; }
+
+  .klang { position: fixed; top: 9px; right: 12px; z-index: 60; display: flex; gap: 0; border: 1px solid var(--hairline); border-radius: 99px; background: color-mix(in oklab, var(--panel) 88%, transparent); backdrop-filter: blur(4px); overflow: hidden; font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; letter-spacing: 0.08em; }
+  .klang a { color: var(--muted); text-decoration: none; padding: 4px 9px; }
+  .klang a.on { color: var(--page); background: var(--ink); }
+  .klang a:hover:not(.on) { color: var(--ink); }
+  @media print { .klang { display: none; } }
 </style>
+<div class="klang" aria-label="Language · Langue"><a href="/constants" hreflang="en" lang="en" class="on">EN</a><a href="/fr/constants" hreflang="fr" lang="fr">FR</a></div>
 
 <nav class="knav"><a href="/">KOSMOS</a><span>/</span><span class="cur">Constants &amp; Units</span></nav>
 <h1 class="ktitle">Constants &amp; Units</h1>
@@ -358,7 +365,7 @@
   function card(c) {
     const el = document.createElement('article');
     el.className = 'kcard konst';
-    el.id = slug(c.Symbol && c.Symbol !== '—' ? c.Symbol + '-' + c.Name : c.Name);
+    el.id = slug(c.Symbol && c.Symbol !== '—' ? c.Symbol + '-' + (c.NameEN || c.Name) : (c.NameEN || c.Name));
     el.style.setProperty('--cc', COLORS[c.Category] || 'var(--muted)');
     const top = document.createElement('div'); top.className = 'top';
     const sym = document.createElement('span'); sym.className = 'sym'; sym.textContent = c.Symbol || '';

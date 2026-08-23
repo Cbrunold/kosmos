@@ -1,3 +1,4 @@
+<!doctype html><html lang="fr"><meta charset="utf-8">
 <title>Kosmos · Explainers</title>
 <style>
   :root {
@@ -241,9 +242,9 @@
   .klang a:hover:not(.on) { color: var(--ink); }
   @media print { .klang { display: none; } }
 </style>
-<div class="klang" aria-label="Language · Langue"><a href="/explainers" hreflang="en" lang="en" class="on">EN</a><a href="/fr/explainers" hreflang="fr" lang="fr">FR</a></div>
+<div class="klang" aria-label="Language · Langue"><a href="/explainers" hreflang="en" lang="en">EN</a><a href="/fr/explainers" hreflang="fr" lang="fr" class="on">FR</a></div>
 
-<nav class="knav"><a href="/">KOSMOS</a><span>/</span><span class="cur">Explainers</span></nav>
+<nav class="knav"><a href="/fr/">KOSMOS</a><span>/</span><span class="cur">Explainers</span></nav>
 <h1 class="ktitle">Explainers</h1>
 <p class="klede">The people, channels and organisations that explain this material well — as distinct from the researchers, who worked it out. What each one covers is written as prose in Notion, and the glossary matcher reads it: the terms under each entry are computed, not typed, and the same match puts every explainer under those terms on the glossary page.</p>
 
@@ -287,7 +288,7 @@
     if (x.terms.length) {
       const t = document.createElement('div'); t.className = 'tms';
       const l = document.createElement('span'); l.className = 'lbl'; l.textContent = `covers ${x.terms.length}`; t.appendChild(l);
-      for (const g of x.terms) { const a = document.createElement('a'); a.href = '/glossary#' + g.slug; a.textContent = g.term; t.appendChild(a); }
+      for (const g of x.terms) { const a = document.createElement('a'); a.href = '/fr/glossary#' + g.slug; a.textContent = g.term; t.appendChild(a); }
       c.appendChild(t);
     }
     list.appendChild(c); cards.set(x.slug, c);

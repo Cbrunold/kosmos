@@ -325,7 +325,14 @@
   .lnk:hover { color: var(--ink); border-color: var(--ink-2); }
   .empty { font-size: 13px; color: var(--muted); padding: 18px 0; }
   @media (max-width: 560px) { .axisbar { height: 40px; } }
+
+  .klang { position: fixed; top: 9px; right: 12px; z-index: 60; display: flex; gap: 0; border: 1px solid var(--hairline); border-radius: 99px; background: color-mix(in oklab, var(--panel) 88%, transparent); backdrop-filter: blur(4px); overflow: hidden; font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; letter-spacing: 0.08em; }
+  .klang a { color: var(--muted); text-decoration: none; padding: 4px 9px; }
+  .klang a.on { color: var(--page); background: var(--ink); }
+  .klang a:hover:not(.on) { color: var(--ink); }
+  @media print { .klang { display: none; } }
 </style>
+<div class="klang" aria-label="Language · Langue"><a href="/timeline" hreflang="en" lang="en" class="on">EN</a><a href="/fr/timeline" hreflang="fr" lang="fr">FR</a></div>
 
 <nav class="knav"><a href="/">KOSMOS</a><span>/</span><span class="cur">Timeline</span></nav>
 <h1 class="ktitle">Timeline of the Universe</h1>
@@ -417,7 +424,7 @@
       b.style.setProperty('--pc', ERA_COLOR[e.era] || 'var(--muted)');
       b.title = `${e.event} — ${e.when || ''}`;
       b.setAttribute('aria-label', `Jump to ${e.event}`);
-      b.addEventListener('click', () => goTo(slug(e.event)));
+      b.addEventListener('click', () => goTo(slug(e.eventEN || e.event)));
       ax.appendChild(b);
     }
     document.getElementById('axisnote').textContent =
@@ -451,7 +458,7 @@
     for (const e of rows) {
       const wrap = document.createElement('div');
       wrap.className = 'ev';
-      wrap.id = slug(e.event);
+      wrap.id = slug(e.eventEN || e.event);
       wrap.style.setProperty('--ec', ERA_COLOR[e.era] || 'var(--muted)');
 
       const head = document.createElement('div');

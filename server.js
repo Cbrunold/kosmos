@@ -29,6 +29,13 @@ const PAGES = {
   '/constants': 'constants.html',
   '/search.json': 'search.json',   // the index behind the home-page search bar, fetched on first keystroke
 };
+// The French mirror: /fr and /fr/<route> serve public/fr/<file>, which scripts/build.py derives
+// from the English pages through data/i18n/fr.json. Same health rules: a missing file 404s alone.
+for (const [route, file] of Object.entries({ ...PAGES })) {
+  if (file.endsWith('.json')) continue;
+  PAGES[route === '/' ? '/fr' : '/fr' + route] = 'fr/' + file;
+}
+PAGES['/fr/'] = 'fr/home.html';
 const TYPE = (file) => (file.endsWith('.json') ? 'application/json; charset=utf-8' : 'text/html; charset=utf-8');
 // A page that failed to deploy should 404, not take the whole site down with it.
 // This used to be an unguarded readFileSync inside a map: adding /timeline to

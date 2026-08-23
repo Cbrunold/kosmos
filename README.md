@@ -26,6 +26,7 @@ truth for code and the normalised data snapshots. Sync is one-way, Notion → re
 | `/theories`  | Theory shelf from Ptolemy to the holographic principle — status, proponents, and the equations each rests on; sortable chronologically |
 | `/equations` | Equations, laws and definitions with symbols decoded, filterable by domain and field; each shows what it *requires* (with the full path down to the foundations) and what requires it; sortable by year or foundations-first |
 | `/constants` | CODATA constants with uncertainties, SI units, prefixes |
+| `/fr/…`      | The whole site in French — every route above under `/fr/`, with an EN · FR switch on every page. Derived from the English pages at build time through `data/i18n/fr.json` (see `scripts/i18n.py`) |
 
 ## Layout
 
@@ -37,7 +38,22 @@ web/billiards.template.html   The shot lab: the billiards equations integrated i
 web/                          Page sources: templates, shared.css, analyzer parts
 data/chemistry/elements.json  Normalised element data (scripts/fetch_elements.py)
 data/notion-all.json          All other Notion sources (scripts/fetch_all.py)
-scripts/build.py              web/ + data → public/*.html
+scripts/build.py              web/ + data → public/*.html, then public/fr/*.html (build_fr)
+scripts/i18n.py               The French mirror: extracts every reader-facing string from a built English
+                              page (text runs with their inline markup, title/placeholder/aria attributes,
+                              JS literals in screen-facing contexts, and the embedded JSON data by per-page
+                              rules — prose and entity names yes; enum-like keys the page JS filters and
+                              colours on, no; slugs never), applies data/i18n/fr.json, rewrites internal
+                              links to /fr/, adds <html lang="fr"> and the language switch. Deterministic,
+                              no key needed: an untranslated string stays English and is counted
+scripts/translate.py          Fills data/i18n/fr.json: builds, extracts, sends what the cache lacks to
+                              claude-opus-5 in batches (stdlib urllib, like every script here), saves
+                              after each batch, prunes stale strings, rebuilds. First run is the whole
+                              site; after that, only what changed in Notion or a template.
+                              ./deploy.sh translate on the VPS (the key lives in /opt/kosmos/.env)
+data/i18n/fr.json             English → French, keyed by sha1 of the English; the English kept beside it
+                              so it is reviewable. Edit a French value by hand and it sticks until the
+                              English changes
 scripts/link_equations.py     Curated cross-link graph → the Equations DB "Related" relation
 scripts/link_elements.py      Equation → element graph → the Equations DB "Elements" relation
                               (dual-property: each element page gets an "Equations" backlink)
