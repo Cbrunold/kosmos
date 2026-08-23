@@ -356,6 +356,9 @@ PAGE_JS_EXTRA = {
     "billiards.html": [r"""\['([A-Za-z][^'`]+)',\s*`""", r"""\['([a-z][a-z ,\-]+)',\s*(?:S\.|`|\$)""",   # dl labels, presets
                        r"""\['([^']+)',\s*\{ cut:"""],
     "universe.html": [r"""mk\('([^']+)'"""],                       # the view buttons
+    # the KL map on /glossary: the plural label under each "appears in" group. Its keys are
+    # the kinds the data uses and must not move; only the values are read out.
+    "glossary.html": [r"""(?<=: ')((?:equation|theor|machine|skill|timeline|element|mine|observator|discover|mission|constant|researcher|force|instrument|rock)[a-z ]*)(?=',|' \})"""],
 }
 
 # ---- JSON rules: which keys are prose, which are names (with an EN shadow when a template
