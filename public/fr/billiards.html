@@ -283,7 +283,7 @@
   @media print { .klang { display: none; } }
 </style>
 <div class="klang" aria-label="Language · Langue"><a href="/billiards" hreflang="en" lang="en">EN</a><a href="/fr/billiards" hreflang="fr" lang="fr" class="on">FR</a></div>
-<script>window.__VOCAB__ = {"Advanced":"Avancé","Beginner":"Débutant","Billiards":"Billard","Intermediate":"Intermédiaire","Mechanics":"Mécanique"};</script>
+<script>window.__VOCAB__ = {"Mechanics":"Mécanique","Advanced":"Avancé","Intermediate":"Intermédiaire","Billiards":"Billard","Beginner":"Débutant"};</script>
 <script>const VOCAB = window.__VOCAB__ || {}; const vocab = (s) => (s == null ? s : (VOCAB[s] || s));</script>
 
 <nav class="knav"><a href="/fr/">KOSMOS</a><span>/</span><span class="cur">Billard</span></nav>
@@ -841,7 +841,7 @@
       S.simBalls.forEach((sb, bi) => {
         if (bi === 0 || bi === S.tgtIdx) return;
         if (sb.pts && sb.len > 0.005) poly(sb.pts.slice(S.contactStep || 0), { stroke: BALL_COL[sb.n] || 'var(--c-amber)', 'stroke-width': 1.7, opacity: 0.85 });
-        if (sb.pocket != null) potLabel(sb.pocket, 0.115, `${sb.n} drops`, BALL_COL[sb.n] || 'var(--c-amber)');
+        if (sb.pocket != null) potLabel(sb.pocket, 0.115, `${sb.n} tombe`, BALL_COL[sb.n] || 'var(--c-amber)');
       });
       // ghost ball at contact
       ball(S.ghost, { fill: 'none', stroke: 'var(--ink)', 'stroke-width': 1.2, 'stroke-dasharray': '2 3', opacity: 0.8 });
@@ -866,7 +866,7 @@
       const am = a0 + da / 2;
       const lab = el('text', { x: c[0] + (r + 12) * Math.cos(am), y: c[1] + (r + 12) * Math.sin(am) + 4, ...mono, fill: 'var(--ink-2)' }); lab.textContent = `θ ${fmt(deg(S.th), 0)}°`;
     }
-    text([0.06, TABLE_W - 0.05], `9-ft table · ${TABLE_L} × ${TABLE_W} m · 4½″ pockets · balls to scale`, { ...mono, opacity: 0.8 });
+    text([0.06, TABLE_W - 0.05], `table de 9 pieds · ${TABLE_L} × ${TABLE_W} m · poches de 4½″ · billes à l'échelle`, { ...mono, opacity: 0.8 });
   }
 
   // ---- pro mode: just the balls, the pockets, and your cue
@@ -886,10 +886,10 @@
   function zone(p) {
     let best = 0, bd = 1e9;
     POCKETS.forEach((q, i) => { const dd = dist2(p, q.p); if (dd < bd) { bd = dd; best = i; } });
-    if (bd < 0.3) return `near the ${POCKETS[best].name} pocket`;
+    if (bd < 0.3) return `près de la poche ${POCKETS[best].name}`;
     const col = p[0] < TABLE_L / 3 ? 'left third' : p[0] < 2 * TABLE_L / 3 ? 'centre' : 'right third';
     const rail = p[1] < 0.16 ? 'top rail' : p[1] > TABLE_W - 0.16 ? 'bottom rail' : p[0] < 0.16 ? 'left rail' : p[0] > TABLE_L - 0.16 ? 'right rail' : null;
-    return rail ? `on the ${rail}, ${col} of the table` : `open cloth, ${col} of the table`;
+    return rail ? `sur la ${rail}, ${col} de la table` : `tapis libre, ${col} de la table`;
   }
 
   // ---- the video: play the shot back at real pace (compressed if it rolls long)
@@ -934,11 +934,11 @@
   // ---- the pro verdict, revealed only after execution
   function reportPro(S) {
     const side = +$('side').value;
-    const sqTxt = side ? ` · squirt took ${fmt(Math.abs(deg(SQ_R) * side), 2)}° off it` : '';
+    const sqTxt = side ? ` · la déviation lui en a retiré ${fmt(Math.abs(deg(SQ_R) * side), 2)}°` : '';
     if (!S.reached) {
       $('ob').innerHTML = dl([['résultat', S.cbPre != null ? 'never touched — the cue ball scratched on the way' : 'never touched — a clean miss', 'warn']]);
       $('cb').innerHTML = dl([
-        ['bille blanche', S.cbPre != null ? `<b>SCRATCH</b> — falls in the ${POCKETS[S.cbPre].name}` : S.cbPreHang != null ? `hangs in the jaws of the ${POCKETS[S.cbPreHang].name}` : `dies on the cloth — ${zone(S.pre[S.pre.length - 1])}`, S.cbPre != null ? 'warn' : undefined],
+        ['bille blanche', S.cbPre != null ? `<b>FAUTE</b> — tombe dans la ${POCKETS[S.cbPre].name}` : S.cbPreHang != null ? `reste dans les mâchoires de la ${POCKETS[S.cbPreHang].name}` : `s'arrête sur le tapis — ${zone(S.pre[S.pre.length - 1])}`, S.cbPre != null ? 'warn' : undefined],
         ['la visée', `${fmt(state.aimDeg, 1)}°${sqTxt}`],
       ]);
       bumpScore(false, S.cbPre != null);
@@ -949,15 +949,15 @@
     const endOB = S.obTrace.pts[S.obTrace.pts.length - 1], endCB = S.cbTrace.pts[S.cbTrace.pts.length - 1];
     const dn = S.simBalls.filter((b, i) => i !== 0 && i !== S.tgtIdx && b.pocket != null);
     $('ob').innerHTML = dl([
-      ['outcome', pot ? `<b>POTTED</b> — drops in the ${POCKETS[S.obTrace.pocket].name} at ${fmt(S.obTrace.dropSpeed, 2)} m/s` : hang ? `hangs in the jaws of the ${POCKETS[S.obTrace.hang].name}` : `stays up — ${zone(endOB)}`, pot ? 'good' : 'warn'],
+      ['outcome', pot ? `<b>EMPOCHÉE</b> — elle tombe dans la ${POCKETS[S.obTrace.pocket].name} à ${fmt(S.obTrace.dropSpeed, 2)} m/s` : hang ? `reste dans les mâchoires de la ${POCKETS[S.obTrace.hang].name}` : `reste sur la table — ${zone(endOB)}`, pot ? 'good' : 'warn'],
       ['le contact', `${S.firstIsTarget ? '' : `ball ${S.firstBall} first! `}cut ${fmt(deg(S.th), 1)}° · ball-hit fraction ${fmt(S.fraction, 2)} · arriving at ${fmt(S.vc, 2)} m/s`, S.firstIsTarget ? undefined : 'warn'],
-      ['déviation par frottement', `${fmt(S.throwDeg, 2)}° off the line of centres`],
-      ...(dn.length ? [['also down', dn.map((b) => `${b.n} in the ${POCKETS[b.pocket].name}`).join(' · ')]] : []),
+      ['déviation par frottement', `${fmt(S.throwDeg, 2)}° hors de la ligne des centres`],
+      ...(dn.length ? [['also down', dn.map((b) => `${b.n} dans la ${POCKETS[b.pocket].name}`).join(' · ')]] : []),
     ]);
     $('cb').innerHTML = dl([
-      ['bille blanche', S.cbTrace.pocket != null ? `<b>SCRATCH</b> — falls in the ${POCKETS[S.cbTrace.pocket].name}` : S.cbTrace.hang != null ? `in the jaws of the ${POCKETS[S.cbTrace.hang].name}` : `lands ${zone(endCB)}`, S.cbTrace.pocket != null ? 'warn' : undefined],
+      ['bille blanche', S.cbTrace.pocket != null ? `<b>FAUTE</b> — la blanche tombe dans la ${POCKETS[S.cbTrace.pocket].name}` : S.cbTrace.hang != null ? `dans les mâchoires de la ${POCKETS[S.cbTrace.hang].name}` : `s'arrête ${zone(endCB)}`, S.cbTrace.pocket != null ? 'warn' : undefined],
       ['au contact', `${S.rollingAtContact ? 'rolling naturally' : Math.abs(S.sc) <= 0.05 * S.vc ? 'stun' : S.sc > 0 ? 'sliding with topspin' : 'carrying backspin'}${S.cbz ? ' · side on' : ''}${sqTxt}`],
-      ['après la bille', S.deflect === null ? 'stops dead' : `${fmt(S.deflect, 1)}° from its arrival line`],
+      ['après la bille', S.deflect === null ? 'stops dead' : `${fmt(S.deflect, 1)}° par rapport à sa ligne d'arrivée`],
     ]);
     bumpScore(pot, S.cbTrace.pocket != null);
     gradeConditions(S);
@@ -1077,13 +1077,13 @@
   const dl = (rows) => rows.map(([k, v, cls]) => `<dt>${k}</dt><dd${cls ? ` class="${cls}"` : ''}>${v}</dd>`).join('');
   function report(S) {
     if (!S.feasible) {
-      $('ob').innerHTML = dl([['—', `No line to the ${S.name} pocket — the direct path is blocked by geometry and no one-rail bank reaches it either. Drag a ball, or click another pocket.`, 'warn']]);
+      $('ob').innerHTML = dl([['—', `Aucune ligne vers la poche ${S.name} — le chemin direct est bloqué par la géométrie et aucun rappel à une bande ne l'atteint non plus. Déplacez une bille, ou cliquez sur une autre poche.`, 'warn']]);
       $('cb').innerHTML = dl([['—', 'waiting on a possible shot']]);
       return;
     }
     if (S.cbPre != null) {
       $('ob').innerHTML = dl([['—', 'Never touched.', 'warn']]);
-      $('cb').innerHTML = dl([['fautes', `rolls into the ${POCKETS[S.cbPre].name} pocket on the way to the ball`, 'warn']]);
+      $('cb').innerHTML = dl([['fautes', `roule dans la poche ${POCKETS[S.cbPre].name} avant d'atteindre la bille`, 'warn']]);
       return;
     }
     if (!S.reached) {
@@ -1091,27 +1091,27 @@
       $('cb').innerHTML = dl([['at rest', zone(S.pre[S.pre.length - 1])]]);
       return;
     }
-    const spinWord = S.rollingAtContact ? 'rolling naturally' : (S.sc > S.vc * 0.98 ? 'over-spinning (topspin beyond roll)' : S.sc > 0.05 * S.vc ? `sliding, ${fmt(100 * S.sc / S.vc, 0)} % of natural roll` : Math.abs(S.sc) <= 0.05 * S.vc ? 'stun — sliding with no spin' : `backspin, ${fmt(100 * -S.sc / S.vc, 0)} % of natural roll`);
+    const spinWord = S.rollingAtContact ? 'rolling naturally' : (S.sc > S.vc * 0.98 ? 'over-spinning (topspin beyond roll)' : S.sc > 0.05 * S.vc ? `en glissement, ${fmt(100 * S.sc / S.vc, 0)} % du roulement naturel` : Math.abs(S.sc) <= 0.05 * S.vc ? 'stun — sliding with no spin' : `rétro, ${fmt(100 * -S.sc / S.vc, 0)} % du roulement naturel`);
     const toward = Math.abs(S.vt) > 0.02 ? S.throwDir === Math.sign(S.vt) : null;
     const potted = S.obTrace.pocket === S.pkI;
     const missCm = fmt(100 * S.obTrace.minPD, 0);
     $('ob').innerHTML = dl([
       ['vitesse', `${fmt(vlen(S.vOB))} m/s <small>= v cos θ · (1+e)/2</small>`],
-      ['part d\'énergie', `${fmt(100 * S.eOB, 0)} % <small>cos²θ = ${fmt(100 * Math.cos(S.th) ** 2, 0)} % before restitution</small>`],
+      ['part d\'énergie', `${fmt(100 * S.eOB, 0)} % <small>cos²θ = ${fmt(100 * Math.cos(S.th) ** 2, 0)} % avant restitution</small>`],
       ['direction', `${S.bank ? `bank line, off the ${S.bank.rail} rail` : 'pocket line'}${S.throwDeg > 0.05 ? ` rotated ${fmt(S.throwDeg, 1)}° ${toward === null ? 'by the side spin' : toward ? 'toward the cue ball\'s line <small>plays fuller than aimed</small>' : 'away from the cue ball\'s line <small>plays thinner than aimed</small>'}` : ' — no throw'}`],
       ['déviation par frottement', `${fmt(S.throwDeg, 2)}° <small>μ = ${fmt(S.mu, 3)} at ${fmt(S.ul, 2)} m/s surface slip${S.Jh >= M * Math.abs(S.vt - S.cbz) / 7 - 1e-9 && S.Jh > 0 ? ' · gearing limit' : ''}</small>`],
       ['fraction de bille touchée', `${fmt(S.fraction, 2)} <small>1 − sin θ</small>`],
-      ['the pocket', potted ? `<b>drops</b> — falls in the ${S.name} at ${fmt(S.obTrace.dropSpeed, 2)} m/s` : S.obTrace.pocket != null ? `falls in the <em>wrong</em> pocket — the ${POCKETS[S.obTrace.pocket].name}` : S.obTrace.hang != null ? `<b>hangs in the jaws</b> of the ${POCKETS[S.obTrace.hang].name} — reaches the mouth without the roll to carry its ${fmt(1000 * POCKETS[S.obTrace.hang].shelf, 0)} mm shelf` : `stays up — dies after ${fmt(S.obTrace.len, 2)} m of cloth, ${missCm} cm from the mouth at its closest`, potted ? 'good' : 'warn'],
-      ...(S.firstIsTarget ? [] : [['premier contact', `the ${S.firstBall} ball, not the target — everything above describes that hit`, 'warn']]),
-      ...((() => { const dn = S.simBalls.filter((b, i) => i !== 0 && i !== S.tgtIdx && b.pocket != null); return dn.length ? [['also down', dn.map((b) => `${b.n} in the ${POCKETS[b.pocket].name}`).join(' · ')]] : []; })()),
+      ['the pocket', potted ? `<b>elle tombe</b> — dans la ${S.name} à ${fmt(S.obTrace.dropSpeed, 2)} m/s` : S.obTrace.pocket != null ? `tombe dans la <em>mauvaise</em> poche — la ${POCKETS[S.obTrace.pocket].name}` : S.obTrace.hang != null ? `<b>reste dans les mâchoires</b> de la ${POCKETS[S.obTrace.hang].name} — elle atteint l'entrée sans le roulement nécessaire pour franchir son rebord de ${fmt(1000 * POCKETS[S.obTrace.hang].shelf, 0)} mm` : `elle reste sur la table — s'arrête après ${fmt(S.obTrace.len, 2)} m de tapis, à ${missCm} cm de l'entrée au plus près`, potted ? 'good' : 'warn'],
+      ...(S.firstIsTarget ? [] : [['premier contact', `la bille ${S.firstBall}, pas la visée — tout ce qui précède décrit ce contact`, 'warn']]),
+      ...((() => { const dn = S.simBalls.filter((b, i) => i !== 0 && i !== S.tgtIdx && b.pocket != null); return dn.length ? [['also down', dn.map((b) => `${b.n} dans la ${POCKETS[b.pocket].name}`).join(' · ')]] : []; })()),
     ]);
     $('cb').innerHTML = dl([
       ['au contact', `${fmt(S.vc)} m/s · ${spinWord}${S.cbz ? ` · side ${fmt(Math.abs(S.cbz) / (2.5 * S.vc) * 100, 0)} %` : ''}`],
-      ['hors de la ligne tangente', `${fmt(vlen(S.vCB))} m/s <small>v sin θ, plus (1−e)/2 forward</small>`],
+      ['hors de la ligne tangente', `${fmt(vlen(S.vCB))} m/s <small>v sin θ, plus (1−e)/2 vers l'avant</small>`],
       ['direction finale', S.deflect === null ? 'none — stops dead at contact' : `${fmt(S.deflect, 1)}° from its original line${S.deflect > 90 ? ' — coming back' : S.deflect < 0.5 ? ' — straight on' : ', away from the object ball'} <small>${S.deflect > 20 && S.deflect < 40 && S.rollingAtContact && S.th > 0.1 ? '— the thirty-degree rule' : Math.abs(S.deflect - (90 - deg(S.th))) < 2 && S.th > 0.1 ? '— holds the tangent line' : ''}</small>`],
-      ['glisse', S.slideLen > 0.01 ? `${fmt(S.slideLen, 2)} m before it rolls` : 'not at all — rolling from contact'],
-      ['s\'immobilise', S.cbTrace.pocket != null ? `it doesn't — <b>scratches</b>, falling in the ${POCKETS[S.cbTrace.pocket].name} pocket` : S.cbTrace.hang != null ? `in the jaws of the ${POCKETS[S.cbTrace.hang].name} pocket — short of the shelf, no scratch` : `after ${fmt(S.cbTrace.len, 2)} m of cloth — ${zone(S.cbTrace.pts[S.cbTrace.pts.length - 1])}`, S.cbTrace.pocket != null ? 'warn' : undefined],
-      ['restitution', `e = ${E_BB}: separation ${fmt(100 * (1 - E_BB) / 2, 0)} % short of the ninety-degree rule`],
+      ['glisse', S.slideLen > 0.01 ? `${fmt(S.slideLen, 2)} m avant de rouler` : 'not at all — rolling from contact'],
+      ['s\'immobilise', S.cbTrace.pocket != null ? `non — <b>faute</b>, elle tombe dans la poche ${POCKETS[S.cbTrace.pocket].name}` : S.cbTrace.hang != null ? `dans les mâchoires de la poche ${POCKETS[S.cbTrace.hang].name} — en deçà du rebord, pas de faute` : `après ${fmt(S.cbTrace.len, 2)} m de tapis — ${zone(S.cbTrace.pts[S.cbTrace.pts.length - 1])}`, S.cbTrace.pocket != null ? 'warn' : undefined],
+      ['restitution', `e = ${E_BB} : la séparation reste ${fmt(100 * (1 - E_BB) / 2, 0)} % en deçà de la règle des quatre-vingt-dix degrés`],
     ]);
   }
 
@@ -1195,14 +1195,14 @@
     const d1 = slideOut(1, tip).d, vs = d1 > 1e-6 ? Math.sqrt(S.dst / d1) : Infinity;
     const arrive = !S.feasible ? '—'
       : !S.reached ? 'never arrives at this strike'
-      : S.rollingAtContact ? `rolling — took up natural roll ${fmt(Math.max(0, S.dst - so.d), 2)} m before contact`
-      : S.sc < -0.05 * S.vc ? `still carrying backspin — ${fmt(100 * -S.sc / S.vc, 0)} % of roll, reversed`
+      : S.rollingAtContact ? `roule — a pris le roulement naturel ${fmt(Math.max(0, S.dst - so.d), 2)} m avant le contact`
+      : S.sc < -0.05 * S.vc ? `conserve du rétro — ${fmt(100 * -S.sc / S.vc, 0)} % du roulement, inversé`
       : S.sc <= 0.05 * S.vc ? 'still sliding — stun, no roll taken up yet'
-      : `still sliding — ${fmt(100 * S.sc / S.vc, 0)} % of natural roll taken up`;
+      : `glisse encore — ${fmt(100 * S.sc / S.vc, 0)} % du roulement naturel acquis`;
     $('slideout').innerHTML = dl([
-      ['off the tip', so.d < 0.005 ? 'no slide — the tip height gives natural roll from the start' : `slides ${fmt(so.d, 2)} m in ${fmt(so.t, 2)} s, then rolls at ${fmt(so.vRoll, 2)} m/s <small>5v(1+tip)/7</small>`],
+      ['off the tip', so.d < 0.005 ? 'no slide — the tip height gives natural roll from the start' : `glisse sur ${fmt(so.d, 2)} m en ${fmt(so.t, 2)} s, puis roule à ${fmt(so.vRoll, 2)} m/s <small>5v(1+tip)/7</small>`],
       ['at the object ball', arrive],
-      ['arrives sliding', so.d < 0.005 ? 'never — it rolls from the start' : vs < 0.5 ? 'at every strike on the scale' : vs > 10 ? 'never on this scale — it rolls before covering the distance even at 10' : `above strike ${fmt(vs, 1)}, at the current ${fmt(S.dst, 2)} m <small>slide ∝ strike²</small>`],
+      ['arrives sliding', so.d < 0.005 ? 'never — it rolls from the start' : vs < 0.5 ? 'at every strike on the scale' : vs > 10 ? 'never on this scale — it rolls before covering the distance even at 10' : `au-delà d'une frappe de ${fmt(vs, 1)}, à la distance actuelle de ${fmt(S.dst, 2)} m <small>glissement ∝ frappe²</small>`],
     ]);
   }
 
@@ -1284,8 +1284,8 @@
     const t3 = cel('text', { x: pn[0] + 6, y: pn[1] + 30, ...mono, 'text-anchor': 'middle' }); t3.textContent = `sans effet : ${fmt(C.noSide, 0)}°`;
     const t4 = cel('text', { x: 12, y: 290, ...mono }); t4.textContent = 'bande supérieure · angles mesurés depuis la bande · référence : le même coup sans effet latéral';
     $('cout').innerHTML = dl([
-      ['angle de rebond', `${fmt(C.out, 1)}° from the rail <small>vs ${fmt(C.noSide, 1)}° with no side; ${aDeg}° in</small>`],
-      ['vitesse conservée', `${fmt(100 * C.speed, 0)} % <small>e = ${fmt(C.e, 2)} into the rail — rubber deadens with pace; friction on the rest</small>`],
+      ['angle de rebond', `${fmt(C.out, 1)}° par rapport à la bande <small>contre ${fmt(C.noSide, 1)}° sans effet ; ${aDeg}° à l'entrée</small>`],
+      ['vitesse conservée', `${fmt(100 * C.speed, 0)} % <small>e = ${fmt(C.e, 2)} à l'entrée dans la bande — le caoutchouc amortit d'autant plus que la vitesse est grande ; le frottement fait le reste</small>`],
       ['le long de la bande', `${fmt(C.vx, 2)} → ${fmt(C.vx2, 2)} m/s${C.reversed ? ' — reversed: the ball comes back' : ''}`],
       ['dans la bande', `${fmt(C.vy, 2)} → ${fmt(C.vy2, 2)} m/s`],
     ]);
@@ -1299,7 +1299,7 @@
     a.innerHTML = '<h3><span class="n"></span><span class="fld"></span></h3><div class="formula"></div><p class="sig"></p><div class="meta"></div>';
     a.querySelector('.n').textContent = e.name; a.querySelector('.fld').textContent = vocab(e.field) || '';
     a.querySelector('.formula').textContent = e.equation || ''; a.querySelector('.sig').textContent = e.significance || '';
-    a.querySelector('.meta').textContent = [e.year ? (e.year < 0 ? `c. ${-e.year} BCE` : e.year) : null, e.requires ? `rests on ${e.requires} equation${e.requires === 1 ? '' : 's'}` : null, 'open on the equations page →'].filter(Boolean).join(' · ');
+    a.querySelector('.meta').textContent = [e.year ? (e.year < 0 ? `v. ${-e.year} av. J.-C.` : e.year) : null, e.requires ? `repose sur ${e.requires} équation${e.requires === 1 ? '' : 's'}` : null, 'open on the equations page →'].filter(Boolean).join(' · ');
     shelf.appendChild(a);
   }
   const sk = $('skills');
@@ -1345,7 +1345,7 @@
       const spP = S.feasible ? sightPicture(S.dAim) : null;
       $('shotinfo').textContent = S.feasible
         ? `cut ${fmt(deg(Math.acos(Math.max(-1, Math.min(1, vdot(S.dAim, S.n))))), 1)}°${spP && !spP.miss ? ` · ${spP.name} (${spP.clock})` : ''} · ${fmt(S.dst, 2)} m to the ball · ${S.bank ? `banked off the ${S.bank.rail} rail into` : 'aimed at'} the ${S.name} pocket`
-        : `no line to the ${S.name} pocket from here — not even off one rail`;
+        : `aucune ligne vers la poche ${S.name} d'ici — pas même par une bande`;
       gradeConditions(S);
       drawView(S.feasible ? S.dAim : vunit(vsub(state.ob, state.cb)), v.tip, v.side, S.feasible ? S.ghost : null);
     } else {
@@ -1548,14 +1548,14 @@
     return clear / K;
   }
   const CONDITIONS = [
-    { id: 'clean', label: 'clean hit', chk: (S) => { const t = S.simBalls[S.tgtIdx].n; const bad = (S.cueContacts || []).filter((x) => x !== t); return { ok: !!S.reached && bad.length === 0, detail: bad.length ? `also touched ${[...new Set(bad)].join(', ')}` : S.reached ? 'only the target' : 'never arrived' }; } },
-    { id: 'norail', label: 'sans bande (blanche)', chk: (S) => ({ ok: (S.cueRails || 0) === 0, detail: `${S.cueRails || 0} rail${(S.cueRails || 0) === 1 ? '' : 's'} touched` }) },
-    { id: 'kick', label: 'kick first', chk: (S) => ({ ok: !!S.reached && (S.cueRailsPre || 0) >= 1, detail: `${S.cueRailsPre || 0} rail${(S.cueRailsPre || 0) === 1 ? '' : 's'} before contact` }) },
-    { id: 'rails3', label: '3 bandes après', chk: (S) => { const rp = Math.max(0, (S.cueRails || 0) - (S.cueRailsPre || 0)); return { ok: !!S.reached && rp >= 3, detail: `${rp} after contact` }; } },
-    { id: 'called', label: 'called pocket', chk: (S) => ({ ok: !!S.reached && S.obTrace && S.obTrace.pocket === state.pk, detail: S.obTrace && S.obTrace.pocket != null ? `in the ${POCKETS[S.obTrace.pocket].name}` : 'stayed up' }) },
-    { id: 'soft', label: 'pocket speed', chk: (S) => { const dn = S.obTrace && S.obTrace.pocket != null; return { ok: !!dn && S.obTrace.dropSpeed <= 1.2, detail: dn ? `drops at ${fmt(S.obTrace.dropSpeed, 2)} m/s (≤ 1.2)` : 'no drop' }; } },
-    { id: 'carom', label: 'carom after', chk: (S) => { const cc = S.cueContacts || []; const ok2 = cc.length > 1 && cc.slice(1).some((x) => x !== cc[0]); return { ok: !!S.reached && ok2, detail: cc.length > 1 ? `then ${[...new Set(cc.slice(1))].join(', ')}` : 'no second ball' }; } },
-    { id: 'still', label: 'nothing else moves', chk: (S) => { const mv = S.simBalls.filter((b, i) => i !== 0 && i !== S.tgtIdx && b.len > 0.03).map((b) => b.n); return { ok: mv.length === 0, detail: mv.length ? `${mv.join(', ')} moved` : 'surgical' }; } },
+    { id: 'clean', label: 'clean hit', chk: (S) => { const t = S.simBalls[S.tgtIdx].n; const bad = (S.cueContacts || []).filter((x) => x !== t); return { ok: !!S.reached && bad.length === 0, detail: bad.length ? `a aussi touché ${[...new Set(bad)].join(', ')}` : S.reached ? 'only the target' : 'never arrived' }; } },
+    { id: 'norail', label: 'sans bande (blanche)', chk: (S) => ({ ok: (S.cueRails || 0) === 0, detail: `contact avec ${S.cueRails || 0} bande${(S.cueRails || 0) === 1 ? '' : 's'}` }) },
+    { id: 'kick', label: 'kick first', chk: (S) => ({ ok: !!S.reached && (S.cueRailsPre || 0) >= 1, detail: `${S.cueRailsPre || 0} bande${(S.cueRailsPre || 0) === 1 ? '' : 's'} avant le contact` }) },
+    { id: 'rails3', label: '3 bandes après', chk: (S) => { const rp = Math.max(0, (S.cueRails || 0) - (S.cueRailsPre || 0)); return { ok: !!S.reached && rp >= 3, detail: `${rp} après le contact` }; } },
+    { id: 'called', label: 'called pocket', chk: (S) => ({ ok: !!S.reached && S.obTrace && S.obTrace.pocket === state.pk, detail: S.obTrace && S.obTrace.pocket != null ? `dans la ${POCKETS[S.obTrace.pocket].name}` : 'stayed up' }) },
+    { id: 'soft', label: 'pocket speed', chk: (S) => { const dn = S.obTrace && S.obTrace.pocket != null; return { ok: !!dn && S.obTrace.dropSpeed <= 1.2, detail: dn ? `retombe à ${fmt(S.obTrace.dropSpeed, 2)} m/s (≤ 1.2)` : 'no drop' }; } },
+    { id: 'carom', label: 'carom after', chk: (S) => { const cc = S.cueContacts || []; const ok2 = cc.length > 1 && cc.slice(1).some((x) => x !== cc[0]); return { ok: !!S.reached && ok2, detail: cc.length > 1 ? `puis ${[...new Set(cc.slice(1))].join(', ')}` : 'no second ball' }; } },
+    { id: 'still', label: 'nothing else moves', chk: (S) => { const mv = S.simBalls.filter((b, i) => i !== 0 && i !== S.tgtIdx && b.len > 0.03).map((b) => b.n); return { ok: mv.length === 0, detail: mv.length ? `${mv.join(', ')} ont bougé` : 'surgical' }; } },
     { id: 'safety', label: 'sécurité', chk: (S) => {
       const cue = S.simBalls[0];
       if (cue.pocket != null) return { ok: false, detail: 'cue ball down' };
@@ -1564,7 +1564,7 @@
       let low = up[0]; for (const b of up) if (b.n < low.n) low = b;
       const blockers = S.simBalls.filter((b, i) => i !== 0 && b !== low && b.pocket == null).map((b) => b.p);
       const vis = visibleFrac(cue.p, low.p, blockers);
-      return { ok: vis === 0, detail: `${fmt(100 * (1 - vis), 0)} % of the ${low.n} hidden` };
+      return { ok: vis === 0, detail: `${fmt(100 * (1 - vis), 0)} % de la ${low.n} cachée` };
     } },
   ];
   state.conds = new Set();
@@ -1584,7 +1584,7 @@
     const res = [...state.conds].map((id) => { const c = CONDITIONS.find((x) => x.id === id); return { c, r: c.chk(S) }; });
     const okN = res.filter((x) => x.r.ok).length;
     $('condres').innerHTML = res.map(({ c, r }) => `<span style="color:${r.ok ? 'var(--c-amber)' : 'var(--c-red)'}">${r.ok ? '✓' : '✗'} ${c.label}</span> <small>${r.detail}</small>`).join(' · ')
-      + ` — <b>${okN}/${res.length}</b> met`;
+      + ` — <b>${okN}/${res.length}</b> satisfaits`;
   }
 
   // ---- racks and roster management
@@ -1774,8 +1774,8 @@
   function phHint() {
     const view = ph.cam ? `camera ${ph.cam.assumed ? 'taken to be' : 'measured at'} ${fmt(ph.cam.h, 2)} m above the cloth, so every ball is dropped to where it really touches${ph.cam.assumed ? ' (the lens could not be solved from this angle, so a typical one is assumed — nudge a ball if it looks off)' : ''}` : 'read as a flat view — no height correction needed';
     $('phhint').innerHTML = ph.corners.length < 4
-      ? `Click the <b>${CORNER_WORDS[ph.corners.length]}</b> corner of the playing surface — where the two cushion faces meet, ${ph.corners.length + 1} of 4, clockwise from top-left.`
-      : `<b>Drag a corner</b> until the drawn rails and diamonds sit on the real ones — that is the whole calibration. Then drag any ball to place it, click bare cloth to add one, click a ball to pick its number. <b>${ph.balls.length}</b> ball${ph.balls.length === 1 ? '' : 's'} · ${view}.`;
+      ? `Cliquez sur le coin <b>${CORNER_WORDS[ph.corners.length]}</b> de la surface de jeu — là où les deux faces de bande se rejoignent, ${ph.corners.length + 1} sur 4, dans le sens horaire depuis le coin supérieur gauche.`
+      : `<b>Faites glisser un coin</b> jusqu’à ce que les bandes et les diamants tracés coïncident avec les vrais — c’est là toute la calibration. Ensuite, faites glisser une bille pour la placer, cliquez sur le tapis nu pour en ajouter une, cliquez sur une bille pour choisir son numéro. <b>${ph.balls.length}</b> bille${ph.balls.length === 1 ? '' : 's'} · ${view}.`;
   }
   function phNums() {
     const box = $('phnums');
@@ -2145,7 +2145,7 @@
   // is bare. Shots count golf-style: par is a ball a shot, fouls are strokes you feel.
   function runoutStatus(extra) {
     const ro = state.runout;
-    $('runsum').textContent = ro && !ro.over ? `· shot ${ro.shots + 1}` : '';
+    $('runsum').textContent = ro && !ro.over ? `· coup ${ro.shots + 1}` : '';
     if (!ro) { $('runres').innerHTML = ''; return; }
     if (ro.over) { $('runres').innerHTML = `<b>${extra}</b>`; return; }
     const left = state.balls.filter((b) => b.n > 0);
@@ -2188,7 +2188,7 @@
     } else if (dropped.length) {
       msg = `<span style="color:var(--c-amber)">the ${dropped.join(' and the ')} down — shoot again</span>`;
     } else {
-      msg = `dry — the ${target} stays up, play it from where the cue ball lies`;
+      msg = `raté — la ${target} reste en jeu, jouez-la d'où repose la bille blanche`;
     }
     if (state.mode === 'pro' && state.balls.length > 1) { const dv = vsub(state.ob, state.cb); state.aimDeg = deg(Math.atan2(dv[1], dv[0])); }
     run();
@@ -2199,7 +2199,7 @@
     if (!left.length) return;
     state.runout = { shots: 0, pots: 0, fouls: 0, over: false, money: left.some((b) => b.n === 9) ? 9 : null, par: left.length };
     $('runbox').open = true;
-    runoutStatus(`the table is yours — ${left.length} ball${left.length === 1 ? '' : 's'} up. Execute.`);
+    runoutStatus(`la table est à vous — ${left.length} bille${left.length === 1 ? '' : 's'} en jeu. Exécutez.`);
   });
   $('runstop').addEventListener('click', () => { state.runout = null; runoutStatus(''); });
 
@@ -2368,11 +2368,11 @@
       dball(DS.cb, { fill: 'var(--panel)', stroke: 'var(--ink)', 'stroke-width': 1.5, style: 'cursor:grab' });
       const err = arrived == null ? null : arrived - N;
       $('dsout').innerHTML = dl([
-        ['l\'arithmétique', `position <b>${fmt(P, 1)}</b> − aim <b>${fmt(A, 1)}</b> = arrival <b>${fmt(N, 1)}</b>`],
-        ['aim at', inRange ? `the <b>${fmt(A, 1)}</b> on the far long rail — ${fmt(A, 1)} diamond${A === 1 ? '' : 's'} from the far corner, and shoot <em>through</em> the diamond` : `<span class="warn">off the table — position ${fmt(P, 1)} can't reach arrival ${fmt(N, 1)}. Drag the cue ball or the arrival marker.</span>`],
+        ['l\'arithmétique', `position <b>${fmt(P, 1)}</b> − visée <b>${fmt(A, 1)}</b> = arrivée <b>${fmt(N, 1)}</b>`],
+        ['aim at', inRange ? `le <b>${fmt(A, 1)}</b> sur la longue bande opposée — ${fmt(A, 1)} losange${A === 1 ? '' : 's'} depuis le coin opposé, et visez <em>à travers</em> le losange` : `<span class="warn">hors de la table — la position ${fmt(P, 1)} ne peut pas atteindre l'arrivée ${fmt(N, 1)}. Déplacez la bille blanche ou le repère d'arrivée.</span>`],
         ['the cloth says', !S ? '—'
           : patternOK ? `third rail at <b>${fmt(arrived, 1)}</b> — ${Math.abs(err) < 0.15 ? 'the system is right here' : `${fmt(Math.abs(err), 1)} diamond${Math.abs(err) > 0.95 && Math.abs(err) < 1.05 ? '' : 's'} ${err > 0 ? 'long' : 'short'}`}${S.pocket != null ? ` <small>— and rolls on into the ${POCKETS[S.pocket].name} pocket</small>` : ''}`
-          : S.pocket != null ? `<span class="warn">the ball drops in the ${POCKETS[S.pocket].name} pocket before the third rail</span>`
+          : S.pocket != null ? `<span class="warn">la bille tombe dans la poche ${POCKETS[S.pocket].name} avant la troisième bande</span>`
           : `<span class="warn">not the system's path — the ball took the ${S.hits.slice(0, 3).map((h) => h.r.name).join(', then the ') || 'no'} rail${S.hits.length === 1 ? '' : 's'}</span>`, patternOK && Math.abs(err) < 0.5 ? 'good' : 'warn'],
         ['the system holds', 'with running side at a firm pace. It is a fit to a real table, not a theorem — the numbers were measured, and they hold only near the stroke they were measured with.'],
       ]);
@@ -2397,7 +2397,7 @@
           const back = vunit(vsub(DS.cb2, stub));
           const lab = vadd(vadd(stub, vmul(back, 0.34)), [0, stub[1] < TABLE_W / 2 ? 0.10 : -0.07]);
           lab[0] = Math.min(Math.max(lab[0], 0.42), TABLE_L - 0.42);
-          dtext(lab, `image: ${fmt(far - dist2(DS.cb2, sol.h1), 2)} m on`, { ...dmono, fill: 'var(--c-red)', 'text-anchor': 'middle', opacity: 0.85 });
+          dtext(lab, `image : ${fmt(far - dist2(DS.cb2, sol.h1), 2)} m sur`, { ...dmono, fill: 'var(--c-red)', 'text-anchor': 'middle', opacity: 0.85 });
         }
         S = railRun(DS.cb2, sol.dir, v, side, true, 3, 0.05);   // two rails and the whole leg to the target
         dpoly(S.pts, { stroke: 'var(--c-felt)', 'stroke-width': 2.2, opacity: 0.95 });
@@ -2413,11 +2413,11 @@
       dball(DS.cb2, { fill: 'var(--panel)', stroke: 'var(--ink)', 'stroke-width': 1.5, style: 'cursor:grab' });
       const hit = miss != null && miss < 2 * R;
       $('dsout').innerHTML = dl([
-        ['the construction', sol ? `mirror the target through the <b>${sol.r2.name}</b> rail, then through the <b>${sol.r1.name}</b> — and shoot at that image` : '<span class="warn">no two-rail line from here — drag either ball</span>'],
-        ['the rails', sol ? `${sol.r1.name}, then ${sol.r2.name} · ${fmt(sol.len, 2)} m of cloth on the ideal line` : '—'],
+        ['the construction', sol ? `reflétez la cible à travers la bande <b>${sol.r2.name}</b>, puis à travers la <b>${sol.r1.name}</b> — et visez cette image` : '<span class="warn">no two-rail line from here — drag either ball</span>'],
+        ['the rails', sol ? `${sol.r1.name}, puis ${sol.r2.name} · ${fmt(sol.len, 2)} m de tapis sur la ligne idéale` : '—'],
         ['the cloth says', !S ? '—'
-          : miss != null ? (hit ? `<b>it hits</b> — ${fmt(1000 * miss, 0)} mm centre to centre at the closest` : died ? `<span class="warn">the ball runs out of legs ${fmt(100 * (miss - 2 * R), 1)} cm short — the line is fine, the pace isn't</span>` : `misses by ${fmt(100 * (miss - 2 * R), 1)} cm of gap${S.pocket != null ? `, then drops in the ${POCKETS[S.pocket].name} pocket` : ''}`)
-          : S.pocket != null ? `<span class="warn">the ball drops in the ${POCKETS[S.pocket].name} pocket before the second rail</span>`
+          : miss != null ? (hit ? `<b>elle touche</b> — ${fmt(1000 * miss, 0)} mm de centre à centre au plus près` : died ? `<span class="warn">la bille manque de souffle, ${fmt(100 * (miss - 2 * R), 1)} cm trop court — la ligne est bonne, la vitesse ne l'est pas</span>` : `misses by ${fmt(100 * (miss - 2 * R), 1)} cm of gap${S.pocket != null ? `, then drops in the ${POCKETS[S.pocket].name} pocket` : ''}`)
+          : S.pocket != null ? `<span class="warn">la bille tombe dans la poche ${POCKETS[S.pocket].name} avant la deuxième bande</span>`
           : '<span class="warn">the ball died before the second rail</span>', hit ? 'good' : 'warn'],
         ['why it misses', 'The mirror assumes the rail gives back the angle it was handed. Rubber does not: it keeps only <em>e</em> of the speed into the cushion and friction drags the rest along the rail, so every real rebound comes off flatter than the image says — more so the harder you hit it. Running side pays some of that back.'],
       ]);

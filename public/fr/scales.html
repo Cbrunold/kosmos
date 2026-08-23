@@ -345,7 +345,7 @@
   @media print { .klang { display: none; } }
 </style>
 <div class="klang" aria-label="Language · Langue"><a href="/scales" hreflang="en" lang="en">EN</a><a href="/fr/scales" hreflang="fr" lang="fr" class="on">FR</a></div>
-<script>window.__VOCAB__ = {"Supercluster":"Superamas","Cluster":"Amas","Cosmological":"Cosmologique","Group":"Groupe","Galaxy":"Galaxie","Attractor":"Attracteur","Void":"Vide"};</script>
+<script>window.__VOCAB__ = {"Cluster":"Amas","Group":"Groupe","Cosmological":"Cosmologique","Supercluster":"Superamas","Attractor":"Attracteur","Galaxy":"Galaxie","Void":"Vide"};</script>
 <script>const VOCAB = window.__VOCAB__ || {}; const vocab = (s) => (s == null ? s : (VOCAB[s] || s));</script>
 
 <h1 class="ktitle">L'échelle des grandeurs</h1>
@@ -613,12 +613,12 @@
     const el = document.getElementById('check');
     el.innerHTML =
       `<b>${N_CHECKED} lignes sur ${ST.length} donnent à la fois un décalage vers le rouge et une distance</b>, ce qui est une affirmation `
-      + `arithmetic can test. Each one is recomputed at build time from flat ΛCDM — `
-      + `<code>H₀ = ${COSMO.H0}</code>, <code>Ω<sub>m</sub> = ${COSMO.Om}</code>, ${COSMO.name} — and shown `
-      + `with its residual on the row. `
+      + `que l'arithmétique peut vérifier. Chacune est recalculée à la compilation à partir d'un ΛCDM plat — `
+      + `<code>H₀ = ${COSMO.H0}</code>, <code>Ω<sub>m</sub> = ${COSMO.Om}</code>, ${COSMO.name} — et affiché `
+      + `avec son résidu sur la ligne. `
       + (N_OFF === 0
           ? 'All of them agree to within 25%.'
-          : `<b>${N_OFF}</b> disagree by more than 25% and say so.`)
+          : `<b>${N_OFF}</b> divergent de plus de 25% et le disent.`)
       + ' Distances here are <b>comoving</b>. Radiation is neglected, which costs about 0.5% at the '
       + 'last-scattering surface and nothing anywhere else.';
     el.hidden = false;

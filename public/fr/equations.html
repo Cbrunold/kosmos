@@ -382,7 +382,7 @@
   @media print { .klang { display: none; } }
 </style>
 <div class="klang" aria-label="Language · Langue"><a href="/equations" hreflang="en" lang="en">EN</a><a href="/fr/equations" hreflang="fr" lang="fr" class="on">FR</a></div>
-<script>window.__VOCAB__ = {"Heat Transfer":"Transfert thermique","General Relativity":"La relativité générale","Billiards":"Billard","Nonlinear Dynamics":"Dynamique non linéaire","Mathematics":"Mathématiques","Particle Physics":"Physique des particules","Waves & Optics":"Ondes et optique","Plasma Physics":"Physique des plasmas","Materials Science":"Science des matériaux","Chemistry":"Chimie","Quantum":"Quantique","Chemical Kinetics":"Cinétique chimique","Celestial Mechanics":"Mécanique céleste","theory":"théorie","Astrophysics":"Astrophysique","Thermoelectrics":"Thermoélectricité","Geophysics":"Géophysique","Fluid Dynamics":"Dynamique des fluides","Magnetohydrodynamics":"Magnétohydrodynamique","Vectors & Geometry":"Vecteurs et géométrie","Biophysics":"Biophysique","Chemical Thermodynamics":"Thermodynamique chimique","Atomic Physics":"Physique atomique","Statistical Mechanics":"Physique statistique","Special Relativity":"Relativité restreinte","Quantum Field Theory":"Théorie quantique des champs","Classical Field Theory":"Théorie classique des champs","Nuclear Physics":"Physique nucléaire","Photonics":"Photonique","Rocketry":"Astronautique","Calculus":"Analyse","Cosmology":"Cosmologie","object":"objet","Thermodynamics":"Thermodynamique","Quantum Computing":"Calcul quantique","Mechanics":"Mécanique","Radiation":"Rayonnement","Electrostatics":"Électrostatique","Superconductivity":"Supraconductivité","Information Theory":"Théorie de l'information","Acoustics":"Acoustique","Condensed Matter":"Matière condensée","Electromagnetism":"Électromagnétisme"};</script>
+<script>window.__VOCAB__ = {"Acoustics":"Acoustique","Electrostatics":"Électrostatique","Quantum Field Theory":"Théorie quantique des champs","Celestial Mechanics":"Mécanique céleste","Quantum":"Quantique","Special Relativity":"Relativité restreinte","Biophysics":"Biophysique","Waves & Optics":"Ondes et optique","Fluid Dynamics":"Dynamique des fluides","Geophysics":"Géophysique","Cosmology":"Cosmologie","Electromagnetism":"Électromagnétisme","Photonics":"Photonique","Billiards":"Billard","Atomic Physics":"Physique atomique","Mathematics":"Mathématiques","Heat Transfer":"Transfert thermique","Thermodynamics":"Thermodynamique","Materials Science":"Science des matériaux","Chemistry":"Chimie","object":"objet","Classical Field Theory":"Théorie classique des champs","General Relativity":"La relativité générale","Vectors & Geometry":"Vecteurs et géométrie","Astrophysics":"Astrophysique","Superconductivity":"Supraconductivité","Particle Physics":"Physique des particules","Magnetohydrodynamics":"Magnétohydrodynamique","Radiation":"Rayonnement","Plasma Physics":"Physique des plasmas","Nonlinear Dynamics":"Dynamique non linéaire","Chemical Kinetics":"Cinétique chimique","Chemical Thermodynamics":"Thermodynamique chimique","theory":"théorie","Rocketry":"Astronautique","Quantum Computing":"Calcul quantique","Calculus":"Analyse","Nuclear Physics":"Physique nucléaire","Thermoelectrics":"Thermoélectricité","Information Theory":"Théorie de l'information","Statistical Mechanics":"Physique statistique","Condensed Matter":"Matière condensée","Mechanics":"Mécanique"};</script>
 <script>const VOCAB = window.__VOCAB__ || {}; const vocab = (s) => (s == null ? s : (VOCAB[s] || s));</script>
 
 <nav class="knav"><a href="/fr/">KOSMOS</a><span>/</span><span class="cur">Équations</span></nav>
@@ -598,7 +598,7 @@
     b.className = 'dchip';
     b.style.setProperty('--dc', d.color);
     b.dataset.domain = d.name;
-    b.title = d.blurb + ` — ${d.fields.length} fields`;
+    b.title = d.blurb + ` — ${d.fields.length} champs`;
     b.innerHTML = '<span class="lbl"></span><span class="n"></span><span class="caret">▾</span>';
     b.querySelector('.lbl').textContent = vocab(d.name);
     b.querySelector('.n').textContent = d.count;
@@ -686,8 +686,8 @@
       if (lut) c.appendChild(buildTable(lut));
       const bits = [];
       if (e['Named After']) bits.push(e['Named After']);
-      if (e.Year) bits.push(e.Year < 0 ? `c. ${-e.Year} BCE` : String(e.Year));
-      if (e.reqs.length) bits.push(`rests on ${e.closure.size} equation${e.closure.size === 1 ? '' : 's'}, ${e.depth} deep`);
+      if (e.Year) bits.push(e.Year < 0 ? `v. ${-e.Year} av. J.-C.` : String(e.Year));
+      if (e.reqs.length) bits.push(`repose sur ${e.closure.size} équation${e.closure.size === 1 ? '' : 's'}, sur ${e.depth} niveaux de profondeur`);
       else if (e.reqBy.length) bits.push('a foundation — requires nothing');
       if (bits.length) { const m = document.createElement('div'); m.className = 'meta'; m.textContent = bits.join(' · '); c.appendChild(m); }
       // three equation-to-equation rows: what it leans on (Requires), what leans on it
@@ -726,14 +726,14 @@
         for (const r of e.closure) { if (!byDepth.has(r.depth)) byDepth.set(r.depth, []); byDepth.get(r.depth).push(r); }
         for (const d of [...byDepth.keys()].sort((a, b) => a - b)) {
           const lv = document.createElement('div'); lv.className = 'lvl';
-          lv.textContent = d === 0 ? 'fondements' : `then · ${d} deep`;
+          lv.textContent = d === 0 ? 'fondements' : `puis · profondeur ${d}`;
           path.appendChild(lv);
           for (const r of byDepth.get(d).sort((a, b) => (a.Year ?? 9999) - (b.Year ?? 9999))) path.appendChild(chip(r));
         }
         more.addEventListener('click', () => {
           const on = path.classList.toggle('on');
           more.setAttribute('aria-expanded', String(on));
-          more.textContent = on ? `all ${e.closure.size} first ▾` : `tous les ${e.closure.size} d'abord ▸`;
+          more.textContent = on ? `les ${e.closure.size} d'abord ▾` : `tous les ${e.closure.size} d'abord ▸`;
         });
         c.appendChild(path);
       }
@@ -815,8 +815,8 @@
     }
     const fc = document.getElementById('fcount');
     fc.textContent = (activeField || activeDomain)
-      ? `${shown} of ${E.length} equations — ${activeField || activeDomain}`
-      : `${E.length} equations across ${present.length} fields, ${DOMAINS.length} domains · ${nFoundations} foundations · 530 BCE to 1995`;
+      ? `${shown} équations sur ${E.length} — ${activeField || activeDomain}`
+      : `${E.length} équations réparties sur ${present.length} champs, ${DOMAINS.length} domaines · ${nFoundations} fondements · 530 av. J.-C. à 1995`;
   }
   sync();
 

@@ -488,7 +488,7 @@
   @media print { .klang { display: none; } }
 </style>
 <div class="klang" aria-label="Language · Langue"><a href="/elements" hreflang="en" lang="en">EN</a><a href="/fr/elements" hreflang="fr" lang="fr" class="on">FR</a></div>
-<script>window.__VOCAB__ = {"Heat Transfer":"Transfert thermique","General Relativity":"La relativité générale","Billiards":"Billard","Nonlinear Dynamics":"Dynamique non linéaire","Mathematics":"Mathématiques","Particle Physics":"Physique des particules","Waves & Optics":"Ondes et optique","Plasma Physics":"Physique des plasmas","Underground":"Souterrain","Materials Science":"Science des matériaux","Brine":"Saumure","Chemistry":"Chimie","Quantum":"Quantique","Chemical Kinetics":"Cinétique chimique","Celestial Mechanics":"Mécanique céleste","Astrophysics":"Astrophysique","Thermoelectrics":"Thermoélectricité","Geophysics":"Géophysique","Fluid Dynamics":"Dynamique des fluides","Magnetohydrodynamics":"Magnétohydrodynamique","Vectors & Geometry":"Vecteurs et géométrie","Biophysics":"Biophysique","Chemical Thermodynamics":"Thermodynamique chimique","Atomic Physics":"Physique atomique","Statistical Mechanics":"Physique statistique","Quarry":"Carrière","Special Relativity":"Relativité restreinte","In-situ leach":"Lixiviation in situ","Quantum Field Theory":"Théorie quantique des champs","Classical Field Theory":"Théorie classique des champs","Nuclear Physics":"Physique nucléaire","Open pit + underground":"Ciel ouvert + souterrain","Photonics":"Photonique","Rocketry":"Astronautique","Calculus":"Analyse","Cosmology":"Cosmologie","Gas field":"Gisement de gaz","Thermodynamics":"Thermodynamique","Quantum Computing":"Calcul quantique","Mechanics":"Mécanique","Radiation":"Rayonnement","Electrostatics":"Électrostatique","Superconductivity":"Supraconductivité","Information Theory":"Théorie de l'information","Acoustics":"Acoustique","Open pit":"Mine à ciel ouvert","Condensed Matter":"Matière condensée","Electromagnetism":"Électromagnétisme"};</script>
+<script>window.__VOCAB__ = {"Acoustics":"Acoustique","Electrostatics":"Électrostatique","Quantum Field Theory":"Théorie quantique des champs","Celestial Mechanics":"Mécanique céleste","Quantum":"Quantique","Special Relativity":"Relativité restreinte","Biophysics":"Biophysique","Waves & Optics":"Ondes et optique","Fluid Dynamics":"Dynamique des fluides","Geophysics":"Géophysique","Cosmology":"Cosmologie","Electromagnetism":"Électromagnétisme","Underground":"Souterrain","Open pit":"Mine à ciel ouvert","Photonics":"Photonique","In-situ leach":"Lixiviation in situ","Billiards":"Billard","Atomic Physics":"Physique atomique","Mathematics":"Mathématiques","Heat Transfer":"Transfert thermique","Thermodynamics":"Thermodynamique","Materials Science":"Science des matériaux","Chemistry":"Chimie","Classical Field Theory":"Théorie classique des champs","Gas field":"Gisement de gaz","General Relativity":"La relativité générale","Vectors & Geometry":"Vecteurs et géométrie","Astrophysics":"Astrophysique","Brine":"Saumure","Superconductivity":"Supraconductivité","Particle Physics":"Physique des particules","Magnetohydrodynamics":"Magnétohydrodynamique","Radiation":"Rayonnement","Plasma Physics":"Physique des plasmas","Quarry":"Carrière","Nonlinear Dynamics":"Dynamique non linéaire","Chemical Kinetics":"Cinétique chimique","Chemical Thermodynamics":"Thermodynamique chimique","Open pit + underground":"Ciel ouvert + souterrain","Rocketry":"Astronautique","Quantum Computing":"Calcul quantique","Calculus":"Analyse","Nuclear Physics":"Physique nucléaire","Thermoelectrics":"Thermoélectricité","Information Theory":"Théorie de l'information","Statistical Mechanics":"Physique statistique","Condensed Matter":"Matière condensée","Mechanics":"Mécanique"};</script>
 
 <header class="top">
   <div class="eyebrow"><a href="/fr/" style="color: inherit; text-decoration: none">KOSMOS</a> / Chimie · synchronisé en direct depuis Notion</div>
@@ -603,7 +603,7 @@
   const css = (n) => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
   const catColor = (k) => `var(--cat-${k})`;
   const fmtNum = (v, unit) => (v == null ? null : `${+v.toPrecision(6)}${unit ? ` ${unit}` : ''}`);
-  const fmtYear = (y) => (y == null ? null : y < 0 ? `${-y} BCE` : String(y));
+  const fmtYear = (y) => (y == null ? null : y < 0 ? `${-y} av. J.-C.` : String(y));
   const stateAt = (e, T) => {
     if (e.meltingPt == null || e.boilingPt == null) return null;
     if (T < e.meltingPt) return 'solid';
@@ -671,7 +671,7 @@
     block: {
       name: 'Block',
       color: (e) => catColor({ s: 'alkali', p: 'nonmetal', d: 'transition', f: 'noble' }[e.block]),
-      value: (e) => `${e.block}-block`,
+      value: (e) => `bloc ${e.block}`,
       legend: () => ['s', 'p', 'd', 'f'].map((b) => ({ label: `bloc ${b}`, color: catColor({ s: 'alkali', p: 'nonmetal', d: 'transition', f: 'noble' }[b]) })),
     },
     origin: {
@@ -691,7 +691,7 @@
     boil: { name: 'Boiling', seq: true, t: (e) => (e.boilingPt == null ? null : lin(e.boilingPt, bpR)),
       value: (e) => fmtNum(e.boilingPt, '°C') || 'no data', range: () => [`${bpR[0]} °C`, `${bpR[1]} °C`] },
     disc: { name: 'Discovery', seq: true, t: (e) => yearT(e.discovered),
-      value: (e) => `discovered ${fmtYear(e.discovered)}`, range: () => ['9000 BCE', '2009'], slider: 'year' },
+      value: (e) => `découvert ${fmtYear(e.discovered)}`, range: () => ['9000 BCE', '2009'], slider: 'year' },
   };
   // Rarity, not abundance: the scale runs hot for the scarce ones, which is the
   // question people actually ask of a periodic table. Only offered if the data
@@ -704,7 +704,7 @@
     LENSES.conc = {
       name: 'Concentration', seq: true,
       t: (e) => { const f = conc(e); return f == null ? null : Math.max(0, Math.min(1, (Math.log10(f) - CF_LO) / (CF_HI - CF_LO))); },
-      value: (e) => { const f = conc(e); return f == null ? (e.minedAs === 'By-product' ? 'by-product — no ore of its own' : e.minedAs === 'Not mined' ? 'not mined' : 'no ore grade recorded') : `ore is ${fmtFactor(f)}× richer than the crust`; },
+      value: (e) => { const f = conc(e); return f == null ? (e.minedAs === 'By-product' ? 'by-product — no ore of its own' : e.minedAs === 'Not mined' ? 'not mined' : 'no ore grade recorded') : `le minerai est ${fmtFactor(f)}× plus riche que la croûte`; },
       range: () => ['1× (crust)', '≥10⁵× (log)'],
     };
   }
@@ -887,7 +887,7 @@
       ['discovered', fmtYear(e.discovered)],
       ['in the crust', e.abundance == null
         ? (e.occurrence === 'Synthetic' ? 'none — synthetic only' : null)
-        : `${fmtPpm(e.abundance)} · ${abuRank.get(e.z)}${ordinal(abuRank.get(e.z))} rarest of ${abuRank.size}`],
+        : `${fmtPpm(e.abundance)} · ${abuRank.get(e.z)}${ordinal(abuRank.get(e.z))} plus rare sur ${abuRank.size}`],
     ];
     const dl = rows.map(([k, v]) =>
       `<dt>${k}</dt><dd class="${v == null ? 'none' : ''}">${v == null ? '— not in Notion' : v}</dd>`).join('');
@@ -946,7 +946,7 @@
       const all = document.createElement('a');
       all.className = 'dmin all';
       all.href = '/fr/minerals?el=' + e.sym;
-      all.textContent = mi.n > mi.examples.length ? `all ${mi.n.toLocaleString('en')} →` : 'browse →';
+      all.textContent = mi.n > mi.examples.length ? `tous les ${mi.n.toLocaleString('en')} →` : 'browse →';
       all.title = `Filtrer la collection de minéraux sur les minéraux contenant ${e.name}`;
       list.appendChild(all);
       box.appendChild(list);
@@ -965,7 +965,7 @@
         facts.push(['typical ore grade', fmtPpm(e.oreGrade)]);
         if (e.abundance) {
           const f = e.oreGrade / e.abundance;
-          facts.push(['concentration factor', `${fmtFactor(f)}× the crust — ` +
+          facts.push(['concentration factor', `${fmtFactor(f)}× la croûte — ` +
             (f < 10 ? 'barely enriched; mined by the billion tonnes' :
              f < 100 ? 'modestly enriched ore bodies' :
              f < 1000 ? 'needs a real ore deposit' :
@@ -1115,7 +1115,7 @@
         body: JSON.stringify({ image: dataUrl.split(',')[1], mediaType: 'image/jpeg' }),
       });
       const data = await res.json().catch(() => ({}));
-      if (!res.ok) throw new Error(data.error || `Analysis failed (${res.status}).`);
+      if (!res.ok) throw new Error(data.error || `Échec de l'analyse (${res.status}).`);
       renderAnalysis(data);
     } catch (e) {
       setStatus(e.message, 'err');
@@ -1185,9 +1185,9 @@
       },
       value: (e) => {
         const m = analysisMap[e.z];
-        return m ? `${+m.pct.toPrecision(3)}% of mass · ${m.source}` : 'not present in this object';
+        return m ? `${+m.pct.toPrecision(3)}% de la masse · ${m.source}` : 'not present in this object';
       },
-      range: () => [`${+Math.min(...pcts).toPrecision(2)}%`, `${+Math.max(...pcts).toPrecision(2)}% of mass (log scale)`],
+      range: () => [`${+Math.min(...pcts).toPrecision(2)}%`, `${+Math.max(...pcts).toPrecision(2)}% de la masse (échelle log)`],
     };
     if (!analysisLensBtn) {
       analysisLensBtn = document.createElement('button');
