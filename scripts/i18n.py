@@ -453,12 +453,22 @@ def _call_api(texts: list[str], model: str, key: str, tries: int = 4) -> list[st
             if isinstance(arr, list) and len(arr) == len(texts) and all(isinstance(x, str) for x in arr):
                 return arr
             raise ValueError(f"shape mismatch: {len(arr) if isinstance(arr, list) else type(arr)} for {len(texts)}")
-        except (urllib.error.HTTPError, urllib.error.URLError, ValueError, RuntimeError, json.JSONDecodeError) as e:
-            code = getattr(e, "code", None)
-            if attempt == tries - 1 or (code and code < 500 and code != 429):
+        except urllib.error.HTTPError as e:
+            detail = e.read().decode(errors="replace")[:300]
+            if e.code == 400 and "credit balance" in detail:
+                raise OutOfCredit(detail)          # no point retrying anything: stop the whole run
+            if attempt == tries - 1 or (e.code < 500 and e.code != 429):
+                raise RuntimeError(f"HTTP {e.code}: {detail}")
+            time.sleep(2 ** attempt * 2)
+        except (urllib.error.URLError, ValueError, RuntimeError, json.JSONDecodeError) as e:
+            if attempt == tries - 1:
                 raise
             time.sleep(2 ** attempt * 2)
     raise RuntimeError("unreachable")
+
+
+class OutOfCredit(Exception):
+    """The key's credit balance is exhausted — the API answers 400 to everything."""
 
 
 def translate_pending(tr: Translator, model: str = "claude-opus-5", batch: int = 30, workers: int = 6,
@@ -475,16 +485,26 @@ def translate_pending(tr: Translator, model: str = "claude-opus-5", batch: int =
     progress(f"  translating {len(items)} strings in {len(batches)} batches with {model}")
     done = 0
 
+    stop = {"out": None}
+
     def run(b):
         texts = [s for _, s in b]
+        if stop["out"]:
+            return b, [None] * len(b)
         try:
             fr = _call_api(texts, model, key)
+        except OutOfCredit as e:
+            stop["out"] = str(e); return b, [None] * len(b)
         except Exception as e:          # one batch failing must not lose the rest
             progress(f"  batch of {len(b)} failed ({e}); retrying one by one")
             fr = []
             for t in texts:
+                if stop["out"]:
+                    fr.append(None); continue
                 try:
                     fr.append(_call_api([t], model, key)[0])
+                except OutOfCredit as e2:
+                    stop["out"] = str(e2); fr.append(None)
                 except Exception as e2:
                     progress(f"    string failed: {t[:60]!r}: {e2}"); fr.append(None)
         return b, fr
@@ -496,4 +516,7 @@ def translate_pending(tr: Translator, model: str = "claude-opus-5", batch: int =
             tr.pending = {k: v for k, v in tr.pending.items() if k not in tr.cache}
             progress(f"  {done}/{len(items)}")
             tr.save()
+    if stop["out"]:
+        progress(f"  STOPPED: {stop['out']}\n  {done} translated this run; {len(tr.pending)} still pending — "
+                 "add credits and run again; only the missing strings are sent")
     return done

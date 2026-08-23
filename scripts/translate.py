@@ -59,7 +59,7 @@ def main(argv):
         tr.save()
         return
     if tr.pending:
-        i18n.translate_pending(tr)
+        i18n.translate_pending(tr, progress=lambda s: print(s, flush=True))
     tr.save()
     print("rebuilding with the new cache")
     build()
