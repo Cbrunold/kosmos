@@ -268,7 +268,8 @@
   .klang a:hover:not(.on) { color: var(--ink); }
   @media print { .klang { display: none; } }
 </style>
-<div class="klang" aria-label="Language · Langue"><a href="/fr/universe" hreflang="en" lang="en" class="on">EN</a><a href="/fr/universe" hreflang="fr" lang="fr">FR</a></div>
+<div class="klang" aria-label="Language · Langue"><a href="/universe" hreflang="en" lang="en">EN</a><a href="/fr/universe" hreflang="fr" lang="fr" class="on">FR</a></div>
+<script>window.__VOCAB__ = {"attractor":"attracteur","cluster":"amas","galaxy":"galaxie","void":"vide","group":"groupe","supercluster":"superamas","cosmological":"cosmologique"};</script>
 <script>const VOCAB = window.__VOCAB__ || {}; const vocab = (s) => (s == null ? s : (VOCAB[s] || s));</script>
 
 <h1 class="ktitle">L'Univers en trois dimensions</h1>
@@ -595,12 +596,12 @@
       b.addEventListener('click', () => fn(b));
       c.appendChild(b); return b;
     };
-    mk('reset view', () => { cam = { ...HOME, pxPerDecade: fitZoom() }; draw(); });
-    mk('top down', () => { cam.pitch = 89; draw(); });
-    mk('edge on', () => { cam.pitch = 0; draw(); });
+    mk('réinitialiser la vue', () => { cam = { ...HOME, pxPerDecade: fitZoom() }; draw(); });
+    mk('de dessus', () => { cam.pitch = 89; draw(); });
+    mk('de profil', () => { cam.pitch = 0; draw(); });
     const sep = document.createElement('span'); sep.className = 'sep'; c.appendChild(sep);
-    mk('shells', (b) => { showShells = !showShells; b.setAttribute('aria-pressed', String(showShells)); draw(); }, true);
-    mk('labels', (b) => { showLabels = !showLabels; b.setAttribute('aria-pressed', String(showLabels)); draw(); }, true);
+    mk('couches', (b) => { showShells = !showShells; b.setAttribute('aria-pressed', String(showShells)); draw(); }, true);
+    mk('étiquettes', (b) => { showLabels = !showLabels; b.setAttribute('aria-pressed', String(showLabels)); draw(); }, true);
     // the zoom control, stepped in multiples of the fitted view rather than in
     // pixels, so the steps mean the same thing on a phone and on a monitor
     for (const [label, mult] of [['all of it', 1], ['superclusters', 2.4], ['Local Group', 7], ['solar', 26]]) {

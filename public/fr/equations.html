@@ -381,8 +381,8 @@
   .klang a:hover:not(.on) { color: var(--ink); }
   @media print { .klang { display: none; } }
 </style>
-<script>window.__VOCAB__ = {"theory":"théorie","Superconductivity":"Supraconductivité","Special Relativity":"Relativité restreinte","Information Theory":"Théorie de l'information","Billiards":"Billard","Quantum":"Quantique","object":"objet","Statistical Mechanics":"Physique statistique","Radiation":"Rayonnement","General Relativity":"La relativité générale"};</script>
-<div class="klang" aria-label="Language · Langue"><a href="/fr/equations" hreflang="en" lang="en" class="on">EN</a><a href="/fr/equations" hreflang="fr" lang="fr">FR</a></div>
+<div class="klang" aria-label="Language · Langue"><a href="/equations" hreflang="en" lang="en">EN</a><a href="/fr/equations" hreflang="fr" lang="fr" class="on">FR</a></div>
+<script>window.__VOCAB__ = {"Thermodynamics":"Thermodynamique","Condensed Matter":"Matière condensée","Quantum Computing":"Calcul quantique","Heat Transfer":"Transfert thermique","Magnetohydrodynamics":"Magnétohydrodynamique","Information Theory":"Théorie de l'information","Biophysics":"Biophysique","Radiation":"Rayonnement","Superconductivity":"Supraconductivité","Mechanics":"Mécanique","Geophysics":"Géophysique","Electrostatics":"Électrostatique","Chemistry":"Chimie","theory":"théorie","Photonics":"Photonique","Nonlinear Dynamics":"Dynamique non linéaire","Astrophysics":"Astrophysique","Calculus":"Analyse","Celestial Mechanics":"Mécanique céleste","Vectors & Geometry":"Vecteurs et géométrie","Materials Science":"Science des matériaux","Cosmology":"Cosmologie","Billiards":"Billard","General Relativity":"La relativité générale","Special Relativity":"Relativité restreinte","Waves & Optics":"Ondes et optique","Thermoelectrics":"Thermoélectricité","Chemical Kinetics":"Cinétique chimique","Fluid Dynamics":"Dynamique des fluides","Chemical Thermodynamics":"Thermodynamique chimique","Plasma Physics":"Physique des plasmas","Nuclear Physics":"Physique nucléaire","Classical Field Theory":"Théorie classique des champs","Acoustics":"Acoustique","Quantum":"Quantique","Atomic Physics":"Physique atomique","Quantum Field Theory":"Théorie quantique des champs","Electromagnetism":"Électromagnétisme","object":"objet","Particle Physics":"Physique des particules","Mathematics":"Mathématiques","Rocketry":"Astronautique","Statistical Mechanics":"Physique statistique"};</script>
 <script>const VOCAB = window.__VOCAB__ || {}; const vocab = (s) => (s == null ? s : (VOCAB[s] || s));</script>
 
 <nav class="knav"><a href="/fr/">KOSMOS</a><span>/</span><span class="cur">Équations</span></nav>
@@ -541,27 +541,27 @@
 
   // ---- filters: six physical domains, fields collapsed underneath ----
   const DOMAINS = [
-    { name: 'Foundations', color: 'var(--c-pink)',
+    { name: 'Fondements', color: 'var(--c-pink)',
       blurb: 'les mathématiques et les principes dans lesquels tout le reste s\'écrit',
       fields: ['Vectors & Geometry', 'Calculus', 'Mathematics', 'Classical Field Theory',
                'Information Theory', 'Nonlinear Dynamics'] },
-    { name: 'Matter & Motion', color: 'var(--c-blue)',
+    { name: 'Matière et mouvement', color: 'var(--c-blue)',
       blurb: 'ce qui bouge, s\'écoule, vibre et casse',
       fields: ['Mechanics', 'Billiards', 'Celestial Mechanics', 'Rocketry', 'Fluid Dynamics', 'Acoustics',
                'Materials Science', 'Geophysics'] },
-    { name: 'Heat, Chemistry & Life', color: 'var(--c-amber)',
+    { name: 'Chaleur, chimie et vie', color: 'var(--c-amber)',
       blurb: 'énergie, entropie, réactions et la pile',
       fields: ['Thermodynamics', 'Statistical Mechanics', 'Heat Transfer', 'Chemistry',
                'Chemical Kinetics', 'Chemical Thermodynamics', 'Biophysics'] },
-    { name: 'Fields, Light & Plasma', color: 'var(--c-violet)',
+    { name: 'Champs, lumière et plasma', color: 'var(--c-violet)',
       blurb: 'charge, courant, rayonnement et le quatrième état de la matière',
       fields: ['Electrostatics', 'Electromagnetism', 'Circuits', 'Waves & Optics', 'Photonics',
                'Radiation', 'Thermoelectrics', 'Plasma Physics', 'Magnetohydrodynamics'] },
-    { name: 'Quantum & Structure of Matter', color: 'var(--c-teal)',
+    { name: 'Quantique et structure de la matière', color: 'var(--c-teal)',
       blurb: 'du qubit à l\'atome jusqu\'au Modèle standard',
       fields: ['Quantum', 'Atomic Physics', 'Nuclear Physics', 'Particle Physics',
                'Quantum Field Theory', 'Condensed Matter', 'Superconductivity', 'Quantum Computing'] },
-    { name: 'Relativity & Cosmos', color: 'var(--c-navy)',
+    { name: 'Relativité et cosmos', color: 'var(--c-navy)',
       blurb: 'l\'espace-temps, les étoiles et l\'univers dans son ensemble',
       fields: ['Special Relativity', 'General Relativity', 'Astrophysics', 'Cosmology'] },
   ];
@@ -571,7 +571,7 @@
   const grouped = new Set(DOMAINS.flatMap((d) => d.fields));
   const orphans = present.filter((f) => !grouped.has(f));
   if (orphans.length) {   // any field added in Notion later still reachable
-    DOMAINS.push({ name: 'Other', color: 'var(--muted)', blurb: 'not yet grouped', fields: orphans });
+    DOMAINS.push({ name: 'Autre', color: 'var(--muted)', blurb: 'not yet grouped', fields: orphans });
   }
   for (const d of DOMAINS) {
     d.fields = d.fields.filter((f) => present.includes(f));
@@ -786,7 +786,7 @@
           const a = document.createElement('a');
           a.className = 'clink';
           a.href = x.href;
-          a.title = `${x.name} · ${vocab(x.kind)} · open on the ${x.kind === 'theory' ? 'theories' : 'cosmos'} page`;
+          a.title = `${x.name} · ${vocab(x.kind)} · ouvrir sur la page ${x.kind === 'theory' ? 'theories' : 'cosmos'}`;
           a.innerHTML = '<span class="k"></span><span class="n"></span>';
           a.querySelector('.k').textContent = vocab(KIND_LABEL[x.kind] || x.kind);
           a.querySelector('.n').textContent = x.name.replace(/ \(.*\)$/, '').replace(/-type Stars$/, '');
