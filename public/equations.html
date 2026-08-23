@@ -813,7 +813,7 @@
     }
     const fc = document.getElementById('fcount');
     fc.textContent = (activeField || activeDomain)
-      ? `${shown} of ${E.length} equations — ${activeField || activeDomain}`
+      ? `${shown} of ${E.length} equations — ${vocab(activeField || activeDomain)}`
       : `${E.length} equations across ${present.length} fields, ${DOMAINS.length} domains · ${nFoundations} foundations · 530 BCE to 1995`;
   }
   sync();

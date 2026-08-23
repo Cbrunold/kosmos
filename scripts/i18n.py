@@ -234,6 +234,7 @@ JS_CONTEXT_RE = [re.compile(p, re.S) for p in JS_CONTEXTS]
 # equations", "${n} rail${…} touched" — and no context pattern can see them, because they are
 # assigned inside ternaries, returned from helpers or pushed into arrays. A regex cannot read
 # them either: their ${…} may hold quotes and further template literals. So walk the source.
+QUOTED = re.compile(r"""(['"])((?:\\.|(?!\1).)*)\1""")
 SUBST = re.compile(r"\$\{(?:[^{}]|\{[^{}]*\})*\}")
 WORDY = re.compile(r"[A-Za-z]{3,}")
 CODEY = re.compile(r"""^\s*(?:[.#][\w-]+[\[\.#]|[a-z-]+\(|translate|matrix|rgba?\()""")
@@ -318,6 +319,21 @@ def _js_spans(html: str, page: str):
             if (s, e) in seen or not prose_like(t):
                 continue
             seen.add((s, e)); out.append((s, e, t, "`"))
+        # Quoted literals that carry HTML: those are innerHTML strings — a sentence with tags
+        # in it. Quoted literals WITHOUT tags are left alone on purpose: most of them are
+        # lookup keys ('Atomic Physics' indexes the colour map, 'aria-pressed' names an
+        # attribute), and translating a key silently breaks the thing it keys.
+        masked = list(body)
+        for a, b, _ in template_literals(body):
+            masked[a:b] = " " * (b - a)
+        for lm in QUOTED.finditer("".join(masked)):
+            t = lm.group(2)
+            if "<" not in t or ">" not in t or not prose_like(t):
+                continue
+            s, e = base + lm.start(2), base + lm.end(2)
+            if (s, e) in seen:
+                continue
+            seen.add((s, e)); out.append((s, e, t, lm.group(1)))
         for extra in PAGE_JS_EXTRA.get(page, []):
             for lm in re.finditer(extra, body, re.S | re.M):
                 s, e, txt = base + lm.start(1), base + lm.end(1), lm.group(1)
@@ -335,7 +351,8 @@ PAGE_JS_EXTRA = {
                        r"""const SORTS = \{ year: '([^']+)'""", r"""\bdepth: '([^']+)' \}""",
                        r"""lv\.textContent = d === 0 \? '([^']+)'""",
                        r"""eqRow\([^,]+,\s*'([^']+)'\)""",
-                       r"""\{ name: '([^']+)', color:"""],           # the six domain names
+                       r"""\{ name: '([^']+)', color:""",            # the six domain names
+                       r"""bits\.push\('([^']+)'\)"""],              # "a foundation — requires nothing"
     "billiards.html": [r"""\['([A-Za-z][^'`]+)',\s*`""", r"""\['([a-z][a-z ,\-]+)',\s*(?:S\.|`|\$)""",   # dl labels, presets
                        r"""\['([^']+)',\s*\{ cut:"""],
     "universe.html": [r"""mk\('([^']+)'"""],                       # the view buttons
