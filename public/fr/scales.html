@@ -345,7 +345,7 @@
   @media print { .klang { display: none; } }
 </style>
 <div class="klang" aria-label="Language · Langue"><a href="/scales" hreflang="en" lang="en">EN</a><a href="/fr/scales" hreflang="fr" lang="fr" class="on">FR</a></div>
-<script>window.__VOCAB__ = {"Cosmological":"Cosmologique","Galaxy":"Galaxie","Group":"Groupe","Attractor":"Attracteur","Void":"Vide","Cluster":"Amas","Supercluster":"Superamas"};</script>
+<script>window.__VOCAB__ = {"Supercluster":"Superamas","Group":"Groupe","Galaxy":"Galaxie","Cosmological":"Cosmologique","Cluster":"Amas","Void":"Vide","Attractor":"Attracteur"};</script>
 <script>const VOCAB = window.__VOCAB__ || {}; const vocab = (s) => (s == null ? s : (VOCAB[s] || s));</script>
 
 <h1 class="ktitle">L'échelle des grandeurs</h1>
@@ -619,7 +619,7 @@
       + (N_OFF === 0
           ? 'All of them agree to within 25%.'
           : `<b>${N_OFF}</b> divergent de plus de 25% et le disent.`)
-      + ' Distances here are <b>comoving</b>. Radiation is neglected, which costs about 0.5% at the '
+      + ' Les distances sont ici <b>comobiles</b>. Le rayonnement est négligé, ce qui coûte environ 0.5% au '
       + 'last-scattering surface and nothing anywhere else.';
     el.hidden = false;
   }
@@ -635,9 +635,9 @@
     const t = document.createElement('table');
     t.className = 'worst';
     t.innerHTML = '<caption class="herelbl" style="text-align:left;margin:6px 0 6px">'
-      + 'largest remaining residuals</caption>'
-      + '<tr><th>structure</th><th>z</th><th class="r">stated</th>'
-      + '<th class="r">ΛCDM</th><th class="r">ratio</th></tr>';
+      + 'les plus grands résidus restants</caption>'
+      + '<tr><th>structure</th><th>z</th><th class="r">indiqué</th>'
+      + '<th class="r">ΛCDM</th><th class="r">rapport</th></tr>';
     for (const r of worst) {
       const tr = document.createElement('tr');
       const a = document.createElement('a');

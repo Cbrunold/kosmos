@@ -283,7 +283,7 @@
   @media print { .klang { display: none; } }
 </style>
 <div class="klang" aria-label="Language · Langue"><a href="/billiards" hreflang="en" lang="en">EN</a><a href="/fr/billiards" hreflang="fr" lang="fr" class="on">FR</a></div>
-<script>window.__VOCAB__ = {"Advanced":"Avancé","Beginner":"Débutant","Mechanics":"Mécanique","Intermediate":"Intermédiaire","Billiards":"Billard"};</script>
+<script>window.__VOCAB__ = {"Mechanics":"Mécanique","Beginner":"Débutant","Advanced":"Avancé","Intermediate":"Intermédiaire","Billiards":"Billard"};</script>
 <script>const VOCAB = window.__VOCAB__ || {}; const vocab = (s) => (s == null ? s : (VOCAB[s] || s));</script>
 
 <nav class="knav"><a href="/fr/">KOSMOS</a><span>/</span><span class="cur">Billard</span></nav>
@@ -1785,7 +1785,7 @@
     const cur = ph.balls[ph.sel].n;
     box.innerHTML = lab('this ball')
       + [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].map((n) => `<button type="button" data-n="${n}"${n === cur ? ' class="on"' : ''}>${n === 0 ? 'cue' : n}</button>`).join('')
-      + '<button type="button" data-del="1">remove</button>';
+      + '<button type="button" data-del="1">retirer</button>';
   }
   function phDraw() {
     if (!ph.img) return;
@@ -2345,8 +2345,8 @@
     const flip = dFlip();
     drawSysTable(flip);
     $('dslegend').innerHTML = DS.sys === 3
-      ? '<span style="--lc:var(--c-felt)">first rail — the aim numbers, above the far long rail</span><span style="--lc:var(--c-amber)">third rail — the arrival numbers, on the cloth</span><span style="--lc:var(--muted)">cue ball position — outside the near rails, the corner is 5</span><span style="--lc:var(--muted); --ls:dashed">the system\'s line</span>'
-      : '<span style="--lc:var(--muted); --ls:dashed">the mirror\'s path</span><span style="--lc:var(--c-red); --ls:dotted">the line to the image, straight through the rails</span><span style="--lc:var(--c-felt)">what the cloth really does</span>';
+      ? '<span style="--lc:var(--c-felt)">première bande — les numéros de visée, au-dessus de la grande bande opposée</span><span style="--lc:var(--c-amber)">troisième bande — les numéros d\'arrivée, sur le tapis</span><span style="--lc:var(--muted)">position de la bille blanche — à l\'extérieur des bandes proches, le coin vaut 5</span><span style="--lc:var(--muted); --ls:dashed">la ligne du système</span>'
+      : '<span style="--lc:var(--muted); --ls:dashed">le trajet du miroir</span><span style="--lc:var(--c-red); --ls:dotted">la ligne vers l\'image, droit à travers les bandes</span><span style="--lc:var(--c-felt)">ce que le tapis fait réellement</span>';
     if (DS.sys === 3) {
       const cbC = cF(DS.cb), P = posNum(cbC), N = DS.arr, A = P - N;
       const aimC = [A * DIA, RY0], aim = cF(aimC);
@@ -2413,13 +2413,13 @@
       dball(DS.cb2, { fill: 'var(--panel)', stroke: 'var(--ink)', 'stroke-width': 1.5, style: 'cursor:grab' });
       const hit = miss != null && miss < 2 * R;
       $('dsout').innerHTML = dl([
-        ['the construction', sol ? `reflétez la cible à travers la bande <b>${sol.r2.name}</b>, puis à travers la <b>${sol.r1.name}</b> — et visez cette image` : '<span class="warn">no two-rail line from here — drag either ball</span>'],
+        ['the construction', sol ? `reflétez la cible à travers la bande <b>${sol.r2.name}</b>, puis à travers la <b>${sol.r1.name}</b> — et visez cette image` : '<span class="warn">aucune trajectoire à deux bandes d\'ici — déplacez l\'une ou l\'autre bille</span>'],
         ['the rails', sol ? `${sol.r1.name}, puis ${sol.r2.name} · ${fmt(sol.len, 2)} m de tapis sur la ligne idéale` : '—'],
         ['the cloth says', !S ? '—'
           : miss != null ? (hit ? `<b>elle touche</b> — ${fmt(1000 * miss, 0)} mm de centre à centre au plus près` : died ? `<span class="warn">la bille manque de souffle, ${fmt(100 * (miss - 2 * R), 1)} cm trop court — la ligne est bonne, la vitesse ne l'est pas</span>` : `misses by ${fmt(100 * (miss - 2 * R), 1)} cm of gap${S.pocket != null ? `, then drops in the ${POCKETS[S.pocket].name} pocket` : ''}`)
           : S.pocket != null ? `<span class="warn">la bille tombe dans la poche ${POCKETS[S.pocket].name} avant la deuxième bande</span>`
-          : '<span class="warn">the ball died before the second rail</span>', hit ? 'good' : 'warn'],
-        ['why it misses', 'The mirror assumes the rail gives back the angle it was handed. Rubber does not: it keeps only <em>e</em> of the speed into the cushion and friction drags the rest along the rail, so every real rebound comes off flatter than the image says — more so the harder you hit it. Running side pays some of that back.'],
+          : '<span class="warn">la bille s\'est arrêtée avant la deuxième bande</span>', hit ? 'good' : 'warn'],
+        ['why it misses', 'Le miroir suppose que la bande restitue l\'angle qu\'on lui a donné. Le caoutchouc ne le fait pas : il ne garde que <em>e</em> de la vitesse entrant dans la bande et le frottement entraîne le reste le long de celle-ci, si bien que tout rebond réel repart plus plat que ne l\'annonce l\'image — d\'autant plus que l\'on frappe fort. L\'effet latéral naturel en rend une partie.'],
       ]);
       $('dshelp').innerHTML = 'Déplacez l\'une ou l\'autre bille. Le labo choisit le trajet le plus court à deux bandes et construit l\'image miroir ; la ligne pleine est ce que le tapis en fait réellement.';
     }

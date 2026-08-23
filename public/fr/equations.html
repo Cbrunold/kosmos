@@ -382,7 +382,7 @@
   @media print { .klang { display: none; } }
 </style>
 <div class="klang" aria-label="Language · Langue"><a href="/equations" hreflang="en" lang="en">EN</a><a href="/fr/equations" hreflang="fr" lang="fr" class="on">FR</a></div>
-<script>window.__VOCAB__ = {"Astrophysics":"Astrophysique","Radiation":"Rayonnement","Acoustics":"Acoustique","Chemistry":"Chimie","Fluid Dynamics":"Dynamique des fluides","Biophysics":"Biophysique","Vectors & Geometry":"Vecteurs et géométrie","Celestial Mechanics":"Mécanique céleste","Quantum":"Quantique","Rocketry":"Astronautique","Magnetohydrodynamics":"Magnétohydrodynamique","Information Theory":"Théorie de l'information","Photonics":"Photonique","Chemical Thermodynamics":"Thermodynamique chimique","Mathematics":"Mathématiques","Nonlinear Dynamics":"Dynamique non linéaire","Geophysics":"Géophysique","Chemical Kinetics":"Cinétique chimique","object":"objet","Heat Transfer":"Transfert thermique","Nuclear Physics":"Physique nucléaire","Materials Science":"Science des matériaux","theory":"théorie","Particle Physics":"Physique des particules","Quantum Computing":"Calcul quantique","Calculus":"Analyse","Superconductivity":"Supraconductivité","Condensed Matter":"Matière condensée","Plasma Physics":"Physique des plasmas","Electrostatics":"Électrostatique","Quantum Field Theory":"Théorie quantique des champs","Waves & Optics":"Ondes et optique","Cosmology":"Cosmologie","Thermodynamics":"Thermodynamique","Mechanics":"Mécanique","Statistical Mechanics":"Physique statistique","Special Relativity":"Relativité restreinte","Atomic Physics":"Physique atomique","Thermoelectrics":"Thermoélectricité","General Relativity":"La relativité générale","Classical Field Theory":"Théorie classique des champs","Electromagnetism":"Électromagnétisme","Billiards":"Billard"};</script>
+<script>window.__VOCAB__ = {"Mechanics":"Mécanique","Cosmology":"Cosmologie","Magnetohydrodynamics":"Magnétohydrodynamique","Acoustics":"Acoustique","Superconductivity":"Supraconductivité","Quantum Field Theory":"Théorie quantique des champs","Electromagnetism":"Électromagnétisme","Mathematics":"Mathématiques","Quantum Computing":"Calcul quantique","Plasma Physics":"Physique des plasmas","Celestial Mechanics":"Mécanique céleste","Calculus":"Analyse","Quantum":"Quantique","Materials Science":"Science des matériaux","Nonlinear Dynamics":"Dynamique non linéaire","Classical Field Theory":"Théorie classique des champs","Condensed Matter":"Matière condensée","Special Relativity":"Relativité restreinte","Chemical Thermodynamics":"Thermodynamique chimique","Chemistry":"Chimie","Photonics":"Photonique","Waves & Optics":"Ondes et optique","Electrostatics":"Électrostatique","Biophysics":"Biophysique","Rocketry":"Astronautique","Astrophysics":"Astrophysique","Fluid Dynamics":"Dynamique des fluides","Thermoelectrics":"Thermoélectricité","Particle Physics":"Physique des particules","object":"objet","Thermodynamics":"Thermodynamique","General Relativity":"La relativité générale","Nuclear Physics":"Physique nucléaire","Radiation":"Rayonnement","Statistical Mechanics":"Physique statistique","theory":"théorie","Atomic Physics":"Physique atomique","Heat Transfer":"Transfert thermique","Chemical Kinetics":"Cinétique chimique","Vectors & Geometry":"Vecteurs et géométrie","Information Theory":"Théorie de l'information","Billiards":"Billard","Geophysics":"Géophysique"};</script>
 <script>const VOCAB = window.__VOCAB__ || {}; const vocab = (s) => (s == null ? s : (VOCAB[s] || s));</script>
 
 <nav class="knav"><a href="/fr/">KOSMOS</a><span>/</span><span class="cur">Équations</span></nav>
@@ -688,7 +688,7 @@
       if (e['Named After']) bits.push(e['Named After']);
       if (e.Year) bits.push(e.Year < 0 ? `v. ${-e.Year} av. J.-C.` : String(e.Year));
       if (e.reqs.length) bits.push(`repose sur ${e.closure.size} équation${e.closure.size === 1 ? '' : 's'}, sur ${e.depth} niveaux de profondeur`);
-      else if (e.reqBy.length) bits.push('a foundation — requires nothing');
+      else if (e.reqBy.length) bits.push('un fondement — ne requiert rien');
       if (bits.length) { const m = document.createElement('div'); m.className = 'meta'; m.textContent = bits.join(' · '); c.appendChild(m); }
       // three equation-to-equation rows: what it leans on (Requires), what leans on it
       // (Required By, the synced half of the same relation), and the looser Related web
@@ -815,7 +815,7 @@
     }
     const fc = document.getElementById('fcount');
     fc.textContent = (activeField || activeDomain)
-      ? `${shown} of ${E.length} equations — ${vocab(activeField || activeDomain)}`
+      ? `${shown} équations sur ${E.length} — ${vocab(activeField || activeDomain)}`
       : `${E.length} équations réparties sur ${present.length} champs, ${DOMAINS.length} domaines · ${nFoundations} fondements · 530 av. J.-C. à 1995`;
   }
   sync();
