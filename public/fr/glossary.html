@@ -242,7 +242,7 @@
   @media print { .klang { display: none; } }
 </style>
 <div class="klang" aria-label="Language · Langue"><a href="/glossary" hreflang="en" lang="en">EN</a><a href="/fr/glossary" hreflang="fr" lang="fr" class="on">FR</a></div>
-<script>window.__VOCAB__ = {"constant":"constante","Astronomy":"Astronomie","equation":"équation","Mechanics":"Mécanique","Cosmology":"Cosmologie","skill":"compétence","element":"élément","Workshop":"Atelier","Electromagnetism":"Électromagnétisme","Mathematics":"Mathématiques","Measurement":"Mesure","explainer":"vulgarisation","discovery":"découverte","rock":"roche","Relativity":"Relativité","Chemistry":"Chimie","galaxy":"galaxie","Mineralogy":"Minéralogie","event":"événement","Thermodynamics":"Thermodynamique","researcher":"chercheur","observatory":"observatoire","theory":"théorie","Nuclear & Particle":"Nucléaire et particules","Cue sports":"Billard","Waves & Fluids":"Ondes et fluides","Quantum":"Quantique","Mining & Metallurgy":"Mines et métallurgie"};</script>
+<script>window.__VOCAB__ = {"Mathematics":"Mathématiques","Mining & Metallurgy":"Mines et métallurgie","Cosmology":"Cosmologie","explainer":"vulgarisation","Nuclear & Particle":"Nucléaire et particules","element":"élément","Relativity":"Relativité","theory":"théorie","skill":"compétence","observatory":"observatoire","Mineralogy":"Minéralogie","rock":"roche","Workshop":"Atelier","Electromagnetism":"Électromagnétisme","Thermodynamics":"Thermodynamique","Measurement":"Mesure","Mechanics":"Mécanique","researcher":"chercheur","Quantum":"Quantique","event":"événement","constant":"constante","Astronomy":"Astronomie","galaxy":"galaxie","discovery":"découverte","Waves & Fluids":"Ondes et fluides","equation":"équation","Chemistry":"Chimie","Cue sports":"Billard"};</script>
 <script>const VOCAB = window.__VOCAB__ || {}; const vocab = (s) => (s == null ? s : (VOCAB[s] || s));</script>
 
 <nav class="knav"><a href="/fr/">KOSMOS</a><span>/</span><span class="cur">Glossaire</span></nav>
@@ -268,8 +268,8 @@
   const KC = { equation: 'var(--c-amber)', theory: 'var(--c-pink)', machine: 'var(--c-amber)', skill: 'var(--c-green)', event: 'var(--c-bronze)',
                element: 'var(--c-blue)', mine: 'var(--c-bronze)', observatory: 'var(--c-bronze)', discovery: 'var(--c-cyan)', mission: 'var(--c-blue)', constant: 'var(--c-teal)',
                researcher: 'var(--c-pink)', force: 'var(--c-teal)', instrument: 'var(--c-cyan)', rock: 'var(--c-bronze)' };
-  const KL = { equation: 'equations', theory: 'theories', machine: 'machines', skill: 'skills', event: 'timeline', element: 'elements', mine: 'mines', observatory: 'observatories', discovery: 'discoveries', mission: 'missions', constant: 'constants',
-               researcher: 'researchers', force: 'forces', instrument: 'instruments', rock: 'rock types' };
+  const KL = { equation: 'équations', theory: 'théories', machine: 'machines', skill: 'savoir-faire', event: 'chronologie', element: 'éléments', mine: 'mines', observatory: 'observatoires', discovery: 'découvertes', mission: 'missions', constant: 'constantes',
+               researcher: 'chercheurs', force: 'forces', instrument: 'instruments', rock: 'rock types' };
   const list = document.getElementById('list'), empty = document.getElementById('empty'), q = document.getElementById('q');
   const fold = (s) => (s || '').toLowerCase().normalize('NFKD').replace(/[̀-ͯ]/g, '');
   const active = new Set();
