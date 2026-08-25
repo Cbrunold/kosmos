@@ -1157,7 +1157,7 @@ def build_universe_page():
     items = []
 
     def add(name, kind, dist, size, ra, dec, href, notes, inside=False, vel=None, tvel=None,
-            motion=None, vec=None):
+            motion=None, vec=None, mass=None):
         if not dist or dist <= 0:
             return
         it = {
@@ -1171,6 +1171,8 @@ def build_universe_page():
         if vel:
             it["vel"] = vel
             it["tvel"] = tvel
+            if mass:
+                it["mass"] = mass / 1.989e30          # kg -> solar masses
             if vec and it.get("form") == "point":
                 # galactocentric position and velocity in the map's axes, in ly and
                 # ly/yr — the page integrates p + v*t and re-derives distance and
@@ -1197,7 +1199,8 @@ def build_universe_page():
             f"/cosmos#lg-{slugify(nm)}", o.get("Notes"), vel=o.get("Radial velocity (km/s)"),
             tvel=o.get("Transverse velocity (km/s)"), motion=o.get("Motion"),
             vec=([o.get("Vx (km/s)"), o.get("Vy (km/s)"), o.get("Vz (km/s)")]
-                 if o.get("Vx (km/s)") is not None else None))
+                 if o.get("Vx (km/s)") is not None else None),
+            mass=o.get("Mass"))
 
     for r in notion.get("cosmicStructures", []):
         nm = r.get("Name")
@@ -1232,6 +1235,8 @@ def build_universe_page():
                 "nOrbit": len(solar["orbits"]),
                 "nMoving": sum(1 for i in items if i.get("vel")),
                 "n3d": sum(1 for i in items if i.get("v3")),
+                "mwMass": next((o["Mass"] / 1.989e30 for o in notion.get("celestialObjects", [])
+                                if o.get("Name") == "Milky Way" and o.get("Mass")), 1.5e12),
                 "sunEq": [round(c, 3) for c in SUN_EQ_LY]})
     return len(items), n_point
 

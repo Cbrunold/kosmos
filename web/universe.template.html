@@ -104,9 +104,11 @@ __SHARED__
       <li><b>Everything is drawn as it is now</b>, not as it looks. Light from the far rings left before the Earth existed. A map of where things <em>are</em> and a map of what you <em>see</em> diverge completely past the Local Group, and this is the first.</li>
       <li><b>Distance is comoving</b>, matching <a href="/scales">the ladder</a>. Redshift is not converted to a light-travel time anywhere on this page.</li>
       <li><b>Four objects move, in three dimensions.</b> Each carries a measured galactocentric velocity vector, not just a speed towards us, so the map carries its position forward and re-derives both its distance <em>and</em> its direction — they cross the sky as well as approach. Within the span each is drawn for, Andromeda shifts about 7° and the others 5-6°. The Sun is held at today's place: its own 230-million-year lap of the galaxy would swing the entire sky and tell you nothing about the Local Group.</li>
-      <li><b>The clock is logarithmic</b>, spanning one million years to seven billion, for the same reason the radial axis is: the Magellanic Clouds outrun their own straight-line model in about fifteen million years while Andromeda takes billions, and no evenly spaced slider could show both. Everything else on the map holds still, because nothing else in the catalogue has a measured velocity yet — add one in Notion and it starts moving.</li>
+      <li><b>The clock is logarithmic</b>, spanning one million years to seven billion, for the same reason the radial axis is: the Large Cloud rounds the galaxy every couple of billion years while Andromeda takes four to arrive, and a satellite’s pericentre passage lasts a few tens of millions. Everything else on the map holds still, because nothing else in the catalogue has a measured velocity yet — add one in Notion and it starts moving.</li>
       <li><b>Only Andromeda is actually falling towards us.</b> Each mover also carries the size of its sideways motion, and the comparison is the point. M31: 110 km/s towards us against 17 sideways — near enough a head-on fall. M33: 44 against 230. The Large Cloud: 64 against 314. The Small Cloud: 7 against 217, which is a galaxy going almost purely round. The Local Group is not collapsing inward; it is in orbit, and M31 is the exception rather than the illustration. This map can draw only the radial part, which is why the other three hardly move on it while travelling at hundreds of kilometres a second.</li>
-      <li><b>The clock stops extrapolating where it would start lying.</b> For a bound satellite a straight line is not merely imprecise, it is qualitatively wrong — the velocity turns, and the line says "leaving forever" where the truth is "coming back". So anything marked as orbiting freezes once it has moved a tenth of its present distance, is labelled <em>held</em> in the readout, and goes no further. Andromeda is not capped, because it really is falling; but the constant 110 km/s reaches contact at about 6.9 billion years where the accepted estimate is roughly 4. The difference is gravity, which this page does not model. Two galaxies falling together accelerate. Believe the shrinking distance, not the arrival time.</li>
+      <li><b>This is now an integration, not an extrapolation.</b> Earlier versions carried each object along a straight line, which cannot describe an orbit — satellites froze after a few tens of millions of years and Andromeda arrived late. The page now integrates the mutual gravity of the Milky Way and everything with a measured velocity, stepping a leapfrog through a galaxy modelled as a Hernquist bulge-and-disc inside an NFW halo. The Clouds complete real orbits — the Large Cloud swings between about 26 and 217 kpc, four times over eight billion years — and Andromeda's fall accelerates as it should.</li>
+      <li><b>The halo mass is a slider because nobody knows it.</b> The Milky Way's dark halo is uncertain by roughly a factor of two, and the arrival of Andromeda turns on it: from about 4.4 billion years at 0.5×10<sup>12</sup> solar masses to 3.3 at 2.5×10<sup>12</sup>. Move it and watch. The rotation speed at the Sun is printed beside it as the check — the model returns 208 to 239 km/s across that range, against a measured 229, which is precisely why the rotation curve alone cannot pin the halo down. The number this page shows you is a consequence of a parameter you can see and change, which is the honest way to show a prediction that depends on one.</li>
+      <li><b>What it still does not model.</b> Dynamical friction, which drags a massive satellite inward and would bring the merger forward; the tidal deformation of galaxies that are no longer points once they touch; and any mass beyond these five bodies. The Small Cloud's track is the least trustworthy of the four — it is bound to the Large Cloud in reality, and a five-body model with 5 kpc of softening handles that pair poorly.</li>
     </ol>
   </section>
 </div>
@@ -224,34 +226,103 @@ __SHARED__
   // "leaving forever" where the truth is "coming back". Ten percent of the current
   // distance is the stated cut, and past it the object freezes and is marked,
   // rather than being carried somewhere the data cannot support.
-  const BOUND_FRACTION = 0.10;
-  const SUN_EQ = D.sunEq || [0, 0, 0];     // the Sun's place in the galactocentric frame
-  function retime() {
-    for (const it of MOVERS) {
-      let t = clock;
-      if (it.motion === 'Bound orbit') {   // hold at the edge of the model, not past it
-        const speed = it.v3 ? Math.hypot(...it.v3) : Math.abs(it.vel * LY_PER_KMS_YR);
-        const tmax = (it.dist0 * BOUND_FRACTION) / speed;
-        it.beyond = t > tmax;
-        if (it.beyond) t = tmax;
-      } else it.beyond = false;
+  // ---- gravity ---------------------------------------------------------------
+  // Straight lines could not describe an orbit, so bound satellites used to freeze
+  // after a few tens of Myr and Andromeda arrived late. This integrates instead:
+  // a leapfrog over the mutual gravity of the Milky Way and everything with a
+  // measured velocity, in a Milky Way of a Hernquist bulge-plus-disc and an NFW
+  // halo whose mass is the slider. Validated in Python before it was written here —
+  // energy holds to 5e-7 over 8 Gyr, the model returns v_circ(8.1 kpc) in the
+  // measured band, and M31's closest approach lands at 3.3-4.4 Gyr across the
+  // slider against an accepted ~4.
+  const GRAV = 4.498502e-12;        // kpc^3 / (Msun Myr^2)
+  const RHO_CRIT = 136.0;           // Msun / kpc^3
+  const LY_PER_KPC = 3261.564;
+  const MBAR = 9.0e10, ABAR = 2.0;  // baryons as a Hernquist sphere
+  const CONC = 10.0, SOFT = 5.0;    // halo concentration, Plummer softening (kpc)
+  const DT = 1.0, TMAX = 8000.0, EVERY = 10;   // Myr
+  const SUN_EQ = (D.sunEq || [0, 0, 0]).map((c) => c / LY_PER_KPC);
+  let haloMass = D.mwMass || 1.5e12;
 
-      if (it.v3) {
-        // full 3D: carry the galactocentric position forward on its measured vector,
-        // then re-derive distance AND direction from where it now is relative to us.
-        // The Sun is held at today's place — its own 230-Myr lap round the galaxy
-        // would swing the whole sky and say nothing about the Local Group.
-        const p = [it.p0[0] + it.v3[0] * t, it.p0[1] + it.v3[1] * t, it.p0[2] + it.v3[2] * t];
-        const h = [p[0] - SUN_EQ[0], p[1] - SUN_EQ[1], p[2] - SUN_EQ[2]];
-        const d = Math.hypot(h[0], h[1], h[2]);
-        const floor = it.size ? it.size / 2 : 1e3;
-        it.dist = Math.max(floor, d);
-        if (d > 0) it.u = [h[0] / d, h[1] / d, h[2] / d];   // it moves across the sky too
-      } else {
-        const travel = it.vel * LY_PER_KMS_YR * t;
-        it.dist = Math.max(it.size ? it.size / 2 : 1e3, it.dist0 + travel);
+  const nfwF = (x) => Math.log(1 + x) - x / (1 + x);
+  function mwField(r, M200) {       // inward field, kpc/Myr^2
+    const r200 = Math.cbrt(3 * M200 / (4 * Math.PI * 200 * RHO_CRIT)), rs = r200 / CONC;
+    const menc = M200 * nfwF(r / rs) / nfwF(CONC);
+    return GRAV * MBAR / ((r + ABAR) * (r + ABAR)) + GRAV * menc / (r * r);
+  }
+  const vCirc = (r, M200) => Math.sqrt(r * mwField(r, M200)) / 1.022712e-3;
+
+  let TRACK = null;                 // [step][body] -> position relative to the MW
+  function integrate(M200) {
+    const B = MOVERS.map((it) => ({
+      p: it.p0.map((c) => c / LY_PER_KPC),
+      v: it.v3.map((c) => c * 1e6 / LY_PER_KPC),      // ly/yr -> kpc/Myr
+      m: it.mass || 0,
+    }));
+    const Mm = MBAR + M200;
+    let pm = [0, 0, 0], vm = [0, 0, 0];
+    const accel = () => {
+      const A = B.map(() => [0, 0, 0]), Am = [0, 0, 0];
+      for (let i = 0; i < B.length; i++) {
+        const d = [B[i].p[0] - pm[0], B[i].p[1] - pm[1], B[i].p[2] - pm[2]];
+        const r = Math.hypot(d[0], d[1], d[2]) || 1e-6;
+        const g = mwField(r, M200);
+        // the reaction on the galaxy is this same force over its mass — computing
+        // the two separately breaks Newton's third law, and the energy then drifts
+        // by order unity over a Hubble time (it did, until this line)
+        const gm = g * B[i].m / Mm;
+        for (let k = 0; k < 3; k++) { A[i][k] -= g * d[k] / r; Am[k] += gm * d[k] / r; }
+        for (let j = i + 1; j < B.length; j++) {
+          const e = [B[i].p[0] - B[j].p[0], B[i].p[1] - B[j].p[1], B[i].p[2] - B[j].p[2]];
+          const rr = Math.sqrt(e[0] * e[0] + e[1] * e[1] + e[2] * e[2] + SOFT * SOFT);
+          const f = GRAV / (rr * rr * rr);
+          for (let k = 0; k < 3; k++) { A[i][k] -= f * B[j].m * e[k]; A[j][k] += f * B[i].m * e[k]; }
+        }
       }
+      return [A, Am];
+    };
+    let [A, Am] = accel();
+    const out = [B.map((b) => [b.p[0] - pm[0], b.p[1] - pm[1], b.p[2] - pm[2]])];
+    for (let s = 1; s <= Math.round(TMAX / DT); s++) {
+      for (let i = 0; i < B.length; i++) for (let k = 0; k < 3; k++) B[i].v[k] += 0.5 * DT * A[i][k];
+      for (let k = 0; k < 3; k++) vm[k] += 0.5 * DT * Am[k];
+      for (let i = 0; i < B.length; i++) for (let k = 0; k < 3; k++) B[i].p[k] += DT * B[i].v[k];
+      for (let k = 0; k < 3; k++) pm[k] += DT * vm[k];
+      [A, Am] = accel();
+      for (let i = 0; i < B.length; i++) for (let k = 0; k < 3; k++) B[i].v[k] += 0.5 * DT * A[i][k];
+      for (let k = 0; k < 3; k++) vm[k] += 0.5 * DT * Am[k];
+      if (s % EVERY === 0) out.push(B.map((b) => [b.p[0] - pm[0], b.p[1] - pm[1], b.p[2] - pm[2]]));
+    }
+    return out;
+  }
+
+  function closestApproach(name) {
+    const i = MOVERS.findIndex((m) => m.name === name);
+    if (i < 0 || !TRACK) return null;
+    let best = Infinity, at = 0;
+    for (let s = 0; s < TRACK.length; s++) {
+      const p = TRACK[s][i], d = Math.hypot(p[0], p[1], p[2]);
+      if (d < best) { best = d; at = s * DT * EVERY; }
+    }
+    return { kpc: best, myr: at };
+  }
+
+  function retime() {
+    if (!TRACK) TRACK = integrate(haloMass);
+    const f = Math.max(0, Math.min(TRACK.length - 1.001, clock / 1e6 / (DT * EVERY)));
+    const s0 = Math.floor(f), w = f - s0;
+    for (let i = 0; i < MOVERS.length; i++) {
+      const it = MOVERS[i], a = TRACK[s0][i], b = TRACK[s0 + 1][i];
+      // position relative to the galactic centre, then relative to us: the Sun is
+      // carried along with the galaxy rather than left behind at the old origin
+      const h = [0, 0, 0];
+      for (let k = 0; k < 3; k++) h[k] = (a[k] + (b[k] - a[k]) * w - SUN_EQ[k]) * LY_PER_KPC;
+      const d = Math.hypot(h[0], h[1], h[2]);
+      const floor = it.size ? it.size / 2 : 1e3;
+      it.dist = Math.max(floor, d);
+      if (d > 0) it.u = [h[0] / d, h[1] / d, h[2] / d];
       it.R = Math.log10(it.dist);
+      it.beyond = false;
     }
   }
 
@@ -650,7 +721,26 @@ __SHARED__
       }, 40);
     });
     row.append(play, sl, out); c.parentNode.insertBefore(row, c.nextSibling);
-    show();
+
+    // ---- halo mass: the parameter the answer actually turns on ----
+    const hrow = document.createElement('div'); hrow.className = 'clock';
+    const hl = document.createElement('span'); hl.className = 'creadout'; hl.textContent = 'halo mass';
+    const hs = document.createElement('input');
+    hs.type = 'range'; hs.min = 5; hs.max = 25; hs.step = 1; hs.value = Math.round(haloMass / 1e11);
+    hs.setAttribute('aria-label', 'Milky Way halo mass');
+    const hout = document.createElement('span'); hout.className = 'creadout';
+    const hshow = () => {
+      const ca = closestApproach('Andromeda (M31)');
+      hout.textContent = `${(haloMass / 1e12).toFixed(1)}e12 M☉ · rotation ${vCirc(8.122, haloMass).toFixed(0)} km/s`
+        + (ca ? ` · Andromeda closest at +${(ca.myr / 1000).toFixed(2)} Gyr` : '');
+    };
+    hs.addEventListener('input', () => {
+      haloMass = +hs.value * 1e11;
+      TRACK = integrate(haloMass);      // ~8000 steps, cheap enough to redo live
+      retime(); hshow(); show(); draw();
+    });
+    hrow.append(hl, hs, hout); row.parentNode.insertBefore(hrow, row.nextSibling);
+    retime(); hshow(); show();
   }
 
   let fitted = false;
