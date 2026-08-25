@@ -864,6 +864,10 @@ def build_glossary_page():
             # description, and "PBS Space Time" is not about spacetime. This also
             # keeps the trace identical to the chips /explainers computes.
             corpus.append(("explainer", x["Name"], f"/explainers#{slugify(x['Name'])}", x["Covers"]))
+    for x in notion.get("life", []):
+        if x.get("Name") and x.get("Function"):
+            corpus.append(("life", x["Name"], f"/life#{slugify(x['Name'])}",
+                           " ".join(filter(None, [x["Name"], x.get("Function"), x.get("Numbers")]))))
     for i in notion.get("impacts", []):
         if i.get("Name") and i.get("Mechanism"):
             corpus.append(("impact", i["Name"], f"/impacts#{slugify(i['Name'])}",
@@ -872,7 +876,7 @@ def build_glossary_page():
     # celestialTypes and spectralTypes are numeric or single-word lookup tables.
     KIND_ORDER = ["equation", "theory", "machine", "skill", "event", "element", "structure", "galaxy", "mine", "observatory",
                   "discovery", "mission", "constant", "researcher", "force", "instrument", "rock",
-                  "explainer", "impact", "mineral"]
+                  "explainer", "impact", "mineral", "life"]
     PER_KIND = 8
     pattern = term_pattern
 
@@ -1315,6 +1319,43 @@ def build_solar_page():
     return len(bodies)
 
 
+
+# ---------------- life ----------------
+def build_life_page():
+    """The machinery, described the way /machines describes an engine — because a
+    rotary motor with a stator and a drive shaft is a rotary motor whether it is
+    made of steel or protein.
+
+    The Elements column is what makes it belong on this site rather than in a
+    textbook: each entry chips through to the periodic table, carrying the
+    biological role that page now holds, so the two halves state the same fact
+    from opposite ends."""
+    rows = [x for x in notion.get("life", []) if x.get("Name")]
+    if not rows:
+        write_page("life.template.html", "life.html", {"machines": [], "kinds": [], "elements": {}})
+        return 0, 0
+    bio = {e["notation"]: {"name": e["name"], "cls": e.get("bioClass"), "role": e.get("bioRole")}
+           for e in elements}
+    matchers = glossary_matchers()
+    out, total_terms = [], 0
+    for x in rows:
+        prose = " ".join(filter(None, [x.get("Function"), x.get("Numbers")]))
+        terms = [{"term": t, "slug": sl} for t, sl, pats in matchers if any(p.search(prose) for p in pats)]
+        terms.sort(key=lambda t: t["term"].lower())
+        total_terms += len(terms)
+        out.append({"name": x["Name"], "slug": slugify(x["Name"]), "kind": x.get("Kind"),
+                    "els": [e for e in (x.get("Elements") or []) if e in bio],
+                    "function": x.get("Function"), "numbers": x.get("Numbers"), "terms": terms})
+    out.sort(key=lambda x: x["name"].lower())
+    KIND_ORDER = ["Motor", "Pump", "Enzyme", "Copier", "Carrier", "Pigment", "Structure"]
+    kinds = [k for k in KIND_ORDER if any(x["kind"] == k for x in out)]
+    kinds += sorted({x["kind"] for x in out if x["kind"] and x["kind"] not in kinds})
+    used = sorted({e for x in out for e in x["els"]})
+    write_page("life.template.html", "life.html",
+               {"machines": out, "kinds": kinds, "elements": {e: bio[e] for e in used}})
+    return len(out), total_terms
+
+
 # ---------------- search index ----------------
 def _clip(s, n=170) -> str:
     s = " ".join((s or "").split())
@@ -1351,6 +1392,7 @@ def build_search_index():
          "every catalogued object placed by direction and distance on one log-radial map you can turn over, from the heliopause to the horizon"),
         ("/scales", "The Ladder of Scale", "from the heliopause to the horizon on one log axis: clusters, superclusters, Laniakea, the walls and voids, the observable universe"),
         ("/explainers", "Explainers", "the people, channels and organisations that explain this material"),
+        ("/life", "Life", "the molecular machinery, and the elements it is built from"),
         ("/solar", "Solar System", "the nine orbits, computed live from Keplerian elements"),
         ("/impacts", "Mining Impacts", "what extraction costs — mechanism, mitigation and documented cases"),
         ("/billiards", "Billiards", "the physics of the pool table — a live shot lab, the cushion, and the numbers Pool Sauce runs on"),
@@ -1484,6 +1526,11 @@ def build_search_index():
             add("explainer", x["Name"], " · ".join(filter(None, [x.get("Kind"), x.get("Field")])),
                 x.get("Covers"), f"/explainers#{slugify(x['Name'])}")
 
+    for x in notion.get("life", []):
+        if x.get("Name"):
+            add("life", x["Name"], " · ".join(filter(None, [x.get("Kind"), ", ".join(x.get("Elements") or [])])),
+                x.get("Function"), f"/life#{slugify(x['Name'])}")
+
     for i in notion.get("impacts", []):
         if i.get("Name"):
             add("impact", i["Name"], " · ".join(filter(None, [i.get("Category"), i.get("Timescale")])),
@@ -1575,6 +1622,8 @@ def build_home(n_min, n_gems, n_classes, n_spectral, n_instr, n_timeline, tl_dec
         "__N_EXPL__": n_expl,
         "__N_EXPLTERMS__": f"{n_expl_terms:,}",
         "__N_SOLAR__": n_solar,
+        "__N_LIFE__": n_life,
+        "__N_LIFETERMS__": f"{n_life_terms:,}",
         "__N_IMPACTS__": n_imp,
         "__N_IMPTERMS__": f"{n_imp_terms:,}",
         "__TL_DECADES__": tl_decades,
@@ -1676,6 +1725,7 @@ if __name__ == "__main__":
     n_expl, n_expl_terms = build_explainers_page()
     n_imp, n_imp_terms = build_impacts_page()
     n_solar = build_solar_page()
+    n_life, n_life_terms = build_life_page()
     n_bill_eq, n_bill_skills = build_billiards_page()
     n_search = build_search_index()
     build_home(n_min, n_gems, n_classes, n_spectral, n_instr, n_timeline, tl_decades,

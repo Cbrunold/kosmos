@@ -21,6 +21,7 @@ truth for code and the normalised data snapshots. Sync is one-way, Notion → re
 | `/billiards` | The physics of the pool table — a live shot lab (cut angle, speed, tip height, side, distance → tangent line, ghost ball, throw, slide-to-roll, stop distances), a cushion lab, the constants quoted from pool-sauce-engine, and the equations and skills it rests on |
 | `/glossary`  | The terms the site uses, defined once and traced at build time to every page whose text uses them |
 | `/explainers`| The people, channels and organisations that explain this material — with the glossary terms each covers, computed from the same matcher |
+| `/life`      | The molecular machinery, asked the questions /machines asks of an engine — how it works, what it is made of, what it costs — each entry chipping through to the elements it cannot run without |
 | `/solar`     | The nine orbits, computed live in the browser from Keplerian elements — play, scrub to any date 1800-2050, log or linear radius |
 | `/impacts`   | What extraction costs, by mechanism — how each harm arises, what reduces it, where it is documented, how many mines on the site it applies to, and the physics it runs on (Darcy, Stokes, hydrostatics) |
 | `/timeline`  | The universe's history on a log axis of seconds — Planck epoch to heat death, cross-linked to the equations and theories |
@@ -109,6 +110,12 @@ scripts/seed_localgroup.py    Seeds the Local Group (44 members) into Celestial_
                               map on /cosmos; uncertain masses are left blank
 scripts/notion_peek.py        Read-only: prints the schema, row count and sample rows of any Notion
                               data source whose title matches — for writing seeds against unseen DBs
+scripts/seed_life.py          Creates + seeds Life [DB] (16 molecular machines) with an Elements
+                              column that chips through to the periodic table, where seed_biology.py
+                              has put the matching biological role
+scripts/seed_biology.py       Adds Biological Role + Class to the Elements DB (34 filled) and
+                              Biological Role to the Minerals DB (18 biominerals)
+scripts/seed_biologists.py    Adds 19 biologists to the Researchers DB, which had none
 scripts/seed_solar.py         Creates + seeds Solar System [DB] (9 bodies + the Sun) with Standish's
                               Keplerian elements and per-century rates. No positions are stored:
                               /solar solves Kepler's equation client-side for whatever date is set
