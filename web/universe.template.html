@@ -245,6 +245,7 @@ __SHARED__
   const SUN_EQ = (D.sunEq || [0, 0, 0]).map((c) => c / LY_PER_KPC);
   let haloMass = D.mwMass || 1.5e12;
   let friction = true;
+  let showPaths = true;
 
   const nfwF = (x) => Math.log(1 + x) - x / (1 + x);
   function erf(x) {                 // Abramowitz & Stegun 7.1.26
@@ -534,6 +535,37 @@ __SHARED__
       }
     }
 
+    // paths: the same integrated track the bodies are placed from, so the line a
+    // thing is on is by construction the line it follows. Solid behind it, dashed
+    // ahead — the future is computed, not observed, and should not look the same.
+    if (showPaths && TRACK) {
+      const nowAt = Math.max(0, Math.min(TRACK.length - 1, clock / 1e6 / (DT * EVERY)));
+      for (let i = 0; i < MOVERS.length; i++) {
+        const col = kc(MOVERS[i].kind);
+        for (const [from, to, alpha, dash] of [[0, nowAt, 0.8, []], [nowAt, TRACK.length - 1, 0.2, [5, 7]]]) {
+          if (to - from < 0.5) continue;
+          ctx.beginPath();
+          let started = false;
+          for (let k = Math.floor(from); k <= Math.min(Math.ceil(to), TRACK.length - 1); k++) {
+            const a = TRACK[k][i];
+            const hx = (a[0] - SUN_EQ[0]) * LY_PER_KPC;
+            const hy = (a[1] - SUN_EQ[1]) * LY_PER_KPC;
+            const hz = (a[2] - SUN_EQ[2]) * LY_PER_KPC;
+            const d = Math.hypot(hx, hy, hz);
+            if (!(d > 0)) continue;
+            // a merged object's separation runs to zero, and log of that is not a
+            // place: hold the path at the innermost ring rather than off the map
+            const R = Math.max(LO, Math.log10(d));
+            const q = project([hx / d, hy / d, hz / d], R, S, cx, cy);
+            if (!started) { ctx.moveTo(q.x, q.y); started = true; } else ctx.lineTo(q.x, q.y);
+          }
+          ctx.strokeStyle = col; ctx.globalAlpha = alpha;
+          ctx.lineWidth = 1.7; ctx.setLineDash(dash);
+          ctx.stroke(); ctx.setLineDash([]); ctx.globalAlpha = 1;
+        }
+      }
+    }
+
     // points, far ones first so near ones land on top
     const pts = [];
     for (const it of ITEMS) it._sx = null;   // clear last frame: a culled item must stop being clickable
@@ -723,6 +755,7 @@ __SHARED__
     mk('orbits', (b) => { showSolar = !showSolar; b.setAttribute('aria-pressed', String(showSolar)); draw(); }, true);
     mk('shells', (b) => { showShells = !showShells; b.setAttribute('aria-pressed', String(showShells)); draw(); }, true);
     mk('labels', (b) => { showLabels = !showLabels; b.setAttribute('aria-pressed', String(showLabels)); draw(); }, true);
+    mk('paths', (b) => { showPaths = !showPaths; b.setAttribute('aria-pressed', String(showPaths)); draw(); }, true);
     // The zoom stops name a distance and put it near the edge of the frame, rather
     // than naming a multiple of the fitted view. Multiples were quietly tied to the
     // span of the axis: when the solar system extended it by three decades every one
