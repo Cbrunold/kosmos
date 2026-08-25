@@ -75,6 +75,9 @@ __SHARED__
   .meq:hover { color: var(--ink); border-color: var(--ink-2); }
   .mrow.hit { outline: 2px solid var(--c-teal); outline-offset: -2px; }
   .elchip.eqfilter[aria-pressed="true"] { background: var(--c-amber); border-color: var(--c-amber); }
+  .elchip.biofilter[aria-pressed="true"] { background: var(--c-green); border-color: var(--c-green); }
+  .biorole { display: block; font-size: 11.5px; color: var(--ink-2); line-height: 1.5; margin-top: 3px;
+             border-left: 2px solid var(--c-green); padding-left: 8px; }
   .count { font: 11.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; color: var(--muted); margin: 8px 2px 24px; }
 
   .histo { display: flex; align-items: flex-end; gap: 4px; height: 90px; max-width: 560px; padding: 0 2px; }
@@ -133,7 +136,7 @@ __SHARED__
 <script id="data" type="application/json">__DATA__</script>
 <script>
   const D = JSON.parse(document.getElementById('data').textContent);
-  const M = D.minerals; // [name, mohs, sg, molarMass, "O Si Al ...", [equationIds]]
+  const M = D.minerals; // [name, mohs, sg, molarMass, "O Si Al ...", [equationIds], bioRole]
   const EQ = D.equations || {};
   const nWithEq = M.filter((m) => (m[5] || []).length).length;
   document.getElementById('lede').textContent =
@@ -141,7 +144,8 @@ __SHARED__
 
   // element filter chips (+ an "has equations" filter first)
   const picked = new Set();
-  let onlyEq = false;
+  let onlyEq = false, onlyBio = false;
+  const nBio = M.filter((m) => m[6]).length;
   const chipsBox = document.getElementById('elchips');
   const chipBySym = {};
   if (nWithEq) {
@@ -152,6 +156,16 @@ __SHARED__
     b.querySelector('.n').textContent = nWithEq;
     b.title = 'Only minerals linked to equations on the Equations shelf';
     b.addEventListener('click', () => { onlyEq = !onlyEq; b.setAttribute('aria-pressed', String(onlyEq)); render(); });
+    chipsBox.appendChild(b);
+  }
+  if (nBio) {
+    const b = document.createElement('button');
+    b.className = 'elchip biofilter';
+    b.setAttribute('aria-pressed', 'false');
+    b.innerHTML = `❦ made by life <span class="n"></span>`;
+    b.querySelector('.n').textContent = nBio;
+    b.title = 'Minerals that living things build: bone, shell, nacre, kidney stones, bacterial magnetite';
+    b.addEventListener('click', () => { onlyBio = !onlyBio; b.setAttribute('aria-pressed', String(onlyBio)); render(); });
     chipsBox.appendChild(b);
   }
   function addChip(sym, n) {
@@ -184,6 +198,7 @@ __SHARED__
     let list = M.filter((m) => {
       if (needle && !m[0].toLowerCase().includes(needle)) return false;
       if (onlyEq && !(m[5] || []).length) return false;
+      if (onlyBio && !m[6]) return false;
       if (picked.size) {
         const els = ' ' + m[4] + ' ';
         for (const s of picked) if (!els.includes(' ' + s + ' ')) return false;
@@ -201,6 +216,7 @@ __SHARED__
       const r = document.createElement('div');
       r.className = 'mrow';
       r.dataset.name = m[0].toLowerCase();
+      if (m[6]) r.classList.add('hasbio');
       const nm = document.createElement('span'); nm.className = 'nmcell';
       const nmt = document.createElement('span'); nmt.className = 'nm'; nmt.textContent = m[0];
       nm.appendChild(nmt);
@@ -213,6 +229,12 @@ __SHARED__
           box.appendChild(a);
         }
         nm.appendChild(box);
+      }
+      // only ~18 of 3,142 rows carry one, so it sits under the name rather than
+      // taking a column that would be empty for everything else
+      if (m[6]) {
+        const br = document.createElement('span'); br.className = 'biorole'; br.textContent = m[6];
+        nm.appendChild(br);
       }
       const mo = document.createElement('span'); mo.className = 'num'; mo.textContent = m[1] ?? '—';
       const sg = document.createElement('span'); sg.className = 'num'; sg.textContent = m[2] ?? '—';

@@ -179,6 +179,7 @@ def build_minerals_page():
             round(m["Molar Mass"], 1) if verified and m.get("Molar Mass") else None,
             " ".join(syms),
             m.get("Equations") or [],   # equation page ids (mirrored relation)
+            m.get("Biological Role"),    # only ~18 rows have one (scripts/seed_biology.py)
         ])
     if unmapped:
         print("  note: unmapped mineral columns ignored:", sorted(unmapped))
@@ -826,7 +827,7 @@ def build_glossary_page():
         if nm and o.get("Notes"):
             corpus.append(("galaxy", nm, f"/cosmos#lg-{slugify(nm)}", " ".join([nm, o["Notes"]])))
     for e in elements:
-        txt = " ".join(filter(None, [e.get("extraction"), e.get("oreMinerals")]))
+        txt = " ".join(filter(None, [e.get("extraction"), e.get("oreMinerals"), e.get("bioRole")]))
         if txt:
             corpus.append(("element", e["name"], f"/elements#{e['notation']}", txt))
     for c in notion.get("constants", []):
@@ -844,6 +845,10 @@ def build_glossary_page():
     for i in notion.get("instruments", []):
         if i.get("Name") and i.get("Description"):
             corpus.append(("instrument", i["Name"], f"/cosmos#instr-{slugify(i['Name'])}", " ".join([i["Name"], i["Description"]])))
+    for m in notion.get("minerals", []):
+        if m.get("Name") and m.get("Biological Role"):
+            corpus.append(("mineral", m["Name"], f"/minerals?q={m['Name']}",
+                           " ".join([m["Name"], m["Biological Role"]])))
     for rt in notion.get("rockTypes", []):
         if rt.get("Name") and rt.get("Comment"):
             corpus.append(("rock", rt["Name"], f"/minerals#rock-{slugify(rt['Name'])}", " ".join([rt["Name"], rt["Comment"]])))
@@ -861,7 +866,7 @@ def build_glossary_page():
     # celestialTypes and spectralTypes are numeric or single-word lookup tables.
     KIND_ORDER = ["equation", "theory", "machine", "skill", "event", "element", "structure", "galaxy", "mine", "observatory",
                   "discovery", "mission", "constant", "researcher", "force", "instrument", "rock",
-                  "explainer", "impact"]
+                  "explainer", "impact", "mineral"]
     PER_KIND = 8
     pattern = term_pattern
 
@@ -885,9 +890,16 @@ def build_glossary_page():
                     "definition": t.get("Definition"), "aliases": names[1:], "appears": appears,
                     "n": sum(a["n"] for a in appears)})
     out.sort(key=lambda x: x["term"].lower())
-    domains = [d for d in ["Mechanics", "Waves & Fluids", "Cue sports", "Thermodynamics", "Electromagnetism", "Quantum", "Relativity", "Cosmology", "Astronomy",
-                           "Nuclear & Particle", "Chemistry", "Mineralogy", "Mining & Metallurgy", "Machines",
-                           "Workshop", "Mathematics", "Measurement"] if any(x["domain"] == d for x in out)]
+    DOMAIN_ORDER = ["Mechanics", "Waves & Fluids", "Cue sports", "Biology", "Thermodynamics",
+                    "Electromagnetism", "Quantum", "Relativity", "Cosmology", "Astronomy",
+                    "Nuclear & Particle", "Chemistry", "Mineralogy", "Mining & Metallurgy", "Machines",
+                    "Workshop", "Mathematics", "Measurement"]
+    domains = [d for d in DOMAIN_ORDER if any(x["domain"] == d for x in out)]
+    # anything seeded in Notion that this list has not heard of still gets a chip,
+    # at the end. The list used to be the only source, so a new domain arrived with
+    # terms and no way to filter for them, and nothing said so — Biology did exactly
+    # that on 2026-08-18 and only a domain count caught it
+    domains += sorted({x["domain"] for x in out if x["domain"] and x["domain"] not in domains})
     write_page("glossary.template.html", "glossary.html", {"terms": out, "domains": domains})
     return len(out), total_links
 

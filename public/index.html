@@ -714,6 +714,27 @@
       range: () => ['46% by mass', '≤10⁻⁶ ppm (log)'],
     };
   }
+  // What the element does in a living thing (scripts/seed_biology.py). Categorical
+  // rather than sequential: essentiality is a judgement about kind, not a quantity,
+  // and eleven elements carrying 99.9 % of a body by mass is a fact about which
+  // eleven and not about how much. Read it next to Rarity — carbon is 200 ppm of
+  // the crust and about 18 % of a body, silicon is the crust's second element and
+  // only ultratrace in life.
+  if (E.some((e) => e.bioClass)) {
+    const BIO = { Bulk: 'var(--c-green)', Trace: 'var(--c-teal)',
+                  Ultratrace: 'var(--c-cyan)', 'Not essential': 'var(--c-slate)' };
+    LENSES.bio = {
+      name: 'Life',
+      color: (e) => (e.bioClass ? BIO[e.bioClass] : null),
+      value: (e) => e.bioRole || (e.bioClass ? `${e.bioClass.toLowerCase()} — no note yet` : 'no biological role recorded'),
+      legend: () => [
+        { label: 'bulk — 99.9 % of a body', color: BIO.Bulk },
+        { label: 'trace, established', color: BIO.Trace },
+        { label: 'essential to some organisms', color: BIO.Ultratrace },
+        { label: 'no known role', color: BIO['Not essential'] },
+        { label: 'not recorded', hollow: true }],
+    };
+  }
   for (const k of Object.keys(LENSES)) {
     const L = LENSES[k];
     if (L.seq) { L.color = (e) => { const t = L.t(e); return t == null ? null : heat(t); }; L.solid = true; }

@@ -81,6 +81,10 @@ def normalise(results: list) -> list:
             "boilingPt": num("Boiling Pt"),
             "discovered": num("Discovered"),
             "abundance": num("Crustal Abundance"),   # ppm by mass (scripts/seed_abundance.py)
+            # what the element does in a living thing (scripts/seed_biology.py). Class is
+            # the lens; role is the prose, and the glossary traces it like any other text
+            "bioClass": sel("Biological Class"),
+            "bioRole": rich("Biological Role"),
             # extraction data (scripts/seed_mining.py); the concentration factor is derived at build time
             "oreGrade": num("Ore Grade (ppm)"),
             "oreMinerals": rich("Ore Minerals"),

@@ -36,7 +36,7 @@ TITLE = "Glossary [DB]"
 
 DOMAINS = ["Mechanics", "Thermodynamics", "Electromagnetism", "Quantum", "Relativity", "Cosmology", "Astronomy",
            "Nuclear & Particle", "Chemistry", "Mineralogy", "Mining & Metallurgy", "Machines",
-           "Workshop", "Mathematics", "Measurement", "Waves & Fluids", "Cue sports"]
+           "Workshop", "Mathematics", "Measurement", "Waves & Fluids", "Cue sports", "Biology"]
 
 # term, domain, definition, aliases (comma-separated, for tracing)
 TERMS = [
@@ -279,6 +279,27 @@ TERMS = [
     ("Backspin", "Cue sports", "Reverse spin from a tip below centre. After the collision the cloth's friction turns it into a return: the cue ball comes back. Twice the speed pulls back four times as far.", "draw shot"),
     ("Miscue", "Cue sports", "The tip sliding off the ball instead of gripping it — beyond about half a radius of offset, or with no chalk. The ball goes almost nowhere and sometimes off the table.", "miscues"),
     ("Cushion", "Cue sports", "The rubber rail the ball rebounds from. It returns about three-quarters of the energy and drags on what runs along it, so the ball leaves shorter than it arrived — more so at speed, and side spin changes it either way.", "cushions"),
+    # ---- biology. Added after the elements and minerals got a biological role, not
+    # before: every term here was checked to trace into prose that already exists,
+    # which is why there is no Photosynthesis or Biomineralisation â nothing on the
+    # site uses those words yet. "Shell" was rejected outright: it collides with the
+    # nuclear shell model and with electron shells. "Membrane" was kept only because
+    # it can be defined to cover the fuel-cell sense it also catches, honestly.
+    ("Enzyme", "Biology", "A protein that speeds one specific reaction, often millionfold, without being consumed. Michaelis–Menten says how fast, and a large share of them need a metal atom at the active site to work at all.", "enzymes, enzymatic"),
+    ("Protein", "Biology", "A chain of amino acids folded into a shape that does something — catalyse, carry, signal, hold. The shape is the function, and the disulfide bridges between cysteines are much of what holds it.", "proteins"),
+    ("Amino acid", "Biology", "The twenty-odd building blocks of proteins: a common backbone plus a side chain that decides the character. Selenocysteine is the twenty-first and needs a codon of its own.", "amino acids"),
+    ("Membrane", "Biology", "A thin barrier that passes some things and stops others — the lipid bilayer around a cell, the proton-exchange film in a fuel cell. Both work by being selective, and both store energy as a gradient across themselves.", "membranes"),
+    ("Neuron", "Biology", "A cell that signals by letting ions cross its membrane, so a voltage built up by pumping runs away along its length. Goldman–Hodgkin–Katz gives the voltage it rests at.", "neurons, nerve cell"),
+    ("Metabolism", "Biology", "The whole set of reactions that keep an organism running: breaking things down for energy, and building things up from the pieces.", "metabolic"),
+    ("Respiration", "Biology", "Getting energy from fuel by passing electrons down a chain to a final acceptor. With oxygen at the end it yields roughly sixteen times what fermentation does.", "respiratory"),
+    ("Cofactor", "Biology", "A non-protein helper an enzyme needs — a metal ion, or a molecule derived from a vitamin. It is the reason iron, zinc, magnesium and cobalt are dietary requirements at all.", "cofactors"),
+    ("Haemoglobin", "Biology", "The iron-bearing protein that carries oxygen in blood, holding it loosely enough to let go where it is wanted. Molluscs and arthropods use copper-based haemocyanin instead, which is why their blood is blue.", "hemoglobin, haemocyanin"),
+    ("Chlorophyll", "Biology", "The green pigment that catches the photon, with a magnesium atom at the centre of its ring. Structurally it is haem with the iron swapped for magnesium.", ""),
+    ("Nitrogen fixation", "Biology", "Breaking the triple bond of atmospheric N₂ into a form life can use. Nitrogenase does it at ambient temperature on a molybdenum–iron cluster; industry needs Haber–Bosch, 400 °C and 200 atmospheres.", "fixing nitrogen"),
+    ("Vitamin", "Biology", "An organic compound an organism cannot make and so must eat. B₁₂ is the only one with a metal in it, and the metal is cobalt.", "vitamins"),
+    ("Skeleton", "Biology", "The mineral scaffold an organism builds to hold its shape: calcium carbonate in shell and coral, calcium phosphate in bone, silica in diatoms, strontium sulfate in acantharians.", "skeletal, skeletons"),
+    ("Bone", "Biology", "A composite — hydroxylapatite crystals for stiffness in a collagen matrix for toughness, rebuilt continuously by cells that dissolve it and cells that lay it down. Neither material alone would serve.", "bones"),
+    ("Nacre", "Biology", "Mother-of-pearl: aragonite tablets stacked in a protein mortar. The layering stops a crack travelling, which makes it far tougher than the mineral by itself.", "mother-of-pearl"),
 ]
 
 

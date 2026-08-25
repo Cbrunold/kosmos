@@ -488,7 +488,7 @@
   @media print { .klang { display: none; } }
 </style>
 <div class="klang" aria-label="Language · Langue"><a href="/elements" hreflang="en" lang="en">EN</a><a href="/fr/elements" hreflang="fr" lang="fr" class="on">FR</a></div>
-<script>window.__VOCAB__ = {"Radiation":"Rayonnement","Thermoelectrics":"Thermoélectricité","General Relativity":"La relativité générale","Open pit + underground":"Ciel ouvert + souterrain","Chemical Thermodynamics":"Thermodynamique chimique","Chemistry":"Chimie","Special Relativity":"Relativité restreinte","Mechanics":"Mécanique","Calculus":"Analyse","Quantum":"Quantique","Gas field":"Gisement de gaz","Photonics":"Photonique","Cosmology":"Cosmologie","Electromagnetism":"Électromagnétisme","Magnetohydrodynamics":"Magnétohydrodynamique","Waves & Optics":"Ondes et optique","Astrophysics":"Astrophysique","Biophysics":"Biophysique","Quantum Field Theory":"Théorie quantique des champs","Superconductivity":"Supraconductivité","Billiards":"Billard","Atomic Physics":"Physique atomique","Nonlinear Dynamics":"Dynamique non linéaire","Particle Physics":"Physique des particules","Plasma Physics":"Physique des plasmas","Nuclear Physics":"Physique nucléaire","Condensed Matter":"Matière condensée","Quantum Computing":"Calcul quantique","Quarry":"Carrière","Open pit":"Mine à ciel ouvert","Rocketry":"Astronautique","Statistical Mechanics":"Physique statistique","Geophysics":"Géophysique","Materials Science":"Science des matériaux","Chemical Kinetics":"Cinétique chimique","Celestial Mechanics":"Mécanique céleste","In-situ leach":"Lixiviation in situ","Information Theory":"Théorie de l'information","Heat Transfer":"Transfert thermique","Acoustics":"Acoustique","Mathematics":"Mathématiques","Fluid Dynamics":"Dynamique des fluides","Electrostatics":"Électrostatique","Thermodynamics":"Thermodynamique","Brine":"Saumure","Vectors & Geometry":"Vecteurs et géométrie","Underground":"Souterrain","Classical Field Theory":"Théorie classique des champs"};</script>
+<script>window.__VOCAB__ = {"Astrophysics":"Astrophysique","General Relativity":"La relativité générale","Heat Transfer":"Transfert thermique","Materials Science":"Science des matériaux","Gas field":"Gisement de gaz","Magnetohydrodynamics":"Magnétohydrodynamique","Chemical Kinetics":"Cinétique chimique","Mathematics":"Mathématiques","Mechanics":"Mécanique","Nuclear Physics":"Physique nucléaire","Acoustics":"Acoustique","In-situ leach":"Lixiviation in situ","Electrostatics":"Électrostatique","Quantum Computing":"Calcul quantique","Superconductivity":"Supraconductivité","Calculus":"Analyse","Brine":"Saumure","Open pit + underground":"Ciel ouvert + souterrain","Quantum Field Theory":"Théorie quantique des champs","Rocketry":"Astronautique","Electromagnetism":"Électromagnétisme","Open pit":"Mine à ciel ouvert","Plasma Physics":"Physique des plasmas","Geophysics":"Géophysique","Nonlinear Dynamics":"Dynamique non linéaire","Underground":"Souterrain","Information Theory":"Théorie de l'information","Waves & Optics":"Ondes et optique","Thermoelectrics":"Thermoélectricité","Thermodynamics":"Thermodynamique","Chemical Thermodynamics":"Thermodynamique chimique","Biophysics":"Biophysique","Atomic Physics":"Physique atomique","Particle Physics":"Physique des particules","Cosmology":"Cosmologie","Vectors & Geometry":"Vecteurs et géométrie","Quarry":"Carrière","Photonics":"Photonique","Billiards":"Billard","Quantum":"Quantique","Statistical Mechanics":"Physique statistique","Fluid Dynamics":"Dynamique des fluides","Classical Field Theory":"Théorie classique des champs","Condensed Matter":"Matière condensée","Chemistry":"Chimie","Radiation":"Rayonnement","Celestial Mechanics":"Mécanique céleste","Special Relativity":"Relativité restreinte"};</script>
 
 <header class="top">
   <div class="eyebrow"><a href="/fr/" style="color: inherit; text-decoration: none">KOSMOS</a> / Chimie · synchronisé en direct depuis Notion</div>
@@ -714,6 +714,27 @@
       t: (e) => (e.abundance == null ? null : 1 - lin(Math.log10(Math.max(e.abundance, ABU_FLOOR)), abuR)),
       value: (e) => (e.abundance == null ? 'does not occur naturally' : `${fmtPpm(e.abundance)} of the crust${abuRank.get(e.z) ? ` · ${abuRank.get(e.z)}${ordinal(abuRank.get(e.z))} rarest of ${abuRank.size}` : ''}`),
       range: () => ['46% by mass', '≤10⁻⁶ ppm (log)'],
+    };
+  }
+  // What the element does in a living thing (scripts/seed_biology.py). Categorical
+  // rather than sequential: essentiality is a judgement about kind, not a quantity,
+  // and eleven elements carrying 99.9 % of a body by mass is a fact about which
+  // eleven and not about how much. Read it next to Rarity — carbon is 200 ppm of
+  // the crust and about 18 % of a body, silicon is the crust's second element and
+  // only ultratrace in life.
+  if (E.some((e) => e.bioClass)) {
+    const BIO = { Bulk: 'var(--c-green)', Trace: 'var(--c-teal)',
+                  Ultratrace: 'var(--c-cyan)', 'Not essential': 'var(--c-slate)' };
+    LENSES.bio = {
+      name: 'Life',
+      color: (e) => (e.bioClass ? BIO[e.bioClass] : null),
+      value: (e) => e.bioRole || (e.bioClass ? `${e.bioClass.toLowerCase()} — no note yet` : 'no biological role recorded'),
+      legend: () => [
+        { label: 'bulk — 99.9 % of a body', color: BIO.Bulk },
+        { label: 'trace, established', color: BIO.Trace },
+        { label: 'essential to some organisms', color: BIO.Ultratrace },
+        { label: 'no known role', color: BIO['Not essential'] },
+        { label: 'not recorded', hollow: true }],
     };
   }
   for (const k of Object.keys(LENSES)) {
