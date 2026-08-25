@@ -355,6 +355,14 @@ PAGE_JS_EXTRA = {
                        r"""bits\.push\('([^']+)'\)"""],              # "a foundation — requires nothing"
     "billiards.html": [r"""\['([A-Za-z][^'`]+)',\s*`""", r"""\['([a-z][a-z ,\-]+)',\s*(?:S\.|`|\$)""",   # dl labels, presets
                        r"""\['([^']+)',\s*\{ cut:"""],
+    # Both pages build their card labels through a local para(cls, label, text) helper,
+    # so the label is a function argument and no generic context sees it. Two of them
+    # are also all-lowercase and short — "what reduces it", "cannot run without" —
+    # which is exactly the shape JS_SKIP_CLASSY exists to skip, since that is what a
+    # class list looks like. The heuristic is right to be cautious and wrong here, and
+    # naming the spots is what this table is for.
+    "impacts.html": [r"""para\('[a-z]*', '([^']+)'""", r"""l\.textContent = '([^']+)'"""],
+    "life.html": [r"""para\('[a-z]*', '([^']+)'""", r"""l\.textContent = '([^']+)'"""],
     "universe.html": [r"""mk\('([^']+)'""",                        # the view buttons
                       r"""_LABEL = '([^']+)'""",                   # here / the Sun, at the centre
                       r"""^\s*\['([^']+)',\s*(?:null|[\d.]+e?[-+]?\d*)\]"""],   # the zoom stops
