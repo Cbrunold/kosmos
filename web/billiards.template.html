@@ -118,6 +118,14 @@ __SHARED__
       <div class="hint"><b>← →</b> a degree a press, <b>shift</b> for a tenth. In practice this walks the aim off the ghost-ball line, so you can see what a degree of error costs; in pro it is the whole aim.</div></div>
     <div class="row"><label for="spd">strike — 1 soft, 10 break</label><input id="spd" type="range" min="0.5" max="10" step="0.1" value="2.5"><span class="v" id="spdv"></span>
       <div class="hint">Also the cue ball's speed in m/s: 2–3 pot weight, 5 firm, 8+ a break.</div></div>
+    <div class="row"><label>where you strike the cue ball</label>
+      <div style="grid-column:1/-1;display:flex;gap:12px;align-items:center">
+        <svg id="tipball" viewBox="0 0 120 120" style="width:120px;height:120px;flex:0 0 120px;cursor:crosshair;touch-action:none" role="img" aria-label="The face of the cue ball: click or drag to choose where the tip meets it"></svg>
+        <div style="flex:1;min-width:0">
+          <div id="tipballv" style="font:12px ui-monospace,monospace;color:var(--ink);line-height:1.5"></div>
+          <div class="hint" style="margin-top:4px">Poke the ball. The sliders below follow, and so does the shot. Outside the inner ring the tip slides off the ball — that is a miscue, and the ring is where it starts.</div>
+        </div>
+      </div></div>
     <div class="row"><label for="tip">tip height, b/R</label><input id="tip" type="range" min="-0.5" max="0.5" step="0.02" value="0.4"><span class="v" id="tipv"></span>
       <div class="hint">+0.4 natural roll · 0 stun · −0.5 draw · ±0.5 is the miscue limit.</div></div>
     <div class="row"><label for="side">side, b/R</label><input id="side" type="range" min="-0.5" max="0.5" step="0.02" value="0"><span class="v" id="sidev"></span>
@@ -1301,6 +1309,7 @@ __SHARED__
     stopAnim();
     const v = sliders();
     for (const k of ids) $(k + 'v').textContent = units[k](v[k]);
+    drawTipBall(v.tip, v.side);
     $('drilllvl').textContent = state.drill == null ? '—' : `L${state.dlevel}/10`;
     if (state.mode === 'practice') {
       const S = currentShot(false);
@@ -1311,7 +1320,7 @@ __SHARED__
       $('shotinfo').textContent = S.feasible
         ? `cut ${fmt(deg(Math.acos(Math.max(-1, Math.min(1, vdot(S.dAim, S.n))))), 1)}°${spP && !spP.miss ? ` · ${spP.name} (${spP.clock})` : ''} · ${fmt(S.dst, 2)} m to the ball · ${S.bank ? `banked off the ${S.bank.rail} rail into` : 'aimed at'} the ${S.name} pocket${state.aimOff ? ` · trimmed ${state.aimOff > 0 ? '+' : ''}${fmt(state.aimOff, 1)}° off the ghost line` : ''}`
         : `no line to the ${S.name} pocket from here — not even off one rail`;
-      $('aimv').textContent = state.aimOff ? `ghost ${state.aimOff > 0 ? '+' : ''}${fmt(state.aimOff, 1)}°` : 'on the ghost line';
+      $('aimv').textContent = state.aimOff ? `ghost ${state.aimOff > 0 ? '+' : ''}${fmt(state.aimOff, 1)}°` : 'ghost line';
       gradeConditions(S);
       drawView(S.feasible ? S.dAim : vunit(vsub(state.ob, state.cb)), v.tip, v.side, S.feasible ? S.ghost : null);
     } else {
@@ -1328,6 +1337,55 @@ __SHARED__
       drawView([Math.cos(a), Math.sin(a)], v.tip, v.side, null);
     }
   }
+
+  // ---- the cue ball's face. Every player picks the strike by looking at the ball, not by reading two
+  // numbers, so this is the control and the sliders are the fine adjustment. The inner ring is the
+  // miscue limit: past half a radius from centre the tip cannot hold the ball and slides off it.
+  const tball = $('tipball');
+  const TB_C = 60, TB_R = 48, TB_LIM = 0.5;                    // face radius in pixels; limit in b/R
+  function drawTipBall(tip, side) {
+    tball.innerHTML = '';
+    const te = (tag, a) => el(tag, a, tball);
+    te('circle', { cx: TB_C, cy: TB_C, r: TB_R, fill: 'var(--panel)', stroke: 'var(--ink)', 'stroke-width': 1.6 });
+    te('line', { x1: TB_C - TB_R, y1: TB_C, x2: TB_C + TB_R, y2: TB_C, stroke: 'var(--hairline)' });
+    te('line', { x1: TB_C, y1: TB_C - TB_R, x2: TB_C, y2: TB_C + TB_R, stroke: 'var(--hairline)' });
+    te('circle', { cx: TB_C, cy: TB_C, r: TB_R * TB_LIM, fill: 'none', stroke: 'var(--c-red)', 'stroke-width': 1, 'stroke-dasharray': '3 3', opacity: 0.65 });
+    const mono = { 'font-family': 'ui-monospace, "SF Mono", Consolas, monospace', 'font-size': 8.5, fill: 'var(--muted)' };
+    const t1 = te('text', { x: TB_C, y: 11, ...mono, 'text-anchor': 'middle' }); t1.textContent = 'follow';
+    const t2 = te('text', { x: TB_C, y: 115, ...mono, 'text-anchor': 'middle' }); t2.textContent = 'draw';
+    const t3 = te('text', { x: 3, y: TB_C + 3, ...mono }); t3.textContent = 'L';
+    const t4 = te('text', { x: 117, y: TB_C + 3, ...mono, 'text-anchor': 'end' }); t4.textContent = 'R';
+    const x = TB_C + side * TB_R, y = TB_C - tip * TB_R;
+    te('line', { x1: TB_C, y1: TB_C, x2: x, y2: y, stroke: 'var(--c-red)', 'stroke-width': 1, opacity: 0.5 });
+    te('circle', { cx: x, cy: y, r: 5, fill: 'var(--c-red)', stroke: 'var(--page)', 'stroke-width': 1.2 });
+    const off = Math.hypot(side, tip);
+    const words = [];
+    if (tip > 0.05) words.push(tip > 0.38 ? 'top' : 'a little top'); else if (tip < -0.05) words.push(tip < -0.38 ? 'deep draw' : 'draw'); else words.push('centre height');
+    if (side > 0.05) words.push(side > 0.38 ? 'full right' : 'right'); else if (side < -0.05) words.push(side < -0.38 ? 'full left' : 'left'); else words.push('no side');
+    $('tipballv').innerHTML = `<b>${words.join(' · ')}</b><br>tip ${tip >= 0 ? '+' : ''}${fmt(tip, 2)} · side ${side >= 0 ? '+' : ''}${fmt(side, 2)} · ${fmt(off, 2)} from centre`
+      + (off > TB_LIM + 1e-9 ? ' <span class="warn">— past the miscue limit</span>' : '');
+  }
+  function tipBallPick(e) {
+    const m2 = tball.getScreenCTM();
+    if (!m2) return;
+    const q = tball.createSVGPoint(); q.x = e.clientX; q.y = e.clientY;
+    const u = q.matrixTransform(m2.inverse());
+    let sx = (u.x - TB_C) / TB_R, sy = -(u.y - TB_C) / TB_R;
+    const m3 = Math.hypot(sx, sy);
+    if (m3 > TB_LIM) { sx = sx / m3 * TB_LIM; sy = sy / m3 * TB_LIM; }   // the tip cannot hold it past here
+    // snap to the slider's step by truncating toward the centre: rounding outward can put a point that
+    // was just inside the ring back outside it, and then no amount of rescaling settles
+    const snap = (v) => Math.sign(v) * Math.floor(Math.abs(v) / 0.02 + 1e-9) * 0.02;
+    $('side').value = snap(sx);
+    $('tip').value = snap(sy);
+    schedule();
+  }
+  let tbDrag = false;
+  tball.addEventListener('pointerdown', (e) => { tbDrag = true; tipBallPick(e); tball.setPointerCapture(e.pointerId); e.preventDefault(); });
+  tball.addEventListener('pointermove', (e) => { if (tbDrag) tipBallPick(e); });
+  tball.addEventListener('pointerup', () => { tbDrag = false; });
+  tball.addEventListener('pointercancel', () => { tbDrag = false; });
+
   let raf = 0;
   const schedule = () => { if (!raf) raf = requestAnimationFrame(() => { raf = 0; run(); }); };
   for (const k of ids) $(k).addEventListener('input', schedule);
