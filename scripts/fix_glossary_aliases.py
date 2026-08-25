@@ -9,6 +9,16 @@ own pass. This is it.
 Each entry records what the alias was matching, because the reasoning is the
 part worth keeping: the numbers are easy to re-derive, the judgement is not.
 
+Run it here rather than through the Notion MCP connector. On 2026-08-18 the
+connector returned 404 on these pages and the commit that introduced this script
+recorded the wrong reason for it — that access was somehow per-page, since older
+glossary rows had been editable earlier the same day. It was not: the connector
+had been attached to a different workspace, so nothing in the kosmos one was
+reachable, and the older rows only looked fine because they had been edited
+before the switch. The token in the VPS's .env owns these databases and does not
+drift, which is why every write in this repo goes through a script and not a
+chat tool.
+
 Idempotent: writes only where the stored value differs from the wanted one.
 Run on the VPS:  ./deploy.sh fix_glossary_aliases
 """
