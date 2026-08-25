@@ -1156,15 +1156,20 @@ def build_universe_page():
     """
     items = []
 
-    def add(name, kind, dist, size, ra, dec, href, notes, inside=False):
+    def add(name, kind, dist, size, ra, dec, href, notes, inside=False, vel=None):
         if not dist or dist <= 0:
             return
-        items.append({
+        it = {
             "name": name, "kind": kind, "dist": dist, "size": size,
             "ra": ra, "dec": dec, "href": href, "inside": inside,
             "form": "point" if (ra is not None and not inside) else "shell",
             "notes": (notes or "")[:180],
-        })
+        }
+        # negative is approaching. Only objects carrying one move when the clock
+        # runs; everything else has no measured velocity in the data and stays put
+        if vel:
+            it["vel"] = vel
+        items.append(it)
 
     for o in notion.get("celestialObjects", []):
         nm = obj_name(o)
@@ -1174,7 +1179,7 @@ def build_universe_page():
         if not d:
             continue                              # the Milky Way itself sits at the origin
         add(nm, "galaxy", d, o.get("Diameter (ly)"), o.get("RA (deg)"), o.get("Dec (deg)"),
-            f"/cosmos#lg-{slugify(nm)}", o.get("Notes"))
+            f"/cosmos#lg-{slugify(nm)}", o.get("Notes"), vel=o.get("Radial velocity (km/s)"))
 
     for r in notion.get("cosmicStructures", []):
         nm = r.get("Name")
@@ -1206,7 +1211,8 @@ def build_universe_page():
     write_page("universe.template.html", "universe.html",
                {"items": items, "lo": lo, "hi": hi, "solar": solar,
                 "nPoint": n_point, "nShell": len(items) - n_point,
-                "nOrbit": len(solar["orbits"])})
+                "nOrbit": len(solar["orbits"]),
+                "nMoving": sum(1 for i in items if i.get("vel"))})
     return len(items), n_point
 
 
