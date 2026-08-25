@@ -232,6 +232,7 @@
   .tabpane { display: none; }
   .tabpane.on { display: block; }
   .tabpane > h2.ksec:first-child { margin-top: 4px; }
+  [hidden] { display: none !important; }   /* .ctl sets display:flex, which outranks the attribute */
   .ctl.sys2 .sys3-only, .ctl.sys4 .sys3-only { display: none; }
   .ctl:not(.sys4) .scratch-only { display: none; }
   .ctl details { border-top: 1px solid var(--hairline); padding-top: 9px; }
@@ -291,7 +292,7 @@
   @media print { .klang { display: none; } }
 </style>
 <div class="klang" aria-label="Language · Langue"><a href="/billiards" hreflang="en" lang="en">EN</a><a href="/fr/billiards" hreflang="fr" lang="fr" class="on">FR</a></div>
-<script>window.__VOCAB__ = {"Beginner":"Débutant","Advanced":"Avancé","Billiards":"Billard","Intermediate":"Intermédiaire","Mechanics":"Mécanique"};</script>
+<script>window.__VOCAB__ = {"Billiards":"Billard","Advanced":"Avancé","Mechanics":"Mécanique","Beginner":"Débutant","Intermediate":"Intermédiaire"};</script>
 <script>const VOCAB = window.__VOCAB__ || {}; const vocab = (s) => (s == null ? s : (VOCAB[s] || s));</script>
 
 <nav class="knav"><a href="/fr/">KOSMOS</a><span>/</span><span class="cur">Billard</span></nav>
@@ -315,9 +316,9 @@
       <div class="hint prac-only">Faites glisser l'une ou l'autre bille ; cliquez sur une poche pour y viser. Les cartes de résultats sont sous la table.</div>
       <div class="hint pro-only">Faites glisser le tapis vide pour orienter la queue ; faites glisser une bille pour la déplacer.</div>
       <div class="presets" style="grid-column:1/-1"><button id="share" type="button">copier un lien vers ce coup</button></div></div>
-    <div class="row pro-only"><label>visée — réglage fin</label>
+    <div class="row"><label>visée — réglage fin</label>
       <div class="aimbtns"><button type="button" data-n="-1">−1°</button><button type="button" data-n="-0.1">−0.1°</button><span class="v" id="aimv"></span><button type="button" data-n="0.1">+0.1°</button><button type="button" data-n="1">+1°</button></div>
-      <div class="hint"><b>← →</b> orientent la queue de 1° par appui — <b>shift</b> pour 0.1° — plus fin ou plus plein sans toucher le tapis.</div></div>
+      <div class="hint"><b>← →</b> a degree a press, <b>shift</b> for a tenth. In practice this walks the aim off the ghost-ball line, so you can see what a degree of error costs; in pro it is the whole aim.</div></div>
     <div class="row"><label for="spd">frappe — 1 douce, 10 casse</label><input id="spd" type="range" min="0.5" max="10" step="0.1" value="2.5"><span class="v" id="spdv"></span>
       <div class="hint">Aussi la vitesse de la bille blanche en m/s : 2–3 pour empocher, 5 ferme, 8+ une casse.</div></div>
     <div class="row"><label for="tip">hauteur du procédé, b/R</label><input id="tip" type="range" min="-0.5" max="0.5" step="0.02" value="0.4"><span class="v" id="tipv"></span>
@@ -1230,7 +1231,7 @@
     const out = [];
     for (let i = 0; i <= 95; i++) {
       const v = 0.5 + i * 0.1;
-      const S = shoot(state.cb, state.ob, { pk: state.pk }, v, tip, side, true);
+      const S = shoot(state.cb, state.ob, { pk: state.pk, off: state.aimOff }, v, tip, side, true);
       if (!S.feasible) return null;
       out.push({
         v,
@@ -1403,6 +1404,10 @@
       else {   // markers: the ghost-ball aim, and the strike the slider holds
         ctx.globalAlpha = 0.55; ctx.fillStyle = ink;
         ctx.fillRect(HW / 2 - 0.5, 0, 1, HH);
+        if (state.aimOff) {                                    // where your trim sits in that window
+          const ax = HW / 2 + (state.aimOff / 5) * (HW / 2);
+          if (ax >= 0 && ax <= HW) { ctx.globalAlpha = 0.9; ctx.fillStyle = amber; ctx.fillRect(ax - 1, 0, 2, HH); }
+        }
         ctx.fillRect(0, HH - ((spd - 0.5) / 9.5) * HH - 0.5, HW, 1);
         ctx.globalAlpha = 1;
       }
@@ -1483,7 +1488,7 @@
   }
 
   // ---- wiring: ball positions, the aimed pocket (practice) and the aim line (pro) live in state
-  const state = { balls: [{ n: 0, p: [0.9, 0.56] }, { n: 1, p: [1.75, 0.5] }], pk: 2, mode: 'practice', aimDeg: 0, drill: null, dlevel: 1 };
+  const state = { balls: [{ n: 0, p: [0.9, 0.56] }, { n: 1, p: [1.75, 0.5] }], pk: 2, mode: 'practice', aimDeg: 0, aimOff: 0, drill: null, dlevel: 1 };
   state.tgtIdx = function () { let bi = 1, bn = 1e9; for (let i = 1; i < this.balls.length; i++) if (this.balls[i].n < bn) { bn = this.balls[i].n; bi = i; } return bi; };
   // cb/ob stay as the cue ball and the target (lowest number up) — the rest of the roster rides along
   Object.defineProperties(state, {
@@ -1494,7 +1499,7 @@
   const ids = ['spd', 'tip', 'side'];
   const units = { spd: (v) => `${fmt(v, 1)} / 10`, tip: (v) => `${v >= 0 ? '+' : ''}${fmt(v, 2)}`, side: (v) => `${v >= 0 ? '+' : ''}${fmt(v, 2)}` };
   const sliders = () => Object.fromEntries(ids.map((k) => [k, +$(k).value]));
-  const currentShot = (lite) => { const v = sliders(); return shoot(state.cb, state.ob, state.mode === 'pro' ? { deg: state.aimDeg } : { pk: state.pk }, v.spd, v.tip, v.side, !!lite); };
+  const currentShot = (lite) => { const v = sliders(); return shoot(state.cb, state.ob, state.mode === 'pro' ? { deg: state.aimDeg } : { pk: state.pk, off: state.aimOff }, v.spd, v.tip, v.side, !!lite); };
   function run() {
     stopAnim();
     const v = sliders();
@@ -1507,8 +1512,9 @@
       if (S.feasible) scheduleHeatmap(v.tip, v.side, v.spd); else { hmToken++; $('hmap').getContext('2d').clearRect(0, 0, HW, HH); }
       const spP = S.feasible ? sightPicture(S.dAim) : null;
       $('shotinfo').textContent = S.feasible
-        ? `cut ${fmt(deg(Math.acos(Math.max(-1, Math.min(1, vdot(S.dAim, S.n))))), 1)}°${spP && !spP.miss ? ` · ${spP.name} (${spP.clock})` : ''} · ${fmt(S.dst, 2)} m to the ball · ${S.bank ? `banked off the ${S.bank.rail} rail into` : 'aimed at'} the ${S.name} pocket`
+        ? `cut ${fmt(deg(Math.acos(Math.max(-1, Math.min(1, vdot(S.dAim, S.n))))), 1)}°${spP && !spP.miss ? ` · ${spP.name} (${spP.clock})` : ''} · ${fmt(S.dst, 2)} m to the ball · ${S.bank ? `banked off the ${S.bank.rail} rail into` : 'aimed at'} the ${S.name} pocket${state.aimOff ? ` · trimmed ${state.aimOff > 0 ? '+' : ''}${fmt(state.aimOff, 1)}° off the ghost line` : ''}`
         : `aucune ligne vers la poche ${S.name} d'ici — pas même par une bande`;
+      $('aimv').textContent = state.aimOff ? `ghost ${state.aimOff > 0 ? '+' : ''}${fmt(state.aimOff, 1)}°` : 'on the ghost line';
       gradeConditions(S);
       drawView(S.feasible ? S.dAim : vunit(vsub(state.ob, state.cb)), v.tip, v.side, S.feasible ? S.ghost : null);
     } else {
@@ -1563,12 +1569,18 @@
   svg.addEventListener('pointercancel', () => { drag = null; });
 
   // aim trim, execute, and the two modes
-  const trimAim = (d2) => { let a = state.aimDeg + d2; a = ((a + 180) % 360 + 360) % 360 - 180; state.aimDeg = a; schedule(); };
+  const trimAim = (d2) => {
+    if (state.mode === 'pro') { let a = state.aimDeg + d2; state.aimDeg = ((a + 180) % 360 + 360) % 360 - 180; }
+    else state.aimOff = Math.round(Math.max(-15, Math.min(15, state.aimOff + d2)) * 100) / 100;   // off the ghost line
+    schedule();
+  };
   for (const b of document.querySelectorAll('.aimbtns button[data-n]')) b.addEventListener('click', () => trimAim(+b.dataset.n));
   // arrow keys steer the cue in pro mode: ← → a degree per press, shift for a tenth — thinner or fuller
   // one notch at a time, no cloth-dragging. Left in the shooter's view is left (the table is seen from above).
   document.addEventListener('keydown', (e) => {
-    if (state.mode !== 'pro' || (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight')) return;
+    if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+    const shotPane = $('pane-shot');
+    if (shotPane && !shotPane.classList.contains('on')) return;
     if (e.metaKey || e.ctrlKey || e.altKey) return;
     const tg = e.target && e.target.tagName;
     if (tg === 'INPUT' || tg === 'SELECT' || tg === 'TEXTAREA') return;   // sliders keep their native arrows
@@ -1615,7 +1627,7 @@
   function shotHash() {
     const v = sliders();
     const tgt = state.tgtIdx();
-    const parts = [state.mode === 'pro' ? 1 : 0, fmt(state.cb[0], 3), fmt(state.cb[1], 3), fmt(state.ob[0], 3), fmt(state.ob[1], 3), state.pk, fmt(state.aimDeg, 2), v.spd, v.tip, v.side];
+    const parts = [state.mode === 'pro' ? 1 : 0, fmt(state.cb[0], 3), fmt(state.cb[1], 3), fmt(state.ob[0], 3), fmt(state.ob[1], 3), state.pk, fmt(state.mode === 'pro' ? state.aimDeg : state.aimOff, 2), v.spd, v.tip, v.side];
     state.balls.forEach((b, i) => { if (i !== 0 && i !== tgt) parts.push(b.n, fmt(b.p[0], 3), fmt(b.p[1], 3)); });
     return '#s=' + parts.join(',') + (state.conds.size ? '!' + [...state.conds].join('.') : '');
   }
@@ -1629,7 +1641,8 @@
     state.balls = [{ n: 0, p: [a[1], a[2]] }, { n: 1, p: [a[3], a[4]] }];
     for (let i = 10; i + 2 < a.length; i += 3) { if (state.balls.length >= 16) break; state.balls.push({ n: Math.max(2, a[i] | 0), p: [a[i + 1], a[i + 2]] }); }
     state.balls.forEach((b, i) => { b.p = clampBall(b.p, state.balls.filter((_, j) => j !== i).map((x) => x.p)); });
-    state.pk = Math.min(5, Math.max(0, a[5] | 0)); state.aimDeg = a[6];
+    state.pk = Math.min(5, Math.max(0, a[5] | 0));
+    if (state.mode === 'pro') { state.aimDeg = a[6]; state.aimOff = 0; } else { state.aimOff = Math.max(-15, Math.min(15, a[6])); state.aimDeg = 0; }
     $('spd').value = Math.min(10, Math.max(0.5, a[7])); $('tip').value = Math.min(0.5, Math.max(-0.5, a[8])); $('side').value = Math.min(0.5, Math.max(-0.5, a[9]));
     if (state.mode === 'pro') { $('mprac').classList.remove('on'); $('mpro').classList.add('on'); $('ctlbox').classList.add('pro'); $('solspace').hidden = true; }
     return true;
