@@ -206,6 +206,10 @@ __SHARED__
     <div class="row"><label>the system</label>
       <div class="modes"><button id="dsysb2" type="button">two rails — the mirror</button><button id="dsysb3" type="button" class="on">three rails — corner five</button><button id="dsysb4" type="button">three rails — scratch it</button></div>
       <div class="hint" id="dshelp"></div></div>
+    <div class="row"><label>aim — point the cue yourself</label>
+      <div class="aimbtns"><button type="button" data-ds="-1">−1°</button><button type="button" data-ds="-0.1">−0.1°</button><span class="v" id="dsaimv"></span><button type="button" data-ds="0.1">+0.1°</button><button type="button" data-ds="1">+1°</button></div>
+      <div class="presets" style="grid-column:1/-1"><button type="button" id="dsfollow">use the system's line</button></div>
+      <div class="hint" id="dsaimhint"></div></div>
     <div class="row scratch-only"><label>the pocket to scratch in</label>
       <div class="presets" id="dspockets"></div></div>
     <div class="row"><button type="button" class="exec" id="dsexec">▶ execute the shot</button></div>
@@ -2078,7 +2082,7 @@ __SHARED__
   ];
   const zsOf = (r) => (r.ax === 1 ? r.dir : -r.dir);         // sign of side's surface speed along that cushion
   const dsvg = $('dsys');
-  const DS = { sys: 3, pk: 0, play: null, follow: true, tgt3: [2.20, 0.28], cb: [TABLE_L - R, TABLE_W - R], cb2: [1.90, 0.95], tgt: [1.10, 0.30], arr: 2 };
+  const DS = { sys: 3, pk: 0, play: null, follow: true, manual: false, aim: 0, tgt3: [2.20, 0.28], cb: [TABLE_L - R, TABLE_W - R], cb2: [1.90, 0.95], tgt: [1.10, 0.30], arr: 2 };
   const dFlip = () => DS.cb[0] < TABLE_L / 2;                // canonical frame keeps the cue ball bottom-right
   const cF = (p) => (dFlip() ? [TABLE_L - p[0], p[1]] : [p[0], p[1]]);   // self-inverse
 
@@ -2260,6 +2264,12 @@ __SHARED__
     for (let k = 1; k <= 7; k++) dtext([fx(k), TABLE_W - 0.045], String(k), { ...dmono, 'text-anchor': 'middle', fill: 'var(--c-amber)', opacity: 0.75 });
   }
 
+  // the system proposes a line; you may take it over. Either way this is the line that gets shot.
+  function dsAim(sysDir) {
+    if (!DS.manual && sysDir) { DS.aim = deg(Math.atan2(sysDir[1], sysDir[0])); return sysDir; }
+    const a = rad(DS.aim);
+    return [Math.cos(a), Math.sin(a)];
+  }
   function runSystems() {
     const v = +$('dspd').value, side = +$('dside').value;
     DS.arr = +$('darr').value;
@@ -2268,6 +2278,11 @@ __SHARED__
     $('darrv').textContent = `${fmt(DS.arr, 1)} · diamonds`;
     const flip = dFlip();
     drawSysTable(flip);
+    $('dsaimv').textContent = `${fmt(DS.aim, 1)}°`;
+    $('dsaimhint').innerHTML = DS.manual
+      ? 'You are aiming this one. Drag the bare cloth to point the cue, nudge it with the arrows, or hand it back to the system.'
+      : 'The system is aiming. Drag the bare cloth, or use the arrows, and you take it over.';
+    $('dsfollow').classList.toggle('on', !DS.manual);
     $('dslegend').innerHTML = DS.sys === 4
       ? '<span style="--lc:var(--c-red)">the pocket you called</span><span style="--lc:var(--muted); --ls:dashed">the line to shoot</span><span style="--lc:var(--c-felt)">what the cloth really does</span>'
       : DS.sys === 3
@@ -2290,7 +2305,8 @@ __SHARED__
       const [ax2, ay2] = px(aim); de('circle', { cx: ax2, cy: ay2, r: 5, fill: 'none', stroke: 'var(--c-felt)', 'stroke-width': 1.8 });
       const [nx2, ny2] = px(promised); de('circle', { cx: nx2, cy: ny2, r: 6, fill: 'none', stroke: 'var(--c-amber)', 'stroke-width': 1.8, 'stroke-dasharray': '2 2' });
       const inRange = A > 0.15 && A < 7.85;
-      const S = inRange ? railRun(DS.cb, dir, v, side, true, 3, 0.34) : null;
+      const useDir = dsAim(dir);
+      const S = inRange ? railRun(DS.cb, useDir, v, side, true, 3, 0.34) : null;
       let arrived = null, patternOK = false;
       if (S) {
         dpoly(S.pts, { stroke: 'var(--c-felt)', 'stroke-width': 2.2, opacity: 0.95 });
@@ -2300,10 +2316,11 @@ __SHARED__
         if (patternOK) arrived = cF(S.hits[2].p)[0] / DIA;
       }
       dball(DS.tgt3, { fill: 'var(--c-amber)', stroke: 'var(--page)', 'stroke-width': 1.2, style: 'cursor:grab' });
+      dtext(vadd(DS.tgt3, [0, -0.055]), 'kick at this one — drag it', { ...dmono, fill: 'var(--c-amber)', 'text-anchor': 'middle', opacity: 0.9 });
       dball(DS.cb, { fill: 'var(--panel)', stroke: 'var(--ink)', 'stroke-width': 1.5, style: 'cursor:grab' });
       const err = arrived == null ? null : arrived - N;
       // does this shot actually reach the ball?
-      const K = inRange ? railRun(DS.cb, dir, v, side, true, 4, 0.05, DS.tgt3, 3) : null;
+      const K = inRange ? railRun(DS.cb, useDir, v, side, true, 4, 0.05, DS.tgt3, 3) : null;
       const kick = K && isFinite(K.minGoal) ? K.minGoal : null;
       DS.play = K && K.pts ? K.pts : (S && S.pts ? S.pts : null);
       $('dsout').innerHTML = dl([
@@ -2329,8 +2346,9 @@ __SHARED__
       const sol = solveScratch(DS.cb, pk, v, side);
       let S = null;
       if (sol) {
-        S = railRun(DS.cb, sol.dir, v, side, true, 7, 0.02);
-        dline(DS.cb, vadd(DS.cb, vmul(sol.dir, 0.34)), { stroke: 'var(--muted)', 'stroke-width': 1.2, 'stroke-dasharray': '6 5', opacity: 0.8 });
+        const uD = dsAim(sol.dir);
+        S = railRun(DS.cb, uD, v, side, true, 7, 0.02);
+        dline(DS.cb, vadd(DS.cb, vmul(uD, 0.34)), { stroke: 'var(--muted)', 'stroke-width': 1.2, 'stroke-dasharray': '6 5', opacity: 0.8 });
         dpoly(S.pts, { stroke: 'var(--c-felt)', 'stroke-width': 2.2, opacity: 0.95 });
         S.hits.slice(0, 5).forEach((h, i) => {
           const [hx, hy] = px(h.p);
@@ -2380,7 +2398,7 @@ __SHARED__
           lab[0] = Math.min(Math.max(lab[0], 0.42), TABLE_L - 0.42);
           dtext(lab, `image: ${fmt(far - dist2(DS.cb2, sol.h1), 2)} m on`, { ...dmono, fill: 'var(--c-red)', 'text-anchor': 'middle', opacity: 0.85 });
         }
-        S = railRun(DS.cb2, sol.dir, v, side, true, 3, 0.05);   // two rails and the whole leg to the target
+        S = railRun(DS.cb2, dsAim(sol.dir), v, side, true, 3, 0.05);   // two rails and the whole leg to the target
         dpoly(S.pts, { stroke: 'var(--c-felt)', 'stroke-width': 2.2, opacity: 0.95 });
         S.hits.slice(0, 2).forEach((h, i) => { const [hx, hy] = px(h.p); de('circle', { cx: hx, cy: hy, r: 8, fill: 'none', stroke: 'var(--ink-2)', 'stroke-width': 1 }); const t2 = de('text', { x: hx, y: hy + 3.5, ...dmono, fill: 'var(--ink)', 'text-anchor': 'middle' }); t2.textContent = i + 1; });
         if (S.hits.length >= 2) {
@@ -2391,6 +2409,7 @@ __SHARED__
         }
       }
       dball(DS.tgt, { fill: 'var(--c-amber)', stroke: 'var(--page)', 'stroke-width': 1.2, style: 'cursor:grab' });
+      dtext(vadd(DS.tgt, [0, -0.055]), 'kick at this one — drag it', { ...dmono, fill: 'var(--c-amber)', 'text-anchor': 'middle', opacity: 0.9 });
       dball(DS.cb2, { fill: 'var(--panel)', stroke: 'var(--ink)', 'stroke-width': 1.5, style: 'cursor:grab' });
       const hit = miss != null && miss < 2 * R;
       DS.play = S && S.pts ? S.pts : null;
@@ -2443,13 +2462,23 @@ __SHARED__
       const hit = POCKETS.findIndex((q) => dist2(p, q.p) < RP * 1.8);
       if (hit >= 0) { DS.pk = hit; syncPockets(); runSystems(); return; }
     }
-    dsDrag = DS.sys === 2 ? (dist2(p, DS.cb2) < dist2(p, DS.tgt) ? 'cb' : 'tgt')
-      : DS.sys === 3 ? (dist2(p, DS.cb) < dist2(p, DS.tgt3) ? 'cb' : 'tgt3') : 'cb';
+    // a ball is picked up only if you actually reach for it; bare cloth points the cue instead, which is
+    // what the table is for — grabbing the cue ball on every touch is how it kept jumping
+    const GRAB = 0.075;
+    const cueP = DS.sys === 2 ? DS.cb2 : DS.cb;
+    const tgtP = DS.sys === 2 ? DS.tgt : DS.sys === 3 ? DS.tgt3 : null;
+    if (dist2(p, cueP) < GRAB && (!tgtP || dist2(p, cueP) <= dist2(p, tgtP))) dsDrag = 'cb';
+    else if (tgtP && dist2(p, tgtP) < GRAB) dsDrag = DS.sys === 2 ? 'tgt' : 'tgt3';
+    else dsDrag = 'aim';
     dsMove(p);
     dsvg.setPointerCapture(e.pointerId); e.preventDefault();
   });
   function dsMove(p) {
-    if (dsDrag === 'cb') { if (DS.sys === 2) DS.cb2 = clampBall(p, [DS.tgt]); else DS.cb = clampBall(p, [DS.tgt3]); }
+    if (dsDrag === 'aim') {
+      const from = DS.sys === 2 ? DS.cb2 : DS.cb, d2 = vsub(p, from);
+      if (vlen(d2) > 0.05) { DS.aim = deg(Math.atan2(d2[1], d2[0])); DS.manual = true; }
+    }
+    else if (dsDrag === 'cb') { if (DS.sys === 2) DS.cb2 = clampBall(p, [DS.tgt]); else DS.cb = clampBall(p, [DS.tgt3]); }
     else if (dsDrag === 'tgt3') { DS.tgt3 = clampBall(p, [DS.cb]); DS.follow = true; }
     else if (dsDrag === 'tgt') DS.tgt = clampBall(p, [DS.cb2]);
     runSystems();
@@ -2470,6 +2499,22 @@ __SHARED__
   $('dsysb2').addEventListener('click', () => setSys(2));
   $('dsysb3').addEventListener('click', () => setSys(3));
   $('dsysb4').addEventListener('click', () => setSys(4));
+  for (const b2 of document.querySelectorAll('#dsysctl .aimbtns button[data-ds]')) b2.addEventListener('click', () => {
+    DS.manual = true;
+    DS.aim = ((DS.aim + +b2.dataset.ds + 180) % 360 + 360) % 360 - 180;
+    runSystems();
+  });
+  $('dsfollow').addEventListener('click', () => { DS.manual = false; DS.follow = true; runSystems(); });
+  document.addEventListener('keydown', (e) => {   // the arrows steer here too, when this tab is the one you are on
+    if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+    if (!$('pane-rails').classList.contains('on')) return;
+    const tg = e.target && e.target.tagName;
+    if (tg === 'INPUT' || tg === 'SELECT' || tg === 'TEXTAREA') return;
+    e.preventDefault();
+    DS.manual = true;
+    DS.aim = ((DS.aim + (e.key === 'ArrowRight' ? 1 : -1) * (e.shiftKey ? 0.1 : 1) + 180) % 360 + 360) % 360 - 180;
+    runSystems();
+  });
 
   DS.cb = clampBall(DS.cb, []);        // position five is the corner, but a ball cannot sit in the jaws
   syncPockets();
