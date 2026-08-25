@@ -291,7 +291,7 @@
   @media print { .klang { display: none; } }
 </style>
 <div class="klang" aria-label="Language · Langue"><a href="/billiards" hreflang="en" lang="en">EN</a><a href="/fr/billiards" hreflang="fr" lang="fr" class="on">FR</a></div>
-<script>window.__VOCAB__ = {"Intermediate":"Intermédiaire","Mechanics":"Mécanique","Advanced":"Avancé","Billiards":"Billard","Beginner":"Débutant"};</script>
+<script>window.__VOCAB__ = {"Mechanics":"Mécanique","Advanced":"Avancé","Billiards":"Billard","Beginner":"Débutant","Intermediate":"Intermédiaire"};</script>
 <script>const VOCAB = window.__VOCAB__ || {}; const vocab = (s) => (s == null ? s : (VOCAB[s] || s));</script>
 
 <nav class="knav"><a href="/fr/">KOSMOS</a><span>/</span><span class="cur">Billard</span></nav>
@@ -439,13 +439,22 @@
 </section>
 <section class="tabpane" id="pane-data">
 <h2 class="ksec">Glissement → roulement</h2>
-<p class="knote" style="max-width:72ch;margin:0 0 10px">À quelle vitesse une bille frappée devient une bille roulante. Au sortir du procédé la bille glisse ; le frottement du tapis mange le glissement jusqu'à ce que la vitesse de surface égale la vitesse de la bille — roulement naturel — et la distance de glissement croît comme le <em>carré</em> de la frappe : frappe doublée, glissement quadruplé. La ligne ambre est votre bille visée à sa distance actuelle. À gauche du croisement, le tapis a repris le coup en main avant le contact ; à droite, la bille blanche arrive encore en glissement — c'est là que vivent la bille arrêtée et le rétro.</p>
-<div class="cush">
-  <svg class="felt" id="slide" viewBox="0 0 900 300" role="img" aria-label="Slide distance before natural roll, plotted against strike intensity, with the object ball's distance marked"></svg>
-  <div class="kcard ctl"><dl id="slideout"></dl>
-    <div class="hint">Suit le labo de tir en direct — hauteur du procédé, frappe et distance de glissement jusqu'à la bille visée. Bille arrêtée (procédé 0) et rétro maximal (−0,5) tracés pour référence.</div></div>
+<p class="knote" style="max-width:72ch;margin:0 0 10px">Off the tip a struck ball slides: the cloth is dragging one way and the ball is spinning another. Friction eats the difference until the surface speed matches the ball speed — natural roll — and from then on the ball has forgotten what you did to it. Everything you meant by draw, stun or follow lives in the stretch <em>before</em> that. Set the three things that decide it and watch where the crossing falls.</p>
+<div class="lab">
+  <div class="tblwrap">
+    <svg class="felt" id="slide" viewBox="0 0 900 300" role="img" aria-label="Slide distance before natural roll, plotted against strike intensity, with your distance marked"></svg>
+    <svg class="felt" id="spincurve" viewBox="0 0 900 300" style="margin-top:10px" role="img" aria-label="How the cue ball's spin changes along its path, from what you put on it to natural roll"></svg>
+  </div>
+  <div class="kcard ctl" id="slidectl">
+    <div class="row"><label for="sldist">distance the cue ball covers</label><input id="sldist" type="range" min="0.1" max="2.5" step="0.02" value="0.8"><span class="v" id="sldistv"></span>
+      <div class="hint">How far it travels before you care — usually the gap to the object ball.</div></div>
+    <div class="row"><label for="sltip">the spin you put on — tip height, b/R</label><input id="sltip" type="range" min="-0.5" max="0.5" step="0.02" value="-0.35"><span class="v" id="sltipv"></span>
+      <div class="hint" id="sltiphint"></div></div>
+    <div class="row"><label for="slspd">power — strike intensity</label><input id="slspd" type="range" min="0.5" max="10" step="0.1" value="2.5"><span class="v" id="slspdv"></span></div>
+    <div class="presets" style="grid-column:1/-1"><button type="button" id="slfrom">take it from the shot lab</button></div>
+    <dl id="slideout" style="margin-top:4px"></dl>
+  </div>
 </div>
-
 </section>
 <section class="tabpane" id="pane-drills">
 <h2 class="ksec">Drills &amp; minigames</h2>
@@ -1224,59 +1233,113 @@
   }
 
   // ---- slide → roll: slide distance against strike, for the current tip, with the object ball's distance drawn in
-  const ssvg = $('slide');
-  function drawSlide(S, v0, tip) {
+  // Where the ball is in its life at a given distance. Off the tip it carries velocity v and a spin whose
+  // surface speed is 2.5·v·tip; the difference between them is slip, and friction kills slip at (7/2)μ_s g
+  // while it takes v down (or up, if you put more spin on than rolling needs) at μ_s g. Everything draw and
+  // stun mean is the stretch before slip runs out.
+  function slideState(v0, tip, d) {
+    const a = MU_S * G, u0 = v0 * (1 - 2.5 * tip), sg = Math.sign(u0) || 0;
+    const tr = 2 * Math.abs(u0) / (7 * a);                     // when it takes up natural roll
+    const dr = v0 * tr - sg * 0.5 * a * tr * tr;               // and how far that took
+    const vr = v0 - sg * a * tr;
+    if (d >= dr) {                                             // already rolling by then; it just slows
+      const v2 = Math.sqrt(Math.max(0, vr * vr - 2 * MU_R * G * (d - dr)));
+      return { phase: 'rolling', v: v2, s: v2, ratio: 1, tr, dr, vr, alive: v2 > 1e-3 };
+    }
+    let t;
+    if (Math.abs(sg) < 0.5) t = d / Math.max(1e-6, v0);
+    else if (sg > 0) { const disc = v0 * v0 - 2 * a * d; t = disc <= 0 ? tr : (v0 - Math.sqrt(disc)) / a; }
+    else t = (-v0 + Math.sqrt(v0 * v0 + 2 * a * d)) / a;
+    t = Math.min(Math.max(0, t), tr);
+    const v = v0 - sg * a * t, sp = 2.5 * v0 * tip + sg * 2.5 * a * t;
+    const ratio = v > 1e-6 ? sp / v : 0;
+    return { phase: ratio < -0.03 ? 'draw' : ratio <= 0.05 ? 'stun' : ratio < 0.97 ? 'drag' : 'rolling', v, s: sp, ratio, tr, dr, vr, alive: v > 1e-3 };
+  }
+  // the strike at which a given distance is exactly the slide distance — below it the cloth has taken over
+  const powerFor = (tip, d, f) => { const one = f(1, tip); return one > 1e-9 ? Math.sqrt(d / one) : Infinity; };
+  const slideDist1 = (v, tip) => slideOut(v, tip).d;
+  const drawDist1 = (v, tip) => {          // how far the backspin itself survives, which is not the same thing
+    if (tip >= -1e-9) return 0;
+    const a = MU_S * G, t = -v * tip / a;  // spin surface speed reaches zero here: the stun point
+    return Math.max(0, v * t - 0.5 * a * t * t);
+  };
+  const ssvg = $('slide'), spsvg = $('spincurve');
+  function runSlide() {
+    const d = +$('sldist').value, tip = +$('sltip').value, v0 = +$('slspd').value;
+    $('sldistv').textContent = `${fmt(d, 2)} m`;
+    $('sltipv').textContent = `${tip >= 0 ? '+' : ''}${fmt(tip, 2)}`;
+    $('slspdv').textContent = `${fmt(v0, 1)} / 10`;
+    $('sltiphint').innerHTML = tip < -0.3 ? 'Deep draw — the ball leaves spinning hard backwards.'
+      : tip < -0.05 ? 'Draw.' : tip <= 0.05 ? 'Stun — struck through the middle, no spin at all.'
+      : tip < 0.38 ? 'Follow, but less than rolling wants: it still slides for a while.'
+      : Math.abs(tip - 0.4) < 0.03 ? 'Natural roll — the one tip height that never slides.'
+      : 'Over-spun: more topspin than rolling needs, so the cloth speeds the ball up.';
+    const st = slideState(v0, tip, d), so = slideOut(v0, tip);
+    // ---- chart one: how far the slide lasts, against power
     ssvg.innerHTML = '';
     const sel = (tag, attrs) => el(tag, attrs, ssvg);
     sel('rect', { x: 0, y: 0, width: 900, height: 300, fill: 'color-mix(in oklab, var(--c-felt) 9%, var(--panel))' });
     const mono = { 'font-family': 'ui-monospace, "SF Mono", Consolas, monospace', 'font-size': 11, fill: 'var(--muted)' };
     const X0 = 52, X1 = 888, Y0 = 266, Y1 = 18, DMAX = 2.6;
-    const X = (v) => X0 + (v - 0.5) / 9.5 * (X1 - X0), Y = (d) => Y0 - Math.min(d, DMAX) / DMAX * (Y0 - Y1);
+    const X = (v) => X0 + (v - 0.5) / 9.5 * (X1 - X0), Y = (q) => Y0 - Math.min(q, DMAX) / DMAX * (Y0 - Y1);
     for (let g = 1; g <= 10; g++) { sel('line', { x1: X(g), x2: X(g), y1: Y0, y2: Y0 + 4, stroke: 'var(--muted)' }); const tx = sel('text', { x: X(g), y: Y0 + 16, ...mono, 'text-anchor': 'middle' }); tx.textContent = g; }
     for (let dd = 0; dd <= DMAX - 0.05; dd += 0.5) { sel('line', { x1: X0 - 4, x2: X1, y1: Y(dd), y2: Y(dd), stroke: 'color-mix(in oklab, var(--hairline) 55%, transparent)' }); const tx = sel('text', { x: X0 - 8, y: Y(dd) + 3.5, ...mono, 'text-anchor': 'end' }); tx.textContent = fmt(dd, 1); }
-    const xl = sel('text', { x: (X0 + X1) / 2, y: 294, ...mono, 'text-anchor': 'middle' }); xl.textContent = 'strike intensity';
+    const xl = sel('text', { x: (X0 + X1) / 2, y: 294, ...mono, 'text-anchor': 'middle' }); xl.textContent = 'power — strike intensity';
     const yl = sel('text', { x: 6, y: 12, ...mono }); yl.textContent = 'mètres de glissement avant le roulement naturel';
-    const curve = (tp, attrs) => {   // returns the last plotted point, for labels
-      const pts = []; let last = null;
-      for (let v = 0.5; v <= 10.001; v += 0.1) {
-        const d = slideOut(v, tp).d;
-        if (d > DMAX) { last = [X(v), Y(DMAX)]; pts.push(last.join(',')); break; }
-        last = [X(v), Y(d)]; pts.push(last.join(','));
-      }
-      sel('polyline', { points: pts.join(' '), fill: 'none', ...attrs });
-      return last;
-    };
+    const curve = (tp, attrs) => { const pts = []; let last = null; for (let v = 0.5; v <= 10.001; v += 0.1) { const q = slideOut(v, tp).d; if (q > DMAX) { last = [X(v), Y(DMAX)]; pts.push(last.join(',')); break; } last = [X(v), Y(q)]; pts.push(last.join(',')); } sel('polyline', { points: pts.join(' '), fill: 'none', ...attrs }); return last; };
     const pStun = curve(0, { stroke: 'var(--muted)', 'stroke-width': 1 });
     const pDraw = curve(-0.5, { stroke: 'var(--muted)', 'stroke-width': 1, 'stroke-dasharray': '3 4' });
     const t1 = sel('text', { x: pDraw[0] - 6, y: Math.max(pDraw[1], 28) + 2, ...mono, 'text-anchor': 'end' }); t1.textContent = 'rétro maximal −0.5';
     const t2 = sel('text', { x: pStun[0] + 6, y: Math.max(pStun[1], 28) + 2, ...mono }); t2.textContent = 'bille arrêtée 0';
     const pCur = curve(tip, { stroke: 'var(--c-felt)', 'stroke-width': 2.2 });
     const t3 = sel('text', { x: Math.min(pCur[0] + 6, X1 - 90), y: Math.max(pCur[1], 28) - 6, ...mono, fill: 'var(--c-felt)' }); t3.textContent = `votre procédé ${tip >= 0 ? '+' : ''}${fmt(tip, 2)}`;
-    if (S.dst <= DMAX) {   // the object ball's distance, and where the current tip's curve crosses it
-      sel('line', { x1: X0, x2: X1, y1: Y(S.dst), y2: Y(S.dst), stroke: 'var(--c-amber)', 'stroke-width': 1.2, 'stroke-dasharray': '6 5' });
-      const t4 = sel('text', { x: X1 - 4, y: Y(S.dst) - 5, ...mono, fill: 'var(--c-amber)', 'text-anchor': 'end' }); t4.textContent = `bille visée · à ${fmt(S.dst, 2)} m`;
-      const d1 = slideOut(1, tip).d;
-      if (d1 > 1e-6) { const vs = Math.sqrt(S.dst / d1); if (vs >= 0.5 && vs <= 10) sel('circle', { cx: X(vs), cy: Y(S.dst), r: 4.5, fill: 'none', stroke: 'var(--c-amber)', 'stroke-width': 1.6 }); }
-    }
+    sel('line', { x1: X0, x2: X1, y1: Y(d), y2: Y(d), stroke: 'var(--c-amber)', 'stroke-width': 1.2, 'stroke-dasharray': '6 5' });
+    const t4 = sel('text', { x: X1 - 4, y: Y(d) - 5, ...mono, fill: 'var(--c-amber)', 'text-anchor': 'end' }); t4.textContent = `your distance · ${fmt(d, 2)} m`;
+    const need = powerFor(tip, d, slideDist1);
+    if (need >= 0.5 && need <= 10) { sel('circle', { cx: X(need), cy: Y(d), r: 5, fill: 'none', stroke: 'var(--c-amber)', 'stroke-width': 1.8 }); const t5 = sel('text', { x: X(need), y: Y(d) + 18, ...mono, fill: 'var(--c-amber)', 'text-anchor': 'middle' }); t5.textContent = `still sliding above ${fmt(need, 1)}`; }
     sel('line', { x1: X(v0), x2: X(v0), y1: Y0, y2: Y1, stroke: 'var(--ink)', 'stroke-width': 1, opacity: 0.55 });
-    sel('circle', { cx: X(v0), cy: Y(slideOut(v0, tip).d), r: 4, fill: 'var(--c-felt)' });
-    // the readout
-    const so = slideOut(v0, tip);
-    const d1 = slideOut(1, tip).d, vs = d1 > 1e-6 ? Math.sqrt(S.dst / d1) : Infinity;
-    const arrive = !S.feasible ? '—'
-      : !S.reached ? 'never arrives at this strike'
-      : S.rollingAtContact ? `roule — a pris le roulement naturel ${fmt(Math.max(0, S.dst - so.d), 2)} m avant le contact`
-      : S.sc < -0.05 * S.vc ? `conserve du rétro — ${fmt(100 * -S.sc / S.vc, 0)} % du roulement, inversé`
-      : S.sc <= 0.05 * S.vc ? 'still sliding — stun, no roll taken up yet'
-      : `glisse encore — ${fmt(100 * S.sc / S.vc, 0)} % du roulement naturel acquis`;
+    sel('circle', { cx: X(v0), cy: Y(Math.min(so.d, DMAX)), r: 4, fill: 'var(--c-felt)' });
+    // ---- chart two: what the spin is doing along the way
+    spsvg.innerHTML = '';
+    const pe = (tag, attrs) => el(tag, attrs, spsvg);
+    pe('rect', { x: 0, y: 0, width: 900, height: 300, fill: 'color-mix(in oklab, var(--c-felt) 9%, var(--panel))' });
+    const PX0 = 104, PX1 = 888, PY0 = 262, PY1 = 22, PMAX = 2.6;   // room for the words on the left
+    const PX = (q) => PX0 + Math.min(q, PMAX) / PMAX * (PX1 - PX0), PY = (r2) => PY1 + (1 - r2) / 2 * (PY0 - PY1);
+    for (const [r2, lab] of [[1, 'natural roll'], [0.5, 'half roll'], [0, 'stun — no spin'], [-0.5, 'half draw'], [-1, 'full draw']]) {
+      pe('line', { x1: PX0 - 4, x2: PX1, y1: PY(r2), y2: PY(r2), stroke: r2 === 0 ? 'var(--hairline)' : 'color-mix(in oklab, var(--hairline) 45%, transparent)' });
+      const tx = pe('text', { x: PX0 - 8, y: PY(r2) + 3.5, ...mono, 'text-anchor': 'end' }); tx.textContent = lab;
+    }
+    for (let q = 0.5; q <= PMAX; q += 0.5) { const tx = pe('text', { x: PX(q), y: PY0 + 16, ...mono, 'text-anchor': 'middle' }); tx.textContent = fmt(q, 1); pe('line', { x1: PX(q), x2: PX(q), y1: PY0, y2: PY0 + 4, stroke: 'var(--muted)' }); }
+    const xl2 = pe('text', { x: (PX0 + PX1) / 2, y: 292, ...mono, 'text-anchor': 'middle' }); xl2.textContent = 'metres the cue ball has covered';
+    const yl2 = pe('text', { x: 6, y: 13, ...mono }); yl2.textContent = 'the spin it still carries, as a share of rolling';
+    const pts2 = [];
+    for (let q = 0; q <= PMAX + 1e-9; q += 0.02) { const stq = slideState(v0, tip, q); if (!stq.alive) break; pts2.push(`${PX(q)},${PY(Math.max(-1.05, Math.min(1.05, stq.ratio)))}`); }
+    pe('polyline', { points: pts2.join(' '), fill: 'none', stroke: 'var(--c-felt)', 'stroke-width': 2.4 });
+    if (so.d > 0.005 && so.d < PMAX) { pe('line', { x1: PX(so.d), x2: PX(so.d), y1: PY1, y2: PY0, stroke: 'var(--muted)', 'stroke-dasharray': '3 4' }); const tx = pe('text', { x: PX(so.d) + 5, y: PY1 + 12, ...mono }); tx.textContent = `takes up roll at ${fmt(so.d, 2)} m`; }
+    const dStun = drawDist1(v0, tip);
+    if (dStun > 0.005 && dStun < PMAX) { pe('line', { x1: PX(dStun), x2: PX(dStun), y1: PY1, y2: PY0, stroke: 'var(--c-red)', 'stroke-dasharray': '3 4', opacity: 0.75 }); const tx = pe('text', { x: PX(dStun) + 5, y: PY0 - 8, ...mono, fill: 'var(--c-red)' }); tx.textContent = `backspin gone at ${fmt(dStun, 2)} m`; }
+    pe('line', { x1: PX(d), x2: PX(d), y1: PY1, y2: PY0, stroke: 'var(--c-amber)', 'stroke-width': 1.4 });
+    pe('circle', { cx: PX(d), cy: PY(Math.max(-1.05, Math.min(1.05, st.ratio))), r: 5, fill: 'var(--c-amber)' });
+    // ---- the numbers
+    const needDraw = tip < 0 ? powerFor(tip, d, drawDist1) : Infinity;
+    const PH = { draw: 'still carrying <b>backspin</b>', stun: 'at <b>stun</b> — no spin left either way', drag: 'in <b>drag</b> — some topspin, not yet rolling', rolling: '<b>rolling</b> — whatever you put on it is gone' };
     $('slideout').innerHTML = dl([
-      ['off the tip', so.d < 0.005 ? 'no slide — the tip height gives natural roll from the start' : `glisse sur ${fmt(so.d, 2)} m en ${fmt(so.t, 2)} s, puis roule à ${fmt(so.vRoll, 2)} m/s <small>5v(1+tip)/7</small>`],
-      ['at the object ball', arrive],
-      ['arrives sliding', so.d < 0.005 ? 'never — it rolls from the start' : vs < 0.5 ? 'at every strike on the scale' : vs > 10 ? 'never on this scale — it rolls before covering the distance even at 10' : `au-delà d'une frappe de ${fmt(vs, 1)}, à la distance actuelle de ${fmt(S.dst, 2)} m <small>glissement ∝ frappe²</small>`],
+      ['off the tip', so.d < 0.005 ? 'no slide at all — this tip height is natural roll from the first inch' : `slides <b>${fmt(so.d, 2)} m</b> in ${fmt(so.t, 2)} s, then rolls at ${fmt(so.vRoll, 2)} m/s`],
+      ['at ' + fmt(d, 2) + ' m', `${PH[st.phase]} · ${fmt(st.v, 2)} m/s${st.phase !== 'rolling' ? ` · spin is ${fmt(100 * st.ratio, 0)} % of rolling` : ''}`, st.phase === 'rolling' ? 'warn' : 'good'],
+      ['power to still be sliding', !isFinite(need) ? 'any power at all — this tip never takes up roll on its own' : need < 0.5 ? `every strike on the scale keeps it sliding this far` : need > 10 ? `more than 10 — the cloth wins before ${fmt(d, 2)} m at any power you have` : `strike <b>${fmt(need, 1)}</b> or harder`],
+      ['power to still have draw', tip >= 0 ? 'no backspin was put on it' : !isFinite(needDraw) || needDraw > 10 ? `more than 10 — the backspin dies before ${fmt(d, 2)} m whatever you hit it with` : needDraw < 0.5 ? 'every strike on the scale' : `strike <b>${fmt(needDraw, 1)}</b> or harder`, tip < 0 && needDraw <= 10 && v0 >= needDraw ? 'good' : undefined],
+      ['why', 'The slide lasts a fixed <em>time</em>, set by how much slip you started with — so distance goes as the square of the power. Twice the strike, four times the slide. That is the whole reason a soft draw shot dies and the same shot hit firm still bites.'],
     ]);
   }
+  for (const k of ['sldist', 'sltip', 'slspd']) $(k).addEventListener('input', runSlide);
+  $('slfrom').addEventListener('click', () => {
+    const S = currentShot(true), v = sliders();
+    $('sldist').value = Math.min(2.5, Math.max(0.1, S.feasible ? S.dst : dist2(state.cb, state.ob)));
+    $('sltip').value = v.tip; $('slspd').value = v.spd;
+    runSlide();
+  });
 
-  // ---- the solution space: aim offset (±5° around the ghost-ball line) × strike, one lite sim per pixel,
+  // ---- the solution space  // ---- the solution space: aim offset (±5° around the ghost-ball line) × strike, one lite sim per pixel,
   // filled progressively so dragging stays smooth. The pot window's drift off centre IS the aim compensation.
   const AIMN = 81, STRN = 20, HW = 486, HH = 120, CW = HW / AIMN, CH = HH / STRN;
   let hmToken = 0, hmTimer = 0;
@@ -1411,7 +1474,6 @@
       drawShot(S); report(S);
       drawStrip(sweepOutcomes(v.tip, v.side), v.spd);
       if (S.feasible) scheduleHeatmap(v.tip, v.side, v.spd); else { hmToken++; $('hmap').getContext('2d').clearRect(0, 0, HW, HH); }
-      drawSlide(S, v.spd, v.tip);
       const spP = S.feasible ? sightPicture(S.dAim) : null;
       $('shotinfo').textContent = S.feasible
         ? `cut ${fmt(deg(Math.acos(Math.max(-1, Math.min(1, vdot(S.dAim, S.n))))), 1)}°${spP && !spP.miss ? ` · ${spP.name} (${spP.clock})` : ''} · ${fmt(S.dst, 2)} m to the ball · ${S.bank ? `banked off the ${S.bank.rail} rail into` : 'aimed at'} the ${S.name} pocket`
@@ -1428,7 +1490,6 @@
       if (state.conds && state.conds.size) $('condres').textContent = 'exécuter pour évaluer le contrat';
       else if (state.conds) $('condres').innerHTML = '';
       showScore();
-      drawSlide(currentShot(true), v.spd, v.tip);
       const a = rad(state.aimDeg);
       drawView([Math.cos(a), Math.sin(a)], v.tip, v.side, null);
     }
@@ -3065,7 +3126,7 @@
     if (id === 'shot') run();
     else if (id === 'rails') { runSystems(); runC(); }
     else if (id === 'contact') runContact();
-    else if (id === 'data') run();
+    else if (id === 'data') runSlide();
     else if (id === 'layouts') renderLayouts();
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
@@ -3084,6 +3145,7 @@
   }
   for (const k of ['ca', 'cs', 'cside']) $(k).addEventListener('input', runC);
   runC();
+  runSlide();
   runContact();
   renderLayouts();
   let startTab = 'shot';
