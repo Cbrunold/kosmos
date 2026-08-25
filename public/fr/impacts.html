@@ -248,7 +248,7 @@
   @media print { .klang { display: none; } }
 </style>
 <div class="klang" aria-label="Language · Langue"><a href="/impacts" hreflang="en" lang="en">EN</a><a href="/fr/impacts" hreflang="fr" lang="fr" class="on">FR</a></div>
-<script>window.__VOCAB__ = {"Ground":"Sol","During operation":"Pendant l'exploitation","Energy":"Énergie","Land":"Terres","Both":"Les deux","Water":"Eau","Fluid Dynamics":"Dynamique des fluides","After closure":"Après fermeture","Health":"Santé"};</script>
+<script>window.__VOCAB__ = {"Fluid Dynamics":"Dynamique des fluides","Both":"Les deux","Ground":"Sol","Health":"Santé","After closure":"Après fermeture","Water":"Eau","During operation":"Pendant l'exploitation","Land":"Terres","Energy":"Énergie"};</script>
 <script>const VOCAB = window.__VOCAB__ || {}; const vocab = (s) => (s == null ? s : (VOCAB[s] || s));</script>
 
 <nav class="knav"><a href="/fr/">KOSMOS</a><span>/</span><span class="cur">Impacts miniers</span></nav>
@@ -292,8 +292,8 @@
     if (x.timescale) { const t = document.createElement('span'); t.className = 'ts'; t.textContent = vocab(x.timescale); h2.appendChild(t); }
     c.appendChild(h2);
     if (x.mechanism) c.appendChild(para('', '', x.mechanism));
-    if (x.mitigation) c.appendChild(para('', 'what reduces it', x.mitigation));
-    if (x.case) c.appendChild(para('case', 'documented', x.case));
+    if (x.mitigation) c.appendChild(para('', 'ce qui le réduit', x.mitigation));
+    if (x.case) c.appendChild(para('case', 'documenté', x.case));
     if (x.where.length) {
       const w = document.createElement('div'); w.className = 'whr';
       for (const t of x.where) {

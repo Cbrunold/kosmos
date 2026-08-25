@@ -248,7 +248,7 @@
   @media print { .klang { display: none; } }
 </style>
 <div class="klang" aria-label="Language · Langue"><a href="/life" hreflang="en" lang="en">EN</a><a href="/fr/life" hreflang="fr" lang="fr" class="on">FR</a></div>
-<script>window.__VOCAB__ = {"Motor":"Moteur","Pump":"Pompe","Carrier":"Transporteur","Copier":"Copieur"};</script>
+<script>window.__VOCAB__ = {"Carrier":"Transporteur","Pump":"Pompe","Motor":"Moteur","Copier":"Copieur"};</script>
 <script>const VOCAB = window.__VOCAB__ || {}; const vocab = (s) => (s == null ? s : (VOCAB[s] || s));</script>
 
 <nav class="knav"><a href="/fr/">KOSMOS</a><span>/</span><span class="cur">Vie</span></nav>
@@ -292,10 +292,10 @@
     if (x.kind) { const k = document.createElement('span'); k.className = 'kd'; k.style.setProperty('--kc', KC[x.kind] || 'var(--muted)'); k.textContent = vocab(x.kind); h.appendChild(k); }
     c.appendChild(h);
     if (x.function) c.appendChild(para('', '', x.function));
-    if (x.numbers) c.appendChild(para('num', 'the number', x.numbers));
+    if (x.numbers) c.appendChild(para('num', 'le nombre', x.numbers));
     if (x.els.length) {
       const box = document.createElement('div'); box.className = 'els';
-      const l = document.createElement('span'); l.className = 'lbl'; l.style.cssText = 'margin:0 4px 0 0;display:inline'; l.textContent = 'cannot run without';
+      const l = document.createElement('span'); l.className = 'lbl'; l.style.cssText = 'margin:0 4px 0 0;display:inline'; l.textContent = 'ne peut fonctionner sans';
       box.appendChild(l);
       for (const s of x.els) {
         const e = EL[s] || {};
