@@ -472,7 +472,7 @@ def build_cosmos_page():
 
 # ---------------- cosmic timeline ----------------
 ERA_ORDER = ["Very Early Universe", "Radiation Era", "Dark Ages",
-             "Structure Formation", "Present", "Far Future"]
+             "Structure Formation", "Life on Earth", "Present", "Far Future"]
 
 
 def build_timeline_page():
@@ -529,7 +529,13 @@ def build_timeline_page():
     events.sort(key=lambda e: (e["secs"] is None, e["secs"] if e["secs"] is not None else 0))
     data = {"events": events, "equations": eq_lookup_all(), "theories": th_lookup,
             "people": people,
-            "eras": [e for e in ERA_ORDER if any(x["era"] == e for x in events)]}
+            # an era seeded in Notion that ERA_ORDER has not heard of still gets a
+            # chip, at the end. Hardcoding the list alone silently drops the filter
+            # for a new era while its rows render — the same trap the glossary
+            # domains had, found the same way, by a count coming up short
+            "eras": ([e for e in ERA_ORDER if any(x["era"] == e for x in events)]
+                     + sorted({x["era"] for x in events
+                               if x["era"] and x["era"] not in ERA_ORDER}))}
     bad_T = [e for e in events if e.get("tempOK") is False]
     bad_t = [e for e in events if e.get("ageOK") is False]
     for e in bad_T:

@@ -37,7 +37,7 @@ EQ_DS = "638fda32-4a6d-4d65-8349-433ce4f0b698"
 THEORY_DS = "215048ed-e6a6-4b9a-858b-73e8c801629e"
 
 ERAS = ["Very Early Universe", "Radiation Era", "Dark Ages",
-        "Structure Formation", "Present", "Far Future"]
+        "Structure Formation", "Life on Earth", "Present", "Far Future"]
 
 YR = 3.155693e7   # seconds in a Julian year
 
@@ -197,6 +197,82 @@ EVENTS = [
       ["Second Friedmann Equation", "Cosmological Equation of State", "Hubble's Law",
        "Critical Density"],
       ["Dark Energy", "Big Bang Cosmology"]),
+
+    # ---- life on Earth. Its own era, and not out of sentiment: every other row on
+    # this timeline is something the whole universe did, and these are things that
+    # happened in one place. The label says so rather than filing them under
+    # Structure Formation, which would quietly claim they were cosmic events.
+    # Ages are the conventional ones, converted against the same 13.797 Gyr the
+    # Present Day row uses; redshifts and CMB temperatures follow from the age.
+    E("Life Leaves Its First Trace", "Life on Earth", (13.797 - 3.5) * 1e9 * YR,
+      "10.3 billion years — 3.5 billion years ago", 3.5, "z ≈ 0.3",
+      "Stromatolites in the Pilbara: layered mats built by microbes that were already doing "
+      "chemistry. Carbon-isotope ratios in Greenland push the first sign back to 3.7 billion years "
+      "and disputed structures further still, which is the honest state of it — life is older than "
+      "the oldest thing anyone can hold up as proof of it.",
+      ["Michaelis–Menten Equation", "Arrhenius Equation"], []),
+
+    E("Oxygenic Photosynthesis", "Life on Earth", (13.797 - 2.7) * 1e9 * YR,
+      "11.1 billion years — 2.7 billion years ago", 3.3, "z ≈ 0.22",
+      "Cyanobacteria learn to split water rather than something easier, using a cluster of four "
+      "manganese atoms to prise apart a molecule that does not want to come apart. Every oxygen "
+      "atom in the air has been through that cluster. It is the single most consequential chemical "
+      "innovation in the planet's history, and it poisoned the world that produced it.",
+      ["Planck–Einstein Relation", "Gibbs Free Energy"], []),
+
+    E("The Great Oxidation", "Life on Earth", (13.797 - 2.4) * 1e9 * YR,
+      "11.4 billion years — 2.4 billion years ago", 3.3, "z ≈ 0.2",
+      "Free oxygen finally outruns everything that had been consuming it, and the atmosphere "
+      "changes composition. Dissolved iron rusts out of the oceans and settles as the banded iron "
+      "formations that most of the world's iron ore still comes from. Mineralogy changes with it: "
+      "up to two-thirds of the five thousand mineral species now recognised are consequences of "
+      "this, because oxygen gives elements like iron, copper and uranium a second oxidation state "
+      "to form compounds in. Most of the minerals on this site exist because something respired.",
+      ["Gibbs Free Energy", "Nernst Equation"], []),
+
+    E("Eukaryotes", "Life on Earth", (13.797 - 1.8) * 1e9 * YR,
+      "12.0 billion years — 1.8 billion years ago", 3.1, "z ≈ 0.14",
+      "One cell ends up inside another and neither digests the other. The guest becomes the "
+      "mitochondrion and keeps its own genome, which is why the evidence survives. Everything "
+      "larger than a microbe is descended from that one accident.",
+      [], []),
+
+    E("The Cambrian Explosion", "Life on Earth", (13.797 - 0.5388) * 1e9 * YR,
+      "13.26 billion years — 539 million years ago", 2.8, "z ≈ 0.04",
+      "Animal body plans appear over a few tens of millions of years, and — for the first time — "
+      "so do hard parts. Calcite, aragonite and calcium phosphate get recruited into shells, "
+      "spines and teeth, which is both why the fossil record starts here and why biomineralisation "
+      "is a subject at all.",
+      [], []),
+
+    E("Life Moves Onto Land", "Life on Earth", (13.797 - 0.47) * 1e9 * YR,
+      "13.33 billion years — 470 million years ago", 2.8, "z ≈ 0.035",
+      "Plants colonise the continents, and their roots begin breaking rock into soil. Silicate "
+      "weathering accelerates, drawing down carbon dioxide, and the atmosphere and the climate "
+      "have been partly under biological control ever since.",
+      [], []),
+
+    E("The Great Dying", "Life on Earth", (13.797 - 0.2519) * 1e9 * YR,
+      "13.55 billion years — 252 million years ago", 2.8, "z ≈ 0.018",
+      "The worst extinction in the record: about 81 % of marine species gone. The Siberian Traps "
+      "erupt through coal measures and vent carbon dioxide and sulfur for perhaps a million years, "
+      "and the ocean warms, acidifies and loses its oxygen. It took life ten million years to "
+      "recover.",
+      [], []),
+
+    E("Chicxulub", "Life on Earth", (13.797 - 0.066) * 1e9 * YR,
+      "13.73 billion years — 66 million years ago", 2.7, "z ≈ 0.005",
+      "A ten-kilometre asteroid strikes what is now Yucatán. The evidence that settled it was "
+      "chemical: a worldwide clay layer enriched in iridium, an element the crust has almost none "
+      "of and meteorites have plenty of. Non-avian dinosaurs end there and mammals get the room.",
+      ["Kinetic Energy", "Momentum and Impulse"], []),
+
+    E("Homo sapiens", "Life on Earth", (13.797 - 0.0003) * 1e9 * YR,
+      "13.7967 billion years — 300,000 years ago", 2.73, "z ≈ 0",
+      "Anatomically modern humans, on a timeline where the interval since is thinner than the line "
+      "drawn to represent it. Everything catalogued on this site — every element named, every "
+      "equation written, every mine dug — happens inside that last sliver.",
+      [], []),
 
     E("Present Day", "Present", 13.797e9 * YR, "13.797 billion years", 2.72548, "z = 0",
       "68% dark energy, 27% dark matter, 5% ordinary matter — and of that 5%, only a fraction has "
