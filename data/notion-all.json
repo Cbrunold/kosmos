@@ -16240,6 +16240,223 @@
       "Name": "Sun"
     }
   ],
+  "life": [
+    {
+      "id": "3c7e5275-7b5c-81d8-a3ec-c0e502ff2949",
+      "url": "https://app.notion.com/p/Cellulose-3c7e52757b5c81d8a3ecc0e502ff2949",
+      "lastEdited": "2026-08-25T20:00:00.000Z",
+      "Function": "Glucose chains laid flat and hydrogen-bonded side by side into fibres that almost nothing can digest — the reason wood and cotton exist, and the reason herbivores keep microbes to do the digesting for them.",
+      "Numbers": "The most abundant organic polymer on the planet, produced on the order of 10¹¹ tonnes a year.",
+      "Elements": [
+        "C",
+        "H",
+        "O"
+      ],
+      "Kind": "Structure",
+      "Name": "Cellulose"
+    },
+    {
+      "id": "3c7e5275-7b5c-8143-bdd9-e39be0241a06",
+      "url": "https://app.notion.com/p/Collagen-3c7e52757b5c8143bdd9e39be0241a06",
+      "lastEdited": "2026-08-25T20:00:00.000Z",
+      "Function": "A rope of three chains wound together, the most abundant protein in a mammal and the tension-bearing half of bone, tendon and skin. Its network form, collagen IV, is cross-linked with bromine — the discovery that made bromine an essential element in 2014.",
+      "Numbers": "Roughly a third of all protein in a mammal by mass. Its tensile strength approaches that of steel wire, per unit mass.",
+      "Elements": [
+        "C",
+        "N",
+        "O",
+        "Br"
+      ],
+      "Kind": "Structure",
+      "Name": "Collagen"
+    },
+    {
+      "id": "3c7e5275-7b5c-81e3-8445-ec929d4317a2",
+      "url": "https://app.notion.com/p/Bacterial-flagellar-motor-3c7e52757b5c81e38445ec929d4317a2",
+      "lastEdited": "2026-08-25T20:00:00.000Z",
+      "Function": "An electric motor built from protein: a rotor, a ring of stator units, and a drive shaft turning a helical filament like a propeller. It is driven by protons falling across the membrane, and it can reverse in under a millisecond, which is how a bacterium changes direction.",
+      "Numbers": "Up to a few hundred revolutions a second in E. coli, and over a thousand in some species.",
+      "Elements": [
+        "H"
+      ],
+      "Kind": "Motor",
+      "Name": "Bacterial flagellar motor"
+    },
+    {
+      "id": "3c7e5275-7b5c-812e-9f53-e5d78b4df230",
+      "url": "https://app.notion.com/p/Myosin-3c7e52757b5c812e9f53e5d78b4df230",
+      "lastEdited": "2026-08-25T20:00:00.000Z",
+      "Function": "The motor of muscle. Heads project from a thick filament, grab the neighbouring actin filament, pull, and let go — millions in parallel and out of step, so the pull is smooth. Calcium is the signal that uncovers the binding sites and starts it.",
+      "Numbers": "Each head cycles a few times a second; a muscle shortens because a great many heads are pulling at once, not because any one is fast.",
+      "Elements": [
+        "Mg",
+        "Ca",
+        "P"
+      ],
+      "Kind": "Motor",
+      "Name": "Myosin"
+    },
+    {
+      "id": "3c7e5275-7b5c-81a9-9067-ee5715a501f9",
+      "url": "https://app.notion.com/p/Kinesin-3c7e52757b5c81a99067ee5715a501f9",
+      "lastEdited": "2026-08-25T20:00:00.000Z",
+      "Function": "Walks. Two heads step alternately along a microtubule, each step powered by one ATP, hauling cargo from the centre of a cell towards its edge. Its opposite number, dynein, walks the other way.",
+      "Numbers": "An 8-nanometre step per ATP, roughly 100 steps a second — about a micron of travel every ten seconds.",
+      "Elements": [
+        "Mg",
+        "P"
+      ],
+      "Kind": "Motor",
+      "Name": "Kinesin"
+    },
+    {
+      "id": "3c7e5275-7b5c-8199-b1db-e8881ce98927",
+      "url": "https://app.notion.com/p/DNA-polymerase-3c7e52757b5c8199b1dbe8881ce98927",
+      "lastEdited": "2026-08-25T20:00:00.000Z",
+      "Function": "Copies a DNA strand base by base, and — crucially — checks its own work, backing up to excise a wrong base before continuing. The proofreading is worth about a hundredfold in accuracy on its own.",
+      "Numbers": "Around 1,000 bases a second in a bacterium, with a final error rate near one in a billion once repair has finished.",
+      "Elements": [
+        "Mg",
+        "P"
+      ],
+      "Kind": "Copier",
+      "Name": "DNA polymerase"
+    },
+    {
+      "id": "3c7e5275-7b5c-81d1-8ce2-fa7b575330b4",
+      "url": "https://app.notion.com/p/Cytochrome-c-oxidase-3c7e52757b5c81d18ce2fa7b575330b4",
+      "lastEdited": "2026-08-25T20:00:00.000Z",
+      "Function": "The last step of respiration: takes electrons that have come down the whole chain and hands them to oxygen, making water. Two copper centres and two haem irons pass the charge along, and the energy released pumps protons for ATP synthase to spend.",
+      "Numbers": "Four electrons and four protons per oxygen molecule. This is where almost all the oxygen you breathe ends up.",
+      "Elements": [
+        "Cu",
+        "Fe",
+        "O"
+      ],
+      "Kind": "Enzyme",
+      "Name": "Cytochrome c oxidase"
+    },
+    {
+      "id": "3c7e5275-7b5c-818b-86a8-d02dc821454a",
+      "url": "https://app.notion.com/p/Sodium-potassium-pump-3c7e52757b5c818b86a8d02dc821454a",
+      "lastEdited": "2026-08-25T20:00:00.000Z",
+      "Function": "Spends one ATP to push three sodium ions out and haul two potassium ions in, against both gradients. That imbalance is the battery every nerve impulse discharges, and it is the gradient the Goldman–Hodgkin–Katz equation describes.",
+      "Numbers": "Three sodium out, two potassium in, per ATP. In a resting neuron this pump alone can take more than half the cell's energy budget.",
+      "Elements": [
+        "Na",
+        "K",
+        "P"
+      ],
+      "Kind": "Pump",
+      "Name": "Sodium–potassium pump"
+    },
+    {
+      "id": "3c7e5275-7b5c-816d-b7b5-e0aa0e524016",
+      "url": "https://app.notion.com/p/Chlorophyll-3c7e52757b5c816db7b5e0aa0e524016",
+      "lastEdited": "2026-08-25T20:00:00.000Z",
+      "Function": "The antenna. A magnesium atom at the centre of a flat nitrogen ring, absorbing red and blue light and passing the energy on to the reaction centre. It reflects green, which is why the world looks the way it does.",
+      "Numbers": "Structurally the same ring as haem, with magnesium in place of iron — the two most important pigments in biology differ by one atom.",
+      "Elements": [
+        "Mg",
+        "N"
+      ],
+      "Kind": "Pigment",
+      "Name": "Chlorophyll"
+    },
+    {
+      "id": "3c7e5275-7b5c-813a-bd59-f47b96176423",
+      "url": "https://app.notion.com/p/Haemoglobin-3c7e52757b5c813abd59f47b96176423",
+      "lastEdited": "2026-08-25T20:00:00.000Z",
+      "Function": "Four subunits, each with an iron atom in a haem ring, each binding one oxygen molecule. Binding one makes the next easier, so it loads almost fully in the lungs and unloads sharply in tissue — the cooperativity is the whole trick.",
+      "Numbers": "Four oxygen molecules per protein, and about 270 million proteins in a single red blood cell.",
+      "Elements": [
+        "Fe",
+        "O"
+      ],
+      "Kind": "Carrier",
+      "Name": "Haemoglobin"
+    },
+    {
+      "id": "3c7e5275-7b5c-8155-82d0-ef0ebc39204c",
+      "url": "https://app.notion.com/p/Carbonic-anhydrase-3c7e52757b5c815582d0ef0ebc39204c",
+      "lastEdited": "2026-08-25T20:00:00.000Z",
+      "Function": "Converts carbon dioxide and water to bicarbonate and back, with a single zinc atom holding a hydroxide ion in position to attack. Without it the reaction is far too slow to move CO₂ out of tissue at the rate breathing requires.",
+      "Numbers": "Up to a million reactions a second — among the fastest enzymes known, and close to the limit set by how fast substrate can diffuse to it.",
+      "Elements": [
+        "Zn"
+      ],
+      "Kind": "Enzyme",
+      "Name": "Carbonic anhydrase"
+    },
+    {
+      "id": "3c7e5275-7b5c-813b-ba78-c44ef8225cc5",
+      "url": "https://app.notion.com/p/Nitrogenase-3c7e52757b5c813bba78c44ef8225cc5",
+      "lastEdited": "2026-08-25T20:00:00.000Z",
+      "Function": "Breaks the triple bond in atmospheric N₂ — one of the strongest in chemistry — at ambient temperature and pressure, on a cluster of molybdenum, iron and sulfur. Oxygen destroys it, so organisms that use it must keep it in an anoxic pocket.",
+      "Numbers": "Sixteen ATP per nitrogen molecule fixed. Industry does the same job at 400 °C and 200 atmospheres.",
+      "Elements": [
+        "Mo",
+        "Fe",
+        "S"
+      ],
+      "Kind": "Enzyme",
+      "Name": "Nitrogenase"
+    },
+    {
+      "id": "3c7e5275-7b5c-811a-8d53-d87de72746d0",
+      "url": "https://app.notion.com/p/Photosystem-II-3c7e52757b5c811a8d53d87de72746d0",
+      "lastEdited": "2026-08-25T20:00:00.000Z",
+      "Function": "Uses the energy of four photons to strip four electrons from two water molecules, releasing O₂. The work is done by a cluster of four manganese atoms and one calcium, which cycles through five oxidation states to store up the charge before letting go.",
+      "Numbers": "Four photons per oxygen molecule. Every oxygen atom in the atmosphere has passed through a cluster like this one.",
+      "Elements": [
+        "Mn",
+        "Ca",
+        "O"
+      ],
+      "Kind": "Enzyme",
+      "Name": "Photosystem II"
+    },
+    {
+      "id": "3c7e5275-7b5c-8139-9aa4-cad1fa42827d",
+      "url": "https://app.notion.com/p/Rubisco-3c7e52757b5c81399aa4cad1fa42827d",
+      "lastEdited": "2026-08-25T20:00:00.000Z",
+      "Function": "Fixes carbon dioxide onto a five-carbon sugar, the first step of turning air into biomass. It is also slow, and it confuses oxygen for carbon dioxide often enough that plants run a whole salvage pathway to clean up after it.",
+      "Numbers": "Three or so carbon dioxide molecules a second per site — dismal for an enzyme, and compensated for by sheer quantity. It is thought to be the most abundant protein on Earth.",
+      "Elements": [
+        "Mg",
+        "C",
+        "O"
+      ],
+      "Kind": "Enzyme",
+      "Name": "Rubisco"
+    },
+    {
+      "id": "3c7e5275-7b5c-817d-b3e0-f942dc2728f5",
+      "url": "https://app.notion.com/p/Ribosome-3c7e52757b5c817db3e0f942dc2728f5",
+      "lastEdited": "2026-08-25T20:00:00.000Z",
+      "Function": "Reads messenger RNA three bases at a time and builds the protein it specifies, catching each amino acid on a transfer RNA that pairs with the codon. The catalytic site is RNA, not protein, which is the strongest evidence that RNA came first.",
+      "Numbers": "About 20 amino acids a second in a bacterium, nearer 2 to 5 in a human cell. An error roughly every 10,000 residues.",
+      "Elements": [
+        "Mg",
+        "P"
+      ],
+      "Kind": "Copier",
+      "Name": "Ribosome"
+    },
+    {
+      "id": "3c7e5275-7b5c-815d-9296-e6457c0dc8f2",
+      "url": "https://app.notion.com/p/ATP-synthase-3c7e52757b5c815d9296e6457c0dc8f2",
+      "lastEdited": "2026-08-25T20:00:00.000Z",
+      "Function": "A rotary motor. Protons crossing the membrane turn a ring of subunits like water turning a wheel, and the shaft attached to it deforms three catalytic sites in turn, each squeezing ADP and phosphate together into ATP. It runs backwards just as happily, spending ATP to pump protons.",
+      "Numbers": "Around three ATP per revolution, and hundreds of revolutions a second. A human body turns over roughly its own mass in ATP each day, almost all of it here.",
+      "Elements": [
+        "H",
+        "Mg"
+      ],
+      "Kind": "Motor",
+      "Name": "ATP synthase"
+    }
+  ],
   "spectralTypes": [
     {
       "id": "2569ebb2-01ff-41c8-af88-54f50a983757",
