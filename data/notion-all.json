@@ -12022,9 +12022,9 @@
     {
       "id": "3c0e5275-7b5c-8102-b038-dd157ec7fd6e",
       "url": "https://app.notion.com/p/Cut-angle-3c0e52757b5c8102b038dd157ec7fd6e",
-      "lastEdited": "2026-08-18T20:28:00.000Z",
+      "lastEdited": "2026-08-25T16:34:00.000Z",
       "Definition": "The angle between the cue ball's path and the line of centres at contact — zero for a straight-in shot, 30° for a half-ball hit. It sets how the speed and energy divide between the two balls.",
-      "Aliases": "cut",
+      "Aliases": null,
       "Domain": "Cue sports",
       "Term": "Cut angle"
     },
@@ -12229,9 +12229,9 @@
     {
       "id": "3c0e5275-7b5c-8120-af6f-caa177c49cb0",
       "url": "https://app.notion.com/p/Curvature-3c0e52757b5c8120af6fcaa177c49cb0",
-      "lastEdited": "2026-08-18T19:44:00.000Z",
+      "lastEdited": "2026-08-25T16:34:00.000Z",
       "Definition": "How sharply a curve or surface bends: one over the radius of the circle that best fits it there. Straight lines have none. In general relativity it is what gravity is — matter tells spacetime how to curve.",
-      "Aliases": "curved, curve",
+      "Aliases": "curved",
       "Domain": "Mathematics",
       "Term": "Curvature"
     },
