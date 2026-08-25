@@ -4,6 +4,7 @@
 #     ./deploy.sh                          # pull, sync from Notion, build, ship
 #     ./deploy.sh seed_missions            # ...running these scripts first
 #     ./deploy.sh --no-fetch               # code-only: skip the Notion pull
+#     ./deploy.sh --expect=<sha>           # refuse unless <sha> is in the pulled history
 #
 # Every step is named; the first failure stops the run and says which step.
 # This replaces a hand-typed && chain that dropped its commit step three
@@ -61,10 +62,12 @@ step() { STEP="$1"; echo; echo "── $1"; }
 
 # ---- args
 FETCH=1
+EXPECT=""
 SEEDS=()
 for a in "$@"; do
   case "$a" in
     --no-fetch) FETCH=0 ;;
+    --expect=*) EXPECT="${a#--expect=}" ;;
     --*) echo "unknown flag: $a" >&2; exit 2 ;;
     *)  SEEDS+=("$a") ;;        # existence is checked after the pull — a new seed arrives with it
   esac
@@ -100,6 +103,18 @@ before="$(git rev-parse HEAD:deploy.sh 2>/dev/null || true)"
 # two branches ("Cannot rebase onto multiple branches"). Fetch once, rebase onto that.
 git fetch origin main
 git rebase FETCH_HEAD
+echo "at $(git rev-parse --short HEAD)  $(git log --oneline -1 --format=%s)"
+# A deploy that ships something other than what the caller just pushed is the
+# worst failure this script has, because it looks like a success. It happened
+# three times on 2026-08-18: a push raced this script's own sync commit, was
+# rejected, and the next deploy pulled nothing, shipped the previous build and
+# printed "deployed". Pass --expect=<sha> and it refuses instead.
+if [[ -n "$EXPECT" ]] && ! git merge-base --is-ancestor "$EXPECT" HEAD 2>/dev/null; then
+  echo >&2
+  echo "REFUSING TO DEPLOY: expected $EXPECT in this history, and it is not here." >&2
+  echo "The push that should have carried it probably failed. Pull, rebase, push, retry." >&2
+  exit 3
+fi
 after="$(git rev-parse HEAD:deploy.sh 2>/dev/null || true)"
 if [[ "$before" != "$after" && -z "${DEPLOY_REEXEC:-}" ]]; then
   echo "deploy.sh itself was updated by the pull — re-running with the new version"
