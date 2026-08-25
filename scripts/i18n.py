@@ -47,7 +47,7 @@ ROOT = Path(__file__).resolve().parent.parent
 CACHE_PATH = ROOT / "data" / "i18n" / "fr.json"
 
 ROUTES = ["elements", "minerals", "cosmos", "forces", "theories", "timeline", "mines", "machines", "skills",
-          "glossary", "explainers", "impacts", "equations", "constants", "billiards", "scales", "universe"]
+          "glossary", "explainers", "impacts", "equations", "constants", "billiards", "scales", "universe", "solar"]
 PAGE_FILES = {  # built file -> route (for the language switch)
     "home.html": "/", "index.html": "/elements", "minerals.html": "/minerals", "cosmos.html": "/cosmos",
     "forces.html": "/forces", "theories.html": "/theories", "timeline.html": "/timeline", "mines.html": "/mines",
