@@ -392,6 +392,12 @@ NAME_RULES = {
     "constants.html": {"Name": "NameEN", "name": None},
     "billiards.html": {"name": None},
     "impacts.html": {"name": None, "term": None},
+    # Without this the machine names and the glossary chips stay English while the
+    # prose around them is French, and the same term reads "Catalyseur" on /fr/glossary
+    # and "Catalyst" here — one thing with two names in one language. None means "this
+    # key is a name, translate it"; no EN shadow is needed because the template anchors
+    # on the separate slug field, which is never translated.
+    "life.html": {"name": None, "term": None},
     "glossary.html": {"term": None},
     "explainers.html": {"term": None},
     "theories.html": {"Name": "NameEN"},
