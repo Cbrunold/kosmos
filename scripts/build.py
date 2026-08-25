@@ -1156,7 +1156,8 @@ def build_universe_page():
     """
     items = []
 
-    def add(name, kind, dist, size, ra, dec, href, notes, inside=False, vel=None, tvel=None, motion=None):
+    def add(name, kind, dist, size, ra, dec, href, notes, inside=False, vel=None, tvel=None,
+            motion=None, vec=None):
         if not dist or dist <= 0:
             return
         it = {
@@ -1170,6 +1171,15 @@ def build_universe_page():
         if vel:
             it["vel"] = vel
             it["tvel"] = tvel
+            if vec and it.get("form") == "point":
+                # galactocentric position and velocity in the map's axes, in ly and
+                # ly/yr — the page integrates p + v*t and re-derives distance and
+                # direction from it, so an object moves sideways as well as nearer
+                u = [math.cos(dec * math.pi / 180) * math.cos(ra * math.pi / 180),
+                     math.cos(dec * math.pi / 180) * math.sin(ra * math.pi / 180),
+                     math.sin(dec * math.pi / 180)]
+                it["p0"] = [round(u[i] * dist + SUN_EQ_LY[i], 3) for i in range(3)]
+                it["v3"] = [round(c * KMS_TO_LY_PER_YR, 12) for c in _eq_from_gal(vec)]
             # "Bound orbit" tells the page not to extrapolate far: a satellite's
             # velocity turns, so a straight line is qualitatively wrong past a
             # small fraction of its orbit, not merely imprecise
@@ -1185,7 +1195,9 @@ def build_universe_page():
             continue                              # the Milky Way itself sits at the origin
         add(nm, "galaxy", d, o.get("Diameter (ly)"), o.get("RA (deg)"), o.get("Dec (deg)"),
             f"/cosmos#lg-{slugify(nm)}", o.get("Notes"), vel=o.get("Radial velocity (km/s)"),
-            tvel=o.get("Transverse velocity (km/s)"), motion=o.get("Motion"))
+            tvel=o.get("Transverse velocity (km/s)"), motion=o.get("Motion"),
+            vec=([o.get("Vx (km/s)"), o.get("Vy (km/s)"), o.get("Vz (km/s)")]
+                 if o.get("Vx (km/s)") is not None else None))
 
     for r in notion.get("cosmicStructures", []):
         nm = r.get("Name")
@@ -1218,9 +1230,31 @@ def build_universe_page():
                {"items": items, "lo": lo, "hi": hi, "solar": solar,
                 "nPoint": n_point, "nShell": len(items) - n_point,
                 "nOrbit": len(solar["orbits"]),
-                "nMoving": sum(1 for i in items if i.get("vel"))})
+                "nMoving": sum(1 for i in items if i.get("vel")),
+                "n3d": sum(1 for i in items if i.get("v3")),
+                "sunEq": [round(c, 3) for c in SUN_EQ_LY]})
     return len(items), n_point
 
+
+
+# ---- galactocentric frame, for the objects on /universe that move ----------------
+# The map's axes are equatorial (its direction vectors come from RA/Dec), while the
+# measured velocities are galactic Cartesian: +x from the Sun through the centre, +y
+# along rotation, +z to the north galactic pole. These rotate one into the other, so
+# the page can do plain vector arithmetic in a single frame.
+_EQ_FROM_GAL = [[-0.0548755604, 0.4941094279, -0.8676661490],   # transpose of the
+                [-0.8734370902, -0.4448296300, -0.1980763734],  # ICRS -> galactic
+                [-0.4838350155, 0.7469822445, 0.4559837762]]    # rotation (J2000)
+LY_PER_KPC = 3261.564
+SUN_GAL_KPC = (-8.122, 0.0, 0.0208)      # Sun's place in the galactocentric frame
+
+
+def _eq_from_gal(v):
+    return [sum(_EQ_FROM_GAL[i][j] * v[j] for j in range(3)) for i in range(3)]
+
+
+SUN_EQ_LY = [c * LY_PER_KPC for c in _eq_from_gal(SUN_GAL_KPC)]
+KMS_TO_LY_PER_YR = 3.15576e7 / 9.4607304725808e12
 
 
 # ---------------- solar system ----------------
