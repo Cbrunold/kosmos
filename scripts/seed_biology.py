@@ -128,7 +128,7 @@ def fill(ds, label, want, key_prop, props, get_key):
         if klass and not (p.get(KLASS) or {}).get("select"):
             patch[KLASS] = {"select": {"name": klass}}
         if patch:
-            call("PATCH", f"https://api.notion.com/v1/pages/{r['id']}", patch)
+            call("PATCH", f"https://api.notion.com/v1/pages/{r['id']}", {"properties": patch})
             filled += 1
     missing = [k for k in want if k not in seen]
     print(f"{label}: {filled} filled, {len(want)} defined"
