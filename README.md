@@ -1,6 +1,7 @@
 # kosmos
 
-A multi-disciplinary science portal — a personal atlas of the physical world.
+A multi-disciplinary science portal — a personal atlas of the physical world
+and what lives in it.
 Live at **https://kosmos.yeahborhood.com**.
 
 Notion is the source of truth for authored content; this repo is the source of
