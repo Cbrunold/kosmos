@@ -272,7 +272,7 @@
   @media print { .klang { display: none; } }
 </style>
 <div class="klang" aria-label="Language · Langue"><a href="/universe" hreflang="en" lang="en">EN</a><a href="/fr/universe" hreflang="fr" lang="fr" class="on">FR</a></div>
-<script>window.__VOCAB__ = {"cosmological":"cosmologique","supercluster":"superamas","group":"groupe","void":"vide","cluster":"amas","galaxy":"galaxie","attractor":"attracteur"};</script>
+<script>window.__VOCAB__ = {"attractor":"attracteur","supercluster":"superamas","cosmological":"cosmologique","cluster":"amas","group":"groupe","galaxy":"galaxie","void":"vide"};</script>
 <script>const VOCAB = window.__VOCAB__ || {}; const vocab = (s) => (s == null ? s : (VOCAB[s] || s));</script>
 
 <h1 class="ktitle">L'Univers en trois dimensions</h1>
@@ -311,7 +311,8 @@
       <li><b>Only Andromeda is actually falling towards us.</b> Each mover also carries the size of its sideways motion, and the comparison is the point. M31: 110 km/s towards us against 17 sideways — near enough a head-on fall. M33: 44 against 230. The Large Cloud: 64 against 314. The Small Cloud: 7 against 217, which is a galaxy going almost purely round. The Local Group is not collapsing inward; it is in orbit, and M31 is the exception rather than the illustration. This map can draw only the radial part, which is why the other three hardly move on it while travelling at hundreds of kilometres a second.</li>
       <li><b>This is now an integration, not an extrapolation.</b> Earlier versions carried each object along a straight line, which cannot describe an orbit — satellites froze after a few tens of millions of years and Andromeda arrived late. The page now integrates the mutual gravity of the Milky Way and everything with a measured velocity, stepping a leapfrog through a galaxy modelled as a Hernquist bulge-and-disc inside an NFW halo. The Clouds complete real orbits — the Large Cloud swings between about 26 and 217 kpc, four times over eight billion years — and Andromeda's fall accelerates as it should.</li>
       <li><b>The halo mass is a slider because nobody knows it.</b> The Milky Way's dark halo is uncertain by roughly a factor of two, and the arrival of Andromeda turns on it: from about 4.4 billion years at 0.5×10<sup>12</sup> solar masses to 3.3 at 2.5×10<sup>12</sup>. Move it and watch. The rotation speed at the Sun is printed beside it as the check — the model returns 208 to 239 km/s across that range, against a measured 229, which is precisely why the rotation curve alone cannot pin the halo down. The number this page shows you is a consequence of a parameter you can see and change, which is the honest way to show a prediction that depends on one.</li>
-      <li><b>What it still does not model.</b> Dynamical friction, which drags a massive satellite inward and would bring the merger forward; the tidal deformation of galaxies that are no longer points once they touch; and any mass beyond these five bodies. The Small Cloud's track is the least trustworthy of the four — it is bound to the Large Cloud in reality, and a five-body model with 5 kpc of softening handles that pair poorly.</li>
+      <li><b>Friction, and what it changes.</b> A satellite ploughing through the halo leaves an overdense wake behind it, and the wake pulls back — Chandrasekhar drag, which scales as the satellite's mass squared and so matters for the Large Cloud and for Andromeda and hardly at all for the Small. Turn it off with the button and Andromeda swings past at closest approach and climbs back out: <em>the merger does not happen</em>. Turn it on and the same pass is deeper, and the orbit decays into one. Drag is what makes a merger a merger, and it is the clearest thing on this page to toggle.</li>
+      <li><b>What it still does not model.</b> Tidal deformation and mass loss, once galaxies are close enough to stop being points; the halo's own response beyond taking up the momentum; and any mass outside these five bodies. The Small Cloud's track is the least trustworthy — it is bound to the Large Cloud in reality, and five bodies with 5 kpc of softening handle that pair poorly.</li>
     </ol>
   </section>
 </div>
@@ -446,8 +447,35 @@
   const DT = 1.0, TMAX = 8000.0, EVERY = 10;   // Myr
   const SUN_EQ = (D.sunEq || [0, 0, 0]).map((c) => c / LY_PER_KPC);
   let haloMass = D.mwMass || 1.5e12;
+  let friction = true;
 
   const nfwF = (x) => Math.log(1 + x) - x / (1 + x);
+  function erf(x) {                 // Abramowitz & Stegun 7.1.26
+    const s = x < 0 ? -1 : 1; x = Math.abs(x);
+    const t = 1 / (1 + 0.3275911 * x);
+    const y = 1 - ((((1.061405429 * t - 1.453152027) * t + 1.421413741) * t
+                    - 0.284496736) * t + 0.254829592) * t * Math.exp(-x * x);
+    return s * y;
+  }
+  function nfwRho(r, M200) {
+    const r200 = Math.cbrt(3 * M200 / (4 * Math.PI * 200 * RHO_CRIT)), rs = r200 / CONC;
+    const rhoS = M200 / (4 * Math.PI * rs * rs * rs * nfwF(CONC)), x = r / rs;
+    return rhoS / (x * (1 + x) * (1 + x));
+  }
+  // Chandrasekhar drag: a satellite leaves an overdense wake behind it and the wake
+  // pulls back. Returned as the coefficient k in a = -k*v, because that form has an
+  // exact solution over a step. Folding it into the leapfrog kick instead makes the
+  // integrator unstable — the kick assumes force depends on position alone, and at
+  // dt = 1 Myr the Large Cloud was flung to 7,000 kpc instead of spiralling in.
+  function dragRate(r, vvec, mSat, M200, Mhost) {
+    const v = Math.hypot(vvec[0], vvec[1], vvec[2]);
+    if (v <= 0 || r <= 0 || !mSat) return 0;
+    const sigma = Math.sqrt(r * mwField(r, M200)) / Math.SQRT2;
+    const X = v / (Math.SQRT2 * sigma);
+    const F = erf(X) - 2 * X * Math.exp(-X * X) / Math.sqrt(Math.PI);
+    const lnL = Math.log(1 + Mhost / mSat);
+    return 4 * Math.PI * GRAV * GRAV * mSat * nfwRho(r, M200) * lnL * F / (v * v * v);
+  }
   function mwField(r, M200) {       // inward field, kpc/Myr^2
     const r200 = Math.cbrt(3 * M200 / (4 * Math.PI * 200 * RHO_CRIT)), rs = r200 / CONC;
     const menc = M200 * nfwF(r / rs) / nfwF(CONC);
@@ -491,6 +519,19 @@
       for (let k = 0; k < 3; k++) vm[k] += 0.5 * DT * Am[k];
       for (let i = 0; i < B.length; i++) for (let k = 0; k < 3; k++) B[i].p[k] += DT * B[i].v[k];
       for (let k = 0; k < 3; k++) pm[k] += DT * vm[k];
+      if (friction) {
+        for (let i = 0; i < B.length; i++) {
+          const d = [B[i].p[0] - pm[0], B[i].p[1] - pm[1], B[i].p[2] - pm[2]];
+          const r = Math.hypot(d[0], d[1], d[2]) || 1e-6;
+          const vr = [B[i].v[0] - vm[0], B[i].v[1] - vm[1], B[i].v[2] - vm[2]];
+          const decay = Math.exp(-dragRate(r, vr, B[i].m, M200, Mm) * DT) - 1;
+          for (let k = 0; k < 3; k++) {
+            const dv = vr[k] * decay;
+            B[i].v[k] += dv;
+            vm[k] -= dv * B[i].m / Mm;      // the halo takes the momentum
+          }
+        }
+      }
       [A, Am] = accel();
       for (let i = 0; i < B.length; i++) for (let k = 0; k < 3; k++) B[i].v[k] += 0.5 * DT * A[i][k];
       for (let k = 0; k < 3; k++) vm[k] += 0.5 * DT * Am[k];
@@ -499,15 +540,19 @@
     return out;
   }
 
-  function closestApproach(name) {
+  // Two different questions, and friction separates them: the first pericentre is
+  // the near miss, the merger is the spiral-in afterwards. Without drag there is no
+  // second one at all — M31 swings past and comes back out.
+  function approach(name) {
     const i = MOVERS.findIndex((m) => m.name === name);
     if (i < 0 || !TRACK) return null;
-    let best = Infinity, at = 0;
-    for (let s = 0; s < TRACK.length; s++) {
-      const p = TRACK[s][i], d = Math.hypot(p[0], p[1], p[2]);
-      if (d < best) { best = d; at = s * DT * EVERY; }
+    const d = TRACK.map((s) => Math.hypot(s[i][0], s[i][1], s[i][2]));
+    let peri = null, merge = null;
+    for (let s = 1; s < d.length - 1; s++) {
+      if (peri === null && d[s] < d[s - 1] && d[s] <= d[s + 1]) peri = { myr: s * DT * EVERY, kpc: d[s] };
+      if (merge === null && d[s] < 20) merge = s * DT * EVERY;
     }
-    return { kpc: best, myr: at };
+    return { peri, merge };
   }
 
   function retime() {
@@ -932,17 +977,25 @@
     hs.type = 'range'; hs.min = 5; hs.max = 25; hs.step = 1; hs.value = Math.round(haloMass / 1e11);
     hs.setAttribute('aria-label', 'Milky Way halo mass');
     const hout = document.createElement('span'); hout.className = 'creadout';
+    const fb = document.createElement('button');
+    fb.className = 'cbtn'; fb.type = 'button'; fb.textContent = 'friction';
+    fb.setAttribute('aria-pressed', 'true');
     const hshow = () => {
-      const ca = closestApproach('Andromeda (M31)');
-      hout.textContent = `${(haloMass / 1e12).toFixed(1)}e12 M☉ · rotation ${vCirc(8.122, haloMass).toFixed(0)} km/s`
-        + (ca ? ` · Andromeda closest at +${(ca.myr / 1000).toFixed(2)} Gyr` : '');
+      const a = approach('Andromeda (M31)');
+      let t = `${(haloMass / 1e12).toFixed(1)}e12 M☉ · rotation ${vCirc(8.122, haloMass).toFixed(0)} km/s`;
+      if (a && a.peri) t += ` · M31 passes at +${(a.peri.myr / 1000).toFixed(2)} Gyr, ${a.peri.kpc.toFixed(0)} kpc`;
+      t += a && a.merge ? ` · merges +${(a.merge / 1000).toFixed(2)} Gyr` : ' · no merger';
+      hout.textContent = t;
     };
-    hs.addEventListener('input', () => {
-      haloMass = +hs.value * 1e11;
+    const recompute = () => {
       TRACK = integrate(haloMass);      // ~8000 steps, cheap enough to redo live
       retime(); hshow(); show(); draw();
+    };
+    hs.addEventListener('input', () => { haloMass = +hs.value * 1e11; recompute(); });
+    fb.addEventListener('click', () => {
+      friction = !friction; fb.setAttribute('aria-pressed', String(friction)); recompute();
     });
-    hrow.append(hl, hs, hout); row.parentNode.insertBefore(hrow, row.nextSibling);
+    hrow.append(hl, hs, fb, hout); row.parentNode.insertBefore(hrow, row.nextSibling);
     retime(); hshow(); show();
   }
 
