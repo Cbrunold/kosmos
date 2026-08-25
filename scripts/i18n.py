@@ -373,6 +373,11 @@ PROSE_KEYS = {
     "what", "objective", "desc", "char", "covers", "how", "materials", "used", "eff", "pd", "procs", "text",
     "extraction", "science", "steps", "fails", "safety", "tools", "done", "pop", "rule_text", "comment", "when",
     "aliases", "structure", "columns", "rows",
+    # /life. The page names its prose "Function" and "Numbers" and neither word was
+    # here, so the French mirror shipped translated chrome around English cards —
+    # the failure is silent by construction, because a key this set does not know
+    # is simply left alone rather than reported.
+    "Function", "Numbers", "function", "numbers",
 }
 NAME_RULES = {
     "equations.html": {"Name": "NameEN"},
