@@ -177,11 +177,12 @@ __SHARED__
 <div class="lab">
   <div class="tblwrap">
     <svg class="felt" id="ctab" viewBox="-20 -20 940 500" role="img" aria-label="Two balls on open cloth: the contact point, the tangent line, and the paths both balls take after impact"></svg>
+    <svg class="felt" id="ctpov" viewBox="0 0 900 250" style="margin-top:10px" role="img" aria-label="The shooter's view down the cue: the object ball ahead, the ghost ball you are really aiming at, and the tip's contact on the cue ball"></svg>
     <div class="legend" id="ctleg"></div>
   </div>
   <div class="kcard ctl" id="ctctl">
     <div class="row"><label>the hit</label><div id="ctinfo"></div>
-      <div class="hint">Drag the amber contact marker around the object ball — or drag either ball. The cut angle, the ball-hit fraction and the clock reading all follow from where you touch it.</div></div>
+      <div class="hint">Drag either ball anywhere, and drag the amber handle round the object ball to choose where you strike it. The cut angle and the ball-hit fraction follow from that; the distance follows from the balls.</div></div>
     <div class="row"><label for="ctcut">contact point — full ball to edge</label><input id="ctcut" type="range" min="-89" max="89" step="1" value="30"><span class="v" id="ctcutv"></span></div>
     <div class="row"><label for="ctspd">strike — 1 soft, 10 break</label><input id="ctspd" type="range" min="0.5" max="10" step="0.1" value="2.5"><span class="v" id="ctspdv"></span></div>
     <div class="row"><label for="cttip">tip height, b/R</label><input id="cttip" type="range" min="-0.5" max="0.5" step="0.02" value="0.4"><span class="v" id="cttipv"></span></div>
@@ -2485,8 +2486,8 @@ __SHARED__
   // lab runs; the only difference is that nothing here can interrupt them.
   const ctsvg = $('ctab');
   const CT = { cut: 30, drag: null };
-  let obLastPix = [450, 235];
-  const CTC = { OB: [1.55, 0.62] };
+  let ctOx = 0, ctOy = 0, ctSc = 1;
+  const CTC = { OB: [1.55, 0.62], CB: [0.75, 0.62] };
   function contactSim(cbP, obP, dAim, v0, tip, side) {
     const sq = -SQ_R * side;                                  // the tip pushes the cue ball off its aim
     const d0 = [dAim[0] * Math.cos(sq) - dAim[1] * Math.sin(sq), dAim[0] * Math.sin(sq) + dAim[1] * Math.cos(sq)];
@@ -2526,18 +2527,30 @@ __SHARED__
   }
   const FRACNAME = (f) => (f > 0.94 ? 'full ball' : f > 0.8 ? '⅞ ball' : f > 0.65 ? '¾ ball' : f > 0.42 ? '½ ball' : f > 0.2 ? '¼ ball' : 'edge');
   function runContact() {
-    const cut = +$('ctcut').value, v0 = +$('ctspd').value, tip = +$('cttip').value, side = +$('ctside').value, dist = +$('ctdist').value;
+    const cut = +$('ctcut').value, v0 = +$('ctspd').value, tip = +$('cttip').value, side = +$('ctside').value;
+    let dist = +$('ctdist').value;
     $('ctcutv').textContent = `${cut}°`;
     $('ctspdv').textContent = `${fmt(v0, 1)} / 10`;
     $('cttipv').textContent = `${tip >= 0 ? '+' : ''}${fmt(tip, 2)}`;
     $('ctsidev').textContent = `${side >= 0 ? '+' : ''}${fmt(side, 2)}`;
     $('ctdistv').textContent = `${fmt(dist, 2)} m`;
-    const OB = CTC.OB, th = rad(cut);
-    const dAim = [1, 0];                                       // the cue ball always travels this way; the hit moves round the ball
-    const n = [Math.cos(th), Math.sin(th)];                    // line of centres at impact
+    if (CT.fromSlider) {                                       // the slider slides the cue ball, it does not teleport it
+      const b2 = vunit(vsub(CTC.OB, CTC.CB));
+      CTC.CB = clampBall(vsub(CTC.OB, vmul(b2, Math.max(2.1 * R, dist))), []);
+      CT.fromSlider = false;
+    }
+    // Both balls sit where you put them. The contact point is an angle off the line between them, so the
+    // whole picture turns with the balls instead of the balls turning round a fixed aim.
+    const OB = CTC.OB, CB = CTC.CB, th = rad(cut);
+    const base = vunit(vsub(OB, CB));
+    const n = [base[0] * Math.cos(th) - base[1] * Math.sin(th), base[0] * Math.sin(th) + base[1] * Math.cos(th)];
     const ghost = vsub(OB, vmul(n, 2 * R));
-    const CB = vsub(ghost, vmul(dAim, dist));
-    const sol = solveAim(CB, OB, cut, v0, tip, side, 20, 6);
+    const dAim = vunit(vsub(ghost, CB));
+    const nAng = deg(Math.atan2(n[1], n[0]));
+    dist = vlen(vsub(ghost, CB));                              // whatever the balls say it is
+    $('ctdist').value = Math.min(2.2, Math.max(0.1, dist));
+    $('ctdistv').textContent = `${fmt(dist, 2)} m`;
+    const sol = solveAim(CB, OB, nAng, v0, tip, side, 20, 6);
     const S = sol ? sol.S : contactSim(CB, OB, dAim, v0, tip, side);
     // Both balls can roll several metres with nothing to stop them, and fitting the picture to all of it
     // shrinks the balls to specks. The interest is the first stretch after contact, where the two paths
@@ -2576,10 +2589,12 @@ __SHARED__
     cball(OB, { fill: 'var(--c-amber)', stroke: 'var(--page)', 'stroke-width': 1.2 });
     cball(CB, { fill: 'var(--panel)', stroke: 'var(--ink)', 'stroke-width': 1.5, style: 'cursor:grab' });
     // the contact point itself — the handle you drag
-    obLastPix = cpx(OB);
-    const cpt = vsub(OB, vmul(n, R));
-    const [hx, hy] = cpx(cpt);
-    ce('circle', { cx: hx, cy: hy, r: 6, fill: 'var(--c-amber)', stroke: 'var(--page)', 'stroke-width': 1.5, style: 'cursor:grab' });
+    ctOx = ox; ctOy = oy; ctSc = sc;
+    CT.cpt = vsub(OB, vmul(n, 2.1 * R));                       // the handle stands off the face it points at
+    const [hx, hy] = cpx(CT.cpt), [tx3, ty3] = cpx(vsub(OB, vmul(n, R)));
+    ce('line', { x1: hx, y1: hy, x2: tx3, y2: ty3, stroke: 'var(--c-amber)', 'stroke-width': 1, opacity: 0.6 });
+    ce('circle', { cx: tx3, cy: ty3, r: 2.5, fill: 'var(--c-amber)' });
+    ce('circle', { cx: hx, cy: hy, r: 7, fill: 'var(--c-amber)', stroke: 'var(--page)', 'stroke-width': 1.5, style: 'cursor:grab' });
     const frac = 1 - Math.sin(Math.abs(th));
     const spin = S.hit && S.hit.throwDeg > 0.05;
     $('ctleg').innerHTML = '<span style="--lc:var(--c-amber)">object ball</span><span style="--lc:var(--c-felt)">cue ball</span>'
@@ -2591,6 +2606,7 @@ __SHARED__
       $('ctout').innerHTML = dl([['no contact', S.near > 1e5 || !isFinite(S.near)
         ? 'the cue ball never gets near it — raise the strike'
         : `it passes ${fmt(gap, 1)} cm wide of the ball. At this cut, this pace and this much side, squirt and swerve carry it past the edge — there is no aim that still catches it. Firm it up, or take the contact point back toward the middle of the ball.`, 'warn']]);
+      drawContactPov(CB, OB, ghost, dAim, tip, side, 1 - Math.sin(Math.abs(th)));
       drawThrowCurve(null, dist, v0); return;
     }
     const H2 = S.hit;
@@ -2606,7 +2622,41 @@ __SHARED__
       ['cue ball', defl === null ? 'stops dead — the whole ball went into it' : `leaves ${fmt(defl, 1)}° off its line${defl > 20 && defl < 40 && H2.rollingAtContact ? ' <small>— the thirty-degree rule</small>' : ''} at ${fmt(vlen(H2.vA))} m/s`],
       ['at the moment of contact', `${fmt(H2.vc)} m/s · ${H2.rollingAtContact ? 'rolling' : Math.abs(H2.sc) <= 0.05 * H2.vc ? 'stun — sliding with no roll' : H2.sc < 0 ? `backspin, ${fmt(100 * -H2.sc / H2.vc, 0)} % of roll` : `sliding, ${fmt(100 * H2.sc / H2.vc, 0)} % of roll taken up`}${H2.zA ? ` · side still on it` : ''}`],
     ]);
-    drawThrowCurve({ cut, tip, side, dist, CB, OB, dAim }, dist, v0);
+    drawContactPov(CB, OB, ghost, dAim, tip, side, frac);
+    drawThrowCurve({ cut: nAng, tip, side, dist, CB, OB, dAim }, dist, v0);
+  }
+  // Down the cue, from behind the cue ball: the two balls as they overlap from here, which is the only
+  // picture you actually get at the table. The ghost ball is drawn where you must send the cue ball's
+  // centre, and the red dot is where the tip meets it.
+  function drawContactPov(CB, OB, ghost, dAim, tip, side, frac) {
+    const g = $('ctpov'); g.innerHTML = '';
+    const ge = (tag, a) => el(tag, a, g);
+    ge('rect', { x: 0, y: 0, width: 900, height: 250, fill: 'color-mix(in oklab, var(--c-felt) 12%, var(--panel))' });
+    const mono = { 'font-family': 'ui-monospace, "SF Mono", Consolas, monospace', 'font-size': 11, fill: 'var(--muted)' };
+    const HOR = 74, EYEH = 0.15, FPX = 430, BACK = 0.34;
+    const eye = vsub(CB, vmul(dAim, BACK)), pd = perp(dAim);
+    const proj = (q, z) => {
+      const rel = vsub(q, eye), fd = vdot(rel, dAim);
+      if (fd < 0.05) return null;
+      const sc = FPX / fd;
+      return [450 + vdot(rel, pd) * sc, HOR + (EYEH - z) * sc, sc];
+    };
+    ge('line', { x1: 0, y1: HOR, x2: 900, y2: HOR, stroke: 'var(--hairline)' });
+    const po = proj(OB, R), pg = proj(ghost, R);
+    if (pg) ge('circle', { cx: pg[0], cy: pg[1], r: R * pg[2], fill: 'none', stroke: 'var(--ink)', 'stroke-width': 1.4, 'stroke-dasharray': '3 3', opacity: 0.85 });
+    if (po) {
+      ge('circle', { cx: po[0], cy: po[1], r: R * po[2], fill: 'var(--c-amber)', stroke: 'var(--page)', 'stroke-width': 1.4 });
+      const t2 = ge('text', { x: po[0], y: po[1] - R * po[2] - 9, ...mono, 'text-anchor': 'middle', fill: 'var(--c-amber)' });
+      t2.textContent = `${FRACNAME(frac)} · f ${fmt(frac, 2)}`;
+    }
+    if (pg) { const t3 = ge('text', { x: pg[0], y: pg[1] + R * pg[2] + 15, ...mono, 'text-anchor': 'middle' }); t3.textContent = 'ghost ball — send the centre here'; }
+    // the cue ball, close enough to fill the bottom of the view, with the tip's contact on it
+    const cr = 60, cx = 450, cy = 250 - 4;
+    ge('circle', { cx, cy, r: cr, fill: 'var(--panel)', stroke: 'var(--ink)', 'stroke-width': 1.6 });
+    ge('line', { x1: cx - cr, y1: cy, x2: cx + cr, y2: cy, stroke: 'var(--hairline)' });
+    ge('line', { x1: cx, y1: cy - cr, x2: cx, y2: cy, stroke: 'var(--hairline)' });
+    ge('circle', { cx: cx + side * cr * 2, cy: cy - tip * cr * 2, r: 5, fill: 'var(--c-red)' });
+    const t4 = ge('text', { x: 10, y: 240, ...mono }); t4.textContent = 'down the cue · red dot = your tip on the cue ball';
   }
   // throw against strike: the curve every player feels and few can name
   function drawThrowCurve(cfg, dist, v0) {
@@ -2638,24 +2688,43 @@ __SHARED__
     const yl = ge('text', { x: 6, y: 13, ...mono }); yl.textContent = 'throw, degrees off the line of centres';
     const xl = ge('text', { x: (X0 + X1) / 2, y: 292, ...mono, 'text-anchor': 'middle' }); xl.textContent = 'strike intensity';
   }
-  for (const k of ['ctcut', 'ctspd', 'cttip', 'ctside', 'ctdist']) $(k).addEventListener('input', runContact);
+  for (const k of ['ctcut', 'ctspd', 'cttip', 'ctside']) $(k).addEventListener('input', runContact);
+  $('ctdist').addEventListener('input', () => { CT.fromSlider = true; runContact(); });
   ctsvg.addEventListener('pointerdown', (e) => {
     const r2 = ctsvg.getBoundingClientRect();
     if (!r2.width) return;
-    CT.drag = true;
+    const p2 = ctPt(e);
+    if (!p2) return;
+    // judge the grab in pixels: the view zooms to fit the shot, so a fixed distance in metres would mean
+    // a different thing every time the balls move
+    const pxD = (q) => dist2(p2, q) * ctSc;
+    const rpx = Math.max(8, R * ctSc);
+    const dCpt = CT.cpt ? pxD(CT.cpt) : 1e9;
+    CT.drag = dCpt < rpx * 1.1 ? 'cut' : pxD(CTC.CB) < rpx * 1.4 ? 'cb' : pxD(CTC.OB) < rpx * 1.2 ? 'ob' : 'cut';
+    CT.fromSlider = false;
     ctDrag(e);
     ctsvg.setPointerCapture(e.pointerId); e.preventDefault();
   });
-  function ctDrag(e) {
+  function ctPt(e) {
     const m2 = ctsvg.getScreenCTM();
-    if (!m2) return;
+    if (!m2) return null;
     const q = ctsvg.createSVGPoint(); q.x = e.clientX; q.y = e.clientY;
     const u = q.matrixTransform(m2.inverse());
-    // the contact point sits on the face of the object ball turned toward the cue ball, so the angle the
-    // pointer makes with the object ball is the line of centres, half a turn round
-    let t2 = deg(Math.atan2(u.y - obLastPix[1], u.x - obLastPix[0])) + 180;
-    t2 = ((t2 + 180) % 360 + 360) % 360 - 180;
-    $('ctcut').value = Math.round(Math.max(-89, Math.min(89, t2)));
+    return [ctOx + u.x / ctSc, ctOy + u.y / ctSc];              // back into table metres
+  }
+  function ctDrag(e) {
+    const p2 = ctPt(e);
+    if (!p2) return;
+    if (CT.drag === 'ob') CTC.OB = clampBall(p2, [CTC.CB]);
+    else if (CT.drag === 'cb') CTC.CB = clampBall(p2, [CTC.OB]);
+    else {
+      // the contact point rides on the face of the object ball turned toward the cue ball, so the angle
+      // the pointer makes with the object ball is the line of centres, half a turn round
+      const base = vunit(vsub(CTC.OB, CTC.CB));
+      let t2 = deg(Math.atan2(p2[1] - CTC.OB[1], p2[0] - CTC.OB[0])) + 180 - deg(Math.atan2(base[1], base[0]));
+      t2 = ((t2 + 180) % 360 + 360) % 360 - 180;
+      $('ctcut').value = Math.round(Math.max(-89, Math.min(89, t2)));
+    }
     runContact();
   }
   ctsvg.addEventListener('pointermove', (e) => { if (CT.drag) ctDrag(e); });
