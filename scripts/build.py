@@ -1156,7 +1156,7 @@ def build_universe_page():
     """
     items = []
 
-    def add(name, kind, dist, size, ra, dec, href, notes, inside=False, vel=None):
+    def add(name, kind, dist, size, ra, dec, href, notes, inside=False, vel=None, tvel=None, motion=None):
         if not dist or dist <= 0:
             return
         it = {
@@ -1169,6 +1169,11 @@ def build_universe_page():
         # runs; everything else has no measured velocity in the data and stays put
         if vel:
             it["vel"] = vel
+            it["tvel"] = tvel
+            # "Bound orbit" tells the page not to extrapolate far: a satellite's
+            # velocity turns, so a straight line is qualitatively wrong past a
+            # small fraction of its orbit, not merely imprecise
+            it["motion"] = motion or "Infalling"
         items.append(it)
 
     for o in notion.get("celestialObjects", []):
@@ -1179,7 +1184,8 @@ def build_universe_page():
         if not d:
             continue                              # the Milky Way itself sits at the origin
         add(nm, "galaxy", d, o.get("Diameter (ly)"), o.get("RA (deg)"), o.get("Dec (deg)"),
-            f"/cosmos#lg-{slugify(nm)}", o.get("Notes"), vel=o.get("Radial velocity (km/s)"))
+            f"/cosmos#lg-{slugify(nm)}", o.get("Notes"), vel=o.get("Radial velocity (km/s)"),
+            tvel=o.get("Transverse velocity (km/s)"), motion=o.get("Motion"))
 
     for r in notion.get("cosmicStructures", []):
         nm = r.get("Name")

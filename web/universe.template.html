@@ -103,8 +103,9 @@ __SHARED__
       <li><b>The planets are orbits, not places, and they go round the centre rather than round you.</b> A planet's direction changes through the year and its distance from us changes with it, so a dot would state a position that is not a fact; what does not change is its distance from the Sun. Zoom in far enough and the label at the centre stops reading <em>here</em> and reads <em>the Sun</em> — this is the one point on the map where the origin and the observer come apart, and the Earth is the third ring out. Each orbit is drawn as a circle at its mean distance, in the plane of the ecliptic: eccentricity is not drawn (Mercury's is the only one you would notice — it really runs between 0.31 and 0.47 AU), and neither are the inclinations, which are 7.0° for Mercury, 3.4° for Venus and under 2.5° for the rest. The asteroid and Kuiper belts are bands, because a belt has no orbit and a single ring would claim one.</li>
       <li><b>Everything is drawn as it is now</b>, not as it looks. Light from the far rings left before the Earth existed. A map of where things <em>are</em> and a map of what you <em>see</em> diverge completely past the Local Group, and this is the first.</li>
       <li><b>Distance is comoving</b>, matching <a href="/scales">the ladder</a>. Redshift is not converted to a light-travel time anywhere on this page.</li>
-      <li><b>One object moves, and only radially.</b> Run the clock and Andromeda closes; everything else holds still, because a measured velocity is the one thing the catalogue gives for it and does not give for the rest. M31 approaches the Milky Way at 110 km/s — that is the galactocentric figure, the heliocentric one folds in the Sun's own 220 km/s around the galactic centre and answers a different question. Drawing it as a straight radial fall is defensible only because Hubble measured its sideways motion too and found it small: 17 km/s, near enough head-on (van der Marel et al. 2012).</li>
-      <li><b>The clock is not a prediction.</b> It carries 110 km/s forward unchanged, which reaches contact in about 6.9 billion years. The accepted estimate is roughly 4 — the difference is gravity, which this page does not model. Two galaxies falling together accelerate, and the constant-velocity arithmetic is wrong by that acceleration and in that direction. Believe the shrinking distance, not the arrival time.</li>
+      <li><b>Four objects move, and only along the line of sight.</b> Run the clock and Andromeda closes fast, M33 drifts in slowly, and the Magellanic Clouds barely stir. That is not the map being lazy — it is the measurement. Each carries a galactocentric radial velocity, the figure corrected for the Sun's own ~220 km/s around the galactic centre, and radial velocity <em>is</em> the rate a distance changes, so the distances here move at exactly the right rate. Everything else holds still because nothing else in the catalogue has a measured velocity yet.</li>
+      <li><b>Only Andromeda is actually falling towards us.</b> Each mover also carries the size of its sideways motion, and the comparison is the point. M31: 110 km/s towards us against 17 sideways — near enough a head-on fall. M33: 44 against 230. The Large Cloud: 64 against 314. The Small Cloud: 7 against 217, which is a galaxy going almost purely round. The Local Group is not collapsing inward; it is in orbit, and M31 is the exception rather than the illustration. This map can draw only the radial part, which is why the other three hardly move on it while travelling at hundreds of kilometres a second.</li>
+      <li><b>The clock stops extrapolating where it would start lying.</b> For a bound satellite a straight line is not merely imprecise, it is qualitatively wrong — the velocity turns, and the line says "leaving forever" where the truth is "coming back". So anything marked as orbiting freezes once it has moved a tenth of its present distance, is labelled <em>held</em> in the readout, and goes no further. Andromeda is not capped, because it really is falling; but the constant 110 km/s reaches contact at about 6.9 billion years where the accepted estimate is roughly 4. The difference is gravity, which this page does not model. Two galaxies falling together accelerate. Believe the shrinking distance, not the arrival time.</li>
     </ol>
   </section>
 </div>
@@ -216,11 +217,21 @@ __SHARED__
   const LY_PER_KMS_YR = 3.15576e7 / 9.4607304725808e12;   // (km/s) -> ly/yr
   let clock = 0;
   const MOVERS = ITEMS.filter((i) => i.vel);
+  // A straight line is only a model of a bound orbit while the object has barely
+  // moved: past that its velocity has turned and the line says the wrong thing —
+  // "leaving forever" where the truth is "coming back". Ten percent of the current
+  // distance is the stated cut, and past it the object freezes and is marked,
+  // rather than being carried somewhere the data cannot support.
+  const BOUND_FRACTION = 0.10;
   function retime() {
     for (const it of MOVERS) {
+      const travel = it.vel * LY_PER_KMS_YR * clock;
+      const cap = it.dist0 * BOUND_FRACTION;
+      it.beyond = it.motion === 'Bound orbit' && Math.abs(travel) > cap;
+      const moved = it.beyond ? Math.sign(travel) * cap : travel;
       // a floor rather than a crossing: past contact the constant-velocity model
       // has nothing left to say, and drawing it through zero would be a fiction
-      it.dist = Math.max(it.size ? it.size / 2 : 1e3, it.dist0 + it.vel * LY_PER_KMS_YR * clock);
+      it.dist = Math.max(it.size ? it.size / 2 : 1e3, it.dist0 + moved);
       it.R = Math.log10(it.dist);
     }
   }
@@ -532,7 +543,10 @@ __SHARED__
     tipEl.innerHTML = '<h4></h4><p></p>';
     tipEl.querySelector('h4').textContent = it.name;
     tipEl.querySelector('p').textContent =
-      `${it.kind} · ${ly(it.dist)} away${it.size ? ` · ${ly(it.size)} across` : ''}`;
+      `${it.kind} · ${ly(it.dist)} away${it.size ? ` · ${ly(it.size)} across` : ''}`
+      + (it.vel ? ` · ${it.vel < 0 ? 'approaching' : 'receding'} ${Math.abs(it.vel)} km/s`
+                  + (it.tvel ? `, ${it.tvel} km/s sideways` : '')
+                  + (it.motion === 'Bound orbit' ? ' — in orbit, not falling' : '') : '');
     tipEl.style.left = Math.min(r.width - 270, e.clientX - r.left + 14) + 'px';
     tipEl.style.top = Math.max(4, e.clientY - r.top - 10) + 'px';
     tipEl.classList.add('on');
@@ -592,7 +606,10 @@ __SHARED__
     const out = document.createElement('span'); out.className = 'creadout';
     const show = () => {
       const gy = clock / 1e9;
-      const parts = MOVERS.map((m) => `${m.name.replace(/\s*\(.*\)/, '')} ${ly(m.dist)}`);
+      const parts = MOVERS.map((m) => {
+        const nm = m.name.replace(/\s*\(.*\)/, '');
+        return `${nm} ${ly(m.dist)}${m.beyond ? ' (held)' : ''}`;
+      });
       out.textContent = (clock ? `+${gy.toFixed(2)} Gyr · ` : 'now · ') + parts.join(' · ');
     };
     const set = (v) => { clock = Math.max(0, Math.min(7e9, v)); sl.value = clock; retime(); show(); draw(); };
