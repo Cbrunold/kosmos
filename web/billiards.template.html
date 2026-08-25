@@ -199,8 +199,8 @@ __SHARED__
       <div class="modes"><button id="dsysb2" type="button">two rails — the mirror</button><button id="dsysb3" type="button" class="on">three rails — corner five</button><button id="dsysb4" type="button">three rails — scratch it</button></div>
       <div class="hint" id="dshelp"></div></div>
     <div class="row scratch-only"><label>the pocket to scratch in</label>
-      <div class="presets" id="dspockets"></div>
-      <button type="button" class="exec" id="dsexec" style="margin-top:6px">▶ execute the shot</button></div>
+      <div class="presets" id="dspockets"></div></div>
+    <div class="row"><button type="button" class="exec" id="dsexec">▶ execute the shot</button></div>
     <div class="row sys3-only"><label for="darr">arrival — where you want the third rail</label><input id="darr" type="range" min="0.4" max="5" step="0.1" value="2"><span class="v" id="darrv"></span></div>
     <div class="row"><label for="dspd">speed into the first rail</label><input id="dspd" type="range" min="1" max="6" step="0.1" value="2.8"><span class="v" id="dspdv"></span></div>
     <div class="row"><label for="dside">side — running (+) or reverse (−)</label><input id="dside" type="range" min="-0.5" max="0.5" step="0.02" value="0.3"><span class="v" id="dsidev"></span>
@@ -2016,7 +2016,7 @@ __SHARED__
   ];
   const zsOf = (r) => (r.ax === 1 ? r.dir : -r.dir);         // sign of side's surface speed along that cushion
   const dsvg = $('dsys');
-  const DS = { sys: 3, pk: 0, play: null, cb: [TABLE_L - R, TABLE_W - R], cb2: [1.90, 0.95], tgt: [1.10, 0.30], arr: 2 };
+  const DS = { sys: 3, pk: 0, play: null, follow: true, tgt3: [2.20, 0.28], cb: [TABLE_L - R, TABLE_W - R], cb2: [1.90, 0.95], tgt: [1.10, 0.30], arr: 2 };
   const dFlip = () => DS.cb[0] < TABLE_L / 2;                // canonical frame keeps the cue ball bottom-right
   const cF = (p) => (dFlip() ? [TABLE_L - p[0], p[1]] : [p[0], p[1]]);   // self-inverse
 
@@ -2037,13 +2037,13 @@ __SHARED__
 
   // the real thing: a rolling ball sent down a line, every rail live. Side is applied as running (+)
   // about the first cushion it will meet, so the slider's sign means the same whichever way the shot goes.
-  function railRun(p0, dir, v, side, keep, stopAfter, extra) {
+  function railRun(p0, dir, v, side, keep, stopAfter, extra, goal, after) {
     const b = { p: p0.slice(), v: vmul(dir, v), s: vmul(dir, v), z: 0, slid: 0 };
     const f = nextRail(p0, dir);
     if (f && side) { const ta = 1 - f.r.ax; b.z = -Math.sign(b.v[ta] || 1) * zsOf(f.r) * 2.5 * v * side; }
     const pts = keep ? [b.p.slice()] : null;
     const hits = [];
-    let pocket = null, stopped = false, tail = 0;
+    let pocket = null, stopped = false, tail = 0, minGoal = Infinity;
     for (let i = 0; i < 6000; i++) {
       const q0 = b.p.slice();
       step(b, 0.003);
@@ -2052,13 +2052,14 @@ __SHARED__
       if (pk >= 0) { pocket = pk; break; }
       const r = bounce(b);
       if (r) hits.push({ r, p: b.p.slice(), idx: keep ? pts.length - 1 : i });
+      if (goal && hits.length >= (after || 0)) { const d = dist2(b.p, goal); if (d < minGoal) minGoal = d; }
       if (vlen(b.v) < 1e-3) { stopped = true; break; }
       if (stopAfter && hits.length >= stopAfter) {   // the system's rails are shot — draw a tail, then stop
         tail += dist2(q0, b.p);
         if (tail > (extra || 0.3)) break;
       }
     }
-    return { pts, hits, end: b.p.slice(), pocket, stopped };
+    return { pts, hits, end: b.p.slice(), pocket, stopped, minGoal };
   }
 
   // corner five's scales: the corner is 5, the long rail falls half a unit a diamond, the short rail climbs one
@@ -2094,6 +2095,22 @@ __SHARED__
       P = P2;
     }
     return { P, A, aimC, dirC, back };
+  }
+  // Corner five predicts where the cue ball crosses the third rail. On its own that is a number with no
+  // reason attached — so the reason is a ball you want to reach, and this finds the arrival that gets
+  // there. Sweep the numbers, run each one on the real cushions, keep whichever passes closest.
+  function solveArrival(cbP, tgtP, v, side, flip) {
+    let best = null;
+    for (let i = 0; i <= 46; i++) {
+      const N = 0.4 + i * 0.1;
+      const CF = cornerFive(cF(cbP), N);
+      if (!CF.dirC || !(CF.A > 0.15 && CF.A < 7.85)) continue;
+      const dir = flip ? [-CF.dirC[0], CF.dirC[1]] : CF.dirC;
+      const S = railRun(cbP, dir, v, side, false, 4, 0.05, tgtP, 3);
+      if (S.hits.length < 3 || !isFinite(S.minGoal)) continue;
+      if (!best || S.minGoal < best.miss) best = { N, miss: S.minGoal, A: CF.A };
+    }
+    return best;
   }
   // A three-rail scratch: send the cue ball round the table and into a named pocket. There is no
   // arithmetic for this one — the aim is searched for against the same cushions the shot will meet.
@@ -2195,6 +2212,9 @@ __SHARED__
       ? '<span style="--lc:var(--c-felt)">first rail — the aim numbers, above the far long rail</span><span style="--lc:var(--c-amber)">third rail — the arrival numbers, on the cloth</span><span style="--lc:var(--muted)">cue ball position — outside the near rails, the corner is 5</span><span style="--lc:var(--muted); --ls:dashed">the system\'s line</span>'
       : '<span style="--lc:var(--muted); --ls:dashed">the mirror\'s path</span><span style="--lc:var(--c-red); --ls:dotted">the line to the image, straight through the rails</span><span style="--lc:var(--c-felt)">what the cloth really does</span>';
     if (DS.sys === 3) {
+      // the reason for the number: a ball you are hooked on and must reach off three cushions
+      const solvedN = solveArrival(DS.cb, DS.tgt3, v, side, flip);
+      if (DS.follow && solvedN) { DS.arr = Math.round(solvedN.N * 10) / 10; $('darr').value = DS.arr; $('darrv').textContent = `${fmt(DS.arr, 1)} · diamonds`; }
       const cbC = cF(DS.cb), N = DS.arr;
       const CF = cornerFive(cbC, N), P = CF.P, A = CF.A;
       const aimC = CF.aimC, aim = cF(aimC);
@@ -2217,9 +2237,20 @@ __SHARED__
         patternOK = S.hits.length >= 3 && S.hits.slice(0, 3).every((h, i) => h.r.lim === want[i]);
         if (patternOK) arrived = cF(S.hits[2].p)[0] / DIA;
       }
+      dball(DS.tgt3, { fill: 'var(--c-amber)', stroke: 'var(--page)', 'stroke-width': 1.2, style: 'cursor:grab' });
       dball(DS.cb, { fill: 'var(--panel)', stroke: 'var(--ink)', 'stroke-width': 1.5, style: 'cursor:grab' });
       const err = arrived == null ? null : arrived - N;
+      // does this shot actually reach the ball?
+      const K = inRange ? railRun(DS.cb, dir, v, side, true, 4, 0.05, DS.tgt3, 3) : null;
+      const kick = K && isFinite(K.minGoal) ? K.minGoal : null;
+      DS.play = K && K.pts ? K.pts : (S && S.pts ? S.pts : null);
       $('dsout').innerHTML = dl([
+        ['the goal', `You cannot see the amber ball, so you kick at it off three cushions. Drag it where your trouble is; drag the cue ball where you are. The arrival number is <em>where the cue ball crosses the third rail</em> — pick the one whose onward path runs into the ball.`],
+        ['to reach the ball', solvedN ? (solvedN.miss < 2 * R
+            ? `<b>arrival ${fmt(solvedN.N, 1)}</b> — that one hits it`
+            : `nearest is <b>arrival ${fmt(solvedN.N, 1)}</b>, and it still misses by ${fmt(100 * (solvedN.miss - 2 * R), 0)} cm — no three-rail kick reaches this ball from here`)
+          : '<span class="warn">no three-rail route from here reaches it — move either ball</span>', solvedN && solvedN.miss < 2 * R ? 'good' : 'warn'],
+        ['this shot', kick == null ? 'never gets past the third rail' : kick < 2 * R ? `<b>hits the ball</b> — ${fmt(1000 * kick, 0)} mm centre to centre` : `passes ${fmt(100 * (kick - 2 * R), 0)} cm from it`, kick != null && kick < 2 * R ? 'good' : undefined],
         ['the arithmetic', `position <b>${fmt(P, 1)}</b> − aim <b>${fmt(A, 1)}</b> = arrival <b>${fmt(N, 1)}</b>`],
         ['aim at', inRange ? `the <b>${fmt(A, 1)}</b> on the far long rail — ${fmt(A, 1)} diamond${A === 1 ? '' : 's'} from the far corner, and shoot <em>through</em> the diamond` : `<span class="warn">off the table — position ${fmt(P, 1)} can't reach arrival ${fmt(N, 1)}. Drag the cue ball or the arrival marker.</span>`],
         ['the cloth says', !S ? '—'
@@ -2258,6 +2289,7 @@ __SHARED__
         }
       }
       $('dsout').innerHTML = dl([
+        ['the goal', 'Send the cue ball round three cushions and drop it in a pocket you name — on purpose. Learn the routes deliberately and you stop taking them by accident.'],
         ['the pocket', `the <b>${target.name}</b> — click another on the table, or use the chips`],
         ['the line', sol ? `aim ${fmt(deg(Math.atan2(sol.dir[1], sol.dir[0])), 1)}° · ${sol.rails} rail${sol.rails === 1 ? '' : 's'} on the way in` : `<span class="warn">no three-rail route into that pocket at this speed — try another pocket, another pace, or move the cue ball</span>`],
         ['in corner five', five ? `position <b>${fmt(five.pos, 1)}</b> − aim <b>${fmt(five.aim, 1)}</b> = arrival <b>${fmt(five.arr, 1)}</b> <small>— it takes the system's own route, so the numbers describe it</small>` : 'the route does not follow the system\'s three rails, so its numbers do not describe this one'],
@@ -2299,7 +2331,9 @@ __SHARED__
       dball(DS.tgt, { fill: 'var(--c-amber)', stroke: 'var(--page)', 'stroke-width': 1.2, style: 'cursor:grab' });
       dball(DS.cb2, { fill: 'var(--panel)', stroke: 'var(--ink)', 'stroke-width': 1.5, style: 'cursor:grab' });
       const hit = miss != null && miss < 2 * R;
+      DS.play = S && S.pts ? S.pts : null;
       $('dsout').innerHTML = dl([
+        ['the goal', 'You cannot see the amber ball. Kick off two cushions and hit it. Drag the ball to wherever you are hooked, drag the cue ball to where you sit, and the mirror gives you the line.'],
         ['the construction', sol ? `mirror the target through the <b>${sol.r2.name}</b> rail, then through the <b>${sol.r1.name}</b> — and shoot at that image` : '<span class="warn">no two-rail line from here — drag either ball</span>'],
         ['the rails', sol ? `${sol.r1.name}, then ${sol.r2.name} · ${fmt(sol.len, 2)} m of cloth on the ideal line` : '—'],
         ['the cloth says', !S ? '—'
@@ -2347,22 +2381,26 @@ __SHARED__
       const hit = POCKETS.findIndex((q) => dist2(p, q.p) < RP * 1.8);
       if (hit >= 0) { DS.pk = hit; syncPockets(); runSystems(); return; }
     }
-    dsDrag = DS.sys === 2 ? (dist2(p, DS.cb2) < dist2(p, DS.tgt) ? 'cb' : 'tgt') : 'cb';
+    dsDrag = DS.sys === 2 ? (dist2(p, DS.cb2) < dist2(p, DS.tgt) ? 'cb' : 'tgt')
+      : DS.sys === 3 ? (dist2(p, DS.cb) < dist2(p, DS.tgt3) ? 'cb' : 'tgt3') : 'cb';
     dsMove(p);
     dsvg.setPointerCapture(e.pointerId); e.preventDefault();
   });
   function dsMove(p) {
-    if (dsDrag === 'cb') { if (DS.sys === 2) DS.cb2 = clampBall(p, [DS.tgt]); else DS.cb = clampBall(p, []); }
+    if (dsDrag === 'cb') { if (DS.sys === 2) DS.cb2 = clampBall(p, [DS.tgt]); else DS.cb = clampBall(p, [DS.tgt3]); }
+    else if (dsDrag === 'tgt3') { DS.tgt3 = clampBall(p, [DS.cb]); DS.follow = true; }
     else if (dsDrag === 'tgt') DS.tgt = clampBall(p, [DS.cb2]);
     runSystems();
   }
   dsvg.addEventListener('pointermove', (e) => { if (dsDrag) dsMove(dsPt(e)); });
   dsvg.addEventListener('pointerup', () => { dsDrag = null; });
   dsvg.addEventListener('pointercancel', () => { dsDrag = null; });
+  $('darr').addEventListener('input', () => { DS.follow = false; });
   for (const k of ['dspd', 'dside', 'darr']) $(k).addEventListener('input', runSystems);
   const setSys = (n) => {
     DS.sys = n;
     $('dsysb2').classList.toggle('on', n === 2); $('dsysb3').classList.toggle('on', n === 3); $('dsysb4').classList.toggle('on', n === 4);
+    if (n === 3) DS.follow = true;
     $('dsysctl').classList.toggle('sys2', n === 2); $('dsysctl').classList.toggle('sys4', n === 4);
     $('dside').value = n === 2 ? 0 : 0.3;                    // the mirror is a no-side construction; corner five isn't
     runSystems();
@@ -2371,9 +2409,10 @@ __SHARED__
   $('dsysb3').addEventListener('click', () => setSys(3));
   $('dsysb4').addEventListener('click', () => setSys(4));
 
+  DS.cb = clampBall(DS.cb, []);        // position five is the corner, but a ball cannot sit in the jaws
   syncPockets();
   runSystems();
-  window.kosmosSys = { DS, railRun, solve2, runSystems, posNum };   // dev hook for the systems bench
+  window.kosmosSys = { DS, railRun, solve2, runSystems, posNum, cornerFive, cF, solveArrival, solveScratch };   // dev hook for the systems bench
 
   if (!loadHash()) place(...PRESETS[0][2]);
   syncCondBtns();
