@@ -21,6 +21,7 @@ truth for code and the normalised data snapshots. Sync is one-way, Notion → re
 | `/billiards` | The physics of the pool table — a live shot lab (cut angle, speed, tip height, side, distance → tangent line, ghost ball, throw, slide-to-roll, stop distances), a cushion lab, the constants quoted from pool-sauce-engine, and the equations and skills it rests on |
 | `/glossary`  | The terms the site uses, defined once and traced at build time to every page whose text uses them |
 | `/explainers`| The people, channels and organisations that explain this material — with the glossary terms each covers, computed from the same matcher |
+| `/solar`     | The nine orbits, computed live in the browser from Keplerian elements — play, scrub to any date 1800-2050, log or linear radius |
 | `/impacts`   | What extraction costs, by mechanism — how each harm arises, what reduces it, where it is documented, how many mines on the site it applies to, and the physics it runs on (Darcy, Stokes, hydrostatics) |
 | `/timeline`  | The universe's history on a log axis of seconds — Planck epoch to heat death, cross-linked to the equations and theories |
 | `/theories`  | Theory shelf from Ptolemy to the holographic principle — status, proponents, and the equations each rests on; sortable chronologically |
@@ -108,6 +109,9 @@ scripts/seed_localgroup.py    Seeds the Local Group (44 members) into Celestial_
                               map on /cosmos; uncertain masses are left blank
 scripts/notion_peek.py        Read-only: prints the schema, row count and sample rows of any Notion
                               data source whose title matches — for writing seeds against unseen DBs
+scripts/seed_solar.py         Creates + seeds Solar System [DB] (9 bodies + the Sun) with Standish's
+                              Keplerian elements and per-century rates. No positions are stored:
+                              /solar solves Kepler's equation client-side for whatever date is set
 scripts/seed_impacts.py       Creates + seeds Mining Impacts [DB] (18 mechanisms — acid mine drainage,
                               tailings dam failure, silicosis…) with mechanism, mitigation and a
                               documented case. Where names mine Types, so build.py counts how many

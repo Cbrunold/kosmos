@@ -1,0 +1,425 @@
+<!doctype html><html lang="fr"><meta charset="utf-8">
+<title>Kosmos · The Solar System, Running</title>
+<style>
+  :root {
+    color-scheme: light;
+    --page: #f2f4f5;
+    --panel: #fbfcfc;
+    --ink: #17212b;
+    --ink-2: #4c5a66;
+    --muted: #8595a1;
+    --hairline: #dde4e8;
+    --ring: rgba(23, 33, 43, 0.85);
+    --c-blue: #2a78d6;
+    --c-teal: #0f9b9b;
+    --c-red: #c23434;
+    --c-amber: #e39a00;
+    --c-green: #33a047;
+    --c-violet: #6b50c8;
+    --c-pink: #e05e8f;
+    --c-bronze: #8a5314;
+    --c-cyan: #0b87b8;
+    --c-indigo: #4a58c8;
+    --c-olive: #737a16;
+    --c-rust: #bd5b1c;
+    --c-plum: #a23a9a;
+    --c-slate: #52688a;
+    --c-wine: #8f2b4e;
+    --c-forest: #1f7050;
+    --c-steel: #4a6474;
+    --c-fuchsia: #b81f7a;
+    --c-lime: #5f9e14;
+    --c-yellow: #a89a00;
+    --c-aubergine: #702f9e;
+    --c-navy: #24457e;
+    --c-mint: #0c8f66;
+    --c-mauve: #8d5765;
+    --c-coral: #c14f36;
+    --c-periwinkle: #5e6fd0;
+    --c-ice: #2f93bb;
+    --c-storm: #5c5a7a;
+    --c-ochre: #96690f;
+    --c-tangerine: #d4700a;
+    --c-clay: #9c6249;
+    --c-deepsea: #14586e;
+    --c-cerulean: #1a7fc4;
+    --c-gold: #b07d12;
+    --c-ember: #c8461a;
+    --c-terracotta: #a8502f;
+    --c-silver: #6b7884;
+    --c-moss: #4f7a1e;
+    --c-lavender: #7d5fc0;
+    --c-magenta: #b3268e;
+    --c-cobalt: #2f4bb0;
+    --c-felt: #2e7d4f;
+    --heat: #2a78d6;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --page: #0e1116;
+      --panel: #14181d;
+      --ink: #e9edf2;
+      --ink-2: #aab8c4;
+      --muted: #74828e;
+      --hairline: #242b33;
+      --ring: rgba(233, 237, 242, 0.9);
+      --c-blue: #4a90e8;
+      --c-teal: #0aa085;
+      --c-red: #e75570;
+      --c-amber: #b98800;
+      --c-green: #46a850;
+      --c-violet: #8b74e0;
+      --c-pink: #dc5f83;
+      --c-bronze: #a4671f;
+      --c-cyan: #38a8d8;
+      --heat: #5598e7;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --page: #0e1116;
+    --panel: #14181d;
+    --ink: #e9edf2;
+    --ink-2: #aab8c4;
+    --muted: #74828e;
+    --hairline: #242b33;
+    --ring: rgba(233, 237, 242, 0.9);
+    --c-blue: #4a90e8;
+    --c-teal: #0aa085;
+    --c-red: #e75570;
+    --c-amber: #b98800;
+    --c-green: #46a850;
+    --c-violet: #8b74e0;
+    --c-pink: #dc5f83;
+    --c-bronze: #a4671f;
+    --c-cyan: #38a8d8;
+    --c-indigo: #7b87e8;
+    --c-olive: #9aa32e;
+    --c-rust: #d97a3c;
+    --c-plum: #c85fc0;
+    --c-slate: #8ca3c0;
+    --c-wine: #c25572;
+    --c-forest: #3f9a72;
+    --c-steel: #83a0b2;
+    --c-fuchsia: #d94fa3;
+    --c-lime: #93bf3a;
+    --c-yellow: #ccc039;
+    --c-aubergine: #a374d6;
+    --c-navy: #7f9bd4;
+    --c-mint: #3fbd92;
+    --c-mauve: #bd8a98;
+    --c-coral: #e58a76;
+    --c-periwinkle: #98a5ef;
+    --c-ice: #8ed2ea;
+    --c-storm: #918fb5;
+    --c-ochre: #bb8f2e;
+    --c-tangerine: #ee9440;
+    --c-clay: #c9967e;
+    --c-deepsea: #4c9cb4;
+    --c-cerulean: #5fb0f0;
+    --c-gold: #d9a441;
+    --c-ember: #e8683a;
+    --c-terracotta: #d1795a;
+    --c-silver: #a4b0bc;
+    --c-moss: #7fa84a;
+    --c-lavender: #b49ae6;
+    --c-magenta: #e06ac4;
+    --c-cobalt: #7a8ee6;
+    --c-felt: #5fb083;
+    --heat: #5598e7;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--page);
+    color: var(--ink);
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    margin: 0;
+    padding: 20px clamp(14px, 3vw, 40px) 56px;
+  }
+  .mono { font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; }
+
+  .knav {
+    font: 11px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 18px;
+    display: flex;
+    gap: 8px;
+    align-items: baseline;
+  }
+  .knav a { color: var(--ink-2); text-decoration: none; }
+  .knav a:hover { color: var(--ink); }
+  .knav .cur { color: var(--ink); }
+
+  h1.ktitle {
+    font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    font-size: clamp(22px, 3vw, 30px);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin: 0 0 6px;
+    text-wrap: balance;
+  }
+  .klede { font-size: 14px; color: var(--ink-2); max-width: 62ch; line-height: 1.55; margin: 0 0 22px; }
+  .klede a { color: inherit; }
+
+  h2.ksec {
+    font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 34px 0 12px;
+    border-bottom: 1px solid var(--hairline);
+    padding-bottom: 7px;
+  }
+
+  .kcard {
+    background: var(--panel);
+    border: 1px solid var(--hairline);
+    border-radius: 10px;
+    padding: 16px;
+  }
+  .kchip {
+    font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    border: 1px solid var(--hairline);
+    color: var(--ink-2);
+    border-radius: 99px;
+    padding: 2px 9px;
+    white-space: nowrap;
+  }
+  .knote { font-size: 11px; color: var(--muted); line-height: 1.5; }
+  .kfoot { margin-top: 42px; font-size: 11px; color: var(--muted); border-top: 1px solid var(--hairline); padding-top: 12px; }
+  .kfoot a { color: inherit; }
+  a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; }
+
+
+  .stage { position: relative; background: var(--panel); border: 1px solid var(--hairline); border-radius: 10px; overflow: hidden; touch-action: none; }
+  canvas { display: block; width: 100%; height: auto; cursor: grab; }
+  canvas:active { cursor: grabbing; }
+  .hud { position: absolute; left: 12px; top: 11px; font: 10.5px ui-monospace, "SF Mono", Consolas, Menlo, monospace; color: var(--muted); pointer-events: none; line-height: 1.6; }
+  .hud b { color: var(--ink); font-weight: 500; font-variant-numeric: tabular-nums; }
+  .tip { position: absolute; pointer-events: none; background: var(--page); border: 1px solid var(--ink-2); border-radius: 6px; padding: 7px 10px; font: 11px system-ui, sans-serif; color: var(--ink); max-width: 260px; opacity: 0; transition: opacity .12s; line-height: 1.5; }
+  .tip .k { font: 9.5px ui-monospace, Consolas, monospace; color: var(--muted); display: block; margin-top: 4px; }
+  .ctrl { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 10px 0 6px; }
+  .ctrl button, .ctrl select {
+    font: 11px ui-monospace, "SF Mono", Consolas, Menlo, monospace; background: var(--panel);
+    border: 1px solid var(--hairline); color: var(--ink-2); border-radius: 6px; padding: 5px 11px; cursor: pointer;
+  }
+  .ctrl button:hover, .ctrl select:hover { color: var(--ink); border-color: var(--ink-2); }
+  .ctrl button.on { background: var(--ink); border-color: var(--ink); color: var(--page); }
+  .ctrl label { font: 10px ui-monospace, Consolas, monospace; letter-spacing: .07em; text-transform: uppercase; color: var(--muted); }
+  .ctrl input[type=range] { accent-color: var(--c-amber); width: 150px; }
+  .scrub { display: flex; align-items: center; gap: 9px; margin: 4px 0 18px; }
+  .scrub input[type=range] { flex: 1; accent-color: var(--c-cyan); }
+  .tbl { width: 100%; border-collapse: collapse; font: 11.5px ui-monospace, "SF Mono", Consolas, Menlo, monospace; margin-top: 8px; }
+  .tbl th { text-align: right; font-weight: 500; color: var(--muted); font-size: 9.5px; letter-spacing: .07em; text-transform: uppercase; padding: 5px 8px; border-bottom: 1px solid var(--hairline); }
+  .tbl th:first-child, .tbl td:first-child { text-align: left; }
+  .tbl td { text-align: right; padding: 5px 8px; border-bottom: 1px solid var(--hairline); color: var(--ink-2); font-variant-numeric: tabular-nums; }
+  .tbl tr:hover td { background: var(--panel); color: var(--ink); }
+  .tbl .nm { color: var(--ink); display: inline-flex; align-items: center; gap: 6px; }
+  .tbl .dot { width: 7px; height: 7px; border-radius: 50%; display: inline-block; }
+  .ok { color: var(--c-green); }
+
+  .klang { position: fixed; top: 9px; right: 12px; z-index: 60; display: flex; gap: 0; border: 1px solid var(--hairline); border-radius: 99px; background: color-mix(in oklab, var(--panel) 88%, transparent); backdrop-filter: blur(4px); overflow: hidden; font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; letter-spacing: 0.08em; }
+  .klang a { color: var(--muted); text-decoration: none; padding: 4px 9px; }
+  .klang a.on { color: var(--page); background: var(--ink); }
+  .klang a:hover:not(.on) { color: var(--ink); }
+  @media print { .klang { display: none; } }
+</style>
+<div class="klang" aria-label="Language · Langue"><a href="/solar" hreflang="en" lang="en">EN</a><a href="/fr/solar" hreflang="fr" lang="fr" class="on">FR</a></div>
+<script>const VOCAB = window.__VOCAB__ || {}; const vocab = (s) => (s == null ? s : (VOCAB[s] || s));</script>
+
+<nav class="knav"><a href="/fr/">KOSMOS</a><span>/</span><span class="cur">Solar System</span></nav>
+<h1 class="ktitle">The Solar System, Running</h1>
+<p class="klede">No position on this page is stored. Each body carries six Keplerian elements and their per-century rates, and the browser solves Kepler's equation — <code>M = E − e·sin E</code>, by Newton iteration — to place it at whatever date is on the dial. Drag to tilt the plane, scroll to zoom, drag the dial to travel. At the default speed five seconds is one year, so Earth laps in five and Neptune takes fourteen minutes.</p>
+
+<div class="wrap">
+  <div class="stage" id="stage">
+    <canvas id="sky" width="1800" height="1100"></canvas>
+    <div class="hud" id="hud"></div>
+    <div class="tip" id="tip"></div>
+  </div>
+
+  <div class="ctrl">
+    <button id="play" class="on" type="button">⏸ pause</button>
+    <label for="spd">sec per year</label>
+    <input id="spd" type="range" min="0.3" max="30" step="0.1" value="5" />
+    <span class="hud" style="position:static"><b id="spdv">5.0</b></span>
+    <button id="scale" type="button">scale: log</button>
+    <button id="trails" class="on" type="button">orbites</button>
+    <button id="now" type="button">today</button>
+  </div>
+  <div class="scrub">
+    <label class="hud" style="position:static">year</label>
+    <input id="yr" type="range" min="1800" max="2050" step="0.01" value="2026" />
+    <span class="hud" style="position:static"><b id="yrv">2026</b></span>
+  </div>
+
+  <h2 class="ksub">The elements, and a check on them</h2>
+  <p class="kbody">Kepler's third law says the period is <code>a<sup>3/2</sup></code> in years when <code>a</code> is in astronomical units. Nobody enforces that here — the semi-major axis and the observed period are separate fields, entered from separate columns of the source table. That they agree is a check on the data, and a bad edit would show up in the last column first.</p>
+  <table class="tbl">
+    <thead><tr><th>body</th><th>a (au)</th><th>e</th><th>i (°)</th><th>period (yr)</th><th>a^1.5</th><th>agree</th></tr></thead>
+    <tbody id="rows"></tbody>
+  </table>
+</div>
+
+<p class="kfoot">Elements from E. M. Standish, <em>Keplerian Elements for Approximate Positions of the Major Planets</em> (JPL Solar System Dynamics), Table 1, fitted to 1800–2050 — which is why the dial stops at both ends. Heliocentric longitude error over that window runs from about 10 arcsec for Neptune to 600 for Saturn: correct to the pixel here, not good enough to point a telescope. Earth's row is the Earth/Moon barycentre, as the source gives it. Pluto comes from Standish's earlier table, JPL having dropped it; its 3:2 resonance with Neptune makes any fixed ellipse a poor model over long spans.</p>
+
+<script id="data" type="application/json">{"bodies":[],"sun":null}</script>
+<script>
+  const D = JSON.parse(document.getElementById('data').textContent);
+  const B = D.bodies;
+  const COL = { Mercury:'#9d8f7f', Venus:'#d8b46a', Earth:'#4f8fd0', Mars:'#c1583c',
+                Jupiter:'#c99a6a', Saturn:'#d6bd84', Uranus:'#8fc4c8', Neptune:'#4a6fc4', Pluto:'#a08b7d' };
+  const cv = document.getElementById('sky'), ctx = cv.getContext('2d');
+  const hud = document.getElementById('hud'), tip = document.getElementById('tip');
+  const RAD = Math.PI / 180;
+
+  // --- Kepler ---------------------------------------------------------------
+  function solveE(M, e) {                       // M radians -> eccentric anomaly
+    let E = M + e * Math.sin(M);
+    for (let k = 0; k < 12; k++) {
+      const d = (E - e * Math.sin(E) - M) / (1 - e * Math.cos(E));
+      E -= d;
+      if (Math.abs(d) < 1e-11) break;
+    }
+    return E;
+  }
+  function wrap(x) { return ((x % 360) + 540) % 360 - 180; }
+  function at(b, T) {                            // T = Julian centuries past J2000
+    const a = b.el.a + b.rate.a * T, e = b.el.e + b.rate.e * T;
+    const I = (b.el.I + b.rate.I * T) * RAD;
+    const L = b.el.L + b.rate.L * T;
+    const pe = b.el.peri + b.rate.peri * T, no = (b.el.node + b.rate.node * T) * RAD;
+    const w = pe * RAD - no;
+    const E = solveE(wrap(L - pe) * RAD, e);
+    const xp = a * (Math.cos(E) - e), yp = a * Math.sqrt(1 - e * e) * Math.sin(E);
+    const cw = Math.cos(w), sw = Math.sin(w), cO = Math.cos(no), sO = Math.sin(no), cI = Math.cos(I), sI = Math.sin(I);
+    return {
+      x: (cw * cO - sw * sO * cI) * xp + (-sw * cO - cw * sO * cI) * yp,
+      y: (cw * sO + sw * cO * cI) * xp + (-sw * sO + cw * cO * cI) * yp,
+      z: (sw * sI) * xp + (cw * sI) * yp,
+      r: Math.hypot(xp, yp),
+    };
+  }
+
+  // --- view -----------------------------------------------------------------
+  let year = 2026, playing = true, secPerYear = 5, logScale = true, showOrbits = true;
+  let tilt = 0.62, spin = 0, zoom = 1, drag = null;
+  const AMAX = 40;
+  function radial(au) {
+    if (!logScale) return au / AMAX;
+    return Math.log10(1 + au * 9 / AMAX);       // 0..1, spreads the inner system
+  }
+  function project(p, w, h) {
+    const R = Math.min(w, h) * 0.44 * zoom;
+    const rr = radial(Math.hypot(p.x, p.y));
+    const th = Math.atan2(p.y, p.x) + spin;
+    const X = Math.cos(th) * rr, Y = Math.sin(th) * rr;
+    const Z = radial(Math.abs(p.z)) * Math.sign(p.z) * 0.5;
+    return [w / 2 + X * R, h / 2 + (Y * Math.cos(tilt) - Z * Math.sin(tilt)) * R];
+  }
+
+  const hit = [];
+  function draw() {
+    const w = cv.width, h = cv.height;
+    ctx.clearRect(0, 0, w, h);
+    const T = (year - 2000) / 100;
+    hit.length = 0;
+
+    if (showOrbits) {                            // one full revolution, sampled
+      for (const b of B) {
+        ctx.beginPath();
+        for (let k = 0; k <= 180; k++) {
+          const p = at(b, T + (k / 180) * b.period / 100);
+          const [X, Y] = project(p, w, h);
+          k ? ctx.lineTo(X, Y) : ctx.moveTo(X, Y);
+        }
+        ctx.closePath();
+        ctx.strokeStyle = (COL[b.name] || '#888') + '55';
+        ctx.lineWidth = 1.4; ctx.stroke();
+      }
+    }
+    const [sx, sy] = project({ x: 0, y: 0, z: 0 }, w, h);
+    const g = ctx.createRadialGradient(sx, sy, 0, sx, sy, 26);
+    g.addColorStop(0, '#ffd98a'); g.addColorStop(1, '#ffd98a00');
+    ctx.fillStyle = g; ctx.beginPath(); ctx.arc(sx, sy, 26, 0, 7); ctx.fill();
+    ctx.fillStyle = '#ffcf6b'; ctx.beginPath(); ctx.arc(sx, sy, 7, 0, 7); ctx.fill();
+
+    for (const b of B) {
+      const p = at(b, T);
+      const [X, Y] = project(p, w, h);
+      const rad = b.name === 'Pluto' ? 3.2 : 4.2 + Math.log10(b.radius) * 0.9;
+      ctx.fillStyle = COL[b.name] || '#aaa';
+      ctx.beginPath(); ctx.arc(X, Y, rad, 0, 7); ctx.fill();
+      ctx.fillStyle = 'rgba(140,140,150,.85)';
+      ctx.font = '20px ui-monospace, Menlo, monospace';
+      ctx.fillText(b.name, X + rad + 7, Y + 6);
+      hit.push({ b, X, Y, r: Math.max(rad, 11), au: p.r });
+    }
+    const y = Math.floor(year), frac = year - y;
+    const dt = new Date(Date.UTC(y, 0, 1) + frac * 365.25 * 864e5);
+    hud.innerHTML = `<b>${dt.toISOString().slice(0, 10)}</b><br>${secPerYear.toFixed(1)} s = 1 yr`
+      + `<br>${logScale ? 'log' : 'linear'} radius · ${(zoom).toFixed(2)}×`;
+  }
+
+  let last = performance.now();
+  function frame(now) {
+    const dt = Math.min(now - last, 100); last = now;
+    if (playing) {
+      year += (dt / 1000) / secPerYear;
+      if (year > 2050) year = 1800;
+      document.getElementById('yr').value = year;
+      document.getElementById('yrv').textContent = Math.floor(year);
+    }
+    draw();
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+
+  // --- controls -------------------------------------------------------------
+  const $ = (id) => document.getElementById(id);
+  $('play').onclick = (e) => { playing = !playing; e.target.textContent = playing ? '⏸ pause' : '▶ play'; e.target.classList.toggle('on', playing); };
+  $('spd').oninput = (e) => { secPerYear = +e.target.value; $('spdv').textContent = secPerYear.toFixed(1); };
+  $('scale').onclick = (e) => { logScale = !logScale; e.target.textContent = 'scale: ' + (logScale ? 'log' : 'linear'); };
+  $('trails').onclick = (e) => { showOrbits = !showOrbits; e.target.classList.toggle('on', showOrbits); };
+  $('now').onclick = () => { const n = new Date(); year = n.getUTCFullYear() + (n.getUTCMonth() * 30 + n.getUTCDate()) / 365.25; $('yr').value = year; };
+  $('yr').oninput = (e) => { year = +e.target.value; $('yrv').textContent = Math.floor(year); };
+
+  const stage = $('stage');
+  stage.addEventListener('pointerdown', (e) => { drag = { x: e.clientX, y: e.clientY }; stage.setPointerCapture(e.pointerId); });
+  stage.addEventListener('pointerup', () => { drag = null; });
+  stage.addEventListener('pointermove', (e) => {
+    const rect = cv.getBoundingClientRect(), sc = cv.width / rect.width;
+    if (drag) {
+      spin += (e.clientX - drag.x) * 0.006;
+      tilt = Math.max(0, Math.min(1.5, tilt + (e.clientY - drag.y) * 0.005));
+      drag = { x: e.clientX, y: e.clientY };
+      tip.style.opacity = 0;
+      return;
+    }
+    const mx = (e.clientX - rect.left) * sc, my = (e.clientY - rect.top) * sc;
+    const f = hit.find((t) => Math.hypot(t.X - mx, t.Y - my) < t.r + 8);
+    if (f) {
+      tip.style.opacity = 1;
+      tip.style.left = Math.min(rect.width - 270, (mx / sc) + 14) + 'px';
+      tip.style.top = ((my / sc) - 10) + 'px';
+      tip.innerHTML = `<b>${f.b.name}</b> — ${f.b.notes || ''}<span class="k">${f.au.toFixed(3)} au from the Sun now · period ${f.b.period.toFixed(2)} yr · e ${f.b.el.e.toFixed(4)}</span>`;
+    } else tip.style.opacity = 0;
+  });
+  stage.addEventListener('wheel', (e) => { e.preventDefault(); zoom = Math.max(0.35, Math.min(6, zoom * (e.deltaY > 0 ? 0.92 : 1.08))); }, { passive: false });
+
+  const tb = $('rows');
+  for (const b of B) {
+    const tr = document.createElement('tr');
+    const c = COL[b.name] || '#888';
+    tr.innerHTML = `<td><span class="nm"><span class="dot" style="background:${c}"></span>${b.name}</span></td>`
+      + `<td>${b.el.a.toFixed(4)}</td><td>${b.el.e.toFixed(5)}</td><td>${b.el.I.toFixed(3)}</td>`
+      + `<td>${b.period.toFixed(3)}</td><td>${b.kepler.toFixed(3)}</td>`
+      + `<td class="ok">${b.drift === null ? '—' : b.drift.toFixed(2) + ' %'}</td>`;
+    tb.appendChild(tr);
+  }
+</script>

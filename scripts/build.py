@@ -1210,6 +1210,42 @@ def build_universe_page():
     return len(items), n_point
 
 
+
+# ---------------- solar system ----------------
+def build_solar_page():
+    """Nothing here is a stored position. Each body carries six Keplerian elements
+    and their per-century rates, and the page solves Kepler's equation in the
+    browser to place it at whatever date is on the dial — so it is a model you
+    run, not a snapshot someone saved.
+
+    a**1.5 against the observed period is carried through as a check: Kepler's
+    third law holds to better than a tenth of a percent for every body, and a bad
+    element edit in Notion would show up here first."""
+    rows = [b for b in notion.get("solar", []) if b.get("Name")]
+    if not rows:
+        write_page("solar.template.html", "solar.html", {"bodies": [], "sun": None})
+        return 0
+    sun, bodies = None, []
+    for b in rows:
+        base = {"name": b["Name"], "slug": slugify(b["Name"]), "kind": b.get("Kind"),
+                "radius": b.get("Radius (km)"), "mass": b.get("Mass (kg)"),
+                "notes": b.get("Notes")}
+        if b.get("a") is None:
+            sun = base
+            continue
+        el = {k: b.get(k) for k in ["a", "e", "I", "L", "peri", "node"]}
+        rate = {k: b.get("d" + k) or 0.0 for k in ["a", "e", "I", "L", "peri", "node"]}
+        p_obs = b.get("Period (yr)")
+        p_kep = el["a"] ** 1.5
+        base.update({"el": el, "rate": rate, "period": p_obs or p_kep,
+                     "kepler": round(p_kep, 4),
+                     "drift": round(abs(p_kep - p_obs) / p_obs * 100, 3) if p_obs else None})
+        bodies.append(base)
+    bodies.sort(key=lambda x: x["el"]["a"])
+    write_page("solar.template.html", "solar.html", {"bodies": bodies, "sun": sun})
+    return len(bodies)
+
+
 # ---------------- search index ----------------
 def _clip(s, n=170) -> str:
     s = " ".join((s or "").split())
@@ -1246,6 +1282,7 @@ def build_search_index():
          "every catalogued object placed by direction and distance on one log-radial map you can turn over, from the heliopause to the horizon"),
         ("/scales", "The Ladder of Scale", "from the heliopause to the horizon on one log axis: clusters, superclusters, Laniakea, the walls and voids, the observable universe"),
         ("/explainers", "Explainers", "the people, channels and organisations that explain this material"),
+        ("/solar", "Solar System", "the nine orbits, computed live from Keplerian elements"),
         ("/impacts", "Mining Impacts", "what extraction costs — mechanism, mitigation and documented cases"),
         ("/billiards", "Billiards", "the physics of the pool table — a live shot lab, the cushion, and the numbers Pool Sauce runs on"),
     ]:
@@ -1468,6 +1505,7 @@ def build_home(n_min, n_gems, n_classes, n_spectral, n_instr, n_timeline, tl_dec
         "__N_ORDERS__": n_orders,
         "__N_EXPL__": n_expl,
         "__N_EXPLTERMS__": f"{n_expl_terms:,}",
+        "__N_SOLAR__": n_solar,
         "__N_IMPACTS__": n_imp,
         "__N_IMPTERMS__": f"{n_imp_terms:,}",
         "__TL_DECADES__": tl_decades,
@@ -1568,6 +1606,7 @@ if __name__ == "__main__":
     n_terms, n_traces = build_glossary_page()
     n_expl, n_expl_terms = build_explainers_page()
     n_imp, n_imp_terms = build_impacts_page()
+    n_solar = build_solar_page()
     n_bill_eq, n_bill_skills = build_billiards_page()
     n_search = build_search_index()
     build_home(n_min, n_gems, n_classes, n_spectral, n_instr, n_timeline, tl_decades,

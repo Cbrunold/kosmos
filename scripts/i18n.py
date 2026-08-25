@@ -54,7 +54,7 @@ PAGE_FILES = {  # built file -> route (for the language switch)
     "machines.html": "/machines", "skills.html": "/skills", "glossary.html": "/glossary",
     "explainers.html": "/explainers", "impacts.html": "/impacts", "equations.html": "/equations",
     "constants.html": "/constants", "billiards.html": "/billiards", "scales.html": "/scales",
-    "universe.html": "/universe",
+    "universe.html": "/universe", "solar.html": "/solar",
 }
 
 

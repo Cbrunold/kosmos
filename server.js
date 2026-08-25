@@ -22,6 +22,7 @@ const PAGES = {
   '/glossary': 'glossary.html',
   '/scales': 'scales.html',
   '/universe': 'universe.html',
+  '/solar': 'solar.html',
   '/explainers': 'explainers.html',
   '/impacts': 'impacts.html',
   '/billiards': 'billiards.html',
