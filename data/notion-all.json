@@ -8036,6 +8036,153 @@
   "cosmologyEvents": [],
   "cosmicTimeline": [
     {
+      "id": "3c7e5275-7b5c-81e4-8df9-cc5df1a02f55",
+      "url": "https://app.notion.com/p/Homo-sapiens-3c7e52757b5c81e48df9cc5df1a02f55",
+      "lastEdited": "2026-08-25T19:44:00.000Z",
+      "Temperature (K)": 2.73,
+      "Researchers": [],
+      "When": "13.7967 billion years — 300,000 years ago",
+      "Equations": [],
+      "Redshift": "z ≈ 0",
+      "Theories": [],
+      "Era": "Life on Earth",
+      "What Happened": "Anatomically modern humans, on a timeline where the interval since is thinner than the line drawn to represent it. Everything catalogued on this site — every element named, every equation written, every mine dug — happens inside that last sliver.",
+      "Seconds After Big Bang": 435381496131000060,
+      "Event": "Homo sapiens"
+    },
+    {
+      "id": "3c7e5275-7b5c-819b-87cc-d6c9adb5e785",
+      "url": "https://app.notion.com/p/Chicxulub-3c7e52757b5c819b87ccd6c9adb5e785",
+      "lastEdited": "2026-08-25T19:44:00.000Z",
+      "Temperature (K)": 2.7,
+      "Researchers": [],
+      "When": "13.73 billion years — 66 million years ago",
+      "Equations": [
+        "3c0e5275-7b5c-813b-8d2e-da5484cf3b1c",
+        "3c0e5275-7b5c-81c1-928d-f024f2a2484f"
+      ],
+      "Redshift": "z ≈ 0.005",
+      "Theories": [],
+      "Era": "Life on Earth",
+      "What Happened": "A ten-kilometre asteroid strikes what is now Yucatán. The evidence that settled it was chemical: a worldwide clay layer enriched in iridium, an element the crust has almost none of and meteorites have plenty of. Non-avian dinosaurs end there and mammals get the room.",
+      "Seconds After Big Bang": 433308205830000000,
+      "Event": "Chicxulub"
+    },
+    {
+      "id": "3c7e5275-7b5c-81ff-8f67-d062cbe6f2d6",
+      "url": "https://app.notion.com/p/The-Great-Dying-3c7e52757b5c81ff8f67d062cbe6f2d6",
+      "lastEdited": "2026-08-25T19:44:00.000Z",
+      "Temperature (K)": 2.8,
+      "Researchers": [],
+      "When": "13.55 billion years — 252 million years ago",
+      "Equations": [],
+      "Redshift": "z ≈ 0.018",
+      "Theories": [],
+      "Era": "Life on Earth",
+      "What Happened": "The worst extinction in the record: about 81 % of marine species gone. The Siberian Traps erupt through coal measures and vent carbon dioxide and sulfur for perhaps a million years, and the ocean warms, acidifies and loses its oxygen. It took life ten million years to recover.",
+      "Seconds After Big Bang": 427441772543000060,
+      "Event": "The Great Dying"
+    },
+    {
+      "id": "3c7e5275-7b5c-81e0-b04b-d5cb155ed12e",
+      "url": "https://app.notion.com/p/Life-Moves-Onto-Land-3c7e52757b5c81e0b04bd5cb155ed12e",
+      "lastEdited": "2026-08-25T19:44:00.000Z",
+      "Temperature (K)": 2.8,
+      "Researchers": [],
+      "When": "13.33 billion years — 470 million years ago",
+      "Equations": [],
+      "Redshift": "z ≈ 0.035",
+      "Theories": [],
+      "Era": "Life on Earth",
+      "What Happened": "Plants colonise the continents, and their roots begin breaking rock into soil. Silicate weathering accelerates, drawing down carbon dioxide, and the atmosphere and the climate have been partly under biological control ever since.",
+      "Seconds After Big Bang": 420559206110000000,
+      "Event": "Life Moves Onto Land"
+    },
+    {
+      "id": "3c7e5275-7b5c-81b6-bd49-dbbc15dd62d8",
+      "url": "https://app.notion.com/p/The-Cambrian-Explosion-3c7e52757b5c81b6bd49dbbc15dd62d8",
+      "lastEdited": "2026-08-25T19:44:00.000Z",
+      "Temperature (K)": 2.8,
+      "Researchers": [],
+      "When": "13.26 billion years — 539 million years ago",
+      "Equations": [],
+      "Redshift": "z ≈ 0.04",
+      "Theories": [],
+      "Era": "Life on Earth",
+      "What Happened": "Animal body plans appear over a few tens of millions of years, and — for the first time — so do hard parts. Calcite, aragonite and calcium phosphate get recruited into shells, spines and teeth, which is both why the fossil record starts here and why biomineralisation is a subject at all.",
+      "Seconds After Big Bang": 418388089326000000,
+      "Event": "The Cambrian Explosion"
+    },
+    {
+      "id": "3c7e5275-7b5c-811f-b1c1-e5f7a166eb96",
+      "url": "https://app.notion.com/p/Eukaryotes-3c7e52757b5c811fb1c1e5f7a166eb96",
+      "lastEdited": "2026-08-25T19:44:00.000Z",
+      "Temperature (K)": 3.1,
+      "Researchers": [],
+      "When": "12.0 billion years — 1.8 billion years ago",
+      "Equations": [],
+      "Redshift": "z ≈ 0.14",
+      "Theories": [],
+      "Era": "Life on Earth",
+      "What Happened": "One cell ends up inside another and neither digests the other. The guest becomes the mitochondrion and keeps its own genome, which is why the evidence survives. Everything larger than a microbe is descended from that one accident.",
+      "Seconds After Big Bang": 378588489210000000,
+      "Event": "Eukaryotes"
+    },
+    {
+      "id": "3c7e5275-7b5c-81f2-b309-f74265014fa7",
+      "url": "https://app.notion.com/p/The-Great-Oxidation-3c7e52757b5c81f2b309f74265014fa7",
+      "lastEdited": "2026-08-25T19:44:00.000Z",
+      "Temperature (K)": 3.3,
+      "Researchers": [],
+      "When": "11.4 billion years — 2.4 billion years ago",
+      "Equations": [
+        "3bbe5275-7b5c-81b2-9ec2-d967f8695b7e",
+        "3bde5275-7b5c-8166-90de-d0f25022b160"
+      ],
+      "Redshift": "z ≈ 0.2",
+      "Theories": [],
+      "Era": "Life on Earth",
+      "What Happened": "Free oxygen finally outruns everything that had been consuming it, and the atmosphere changes composition. Dissolved iron rusts out of the oceans and settles as the banded iron formations that most of the world's iron ore still comes from. Mineralogy changes with it: up to two-thirds of the five thousand mineral species now recognised are consequences of this, because oxygen gives elements like iron, copper and uranium a second oxidation state to form compounds in. Most of the minerals on this site exist because something respired.",
+      "Seconds After Big Bang": 359654331210000000,
+      "Event": "The Great Oxidation"
+    },
+    {
+      "id": "3c7e5275-7b5c-816f-b5c5-d19caf3cda46",
+      "url": "https://app.notion.com/p/Oxygenic-Photosynthesis-3c7e52757b5c816fb5c5d19caf3cda46",
+      "lastEdited": "2026-08-25T19:44:00.000Z",
+      "Temperature (K)": 3.3,
+      "Researchers": [],
+      "When": "11.1 billion years — 2.7 billion years ago",
+      "Equations": [
+        "3bbe5275-7b5c-8140-a1d4-f7bff1df0334",
+        "3bde5275-7b5c-8166-90de-d0f25022b160"
+      ],
+      "Redshift": "z ≈ 0.22",
+      "Theories": [],
+      "Era": "Life on Earth",
+      "What Happened": "Cyanobacteria learn to split water rather than something easier, using a cluster of four manganese atoms to prise apart a molecule that does not want to come apart. Every oxygen atom in the air has been through that cluster. It is the single most consequential chemical innovation in the planet's history, and it poisoned the world that produced it.",
+      "Seconds After Big Bang": 350187252210000060,
+      "Event": "Oxygenic Photosynthesis"
+    },
+    {
+      "id": "3c7e5275-7b5c-8128-9c86-e7668512a6d9",
+      "url": "https://app.notion.com/p/Life-Leaves-Its-First-Trace-3c7e52757b5c81289c86e7668512a6d9",
+      "lastEdited": "2026-08-25T19:44:00.000Z",
+      "Temperature (K)": 3.5,
+      "Researchers": [],
+      "When": "10.3 billion years — 3.5 billion years ago",
+      "Equations": [
+        "3bbe5275-7b5c-8150-9b6b-de88bc1b1910",
+        "3bbe5275-7b5c-81ee-97dc-c7e65a4e1ad2"
+      ],
+      "Redshift": "z ≈ 0.3",
+      "Theories": [],
+      "Era": "Life on Earth",
+      "What Happened": "Stromatolites in the Pilbara: layered mats built by microbes that were already doing chemistry. Carbon-isotope ratios in Greenland push the first sign back to 3.7 billion years and disputed structures further still, which is the honest state of it — life is older than the oldest thing anyone can hold up as proof of it.",
+      "Seconds After Big Bang": 324941708210000000,
+      "Event": "Life Leaves Its First Trace"
+    },
+    {
       "id": "3bde5275-7b5c-81ea-a1d8-efb79b33a2e3",
       "url": "https://app.notion.com/p/Heat-Death-3bde52757b5c81eaa1d8efb79b33a2e3",
       "lastEdited": "2026-08-16T03:11:00.000Z",
@@ -509816,7 +509963,9 @@
       "Skills": [],
       "Equation": "K = ½mv²",
       "Minerals": [],
-      "Timeline": [],
+      "Timeline": [
+        "3c7e5275-7b5c-819b-87cc-d6c9adb5e785"
+      ],
       "Field": "Mechanics",
       "Celestial Objects": [],
       "Theories": [],
@@ -509933,7 +510082,9 @@
       "Skills": [],
       "Equation": "p = mv,  J = F Δt = Δp",
       "Minerals": [],
-      "Timeline": [],
+      "Timeline": [
+        "3c7e5275-7b5c-819b-87cc-d6c9adb5e785"
+      ],
       "Field": "Mechanics",
       "Celestial Objects": [],
       "Theories": [],
@@ -511644,7 +511795,10 @@
         "b94ff1da-eaef-4193-b75c-e97af338ac25",
         "db41d7f5-2f18-4f06-91b6-21f9df43006d"
       ],
-      "Timeline": [],
+      "Timeline": [
+        "3c7e5275-7b5c-816f-b5c5-d19caf3cda46",
+        "3c7e5275-7b5c-81f2-b309-f74265014fa7"
+      ],
       "Field": "Chemical Thermodynamics",
       "Celestial Objects": [],
       "Theories": [],
@@ -512580,7 +512734,9 @@
       "Minerals": [
         "b94ff1da-eaef-4193-b75c-e97af338ac25"
       ],
-      "Timeline": [],
+      "Timeline": [
+        "3c7e5275-7b5c-8128-9c86-e7668512a6d9"
+      ],
       "Field": "Biophysics",
       "Celestial Objects": [],
       "Theories": [],
@@ -512617,7 +512773,9 @@
         "28cd490f-391d-4432-8d09-631de49cabf5",
         "cb8bf25b-fafe-449a-aee7-d457929c47b7"
       ],
-      "Timeline": [],
+      "Timeline": [
+        "3c7e5275-7b5c-81f2-b309-f74265014fa7"
+      ],
       "Field": "Biophysics",
       "Celestial Objects": [],
       "Theories": [],
@@ -514150,7 +514308,9 @@
         "b94ff1da-eaef-4193-b75c-e97af338ac25",
         "bc1ec6b6-fbb1-4266-aa31-3538e1672a5a"
       ],
-      "Timeline": [],
+      "Timeline": [
+        "3c7e5275-7b5c-8128-9c86-e7668512a6d9"
+      ],
       "Field": "Chemical Kinetics",
       "Celestial Objects": [],
       "Theories": [
@@ -516332,7 +516492,8 @@
       "Equation": "E = hν",
       "Minerals": [],
       "Timeline": [
-        "3bde5275-7b5c-8102-90f1-d13c66d29fa9"
+        "3bde5275-7b5c-8102-90f1-d13c66d29fa9",
+        "3c7e5275-7b5c-816f-b5c5-d19caf3cda46"
       ],
       "Field": "Quantum",
       "Celestial Objects": [],
