@@ -272,7 +272,7 @@
   @media print { .klang { display: none; } }
 </style>
 <div class="klang" aria-label="Language · Langue"><a href="/universe" hreflang="en" lang="en">EN</a><a href="/fr/universe" hreflang="fr" lang="fr" class="on">FR</a></div>
-<script>window.__VOCAB__ = {"cosmological":"cosmologique","group":"groupe","attractor":"attracteur","galaxy":"galaxie","cluster":"amas","void":"vide","supercluster":"superamas"};</script>
+<script>window.__VOCAB__ = {"cosmological":"cosmologique","cluster":"amas","galaxy":"galaxie","supercluster":"superamas","attractor":"attracteur","void":"vide","group":"groupe"};</script>
 <script>const VOCAB = window.__VOCAB__ || {}; const vocab = (s) => (s == null ? s : (VOCAB[s] || s));</script>
 
 <h1 class="ktitle">L'Univers en trois dimensions</h1>
@@ -306,13 +306,13 @@
       <li><b>Les planètes sont des orbites, non des lieux, et elles tournent autour du centre plutôt qu'autour de vous.</b> La direction d'une planète change au fil de l'année et sa distance à nous change avec elle, de sorte qu'un point affirmerait une position qui n'est pas un fait ; ce qui ne change pas, c'est sa distance au Soleil. Zoomez assez loin et l'étiquette au centre cesse d'indiquer <em>ici</em> pour indiquer <em>le Soleil</em> — c'est le seul endroit de la carte où l'origine et l'observateur se séparent, et la Terre est le troisième anneau en partant du centre. Chaque orbite est tracée comme un cercle à sa distance moyenne, dans le plan de l'écliptique : l'excentricité n'est pas représentée (celle de Mercure est la seule que l'on remarquerait — elle circule réellement entre 0.31 et 0.47 AU), ni les inclinaisons, qui sont de 7.0° pour Mercure, 3.4° pour Vénus et inférieures à 2.5° pour les autres. Les ceintures d'astéroïdes et de Kuiper sont des bandes, car une ceinture n'a pas d'orbite et un anneau unique en revendiquerait une.</li>
       <li><b>Tout est représenté tel que c'est maintenant</b>, non tel que cela paraît. La lumière des anneaux lointains est partie avant l'existence de la Terre. Une carte de là où les choses <em>sont</em> et une carte de ce que l'on <em>voit</em> divergent complètement au-delà du Groupe local, et voici la première.</li>
       <li><b>La distance est comobile</b>, conformément à <a href="/fr/scales">l'échelle</a>. Le décalage vers le rouge n'est converti en temps de trajet de la lumière nulle part sur cette page.</li>
-      <li><b>Four objects move, in three dimensions.</b> Each carries a measured galactocentric velocity vector, not just a speed towards us, so the map carries its position forward and re-derives both its distance <em>and</em> its direction — they cross the sky as well as approach. Within the span each is drawn for, Andromeda shifts about 7° and the others 5-6°. The Sun is held at today's place: its own 230-million-year lap of the galaxy would swing the entire sky and tell you nothing about the Local Group.</li>
-      <li><b>The clock is logarithmic</b>, spanning one million years to seven billion, for the same reason the radial axis is: the Large Cloud rounds the galaxy every couple of billion years while Andromeda takes four to arrive, and a satellite’s pericentre passage lasts a few tens of millions. Everything else on the map holds still, because nothing else in the catalogue has a measured velocity yet — add one in Notion and it starts moving.</li>
-      <li><b>Only Andromeda is actually falling towards us.</b> Each mover also carries the size of its sideways motion, and the comparison is the point. M31: 110 km/s towards us against 17 sideways — near enough a head-on fall. M33: 44 against 230. The Large Cloud: 64 against 314. The Small Cloud: 7 against 217, which is a galaxy going almost purely round. The Local Group is not collapsing inward; it is in orbit, and M31 is the exception rather than the illustration. This map can draw only the radial part, which is why the other three hardly move on it while travelling at hundreds of kilometres a second.</li>
-      <li><b>This is now an integration, not an extrapolation.</b> Earlier versions carried each object along a straight line, which cannot describe an orbit — satellites froze after a few tens of millions of years and Andromeda arrived late. The page now integrates the mutual gravity of the Milky Way and everything with a measured velocity, stepping a leapfrog through a galaxy modelled as a Hernquist bulge-and-disc inside an NFW halo. The Clouds complete real orbits — the Large Cloud swings between about 26 and 217 kpc, four times over eight billion years — and Andromeda's fall accelerates as it should.</li>
-      <li><b>The halo mass is a slider because nobody knows it.</b> The Milky Way's dark halo is uncertain by roughly a factor of two, and the arrival of Andromeda turns on it: from about 4.4 billion years at 0.5×10<sup>12</sup> solar masses to 3.3 at 2.5×10<sup>12</sup>. Move it and watch. The rotation speed at the Sun is printed beside it as the check — the model returns 208 to 239 km/s across that range, against a measured 229, which is precisely why the rotation curve alone cannot pin the halo down. The number this page shows you is a consequence of a parameter you can see and change, which is the honest way to show a prediction that depends on one.</li>
-      <li><b>Friction, and what it changes.</b> A satellite ploughing through the halo leaves an overdense wake behind it, and the wake pulls back — Chandrasekhar drag, which scales as the satellite's mass squared and so matters for the Large Cloud and for Andromeda and hardly at all for the Small. Turn it off with the button and Andromeda swings past at closest approach and climbs back out: <em>the merger does not happen</em>. Turn it on and the same pass is deeper, and the orbit decays into one. Drag is what makes a merger a merger, and it is the clearest thing on this page to toggle.</li>
-      <li><b>What it still does not model.</b> Tidal deformation and mass loss, once galaxies are close enough to stop being points; the halo's own response beyond taking up the momentum; and any mass outside these five bodies. The Small Cloud's track is the least trustworthy — it is bound to the Large Cloud in reality, and five bodies with 5 kpc of softening handle that pair poorly.</li>
+      <li><b>Quatre objets se déplacent, en trois dimensions.</b> Chacun porte un vecteur vitesse galactocentrique mesuré, et non seulement une vitesse dirigée vers nous ; la carte propage donc sa position et en redéduit à la fois sa distance <em>et</em> sa direction — ils traversent le ciel autant qu'ils s'approchent. Sur l'intervalle où chacun est tracé, Andromède se déplace d'environ 7° et les autres de 5 à 6°. Le Soleil est maintenu à sa place actuelle : son propre tour de galaxie en 230 millions d'années ferait pivoter le ciel entier sans rien vous apprendre sur le Groupe local.</li>
+      <li><b>L'horloge est logarithmique</b>, d'un million d'années à sept milliards, pour la même raison que l'axe radial : le Grand Nuage fait le tour de la galaxie tous les deux milliards d'années environ, tandis qu'Andromède met quatre milliards à arriver, et le passage au péricentre d'un satellite dure quelques dizaines de millions. Tout le reste de la carte reste immobile, car rien d'autre au catalogue n'a encore de vitesse mesurée — ajoutez-en une dans Notion et l'objet se met en mouvement.</li>
+      <li><b>Seule Andromède tombe réellement vers nous.</b> Chaque mobile porte aussi la mesure de son mouvement transverse, et c'est la comparaison qui compte. M31 : 110 km/s vers nous contre 17 de côté — à peu de chose près une chute frontale. M33 : 44 contre 230. Le Grand Nuage : 64 contre 314. Le Petit Nuage : 7 contre 217, soit une galaxie qui tourne presque purement. Le Groupe local ne s'effondre pas vers l'intérieur ; il est en orbite, et M31 est l'exception plutôt que l'illustration. Cette carte ne peut tracer que la part radiale, raison pour laquelle les trois autres n'y bougent presque pas tout en filant à des centaines de kilomètres par seconde.</li>
+      <li><b>Il s'agit désormais d'une intégration, non d'une extrapolation.</b> Les versions antérieures emportaient chaque objet le long d'une droite, ce qui ne peut décrire une orbite — les satellites se figeaient après quelques dizaines de millions d'années et Andromède arrivait en retard. La page intègre maintenant la gravité mutuelle de la Voie lactée et de tout ce dont la vitesse est mesurée, en avançant par saute-mouton à travers une galaxie modélisée comme un bulbe et un disque de Hernquist à l'intérieur d'un halo NFW. Les Nuages accomplissent de véritables orbites — le Grand Nuage oscille entre environ 26 et 217 kpc, quatre fois en huit milliards d'années — et la chute d'Andromède s'accélère comme elle le doit.</li>
+      <li><b>La masse du halo est un curseur parce que personne ne la connaît.</b> Le halo sombre de la Voie lactée est incertain d'environ un facteur deux, et l'arrivée d'Andromède en dépend : d'environ 4,4 milliards d'années à 0,5×10<sup>12</sup> masses solaires à 3,3 à 2,5×10<sup>12</sup>. Déplacez-le et regardez. La vitesse de rotation au niveau du Soleil est imprimée à côté comme vérification — le modèle renvoie 208 à 239 km/s sur cet intervalle, contre 229 mesurés, ce qui explique précisément pourquoi la courbe de rotation seule ne peut fixer le halo. Le nombre que cette page vous montre est la conséquence d'un paramètre que vous pouvez voir et modifier, ce qui est la manière honnête de présenter une prédiction qui en dépend.</li>
+      <li><b>Le frottement, et ce qu'il change.</b> Un satellite qui laboure le halo laisse derrière lui un sillage surdense, et ce sillage le retient — le frottement de Chandrasekhar, qui varie comme le carré de la masse du satellite et compte donc pour le Grand Nuage et pour Andromède, et presque pas pour le Petit. Désactivez-le avec le bouton et Andromède passe au plus près puis remonte : <em>la fusion n'a pas lieu</em>. Activez-le et le même passage est plus profond, et l'orbite se dégrade jusqu'à la fusion. Le frottement est ce qui fait d'une fusion une fusion, et c'est la chose la plus claire à basculer sur cette page.</li>
+      <li><b>Ce qu'il ne modélise toujours pas.</b> La déformation de marée et la perte de masse, dès que les galaxies sont assez proches pour cesser d'être des points ; la réponse propre du halo au-delà de l'absorption de la quantité de mouvement ; et toute masse extérieure à ces cinq corps. La trajectoire du Petit Nuage est la moins fiable — il est en réalité lié au Grand Nuage, et cinq corps avec 5 kpc d'adoucissement traitent mal ce couple.</li>
     </ol>
   </section>
 </div>
@@ -915,7 +915,7 @@
     tipEl.querySelector('p').textContent =
       `${it.kind} · ${ly(it.dist)} de distance${it.size ? ` · ${ly(it.size)} across` : ''}`
       + (it.vel ? ` · ${it.vel < 0 ? 'approaching' : 'receding'} ${Math.abs(it.vel)} km/s`
-                  + (it.tvel ? `, ${it.tvel} km/s sideways` : '')
+                  + (it.tvel ? `, ${it.tvel} km/s latéralement` : '')
                   + (it.motion === 'Bound orbit' ? ' — in orbit, not falling' : '') : '');
     tipEl.style.left = Math.min(r.width - 270, e.clientX - r.left + 14) + 'px';
     tipEl.style.top = Math.max(4, e.clientY - r.top - 10) + 'px';
@@ -958,7 +958,7 @@
     mk('orbites', (b) => { showSolar = !showSolar; b.setAttribute('aria-pressed', String(showSolar)); draw(); }, true);
     mk('couches', (b) => { showShells = !showShells; b.setAttribute('aria-pressed', String(showShells)); draw(); }, true);
     mk('étiquettes', (b) => { showLabels = !showLabels; b.setAttribute('aria-pressed', String(showLabels)); draw(); }, true);
-    mk('paths', (b) => { showPaths = !showPaths; b.setAttribute('aria-pressed', String(showPaths)); draw(); }, true);
+    mk('trajets', (b) => { showPaths = !showPaths; b.setAttribute('aria-pressed', String(showPaths)); draw(); }, true);
     // The zoom stops name a distance and put it near the edge of the frame, rather
     // than naming a multiple of the fitted view. Multiples were quietly tied to the
     // span of the axis: when the solar system extended it by three decades every one
@@ -970,7 +970,7 @@
     if (!MOVERS.length) return;
     const row = document.createElement('div'); row.className = 'clock';
     const play = document.createElement('button');
-    play.className = 'cbtn'; play.type = 'button'; play.textContent = '▶ run the clock';
+    play.className = 'cbtn'; play.type = 'button'; play.textContent = '▶ lancer l\'horloge';
     // Logarithmic, for the same reason the radial axis is: the Magellanic Clouds
     // outrun their straight-line model in ~15 Myr while Andromeda takes billions,
     // and no linear slider shows both. 0 is now; the rest spans 1 Myr to 7 Gyr.
@@ -979,7 +979,7 @@
     const toSlider = (y) => (y <= 0 ? 0 : Math.round(((Math.log10(y) - T0) / (T1 - T0)) * 1000));
     const sl = document.createElement('input');
     sl.type = 'range'; sl.min = 0; sl.max = 1000; sl.step = 1; sl.value = 0;
-    sl.setAttribute('aria-label', 'Time from now, logarithmic');
+    sl.setAttribute('aria-label', 'Temps à partir de maintenant, logarithmique');
     const out = document.createElement('span'); out.className = 'creadout';
     const age = (y) => (y === 0 ? 'now'
       : y < 1e9 ? `+${(y / 1e6).toPrecision(3)} Myr` : `+${(y / 1e9).toFixed(2)} Gyr`);
@@ -994,7 +994,7 @@
     sl.addEventListener('input', () => { clock = toYears(+sl.value); retime(); show(); draw(); });
     let timer = null;
     play.addEventListener('click', () => {
-      if (timer) { clearInterval(timer); timer = null; play.textContent = '▶ run the clock'; return; }
+      if (timer) { clearInterval(timer); timer = null; play.textContent = '▶ lancer l\'horloge'; return; }
       play.textContent = '⏸ pause';
       timer = setInterval(() => {
         const next = +sl.value >= 1000 ? 0 : +sl.value + 4;
@@ -1008,16 +1008,16 @@
     const hl = document.createElement('span'); hl.className = 'creadout'; hl.textContent = 'halo mass';
     const hs = document.createElement('input');
     hs.type = 'range'; hs.min = 5; hs.max = 25; hs.step = 1; hs.value = Math.round(haloMass / 1e11);
-    hs.setAttribute('aria-label', 'Milky Way halo mass');
+    hs.setAttribute('aria-label', 'Masse du halo de la Voie lactée');
     const hout = document.createElement('span'); hout.className = 'creadout';
     const fb = document.createElement('button');
-    fb.className = 'cbtn'; fb.type = 'button'; fb.textContent = 'friction';
+    fb.className = 'cbtn'; fb.type = 'button'; fb.textContent = 'frottement';
     fb.setAttribute('aria-pressed', 'true');
     const hshow = () => {
       const a = approach('Andromeda (M31)');
       let t = `${(haloMass / 1e12).toFixed(1)}e12 M☉ · rotation ${vCirc(8.122, haloMass).toFixed(0)} km/s`;
-      if (a && a.peri) t += ` · M31 passes at +${(a.peri.myr / 1000).toFixed(2)} Gyr, ${a.peri.kpc.toFixed(0)} kpc`;
-      t += a && a.merge ? ` · merges +${(a.merge / 1000).toFixed(2)} Gyr` : ' · no merger';
+      if (a && a.peri) t += ` · M31 passe à +${(a.peri.myr / 1000).toFixed(2)} Gyr, ${a.peri.kpc.toFixed(0)} kpc`;
+      t += a && a.merge ? ` · fusionne +${(a.merge / 1000).toFixed(2)} Gyr` : ' · no merger';
       hout.textContent = t;
     };
     const recompute = () => {

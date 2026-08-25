@@ -1,5 +1,5 @@
 <!doctype html><html lang="fr"><meta charset="utf-8">
-<title>Kosmos · The Solar System, Running</title>
+<title>Kosmos · Le Système solaire, en marche</title>
 <style>
   :root {
     color-scheme: light;
@@ -230,11 +230,12 @@
   @media print { .klang { display: none; } }
 </style>
 <div class="klang" aria-label="Language · Langue"><a href="/solar" hreflang="en" lang="en">EN</a><a href="/fr/solar" hreflang="fr" lang="fr" class="on">FR</a></div>
+<script>window.__VOCAB__ = {"Dwarf planet":"Planète naine","Planet":"Planète"};</script>
 <script>const VOCAB = window.__VOCAB__ || {}; const vocab = (s) => (s == null ? s : (VOCAB[s] || s));</script>
 
-<nav class="knav"><a href="/fr/">KOSMOS</a><span>/</span><span class="cur">Solar System</span></nav>
-<h1 class="ktitle">The Solar System, Running</h1>
-<p class="klede">No position on this page is stored. Each body carries six Keplerian elements and their per-century rates, and the browser solves Kepler's equation — <code>M = E − e·sin E</code>, by Newton iteration — to place it at whatever date is on the dial. Drag to tilt the plane, scroll to zoom, drag the dial to travel. At the default speed five seconds is one year, so Earth laps in five and Neptune takes fourteen minutes.</p>
+<nav class="knav"><a href="/fr/">KOSMOS</a><span>/</span><span class="cur">Système solaire</span></nav>
+<h1 class="ktitle">Le Système solaire, en marche</h1>
+<p class="klede">Aucune position n'est stockée sur cette page. Chaque corps porte six éléments képlériens et leurs taux de variation par siècle, et le navigateur résout l'équation de Kepler — <code>M = E − e·sin E</code>, par itération de Newton — pour le placer à la date affichée sur le cadran. Faites glisser pour incliner le plan, faites défiler pour zoomer, tirez le cadran pour voyager. À la vitesse par défaut, cinq secondes valent un an : la Terre boucle son tour en cinq secondes et Neptune met quatorze minutes.</p>
 
 <div class="wrap">
   <div class="stage" id="stage">
@@ -245,30 +246,30 @@
 
   <div class="ctrl">
     <button id="play" class="on" type="button">⏸ pause</button>
-    <label for="spd">sec per year</label>
+    <label for="spd">s par an</label>
     <input id="spd" type="range" min="0.3" max="30" step="0.1" value="5" />
     <span class="hud" style="position:static"><b id="spdv">5.0</b></span>
-    <button id="scale" type="button">scale: log</button>
+    <button id="scale" type="button">échelle : log</button>
     <button id="trails" class="on" type="button">orbites</button>
-    <button id="now" type="button">today</button>
+    <button id="now" type="button">aujourd'hui</button>
   </div>
   <div class="scrub">
-    <label class="hud" style="position:static">year</label>
+    <label class="hud" style="position:static">année</label>
     <input id="yr" type="range" min="1800" max="2050" step="0.01" value="2026" />
     <span class="hud" style="position:static"><b id="yrv">2026</b></span>
   </div>
 
-  <h2 class="ksub">The elements, and a check on them</h2>
-  <p class="kbody">Kepler's third law says the period is <code>a<sup>3/2</sup></code> in years when <code>a</code> is in astronomical units. Nobody enforces that here — the semi-major axis and the observed period are separate fields, entered from separate columns of the source table. That they agree is a check on the data, and a bad edit would show up in the last column first.</p>
+  <h2 class="ksub">Les éléments, et un état des lieux</h2>
+  <p class="kbody">La troisième loi de Kepler dit que la période vaut <code>a<sup>3/2</sup></code> en années lorsque <code>a</code> est en unités astronomiques. Personne ne l'impose ici — le demi-grand axe et la période observée sont des champs distincts, saisis depuis des colonnes distinctes de la table source. Leur accord est un contrôle des données, et une mauvaise saisie apparaîtrait d'abord dans la dernière colonne.</p>
   <table class="tbl">
-    <thead><tr><th>body</th><th>a (au)</th><th>e</th><th>i (°)</th><th>period (yr)</th><th>a^1.5</th><th>agree</th></tr></thead>
+    <thead><tr><th>corps</th><th>a (au)</th><th>e</th><th>i (°)</th><th>période (an)</th><th>a^1.5</th><th>concordent</th></tr></thead>
     <tbody id="rows"></tbody>
   </table>
 </div>
 
-<p class="kfoot">Elements from E. M. Standish, <em>Keplerian Elements for Approximate Positions of the Major Planets</em> (JPL Solar System Dynamics), Table 1, fitted to 1800–2050 — which is why the dial stops at both ends. Heliocentric longitude error over that window runs from about 10 arcsec for Neptune to 600 for Saturn: correct to the pixel here, not good enough to point a telescope. Earth's row is the Earth/Moon barycentre, as the source gives it. Pluto comes from Standish's earlier table, JPL having dropped it; its 3:2 resonance with Neptune makes any fixed ellipse a poor model over long spans.</p>
+<p class="kfoot">Éléments d'après E. M. Standish, <em>Keplerian Elements for Approximate Positions of the Major Planets</em> (JPL Solar System Dynamics), Table 1, ajustés sur 1800–2050 — d'où l'arrêt du cadran aux deux bouts. Sur cette fenêtre, l'erreur en longitude héliocentrique va d'environ 10 secondes d'arc pour Neptune à 600 pour Saturne : exact au pixel près ici, insuffisant pour pointer un télescope. La ligne de la Terre correspond au barycentre Terre/Lune, tel que la source le donne. Pluton vient de la table antérieure de Standish, le JPL l'ayant abandonnée ; sa résonance 3:2 avec Neptune fait de toute ellipse fixe un mauvais modèle sur de longues durées.</p>
 
-<script id="data" type="application/json">{"bodies":[{"name":"Mercury","slug":"mercury","kind":"Planet","radius":2439.7,"mass":3.301e+23,"notes":"The most eccentric planetary orbit and the fastest — 88 days a lap. Its perihelion advances 43 arcsec/century faster than Newton allows, which general relativity accounted for in 1915.","el":{"a":0.38709927,"e":0.20563593,"I":7.00497902,"L":252.2503235,"peri":77.45779628,"node":48.33076593},"rate":{"a":3.7e-07,"e":1.906e-05,"I":-0.00594749,"L":149472.67411175,"peri":0.16047689,"node":-0.12534081},"period":0.2408,"kepler":0.2408,"drift":0.018},{"name":"Venus","slug":"venus","kind":"Planet","radius":6051.8,"mass":4.867e+24,"notes":"The roundest orbit in the system, eccentricity 0.0068 — near enough a circle that the drawn ellipse looks like one.","el":{"a":0.72333566,"e":0.00677672,"I":3.39467605,"L":181.9790995,"peri":131.60246718,"node":76.67984255},"rate":{"a":3.9e-06,"e":-4.107e-05,"I":-0.0007889,"L":58517.81538729,"peri":0.00268329,"node":-0.27769418},"period":0.6152,"kepler":0.6152,"drift":0.001},{"name":"Earth","slug":"earth","kind":"Planet","radius":6371,"mass":5.972e+24,"notes":"Strictly the Earth/Moon barycentre, which is what the source table gives — a point about 4,670 km from Earth's centre, still inside the planet.","el":{"a":1.00000261,"e":0.01671123,"I":-1.531e-05,"L":100.46457166,"peri":102.93768193,"node":0},"rate":{"a":5.62e-06,"e":-4.392e-05,"I":-0.01294668,"L":35999.37244981,"peri":0.32327364,"node":0.0},"period":1,"kepler":1.0,"drift":0.0},{"name":"Mars","slug":"mars","kind":"Planet","radius":3389.5,"mass":6.417e+23,"notes":"Eccentric enough that Kepler could not fit it to a circle, which is why the first law was found here and not somewhere easier.","el":{"a":1.52371034,"e":0.0933941,"I":1.84969142,"L":-4.55343205,"peri":-23.94362959,"node":49.55953891},"rate":{"a":1.847e-05,"e":7.882e-05,"I":-0.00813131,"L":19140.30268499,"peri":0.44441088,"node":-0.29257343},"period":1.8808,"kepler":1.8808,"drift":0.003},{"name":"Jupiter","slug":"jupiter","kind":"Planet","radius":69911,"mass":1.898e+27,"notes":"Two and a half times the mass of everything else in orbit combined. The Sun–Jupiter barycentre sits just outside the Sun's surface, so the Sun visibly orbits it.","el":{"a":5.202887,"e":0.04838624,"I":1.30439695,"L":34.39644051,"peri":14.72847983,"node":100.47390909},"rate":{"a":-0.00011607,"e":-0.00013253,"I":-0.00183714,"L":3034.74612775,"peri":0.21252668,"node":0.20469106},"period":11.862,"kepler":11.8677,"drift":0.048},{"name":"Saturn","slug":"saturn","kind":"Planet","radius":58232,"mass":5.683e+26,"notes":"The least dense planet — it would float in water, if there were an ocean big enough. Also the largest nominal error in this table, about 600 arcsec of longitude.","el":{"a":9.53667594,"e":0.05386179,"I":2.48599187,"L":49.95424423,"peri":92.59887831,"node":113.66242448},"rate":{"a":-0.0012506,"e":-0.00050991,"I":0.00193609,"L":1222.49362201,"peri":-0.41897216,"node":-0.28867794},"period":29.457,"kepler":29.4507,"drift":0.021},{"name":"Uranus","slug":"uranus","kind":"Planet","radius":25362,"mass":8.681e+25,"notes":"Tipped 98° onto its side, so it rolls along its orbit rather than spinning upright. The tilt is of the planet, not the orbit, which stays within 0.8° of the ecliptic.","el":{"a":19.18916464,"e":0.04725744,"I":0.77263783,"L":313.23810451,"peri":170.9542763,"node":74.01692503},"rate":{"a":-0.00196176,"e":-4.397e-05,"I":-0.00242939,"L":428.48202785,"peri":0.40805281,"node":0.04240589},"period":84.011,"kepler":84.059,"drift":0.057},{"name":"Neptune","slug":"neptune","kind":"Planet","radius":24622,"mass":1.024e+26,"notes":"Found in 1846 by predicting it from Uranus's misbehaviour and pointing a telescope where the arithmetic said — within a degree of where Le Verrier put it.","el":{"a":30.06992276,"e":0.00859048,"I":1.77004347,"L":-55.12002969,"peri":44.96476227,"node":131.78422574},"rate":{"a":0.00026291,"e":5.105e-05,"I":0.00035372,"L":218.45945325,"peri":-0.32241464,"node":-0.00508664},"period":164.79,"kepler":164.8916,"drift":0.062},{"name":"Pluto","slug":"pluto","kind":"Dwarf planet","radius":1188.3,"mass":1.303e+22,"notes":"Inclined 17° to everyone else and eccentric enough to come inside Neptune's orbit for 20 years of its 248. The two never meet: a 3:2 resonance keeps them apart, and it makes Pluto's long-term motion chaotic.","el":{"a":39.48211675,"e":0.2488273,"I":17.14001206,"L":238.92903833,"peri":224.06891629,"node":110.30393684},"rate":{"a":-0.00031596,"e":5.17e-05,"I":4.818e-05,"L":145.20780515,"peri":-0.04062942,"node":-0.01183482},"period":247.94,"kepler":248.0851,"drift":0.059}],"sun":{"name":"Sun","slug":"sun","kind":"Star","radius":695700,"mass":1.989e+30,"notes":"The origin of the frame, holding 99.86 % of the system's mass — which is why every other body here can be treated as a two-body problem and solved exactly."}}</script>
+<script id="data" type="application/json">{"bodies":[{"name":"Mercury","slug":"mercury","kind":"Planet","radius":2439.7,"mass":3.301e+23,"notes":"L'orbite planétaire la plus excentrique et la plus rapide — 88 jours par tour. Son périhélie avance de 43 arcsec/siècle de plus que Newton ne l'autorise, ce dont la relativité générale a rendu compte en 1915.","el":{"a":0.38709927,"e":0.20563593,"I":7.00497902,"L":252.2503235,"peri":77.45779628,"node":48.33076593},"rate":{"a":3.7e-07,"e":1.906e-05,"I":-0.00594749,"L":149472.67411175,"peri":0.16047689,"node":-0.12534081},"period":0.2408,"kepler":0.2408,"drift":0.018},{"name":"Venus","slug":"venus","kind":"Planet","radius":6051.8,"mass":4.867e+24,"notes":"L'orbite la plus ronde du système, excentricité 0.0068 — assez proche du cercle pour que l'ellipse tracée en ait l'air.","el":{"a":0.72333566,"e":0.00677672,"I":3.39467605,"L":181.9790995,"peri":131.60246718,"node":76.67984255},"rate":{"a":3.9e-06,"e":-4.107e-05,"I":-0.0007889,"L":58517.81538729,"peri":0.00268329,"node":-0.27769418},"period":0.6152,"kepler":0.6152,"drift":0.001},{"name":"Earth","slug":"earth","kind":"Planet","radius":6371,"mass":5.972e+24,"notes":"À proprement parler le barycentre Terre/Lune, qui est ce que donne la table source — un point à environ 4 670 km du centre de la Terre, donc encore à l'intérieur de la planète.","el":{"a":1.00000261,"e":0.01671123,"I":-1.531e-05,"L":100.46457166,"peri":102.93768193,"node":0},"rate":{"a":5.62e-06,"e":-4.392e-05,"I":-0.01294668,"L":35999.37244981,"peri":0.32327364,"node":0.0},"period":1,"kepler":1.0,"drift":0.0},{"name":"Mars","slug":"mars","kind":"Planet","radius":3389.5,"mass":6.417e+23,"notes":"Assez excentrique pour que Kepler n'ait pu l'ajuster à un cercle, ce pourquoi la première loi a été trouvée ici et non ailleurs, plus commodément.","el":{"a":1.52371034,"e":0.0933941,"I":1.84969142,"L":-4.55343205,"peri":-23.94362959,"node":49.55953891},"rate":{"a":1.847e-05,"e":7.882e-05,"I":-0.00813131,"L":19140.30268499,"peri":0.44441088,"node":-0.29257343},"period":1.8808,"kepler":1.8808,"drift":0.003},{"name":"Jupiter","slug":"jupiter","kind":"Planet","radius":69911,"mass":1.898e+27,"notes":"Deux fois et demie la masse de tout le reste en orbite réuni. Le barycentre Soleil–Jupiter se trouve juste à l'extérieur de la surface du Soleil, si bien que le Soleil l'orbite visiblement.","el":{"a":5.202887,"e":0.04838624,"I":1.30439695,"L":34.39644051,"peri":14.72847983,"node":100.47390909},"rate":{"a":-0.00011607,"e":-0.00013253,"I":-0.00183714,"L":3034.74612775,"peri":0.21252668,"node":0.20469106},"period":11.862,"kepler":11.8677,"drift":0.048},{"name":"Saturn","slug":"saturn","kind":"Planet","radius":58232,"mass":5.683e+26,"notes":"La planète la moins dense — elle flotterait sur l'eau, s'il existait un océan assez grand. C'est aussi la plus grande erreur nominale de cette table, environ 600 arcsec de longitude.","el":{"a":9.53667594,"e":0.05386179,"I":2.48599187,"L":49.95424423,"peri":92.59887831,"node":113.66242448},"rate":{"a":-0.0012506,"e":-0.00050991,"I":0.00193609,"L":1222.49362201,"peri":-0.41897216,"node":-0.28867794},"period":29.457,"kepler":29.4507,"drift":0.021},{"name":"Uranus","slug":"uranus","kind":"Planet","radius":25362,"mass":8.681e+25,"notes":"Basculée de 98° sur le côté, elle roule le long de son orbite au lieu de tourner droite. L'inclinaison est celle de la planète, non de l'orbite, qui reste à moins de 0,8° de l'écliptique.","el":{"a":19.18916464,"e":0.04725744,"I":0.77263783,"L":313.23810451,"peri":170.9542763,"node":74.01692503},"rate":{"a":-0.00196176,"e":-4.397e-05,"I":-0.00242939,"L":428.48202785,"peri":0.40805281,"node":0.04240589},"period":84.011,"kepler":84.059,"drift":0.057},{"name":"Neptune","slug":"neptune","kind":"Planet","radius":24622,"mass":1.024e+26,"notes":"Découverte en 1846 en la prédisant à partir des écarts d'Uranus et en pointant un télescope là où le calcul l'indiquait — à un degré près de la position donnée par Le Verrier.","el":{"a":30.06992276,"e":0.00859048,"I":1.77004347,"L":-55.12002969,"peri":44.96476227,"node":131.78422574},"rate":{"a":0.00026291,"e":5.105e-05,"I":0.00035372,"L":218.45945325,"peri":-0.32241464,"node":-0.00508664},"period":164.79,"kepler":164.8916,"drift":0.062},{"name":"Pluto","slug":"pluto","kind":"Dwarf planet","radius":1188.3,"mass":1.303e+22,"notes":"Inclinée de 17° par rapport à tous les autres et assez excentrique pour passer à l'intérieur de l'orbite de Neptune pendant 20 ans sur ses 248. Les deux ne se rencontrent jamais : une résonance 3:2 les tient à distance, et elle rend le mouvement de Pluton chaotique à long terme.","el":{"a":39.48211675,"e":0.2488273,"I":17.14001206,"L":238.92903833,"peri":224.06891629,"node":110.30393684},"rate":{"a":-0.00031596,"e":5.17e-05,"I":4.818e-05,"L":145.20780515,"peri":-0.04062942,"node":-0.01183482},"period":247.94,"kepler":248.0851,"drift":0.059}],"sun":{"name":"Sun","slug":"sun","kind":"Star","radius":695700,"mass":1.989e+30,"notes":"L'origine du repère, qui détient 99,86 % de la masse du système — c'est pourquoi tout autre corps peut ici être traité comme un problème à deux corps et résolu exactement."}}</script>
 <script>
   const D = JSON.parse(document.getElementById('data').textContent);
   const B = D.bodies;
@@ -362,8 +363,8 @@
     }
     const y = Math.floor(year), frac = year - y;
     const dt = new Date(Date.UTC(y, 0, 1) + frac * 365.25 * 864e5);
-    hud.innerHTML = `<b>${dt.toISOString().slice(0, 10)}</b><br>${secPerYear.toFixed(1)} s = 1 yr`
-      + `<br>${logScale ? 'log' : 'linear'} radius · ${(zoom).toFixed(2)}×`;
+    hud.innerHTML = `<b>${dt.toISOString().slice(0, 10)}</b><br>${secPerYear.toFixed(1)} s = 1 an`
+      + `<br>${logScale ? 'log' : 'linear'} rayon · ${(zoom).toFixed(2)}×`;
   }
 
   let last = performance.now();
@@ -384,7 +385,7 @@
   const $ = (id) => document.getElementById(id);
   $('play').onclick = (e) => { playing = !playing; e.target.textContent = playing ? '⏸ pause' : '▶ play'; e.target.classList.toggle('on', playing); };
   $('spd').oninput = (e) => { secPerYear = +e.target.value; $('spdv').textContent = secPerYear.toFixed(1); };
-  $('scale').onclick = (e) => { logScale = !logScale; e.target.textContent = 'scale: ' + (logScale ? 'log' : 'linear'); };
+  $('scale').onclick = (e) => { logScale = !logScale; e.target.textContent = 'échelle : ' + (logScale ? 'log' : 'linear'); };
   $('trails').onclick = (e) => { showOrbits = !showOrbits; e.target.classList.toggle('on', showOrbits); };
   $('now').onclick = () => { const n = new Date(); year = n.getUTCFullYear() + (n.getUTCMonth() * 30 + n.getUTCDate()) / 365.25; $('yr').value = year; };
   $('yr').oninput = (e) => { year = +e.target.value; $('yrv').textContent = Math.floor(year); };
@@ -407,7 +408,7 @@
       tip.style.opacity = 1;
       tip.style.left = Math.min(rect.width - 270, (mx / sc) + 14) + 'px';
       tip.style.top = ((my / sc) - 10) + 'px';
-      tip.innerHTML = `<b>${f.b.name}</b> — ${f.b.notes || ''}<span class="k">${f.au.toFixed(3)} au from the Sun now · period ${f.b.period.toFixed(2)} yr · e ${f.b.el.e.toFixed(4)}</span>`;
+      tip.innerHTML = `<b>${f.b.name}</b> — ${f.b.notes || ''}<span class="k">${f.au.toFixed(3)} au du Soleil actuellement · période ${f.b.period.toFixed(2)} an · e ${f.b.el.e.toFixed(4)}</span>`;
     } else tip.style.opacity = 0;
   });
   stage.addEventListener('wheel', (e) => { e.preventDefault(); zoom = Math.max(0.35, Math.min(6, zoom * (e.deltaY > 0 ? 0.92 : 1.08))); }, { passive: false });

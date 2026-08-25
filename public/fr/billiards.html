@@ -284,7 +284,7 @@
   @media print { .klang { display: none; } }
 </style>
 <div class="klang" aria-label="Language · Langue"><a href="/billiards" hreflang="en" lang="en">EN</a><a href="/fr/billiards" hreflang="fr" lang="fr" class="on">FR</a></div>
-<script>window.__VOCAB__ = {"Billiards":"Billard","Advanced":"Avancé","Mechanics":"Mécanique","Intermediate":"Intermédiaire","Beginner":"Débutant"};</script>
+<script>window.__VOCAB__ = {"Advanced":"Avancé","Mechanics":"Mécanique","Beginner":"Débutant","Intermediate":"Intermédiaire","Billiards":"Billard"};</script>
 <script>const VOCAB = window.__VOCAB__ || {}; const vocab = (s) => (s == null ? s : (VOCAB[s] || s));</script>
 
 <nav class="knav"><a href="/fr/">KOSMOS</a><span>/</span><span class="cur">Billard</span></nav>
@@ -399,9 +399,9 @@
     <div class="legend" id="dslegend"></div></div>
   <div class="kcard ctl" id="dsysctl">
     <div class="row"><label>le système</label>
-      <div class="modes"><button id="dsysb2" type="button">deux bandes — le miroir</button><button id="dsysb3" type="button" class="on">trois bandes — coin cinq</button><button id="dsysb4" type="button">three rails — scratch it</button></div>
+      <div class="modes"><button id="dsysb2" type="button">deux bandes — le miroir</button><button id="dsysb3" type="button" class="on">trois bandes — coin cinq</button><button id="dsysb4" type="button">trois bandes — fausse blanche</button></div>
       <div class="hint" id="dshelp"></div></div>
-    <div class="row scratch-only"><label>the pocket to scratch in</label>
+    <div class="row scratch-only"><label>la poche où faire fausse blanche</label>
       <div class="presets" id="dspockets"></div>
       <button type="button" class="exec" id="dsexec" style="margin-top:6px">▶ exécuter le coup</button></div>
     <div class="row sys3-only"><label for="darr">arrivée — là où vous voulez la troisième bande</label><input id="darr" type="range" min="0.4" max="5" step="0.1" value="2"><span class="v" id="darrv"></span></div>
@@ -2393,7 +2393,7 @@
     const flip = dFlip();
     drawSysTable(flip);
     $('dslegend').innerHTML = DS.sys === 4
-      ? '<span style="--lc:var(--c-red)">the pocket you called</span><span style="--lc:var(--muted); --ls:dashed">the line to shoot</span><span style="--lc:var(--c-felt)">what the cloth really does</span>'
+      ? '<span style="--lc:var(--c-red)">la poche annoncée</span><span style="--lc:var(--muted); --ls:dashed">la ligne à jouer</span><span style="--lc:var(--c-felt)">ce que le tapis fait vraiment</span>'
       : DS.sys === 3
       ? '<span style="--lc:var(--c-felt)">première bande — les numéros de visée, au-dessus de la grande bande opposée</span><span style="--lc:var(--c-amber)">troisième bande — les numéros d\'arrivée, sur le tapis</span><span style="--lc:var(--muted)">position de la bille blanche — à l\'extérieur des bandes proches, le coin vaut 5</span><span style="--lc:var(--muted); --ls:dashed">la ligne du système</span>'
       : '<span style="--lc:var(--muted); --ls:dashed">le trajet du miroir</span><span style="--lc:var(--c-red); --ls:dotted">la ligne vers l\'image, droit à travers les bandes</span><span style="--lc:var(--c-felt)">ce que le tapis fait réellement</span>';
@@ -2431,7 +2431,7 @@
           : `<span class="warn">not the system's path — the ball took the ${S.hits.slice(0, 3).map((h) => h.r.name).join(', then the ') || 'no'} rail${S.hits.length === 1 ? '' : 's'}</span>`, patternOK && Math.abs(err) < 0.5 ? 'good' : 'warn'],
         ['the system holds', 'with running side at a firm pace. It is a fit to a real table, not a theorem — the numbers were measured, and they hold only near the stroke they were measured with.'],
       ]);
-      $('dshelp').innerHTML = 'Drag the cue ball anywhere on the cloth. Off the cushion its position number is read where the shot line, run back, meets the near rails — the faint dotted line. Set the arrival you want and the system does the subtraction.';
+      $('dshelp').innerHTML = 'Faites glisser la bille blanche n\'importe où sur le tapis. Hors de la bande, son numéro de position se lit là où la ligne de tir, prolongée en arrière, rencontre les bandes proches — la fine ligne pointillée. Réglez l\'arrivée voulue et le système fait la soustraction.';
     } else if (DS.sys === 4) {
       const pk = DS.pk, target = POCKETS[pk];
       const [tx2, ty2] = px(target.p);
@@ -2461,12 +2461,12 @@
         }
       }
       $('dsout').innerHTML = dl([
-        ['the pocket', `the <b>${target.name}</b> — click another on the table, or use the chips`],
-        ['the line', sol ? `aim ${fmt(deg(Math.atan2(sol.dir[1], sol.dir[0])), 1)}° · ${sol.rails} rail${sol.rails === 1 ? '' : 's'} on the way in` : `<span class="warn">no three-rail route into that pocket at this speed — try another pocket, another pace, or move the cue ball</span>`],
-        ['in corner five', five ? `position <b>${fmt(five.pos, 1)}</b> − aim <b>${fmt(five.aim, 1)}</b> = arrival <b>${fmt(five.arr, 1)}</b> <small>— it takes the system's own route, so the numbers describe it</small>` : 'the route does not follow the system\'s three rails, so its numbers do not describe this one'],
+        ['la poche', `la <b>${target.name}</b> — cliquez-en une autre sur la table, ou utilisez les pastilles`],
+        ['the line', sol ? `visée ${fmt(deg(Math.atan2(sol.dir[1], sol.dir[0])), 1)}° · ${sol.rails} bande${sol.rails === 1 ? '' : 's'} à l'aller` : `<span class="warn">aucune trajectoire à trois bandes vers cette poche à cette vitesse — essayez une autre poche, une autre allure, ou déplacez la bille blanche</span>`],
+        ['in corner five', five ? `position <b>${fmt(five.pos, 1)}</b> − visée <b>${fmt(five.aim, 1)}</b> = arrivée <b>${fmt(five.arr, 1)}</b> <small>— il emprunte la route propre du système, si bien que les nombres le décrivent</small>` : 'the route does not follow the system\'s three rails, so its numbers do not describe this one'],
         ['the drill', 'Pick a pocket, execute, and watch it go. Then move the cue ball and do it again — scratching on purpose is the cheapest way to learn where the cue ball goes when you did not mean to.', sol ? 'good' : 'warn'],
       ]);
-      $('dshelp').innerHTML = 'Drag the cue ball anywhere; click a pocket on the table (or a chip) to call it. The aim is searched against the real cushions — there is no diamond arithmetic for a scratch.';
+      $('dshelp').innerHTML = 'Placez la bille blanche où vous voulez ; cliquez sur une poche de la table (ou sur une pastille) pour l\'annoncer. La visée est cherchée contre les vraies bandes — il n\'y a pas d\'arithmétique des losanges pour une blanche empochée.';
     } else {
       const sol = solve2(DS.cb2, DS.tgt);
       let miss = null, missP = null, S = null, died = false;
