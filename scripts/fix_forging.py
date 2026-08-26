@@ -21,6 +21,7 @@ sentence is still there. Safe to re-run; does nothing after the first time.
 Run on the VPS:  ./deploy.sh fix_forging link_equations
 """
 import sys
+import time
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -51,6 +52,24 @@ SUPERSEDED = {
 WAS_LINKED = {"Hooke's Law", "Young's Modulus", "Newton's Law of Cooling"}
 
 
+def eq_index(wanted, tries=6):
+    """Name -> page for the Equations DB, waiting for rows this run just made.
+
+    A row created by sync_rows is not always in the next query's results: on
+    2026-08-26 both equations were added and only one came back a second later.
+    Re-query rather than fail, because failing here leaves the pair half-linked.
+    """
+    for attempt in range(tries):
+        pages = {title_of(p, "Name"): p for p in query_all(EQ_DS) if title_of(p, "Name")}
+        missing = [n for n in wanted if n not in pages]
+        if not missing:
+            return pages
+        if attempt < tries - 1:
+            print(f"  waiting for Notion to index {', '.join(missing)}")
+            time.sleep(2 * (attempt + 1))
+    sys.exit(f"  equations still missing after {tries} queries, refusing to half-link: {missing}")
+
+
 def text_of(page, prop) -> str:
     return "".join(x["plain_text"] for x in page["properties"].get(prop, {}).get("rich_text", []))
 
@@ -72,10 +91,7 @@ def main():
                 "Significance": sig, "Year": y}
                for n, e, f, na, sy, sig, y in EQUATIONS if n in NEW_EQUATIONS], "equations")
 
-    eq_pages = {title_of(p, "Name"): p for p in query_all(EQ_DS) if title_of(p, "Name")}
-    missing = [n for n in eqn + NEW_EQUATIONS if n not in eq_pages]
-    if missing:
-        sys.exit(f"  equations still missing, refusing to link: {missing}")
+    eq_pages = eq_index(sorted(set(eqn) | set(NEW_EQUATIONS)))
 
     for name, prereqs in REQUIRES.items():
         page = eq_pages[name]
