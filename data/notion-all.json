@@ -510330,7 +510330,8 @@
       "Year": 1775,
       "Required By": [
         "3bbe5275-7b5c-8193-83a5-f551fd37b47c",
-        "3c0e5275-7b5c-8152-92cb-d7594f28f2ed"
+        "3c0e5275-7b5c-8152-92cb-d7594f28f2ed",
+        "3bbe5275-7b5c-81da-b2e6-ed931eca7217"
       ],
       "Elements": [],
       "Name": "Angular Momentum"
@@ -514201,7 +514202,7 @@
     {
       "id": "3bbe5275-7b5c-810a-8065-f03f5253cda9",
       "url": "https://app.notion.com/p/Vis-Viva-Equation-3bbe52757b5c810a8065f03f5253cda9",
-      "lastEdited": "2026-08-18T19:16:00.000Z",
+      "lastEdited": "2026-08-26T17:55:00.000Z",
       "Skills": [],
       "Equation": "v² = GM·(2/r − 1/a)",
       "Minerals": [],
@@ -514231,7 +514232,7 @@
       "Impacts": [],
       "Symbols": "v orbital speed at distance r from the central body · a semi-major axis of the orbit · G gravitational constant · M central mass · for a circular orbit r = a and v = √(GM/r)",
       "Spectral Types": [],
-      "Significance": "Speed anywhere along any orbit from energy bookkeeping alone — 'vis viva' is Leibniz's name for what we now call kinetic energy. The everyday tool of mission design: every Hohmann transfer, gravity assist, and orbital insertion burn starts from this line.",
+      "Significance": "Speed anywhere along any orbit from energy bookkeeping alone. 'Vis viva' is Leibniz's name for mv² — twice the kinetic energy, a century and a half before Coriolis put the half in — and this equation is no more than the conserved sum of that and the gravitational potential, rearranged for v. The everyday tool of mission design: every Hohmann transfer, gravity assist and orbital insertion burn starts from this line.",
       "Year": 1687,
       "Required By": [],
       "Elements": [],
@@ -516658,7 +516659,7 @@
     {
       "id": "3bbe5275-7b5c-81da-b2e6-ed931eca7217",
       "url": "https://app.notion.com/p/Kepler-s-First-Law-3bbe52757b5c81dab2e6ed931eca7217",
-      "lastEdited": "2026-08-15T16:49:00.000Z",
+      "lastEdited": "2026-08-26T17:55:00.000Z",
       "Skills": [],
       "Equation": "r = p / (1 + e·cos θ)",
       "Minerals": [],
@@ -516678,11 +516679,14 @@
         "41dff11c-b8f7-482d-bb9a-458fe9f2e922"
       ],
       "Constants": [],
-      "Requires": [],
+      "Requires": [
+        "3bbe5275-7b5c-811b-8297-ce47b2c5d614",
+        "3c0e5275-7b5c-818b-97c8-d52070d30162"
+      ],
       "Impacts": [],
       "Symbols": "r distance from the Sun · p semi-latus rectum (size of the orbit) · e eccentricity (0 circle, <1 ellipse) · θ angle from closest approach",
       "Spectral Types": [],
-      "Significance": "Planets travel ellipses with the Sun at one focus — not the perfect circles two millennia of astronomy insisted on. Written as the polar equation of the orbit.",
+      "Significance": "Planets travel ellipses with the Sun at one focus — not the perfect circles two millennia of astronomy had insisted on. Kepler got there through Tycho's data and eight arcminutes of Martian residual he refused to round away. The ellipse is not a fact about the solar system: an inverse-square attraction is one of only two force laws whose bound orbits close on themselves at all, so the shape falls out of Newton's law rather than having to be assumed. Written here as the polar equation of the orbit.",
       "Year": 1609,
       "Required By": [],
       "Elements": [],
@@ -517442,7 +517446,8 @@
       "Significance": "The same rule pulls an apple to the ground and holds the Moon in orbit — the first law to unify heaven and Earth.",
       "Year": 1687,
       "Required By": [
-        "3bbe5275-7b5c-81c8-8eb1-cdc2179de58e"
+        "3bbe5275-7b5c-81c8-8eb1-cdc2179de58e",
+        "3bbe5275-7b5c-81da-b2e6-ed931eca7217"
       ],
       "Elements": [],
       "Name": "Law of Universal Gravitation"
