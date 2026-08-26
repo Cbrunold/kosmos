@@ -509084,6 +509084,36 @@
   ],
   "equations": [
     {
+      "id": "3c8e5275-7b5c-81cc-be5f-d381c8363626",
+      "url": "https://app.notion.com/p/Riemann-Curvature-Tensor-3c8e52757b5c81ccbe5fd381c8363626",
+      "lastEdited": "2026-08-26T17:19:00.000Z",
+      "Skills": [],
+      "Equation": "R^ρ_σμν = ∂_μΓ^ρ_νσ − ∂_νΓ^ρ_μσ + Γ^ρ_μλΓ^λ_νσ − Γ^ρ_νλΓ^λ_μσ",
+      "Minerals": [],
+      "Timeline": [],
+      "Field": "General Relativity",
+      "Celestial Objects": [],
+      "Theories": [],
+      "Named After": "Bernhard Riemann",
+      "Machines": [],
+      "Related": [],
+      "Instruments": [],
+      "Constants": [],
+      "Requires": [],
+      "Impacts": [],
+      "Symbols": "R^ρ_σμν the curvature tensor · Γ the Christoffel symbols, built from the metric and its first derivatives · ∂_μ partial derivative along coordinate μ · the tensor vanishes everywhere if and only if spacetime is flat",
+      "Spectral Types": [],
+      "Significance": "What it means for spacetime to be curved, stated so that it cannot be argued away by a change of coordinates. Carry a vector around a small closed loop and it comes back rotated; this tensor is exactly that rotation per unit area, and it is zero in flat space in every coordinate system, including the accelerating ones where the Christoffel symbols are not. Contract it once and you have the Ricci tensor, again and you have the Ricci scalar — the two objects the field equations are written in. Riemann set it out in an 1854 lecture, sixty years before there was anything for it to describe.",
+      "Year": 1854,
+      "Required By": [
+        "3bbe5275-7b5c-81c7-b3a7-decb4402d1ab",
+        "3bbe5275-7b5c-813b-aa6c-dd6ce2e33cbf",
+        "3bde5275-7b5c-81c4-9445-fc85582c4e1d"
+      ],
+      "Elements": [],
+      "Name": "Riemann Curvature Tensor"
+    },
+    {
       "id": "3c8e5275-7b5c-8197-836a-e618ca31b4a6",
       "url": "https://app.notion.com/p/Hall-Petch-Relationship-3c8e52757b5c8197836ae618ca31b4a6",
       "lastEdited": "2026-08-26T16:43:00.000Z",
@@ -511053,11 +511083,7 @@
       "Spectral Types": [],
       "Significance": "How sharply a path bends: the reciprocal of the radius of the circle that hugs it. A straight line has zero, a tight corner a lot. Huygens needed it in 1673 to make a pendulum keep exact time; a road engineer needs it to bank a bend; general relativity generalises it to spacetime, where curvature is what gravity is — the geodesic equation and the FLRW metric are curvature statements. Gauss showed a surface's curvature can be measured from within it, without leaving.",
       "Year": 1673,
-      "Required By": [
-        "3bbe5275-7b5c-813b-aa6c-dd6ce2e33cbf",
-        "3bde5275-7b5c-81c4-9445-fc85582c4e1d",
-        "3bbe5275-7b5c-81c7-b3a7-decb4402d1ab"
-      ],
+      "Required By": [],
       "Elements": [],
       "Name": "Curvature"
     },
@@ -511856,7 +511882,7 @@
     {
       "id": "3bde5275-7b5c-81b6-8a2d-f530d01d6412",
       "url": "https://app.notion.com/p/Linear-Perturbation-Growth-3bde52757b5c81b68a2df530d01d6412",
-      "lastEdited": "2026-08-15T18:01:00.000Z",
+      "lastEdited": "2026-08-26T17:19:00.000Z",
       "Skills": [],
       "Equation": "δ̈ + 2H·δ̇ = 4πG·ρ̄·δ",
       "Minerals": [],
@@ -511893,7 +511919,10 @@
         "b2c375af-6ea5-48a8-95f1-982fa7682f8a"
       ],
       "Constants": [],
-      "Requires": [],
+      "Requires": [
+        "3bbe5275-7b5c-818c-bf76-d40ebcb485e3",
+        "3bde5275-7b5c-81eb-8234-c87a6700bc0d"
+      ],
       "Impacts": [],
       "Symbols": "δ = δρ/ρ̄ the density contrast, how much denser a patch is than average · δ̇, δ̈ its time derivatives · H the Hubble parameter · ρ̄ the mean matter density · G gravitational constant",
       "Spectral Types": [],
@@ -511906,7 +511935,7 @@
     {
       "id": "3bde5275-7b5c-8197-a885-cf717e19fea0",
       "url": "https://app.notion.com/p/Cosmological-Equation-of-State-3bde52757b5c8197a885cf717e19fea0",
-      "lastEdited": "2026-08-15T17:50:00.000Z",
+      "lastEdited": "2026-08-26T17:19:00.000Z",
       "Skills": [],
       "Equation": "w = p/(ρc²),   ρ ∝ a^(−3(1+w))",
       "Minerals": [],
@@ -511940,11 +511969,13 @@
         "3bde5275-7b5c-8148-b8bc-c45aa881ee13",
         "3bde5275-7b5c-8126-9e39-d5ecfc5220cd"
       ],
-      "Requires": [],
+      "Requires": [
+        "3bde5275-7b5c-81bc-a558-cbf2f89a2f06"
+      ],
       "Impacts": [],
       "Symbols": "w the equation-of-state parameter · p pressure · ρ energy density · a scale factor · w = 0 for matter, 1/3 for radiation, −1 for a cosmological constant",
       "Spectral Types": [],
-      "Significance": "One number per ingredient, and it decides everything. Feed w into the fluid equation and the dilution law falls out: matter thins as a⁻³ (volume alone), radiation as a⁻⁴ (volume plus redshift), and dark energy with w = −1 does not thin at all — which is why the early universe was radiation-dominated, the middle matter-dominated, and the present is being taken over by a constant. Acceleration begins when w < −1/3; measurements put dark energy at w = −1.03 ± 0.03, maddeningly consistent with a plain cosmological constant.",
+      "Significance": "One number per ingredient, and it decides everything. Feed w into the fluid equation and the dilution law falls out: matter thins as a⁻³ (volume alone), radiation as a⁻⁴ (volume plus redshift), and dark energy with w = −1 does not thin at all — which is why the early universe was radiation-dominated, the middle matter-dominated, and the present is being taken over by a constant. The expansion accelerates once the *total* w falls below −1/3. Whether dark energy's own w is exactly −1 is the open question of the subject: Planck's 2018 combination gave −1.03 ± 0.03, indistinguishable from a cosmological constant, and the baryon-acoustic-oscillation surveys since have pulled toward a w that changes with time. Treat any single number here as dated.",
       "Year": 1933,
       "Required By": [],
       "Elements": [],
@@ -511953,7 +511984,7 @@
     {
       "id": "3bde5275-7b5c-81bc-a558-cbf2f89a2f06",
       "url": "https://app.notion.com/p/Cosmological-Fluid-Equation-3bde52757b5c81bca558cbf2f89a2f06",
-      "lastEdited": "2026-08-15T17:50:00.000Z",
+      "lastEdited": "2026-08-26T17:19:00.000Z",
       "Skills": [],
       "Equation": "ρ̇ + 3H(ρ + p/c²) = 0",
       "Minerals": [],
@@ -511978,20 +512009,25 @@
       ],
       "Instruments": [],
       "Constants": [],
-      "Requires": [],
+      "Requires": [
+        "3bbe5275-7b5c-818c-bf76-d40ebcb485e3",
+        "3bbe5275-7b5c-819a-8209-e94b6436d16a"
+      ],
       "Impacts": [],
       "Symbols": "ρ energy density of a component · ρ̇ its rate of change with cosmic time · H = ȧ/a the Hubble parameter · p pressure · c speed of light",
       "Spectral Types": [],
       "Significance": "The third member of the Friedmann trio, and the one most often left out: energy conservation for an expanding universe. It is nothing more exotic than the first law of thermodynamics — dU = −p dV — applied to a comoving volume that is growing, which is why the pressure term appears alongside the density. Any two of the three cosmological equations imply the third, so this is the closure that makes the system solvable; without it the Friedmann equations have more unknowns than constraints.",
       "Year": 1927,
-      "Required By": [],
+      "Required By": [
+        "3bde5275-7b5c-8197-a885-cf717e19fea0"
+      ],
       "Elements": [],
       "Name": "Cosmological Fluid Equation"
     },
     {
       "id": "3bde5275-7b5c-8120-9d3f-eb637591139f",
       "url": "https://app.notion.com/p/Critical-Density-3bde52757b5c81209d3feb637591139f",
-      "lastEdited": "2026-08-15T18:00:00.000Z",
+      "lastEdited": "2026-08-26T17:19:00.000Z",
       "Skills": [],
       "Equation": "ρ_c = 3H² / (8πG)",
       "Minerals": [],
@@ -512028,11 +512064,13 @@
         "3bde5275-7b5c-81f5-bf3e-f107dc4d1c6b",
         "3bde5275-7b5c-8148-b8bc-c45aa881ee13"
       ],
-      "Requires": [],
+      "Requires": [
+        "3bbe5275-7b5c-818c-bf76-d40ebcb485e3"
+      ],
       "Impacts": [],
       "Symbols": "ρ_c the density that makes space exactly flat · H the Hubble parameter at that epoch · G gravitational constant · densities are quoted against it as Ω = ρ/ρ_c",
       "Spectral Types": [],
-      "Significance": "The tipping-point density: above it space curves closed, below it open, exactly at it flat. Today it is about 8.5 × 10⁻²⁷ kg/m³ — five hydrogen atoms per cubic metre, a better vacuum than any laboratory can make, and yet it is the density that decides the shape of the cosmos. Measurements put the total at Ω = 1.000 ± 0.002, flat to a fifth of a percent, which is the observation inflation was invented to explain.",
+      "Significance": "The tipping-point density: above it space curves closed, below it open, exactly at it flat. Today it is about 8.5 × 10⁻²⁷ kg/m³ taking H₀ = 67 km/s/Mpc — five hydrogen atoms per cubic metre, a better vacuum than any laboratory can make, and yet the density that decides the shape of the cosmos. Take H₀ = 73 instead and it rises to 10 × 10⁻²⁷, which is one more way of saying the Hubble tension is not a small argument. Measurements put the total at Ω = 1.000 ± 0.002, flat to a fifth of a percent, which is the observation inflation was invented to explain.",
       "Year": 1932,
       "Required By": [],
       "Elements": [],
@@ -512041,7 +512079,7 @@
     {
       "id": "3bde5275-7b5c-81c4-9445-fc85582c4e1d",
       "url": "https://app.notion.com/p/FLRW-Metric-3bde52757b5c81c49445fc85582c4e1d",
-      "lastEdited": "2026-08-18T19:16:00.000Z",
+      "lastEdited": "2026-08-26T17:19:00.000Z",
       "Skills": [],
       "Equation": "ds² = −c²dt² + a(t)²[dr²/(1 − kr²) + r²(dθ² + sin²θ dφ²)]",
       "Minerals": [],
@@ -512078,21 +512116,25 @@
         "3bde5275-7b5c-81d6-a084-f77a4c868d4f"
       ],
       "Requires": [
-        "3c0e5275-7b5c-8106-ba68-c7e036dd2cc4"
+        "3c8e5275-7b5c-81cc-be5f-d381c8363626"
       ],
       "Impacts": [],
       "Symbols": "ds the spacetime interval · t cosmic time · r, θ, φ comoving coordinates that expand with space · a(t) the scale factor · k spatial curvature (−1 open, 0 flat, +1 closed) · c speed of light",
       "Spectral Types": [],
       "Significance": "The shape of the universe, written down. Assume only that space is homogeneous and isotropic — the same everywhere, the same in every direction — and this is the *only* geometry allowed; that uniqueness is a theorem, not a modelling choice. Everything else in cosmology follows: feed this metric to Einstein's field equations and the Friedmann equations fall out, and the redshift-distance relation with them. All the physics hides in one function of time, a(t), and one number, k.",
       "Year": 1935,
-      "Required By": [],
+      "Required By": [
+        "3bbe5275-7b5c-818c-bf76-d40ebcb485e3",
+        "3bbe5275-7b5c-81a1-9543-ed416dd7caa2",
+        "3bde5275-7b5c-811c-8470-d8ecfce3c2de"
+      ],
       "Elements": [],
       "Name": "FLRW Metric"
     },
     {
       "id": "3bde5275-7b5c-811c-8470-d8ecfce3c2de",
       "url": "https://app.notion.com/p/Cosmological-Redshift-3bde52757b5c811c8470d8ecfce3c2de",
-      "lastEdited": "2026-08-18T20:03:00.000Z",
+      "lastEdited": "2026-08-26T17:19:00.000Z",
       "Skills": [],
       "Equation": "1 + z = λ_obs/λ_emit = a(t_obs)/a(t_emit)",
       "Minerals": [],
@@ -512129,7 +512171,7 @@
         "3bde5275-7b5c-8150-b5ab-eed848d071ed"
       ],
       "Requires": [
-        "3bbe5275-7b5c-814d-83e6-ee6df24eacca"
+        "3bde5275-7b5c-81c4-9445-fc85582c4e1d"
       ],
       "Impacts": [],
       "Symbols": "z redshift · λ_emit wavelength when the light left · λ_obs wavelength when it arrives · a(t) scale factor of the universe at each moment · z = 0 is here and now",
@@ -512869,7 +512911,9 @@
       "Spectral Types": [],
       "Significance": "Given where the charge is, find the voltage everywhere — Gauss's law rewritten for the potential, and the workhorse behind capacitor design, semiconductor junctions, and molecular electrostatics. Swap ε₀ for G and it's Newtonian gravity's potential too.",
       "Year": 1813,
-      "Required By": [],
+      "Required By": [
+        "3bde5275-7b5c-81b6-8a2d-f530d01d6412"
+      ],
       "Elements": [],
       "Name": "Poisson's Equation"
     },
@@ -514399,7 +514443,7 @@
     {
       "id": "3bbe5275-7b5c-815f-8f49-fde9509c1e77",
       "url": "https://app.notion.com/p/Einstein-Hilbert-Action-3bbe52757b5c815f8f49fde9509c1e77",
-      "lastEdited": "2026-08-15T16:49:00.000Z",
+      "lastEdited": "2026-08-26T17:19:00.000Z",
       "Skills": [],
       "Equation": "S = (c⁴/16πG)·∫R·√(−g)·d⁴x",
       "Minerals": [],
@@ -514425,18 +514469,20 @@
       ],
       "Requires": [],
       "Impacts": [],
-      "Symbols": "R the Ricci scalar, total curvature at each point · g determinant of the metric · the integral runs over all of spacetime · varying S yields the field equations",
+      "Symbols": "R the Ricci scalar, total curvature at each point · g determinant of the metric · the integral runs over all of spacetime · varying S with respect to the metric gives the vacuum field equations; the T_μν side appears only when the matter action is added to it",
       "Spectral Types": [],
-      "Significance": "All of general relativity compressed into one thing to minimize: spacetime arranges itself to extremize total curvature. Hilbert reached the field equations this way days before Einstein's own derivation — and the action form is the doorway every attempt at quantum gravity walks through.",
+      "Significance": "All of general relativity compressed into one thing to extremize. Vary it with respect to the metric and the vacuum field equations fall out; add a matter action and its variation is the stress-energy tensor, which is how any new field is coupled to gravity at all — and why the action form is the doorway every attempt at quantum gravity walks through. Hilbert presented a variational route to the theory five days before Einstein's paper of 25 November 1915, and the priority argument that grew out of it outlived both men; his surviving proof sheets, found in 1997, do not contain the explicit field equations, and he credited them to Einstein.",
       "Year": 1915,
-      "Required By": [],
+      "Required By": [
+        "3bbe5275-7b5c-81c7-b3a7-decb4402d1ab"
+      ],
       "Elements": [],
       "Name": "Einstein–Hilbert Action"
     },
     {
       "id": "3bbe5275-7b5c-813b-aa6c-dd6ce2e33cbf",
       "url": "https://app.notion.com/p/Geodesic-Equation-3bbe52757b5c813baa6cdd6ce2e33cbf",
-      "lastEdited": "2026-08-18T19:16:00.000Z",
+      "lastEdited": "2026-08-26T17:19:00.000Z",
       "Skills": [],
       "Equation": "d²x^μ/dτ² + Γ^μ_αβ·(dx^α/dτ)(dx^β/dτ) = 0",
       "Minerals": [],
@@ -514459,7 +514505,7 @@
       "Instruments": [],
       "Constants": [],
       "Requires": [
-        "3c0e5275-7b5c-8106-ba68-c7e036dd2cc4"
+        "3c8e5275-7b5c-81cc-be5f-d381c8363626"
       ],
       "Impacts": [],
       "Symbols": "x^μ position in spacetime · τ proper time along the worldline · Γ^μ_αβ Christoffel symbols, the local record of spacetime curvature",
@@ -514473,7 +514519,7 @@
     {
       "id": "3bbe5275-7b5c-81ef-b92b-d35cea11b9be",
       "url": "https://app.notion.com/p/Gravitational-Time-Dilation-3bbe52757b5c81efb92bd35cea11b9be",
-      "lastEdited": "2026-08-15T16:49:00.000Z",
+      "lastEdited": "2026-08-26T17:19:00.000Z",
       "Skills": [],
       "Equation": "Δτ = Δt·√(1 − 2GM/(rc²))",
       "Minerals": [],
@@ -514498,11 +514544,13 @@
         "3bde5275-7b5c-8157-8026-dbb044233fc8",
         "3bde5275-7b5c-81d6-a084-f77a4c868d4f"
       ],
-      "Requires": [],
+      "Requires": [
+        "3bbe5275-7b5c-81c7-b3a7-decb4402d1ab"
+      ],
       "Impacts": [],
       "Symbols": "Δτ time ticked by a clock at radius r from mass M · Δt time far away · G gravitational constant · c speed of light · the factor under the root hits zero at the event horizon",
       "Spectral Types": [],
-      "Significance": "Clocks deeper in gravity run slower — predicted from the equivalence principle years before the full theory existed. Not an abstraction: GPS satellites' clocks gain 45 microseconds a day over yours, and without this correction positions would drift kilometres per day.",
+      "Significance": "Clocks deeper in gravity run slower — predicted from the equivalence principle years before the full theory existed. Not an abstraction: a GPS satellite's clock gains about 46 microseconds a day on this term alone, loses about 7 to its orbital speed, and the receiver in your pocket is corrected for the net 38. Without it, positions would drift kilometres a day.",
       "Year": 1907,
       "Required By": [],
       "Elements": [],
@@ -515746,9 +515794,7 @@
       "Spectral Types": [],
       "Significance": "Motion squeezes waves ahead and stretches them behind — the siren that drops in pitch as it passes. The same effect, applied to light, is how radar guns catch speeders and how Hubble read the expansion of the universe from galaxy redshifts.",
       "Year": 1842,
-      "Required By": [
-        "3bde5275-7b5c-811c-8470-d8ecfce3c2de"
-      ],
+      "Required By": [],
       "Elements": [
         "3eab666d-7f4f-41e3-a816-317f17ca1000",
         "58b43aa4-583e-446a-a0b7-5f0669916b53",
@@ -516007,7 +516053,7 @@
     {
       "id": "3bbe5275-7b5c-8184-9e26-ff4ad04b3ed8",
       "url": "https://app.notion.com/p/Hubble-s-Law-3bbe52757b5c81849e26ff4ad04b3ed8",
-      "lastEdited": "2026-08-18T19:44:00.000Z",
+      "lastEdited": "2026-08-26T17:19:00.000Z",
       "Skills": [],
       "Equation": "v = H₀·d",
       "Minerals": [],
@@ -516051,6 +516097,7 @@
         "3bde5275-7b5c-8113-abea-d0038e9513f0"
       ],
       "Requires": [
+        "3bbe5275-7b5c-818c-bf76-d40ebcb485e3",
         "3bde5275-7b5c-811c-8470-d8ecfce3c2de"
       ],
       "Impacts": [],
@@ -516283,7 +516330,8 @@
       "Required By": [
         "3bee5275-7b5c-8179-b2e5-ed3b9ea12888",
         "3bee5275-7b5c-813f-a53f-daa662c95798",
-        "3bee5275-7b5c-810d-bb53-d6c1cec88ac3"
+        "3bee5275-7b5c-810d-bb53-d6c1cec88ac3",
+        "3bde5275-7b5c-81bc-a558-cbf2f89a2f06"
       ],
       "Elements": [],
       "Name": "First Law of Thermodynamics"
@@ -516887,7 +516935,7 @@
     {
       "id": "3bbe5275-7b5c-81a1-9543-ed416dd7caa2",
       "url": "https://app.notion.com/p/Second-Friedmann-Equation-3bbe52757b5c81a19543ed416dd7caa2",
-      "lastEdited": "2026-08-26T17:12:00.000Z",
+      "lastEdited": "2026-08-26T17:19:00.000Z",
       "Skills": [],
       "Equation": "ä/a = −4πG(ρ + 3p/c²)/3 + Λc²/3",
       "Minerals": [],
@@ -516921,7 +516969,10 @@
         "3bde5275-7b5c-8126-9e39-d5ecfc5220cd",
         "3bde5275-7b5c-8148-b8bc-c45aa881ee13"
       ],
-      "Requires": [],
+      "Requires": [
+        "3bbe5275-7b5c-81c7-b3a7-decb4402d1ab",
+        "3bde5275-7b5c-81c4-9445-fc85582c4e1d"
+      ],
       "Impacts": [],
       "Symbols": "a the scale factor of the universe · ä its second time derivative, the acceleration of the expansion · G gravitational constant · ρ energy density · p pressure — it is the 3p term that makes radiation slow the expansion harder than matter does, and a negative enough p that reverses the sign · Λ the cosmological constant · c speed of light",
       "Spectral Types": [],
@@ -516934,7 +516985,7 @@
     {
       "id": "3bbe5275-7b5c-818c-bf76-d40ebcb485e3",
       "url": "https://app.notion.com/p/First-Friedmann-Equation-3bbe52757b5c818cbf76d40ebcb485e3",
-      "lastEdited": "2026-08-26T17:12:00.000Z",
+      "lastEdited": "2026-08-26T17:19:00.000Z",
       "Skills": [],
       "Equation": "(ȧ/a)² = 8πGρ/3 − kc²/a² + Λc²/3",
       "Minerals": [],
@@ -516973,13 +517024,21 @@
         "3bde5275-7b5c-8157-8026-dbb044233fc8",
         "3bde5275-7b5c-8113-abea-d0038e9513f0"
       ],
-      "Requires": [],
+      "Requires": [
+        "3bbe5275-7b5c-81c7-b3a7-decb4402d1ab",
+        "3bde5275-7b5c-81c4-9445-fc85582c4e1d"
+      ],
       "Impacts": [],
       "Symbols": "a the scale factor of the universe · ȧ its rate of change · H = ȧ/a the Hubble parameter · G gravitational constant · ρ the total energy density, matter and radiation together · k spatial curvature (−1 open, 0 flat, +1 closed) · Λ the cosmological constant · c speed of light",
       "Spectral Types": [],
       "Significance": "How fast the universe expands, given what it contains — Einstein's field equations applied to a uniform cosmos. The Hubble parameter, the critical density, and the fate of the universe all fall out of this one line.",
       "Year": 1922,
-      "Required By": [],
+      "Required By": [
+        "3bde5275-7b5c-81bc-a558-cbf2f89a2f06",
+        "3bde5275-7b5c-8120-9d3f-eb637591139f",
+        "3bde5275-7b5c-81b6-8a2d-f530d01d6412",
+        "3bbe5275-7b5c-8184-9e26-ff4ad04b3ed8"
+      ],
       "Elements": [
         "58b43aa4-583e-446a-a0b7-5f0669916b53",
         "b3aac4ea-8068-4e58-be44-a07b6ea70663"
@@ -517224,7 +517283,7 @@
     {
       "id": "3bbe5275-7b5c-81c7-b3a7-decb4402d1ab",
       "url": "https://app.notion.com/p/Einstein-Field-Equations-3bbe52757b5c81c7b3a7decb4402d1ab",
-      "lastEdited": "2026-08-18T19:16:00.000Z",
+      "lastEdited": "2026-08-26T17:19:00.000Z",
       "Skills": [],
       "Equation": "G_μν + Λg_μν = (8πG/c⁴)·T_μν",
       "Minerals": [],
@@ -517258,14 +517317,19 @@
         "3bde5275-7b5c-81d6-a084-f77a4c868d4f"
       ],
       "Requires": [
-        "3c0e5275-7b5c-8106-ba68-c7e036dd2cc4"
+        "3c8e5275-7b5c-81cc-be5f-d381c8363626",
+        "3bbe5275-7b5c-815f-8f49-fde9509c1e77"
       ],
       "Impacts": [],
-      "Symbols": "G_μν spacetime curvature · Λ cosmological constant · g_μν metric · T_μν energy and momentum content",
+      "Symbols": "G_μν the Einstein tensor — the Ricci curvature with its trace removed, which is the one combination whose divergence vanishes identically, and therefore the only one that can sit opposite a conserved T_μν · Λ the cosmological constant · g_μν the metric · T_μν the stress-energy tensor: energy density, momentum flow and pressure",
       "Spectral Types": [],
       "Significance": "Matter tells spacetime how to curve; curved spacetime tells matter how to move. Black holes, gravitational waves, and the expanding universe live here.",
       "Year": 1915,
-      "Required By": [],
+      "Required By": [
+        "3bbe5275-7b5c-818c-bf76-d40ebcb485e3",
+        "3bbe5275-7b5c-81a1-9543-ed416dd7caa2",
+        "3bbe5275-7b5c-81ef-b92b-d35cea11b9be"
+      ],
       "Elements": [],
       "Name": "Einstein Field Equations"
     },
