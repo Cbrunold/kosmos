@@ -265,6 +265,8 @@ LINKS = [
     ("Seismic Wave Speeds", "Cauchy's Stress Theorem"),
     ("Hooke's Law", "Cauchy's Stress Theorem"),
     ("Hooke's Law", "Young's Modulus"),
+    ("Airy Diffraction Pattern", "Gaussian Beam Divergence"),
+    ("Airy Diffraction Pattern", "Fourier Transform"),
     ("Zener–Hollomon Parameter", "Arrhenius Equation"),
     ("Hall–Petch Relationship", "Arrhenius Equation"),
     ("Griffith Fracture Criterion", "Young's Modulus"),
