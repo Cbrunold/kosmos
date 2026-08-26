@@ -78,8 +78,9 @@ SYMBOL = re.compile(r"^[A-Za-zΑ-Ωα-ωℏ∇][\w'′^_{}()/₀-₉⁰-ⁿ̀-ͯ
 # more plain ASCII letters is a word; a symbol carries a subscript, a diacritic,
 # a Greek letter or an acronym's capitals.
 WORDY = re.compile(r"^[a-z]{3,}$|^[A-Za-z]{5,}$")
-ENGLISH = re.compile(r"^(the|a|an|its|of|and|or|in|at|to|for|is|are|be|with|per|each|both|all|that|this|"
-                     r"from|net|one|two|gas|dry|cut|far|how|what|total|up|about)$", re.I)
+ENGLISH = re.compile(r"^(the|a|an|its|it|of|and|or|in|at|to|for|is|are|be|with|per|each|both|all|that|"
+                     r"this|from|net|one|two|gas|dry|cut|far|how|what|total|up|about|as|by|on|if|no|so|"
+                     r"we|you|any|put|not)$", re.I)
 
 
 # Two ways out of typed-count, and they are different things.
