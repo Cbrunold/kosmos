@@ -292,7 +292,7 @@
   @media print { .klang { display: none; } }
 </style>
 <div class="klang" aria-label="Language · Langue"><a href="/billiards" hreflang="en" lang="en">EN</a><a href="/fr/billiards" hreflang="fr" lang="fr" class="on">FR</a></div>
-<script>window.__VOCAB__ = {"Mechanics":"Mécanique","Billiards":"Billard","Advanced":"Avancé","Beginner":"Débutant","Intermediate":"Intermédiaire"};</script>
+<script>window.__VOCAB__ = {"Intermediate":"Intermédiaire","Beginner":"Débutant","Advanced":"Avancé","Billiards":"Billard","Mechanics":"Mécanique"};</script>
 <script>const VOCAB = window.__VOCAB__ || {}; const vocab = (s) => (s == null ? s : (VOCAB[s] || s));</script>
 
 <nav class="knav"><a href="/fr/">KOSMOS</a><span>/</span><span class="cur">Billard</span></nav>
@@ -318,15 +318,15 @@
       <div class="presets" style="grid-column:1/-1"><button id="share" type="button">copier un lien vers ce coup</button></div></div>
     <div class="row"><label>visée — réglage fin</label>
       <div class="aimbtns"><button type="button" data-n="-1">−1°</button><button type="button" data-n="-0.1">−0.1°</button><span class="v" id="aimv"></span><button type="button" data-n="0.1">+0.1°</button><button type="button" data-n="1">+1°</button></div>
-      <div class="hint"><b>← →</b> a degree a press, <b>shift</b> for a tenth. In practice this walks the aim off the ghost-ball line, so you can see what a degree of error costs; in pro it is the whole aim.</div></div>
+      <div class="hint"><b>← →</b> un degré par pression, <b>shift</b> pour un dixième. En entraînement, cela décale la visée de la ligne de la bille fantôme, pour voir ce que coûte un degré d'erreur ; en pro, c'est toute la visée.</div></div>
     <div class="row"><label for="spd">frappe — 1 douce, 10 casse</label><input id="spd" type="range" min="0.5" max="10" step="0.1" value="2.5"><span class="v" id="spdv"></span>
       <div class="hint">Aussi la vitesse de la bille blanche en m/s : 2–3 pour empocher, 5 ferme, 8+ une casse.</div></div>
-    <div class="row"><label>where you strike the cue ball</label>
+    <div class="row"><label>où vous frappez la bille blanche</label>
       <div style="grid-column:1/-1;display:flex;gap:12px;align-items:center">
         <svg id="tipball" viewBox="0 0 120 120" style="width:120px;height:120px;flex:0 0 120px;cursor:crosshair;touch-action:none" role="img" aria-label="The face of the cue ball: click or drag to choose where the tip meets it"></svg>
         <div style="flex:1;min-width:0">
           <div id="tipballv" style="font:12px ui-monospace,monospace;color:var(--ink);line-height:1.5"></div>
-          <div class="hint" style="margin-top:4px">Poke the ball. The sliders below follow, and so does the shot. Outside the inner ring the tip slides off the ball — that is a miscue, and the ring is where it starts.</div>
+          <div class="hint" style="margin-top:4px">Touchez la bille. Les curseurs ci-dessous suivent, et le coup aussi. Hors de l'anneau intérieur, le procédé glisse sur la bille — c'est une fausse queue, et l'anneau marque l'endroit où elle commence.</div>
         </div>
       </div></div>
     <div class="row"><label for="tip">hauteur du procédé, b/R</label><input id="tip" type="range" min="-0.5" max="0.5" step="0.02" value="0.4"><span class="v" id="tipv"></span>
@@ -384,8 +384,8 @@
 
 </section>
 <section class="tabpane" id="pane-contact">
-<h2 class="ksec">Contact &amp; throw</h2>
-<p class="knote" style="max-width:72ch;margin:0 0 10px">No rails, no pockets, no rack: two balls and the moment they touch. Where you strike the object ball decides where it goes and where the cue ball goes — and side spin bends the first of those, which is the part that costs frames. Drag the contact point around the object ball, add side, and watch both paths answer. Everything here is the same collision the shot lab runs; it is just the only thing on the table.</p>
+<h2 class="ksec">Contact &amp; déviation par frottement</h2>
+<p class="knote" style="max-width:72ch;margin:0 0 10px">Pas de bandes, pas de poches, pas de triangle : deux billes et l'instant du contact. L'endroit où vous frappez la bille visée décide où elle part et où part la bille blanche — et l'effet latéral courbe la première de ces trajectoires, ce qui est la part qui coûte des manches. Déplacez le point de contact autour de la bille visée, ajoutez de l'effet, et regardez les deux trajectoires répondre. Tout ici est la même collision que celle du laboratoire de coups ; c'est simplement la seule chose sur la table.</p>
 <div class="lab">
   <div class="tblwrap">
     <svg class="felt" id="ctab" viewBox="-20 -20 940 500" role="img" aria-label="Two balls on open cloth: the contact point, the tangent line, and the paths both balls take after impact"></svg>
@@ -393,19 +393,19 @@
     <div class="legend" id="ctleg"></div>
   </div>
   <div class="kcard ctl" id="ctctl">
-    <div class="row"><label>the hit</label><div id="ctinfo"></div>
-      <div class="hint">Drag either ball anywhere, and drag the amber handle round the object ball to choose where you strike it. The cut angle and the ball-hit fraction follow from that; the distance follows from the balls.</div></div>
-    <div class="row"><label for="ctcut">contact point — full ball to edge</label><input id="ctcut" type="range" min="-89" max="89" step="1" value="30"><span class="v" id="ctcutv"></span></div>
+    <div class="row"><label>l'impact</label><div id="ctinfo"></div>
+      <div class="hint">Déplacez l'une ou l'autre bille où vous voulez, et faites tourner la poignée ambre autour de la bille visée pour choisir l'endroit de la frappe. L'angle de coupe et la fraction de bille touchée en découlent ; la distance découle des billes.</div></div>
+    <div class="row"><label for="ctcut">point de contact — de la bille pleine au bord</label><input id="ctcut" type="range" min="-89" max="89" step="1" value="30"><span class="v" id="ctcutv"></span></div>
     <div class="row"><label for="ctspd">frappe — 1 douce, 10 casse</label><input id="ctspd" type="range" min="0.5" max="10" step="0.1" value="2.5"><span class="v" id="ctspdv"></span></div>
     <div class="row"><label for="cttip">hauteur du procédé, b/R</label><input id="cttip" type="range" min="-0.5" max="0.5" step="0.02" value="0.4"><span class="v" id="cttipv"></span></div>
     <div class="row"><label for="ctside">côté, b/R</label><input id="ctside" type="range" min="-0.5" max="0.5" step="0.02" value="0"><span class="v" id="ctsidev"></span>
-      <div class="hint">Side does three things here: it squirts the cue ball off the aim at the tip, swerves it back while it slides, and rubs the object ball at contact — that last one is <b>throw</b>, and it is the one that moves the object ball off the line you aimed.</div></div>
-    <div class="row"><label for="ctdist">distance between the balls</label><input id="ctdist" type="range" min="0.1" max="2.2" step="0.02" value="0.8"><span class="v" id="ctdistv"></span></div>
+      <div class="hint">L'effet latéral fait trois choses ici : il dévie la bille blanche de la visée dès le procédé, la ramène en courbe pendant qu'elle glisse, et frotte la bille visée au contact — ce dernier point est la <b>déviation par frottement</b>, et c'est lui qui écarte la bille visée de la ligne que vous aviez visée.</div></div>
+    <div class="row"><label for="ctdist">distance entre les billes</label><input id="ctdist" type="range" min="0.1" max="2.2" step="0.02" value="0.8"><span class="v" id="ctdistv"></span></div>
     <dl id="ctout" style="margin-top:4px"></dl>
   </div>
 </div>
-<h2 class="ksec" style="margin-top:26px">How far throw carries</h2>
-<p class="knote" style="max-width:72ch;margin:0 0 10px">Throw is not a fixed number of degrees. It rises as the surfaces rub harder and falls as they slip faster, so a soft shot throws more than a firm one and the object ball drifts further the longer it has to travel. The curves are this shot at every strike on the scale; the amber mark is where you are.</p>
+<h2 class="ksec" style="margin-top:26px">Jusqu'où porte la déviation par frottement</h2>
+<p class="knote" style="max-width:72ch;margin:0 0 10px">La déviation par frottement n'est pas un nombre fixe de degrés. Elle augmente quand les surfaces frottent plus fort et diminue quand elles glissent plus vite : un coup mou dévie donc plus qu'un coup ferme, et la bille visée dérive d'autant plus qu'elle a du chemin à faire. Les courbes donnent ce coup à chaque frappe de l'échelle ; le repère ambre indique où vous en êtes.</p>
 <svg class="felt" id="ctcurve" viewBox="0 0 900 300" role="img" aria-label="Throw angle and the resulting miss at the object ball's distance, plotted against strike intensity"></svg>
 </section>
 <section class="tabpane" id="pane-rails">
@@ -418,9 +418,9 @@
     <div class="row"><label>le système</label>
       <div class="modes"><button id="dsysb2" type="button">deux bandes — le miroir</button><button id="dsysb3" type="button" class="on">trois bandes — coin cinq</button><button id="dsysb4" type="button">trois bandes — fausse blanche</button></div>
       <div class="hint" id="dshelp"></div></div>
-    <div class="row"><label>aim — point the cue yourself</label>
+    <div class="row"><label>visée — orientez la queue vous-même</label>
       <div class="aimbtns"><button type="button" data-ds="-1">−1°</button><button type="button" data-ds="-0.1">−0.1°</button><span class="v" id="dsaimv"></span><button type="button" data-ds="0.1">+0.1°</button><button type="button" data-ds="1">+1°</button></div>
-      <div class="presets" style="grid-column:1/-1"><button type="button" id="dsfollow">use the system's line</button></div>
+      <div class="presets" style="grid-column:1/-1"><button type="button" id="dsfollow">utiliser la ligne du système</button></div>
       <div class="hint" id="dsaimhint"></div></div>
     <div class="row scratch-only"><label>la poche où faire fausse blanche</label>
       <div class="presets" id="dspockets"></div></div>
@@ -448,26 +448,26 @@
 </section>
 <section class="tabpane" id="pane-data">
 <h2 class="ksec">Glissement → roulement</h2>
-<p class="knote" style="max-width:72ch;margin:0 0 10px">Off the tip a struck ball slides: the cloth is dragging one way and the ball is spinning another. Friction eats the difference until the surface speed matches the ball speed — natural roll — and from then on the ball has forgotten what you did to it. Everything you meant by draw, stun or follow lives in the stretch <em>before</em> that. Set the three things that decide it and watch where the crossing falls.</p>
+<p class="knote" style="max-width:72ch;margin:0 0 10px">Au sortir du procédé, une bille frappée glisse : le tapis l'entraîne dans un sens et la bille tourne dans un autre. Le frottement mange la différence jusqu'à ce que la vitesse de surface égale la vitesse de la bille — le roulement naturel — et dès lors la bille a oublié ce que vous lui avez fait. Tout ce que vous entendiez par rétro, bille arrêtée ou coulé se joue dans l'intervalle <em>qui précède</em>. Réglez les trois choses qui le décident et regardez où tombe le croisement.</p>
 <div class="lab">
   <div class="tblwrap">
     <svg class="felt" id="slide" viewBox="0 0 900 300" role="img" aria-label="Slide distance before natural roll, plotted against strike intensity, with your distance marked"></svg>
     <svg class="felt" id="spincurve" viewBox="0 0 900 300" style="margin-top:10px" role="img" aria-label="How the cue ball's spin changes along its path, from what you put on it to natural roll"></svg>
   </div>
   <div class="kcard ctl" id="slidectl">
-    <div class="row"><label for="sldist">distance the cue ball covers</label><input id="sldist" type="range" min="0.1" max="2.5" step="0.02" value="0.8"><span class="v" id="sldistv"></span>
-      <div class="hint">How far it travels before you care — usually the gap to the object ball.</div></div>
-    <div class="row"><label for="sltip">the spin you put on — tip height, b/R</label><input id="sltip" type="range" min="-0.5" max="0.5" step="0.02" value="-0.35"><span class="v" id="sltipv"></span>
+    <div class="row"><label for="sldist">distance parcourue par la bille blanche</label><input id="sldist" type="range" min="0.1" max="2.5" step="0.02" value="0.8"><span class="v" id="sldistv"></span>
+      <div class="hint">La distance qu'elle parcourt avant que cela compte — en général l'écart jusqu'à la bille visée.</div></div>
+    <div class="row"><label for="sltip">l'effet que vous donnez — hauteur du procédé, b/R</label><input id="sltip" type="range" min="-0.5" max="0.5" step="0.02" value="-0.35"><span class="v" id="sltipv"></span>
       <div class="hint" id="sltiphint"></div></div>
-    <div class="row"><label for="slspd">power — strike intensity</label><input id="slspd" type="range" min="0.5" max="10" step="0.1" value="2.5"><span class="v" id="slspdv"></span></div>
-    <div class="presets" style="grid-column:1/-1"><button type="button" id="slfrom">take it from the shot lab</button></div>
+    <div class="row"><label for="slspd">puissance — intensité de frappe</label><input id="slspd" type="range" min="0.5" max="10" step="0.1" value="2.5"><span class="v" id="slspdv"></span></div>
+    <div class="presets" style="grid-column:1/-1"><button type="button" id="slfrom">le prendre depuis le labo de tir</button></div>
     <dl id="slideout" style="margin-top:4px"></dl>
   </div>
 </div>
 </section>
 <section class="tabpane" id="pane-drills">
-<h2 class="ksec">Drills &amp; minigames</h2>
-<p class="knote" style="max-width:72ch;margin:0 0 10px">Two ways to make the table ask something of you. A <b>drill</b> lays the balls out for its level and moves you up on a pot, down on a miss — ten levels, each a little harder. The <b>run-out</b> is a game: every executed shot advances the table, so the cue ball you park is the cue ball you play next. Both drive the table in <em>the shot lab</em>, and starting one takes you there.</p>
+<h2 class="ksec">Exercices &amp; mini-jeux</h2>
+<p class="knote" style="max-width:72ch;margin:0 0 10px">Deux façons de faire en sorte que la table vous demande quelque chose. Un <b>exercice</b> dispose les billes selon son niveau et vous fait monter à chaque bille empochée, descendre à chaque manqué — dix niveaux, chacun un peu plus dur. La <b>série</b> est un jeu : chaque coup réussi fait avancer la table, si bien que la bille blanche que vous garez est celle que vous jouerez ensuite. Les deux pilotent la table dans <em>le labo du coup</em>, et en lancer un vous y emmène.</p>
 <div class="out" style="grid-template-columns:1fr 1fr">
     <div class="kcard ctl"><label style="grid-column:1/-1">finir la table — un coup à la fois <span class="cnt" id="runsum"></span></label>
       <div class="row">
@@ -478,16 +478,16 @@
       <div class="row">
         <div class="aimbtns"><select id="drill"></select><button type="button" id="dlm">−</button><span class="v" id="drilllvl">—</span><button type="button" id="dlp">+</button></div>
         <div class="hint">La table se dispose d'elle-même ; 10 niveaux chacune. En mode pro, une bille empochée fait monter d'un niveau, un raté fait descendre — le format de la <a href="https://drdavepoolinfo.com/resources/drills/" target="_blank" rel="noopener" style="color:inherit">bibliothèque d'exercices et d'examens de Dr Dave</a>.</div></div></div></div>
-<p class="knote" style="max-width:72ch;margin:14px 0 0">The <b>conditions</b> — clean hit, no rail, kick first, three rails, called pocket, pocket speed, carom, nothing else moves, safety — stay on the shot lab itself, because they grade the shot you are aiming right now and you want to watch them while you drag.</p>
+<p class="knote" style="max-width:72ch;margin:14px 0 0">Les <b>conditions</b> — touche franche, sans bande, bande d'abord, trois bandes, poche annoncée, vitesse de poche, carambolage, rien d'autre ne bouge, sécurité — restent sur le labo du coup lui-même, parce qu'elles jugent le coup que vous êtes en train de viser et que vous voulez les surveiller pendant que vous déplacez les billes.</p>
 </section>
 <section class="tabpane" id="pane-layouts">
-<h2 class="ksec">Layout library</h2>
-<p class="knote" style="max-width:72ch;margin:0 0 10px">Positions worth knowing, and a shelf for your own. Each one loads onto the shot lab exactly as stored — the balls, the pocket, the strike, the tip and the side — so a layout is a shot you can hand to someone else. Save what you are looking at, and it stays in this browser; copy its link and it travels.</p>
+<h2 class="ksec">Bibliothèque de dispositions</h2>
+<p class="knote" style="max-width:72ch;margin:0 0 10px">Des positions qui valent d'être connues, et une étagère pour les vôtres. Chacune se charge dans le labo du coup exactement telle qu'elle a été enregistrée — les billes, la poche, la frappe, la hauteur et l'effet latéral — si bien qu'une disposition est un coup que l'on peut transmettre à quelqu'un d'autre. Enregistrez ce que vous avez sous les yeux, et cela reste dans ce navigateur ; copiez-en le lien, et cela voyage.</p>
 <div class="skills" id="laylib"></div>
-<h2 class="ksec" style="margin-top:26px">Your shelf</h2>
+<h2 class="ksec" style="margin-top:26px">Votre étagère</h2>
 <div class="row" style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin:0 0 12px">
-  <input id="layname" type="text" placeholder="name this layout" style="flex:1;min-width:200px;font:12px ui-monospace,monospace;background:transparent;color:var(--ink);border:1px solid var(--hairline);border-radius:6px;padding:7px 10px">
-  <button type="button" id="laysave" class="exec" style="width:auto;padding:8px 16px">save what is on the table</button>
+  <input id="layname" type="text" placeholder="nommer cette disposition" style="flex:1;min-width:200px;font:12px ui-monospace,monospace;background:transparent;color:var(--ink);border:1px solid var(--hairline);border-radius:6px;padding:7px 10px">
+  <button type="button" id="laysave" class="exec" style="width:auto;padding:8px 16px">enregistrer ce qui est sur la table</button>
 </div>
 <div class="skills" id="laymine"></div>
 <p class="knote" id="layempty" style="max-width:72ch;margin:10px 0 0"></p>
@@ -517,7 +517,7 @@
 </section>
 <p class="kfoot">Physique tirée de l'étagère Équations ; constantes de pool-sauce-engine. Coriolis, <em>Théorie mathématique des effets du jeu de billard</em>, 1835, contenait déjà l'essentiel ; le modèle de déviation par frottement suit Alciatore (<em>The Illustrated Principles of Pool and Billiards</em>, démonstrations techniques). Rien de tout cela ne remplace une table.</p>
 
-<script id="data" type="application/json">{"equations":[{"name":"Rebond sur la bande","slug":"cushion-rebound","field":"Billiards","equation":"v_n,out = e_c v_n,in;  the tangential component and side spin lose to cushion friction","significance":"La bande rend l'essentiel de la vitesse qui l'a frappée de plein fouet et ralentit celle qui la longeait, si bien que la bille repart sous un angle plus fermé qu'à l'arrivée — d'autant plus qu'elle arrive vite. L'effet latéral s'ajoute ou se retranche à cette composante le long de la bande : l'effet naturel ouvre l'angle et garde la bille en mouvement, l'effet contraire le ferme et tue la vitesse. Les bandes sont en caoutchouc, pas en constantes physiques ; chaque table joue un peu différemment, et les joueurs les testent avant un match.","year":1835,"requires":3},{"name":"Visée à la bille fantôme","slug":"ghost-ball-aim","field":"Billiards","equation":"aim the cue ball's centre at the point 2R from the object ball's centre, on the line to the pocket;  ball-hit fraction f = 1 − sin θ","significance":"Imaginez la bille blanche figée là où elle doit se trouver au contact — touchant la bille visée du côté opposé à la poche. Son centre est à un diamètre de bille du centre de la bille visée, le long de la ligne de la poche ; envoyez-y la vraie bille blanche. La fraction de recouvrement des deux, vue depuis la queue, vaut 1 − sin θ, ce qui explique qu'un impact demi-bille donne une coupe de 30° et un quart de bille 48,6°. Pure géométrie ; la déviation par frottement y ajoute une correction.","year":1835,"requires":2},{"name":"Règle des quatre-vingt-dix degrés","slug":"ninety-degree-rule","field":"Billiards","equation":"v_OB = v cos θ  (along the line of centres);  v_CB = v sin θ  (along the tangent line)","significance":"Deux billes égales, l'une au repos, sans effet : après le choc, elles se séparent à angle droit. La bille visée part selon la ligne des centres — toujours, quoi que vous fassiez d'autre — et la bille blanche garde ce qui était perpendiculaire à cette ligne. C'est la conservation de la quantité de mouvement et de l'énergie à masses égales, et c'est une projection : cos θ de la vitesse part d'un côté, sin θ de l'autre, cos²θ de l'énergie à la bille visée. Un coup à demi-bille (θ = 30°) transmet 75 % de l'énergie. Coriolis l'a posé en 1835. Les billes réelles s'en écartent d'un ou deux degrés (restitution, déviation par frottement), et l'effet incurve ensuite la trajectoire de la bille blanche — mais la ligne tangente est le point de départ de tout plan de bille blanche.","year":1835,"requires":4},{"name":"Du glissement au roulement","slug":"slide-to-roll","field":"Billiards","equation":"rolling when v = ω R;  a stunned ball rolls after t = 2 v₀ / (7 μ_s g), at 5/7 of its speed","significance":"Une bille frappée au centre patine d'abord — pas d'effet, donc le tapis traîne sa face inférieure, la met en rotation tout en la ralentissant — jusqu'à ce que la vitesse de surface égale la vitesse de la bille et qu'elle roule. Elle perd deux septièmes de sa vitesse en chemin, sur une distance qui varie comme v₀². Le coulé raccourcit le patinage, le rétro l'inverse : une bille blanche jouée en rétro patine en tournant à l'envers, cesse de tourner, puis revient par où elle est venue. Tout coup de coulé ou de rétro n'est que cette transition se produisant après la collision plutôt qu'avant.","year":1835,"requires":4},{"name":"Décentrage du procédé et effet","slug":"tip-offset-and-spin","field":"Billiards","equation":"ω = (5/2) v b / R²  ;  miscue beyond b ≈ R/2","significance":"Frappez hors du centre et l'impulsion dispose d'un bras de levier ; le moment d'inertie de la bille vaut ⅖ mR², de sorte que l'effet vaut 5/2 · v · b / R². Un décalage d'un demi-rayon — la limite pratique avant que le procédé ne glisse — donne une bille tournant à peu près aussi vite que si elle roulait déjà à cette vitesse. Au-dessus du centre c'est le coulé, en dessous le rétro, sur le côté c'est l'effet latéral (et le squirt : la bille blanche part légèrement à côté de la ligne de la queue, d'une quantité qui est une propriété de la queue, non de la table).","year":1835,"requires":3},{"name":"Transfert de vitesse de la queue à la bille","slug":"cue-to-ball-speed-transfer","field":"Billiards","equation":"v_ball ≈ v_cue · 2 m_cue / (m_cue + m_ball) · (1 + e)/2","significance":"Une queue lourde sur une bille légère donne à la bille plus de vitesse que n'en avait la queue : avec une queue de 540 g et une bille de 170 g, l'idéal est d'environ 1,5 fois, moins les pertes du procédé. C'est pourquoi une frappe ferme est affaire de vitesse de queue, non de muscle, et pourquoi le serrage de la main change la masse effective et guère plus. Conservation de la quantité de mouvement et loi du choc de Newton, rien de plus.","year":null,"requires":2},{"name":"Règle des trente degrés","slug":"thirty-degree-rule","field":"Billiards","equation":"a rolling cue ball leaves a ¼- to ¾-ball hit at about 30° from its original line","significance":"Non pas une loi mais une conséquence : la règle des quatre-vingt-dix degrés envoie la bille blanche sur la tangente, puis son effet avant — que la collision n'a pas touché — l'infléchit vers l'avant à mesure qu'elle reprend son roulement. Sur la plage moyenne des coupes, cette inflexion amène la bille à près de 30° de sa direction initiale, ce qui explique qu'un signe de la victoire tendu vers la bille visée prédise où finit la bille blanche. Les tirs plus rapides et les impacts plus fins ou plus pleins la mettent en défaut ; la bille arrêtée (sans roulement) conserve les quatre-vingt-dix.","year":null,"requires":2},{"name":"Déviation par frottement","slug":"throw","field":"Billiards","equation":"throw angle ≈ atan(μ v_t / v_n), up to about 5°","significance":"Pendant le cinquième de milliseconde où les billes se touchent, le frottement écarte un peu la bille visée de la ligne des centres, dans la direction où la surface de la bille blanche glissait. Un coup coupé projette la bille visée en avant de la ligne géométrique (déviation par frottement induite par la coupe) ; l'effet latéral la projette à gauche ou à droite (déviation induite par l'effet). Les coups lents dévient davantage — le frottement dispose de plus de temps par rapport à la vitesse — et cela sature dès que les surfaces cessent de glisser. De la craie au point de contact peut la doubler. Personne n'empoche de coupes longues et lentes sans en tenir compte.","year":null,"requires":3},{"name":"Coefficient de restitution","slug":"coefficient-of-restitution","field":"Mechanics","equation":"e = v_separation / v_approach;  head-on, kinetic energy kept = e²","significance":"Loi expérimentale de Newton, 1687 : quelle part de la vitesse d'approche survit à une collision. Les billes de billard en phénolique tournent autour de 0,92, de sorte qu'un coup droit en bille arrêtée laisse la bille blanche avancer à peine et la bille visée emporter 85 % de l'énergie ; une bande restitue environ 0,75 de l'énergie, et la bille en repart à 87 % de sa vitesse. Acier sur acier, c'est 0,9 environ, une superball 0,9, une motte d'argile près de 0. C'est pourquoi la règle des quatre-vingt-dix degrés en vaut en réalité quatre-vingt-huit, et pourquoi un coup d'arrêt demande un soupçon de rétro.","year":1687,"requires":2},{"name":"Résistance au roulement","slug":"rolling-resistance","field":"Mechanics","equation":"d = v₀² / (2 μ_r g)","significance":"Un corps qui roule perd lentement son énergie, dans la déformation de la surface et de la bille, et la décélération est presque constante : μ_r g. Sur un billard, cela fait un dixième de mètre par seconde par seconde, si bien qu'une bille à 1 m/s roule environ cinq mètres et que le contrôle de la vitesse se joue à quelques pour cent près. Coulomb a mesuré le frottement de roulement en 1781 ; le théorème de l'énergie cinétique fait le reste.","year":1781,"requires":2}],"skills":[{"name":"Utiliser l'effet latéral","slug":"using-side","summary":"L'effet latéral — et les quatre choses qu'il fait à la fois, dont trois que vous n'aviez pas demandées.","difficulty":"Advanced"},{"name":"Coulé, rétro et bille arrêtée","slug":"follow-draw-and-stun","summary":"Où finit la bille blanche : la contrôler par la hauteur du procédé sur la bille.","difficulty":"Intermediate"},{"name":"Le coup coupé","slug":"the-cut-shot","summary":"Empocher une bille qui n'est pas dans l'axe — où envoyer la bille blanche, et où elle va ensuite.","difficulty":"Beginner"}],"table":{"caption":"Les nombres qui régissent une table de billard — les mêmes valeurs qu'intègre le moteur Pool Sauce (pool-sauce-engine, poolsauce/constants.py), pour que l'étagère et le moteur n'en contredisent jamais une seule.","columns":["Grandeur","Valeur","Entre","Note"],"rows":[["Rayon de la bille R","28,575 mm","visée par bille fantôme, décalage du procédé, glissement puis roulement","Une bille de 2¼ pouces. Celles du snooker font 52.5 mm ; le carambole 61.5 mm."],["Masse de la bille m","170 g","transfert de vitesse, quantité de mouvement","Résine phénolique ; appariées au gramme dans un jeu."],["Restitution bille–bille e","0.92","restitution, règle des quatre-vingt-dix degrés","Ainsi un coup d'arrêt à bille arrêtée avance encore un peu — une pointe de rétro y remédie."],["Frottement bille–bille μ","≈ 0.06","déviation par frottement","Des billes propres. De la craie au point de contact peut la doubler."],["Frottement de glissement du tapis μ_s","0.2","glissement-roulement, distance de rétro","Drap peigné de tournoi ; un drap pelucheux donne plus élevé."],["Résistance au roulement du tapis μ_r","0.025","résistance au roulement","A ball at 1 m/s runs about 2 m. The 0.01 often quoted gives 5 m and ten seconds of it, which no table does."],["Frottement de rotation sur le tapis","0.044","durée de l'effet latéral","Couple sur une bille tournant sur place autour d'un axe vertical."],["Efficacité de la bande","0.75 de l'énergie → 0.87 de la vitesse","rebond sur la bande","Caoutchouc ; varie d'une table à l'autre et avec la vitesse. À tester avant un match."],["surface de jeu de 9 ft","2.54 × 1.27 m","distance, contrôle de la vitesse","Entre les nez de bande ; une table de bar de 7 ft fait 1.98 × 0.99 m."]],"note":"Là où le moteur et la littérature divergent, c'est la valeur du moteur qui est citée, car c'est avec ce nombre que sont calculés les coups de la chaîne."}}</script>
+<script id="data" type="application/json">{"equations":[{"name":"Rebond sur la bande","slug":"cushion-rebound","field":"Billiards","equation":"v_n,out = e_c v_n,in;  the tangential component and side spin lose to cushion friction","significance":"La bande rend l'essentiel de la vitesse qui l'a frappée de plein fouet et ralentit celle qui la longeait, si bien que la bille repart sous un angle plus fermé qu'à l'arrivée — d'autant plus qu'elle arrive vite. L'effet latéral s'ajoute ou se retranche à cette composante le long de la bande : l'effet naturel ouvre l'angle et garde la bille en mouvement, l'effet contraire le ferme et tue la vitesse. Les bandes sont en caoutchouc, pas en constantes physiques ; chaque table joue un peu différemment, et les joueurs les testent avant un match.","year":1835,"requires":3},{"name":"Visée à la bille fantôme","slug":"ghost-ball-aim","field":"Billiards","equation":"aim the cue ball's centre at the point 2R from the object ball's centre, on the line to the pocket;  ball-hit fraction f = 1 − sin θ","significance":"Imaginez la bille blanche figée là où elle doit se trouver au contact — touchant la bille visée du côté opposé à la poche. Son centre est à un diamètre de bille du centre de la bille visée, le long de la ligne de la poche ; envoyez-y la vraie bille blanche. La fraction de recouvrement des deux, vue depuis la queue, vaut 1 − sin θ, ce qui explique qu'un impact demi-bille donne une coupe de 30° et un quart de bille 48,6°. Pure géométrie ; la déviation par frottement y ajoute une correction.","year":1835,"requires":2},{"name":"Règle des quatre-vingt-dix degrés","slug":"ninety-degree-rule","field":"Billiards","equation":"v_OB = v cos θ  (along the line of centres);  v_CB = v sin θ  (along the tangent line)","significance":"Deux billes égales, l'une au repos, sans effet : après le choc, elles se séparent à angle droit. La bille visée part selon la ligne des centres — toujours, quoi que vous fassiez d'autre — et la bille blanche garde ce qui était perpendiculaire à cette ligne. C'est la conservation de la quantité de mouvement et de l'énergie à masses égales, et c'est une projection : cos θ de la vitesse part d'un côté, sin θ de l'autre, cos²θ de l'énergie à la bille visée. Un coup à demi-bille (θ = 30°) transmet 75 % de l'énergie. Coriolis l'a posé en 1835. Les billes réelles s'en écartent d'un ou deux degrés (restitution, déviation par frottement), et l'effet incurve ensuite la trajectoire de la bille blanche — mais la ligne tangente est le point de départ de tout plan de bille blanche.","year":1835,"requires":4},{"name":"Du glissement au roulement","slug":"slide-to-roll","field":"Billiards","equation":"rolling when v = ω R;  a stunned ball rolls after t = 2 v₀ / (7 μ_s g), at 5/7 of its speed","significance":"Une bille frappée au centre patine d'abord — pas d'effet, donc le tapis traîne sa face inférieure, la met en rotation tout en la ralentissant — jusqu'à ce que la vitesse de surface égale la vitesse de la bille et qu'elle roule. Elle perd deux septièmes de sa vitesse en chemin, sur une distance qui varie comme v₀². Le coulé raccourcit le patinage, le rétro l'inverse : une bille blanche jouée en rétro patine en tournant à l'envers, cesse de tourner, puis revient par où elle est venue. Tout coup de coulé ou de rétro n'est que cette transition se produisant après la collision plutôt qu'avant.","year":1835,"requires":4},{"name":"Décentrage du procédé et effet","slug":"tip-offset-and-spin","field":"Billiards","equation":"ω = (5/2) v b / R²  ;  miscue beyond b ≈ R/2","significance":"Frappez hors du centre et l'impulsion dispose d'un bras de levier ; le moment d'inertie de la bille vaut ⅖ mR², de sorte que l'effet vaut 5/2 · v · b / R². Un décalage d'un demi-rayon — la limite pratique avant que le procédé ne glisse — donne une bille tournant à peu près aussi vite que si elle roulait déjà à cette vitesse. Au-dessus du centre c'est le coulé, en dessous le rétro, sur le côté c'est l'effet latéral (et le squirt : la bille blanche part légèrement à côté de la ligne de la queue, d'une quantité qui est une propriété de la queue, non de la table).","year":1835,"requires":3},{"name":"Transfert de vitesse de la queue à la bille","slug":"cue-to-ball-speed-transfer","field":"Billiards","equation":"v_ball ≈ v_cue · 2 m_cue / (m_cue + m_ball) · (1 + e)/2","significance":"Une queue lourde sur une bille légère donne à la bille plus de vitesse que n'en avait la queue : avec une queue de 540 g et une bille de 170 g, l'idéal est d'environ 1,5 fois, moins les pertes du procédé. C'est pourquoi une frappe ferme est affaire de vitesse de queue, non de muscle, et pourquoi le serrage de la main change la masse effective et guère plus. Conservation de la quantité de mouvement et loi du choc de Newton, rien de plus.","year":null,"requires":2},{"name":"Règle des trente degrés","slug":"thirty-degree-rule","field":"Billiards","equation":"a rolling cue ball leaves a ¼- to ¾-ball hit at about 30° from its original line","significance":"Non pas une loi mais une conséquence : la règle des quatre-vingt-dix degrés envoie la bille blanche sur la tangente, puis son effet avant — que la collision n'a pas touché — l'infléchit vers l'avant à mesure qu'elle reprend son roulement. Sur la plage moyenne des coupes, cette inflexion amène la bille à près de 30° de sa direction initiale, ce qui explique qu'un signe de la victoire tendu vers la bille visée prédise où finit la bille blanche. Les tirs plus rapides et les impacts plus fins ou plus pleins la mettent en défaut ; la bille arrêtée (sans roulement) conserve les quatre-vingt-dix.","year":null,"requires":2},{"name":"Déviation par frottement","slug":"throw","field":"Billiards","equation":"throw angle ≈ atan(μ v_t / v_n), up to about 5°","significance":"Pendant le cinquième de milliseconde où les billes se touchent, le frottement écarte un peu la bille visée de la ligne des centres, dans la direction où la surface de la bille blanche glissait. Un coup coupé projette la bille visée en avant de la ligne géométrique (déviation par frottement induite par la coupe) ; l'effet latéral la projette à gauche ou à droite (déviation induite par l'effet). Les coups lents dévient davantage — le frottement dispose de plus de temps par rapport à la vitesse — et cela sature dès que les surfaces cessent de glisser. De la craie au point de contact peut la doubler. Personne n'empoche de coupes longues et lentes sans en tenir compte.","year":null,"requires":3},{"name":"Coefficient de restitution","slug":"coefficient-of-restitution","field":"Mechanics","equation":"e = v_separation / v_approach;  head-on, kinetic energy kept = e²","significance":"Loi expérimentale de Newton, 1687 : quelle part de la vitesse d'approche survit à une collision. Les billes de billard en phénolique tournent autour de 0,92, de sorte qu'un coup droit en bille arrêtée laisse la bille blanche avancer à peine et la bille visée emporter 85 % de l'énergie ; une bande restitue environ 0,75 de l'énergie, et la bille en repart à 87 % de sa vitesse. Acier sur acier, c'est 0,9 environ, une superball 0,9, une motte d'argile près de 0. C'est pourquoi la règle des quatre-vingt-dix degrés en vaut en réalité quatre-vingt-huit, et pourquoi un coup d'arrêt demande un soupçon de rétro.","year":1687,"requires":2},{"name":"Résistance au roulement","slug":"rolling-resistance","field":"Mechanics","equation":"d = v₀² / (2 μ_r g)","significance":"Un corps qui roule perd lentement son énergie, dans la déformation de la surface et de la bille, et la décélération est presque constante : μ_r g. Sur un billard, cela fait un dixième de mètre par seconde par seconde, si bien qu'une bille à 1 m/s roule environ cinq mètres et que le contrôle de la vitesse se joue à quelques pour cent près. Coulomb a mesuré le frottement de roulement en 1781 ; le théorème de l'énergie cinétique fait le reste.","year":1781,"requires":2}],"skills":[{"name":"Utiliser l'effet latéral","slug":"using-side","summary":"L'effet latéral — et les quatre choses qu'il fait à la fois, dont trois que vous n'aviez pas demandées.","difficulty":"Advanced"},{"name":"Coulé, rétro et bille arrêtée","slug":"follow-draw-and-stun","summary":"Où finit la bille blanche : la contrôler par la hauteur du procédé sur la bille.","difficulty":"Intermediate"},{"name":"Le coup coupé","slug":"the-cut-shot","summary":"Empocher une bille qui n'est pas dans l'axe — où envoyer la bille blanche, et où elle va ensuite.","difficulty":"Beginner"}],"table":{"caption":"Les nombres qui régissent une table de billard — les mêmes valeurs qu'intègre le moteur Pool Sauce (pool-sauce-engine, poolsauce/constants.py), pour que l'étagère et le moteur n'en contredisent jamais une seule.","columns":["Grandeur","Valeur","Entre","Note"],"rows":[["Rayon de la bille R","28,575 mm","visée par bille fantôme, décalage du procédé, glissement puis roulement","Une bille de 2¼ pouces. Celles du snooker font 52.5 mm ; le carambole 61.5 mm."],["Masse de la bille m","170 g","transfert de vitesse, quantité de mouvement","Résine phénolique ; appariées au gramme dans un jeu."],["Restitution bille–bille e","0.92","restitution, règle des quatre-vingt-dix degrés","Ainsi un coup d'arrêt à bille arrêtée avance encore un peu — une pointe de rétro y remédie."],["Frottement bille–bille μ","≈ 0.06","déviation par frottement","Des billes propres. De la craie au point de contact peut la doubler."],["Frottement de glissement du tapis μ_s","0.2","glissement-roulement, distance de rétro","Drap peigné de tournoi ; un drap pelucheux donne plus élevé."],["Résistance au roulement du tapis μ_r","0.025","résistance au roulement","Une bille à 1 m/s parcourt environ 2 m. Le 0.01 souvent cité en donne 5 m et dix secondes, ce qu'aucun billard ne fait."],["Frottement de rotation sur le tapis","0.044","durée de l'effet latéral","Couple sur une bille tournant sur place autour d'un axe vertical."],["Efficacité de la bande","0.75 de l'énergie → 0.87 de la vitesse","rebond sur la bande","Caoutchouc ; varie d'une table à l'autre et avec la vitesse. À tester avant un match."],["surface de jeu de 9 ft","2.54 × 1.27 m","distance, contrôle de la vitesse","Entre les nez de bande ; une table de bar de 7 ft fait 1.98 × 0.99 m."]],"note":"Là où le moteur et la littérature divergent, c'est la valeur du moteur qui est citée, car c'est avec ce nombre que sont calculés les coups de la chaîne."}}</script>
 <script>
   const D = JSON.parse(document.getElementById('data').textContent);
   // ---- constants: pool-sauce-engine/poolsauce/constants.py, plus two literature values marked below
@@ -1324,7 +1324,7 @@
     const X = (v) => X0 + (v - 0.5) / 9.5 * (X1 - X0), Y = (q) => Y0 - Math.min(q, DMAX) / DMAX * (Y0 - Y1);
     for (let g = 1; g <= 10; g++) { sel('line', { x1: X(g), x2: X(g), y1: Y0, y2: Y0 + 4, stroke: 'var(--muted)' }); const tx = sel('text', { x: X(g), y: Y0 + 16, ...mono, 'text-anchor': 'middle' }); tx.textContent = g; }
     for (let dd = 0; dd <= DMAX - 0.05; dd += 0.5) { sel('line', { x1: X0 - 4, x2: X1, y1: Y(dd), y2: Y(dd), stroke: 'color-mix(in oklab, var(--hairline) 55%, transparent)' }); const tx = sel('text', { x: X0 - 8, y: Y(dd) + 3.5, ...mono, 'text-anchor': 'end' }); tx.textContent = fmt(dd, 1); }
-    const xl = sel('text', { x: (X0 + X1) / 2, y: 294, ...mono, 'text-anchor': 'middle' }); xl.textContent = 'power — strike intensity';
+    const xl = sel('text', { x: (X0 + X1) / 2, y: 294, ...mono, 'text-anchor': 'middle' }); xl.textContent = 'puissance — intensité de frappe';
     const yl = sel('text', { x: 6, y: 12, ...mono }); yl.textContent = 'mètres de glissement avant le roulement naturel';
     const curve = (tp, attrs) => { const pts = []; let last = null; for (let v = 0.5; v <= 10.001; v += 0.1) { const q = slideOut(v, tp).d; if (q > DMAX) { last = [X(v), Y(DMAX)]; pts.push(last.join(',')); break; } last = [X(v), Y(q)]; pts.push(last.join(',')); } sel('polyline', { points: pts.join(' '), fill: 'none', ...attrs }); return last; };
     const pStun = curve(0, { stroke: 'var(--muted)', 'stroke-width': 1 });
@@ -1334,9 +1334,9 @@
     const pCur = curve(tip, { stroke: 'var(--c-felt)', 'stroke-width': 2.2 });
     const t3 = sel('text', { x: Math.min(pCur[0] + 6, X1 - 90), y: Math.max(pCur[1], 28) - 6, ...mono, fill: 'var(--c-felt)' }); t3.textContent = `votre procédé ${tip >= 0 ? '+' : ''}${fmt(tip, 2)}`;
     sel('line', { x1: X0, x2: X1, y1: Y(d), y2: Y(d), stroke: 'var(--c-amber)', 'stroke-width': 1.2, 'stroke-dasharray': '6 5' });
-    const t4 = sel('text', { x: X1 - 4, y: Y(d) - 5, ...mono, fill: 'var(--c-amber)', 'text-anchor': 'end' }); t4.textContent = `your distance · ${fmt(d, 2)} m`;
+    const t4 = sel('text', { x: X1 - 4, y: Y(d) - 5, ...mono, fill: 'var(--c-amber)', 'text-anchor': 'end' }); t4.textContent = `votre distance · ${fmt(d, 2)} m`;
     const need = powerFor(tip, d, slideDist1);
-    if (need >= 0.5 && need <= 10) { sel('circle', { cx: X(need), cy: Y(d), r: 5, fill: 'none', stroke: 'var(--c-amber)', 'stroke-width': 1.8 }); const t5 = sel('text', { x: X(need), y: Y(d) + 18, ...mono, fill: 'var(--c-amber)', 'text-anchor': 'middle' }); t5.textContent = `still sliding above ${fmt(need, 1)}`; }
+    if (need >= 0.5 && need <= 10) { sel('circle', { cx: X(need), cy: Y(d), r: 5, fill: 'none', stroke: 'var(--c-amber)', 'stroke-width': 1.8 }); const t5 = sel('text', { x: X(need), y: Y(d) + 18, ...mono, fill: 'var(--c-amber)', 'text-anchor': 'middle' }); t5.textContent = `glisse encore au-delà de ${fmt(need, 1)}`; }
     sel('line', { x1: X(v0), x2: X(v0), y1: Y0, y2: Y1, stroke: 'var(--ink)', 'stroke-width': 1, opacity: 0.55 });
     sel('circle', { cx: X(v0), cy: Y(Math.min(so.d, DMAX)), r: 4, fill: 'var(--c-felt)' });
     // ---- chart two: what the spin is doing along the way
@@ -1350,25 +1350,25 @@
       const tx = pe('text', { x: PX0 - 8, y: PY(r2) + 3.5, ...mono, 'text-anchor': 'end' }); tx.textContent = lab;
     }
     for (let q = 0.5; q <= PMAX; q += 0.5) { const tx = pe('text', { x: PX(q), y: PY0 + 16, ...mono, 'text-anchor': 'middle' }); tx.textContent = fmt(q, 1); pe('line', { x1: PX(q), x2: PX(q), y1: PY0, y2: PY0 + 4, stroke: 'var(--muted)' }); }
-    const xl2 = pe('text', { x: (PX0 + PX1) / 2, y: 292, ...mono, 'text-anchor': 'middle' }); xl2.textContent = 'metres the cue ball has covered';
-    const yl2 = pe('text', { x: 6, y: 13, ...mono }); yl2.textContent = 'the spin it still carries, as a share of rolling';
+    const xl2 = pe('text', { x: (PX0 + PX1) / 2, y: 292, ...mono, 'text-anchor': 'middle' }); xl2.textContent = 'mètres parcourus par la bille blanche';
+    const yl2 = pe('text', { x: 6, y: 13, ...mono }); yl2.textContent = 'l\'effet qu\'elle porte encore, en proportion du roulement';
     const pts2 = [];
     for (let q = 0; q <= PMAX + 1e-9; q += 0.02) { const stq = slideState(v0, tip, q); if (!stq.alive) break; pts2.push(`${PX(q)},${PY(Math.max(-1.05, Math.min(1.05, stq.ratio)))}`); }
     pe('polyline', { points: pts2.join(' '), fill: 'none', stroke: 'var(--c-felt)', 'stroke-width': 2.4 });
-    if (so.d > 0.005 && so.d < PMAX) { pe('line', { x1: PX(so.d), x2: PX(so.d), y1: PY1, y2: PY0, stroke: 'var(--muted)', 'stroke-dasharray': '3 4' }); const tx = pe('text', { x: PX(so.d) + 5, y: PY1 + 12, ...mono }); tx.textContent = `takes up roll at ${fmt(so.d, 2)} m`; }
+    if (so.d > 0.005 && so.d < PMAX) { pe('line', { x1: PX(so.d), x2: PX(so.d), y1: PY1, y2: PY0, stroke: 'var(--muted)', 'stroke-dasharray': '3 4' }); const tx = pe('text', { x: PX(so.d) + 5, y: PY1 + 12, ...mono }); tx.textContent = `prend le roulement à ${fmt(so.d, 2)} m`; }
     const dStun = drawDist1(v0, tip);
-    if (dStun > 0.005 && dStun < PMAX) { pe('line', { x1: PX(dStun), x2: PX(dStun), y1: PY1, y2: PY0, stroke: 'var(--c-red)', 'stroke-dasharray': '3 4', opacity: 0.75 }); const tx = pe('text', { x: PX(dStun) + 5, y: PY0 - 8, ...mono, fill: 'var(--c-red)' }); tx.textContent = `backspin gone at ${fmt(dStun, 2)} m`; }
+    if (dStun > 0.005 && dStun < PMAX) { pe('line', { x1: PX(dStun), x2: PX(dStun), y1: PY1, y2: PY0, stroke: 'var(--c-red)', 'stroke-dasharray': '3 4', opacity: 0.75 }); const tx = pe('text', { x: PX(dStun) + 5, y: PY0 - 8, ...mono, fill: 'var(--c-red)' }); tx.textContent = `rétro épuisé à ${fmt(dStun, 2)} m`; }
     pe('line', { x1: PX(d), x2: PX(d), y1: PY1, y2: PY0, stroke: 'var(--c-amber)', 'stroke-width': 1.4 });
     pe('circle', { cx: PX(d), cy: PY(Math.max(-1.05, Math.min(1.05, st.ratio))), r: 5, fill: 'var(--c-amber)' });
     // ---- the numbers
     const needDraw = tip < 0 ? powerFor(tip, d, drawDist1) : Infinity;
-    const PH = { draw: 'still carrying <b>backspin</b>', stun: 'at <b>stun</b> — no spin left either way', drag: 'in <b>drag</b> — some topspin, not yet rolling', rolling: '<b>rolling</b> — whatever you put on it is gone' };
+    const PH = { draw: 'porte encore de l\'<b>effet rétro</b>', stun: 'en <b>bille arrêtée</b> — plus d\'effet dans un sens ni dans l\'autre', drag: 'en <b>drag</b> — un peu de coulé, pas encore en roulement', rolling: '<b>en roulement</b> — tout ce que vous lui avez donné a disparu' };
     $('slideout').innerHTML = dl([
-      ['off the tip', so.d < 0.005 ? 'no slide at all — this tip height is natural roll from the first inch' : `slides <b>${fmt(so.d, 2)} m</b> in ${fmt(so.t, 2)} s, then rolls at ${fmt(so.vRoll, 2)} m/s`],
+      ['off the tip', so.d < 0.005 ? 'no slide at all — this tip height is natural roll from the first inch' : `glisse sur <b>${fmt(so.d, 2)} m</b> en ${fmt(so.t, 2)} s, puis roule à ${fmt(so.vRoll, 2)} m/s`],
       ['at ' + fmt(d, 2) + ' m', `${PH[st.phase]} · ${fmt(st.v, 2)} m/s${st.phase !== 'rolling' ? ` · spin is ${fmt(100 * st.ratio, 0)} % of rolling` : ''}`, st.phase === 'rolling' ? 'warn' : 'good'],
-      ['power to still be sliding', !isFinite(need) ? 'any power at all — this tip never takes up roll on its own' : need < 0.5 ? `every strike on the scale keeps it sliding this far` : need > 10 ? `more than 10 — the cloth wins before ${fmt(d, 2)} m at any power you have` : `strike <b>${fmt(need, 1)}</b> or harder`],
-      ['power to still have draw', tip >= 0 ? 'no backspin was put on it' : !isFinite(needDraw) || needDraw > 10 ? `more than 10 — the backspin dies before ${fmt(d, 2)} m whatever you hit it with` : needDraw < 0.5 ? 'every strike on the scale' : `strike <b>${fmt(needDraw, 1)}</b> or harder`, tip < 0 && needDraw <= 10 && v0 >= needDraw ? 'good' : undefined],
-      ['why', 'The slide lasts a fixed <em>time</em>, set by how much slip you started with — so distance goes as the square of the power. Twice the strike, four times the slide. That is the whole reason a soft draw shot dies and the same shot hit firm still bites.'],
+      ['power to still be sliding', !isFinite(need) ? 'any power at all — this tip never takes up roll on its own' : need < 0.5 ? `toute frappe de l'échelle la fait glisser sur cette distance` : need > 10 ? `plus de 10 — le tapis l'emporte avant ${fmt(d, 2)} m, quelle que soit la puissance dont vous disposez` : `frappez à <b>${fmt(need, 1)}</b> ou plus fort`],
+      ['power to still have draw', tip >= 0 ? 'no backspin was put on it' : !isFinite(needDraw) || needDraw > 10 ? `plus de 10 — le rétro s'éteint avant ${fmt(d, 2)} m, quelle que soit la frappe` : needDraw < 0.5 ? 'every strike on the scale' : `frappez à <b>${fmt(needDraw, 1)}</b> ou plus fort`, tip < 0 && needDraw <= 10 && v0 >= needDraw ? 'good' : undefined],
+      ['why', 'Le glissement dure un <em>temps</em> fixe, fixé par le glissement initial — la distance varie donc comme le carré de la puissance. Deux fois la frappe, quatre fois le glissement. C\'est toute la raison pour laquelle un rétro mou s\'éteint et que le même coup frappé ferme mord encore.'],
     ]);
   }
   for (const k of ['sldist', 'sltip', 'slspd']) $(k).addEventListener('input', runSlide);
@@ -1554,8 +1554,8 @@
     te('line', { x1: TB_C, y1: TB_C - TB_R, x2: TB_C, y2: TB_C + TB_R, stroke: 'var(--hairline)' });
     te('circle', { cx: TB_C, cy: TB_C, r: TB_R * TB_LIM, fill: 'none', stroke: 'var(--c-red)', 'stroke-width': 1, 'stroke-dasharray': '3 3', opacity: 0.65 });
     const mono = { 'font-family': 'ui-monospace, "SF Mono", Consolas, monospace', 'font-size': 8.5, fill: 'var(--muted)' };
-    const t1 = te('text', { x: TB_C, y: 11, ...mono, 'text-anchor': 'middle' }); t1.textContent = 'follow';
-    const t2 = te('text', { x: TB_C, y: 115, ...mono, 'text-anchor': 'middle' }); t2.textContent = 'draw';
+    const t1 = te('text', { x: TB_C, y: 11, ...mono, 'text-anchor': 'middle' }); t1.textContent = 'coulé';
+    const t2 = te('text', { x: TB_C, y: 115, ...mono, 'text-anchor': 'middle' }); t2.textContent = 'rétro';
     const t3 = te('text', { x: 3, y: TB_C + 3, ...mono }); t3.textContent = 'L';
     const t4 = te('text', { x: 117, y: TB_C + 3, ...mono, 'text-anchor': 'end' }); t4.textContent = 'R';
     const x = TB_C + side * TB_R, y = TB_C - tip * TB_R;
@@ -1565,8 +1565,8 @@
     const words = [];
     if (tip > 0.05) words.push(tip > 0.38 ? 'top' : 'a little top'); else if (tip < -0.05) words.push(tip < -0.38 ? 'deep draw' : 'draw'); else words.push('centre height');
     if (side > 0.05) words.push(side > 0.38 ? 'full right' : 'right'); else if (side < -0.05) words.push(side < -0.38 ? 'full left' : 'left'); else words.push('no side');
-    $('tipballv').innerHTML = `<b>${words.join(' · ')}</b><br>tip ${tip >= 0 ? '+' : ''}${fmt(tip, 2)} · side ${side >= 0 ? '+' : ''}${fmt(side, 2)} · ${fmt(off, 2)} from centre`
-      + (off > TB_LIM + 1e-9 ? ' <span class="warn">— past the miscue limit</span>' : '');
+    $('tipballv').innerHTML = `<b>${words.join(' · ')}</b><br>hauteur ${tip >= 0 ? '+' : ''}${fmt(tip, 2)} · latéral ${side >= 0 ? '+' : ''}${fmt(side, 2)} · ${fmt(off, 2)} du centre`
+      + (off > TB_LIM + 1e-9 ? ' <span class="warn">— au-delà de la limite de fausse queue</span>' : '');
   }
   function tipBallPick(e) {
     const m2 = tball.getScreenCTM();
@@ -3008,15 +3008,15 @@
     ce('circle', { cx: hx, cy: hy, r: 7, fill: 'var(--c-amber)', stroke: 'var(--page)', 'stroke-width': 1.5, style: 'cursor:grab' });
     const frac = 1 - Math.sin(Math.abs(th));
     const spin = S.hit && S.hit.throwDeg > 0.05;
-    $('ctleg').innerHTML = '<span style="--lc:var(--c-amber)">object ball</span><span style="--lc:var(--c-felt)">cue ball</span>'
-      + '<span style="--lc:var(--c-red); --ls:dotted">where the object ball would go with no throw</span>'
-      + '<span style="--lc:var(--muted); --ls:dashed">aim · line of centres · tangent</span>';
-    $('ctinfo').textContent = `cut ${fmt(Math.abs(cut), 0)}° · ${FRACNAME(frac)} · f ${fmt(frac, 2)}`;
+    $('ctleg').innerHTML = '<span style="--lc:var(--c-amber)">bille visée</span><span style="--lc:var(--c-felt)">bille blanche</span>'
+      + '<span style="--lc:var(--c-red); --ls:dotted">où irait la bille visée sans déviation par frottement</span>'
+      + '<span style="--lc:var(--muted); --ls:dashed">visée · ligne des centres · tangente</span>';
+    $('ctinfo').textContent = `coupe ${fmt(Math.abs(cut), 0)}° · ${FRACNAME(frac)} · f ${fmt(frac, 2)}`;
     if (!S.hit) {
       const gap = 100 * Math.max(0, (S.near || 0) - 2 * R);
-      $('ctout').innerHTML = dl([['no contact', S.near > 1e5 || !isFinite(S.near)
+      $('ctout').innerHTML = dl([['pas de contact', S.near > 1e5 || !isFinite(S.near)
         ? 'the cue ball never gets near it — raise the strike'
-        : `it passes ${fmt(gap, 1)} cm wide of the ball. At this cut, this pace and this much side, squirt and swerve carry it past the edge — there is no aim that still catches it. Firm it up, or take the contact point back toward the middle of the ball.`, 'warn']]);
+        : `elle passe à ${fmt(gap, 1)} cm de la bille. À cette coupe, à cette vitesse et avec autant d'effet latéral, la déviation au départ et la courbe l'emmènent au-delà de l'arête — aucune visée ne la rattrape. Frappez plus ferme, ou ramenez le point de contact vers le milieu de la bille.`, 'warn']]);
       drawContactPov(CB, OB, ghost, dAim, tip, side, 1 - Math.sin(Math.abs(th)));
       drawThrowCurve(null, dist, v0); return;
     }
@@ -3026,12 +3026,12 @@
     const vfCB = vlen(vsub(H2.vA, H2.sA)) > 1e-4 ? vadd(vmul(H2.vA, 5 / 7), vmul(H2.sA, 2 / 7)) : H2.vA;
     const defl = vlen(vfCB) > 1e-3 ? deg(Math.acos(Math.max(-1, Math.min(1, vdot(vunit(vfCB), H2.dc))))) : null;
     $('ctout').innerHTML = dl([
-      ['le contact', `${FRACNAME(frac)} — you cover ${fmt(100 * frac, 0)} % of it, and the line of centres leaves at ${fmt(Math.abs(cut), 0)}° to your aim`],
-      ['object ball', `${fmt(vlen(H2.vB))} m/s · ${fmt(100 * (H2.vc > 1e-6 ? vlen(H2.vB) ** 2 / (H2.vc * H2.vc) : 0), 0)} % of the energy <small>cos²θ before restitution</small>`],
-      ['throw', spin ? `<b>${fmt(H2.throwDeg, 2)}°</b> off the line of centres <small>μ = ${fmt(H2.mu, 3)} at ${fmt(H2.ul, 2)} m/s of surface slip</small>` : 'none worth the name — no side, and the cut is not rubbing'],
+      ['le contact', `${FRACNAME(frac)} — vous en couvrez ${fmt(100 * frac, 0)} %, et la ligne des centres part à ${fmt(Math.abs(cut), 0)}° de votre visée`],
+      ['bille visée', `${fmt(vlen(H2.vB))} m/s · ${fmt(100 * (H2.vc > 1e-6 ? vlen(H2.vB) ** 2 / (H2.vc * H2.vc) : 0), 0)} % de l'énergie <small>cos²θ avant restitution</small>`],
+      ['throw', spin ? `<b>${fmt(H2.throwDeg, 2)}°</b> par rapport à la ligne des centres <small>μ = ${fmt(H2.mu, 3)} à ${fmt(H2.ul, 2)} m/s de glissement de surface</small>` : 'none worth the name — no side, and the cut is not rubbing'],
       ['what that costs', spin ? `<b>${fmt(100 * carry, 1)} cm</b> of drift over the ${fmt(dist, 2)} m the object ball has to travel — a pocket is ${fmt(100 * (RP - R), 0)} cm of slack, so this ${carry > (RP - R) ? '<b>misses</b>' : 'still drops'}` : 'nothing — it goes where the centres point', spin && carry > (RP - R) ? 'warn' : 'good'],
       ['cue ball', defl === null ? 'stops dead — the whole ball went into it' : `leaves ${fmt(defl, 1)}° off its line${defl > 20 && defl < 40 && H2.rollingAtContact ? ' <small>— the thirty-degree rule</small>' : ''} at ${fmt(vlen(H2.vA))} m/s`],
-      ['at the moment of contact', `${fmt(H2.vc)} m/s · ${H2.rollingAtContact ? 'rolling' : Math.abs(H2.sc) <= 0.05 * H2.vc ? 'stun — sliding with no roll' : H2.sc < 0 ? `backspin, ${fmt(100 * -H2.sc / H2.vc, 0)} % of roll` : `sliding, ${fmt(100 * H2.sc / H2.vc, 0)} % of roll taken up`}${H2.zA ? ` · side still on it` : ''}`],
+      ['au moment du contact', `${fmt(H2.vc)} m/s · ${H2.rollingAtContact ? 'rolling' : Math.abs(H2.sc) <= 0.05 * H2.vc ? 'stun — sliding with no roll' : H2.sc < 0 ? `backspin, ${fmt(100 * -H2.sc / H2.vc, 0)} % of roll` : `sliding, ${fmt(100 * H2.sc / H2.vc, 0)} % of roll taken up`}${H2.zA ? ` · side still on it` : ''}`],
     ]);
     drawContactPov(CB, OB, ghost, dAim, tip, side, frac);
     drawThrowCurve({ cut: nAng, tip, side, dist, CB, OB, dAim }, dist, v0);
@@ -3060,14 +3060,14 @@
       const t2 = ge('text', { x: po[0], y: po[1] - R * po[2] - 9, ...mono, 'text-anchor': 'middle', fill: 'var(--c-amber)' });
       t2.textContent = `${FRACNAME(frac)} · f ${fmt(frac, 2)}`;
     }
-    if (pg) { const t3 = ge('text', { x: pg[0], y: pg[1] + R * pg[2] + 15, ...mono, 'text-anchor': 'middle' }); t3.textContent = 'ghost ball — send the centre here'; }
+    if (pg) { const t3 = ge('text', { x: pg[0], y: pg[1] + R * pg[2] + 15, ...mono, 'text-anchor': 'middle' }); t3.textContent = 'bille fantôme — envoyez le centre ici'; }
     // the cue ball, close enough to fill the bottom of the view, with the tip's contact on it
     const cr = 60, cx = 450, cy = 250 - 4;
     ge('circle', { cx, cy, r: cr, fill: 'var(--panel)', stroke: 'var(--ink)', 'stroke-width': 1.6 });
     ge('line', { x1: cx - cr, y1: cy, x2: cx + cr, y2: cy, stroke: 'var(--hairline)' });
     ge('line', { x1: cx, y1: cy - cr, x2: cx, y2: cy, stroke: 'var(--hairline)' });
     ge('circle', { cx: cx + side * cr * 2, cy: cy - tip * cr * 2, r: 5, fill: 'var(--c-red)' });
-    const t4 = ge('text', { x: 10, y: 240, ...mono }); t4.textContent = 'down the cue · red dot = your tip on the cue ball';
+    const t4 = ge('text', { x: 10, y: 240, ...mono }); t4.textContent = 'vue dans l\'axe de la queue · point rouge = votre procédé sur la bille blanche';
   }
   // throw against strike: the curve every player feels and few can name
   function drawThrowCurve(cfg, dist, v0) {
@@ -3093,10 +3093,10 @@
     const slack = deg(Math.atan((RP - R) / Math.max(0.05, dist)));
     if (slack < maxT) {
       ge('line', { x1: X0, x2: X1, y1: Y(slack), y2: Y(slack), stroke: 'var(--c-red)', 'stroke-width': 1.2, 'stroke-dasharray': '6 5' });
-      const t4 = ge('text', { x: X1 - 4, y: Y(slack) - 6, ...mono, fill: 'var(--c-red)', 'text-anchor': 'end' }); t4.textContent = `above this line the throw misses the pocket at ${fmt(dist, 2)} m`;
+      const t4 = ge('text', { x: X1 - 4, y: Y(slack) - 6, ...mono, fill: 'var(--c-red)', 'text-anchor': 'end' }); t4.textContent = `au-dessus de cette ligne, la déviation par frottement fait manquer la poche à ${fmt(dist, 2)} m`;
     }
     ge('line', { x1: X(v0), x2: X(v0), y1: Y0, y2: Y1, stroke: 'var(--ink)', 'stroke-width': 1, opacity: 0.55 });
-    const yl = ge('text', { x: 6, y: 13, ...mono }); yl.textContent = 'throw, degrees off the line of centres';
+    const yl = ge('text', { x: 6, y: 13, ...mono }); yl.textContent = 'déviation par frottement, en degrés par rapport à la ligne des centres';
     const xl = ge('text', { x: (X0 + X1) / 2, y: 292, ...mono, 'text-anchor': 'middle' }); xl.textContent = 'strike intensity';
   }
   for (const k of ['ctcut', 'ctspd', 'cttip', 'ctside']) $(k).addEventListener('input', runContact);
@@ -3202,13 +3202,13 @@
     saved.forEach((L, i) => mine.appendChild(card(L.name, L.note || 'saved from your table', () => playLayout(L.hash), () => {
       const a = readLays(); a.splice(i, 1); writeLays(a); renderLayouts();
     })));
-    $('layempty').textContent = saved.length ? `${saved.length} of your own, kept in this browser. Copy a shot's link from the shot lab to send one to someone else.`
+    $('layempty').textContent = saved.length ? `${saved.length} des vôtres, conservés dans ce navigateur. Copiez le lien d'un coup depuis le labo de coups pour l'envoyer à quelqu'un d'autre.`
       : 'Nothing saved yet. Set the table up in the shot lab, come back, and give it a name.';
   }
   $('laysave').addEventListener('click', () => {
-    const nm = ($('layname').value || '').trim() || `layout ${readLays().length + 1}`;
+    const nm = ($('layname').value || '').trim() || `disposition ${readLays().length + 1}`;
     const a = readLays();
-    a.unshift({ name: nm, hash: shotHash(), note: `${state.balls.length} balls · saved ${new Date().toISOString().slice(0, 10)}` });
+    a.unshift({ name: nm, hash: shotHash(), note: `${state.balls.length} billes · enregistré ${new Date().toISOString().slice(0, 10)}` });
     writeLays(a.slice(0, 40));
     $('layname').value = '';
     renderLayouts();
