@@ -509084,6 +509084,40 @@
   ],
   "equations": [
     {
+      "id": "3c8e5275-7b5c-810a-9fc4-c8bb305d233d",
+      "url": "https://app.notion.com/p/Airy-Diffraction-Pattern-3c8e52757b5c810a9fc4c8bb305d233d",
+      "lastEdited": "2026-08-26T18:19:00.000Z",
+      "Skills": [],
+      "Equation": "I(θ) = I₀·[2J₁(x)/x]²,  x = πD sin θ / λ;  first zero at x = 3.8317 ⇒ sin θ = 1.22 λ/D",
+      "Minerals": [],
+      "Timeline": [],
+      "Field": "Waves & Optics",
+      "Celestial Objects": [],
+      "Theories": [],
+      "Named After": "George Biddell Airy",
+      "Machines": [],
+      "Related": [
+        "3bbe5275-7b5c-8174-8c31-eda1293e8fe6",
+        "3bde5275-7b5c-8134-baec-df28e10bc16c"
+      ],
+      "Instruments": [],
+      "Constants": [],
+      "Requires": [
+        "3bde5275-7b5c-8134-baec-df28e10bc16c",
+        "3c0e5275-7b5c-81de-9fb6-f2ec61468944"
+      ],
+      "Impacts": [],
+      "Symbols": "I(θ) intensity at angle θ from the axis · I₀ the intensity at the centre · J₁ the first-order Bessel function · D the aperture diameter · λ the wavelength · x = πD sin θ/λ · the first zero of J₁ lands at x = 3.8317, and 3.8317/π = 1.2197 — which is the 1.22 in Rayleigh's criterion",
+      "Spectral Types": [],
+      "Significance": "A circular aperture cannot make a point. It makes a bright disc ringed by faint ones, and every star in every telescope image is this pattern rather than a star. About 84 % of the light lands in the central disc, the rest in the rings, and the first dark ring sits at 1.22 λ/D — a number that is not a fudge factor but the first zero of a Bessel function divided by π. The shape of the hole sets the constant: a long slit gives sin x / x and its first zero at exactly 1.00 λ/D, a square aperture the same, and only the circle pays 1.22 for being round. Airy worked it out in 1835 for telescope object-glasses, forty-four years before Rayleigh turned it into a rule for when two stars are two.",
+      "Year": 1835,
+      "Required By": [
+        "3c0e5275-7b5c-81dc-8645-c26e23417e74"
+      ],
+      "Elements": [],
+      "Name": "Airy Diffraction Pattern"
+    },
+    {
       "id": "3c8e5275-7b5c-81cc-be5f-d381c8363626",
       "url": "https://app.notion.com/p/Riemann-Curvature-Tensor-3c8e52757b5c81ccbe5fd381c8363626",
       "lastEdited": "2026-08-26T17:19:00.000Z",
@@ -509531,7 +509565,7 @@
     {
       "id": "3c0e5275-7b5c-81dc-8645-c26e23417e74",
       "url": "https://app.notion.com/p/Rayleigh-Criterion-3c0e52757b5c81dc8645c26e23417e74",
-      "lastEdited": "2026-08-26T17:45:00.000Z",
+      "lastEdited": "2026-08-26T18:19:00.000Z",
       "Skills": [],
       "Equation": "θ ≈ 1.22 λ / D",
       "Minerals": [],
@@ -509553,8 +509587,8 @@
       ],
       "Constants": [],
       "Requires": [
-        "3c0e5275-7b5c-8189-b7b0-c947c0dfc027",
-        "3c0e5275-7b5c-81de-9fb6-f2ec61468944"
+        "3c8e5275-7b5c-810a-9fc4-c8bb305d233d",
+        "3c0e5275-7b5c-8189-b7b0-c947c0dfc027"
       ],
       "Impacts": [],
       "Symbols": "θ the smallest angle two points can be apart and still be told apart · λ wavelength · D aperture diameter",
@@ -509723,7 +509757,7 @@
         "3bbe5275-7b5c-8174-8c31-eda1293e8fe6",
         "3bbe5275-7b5c-8170-bd5f-c796d7589e08",
         "3bbe5275-7b5c-8140-a1d4-f7bff1df0334",
-        "3c0e5275-7b5c-81dc-8645-c26e23417e74"
+        "3c8e5275-7b5c-810a-9fc4-c8bb305d233d"
       ],
       "Elements": [],
       "Name": "Wave Speed"
@@ -513122,7 +513156,7 @@
     {
       "id": "3bde5275-7b5c-8134-baec-df28e10bc16c",
       "url": "https://app.notion.com/p/Fourier-Transform-3bde52757b5c8134baecdf28e10bc16c",
-      "lastEdited": "2026-08-18T19:16:00.000Z",
+      "lastEdited": "2026-08-26T18:19:00.000Z",
       "Skills": [],
       "Equation": "f̂(ω) = ∫ f(t)·e^(−iωt) dt",
       "Minerals": [],
@@ -513138,7 +513172,8 @@
         "3bbe5275-7b5c-81d8-b63d-d44990bf2054",
         "3bbe5275-7b5c-81f8-8be6-c617460fd271",
         "3bbe5275-7b5c-81fb-9558-e243bfa28227",
-        "3bde5275-7b5c-810f-bed8-fee488db4170"
+        "3bde5275-7b5c-810f-bed8-fee488db4170",
+        "3c8e5275-7b5c-810a-9fc4-c8bb305d233d"
       ],
       "Instruments": [
         "41dff11c-b8f7-482d-bb9a-458fe9f2e922"
@@ -513154,7 +513189,9 @@
       "Spectral Types": [],
       "Significance": "Any signal — a chord, a heartbeat, an image — is a sum of pure waves, and this integral finds the recipe. Fourier invented it to solve heat flow; today it is spectroscopy, MRI, JPEG and MP3, and the reason position and momentum can't both be sharp: Heisenberg's uncertainty is a Fourier fact wearing physics clothes.",
       "Year": 1822,
-      "Required By": [],
+      "Required By": [
+        "3c8e5275-7b5c-810a-9fc4-c8bb305d233d"
+      ],
       "Elements": [],
       "Name": "Fourier Transform"
     },
@@ -513448,7 +513485,7 @@
     {
       "id": "3bbe5275-7b5c-8174-8c31-eda1293e8fe6",
       "url": "https://app.notion.com/p/Gaussian-Beam-Divergence-3bbe52757b5c81748c31eda1293e8fe6",
-      "lastEdited": "2026-08-18T20:03:00.000Z",
+      "lastEdited": "2026-08-26T18:19:00.000Z",
       "Skills": [],
       "Equation": "θ = λ / (π·w₀)",
       "Minerals": [],
@@ -513463,7 +513500,8 @@
         "3bbe5275-7b5c-8130-a1e2-d4d1fefda7d8",
         "3bbe5275-7b5c-813d-86cf-c29a346fe2f8",
         "3bbe5275-7b5c-816e-831d-e184b1a1f659",
-        "3bde5275-7b5c-8157-88dd-ea46b41f1776"
+        "3bde5275-7b5c-8157-88dd-ea46b41f1776",
+        "3c8e5275-7b5c-810a-9fc4-c8bb305d233d"
       ],
       "Instruments": [
         "bf3acea0-668c-4c49-bbd1-8dec3d49af72"
