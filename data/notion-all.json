@@ -509531,7 +509531,7 @@
     {
       "id": "3c0e5275-7b5c-81dc-8645-c26e23417e74",
       "url": "https://app.notion.com/p/Rayleigh-Criterion-3c0e52757b5c81dc8645c26e23417e74",
-      "lastEdited": "2026-08-18T20:03:00.000Z",
+      "lastEdited": "2026-08-26T17:45:00.000Z",
       "Skills": [],
       "Equation": "θ ≈ 1.22 λ / D",
       "Minerals": [],
@@ -509553,13 +509553,13 @@
       ],
       "Constants": [],
       "Requires": [
-        "3bbe5275-7b5c-8130-a1e2-d4d1fefda7d8",
-        "3c0e5275-7b5c-8189-b7b0-c947c0dfc027"
+        "3c0e5275-7b5c-8189-b7b0-c947c0dfc027",
+        "3c0e5275-7b5c-81de-9fb6-f2ec61468944"
       ],
       "Impacts": [],
       "Symbols": "θ the smallest angle two points can be apart and still be told apart · λ wavelength · D aperture diameter",
       "Spectral Types": [],
-      "Significance": "The finest detail any telescope, microscope or eye can resolve is set by wavelength over aperture — diffraction, not workmanship, is the floor. It is why telescopes are big, why radio dishes are enormous and get combined into interferometers, why JWST sees sharper in the infrared than Hubble does only because it is larger, and why a microscope cannot show an atom in visible light.",
+      "Significance": "The finest detail any telescope, microscope or eye can resolve is set by wavelength over aperture — diffraction, not workmanship, is the floor. The 1.22 is the first dark ring of the Airy pattern that a circular aperture makes; a slit or a square would carry a different constant. It is why telescopes are big, why radio dishes are enormous and then combined into interferometers to fake a bigger one, and why no visible-light microscope will ever show an atom. It is also why JWST is not sharper than Hubble: working at 2 μm instead of 500 nm costs a factor of four, and 6.5 m of mirror against 2.4 m buys back less than three, so JWST resolves about 0.08″ where Hubble manages 0.05″ and would need a 9.6 m mirror to match it. What the infrared buys is not sharpness — it is seeing through dust, and seeing light so redshifted that Hubble cannot see it at all.",
       "Year": 1879,
       "Required By": [],
       "Elements": [],
@@ -509663,9 +509663,9 @@
     {
       "id": "3c0e5275-7b5c-81e9-81ee-c1b0db6c1249",
       "url": "https://app.notion.com/p/Standing-Waves-3c0e52757b5c81e981eec1b0db6c1249",
-      "lastEdited": "2026-08-18T20:03:00.000Z",
+      "lastEdited": "2026-08-26T17:45:00.000Z",
       "Skills": [],
-      "Equation": "f_n = n v / (2L)  (n = 1, 2, 3…)",
+      "Equation": "f_n = n v / (2L),  n = 1, 2, 3…   (stopped pipe: f_n = n v / (4L), odd n only)",
       "Minerals": [],
       "Timeline": [],
       "Field": "Waves & Optics",
@@ -509682,7 +509682,7 @@
       "Impacts": [],
       "Symbols": "f_n the nth resonant frequency · v wave speed on the string or in the pipe · L its length · n the harmonic number",
       "Spectral Types": [],
-      "Significance": "Confine a wave and only those wavelengths that fit — a whole number of half-waves — survive; the rest cancel. That is why a string, a pipe and a laser cavity have a fundamental and overtones, why a bridge has modes, and why an electron in an atom has discrete energies. Sauveur named the harmonics in 1701.",
+      "Significance": "Confine a wave and only those wavelengths that fit — a whole number of half-waves — survive; the rest cancel. That is why a string, a pipe and a laser cavity have a fundamental and overtones, why a bridge has modes, and why an electron in an atom has discrete energies. A pipe stopped at one end fits quarter-waves instead and keeps only the odd harmonics, which is why a clarinet overblows a twelfth where a flute overblows an octave, and why it sounds an octave lower than its length suggests. Sauveur named the harmonics in 1701.",
       "Year": 1701,
       "Required By": [],
       "Elements": [],
@@ -509722,7 +509722,8 @@
         "3bbe5275-7b5c-8130-a1e2-d4d1fefda7d8",
         "3bbe5275-7b5c-8174-8c31-eda1293e8fe6",
         "3bbe5275-7b5c-8170-bd5f-c796d7589e08",
-        "3bbe5275-7b5c-8140-a1d4-f7bff1df0334"
+        "3bbe5275-7b5c-8140-a1d4-f7bff1df0334",
+        "3c0e5275-7b5c-81dc-8645-c26e23417e74"
       ],
       "Elements": [],
       "Name": "Wave Speed"
@@ -510908,7 +510909,6 @@
       "Year": null,
       "Required By": [
         "3c0e5275-7b5c-8122-bd48-c1cd0374b2c8",
-        "3bbe5275-7b5c-8130-a1e2-d4d1fefda7d8",
         "3c0e5275-7b5c-8177-a2fb-fdc2170b2401",
         "3c0e5275-7b5c-81dc-8645-c26e23417e74",
         "3bbe5275-7b5c-8174-8c31-eda1293e8fe6"
@@ -514398,7 +514398,7 @@
     {
       "id": "3bbe5275-7b5c-8130-a1e2-d4d1fefda7d8",
       "url": "https://app.notion.com/p/Diffraction-Grating-Equation-3bbe52757b5c8130a1e2d4d1fefda7d8",
-      "lastEdited": "2026-08-18T20:03:00.000Z",
+      "lastEdited": "2026-08-26T17:45:00.000Z",
       "Skills": [],
       "Equation": "d·sin θ = m·λ",
       "Minerals": [
@@ -514427,7 +514427,6 @@
       "Constants": [],
       "Requires": [
         "3c0e5275-7b5c-8110-a5c1-c471f72f8383",
-        "3c0e5275-7b5c-8189-b7b0-c947c0dfc027",
         "3c0e5275-7b5c-81de-9fb6-f2ec61468944"
       ],
       "Impacts": [],
@@ -514435,9 +514434,7 @@
       "Spectral Types": [],
       "Significance": "Many slits in lockstep fling each wavelength to its own angle — light sorted by color with ruler-like precision. Fraunhofer used it to map the Sun's dark spectral lines; gratings still sit at the heart of every spectrometer, and a CD's rainbow is the equation at play.",
       "Year": 1821,
-      "Required By": [
-        "3c0e5275-7b5c-81dc-8645-c26e23417e74"
-      ],
+      "Required By": [],
       "Elements": [
         "3eab666d-7f4f-41e3-a816-317f17ca1000",
         "58b43aa4-583e-446a-a0b7-5f0669916b53"
