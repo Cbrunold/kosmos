@@ -71,7 +71,7 @@ LINKS = {
     # nuclear
     "Radioactive Decay Law": ["U", "Ra", "Th", "Po", "Rn"],
     "Half-Life": ["C", "U", "K", "Rb", "Pu"],
-    "Mass–energy equivalence": ["U", "H", "He"],
+    "Mass–Energy Equivalence": ["U", "H", "He"],
     "Lawson Criterion": ["H", "He", "Li"],
     "Seebeck Effect": ["Bi", "Te", "Sb"],
     "Peltier Effect": ["Bi", "Te"],

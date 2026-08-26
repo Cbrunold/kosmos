@@ -199,7 +199,7 @@ CONSTANTS = [
 ]
 
 CONST_EQUATIONS = {
-    "c": ["Mass–energy equivalence", "Lorentz Factor", "Lorentz Transformations", "Einstein Field Equations",
+    "c": ["Mass–Energy Equivalence", "Lorentz Factor", "Lorentz Transformations", "Einstein Field Equations",
           "Planck's Law", "Schwarzschild Radius", "Klein–Gordon Equation", "Fine-Structure Constant",
           "Ampère–Maxwell Law", "Gravitational Time Dilation", "Chandrasekhar Limit", "FLRW Metric"],
     "h": ["Planck–Einstein Relation", "Planck's Law", "De Broglie Wavelength", "Eyring Equation",

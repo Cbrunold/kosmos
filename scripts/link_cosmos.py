@@ -29,7 +29,7 @@ TARGETS = {
             "B-type Stars": ["Wien's Displacement Law", "Stefan–Boltzmann Law", "Rydberg Formula", "Saha Ionization Equation"],
             "A-type Stars": ["Rydberg Formula", "Bohr Model Energy Levels", "Wien's Displacement Law", "Chandrasekhar Limit", "Saha Ionization Equation"],
             "F-type Stars": ["Stefan–Boltzmann Law", "Wien's Displacement Law", "Saha Ionization Equation"],
-            "G-type Stars": ["Stefan–Boltzmann Law", "Wien's Displacement Law", "Planck's Law", "Lawson Criterion", "Mass–energy equivalence", "Kirchhoff's Law of Thermal Radiation", "Saha Ionization Equation"],
+            "G-type Stars": ["Stefan–Boltzmann Law", "Wien's Displacement Law", "Planck's Law", "Lawson Criterion", "Mass–Energy Equivalence", "Kirchhoff's Law of Thermal Radiation", "Saha Ionization Equation"],
             "K-type Stars": ["Wien's Displacement Law", "Stefan–Boltzmann Law", "Saha Ionization Equation"],
             "M-type Stars": ["Wien's Displacement Law", "Planck's Law", "Radioactive Decay Law", "Saha Ionization Equation"],
             "L-type Stars (L Dwarfs)": ["Planck's Law", "Wien's Displacement Law", "Fermi–Dirac Distribution", "Saha Ionization Equation"],
@@ -42,7 +42,7 @@ TARGETS = {
         "title": "Object ID",
         "links": {
             "Sun": ["Stefan–Boltzmann Law", "Wien's Displacement Law", "Planck's Law", "Lawson Criterion",
-                    "Mass–energy equivalence", "Kepler's Third Law", "Law of Universal Gravitation",
+                    "Mass–Energy Equivalence", "Kepler's Third Law", "Law of Universal Gravitation",
                     "Escape Velocity", "Schwarzschild Radius", "Chandrasekhar Limit", "Alfvén Velocity",
                     "MHD Induction Equation", "Magnetic Reynolds Number", "Kirchhoff's Law of Thermal Radiation",
                     "Gravitational Time Dilation", "Hubble's Law", "Rydberg Formula", "Doppler Effect"],

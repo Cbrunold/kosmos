@@ -43,6 +43,8 @@ title-case outlier, and its name is a key in four cross-link maps across
 seed_timeline, link_equations and seed_engineering. The slug would not change,
 so nothing would break for a reader — but it is a cosmetic edit with a real
 blast radius, and it should be a decision rather than a side effect.
+(Decided afterwards: done in fix_mass_energy_name.py, with all fifteen
+references across seven scripts moved in the same commit.)
 
 Guarded on the superseded wording. Idempotent.
 Run on the VPS:  ./deploy.sh fix_small_fields_equations

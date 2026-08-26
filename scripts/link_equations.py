@@ -73,12 +73,12 @@ LINKS = [
     ("Escape Velocity", "Tsiolkovsky Rocket Equation"),
 
     # relativity chain
-    ("Lorentz Transformations", "Mass–energy equivalence"),
+    ("Lorentz Transformations", "Mass–Energy Equivalence"),
     ("Lorentz Factor", "Gravitational Time Dilation"),
-    ("Mass–energy equivalence", "Einstein Field Equations"),
-    ("Mass–energy equivalence", "Klein–Gordon Equation"),
-    ("Mass–energy equivalence", "Lawson Criterion"),
-    ("Mass–energy equivalence", "Radioactive Decay Law"),
+    ("Mass–Energy Equivalence", "Einstein Field Equations"),
+    ("Mass–Energy Equivalence", "Klein–Gordon Equation"),
+    ("Mass–Energy Equivalence", "Lawson Criterion"),
+    ("Mass–Energy Equivalence", "Radioactive Decay Law"),
     ("Einstein Field Equations", "First Friedmann Equation"),
     ("Einstein Field Equations", "Schwarzschild Radius"),
     ("Einstein Field Equations", "Geodesic Equation"),
