@@ -616,7 +616,7 @@ THEORY_EQUATIONS = {
                            "Kirchhoff's Law of Thermal Radiation", "Stefan–Boltzmann Law"],
     "Plum Pudding Model": ["Rutherford Scattering"],
     "Rutherford Model of the Atom": ["Rutherford Scattering", "Coulomb's Law", "Electric Field"],
-    "Special Relativity": ["Lorentz Factor", "Lorentz Transformations", "Mass–energy equivalence"],
+    "Special Relativity": ["Lorentz Factor", "Lorentz Transformations", "Mass–Energy Equivalence"],
     "Bohr Model of the Atom": ["Bohr Model Energy Levels", "Rydberg Formula", "Planck–Einstein Relation"],
     "General Relativity": ["Einstein Field Equations", "Einstein–Hilbert Action", "Geodesic Equation",
                            "Gravitational Time Dilation", "Schwarzschild Radius", "FLRW Metric"],

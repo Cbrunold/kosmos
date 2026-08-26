@@ -74,7 +74,7 @@ EVENTS = [
     E("Reheating", "Very Early Universe", 1e-32, "≈ 10⁻³² s", 1e27, "—",
       "The inflaton field decays and dumps its energy into a bath of particles. This — not t = 0 — "
       "is the actual 'hot' of the hot Big Bang: everything that now exists was created here.",
-      ["Mass–energy equivalence", "Standard Model Lagrangian"],
+      ["Mass–Energy Equivalence", "Standard Model Lagrangian"],
       ["Cosmic Inflation", "Big Bang Cosmology"]),
 
     E("Electroweak Symmetry Breaking", "Very Early Universe", 1e-12, "10⁻¹² s", 1e15, "—",
@@ -87,7 +87,7 @@ EVENTS = [
       "Some process favoured matter over antimatter by about one part in a billion. Everything made "
       "of atoms is that leftover; the other billion parts annihilated into the photons now arriving "
       "as the microwave background. How it happened is unsolved.",
-      ["Standard Model Lagrangian", "Mass–energy equivalence"],
+      ["Standard Model Lagrangian", "Mass–Energy Equivalence"],
       ["The Standard Model", "Grand Unified Theories"]),
 
     E("Quark Epoch", "Very Early Universe", 1e-9, "10⁻¹² – 10⁻⁶ s", 1e13, "—",
@@ -112,7 +112,7 @@ EVENTS = [
     E("Electron–Positron Annihilation", "Radiation Era", 10.0, "1 – 10 s", 5e9, "—",
       "Electrons and positrons annihilate, leaving only the one-in-a-billion excess of matter and "
       "heating the photons relative to the neutrinos that had already left.",
-      ["Mass–energy equivalence", "Planck–Einstein Relation"],
+      ["Mass–Energy Equivalence", "Planck–Einstein Relation"],
       ["Big Bang Cosmology", "Quantum Electrodynamics"]),
 
     E("Big Bang Nucleosynthesis", "Radiation Era", 180.0, "10 s – 20 minutes", 1e9, "—",
