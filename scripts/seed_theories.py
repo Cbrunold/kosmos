@@ -87,6 +87,26 @@ def is_empty(page, name) -> bool:
     return False
 
 
+def chunks(text: str, limit: int = 1900) -> list:
+    """Split into rich_text objects under Notion's 2,000-character cap.
+
+    fetch_all joins a property's text runs back together, so where the split
+    falls does not matter — but prefer a line break, then a space, so a value
+    read in Notion itself is not cut mid-word.
+    """
+    out, rest = [], text
+    while len(rest) > limit:
+        cut = rest.rfind("\n", 0, limit)
+        if cut < limit // 2:
+            cut = rest.rfind(" ", 0, limit)
+        if cut < limit // 2:
+            cut = limit
+        out.append({"text": {"content": rest[:cut]}})
+        rest = rest[cut:]
+    out.append({"text": {"content": rest}})
+    return out
+
+
 def encode(kind: str, value):
     """Build a Notion property payload for a schema type we might encounter."""
     if value is None:
@@ -94,7 +114,7 @@ def encode(kind: str, value):
     if kind == "title":
         return {"title": [{"text": {"content": str(value)}}]}
     if kind == "rich_text":
-        return {"rich_text": [{"text": {"content": str(value)}}]}
+        return {"rich_text": chunks(str(value))}
     if kind == "number":
         return {"number": value}
     if kind == "select":

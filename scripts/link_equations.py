@@ -265,6 +265,8 @@ LINKS = [
     ("Seismic Wave Speeds", "Cauchy's Stress Theorem"),
     ("Hooke's Law", "Cauchy's Stress Theorem"),
     ("Hooke's Law", "Young's Modulus"),
+    ("Zener–Hollomon Parameter", "Arrhenius Equation"),
+    ("Hall–Petch Relationship", "Arrhenius Equation"),
     ("Griffith Fracture Criterion", "Young's Modulus"),
     ("Griffith Fracture Criterion", "Cauchy's Stress Theorem"),
     ("Cauchy's Stress Theorem", "Navier–Stokes Equations"),
