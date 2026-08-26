@@ -149,6 +149,9 @@ python3 scripts/build.py
 step "check french"
 python3 scripts/check_fr.py
 
+step "check content"
+python3 scripts/check_content.py
+
 # ---- 6. ship
 step "ship"
 mkdir -p "$APP_DIR/public"

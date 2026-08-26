@@ -473,7 +473,8 @@ def build_cosmos_page():
             "instruments": instruments, "researchers": researchers,
             "observatories": observatories, "discoveries": discoveries,
             "missions": missions, "localGroup": local, "equations": eq_lookup_all(),
-            "lgChecks": {"nDeg": sum(1 for r in local if "deg" in r),
+            "lgChecks": {"n": len(local),
+                         "nDeg": sum(1 for r in local if "deg" in r),
                          "nRho": sum(1 for r in local if "rho" in r),
                          "nRhoOff": sum(1 for r in local if r.get("rhoOK") is False),
                          "spectralGaps": sp_gaps}}
@@ -1627,6 +1628,7 @@ def build_home(n_min, n_gems, n_classes, n_spectral, n_instr, n_timeline, tl_dec
         "__N_TERMS__": n_terms,
         "__N_TRACES__": f"{n_traces:,}",
         "__N_LOCAL__": n_local,
+        "__N_ELEMENTS__": len(elements),
         "__N_SCALES__": n_scales,
         "__N_UNI__": n_uni,
         "__N_UNI_PLACED__": n_uni_placed,

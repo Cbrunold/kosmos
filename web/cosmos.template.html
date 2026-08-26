@@ -161,9 +161,9 @@ __SHARED__
   <ol>
     <li><b>The mass column mixes two different quantities.</b> The Milky Way, Andromeda and the Large Magellanic Cloud are quoted at their <em>halo</em> masses — 1.2, 1.5 and 0.14 trillion suns, dark matter included. The Small Magellanic Cloud, M32, M110 and NGC 6822 are quoted at something closer to what shines. Both are legitimate numbers; printing them in one column is not, and it makes the LMC look twenty times the SMC when the ratio people usually mean is nearer two.</li>
     <li><b>Most objects carry no mass at all</b>, and the empty ones are not marked as unknown so much as simply absent.</li>
-    <li><b>The coordinates column is empty for every single object.</b> With it, subgroup membership would be checkable in three dimensions — M32 and M110 should sit within a few hundred thousand light-years of Andromeda, and if they did not, something would be wrong. Without it, "Andromeda subgroup" is an assertion this page cannot test.</li>
+    <li><b>The coordinates are here, and unused.</b> Right ascension, declination and distance are stored for every object, so subgroup membership could be checked in three dimensions — M32 and M110 should sit within a few hundred thousand light-years of Andromeda, and if they did not, something would be wrong. This page does not yet do that arithmetic, so "Andromeda subgroup" is still an assertion rather than a test.</li>
     <li><b>Diameters for dwarf galaxies are a choice of definition</b>, not a measurement: half-light radius, tidal radius and the visible extent differ by factors of two or three. Crater 2 is here at 1.06° and is often quoted at 2°, and both are honest — they are measuring different edges.</li>
-    <li><b>Forty-five objects, of roughly eighty known members.</b> The missing ones are mostly ultra-faint dwarfs found since 2015, and which of those are galaxies rather than star clusters is itself unsettled.</li>
+    <li><b><span id="lgn">—</span> objects, of roughly eighty known members.</b> The missing ones are mostly ultra-faint dwarfs found since 2015, and which of those are galaxies rather than star clusters is itself unsettled.</li>
   </ol>
 </section>
 
@@ -360,6 +360,7 @@ __SHARED__
       // not far away in the sense that matters to the eye: four of its members
       // are wider than the Moon, and the largest covers twenty-two of them.
       const CK = D.lgChecks || {};
+      { const el = document.getElementById('lgn'); if (el && CK.n) el.textContent = CK.n; }
       if (CK.nDeg) {
         const big = LG.filter((g) => g.moons >= 1).length;
         const n = document.createElement('p');

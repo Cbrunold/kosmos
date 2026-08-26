@@ -42,6 +42,13 @@ web/                          Page sources: templates, shared.css, analyzer part
 data/chemistry/elements.json  Normalised element data (scripts/fetch_elements.py)
 data/notion-all.json          All other Notion sources (scripts/fetch_all.py)
 scripts/build.py              web/ + data → public/*.html, then public/fr/*.html (build_fr)
+scripts/check_content.py     Fails the build on mechanical inconsistency: a count typed into a
+                              template that the data disagrees with (pin it in CLAIMS, or mark the
+                              line count-ok if it is a fact about the world), two equations sharing
+                              one Symbols string, a symbol decoded that its formula does not contain,
+                              a relation id resolving to no row, a column null for every row, mojibake.
+                              It cannot catch a sentence that is well-formed and wrong — that still
+                              needs someone who knows the field to read the page
 scripts/i18n.py               The French mirror: extracts every reader-facing string from a built English
                               page (text runs with their inline markup, title/placeholder/aria attributes,
                               JS literals in screen-facing contexts, and the embedded JSON data by per-page
