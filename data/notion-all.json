@@ -511972,7 +511972,7 @@
     {
       "id": "3bde5275-7b5c-8197-a885-cf717e19fea0",
       "url": "https://app.notion.com/p/Cosmological-Equation-of-State-3bde52757b5c8197a885cf717e19fea0",
-      "lastEdited": "2026-08-26T17:19:00.000Z",
+      "lastEdited": "2026-08-26T18:38:00.000Z",
       "Skills": [],
       "Equation": "w = p/(ρc²),   ρ ∝ a^(−3(1+w))",
       "Minerals": [],
@@ -511989,7 +511989,7 @@
         "3bde5275-7b5c-8194-92cc-da98c37e359e",
         "3bde5275-7b5c-81b0-a714-d53a2345ebdb"
       ],
-      "Named After": "Georges Lemaître · Howard Robertson",
+      "Named After": null,
       "Machines": [],
       "Related": [
         "3bbe5275-7b5c-810c-8fb5-f469f876c99a",
@@ -512012,7 +512012,7 @@
       "Impacts": [],
       "Symbols": "w the equation-of-state parameter · p pressure · ρ energy density · a scale factor · w = 0 for matter, 1/3 for radiation, −1 for a cosmological constant",
       "Spectral Types": [],
-      "Significance": "One number per ingredient, and it decides everything. Feed w into the fluid equation and the dilution law falls out: matter thins as a⁻³ (volume alone), radiation as a⁻⁴ (volume plus redshift), and dark energy with w = −1 does not thin at all — which is why the early universe was radiation-dominated, the middle matter-dominated, and the present is being taken over by a constant. The expansion accelerates once the *total* w falls below −1/3. Whether dark energy's own w is exactly −1 is the open question of the subject: Planck's 2018 combination gave −1.03 ± 0.03, indistinguishable from a cosmological constant, and the baryon-acoustic-oscillation surveys since have pulled toward a w that changes with time. Treat any single number here as dated.",
+      "Significance": "One number per ingredient, and it decides everything. Feed w into the fluid equation and the dilution law falls out: matter thins as a⁻³ (volume alone), radiation as a⁻⁴ (volume plus redshift), and dark energy with w = −1 does not thin at all — which is why the early universe was radiation-dominated, the middle matter-dominated, and the present is being taken over by a constant. The expansion accelerates once the total w falls below −1/3. Whether dark energy's own w is exactly −1 is the open question of the subject: Planck's 2018 combination gave −1.03 ± 0.03, indistinguishable from a cosmological constant, and the baryon-acoustic-oscillation surveys since have pulled toward a w that changes with time. Treat any single number here as dated. The relation is Lemaître's, from the fluid equation of 1927; w as a parameter one quotes a value for is a much later convention, which is why no name sits on this entry.",
       "Year": 1933,
       "Required By": [],
       "Elements": [],
