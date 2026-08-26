@@ -509856,9 +509856,7 @@
       "Spectral Types": [],
       "Significance": "At the speeds of cars, birds and turbine blades drag goes with the square of the speed — twice as fast, four times the force, eight times the power. The drag coefficient sweeps up everything shape and Reynolds number do: about 0.3 for a modern car, 1.0 for a cyclist upright, 0.04 for an aerofoil. Rayleigh gave it this form in 1876; the v² was Newton's.",
       "Year": 1876,
-      "Required By": [
-        "3bee5275-7b5c-8166-8a64-fd5e2ad2d5dc"
-      ],
+      "Required By": [],
       "Elements": [],
       "Name": "Drag Equation"
     },
@@ -510670,7 +510668,8 @@
         "3bde5275-7b5c-81e1-aac4-cc21b9d77b07",
         "3c0e5275-7b5c-81bd-8cd3-f9a2363b0c47",
         "3c0e5275-7b5c-8130-ae4d-d929818a0900",
-        "3c0e5275-7b5c-81ee-8da9-eee84aad7342"
+        "3c0e5275-7b5c-81ee-8da9-eee84aad7342",
+        "3bee5275-7b5c-8166-8a64-fd5e2ad2d5dc"
       ],
       "Elements": [],
       "Name": "Conservation of Momentum"
@@ -511480,7 +511479,7 @@
     {
       "id": "3bee5275-7b5c-8166-8a64-fd5e2ad2d5dc",
       "url": "https://app.notion.com/p/Betz-Limit-3bee52757b5c81668a64fd5e2ad2d5dc",
-      "lastEdited": "2026-08-18T20:03:00.000Z",
+      "lastEdited": "2026-08-26T17:40:00.000Z",
       "Skills": [],
       "Equation": "C_p,max = 16/27 ≈ 0.593",
       "Minerals": [],
@@ -511498,12 +511497,12 @@
       "Requires": [
         "3bbe5275-7b5c-8189-9f06-e3de324e0af4",
         "3c0e5275-7b5c-813b-8d2e-da5484cf3b1c",
-        "3c0e5275-7b5c-81d6-b1de-ec9081641f42"
+        "3c0e5275-7b5c-81e5-a7d4-c8ba74770b4d"
       ],
       "Impacts": [],
       "Symbols": "C_p power coefficient: the fraction of the wind's kinetic energy a turbine extracts",
       "Spectral Types": [],
-      "Significance": "No turbine can take more than 59.3 % of the energy in the wind passing through it, because air that has given up all its energy would stop and block the rotor. Good modern turbines reach 45–50 %, close to the ceiling — the improvements now are in size and reliability, not the physics.",
+      "Significance": "No turbine can take more than 59.3 % of the energy in the wind passing through it, because air that had given up all its energy would stop and block the rotor. What makes the number worth knowing is how little goes into it: Betz treats the rotor as an actuator disc and does nothing but bookkeeping — mass in equals mass out, thrust is the momentum the stream loses, power is the kinetic energy it loses — with no aerofoil, no drag coefficient and no blade count anywhere in the derivation. That is why 16/27 binds every design ever proposed. Good modern turbines reach 45–50 %, close enough to the ceiling that the improvements now are in size and reliability, not the physics.",
       "Year": 1919,
       "Required By": [],
       "Elements": [],
@@ -515977,7 +515976,7 @@
     {
       "id": "3bbe5275-7b5c-819b-ba4e-f3c3031b13f1",
       "url": "https://app.notion.com/p/Bernoulli-s-Equation-3bbe52757b5c819bba4ef3c3031b13f1",
-      "lastEdited": "2026-08-18T20:03:00.000Z",
+      "lastEdited": "2026-08-26T17:40:00.000Z",
       "Skills": [
         "3bee5275-7b5c-8104-bd15-f3f63b6670e5"
       ],
@@ -516010,7 +516009,7 @@
       "Impacts": [],
       "Symbols": "p pressure · ρ density · v flow speed · g gravitational acceleration · h height · holds along a streamline for steady, frictionless, incompressible flow",
       "Spectral Types": [],
-      "Significance": "Where a fluid speeds up, its pressure drops — energy bookkeeping along a streamline. Why airplane wings lift, carburetors draw fuel, and a shower curtain billows inward.",
+      "Significance": "Where a fluid speeds up along a streamline its pressure drops — energy bookkeeping for steady, frictionless, incompressible flow. It is why a carburettor and a scent atomiser draw liquid up into a fast stream, why a Venturi meter reads a flow rate from nothing but a pressure difference, why a roof lifts off in a gale rather than being pushed in, and why two ships running close alongside are drawn together. What it is not is the reason a wing lifts. The popular account has air taking equal time over a longer upper surface, which is not what air does; lift is circulation, and the mass of air the wing throws downward. Bernoulli holds perfectly well over a wing — the pressure on top really is lower — but it is describing the flow, not causing it.",
       "Year": 1738,
       "Required By": [
         "3c0e5275-7b5c-815c-be60-d2a80ee3b254"
