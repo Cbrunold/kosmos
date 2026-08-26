@@ -764,7 +764,9 @@
     "machines": [
       "3bee5275-7b5c-819c-ab65-fab1ca28400e"
     ],
-    "skills": [],
+    "skills": [
+      "3bee5275-7b5c-8162-bbd6-c6add0c038fd"
+    ],
     "equations": [],
     "pageId": "6a8cb9e7-6464-44a0-b28f-fe79c88c995e",
     "pageUrl": "https://app.notion.com/p/Sulfur-6a8cb9e7646444a0b28ffe79c88c995e",
@@ -1135,7 +1137,8 @@
     "skills": [
       "3bee5275-7b5c-8117-b401-cee2654a1d54",
       "3bee5275-7b5c-818a-a38a-fd2b417391d9",
-      "3bee5275-7b5c-818a-8f3b-cc5926f57c88"
+      "3bee5275-7b5c-818a-8f3b-cc5926f57c88",
+      "3bee5275-7b5c-8162-bbd6-c6add0c038fd"
     ],
     "equations": [],
     "pageId": "854ebd58-91a3-4e3e-8d2b-ebbed4e02a42",
@@ -1386,7 +1389,8 @@
       "3bee5275-7b5c-8151-a852-f47cb0eb56f2",
       "3bee5275-7b5c-81ea-8ad8-ca2470b17c2c",
       "3bee5275-7b5c-8185-b06f-d588a9b08a2c",
-      "3bee5275-7b5c-8164-a6ad-c67f6502291e"
+      "3bee5275-7b5c-8164-a6ad-c67f6502291e",
+      "3bee5275-7b5c-8162-bbd6-c6add0c038fd"
     ],
     "equations": [
       "3bbe5275-7b5c-81ee-9b16-dcfba043e1f3",
