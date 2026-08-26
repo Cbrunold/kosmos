@@ -512556,7 +512556,7 @@
     {
       "id": "3bde5275-7b5c-810f-bed8-fee488db4170",
       "url": "https://app.notion.com/p/Heat-Equation-3bde52757b5c810fbed8fee488db4170",
-      "lastEdited": "2026-08-18T19:16:00.000Z",
+      "lastEdited": "2026-08-26T17:51:00.000Z",
       "Skills": [],
       "Equation": "∂T/∂t = α·∇²T",
       "Minerals": [
@@ -512586,7 +512586,7 @@
       "Impacts": [],
       "Symbols": "T temperature field · t time · ∇² Laplacian, the local curvature of temperature · α thermal diffusivity = k/(ρ·c_p): how fast heat evens out",
       "Spectral Types": [],
-      "Significance": "Temperature smooths itself out: peaks flatten, dips fill, at a rate set by the local curvature. Fourier invented his transform to solve exactly this, and the same equation wearing other names governs diffusion, option prices (Black–Scholes), and image blurring. Kelvin used it to date the Earth — and got it wrong only because he didn't know about radioactivity.",
+      "Significance": "Temperature smooths itself out: peaks flatten, dips fill, at a rate set by the local curvature. Fourier invented his transform to solve exactly this, and the same equation under other names governs diffusion, option prices (Black–Scholes) and image blurring. Kelvin used it to date the Earth at twenty to forty million years and was wrong — though not only for the reason usually given. Radioactivity was indeed undiscovered, but his own former assistant John Perry showed in 1895 that a convecting interior alone stretches the answer by the factor needed. Conduction was the wrong model, not merely the wrong number.",
       "Year": 1822,
       "Required By": [],
       "Elements": [
@@ -514031,7 +514031,7 @@
     {
       "id": "3bbe5275-7b5c-817f-80a4-f6e36ff9d306",
       "url": "https://app.notion.com/p/Lawson-Criterion-3bbe52757b5c817f80a4f6e36ff9d306",
-      "lastEdited": "2026-08-15T16:49:00.000Z",
+      "lastEdited": "2026-08-26T17:51:00.000Z",
       "Skills": [],
       "Equation": "n·T·τ_E ≥ 3×10²¹ keV·s/m³",
       "Minerals": [
@@ -514060,7 +514060,7 @@
       "Spectral Types": [
         "b2652565-709b-468a-a616-b84ae2120764"
       ],
-      "Significance": "The finish line for fusion power: hold a plasma dense enough, hot enough, long enough — achieve any two and the third gets you. Tokamaks chase confinement time, laser fusion chases density; seven decades on, the race against this one inequality continues.",
+      "Significance": "The finish line for fusion power: hold a plasma dense enough, hot enough, long enough — achieve any two and the third gets you. Tokamaks chase confinement time, laser fusion chases density. In December 2022 the National Ignition Facility crossed it far enough to get more fusion energy out of the capsule than the laser delivered to it, the first target gain above one; the facility as a whole still draws far more from the wall than the shot returns, so the race that matters is not over.",
       "Year": 1957,
       "Required By": [],
       "Elements": [
@@ -515353,7 +515353,7 @@
     {
       "id": "3bbe5275-7b5c-8125-8857-cffce0164fef",
       "url": "https://app.notion.com/p/Standard-Model-Lagrangian-3bbe52757b5c81258857cffce0164fef",
-      "lastEdited": "2026-08-15T16:49:00.000Z",
+      "lastEdited": "2026-08-26T17:51:00.000Z",
       "Skills": [],
       "Equation": "ℒ = −¼F_μν·F^μν + iψ̄D̸ψ + ψ̄ᵢyᵢⱼψⱼφ + h.c. + |D_μφ|² − V(φ)",
       "Minerals": [],
@@ -515395,9 +515395,9 @@
       ],
       "Requires": [],
       "Impacts": [],
-      "Symbols": "line 1: the force fields (photon, W, Z, gluons) · line 2: matter in motion (quarks, leptons) · line 3: matter meeting the Higgs, gaining mass · line 4: the Higgs field itself · compact notation — expanded it runs to pages",
+      "Symbols": "F_μν the force fields — photon, W, Z and the gluons · ψ the matter fields, quarks and leptons, in motion · yᵢⱼ the Yukawa couplings: matter meeting the Higgs and taking mass from it · φ the Higgs field itself, shaped by its potential · D_μ the covariant derivative, which is where the forces actually enter · h.c. the Hermitian conjugate. Compact notation throughout — written out, it runs to pages",
       "Spectral Types": [],
-      "Significance": "Every known particle and every force except gravity, in one (very compressed) expression — the equation on CERN's coffee mugs. Assembled through the 1960s-70s from electroweak unification and quantum chromodynamics; its last missing piece, the Higgs boson, arrived in 2012. Nothing it predicts has yet been caught being wrong.",
+      "Significance": "Every known particle and every force except gravity, in one very compressed expression — the equation on CERN's coffee mugs. Assembled through the 1960s and 70s out of electroweak unification and quantum chromodynamics; its last missing piece, the Higgs boson, arrived in 2012. It is not unblemished: neutrinos have mass, which the model as written forbids, and the oscillation experiments that proved it in 1998 are the one confirmed crack in it. Everything else it has predicted has so far survived every test aimed at it.",
       "Year": 1975,
       "Required By": [],
       "Elements": [],
@@ -515773,7 +515773,7 @@
     {
       "id": "3bbe5275-7b5c-814d-83e6-ee6df24eacca",
       "url": "https://app.notion.com/p/Doppler-Effect-3bbe52757b5c814d83e6ee6df24eacca",
-      "lastEdited": "2026-08-18T20:03:00.000Z",
+      "lastEdited": "2026-08-26T17:51:00.000Z",
       "Skills": [],
       "Equation": "f′ = f·(c + vₒ)/(c − vₛ)",
       "Minerals": [],
@@ -515802,7 +515802,7 @@
       "Impacts": [],
       "Symbols": "f emitted frequency · f′ observed frequency · c wave speed · vₒ observer speed toward the source · vₛ source speed toward the observer",
       "Spectral Types": [],
-      "Significance": "Motion squeezes waves ahead and stretches them behind — the siren that drops in pitch as it passes. The same effect, applied to light, is how radar guns catch speeders and how Hubble read the expansion of the universe from galaxy redshifts.",
+      "Significance": "Motion squeezes waves ahead and stretches them behind — the siren that drops in pitch as it passes. The same effect in light is how a radar gun catches a speeder, how a star's wobble betrays an orbiting planet, and how Slipher and Hubble first read the galaxy redshifts, as recession velocities. That last reading is the useful approximation rather than the mechanism: a cosmological redshift is space expanding underneath the light while it travels, not motion through space.",
       "Year": 1842,
       "Required By": [],
       "Elements": [
@@ -517133,7 +517133,7 @@
     {
       "id": "3bbe5275-7b5c-8140-a1d4-f7bff1df0334",
       "url": "https://app.notion.com/p/Planck-Einstein-Relation-3bbe52757b5c8140a1d4f7bff1df0334",
-      "lastEdited": "2026-08-18T20:03:00.000Z",
+      "lastEdited": "2026-08-26T17:51:00.000Z",
       "Skills": [
         "3bee5275-7b5c-81ea-8ad8-ca2470b17c2c"
       ],
@@ -517151,7 +517151,7 @@
         "3bde5275-7b5c-81c6-b1bc-c6ba18f69e39",
         "3bde5275-7b5c-810a-ac78-e3684b14acd1"
       ],
-      "Named After": "Max Planck",
+      "Named After": "Max Planck · Albert Einstein",
       "Machines": [
         "3bee5275-7b5c-81b9-b30c-e1617a4968d5"
       ],
