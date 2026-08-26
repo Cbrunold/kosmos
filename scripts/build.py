@@ -23,6 +23,8 @@ WEB = ROOT / "web"
 PUB = ROOT / "public"
 SHARED = (WEB / "shared.css").read_text()
 
+SKY_FIELD = re.compile(r"Astronom|Astrophys|Cosmolog|Gravitat|Relativity|Celestial", re.I)
+
 elements = json.load(open(ROOT / "data" / "chemistry" / "elements.json"))
 notion = json.load(open(ROOT / "data" / "notion-all.json"))
 
@@ -377,10 +379,19 @@ def build_cosmos_page():
         "equations": i.get("Equations") or [],
     } for i in notion["instruments"] if i.get("Name")]
 
+    # /cosmos is a page about the sky, not a directory of the Researchers DB.
+    # It was printing all 207 of them — Darwin, Diesel, Lavoisier and Volta
+    # under "Researchers on file" on a cosmology page. Keep the people this
+    # page can account for: anyone whose field is of the sky, plus whoever
+    # found something in the timeline below whatever their field, because
+    # listing a discovery without its discoverer is the worse inconsistency.
+    # (The rest are not homeless for long — /people is the standing fix.)
+    discoverers = {i for x in notion["discoveries"] for i in (x.get("Discoverer") or [])}
     researchers = sorted(
         ({"name": r["Name"], "slug": slugify(r["Name"]), "life": r.get("Lifespan"),
           "field": r.get("Field"), "known": r.get("Known For"), "nobel": r.get("Nobel")}
-         for r in notion["researchers"] if r.get("Name")),
+         for r in notion["researchers"]
+         if r.get("Name") and (r["id"] in discoverers or SKY_FIELD.search(r.get("Field") or ""))),
         key=lambda r: r["name"].split()[-1])   # by surname, as a card index would be
 
     obs_by_id = {}

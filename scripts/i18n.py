@@ -588,7 +588,10 @@ def apply(html: str, page: str, tr: Translator) -> str:
     out = LINK_RE.sub(lambda m: m.group(1) + "/fr/" + (m.group(2) or ""), out)
     # the filter vocabulary, for display only: the data keeps its English values so every
     # comparison, colour lookup and grouping in the page's own script still works
-    vocab = {s: tr.lookup(s) for s in vocab_values(html)}
+    # sorted: vocab_values returns a set, and iterating it unsorted made every build
+    # emit __VOCAB__ in a different order — 20 French pages rewritten on every deploy,
+    # burying the one page that actually changed in twenty that had not
+    vocab = {s: tr.lookup(s) for s in sorted(vocab_values(html))}
     vocab = {k: v for k, v in vocab.items() if v != k}
     if vocab:
         out = out.replace("</style>", "</style>\n<script>window.__VOCAB__ = "
