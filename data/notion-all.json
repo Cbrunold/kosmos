@@ -511815,7 +511815,7 @@
     {
       "id": "3bde5275-7b5c-816d-b136-f19a8ec27287",
       "url": "https://app.notion.com/p/Saha-Ionization-Equation-3bde52757b5c816db136f19a8ec27287",
-      "lastEdited": "2026-08-15T18:01:00.000Z",
+      "lastEdited": "2026-08-26T17:28:00.000Z",
       "Skills": [],
       "Equation": "n_{i+1}·n_e / n_i = (2g_{i+1}/g_i)·(2πm_e k_B T / h²)^(3/2)·e^(−χ/k_B T)",
       "Minerals": [],
@@ -511858,7 +511858,10 @@
         "3bde5275-7b5c-815d-9aa8-d0076c2ea5a9",
         "3bde5275-7b5c-81ec-95a0-e586da4863dd"
       ],
-      "Requires": [],
+      "Requires": [
+        "3bbe5275-7b5c-816e-b97a-fdbc445f99b7",
+        "3bbe5275-7b5c-813f-974b-c000af0892df"
+      ],
       "Impacts": [],
       "Symbols": "n_i, n_{i+1} number densities of two adjacent ionization stages · n_e electron density · g statistical weights · m_e electron mass · T temperature · χ the ionization energy · k_B, h the Boltzmann and Planck constants",
       "Spectral Types": [
@@ -512772,7 +512775,9 @@
       ],
       "Significance": "The full glow curve of a hot body, exact at every wavelength — and to get it Planck had to assume light is emitted in discrete lumps of hν, an 'act of desperation' that founded quantum theory. Both Wien's peak and the Stefan–Boltzmann total are buried inside it; the CMB matches it to a part in ten thousand, the most perfect black body ever measured.",
       "Year": 1900,
-      "Required By": [],
+      "Required By": [
+        "3bbe5275-7b5c-8120-863e-cd94384e0239"
+      ],
       "Elements": [],
       "Name": "Planck's Law"
     },
@@ -513968,7 +513973,9 @@
       ],
       "Significance": "Electrons refuse to share states, so they stack up to a filling line — the Fermi level. Everything electronic follows from where that line sits: metals have it mid-band, insulators in a gap, and semiconductors close enough to a band edge to be persuaded — which is the transistor.",
       "Year": 1926,
-      "Required By": [],
+      "Required By": [
+        "3bbe5275-7b5c-81dd-a75c-d703f0a640b3"
+      ],
       "Elements": [
         "22e34085-1b4d-4f83-96dc-1dac62e1f343",
         "68542bc4-f631-46b7-99b9-75931965e407",
@@ -514188,9 +514195,7 @@
       "Spectral Types": [],
       "Significance": "The vis-viva equation with the orbit opened to infinity — 11.2 km/s from Earth's surface, 2.4 from the Moon, 620 from the Sun. Set v_esc equal to the speed of light and Schwarzschild's radius appears two centuries early: John Michell imagined 'dark stars' this way in 1783.",
       "Year": 1687,
-      "Required By": [
-        "3bbe5275-7b5c-811a-baed-c686bb16bbc3"
-      ],
+      "Required By": [],
       "Elements": [],
       "Name": "Escape Velocity"
     },
@@ -515254,7 +515259,9 @@
       "Spectral Types": [],
       "Significance": "One sum that knows everything: energy, entropy, pressure, heat capacity — every thermodynamic quantity is a derivative of ln Z. Statistical mechanics' entire program is 'compute Z, then differentiate', formalized in Gibbs' 1902 treatise.",
       "Year": 1902,
-      "Required By": [],
+      "Required By": [
+        "3bde5275-7b5c-816d-b136-f19a8ec27287"
+      ],
       "Elements": [],
       "Name": "Partition Function"
     },
@@ -515301,7 +515308,9 @@
       ],
       "Significance": "At temperature T, higher-energy states are exponentially rarer — the law behind the thinning atmosphere, the rates of chemical reactions, and why glowing objects shift color with temperature. Arguably the most-used formula in all of physical science.",
       "Year": 1868,
-      "Required By": [],
+      "Required By": [
+        "3bde5275-7b5c-816d-b136-f19a8ec27287"
+      ],
       "Elements": [],
       "Name": "Boltzmann Distribution"
     },
@@ -515476,7 +515485,7 @@
     {
       "id": "3bbe5275-7b5c-81dd-a75c-d703f0a640b3",
       "url": "https://app.notion.com/p/Chandrasekhar-Limit-3bbe52757b5c81dda75cd703f0a640b3",
-      "lastEdited": "2026-08-15T18:00:00.000Z",
+      "lastEdited": "2026-08-26T17:28:00.000Z",
       "Skills": [],
       "Equation": "M_Ch ∝ (ℏc/G)^(3/2)/(μₑmₚ)² ≈ 1.4 M☉",
       "Minerals": [
@@ -515519,14 +515528,17 @@
         "3bde5275-7b5c-8106-8a9c-d118818e203d",
         "3bde5275-7b5c-81d6-a084-f77a4c868d4f"
       ],
-      "Requires": [],
+      "Requires": [
+        "3bbe5275-7b5c-81e1-96c0-c6157aaee509",
+        "3bbe5275-7b5c-8109-a4a6-c5b903b6e05f"
+      ],
       "Impacts": [],
       "Symbols": "M_Ch the maximum white-dwarf mass · ℏ reduced Planck constant · c speed of light · G gravitational constant · μₑ electrons per nucleon · mₚ proton mass · M☉ solar mass",
       "Spectral Types": [
         "c185512d-753a-4dc0-9818-42091ca06062",
         "fbbb7d85-a746-4aa6-9045-622d68637585"
       ],
-      "Significance": "Above about 1.4 solar masses, quantum electron pressure can no longer hold a dead star up against its own gravity — collapse continues to a neutron star or black hole. Worked out by Chandrasekhar at 19, aboard the ship carrying him to Cambridge; it's why Type Ia supernovae all detonate at the same mass and make trustworthy cosmic distance markers.",
+      "Significance": "Above about 1.4 solar masses, electron degeneracy pressure can no longer hold a dead star up against its own gravity, and collapse continues to a neutron star or a black hole. Worked out by Chandrasekhar at 19, aboard the ship carrying him to Cambridge, and disputed for a decade by Eddington, who thought the conclusion absurd. It sets the scale for Type Ia supernovae, which is why they can be used as distance markers at all — but the old line that they all detonate at exactly this mass has not survived: they are standardised after the fact, by correcting brightness against how fast the light curve fades, and a good part of them may come from white dwarfs that never reached the limit.",
       "Year": 1931,
       "Required By": [],
       "Elements": [
@@ -515540,7 +515552,7 @@
     {
       "id": "3bbe5275-7b5c-811a-baed-c686bb16bbc3",
       "url": "https://app.notion.com/p/Schwarzschild-Radius-3bbe52757b5c811abaedc686bb16bbc3",
-      "lastEdited": "2026-08-18T19:44:00.000Z",
+      "lastEdited": "2026-08-26T17:28:00.000Z",
       "Skills": [],
       "Equation": "r_s = 2GM/c²",
       "Minerals": [],
@@ -515577,7 +515589,7 @@
         "3bde5275-7b5c-81d6-a084-f77a4c868d4f"
       ],
       "Requires": [
-        "3bbe5275-7b5c-813a-84a7-ea08528b3c93"
+        "3bbe5275-7b5c-81c7-b3a7-decb4402d1ab"
       ],
       "Impacts": [],
       "Symbols": "r_s the event-horizon radius · G gravitational constant · M mass · c speed of light",
@@ -515593,11 +515605,11 @@
     {
       "id": "3bbe5275-7b5c-8120-863e-cd94384e0239",
       "url": "https://app.notion.com/p/Stefan-Boltzmann-Law-3bbe52757b5c8120863ecd94384e0239",
-      "lastEdited": "2026-08-15T18:00:00.000Z",
+      "lastEdited": "2026-08-26T17:28:00.000Z",
       "Skills": [
         "3bee5275-7b5c-8162-bbd6-c6add0c038fd"
       ],
-      "Equation": "L = 4πR²σT⁴",
+      "Equation": "F = σT⁴;   L = 4πR²σT⁴ for a sphere of radius R",
       "Minerals": [
         "e847fc6b-cdf0-4a2d-af2c-6e6d34ecc21c"
       ],
@@ -515631,9 +515643,11 @@
       "Constants": [
         "3bde5275-7b5c-8100-9c06-e8130a78b9f4"
       ],
-      "Requires": [],
+      "Requires": [
+        "3bde5275-7b5c-811f-9033-f21e2c8a2791"
+      ],
       "Impacts": [],
-      "Symbols": "L luminosity (power radiated) · R radius of the star · T surface temperature · σ the Stefan–Boltzmann constant",
+      "Symbols": "F the power radiated per unit area by a black body · σ the Stefan–Boltzmann constant · T absolute temperature · R the radius of the star · L its luminosity, the same law over the whole sphere · a real surface radiates εF, with emissivity ε below 1 — about 0.8 for oxidised steel",
       "Spectral Types": [
         "53d890a6-54be-4b11-bfeb-76804e4fab79",
         "7740ec4a-0143-465a-8830-04b10edad57b",
@@ -515641,7 +515655,7 @@
         "d0e4f6cb-72b8-4394-8147-6d679b719682",
         "fbbb7d85-a746-4aa6-9045-622d68637585"
       ],
-      "Significance": "A star's brightness from its size and temperature alone — radiated power scales with the fourth power of T, so a modestly hotter star blazes enormously brighter. With a spectrum in hand, this is how astronomers weigh a star's output across light-years.",
+      "Significance": "Power radiated per unit area goes as the fourth power of temperature, so a modestly hotter body blazes enormously brighter — and over a sphere it gives a star's brightness from its size and temperature alone, which is how astronomers weigh a stellar output across light-years. Two cautions travel with it. The T of a star is an effective temperature: the temperature of the black body that would radiate the same, not a reading from anywhere in particular. And nothing real is a black body — multiply by emissivity, which is where the same equation stops being about stars and starts being about why a steel bar at 1,200 °C sheds a quarter of a megawatt from every square metre and cools while you look at it.",
       "Year": 1879,
       "Required By": [],
       "Elements": [
@@ -516400,7 +516414,9 @@
       "Spectral Types": [],
       "Significance": "Position and momentum cannot both be pinned down — sharpen one and the other blurs. Not a limit of instruments but of nature itself: it keeps electrons from collapsing into nuclei and gives atoms their size.",
       "Year": 1927,
-      "Required By": [],
+      "Required By": [
+        "3bbe5275-7b5c-81dd-a75c-d703f0a640b3"
+      ],
       "Elements": [],
       "Name": "Heisenberg Uncertainty Principle"
     },
@@ -517328,7 +517344,8 @@
       "Required By": [
         "3bbe5275-7b5c-818c-bf76-d40ebcb485e3",
         "3bbe5275-7b5c-81a1-9543-ed416dd7caa2",
-        "3bbe5275-7b5c-81ef-b92b-d35cea11b9be"
+        "3bbe5275-7b5c-81ef-b92b-d35cea11b9be",
+        "3bbe5275-7b5c-811a-baed-c686bb16bbc3"
       ],
       "Elements": [],
       "Name": "Einstein Field Equations"
