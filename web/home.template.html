@@ -65,11 +65,14 @@ __SHARED__
      busiest part of the plate straight under the wordmark. Pull the crop toward the
      artwork's quiet end and lay a second, vertical scrim over the whole band. */
   @media (max-width: 720px) {
-    .banner img { object-position: 10% 50%; }
+    /* the artwork's left third is near-black, so a narrow viewport crops to the
+       machine instead and the scrim lightens to match — the same wash that keeps
+       the wordmark legible over the wide crop would leave this one a blank band. */
+    .banner img { object-position: 66% 50%; }
     .banner::after {
       background:
-        linear-gradient(180deg, rgba(6, 8, 11, 0.5) 0%, rgba(6, 8, 11, 0.82) 60%, rgba(6, 8, 11, 0.92) 100%),
-        linear-gradient(100deg, rgba(6, 8, 11, 0.92) 0%, rgba(6, 8, 11, 0.6) 55%, rgba(6, 8, 11, 0.3) 100%);
+        linear-gradient(180deg, rgba(6, 8, 11, 0.28) 0%, rgba(6, 8, 11, 0.58) 62%, rgba(6, 8, 11, 0.72) 100%),
+        linear-gradient(100deg, rgba(6, 8, 11, 0.86) 0%, rgba(6, 8, 11, 0.52) 62%, rgba(6, 8, 11, 0.22) 100%);
     }
     .bline { font-size: 10px; letter-spacing: 0.1em; }
   }
@@ -184,8 +187,8 @@ __SHARED__
 
 <header class="hero">
   <div class="banner">
-    <img src="/assets/kosmos-banner-v1.webp" width="2400" height="686" fetchpriority="high" decoding="async"
-         alt="A ladder of scale drawn as a technical plate: an atom, a crystal lattice, the periodic table, a gear and a turbine blade, a planet, a solar system and a galaxy, each in a circle strung along one ruled axis." />
+    <img src="/assets/kosmos-banner-v2.webp" width="1800" height="514" fetchpriority="high" decoding="async"
+         alt="One brass-and-steel machine seen in isometric: a wall of periodic-table tiles feeds into a train of gears, a beam engine and a lathe, and the drive runs on into an armillary sphere and a telescope pointed at a field of stars." />
     <div class="bcap">
       <h1 class="wordmark">K<span class="o">O</span>SMOS</h1>
       <p class="bline">A personal atlas of the physical world</p>

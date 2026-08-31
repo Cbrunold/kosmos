@@ -44,7 +44,7 @@ const TYPE = (file) => (file.endsWith('.json') ? 'application/json; charset=utf-
 // copies rather than writes. Read once at boot like the pages, so a request never
 // touches the disk; an absent directory is not fatal, for the same reason a missing
 // page is not — the rest of the site still serves. The filename carries its own
-// version (kosmos-banner-v1.webp), so unlike the pages these can be cached hard.
+// version (kosmos-banner-v2.webp), so unlike the pages these can be cached hard.
 const ASSET_TYPE = { '.webp': 'image/webp', '.png': 'image/png', '.jpg': 'image/jpeg',
                      '.svg': 'image/svg+xml', '.avif': 'image/avif' };
 const ASSETS = {};
