@@ -196,16 +196,79 @@
   a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; }
 
 
-  .hero { margin: 6vh 0 40px; }
+  .hero { margin: 0 0 40px; }
+
+  /* ---- banner: full-bleed to the viewport edges. The negative margins are exactly
+     the body's padding (20px top, clamp(14px,3vw,40px) sides), not 100vw, which would
+     overflow by the width of a desktop scrollbar and give the page a sideways scroll.
+     The artwork is dark in both themes, so the type on it is pinned to fixed light
+     values rather than the theme's --ink. ---- */
+  .banner {
+    position: relative;
+    margin: -20px calc(-1 * clamp(14px, 3vw, 40px)) 24px;
+    background: #0b0e13;
+    border-bottom: 1px solid var(--hairline);
+    overflow: hidden;
+  }
+  .banner img {
+    display: block;
+    width: 100%;
+    height: clamp(168px, 23vw, 320px);
+    object-fit: cover;
+    object-position: 50% 50%;
+  }
+  /* left-to-right scrim: the wordmark sits on the artwork's quiet end, and this holds
+     the contrast wherever object-fit crops on a narrow screen */
+  .banner::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(100deg, rgba(6, 8, 11, 0.94) 0%, rgba(6, 8, 11, 0.78) 30%,
+                                        rgba(6, 8, 11, 0.28) 58%, rgba(6, 8, 11, 0) 88%);
+  }
+  .bcap {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    padding: 0 clamp(14px, 3vw, 40px);
+  }
   .wordmark {
     font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
-    font-size: clamp(34px, 6vw, 58px);
+    font-size: clamp(30px, 5.4vw, 56px);
     font-weight: 700;
     letter-spacing: 0.22em;
     margin: 0;
+    color: #e9edf2;
   }
-  .wordmark .o { color: var(--heat); }
-  .tagline { font-size: 14px; color: var(--ink-2); margin: 8px 0 0; max-width: 56ch; line-height: 1.55; }
+  .wordmark .o { color: #5598e7; }
+  .bline {
+    font: 11px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #9fb0bd;
+    margin: 0;
+    padding-top: 9px;
+    border-top: 1px solid rgba(233, 237, 242, 0.22);
+    align-self: start;
+  }
+  /* Narrow screens: object-fit crops horizontally, which would otherwise centre the
+     busiest part of the plate straight under the wordmark. Pull the crop toward the
+     artwork's quiet end and lay a second, vertical scrim over the whole band. */
+  @media (max-width: 720px) {
+    .banner img { object-position: 10% 50%; }
+    .banner::after {
+      background:
+        linear-gradient(180deg, rgba(6, 8, 11, 0.5) 0%, rgba(6, 8, 11, 0.82) 60%, rgba(6, 8, 11, 0.92) 100%),
+        linear-gradient(100deg, rgba(6, 8, 11, 0.92) 0%, rgba(6, 8, 11, 0.6) 55%, rgba(6, 8, 11, 0.3) 100%);
+    }
+    .bline { font-size: 10px; letter-spacing: 0.1em; }
+  }
+
+  .tagline { font-size: 14px; color: var(--ink-2); margin: 0; max-width: 56ch; line-height: 1.55; }
 
   /* ---- sections: four groups, one hue each; the dot on every tile is its group's ---- */
   .sections { max-width: 1100px; display: flex; flex-direction: column; gap: 30px; }
@@ -322,7 +385,14 @@
 <script>const VOCAB = window.__VOCAB__ || {}; const vocab = (s) => (s == null ? s : (VOCAB[s] || s));</script>
 
 <header class="hero">
-  <h1 class="wordmark">K<span class="o">O</span>SMOS</h1>
+  <div class="banner">
+    <img src="/assets/kosmos-banner-v1.webp" width="2400" height="686" fetchpriority="high" decoding="async"
+         alt="A ladder of scale drawn as a technical plate: an atom, a crystal lattice, the periodic table, a gear and a turbine blade, a planet, a solar system and a galaxy, each in a circle strung along one ruled axis." />
+    <div class="bcap">
+      <h1 class="wordmark">K<span class="o">O</span>SMOS</h1>
+      <p class="bline">A personal atlas of the physical world</p>
+    </div>
+  </div>
   <p class="tagline">Un atlas personnel du monde physique et de ce qui l'habite — les éléments, les minéraux, le cosmos, les forces qui le tiennent ensemble, et la machinerie que le vivant en tire. Rédigé dans Notion, rendu ici.</p>
   <div class="search" id="search">
     <div class="sbox">

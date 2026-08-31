@@ -20,7 +20,8 @@
 #   5. build     — build.py, then check_fr.py: the French pages' scripts must parse
 #                  and their data blocks must match the English ones, because a
 #                  translated apostrophe inside a JS literal breaks a page silently
-#   6. ship      — public/*.html + *.json + public/fr -> $APP_DIR/public/, server.js -> $APP_DIR/
+#   6. ship      — public/*.html + *.json + public/fr + public/assets -> $APP_DIR/public/,
+#                  server.js -> $APP_DIR/
 #   7. restart   — $RESTART, then poll /health until it answers ok:true with
 #                  no missing pages
 #   8. commit    — data/ + public/ if changed, then push
@@ -158,8 +159,15 @@ mkdir -p "$APP_DIR/public"
 cp public/*.html public/*.json "$APP_DIR/public/"
 mkdir -p "$APP_DIR/public/fr"
 cp public/fr/*.html "$APP_DIR/public/fr/"
+# public/assets: binaries build.py copies rather than writes (the home banner).
+# server.js reads this directory at boot, so a deploy that skipped it would serve
+# a page whose hero 404s.
+if compgen -G "public/assets/*" > /dev/null; then
+  mkdir -p "$APP_DIR/public/assets"
+  cp public/assets/* "$APP_DIR/public/assets/"
+fi
 cp server.js "$APP_DIR/"
-echo "copied $(ls public/*.html public/*.json | wc -l) files -> $APP_DIR/public/, $(ls public/fr/*.html | wc -l) -> $APP_DIR/public/fr/, server.js -> $APP_DIR/"
+echo "copied $(ls public/*.html public/*.json | wc -l) files -> $APP_DIR/public/, $(ls public/fr/*.html | wc -l) -> $APP_DIR/public/fr/, $(ls public/assets 2>/dev/null | wc -l) assets, server.js -> $APP_DIR/"
 
 # ---- 7. restart + health
 step "restart"

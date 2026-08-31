@@ -1,7 +1,7 @@
 import http from 'node:http';
-import { readFileSync } from 'node:fs';
+import { readFileSync, readdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
-import { dirname, join } from 'node:path';
+import { dirname, extname, join } from 'node:path';
 import Anthropic from '@anthropic-ai/sdk';
 
 const here = dirname(fileURLToPath(import.meta.url));
@@ -39,6 +39,21 @@ for (const [route, file] of Object.entries({ ...PAGES })) {
 }
 PAGES['/fr/'] = 'fr/home.html';
 const TYPE = (file) => (file.endsWith('.json') ? 'application/json; charset=utf-8' : 'text/html; charset=utf-8');
+
+// Static assets (public/assets): the home banner and anything else binary the build
+// copies rather than writes. Read once at boot like the pages, so a request never
+// touches the disk; an absent directory is not fatal, for the same reason a missing
+// page is not — the rest of the site still serves. The filename carries its own
+// version (kosmos-banner-v1.webp), so unlike the pages these can be cached hard.
+const ASSET_TYPE = { '.webp': 'image/webp', '.png': 'image/png', '.jpg': 'image/jpeg',
+                     '.svg': 'image/svg+xml', '.avif': 'image/avif' };
+const ASSETS = {};
+try {
+  for (const name of readdirSync(join(here, 'public', 'assets'))) {
+    const type = ASSET_TYPE[extname(name).toLowerCase()];
+    if (type) ASSETS['/assets/' + name] = { body: readFileSync(join(here, 'public', 'assets', name)), type };
+  }
+} catch { /* no assets directory: the site is text, it still serves */ }
 // A page that failed to deploy should 404, not take the whole site down with it.
 // This used to be an unguarded readFileSync inside a map: adding /timeline to
 // PAGES and deploying the HTML to the wrong directory put the process into a
@@ -167,11 +182,21 @@ const server = http.createServer(async (req, res) => {
     });
     return res.end(CONTENT[route]);
   }
+  if ((req.method === 'GET' || req.method === 'HEAD') && ASSETS[route]) {
+    const asset = ASSETS[route];
+    res.writeHead(200, {
+      'Content-Type': asset.type,
+      'Content-Length': asset.body.length,
+      'Cache-Control': 'public, max-age=31536000, immutable',   // the version is in the filename
+    });
+    return res.end(req.method === 'HEAD' ? undefined : asset.body);
+  }
   if (req.method === 'GET' && req.url === '/health') {
     return json(res, 200, {
       ok: missing.length === 0,
       analyzer: hasKey,
       pages: Object.keys(CONTENT).length,
+      assets: Object.keys(ASSETS).length,
       missing,           // empty on a good deploy; names the files on a bad one
       startedAt: STARTED_AT,
       pid: process.pid,
@@ -210,6 +235,6 @@ const server = http.createServer(async (req, res) => {
 });
 
 server.listen(PORT, '127.0.0.1', () => {
-  console.log(`kosmos listening on 127.0.0.1:${PORT} — ${Object.keys(CONTENT).length}/${Object.keys(PAGES).length} pages (analyzer: ${hasKey ? 'enabled' : 'DISABLED — set ANTHROPIC_API_KEY'})`);
+  console.log(`kosmos listening on 127.0.0.1:${PORT} — ${Object.keys(CONTENT).length}/${Object.keys(PAGES).length} pages, ${Object.keys(ASSETS).length} assets (analyzer: ${hasKey ? 'enabled' : 'DISABLED — set ANTHROPIC_API_KEY'})`);
   if (missing.length) console.error(`MISSING PAGES, serving 404 for: ${missing.join(', ')}`);
 });

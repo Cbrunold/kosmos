@@ -11,10 +11,12 @@ Outputs: public/index.html   (periodic table, served at /elements)
          public/mines.html   (world map of flagship mines + extraction per element)
          public/machines.html, public/skills.html   (the engineering half)
          public/search.json  (flat index behind the home-page search bar)
+         public/assets/      (copied verbatim from web/assets — the home banner)
 """
 import json
 import math
 import re
+import shutil
 from collections import Counter, defaultdict
 from pathlib import Path
 
@@ -79,6 +81,23 @@ def slugify(s: str) -> str:
 # absent and vocab() is the identity; scripts/i18n.py fills it on the French ones.
 VOCAB_JS = ("<script>const VOCAB = window.__VOCAB__ || {};"
             " const vocab = (s) => (s == null ? s : (VOCAB[s] || s));</script>")
+
+
+def copy_assets():
+    """web/assets -> public/assets. The banner is a binary the build does not
+    generate, so it is copied rather than written; server.js serves the copy and
+    deploy.sh ships it. Kept out of write_page's text path deliberately."""
+    src, dst = WEB / "assets", PUB / "assets"
+    if not src.is_dir():
+        return 0
+    dst.mkdir(parents=True, exist_ok=True)
+    n = 0
+    for f in sorted(src.iterdir()):
+        if f.is_file() and not f.name.startswith("."):
+            shutil.copyfile(f, dst / f.name)
+            n += 1
+    print(f"copied {n} asset(s) -> public/assets/")
+    return n
 
 
 def write_page(template: str, out: str, data=None, extra: dict | None = None):
@@ -1745,4 +1764,5 @@ if __name__ == "__main__":
     build_home(n_min, n_gems, n_classes, n_spectral, n_instr, n_timeline, tl_decades,
                n_obs, n_disc, n_miss, n_search, n_mines, n_mined, n_mach, n_diag, n_skills, n_terms, n_traces,
                n_expl, n_expl_terms, n_imp, n_imp_terms, n_bill_eq, n_bill_skills)
+    copy_assets()
     build_fr()
