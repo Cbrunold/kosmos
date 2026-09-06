@@ -7,7 +7,9 @@ __SHARED__
   .felt { width: 100%; height: auto; display: block; border-radius: 8px; background: var(--panel); border: 1px solid var(--hairline); }
   #lab { touch-action: none; user-select: none; -webkit-user-select: none; }
   .ctl { display: flex; flex-direction: column; gap: 10px; }
-  .ctl .row { display: grid; grid-template-columns: 1fr auto; gap: 2px 10px; align-items: center; }
+  .ctl .row { display: grid; grid-template-columns: 1fr auto auto; gap: 2px 10px; align-items: center; }
+  .ctl .num { width: 66px; font: 12px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; color: var(--ink); background: var(--panel); border: 1px solid var(--hairline); border-radius: 5px; padding: 3px 5px; text-align: right; font-variant-numeric: tabular-nums; }
+  .ctl .num:focus { outline: 2px solid var(--ring); outline-offset: 1px; }
   .ctl label { font: 10px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); grid-column: 1 / -1; }
   .ctl input[type=range] { width: 100%; accent-color: var(--c-felt); margin: 0; }
   .ctl .v { font: 12px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; color: var(--ink); font-variant-numeric: tabular-nums; min-width: 84px; text-align: right; }
@@ -51,6 +53,14 @@ __SHARED__
   .tblwrap { min-width: 0; }
   .tblwrap #pov { margin-top: 10px; }
   .out { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 14px; max-width: 1240px; }
+  @media (max-width: 720px) { .out { grid-template-columns: 1fr; } }
+  /* a phone: the diagrams are 900 units wide drawn at 350px, so their type grows — by the size it was
+     set at, which is why the attribute selectors; the 7-unit ball numbers stay inside their balls */
+  @media (max-width: 640px) {
+    svg.felt text[font-size="11"] { font-size: 19px; }
+    svg.felt text[font-size="8.5"] { font-size: 15px; }
+    svg.felt text[font-size="15"] { font-size: 24px; }
+  }
   @media (max-width: 860px) { .out { grid-template-columns: 1fr; } }
   .out h3 { font: 700 12px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; letter-spacing: 0.1em; text-transform: uppercase; margin: 0 0 8px; display: flex; align-items: center; gap: 8px; }
   .out h3 .dot { width: 9px; height: 9px; border-radius: 50%; }
@@ -265,7 +275,7 @@ __SHARED__
 <section class="tabpane" id="pane-drills">
 <h2 class="ksec">Drills &amp; minigames</h2>
 <p class="knote" style="max-width:72ch;margin:0 0 10px">Two ways to make the table ask something of you. A <b>drill</b> lays the balls out for its level and moves you up on a pot, down on a miss — ten levels, each a little harder. The <b>run-out</b> is a game: every executed shot advances the table, so the cue ball you park is the cue ball you play next. Both drive the table in <em>the shot lab</em>, and starting one takes you there.</p>
-<div class="out" style="grid-template-columns:1fr 1fr">
+<div class="out">
     <div class="kcard ctl"><label style="grid-column:1/-1">run out — one shot at a time <span class="cnt" id="runsum"></span></label>
       <div class="row">
         <div class="presets"><button type="button" id="runstart">start the run-out</button><button type="button" id="runstop">end it</button></div>
@@ -317,27 +327,49 @@ __SHARED__
 <script id="data" type="application/json">__DATA__</script>
 <script>
   const D = JSON.parse(document.getElementById('data').textContent);
-  // ---- constants: pool-sauce-engine/poolsauce/constants.py, plus two literature values marked below
-  const R = 0.028575, M = 0.170, G = 9.81;
-  const E_BB = 0.92;                 // ball–ball restitution
-  const MU_S = 0.2, MU_R = 0.025, MU_SP = 0.044;   // cloth: sliding, rolling, spinning
-  const E_C = Math.sqrt(0.75);       // cushion keeps 3/4 of the energy → 0.87 of the speed
-  const MU_C = 0.2;                  // cushion friction — literature, not in constants.py
-  const muBB = (v) => 0.01 + 0.108 * Math.exp(-1.088 * v);   // Alciatore's fit — literature
-  const TABLE_L = 2.54, TABLE_W = 1.27;
-  const RP = 0.05715;                // 4½ in mouth → 0.0572 m capture radius on the ball's centre
-  const SHELF_C = 0.0413, SHELF_S = 0.0095;   // pocket shelf depth, a per-pocket variable: 1⅝ in corner, ⅜ in side (WPA typicals)
+  // ---- constants: data/billiards/constants.json, handed over by build.py — the list the numbers tab
+  // is rendered from, so the lab and the table cannot disagree on a value
+  const C = D.constants;
+  const R = C.R, M = C.M, G = C.G;
+  const E_BB = C.E_BB;                 // ball–ball restitution
+  const MU_S = C.MU_S, MU_R = C.MU_R, MU_SP = C.MU_SP;   // cloth: sliding, rolling, spinning
+  const E_C = Math.sqrt(C.CUSHION_ENERGY);       // cushion keeps 3/4 of the energy → 0.87 of the speed
+  const MU_C = C.MU_C;                  // cushion friction — literature, not in constants.py
+  const muBB = (v) => C.MU_BB_FIT[0] + C.MU_BB_FIT[1] * Math.exp(-C.MU_BB_FIT[2] * v);   // Alciatore's fit — literature
+  const TABLE_L = C.TABLE[0], TABLE_W = C.TABLE[1];
+  const RP = C.RP;                // 4½ in mouth → 0.0572 m capture radius on the ball's centre
+  const SHELF_C = C.SHELF[0], SHELF_S = C.SHELF[1];   // pocket shelf depth, a per-pocket variable: 1⅝ in corner, ⅜ in side (WPA typicals)
   const POCKETS = [
     { p: [0, 0], name: 'top-left corner', shelf: SHELF_C }, { p: [TABLE_L / 2, 0], name: 'top side', shelf: SHELF_S }, { p: [TABLE_L, 0], name: 'top-right corner', shelf: SHELF_C },
     { p: [0, TABLE_W], name: 'bottom-left corner', shelf: SHELF_C }, { p: [TABLE_L / 2, TABLE_W], name: 'bottom side', shelf: SHELF_S }, { p: [TABLE_L, TABLE_W], name: 'bottom-right corner', shelf: SHELF_C },
   ];
-  const SQ_R = 5 * Math.PI / 180;    // squirt: radians of cue-ball deflection per unit b/R of side (2.5° at max side) — a cue constant
-  const SW_K = 0.08;                 // swerve: lateral g-fraction at full side while the ball slides — the cue's slight natural elevation
+  const SQ_R = C.SQUIRT_DEG_PER_BR * Math.PI / 180;    // squirt: radians of cue-ball deflection per unit b/R of side (2.5° at max side) — a cue constant
+  const SW_K = C.SW_K;                 // swerve: lateral g-fraction at full side while the ball slides — the cue's slight natural elevation
   const BALL_COL = { 1: '#f2b705', 2: '#2c5db0', 3: '#d34a3a', 4: '#7b4fae', 5: '#e07b2a', 6: '#2e8b57', 7: '#8b4040', 8: '#2b2b2b', 9: '#f2b705', 10: '#2c5db0', 11: '#d34a3a', 12: '#7b4fae', 13: '#e07b2a', 14: '#2e8b57', 15: '#8b4040' };
 
   const $ = (id) => document.getElementById(id);
+  // ---- every slider gets a number box: a lab wants "cut 27.3°" typed, not a thumb dragged near it.
+  // Typing drives the slider (and so the page, through its own input handlers); the slider, and any
+  // preset that sets it, drives the box — the readout beside them changes whenever the page redraws,
+  // so watching it is how the box learns of a value set from code.
+  for (const r of document.querySelectorAll('.ctl .row > input[type=range]')) {
+    const n = document.createElement('input'); n.type = 'number'; n.className = 'num';
+    n.min = r.min; n.max = r.max; n.step = r.step; n.value = r.value;
+    if (r.labels && r.labels[0]) n.setAttribute('aria-label', r.labels[0].textContent);
+    r.after(n);
+    n.addEventListener('input', () => { if (n.value === '' || isNaN(+n.value)) return; r.value = n.value; r.dispatchEvent(new Event('input', { bubbles: true })); });
+    n.addEventListener('change', () => { n.value = r.value; });   // clamp to the slider's range on blur
+    r.addEventListener('input', () => { if (document.activeElement !== n) n.value = r.value; });
+    const v = r.parentElement.querySelector('.v');
+    if (v) new MutationObserver(() => { if (document.activeElement !== n) n.value = r.value; }).observe(v, { childList: true, characterData: true, subtree: true });
+  }
   const fmt = (x, d = 2) => (Math.round(x * 10 ** d) / 10 ** d).toFixed(d);
   const deg = (r) => r * 180 / Math.PI, rad = (d) => d * Math.PI / 180;
+  // one naming for the ball-hit fraction, everywhere it is spoken: the nearest of the eighths a
+  // player calls. The contact tab used to bin it on thresholds of its own and could call the
+  // same hit something else than the shot lab did
+  const FRAC_NAMES = [[1, 'full ball'], [0.875, '⅞ ball'], [0.75, '¾ ball'], [0.625, '⅝ ball'], [0.5, '½ ball'], [0.375, '⅜ ball'], [0.25, '¼ ball'], [0.125, '⅛ ball'], [0, 'edge']];
+  const fracName = (f) => FRAC_NAMES.reduce((a, b) => (Math.abs(b[0] - f) < Math.abs(a[0] - f) ? b : a))[1];
   const vadd = (a, b) => [a[0] + b[0], a[1] + b[1]], vsub = (a, b) => [a[0] - b[0], a[1] - b[1]];
   const vmul = (a, k) => [a[0] * k, a[1] * k], vlen = (a) => Math.hypot(a[0], a[1]);
   const vdot = (a, b) => a[0] * b[0] + a[1] * b[1], vunit = (a) => { const l = vlen(a); return l ? vmul(a, 1 / l) : [0, 0]; };
@@ -355,7 +387,7 @@ __SHARED__
       const into = r.dir > 0 ? b.v[r.ax] < 0 : b.v[r.ax] > 0;
       if (!past || !into) continue;
       const ta = 1 - r.ax, vn = Math.abs(b.v[r.ax]);
-      const e = Math.max(0.55, E_C - 0.04 * vn);   // rubber deadens with pace: √0.75 at a touch, ~0.55 at a break
+      const e = Math.max(C.CUSHION_E_MIN, E_C - C.CUSHION_DEADEN * vn);   // rubber deadens with pace: √0.75 at a touch, ~0.55 at a break
       const Jn = M * vn * (1 + e);
       // sign of the side spin's surface velocity along the rail at this cushion's contact point
       const zs = r.ax === 1 ? r.dir : -r.dir;
@@ -906,9 +938,7 @@ __SHARED__
     const tot = lat < 0 ? m : (720 - m) % 720;          // aim point sits opposite the ball's apparent offset
     const hh = Math.floor(tot / 60) || 12, mm = tot % 60;
     const clock = `${hh}:${mm < 10 ? '0' : ''}${mm}`;
-    const names = [[1, 'full ball'], [0.875, '⅞ ball'], [0.75, '¾ ball'], [0.625, '⅝ ball'], [0.5, '½ ball'], [0.375, '⅜ ball'], [0.25, '¼ ball'], [0.125, '⅛ ball'], [0, 'edge']];
-    let name = names[0]; for (const nn of names) if (Math.abs(nn[0] - f) < Math.abs(name[0] - f)) name = nn;
-    return { th, f, s, clock, name: name[1] };
+    return { th, f, s, clock, name: fracName(f) };
   }
 
   // ---- down on the shot: the view from behind the cue ball along the aim
@@ -1229,7 +1259,7 @@ __SHARED__
   function cushion(aDeg, v, side) {
     const a = rad(aDeg);
     const vx = v * Math.cos(a), vy = v * Math.sin(a);           // along the rail, into the rail
-    const e = Math.max(0.55, E_C - 0.04 * vy);                   // same deadening-with-pace as the main sim
+    const e = Math.max(C.CUSHION_E_MIN, E_C - C.CUSHION_DEADEN * vy);                   // same deadening-with-pace as the main sim
     const z = 2.5 * v * side;                                    // surface speed from side spin at the contact
     const slip = vx - z;                                         // running side (z > 0) reduces the slip
     const Jn = M * vy * (1 + e);
@@ -1288,8 +1318,6 @@ __SHARED__
     nums.innerHTML = '<thead><tr>' + D.table.columns.map((c) => `<th>${c}</th>`).join('') + '</tr></thead><tbody></tbody>';
     const tb = nums.querySelector('tbody');
     for (const r of D.table.rows) { const tr = document.createElement('tr'); r.forEach((c, i) => { const td = document.createElement('td'); td.className = i === 0 ? 'k' : i === 1 ? 'v' : ''; td.textContent = c; tr.appendChild(td); }); tb.appendChild(tr); }
-    const extra = [["Ball–ball friction μ", "≈ 0.06 (0.01–0.12 with speed)", "throw", "Literature — Alciatore's fit; not yet in constants.py"], ["Cushion friction μ_c", "≈ 0.2", "cushion rebound", "Literature; not yet in constants.py"], ["Pocket mouth", "4.5 in = 0.1143 m", "when a ball is down", "WPA corner spec; the lab drops a ball whose centre crosses the mouth"], ["Pocket shelf", "corner 1.63 in · side 0.38 in", "hang or drop", "WPA typicals, a variable per pocket; a ball at the mouth needs that much roll left to fall, or it hangs"], ["Squirt · swerve", "5°/(b/R) · k = 0.08", "side's cost on the aim", "A fixed cue constant and a slight natural elevation; not in constants.py"], ["Cushion restitution e_c", "0.87 − 0.04·v, floor 0.55", "rebound speed", "√0.75 at a soft touch, deadening with pace — the engine's value is the soft limit"]];
-    for (const r of extra) { const tr = document.createElement('tr'); r.forEach((c, i) => { const td = document.createElement('td'); td.className = i === 0 ? 'k' : i === 1 ? 'v' : ''; td.textContent = c; if (i === 3) td.style.color = 'var(--muted)'; tr.appendChild(td); }); tb.appendChild(tr); }
   }
 
   // ---- wiring: ball positions, the aimed pocket (practice) and the aim line (pro) live in state
@@ -2733,7 +2761,7 @@ __SHARED__
     }
     return best;
   }
-  const FRACNAME = (f) => (f > 0.94 ? 'full ball' : f > 0.8 ? '⅞ ball' : f > 0.65 ? '¾ ball' : f > 0.42 ? '½ ball' : f > 0.2 ? '¼ ball' : 'edge');
+  const FRACNAME = fracName;
   function runContact() {
     const cut = +$('ctcut').value, v0 = +$('ctspd').value, tip = +$('cttip').value, side = +$('ctside').value;
     let dist = +$('ctdist').value;

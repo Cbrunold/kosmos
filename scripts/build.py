@@ -39,6 +39,9 @@ def on_cosmos(r) -> bool:
 
 elements = json.load(open(ROOT / "data" / "chemistry" / "elements.json"))
 notion = json.load(open(ROOT / "data" / "notion-all.json"))
+# the numbers the pool table runs on: the /billiards lab reads them, and its numbers tab
+# and the Ninety-Degree Rule table on /equations are rendered from them — one file
+BILLIARDS = json.load(open(ROOT / "data" / "billiards" / "constants.json"))
 # the newest edit anywhere in the data: the home footer, the search index and the
 # sitemap all quote it, so it is computed once
 DISCOVERERS = {i for x in notion["discoveries"] for i in (x.get("Discoverer") or [])}
@@ -290,6 +293,14 @@ def eq_lookup_all():
             for e in notion.get("equations", [])}
 
 
+def billiards_rows():
+    """The constants table, from data/billiards/constants.json: what the lab runs on, with
+    where each value comes from when it is not the engine's."""
+    src = BILLIARDS["sources"]
+    return [[c["name"], c["display"], c["enters"], c["note"] + src.get(c["source"], "")]
+            for c in BILLIARDS["constants"]]
+
+
 # ---------------- per-equation lookup tables ----------------
 # Some equations are only usable with a table of values beside them. Keyed by
 # equation name; rendered under the significance text on the equations page.
@@ -300,21 +311,7 @@ EQUATION_TABLES = {
                    "(pool-sauce-engine, poolsauce/constants.py) integrates with, so the shelf and "
                    "the engine never disagree on one.",
         "columns": ["Quantity", "Value", "Enters", "Note"],
-        "rows": [
-            ["Ball radius R", "28.575 mm", "ghost-ball aim, tip offset, slide-to-roll",
-             "A 2¼-inch ball. Snooker's are 52.5 mm; carom 61.5 mm."],
-            ["Ball mass m", "170 g", "speed transfer, momentum", "Phenolic resin; matched to a gram in a set."],
-            ["Ball–ball restitution e", "0.92", "restitution, ninety-degree rule",
-             "So a stun stop shot still creeps forward — a touch of draw fixes it."],
-            ["Ball–ball friction μ", "≈ 0.06", "throw", "Clean balls. Chalk on the contact point can double it."],
-            ["Cloth sliding friction μ_s", "0.2", "slide-to-roll, draw distance", "Worsted tournament cloth; napped cloth is higher."],
-            ["Cloth rolling resistance μ_r", "0.025", "rolling resistance",
-             "A ball at 1 m/s runs about 2 m. The 0.01 often quoted gives 5 m and ten seconds of it, which no table does."],
-            ["Cloth spinning friction", "0.044", "how long side spin lasts", "Torque on a ball spinning in place about a vertical axis."],
-            ["Cushion efficiency", "0.75 of energy → 0.87 of speed", "cushion rebound",
-             "Rubber; varies table to table and with speed. Test before a match."],
-            ["9-ft playing surface", "2.54 × 1.27 m", "distance, speed control", "Inside the cushion noses; a 7-ft bar table is 1.98 × 0.99 m."],
-        ],
+        "rows": billiards_rows(),
         "note": "Where the engine and the literature differ the engine's value is quoted, because that is "
                 "the number the shots on the channel are computed with.",
     },
@@ -846,6 +843,8 @@ def build_billiards_page():
                       for e in eqs],
         "skills": skills,
         "table": EQUATION_TABLES.get("Ninety-Degree Rule"),
+        # what the lab reads — key: value only; the prose stays in the table it is rendered into
+        "constants": {c["key"]: c["value"] for c in BILLIARDS["constants"]},
     })
     return len(eqs), len(skills)
 

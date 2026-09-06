@@ -189,3 +189,21 @@ def test_one_shot_scripts_live_in_migrations():
 @pytest.mark.parametrize("script", sorted(p.relative_to(ROOT).as_posix() for p in ROOT.glob("scripts/**/*.py")))
 def test_every_script_compiles(script):
     subprocess.run([sys.executable, "-m", "py_compile", str(ROOT / script)], check=True)
+
+
+# ---------------------------------------------------------------- billiards
+def test_billiards_constants_have_one_source():
+    """/billiards used to hardcode every constant its lab ran on while its numbers tab restated
+    them as prose, and nothing read anything. data/billiards/constants.json is now both: the
+    lab reads every key, the table is rendered from the list, and no constant is typed twice."""
+    cj = json.loads((ROOT / "data/billiards/constants.json").read_text())["constants"]
+    tpl = (ROOT / "web/billiards.template.html").read_text()
+    for c in cj:
+        assert f"C.{c['key']}" in tpl, f"{c['key']} is in the table but the lab never reads it"
+    typed = re.findall(r"const (?:R|M|G|E_BB|MU_S|MU_R|MU_SP|MU_C|TABLE_L|TABLE_W|RP|SHELF_C|SHELF_S|SW_K) = [0-9]", tpl)
+    typed += re.findall(r"E_C = Math\.sqrt\([0-9]", tpl)
+    assert not typed, f"constants typed into the lab again: {typed}"
+    page = (PUB / "billiards.html").read_text()
+    data = json.loads(next(b.group(2) for b in i18n.JSON_BLOCK.finditer(page)))
+    assert data["constants"] == {c["key"]: c["value"] for c in cj}
+    assert [r[0] for r in data["table"]["rows"]] == [c["name"] for c in cj]
