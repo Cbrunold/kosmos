@@ -107,6 +107,8 @@ def test_search_index_targets_exist():
     symbols = {e["notation"] for e in build.elements}
     pages = {}
     bad = []
+    assert all(href.startswith("/people#") for kind, _, _, _, href in idx["items"] if kind == "researcher"), \
+        "every researcher lands on /people — 114 used to point at a /cosmos anchor that page never rendered"
     for kind, name, sub, text, href in idx["items"]:
         route, _, anchor = href.partition("#")
         if route not in ROUTES or not ROUTES[route].endswith(".html"):
@@ -207,3 +209,52 @@ def test_billiards_constants_have_one_source():
     data = json.loads(next(b.group(2) for b in i18n.JSON_BLOCK.finditer(page)))
     assert data["constants"] == {c["key"]: c["value"] for c in cj}
     assert [r[0] for r in data["table"]["rows"]] == [c["name"] for c in cj]
+
+
+# ---------------------------------------------------------------- entity URLs (server.js)
+@pytest.fixture(scope="module")
+def server():
+    """server.js on a spare port, serving the committed build."""
+    if NODE is None:
+        pytest.skip("node not found")
+    import os, socket, time, urllib.request
+    with socket.socket() as sock:
+        sock.bind(("127.0.0.1", 0)); port = sock.getsockname()[1]
+    proc = subprocess.Popen([NODE, str(ROOT / "server.js")], env={**os.environ, "PORT": str(port)},
+                            stdout=subprocess.DEVNULL, stderr=subprocess.PIPE, text=True)
+    try:
+        for _ in range(50):
+            try:
+                urllib.request.urlopen(f"http://127.0.0.1:{port}/health", timeout=1); break
+            except Exception:
+                time.sleep(0.1)
+        else:
+            proc.kill(); pytest.fail("server.js did not come up: " + proc.stderr.read()[-500:])
+        yield f"http://127.0.0.1:{port}"
+    finally:
+        proc.kill()
+
+
+def _get(url, **headers):
+    import urllib.request, urllib.error
+    try:
+        r = urllib.request.urlopen(urllib.request.Request(url, headers=headers), timeout=5)
+        return r.status, r.read().decode(), dict(r.headers)
+    except urllib.error.HTTPError as e:
+        return e.code, e.read().decode(), dict(e.headers)
+
+
+def test_entity_url_serves_the_section_page_as_that_entity(server):
+    """/equations/pythagorean-theorem unfurls as the theorem, not as the shelf, and lands on
+    its card; every search result's href has such a URL."""
+    status, html, h = _get(server + "/equations/pythagorean-theorem")
+    assert status == 200
+    assert "<title>Pythagorean Theorem · Kosmos</title>" in html
+    assert '<link rel="canonical" href="https://kosmos.yeahborhood.com/equations/pythagorean-theorem">' in html
+    assert '<meta property="og:title" content="Pythagorean Theorem · Kosmos">' in html
+    assert "history.replaceState(null, '', \"/equations#pythagorean-theorem\")" in html
+    assert _get(server + "/equations/pythagorean-theorem", **{"If-None-Match": h["ETag"]})[0] == 304
+    status, html, _ = _get(server + "/fr/people/albert-einstein")
+    assert status == 200 and '<html lang="fr">' in html and "/fr/people#albert-einstein" in html
+    assert _get(server + "/equations/no-such-thing")[0] == 404
+    assert _get(server + "/nope/pythagorean-theorem")[0] == 404

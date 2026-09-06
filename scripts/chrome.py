@@ -48,6 +48,7 @@ GROUPS = [
         ("/constants", "Constants &amp; Units"),
         ("/glossary", "Glossary"),
         ("/explainers", "Explainers"),
+        ("/people", "People"),
     ]),
 ]
 LABELS = {route: label for _, links in GROUPS for route, label in links}
@@ -95,6 +96,8 @@ DESCRIPTIONS = {
                  "text uses it.",
     "/explainers": "The people, channels and organisations that explain this material well — with the "
                    "glossary terms each one covers.",
+    "/people": "Everyone the shelves name — the discoverers, the proponents of the theories, the inventors "
+               "of the machines — with what each is known for and what of theirs is on the site.",
 }
 
 CSS = (WEB / "chrome.css").read_text()

@@ -36,6 +36,8 @@ truth for code and the normalised data snapshots. Sync is one-way, Notion → re
 ```
 server.js                     Node server: static pages, sitemap.xml, robots.txt + POST /api/analyze
 public/                       Built pages, search.json, sitemap.xml, robots.txt (generated — see scripts/build.py)
+web/people.template.html      /people — every researcher, with the theories, discoveries, machines and epochs of
+                              theirs on the site; where the search index and the people chips point
 scripts/notion.py             The one copy of the Notion plumbing — token, call (with retries), pagination,
                               find a data source by title, ensure_props / sync_rows for the seeds, and the
                               row flattening fetch_all uses. seed_theories.py re-exports it for its importers.
@@ -234,6 +236,12 @@ python3 scripts/build.py
 Runs on the yeahborhood VPS as `kosmos.service` (port 3002) behind nginx with
 its own Let's Encrypt cert — configs in `deploy/`. Secrets live in
 `/opt/kosmos/.env` (see `.env.example`), never in this repo.
+
+Every search result also has a URL of its own — `/equations/pythagorean-theorem`,
+`/people/albert-einstein`, `/fr/machines/steam-engine` — which server.js answers with
+the section page carrying that entity's title and description (so a shared link
+unfurls as the thing, not the shelf) and landing the reader on its card. The map is
+`search.json`; anything not in it is a 404.
 
 Pages are served `Cache-Control: no-cache` with an ETag from their bytes, so a
 browser that already has a page gets a 304 instead of the 200–350KB again; a

@@ -32,10 +32,30 @@ SKY_FIELD = re.compile(r"Astronom|Astrophys|Cosmolog|Gravitat|Relativity|Celesti
 
 def on_cosmos(r) -> bool:
     """Whether /cosmos lists this researcher: a field of the sky, or a discovery in its
-    timeline. The others have no page yet (a /people page is the standing fix), so
-    nothing may link to them — the search index included, or a result scrolls to
-    nothing: 114 of them did, until a test looked."""
+    timeline. /cosmos is a page about the sky; everyone is on /people, which is where
+    the search index and the people chips on other pages point."""
     return bool(r.get("Name")) and (r["id"] in DISCOVERERS or bool(SKY_FIELD.search(r.get("Field") or "")))
+
+
+# /people groups the catalogued fields into a handful of domains for its filter chips; the
+# card still shows the field as catalogued. First match wins, so the sky comes before
+# Physics (celestial mechanics is the sky's) and Life before Chemistry (biochemistry is life's).
+DOMAINS = [
+    ("Sky", re.compile(r"Astronom|Astrophys|Cosmolog|Planetary|Celestial|Gravitat|Relativity|Space", re.I)),
+    ("Life", re.compile(r"Biolog|Medic|Genetic|Biochem|Microbio|Physiolog|Botan|Zoolog|Evolution|Ecolog|Virolog|Immunolog|Neuro", re.I)),
+    ("Chemistry & Earth", re.compile(r"Chemi|Mineral|Geolog|Metallurg|Crystallog|Earth|Geochem|Geophys|Meteorolog|Oceanograph|Natural Philosophy", re.I)),
+    ("Physics", re.compile(r"Physic|Quantum|Particle|String|Thermodynam|Electromagnet|Optic|Mechanic|Nuclear|Field Theory|Acoustic|Fluid"
+                           r"|Dynamics|Information Theory|Superconduct|Condensed Matter", re.I)),
+    ("Engineering", re.compile(r"Engineer|Comput|Invent|Industr|Electric|Aeronaut|Rocketry|Instrument", re.I)),
+    ("Mathematics", re.compile(r"Mathemat|Statistic|Logic|Geometry", re.I)),
+]
+
+
+def domain_of(field: str) -> str:
+    for name, rx in DOMAINS:
+        if rx.search(field or ""):
+            return name
+    return "Other"
 
 elements = json.load(open(ROOT / "data" / "chemistry" / "elements.json"))
 notion = json.load(open(ROOT / "data" / "notion-all.json"))
@@ -542,7 +562,7 @@ def build_timeline_page():
     # people whose work is about an epoch — chips link to their card on /cosmos
     people = {r["id"]: {"name": r["Name"], "slug": slugify(r["Name"]), "life": r.get("Lifespan"),
                         "field": r.get("Field"), "known": r.get("Known For"),
-                        "href": f"/cosmos#{slugify(r['Name'])}" if on_cosmos(r) else None}
+                        "href": f"/people#{slugify(r['Name'])}"}
               for r in notion["researchers"] if r.get("Name")}
     events = []
     for r in rows:
@@ -776,10 +796,8 @@ def cycle_diagram(cycle: str):
 def build_machines_page():
     by_id_eq = eq_lookup_all()
     el_by_id = {e["pageId"]: {"sym": e["notation"], "name": e["name"]} for e in elements}
-    # href only where /cosmos has the person; an inventor of an engine mostly is not there
     people = {r["id"]: {"name": r["Name"], "slug": slugify(r["Name"]), "life": r.get("Lifespan"),
-                        "known": r.get("Known For"),
-                        "href": f"/cosmos#{slugify(r['Name'])}" if on_cosmos(r) else None}
+                        "known": r.get("Known For"), "href": f"/people#{slugify(r['Name'])}"}
               for r in notion["researchers"] if r.get("Name")}
     skills_by_id = {s["id"]: {"name": s["Name"], "slug": slugify(s["Name"])}
                     for s in notion.get("skills", []) if s.get("Name")}
@@ -907,7 +925,7 @@ def build_glossary_page():
                            " ".join([c["Name"], c["Note"]])))
     for r in notion.get("researchers", []):
         if r.get("Name") and r.get("Known For"):
-            corpus.append(("researcher", r["Name"], f"/cosmos#{slugify(r['Name'])}", " ".join([r["Name"], r["Known For"]])))
+            corpus.append(("researcher", r["Name"], f"/people#{slugify(r['Name'])}", " ".join([r["Name"], r["Known For"]])))
     for f in notion.get("forces", []):
         nm = f.get("Force Name")
         if nm:
@@ -1421,6 +1439,38 @@ def build_life_page():
     return len(out), total_terms
 
 
+# ---------------- people ----------------
+def build_people_page():
+    """Every researcher, with the theories, discoveries, machines and epochs of theirs the
+    site holds — resolved from the mirrored relations on the researcher rows."""
+    th = {t["id"]: {"name": t["Name"], "slug": slugify(t["Name"])} for t in notion["theories"] if t.get("Name")}
+    disc = {x["id"]: {"name": x["Name"], "slug": slugify(x["Name"])} for x in notion.get("discoveries", []) if x.get("Name")}
+    mach = {m["id"]: {"name": m["Name"], "slug": slugify(m["Name"])} for m in notion.get("machines", []) if m.get("Name")}
+    ev = {e["id"]: {"name": e["Event"], "slug": slugify(e["Event"])} for e in notion.get("cosmicTimeline", []) if e.get("Event")}
+    rows, unplaced = [], Counter()
+    for r in notion["researchers"]:
+        if not r.get("Name"):
+            continue
+        dom = domain_of(r.get("Field"))
+        if dom == "Other":
+            unplaced[r.get("Field")] += 1
+        rows.append({
+            "name": r["Name"], "slug": slugify(r["Name"]), "life": r.get("Lifespan"), "field": r.get("Field"),
+            "domain": dom, "nat": r.get("Nationality"), "known": r.get("Known For"), "nobel": r.get("Nobel"),
+            "theories": [th[i] for i in (r.get("Theories [DB]") or []) if i in th],
+            "discoveries": [disc[i] for i in (r.get("Discoveries [DB]") or []) if i in disc],
+            "machines": [mach[i] for i in (r.get("Machines") or []) if i in mach],
+            "events": [ev[i] for i in (r.get("Timeline") or []) if i in ev],
+        })
+    rows.sort(key=lambda r: (r["name"].split()[-1].lower(), r["name"]))   # by surname, as a card index would be
+    if unplaced:
+        print("  people: fields no domain claims (shown under Other):", dict(unplaced))
+    order = [d for d, _ in DOMAINS] + ["Other"]
+    domains = [{"name": d, "n": sum(1 for r in rows if r["domain"] == d)} for d in order if any(r["domain"] == d for r in rows)]
+    write_page("people.template.html", "people.html", {"people": rows, "domains": domains})
+    return len(rows), sum(1 for r in rows if r["nobel"])
+
+
 # ---------------- search index ----------------
 def _clip(s, n=170) -> str:
     s = " ".join((s or "").split())
@@ -1457,6 +1507,7 @@ def build_search_index():
          "every catalogued object placed by direction and distance on one log-radial map you can turn over, from the heliopause to the horizon"),
         ("/scales", "The Ladder of Scale", "from the heliopause to the horizon on one log axis: clusters, superclusters, Laniakea, the walls and voids, the observable universe"),
         ("/explainers", "Explainers", "the people, channels and organisations that explain this material"),
+        ("/people", "People", "everyone the shelves name — discoverers, proponents, inventors — and what of theirs is on the site"),
         ("/life", "Life", "the molecular machinery, and the elements it is built from"),
         ("/solar", "Solar System", "the nine orbits, computed live from Keplerian elements"),
         ("/impacts", "Mining Impacts", "what extraction costs — mechanism, mitigation and documented cases"),
@@ -1505,9 +1556,9 @@ def build_search_index():
                 t.get("Summary"), f"/theories#{slugify(t['Name'])}")
 
     for r in notion["researchers"]:
-        if on_cosmos(r):   # the others have nowhere to land yet — see on_cosmos
+        if r.get("Name"):
             add("researcher", r["Name"], " · ".join(filter(None, [r.get("Lifespan"), r.get("Field")])),
-                r.get("Known For"), f"/cosmos#{slugify(r['Name'])}")
+                r.get("Known For"), f"/people#{slugify(r['Name'])}")
 
     for ev in notion.get("cosmicTimeline", []):
         if ev.get("Event"):
@@ -1642,7 +1693,7 @@ def theory_span() -> str:
 
 def build_home(n_min, n_gems, n_classes, n_spectral, n_instr, n_timeline, tl_decades,
                n_obs, n_disc, n_miss, n_search, n_mines, n_mined, n_mach, n_diag, n_skills, n_terms, n_traces,
-               n_expl, n_expl_terms, n_imp, n_imp_terms, n_bill_eq=0, n_bill_skills=0):
+               n_expl, n_expl_terms, n_imp, n_imp_terms, n_bill_eq=0, n_bill_skills=0, n_nobel=0):
     gaps = sum(1 for e in elements
                if e["meltingPt"] is None or e["boilingPt"] is None
                or e["density"] is None or e["occurrence"] is None)
@@ -1665,6 +1716,7 @@ def build_home(n_min, n_gems, n_classes, n_spectral, n_instr, n_timeline, tl_dec
         "__N_ACCEPTED__": sum(1 for t in notion["theories"] if t.get("Status") == "Accepted"),
         "__TH_SPAN__": theory_span(),
         "__N_PEOPLE__": sum(1 for r in notion["researchers"] if r.get("Name")),
+        "__N_NOBEL__": n_nobel,
         "__N_TIMELINE__": n_timeline,
         "__N_OBS__": n_obs,
         "__N_DISC__": n_disc,
@@ -1793,10 +1845,11 @@ if __name__ == "__main__":
     n_solar = build_solar_page()
     n_life, n_life_terms = build_life_page()
     n_bill_eq, n_bill_skills = build_billiards_page()
+    n_people, n_nobel = build_people_page()
     n_search = build_search_index()
     build_home(n_min, n_gems, n_classes, n_spectral, n_instr, n_timeline, tl_decades,
                n_obs, n_disc, n_miss, n_search, n_mines, n_mined, n_mach, n_diag, n_skills, n_terms, n_traces,
-               n_expl, n_expl_terms, n_imp, n_imp_terms, n_bill_eq, n_bill_skills)
+               n_expl, n_expl_terms, n_imp, n_imp_terms, n_bill_eq, n_bill_skills, n_nobel)
     copy_assets()
     build_fr()
     chrome.write_sitemap(PUB, SYNC_DATE)

@@ -25,6 +25,7 @@ const PAGES = {
   '/universe': 'universe.html',
   '/solar': 'solar.html',
   '/life': 'life.html',
+  '/people': 'people.html',
   '/explainers': 'explainers.html',
   '/impacts': 'impacts.html',
   '/billiards': 'billiards.html',
@@ -77,6 +78,50 @@ for (const [route, file] of Object.entries(PAGES)) {
 
 const STARTED_AT = Date.now();   // /health reports it, so a deploy can tell a fresh process from a stale one
 const LAST_MODIFIED = new Date(STARTED_AT).toUTCString();   // pages are loaded at boot, so that is when they changed
+const SITE = 'https://kosmos.yeahborhood.com';
+
+// ---- entity URLs. /equations/pythagorean-theorem is the equations page with that entity's
+// title and preview in its head, landing the reader on its card — so a link to one thing
+// unfurls as that thing, not as the whole shelf. The map comes from search.json, which
+// already names every entity with the page and anchor it lives at; anything else is a 404.
+// Bodies are made per request (a few string replacements on the page) rather than cached:
+// fifteen hundred variants of a 300KB page would be most of the box's memory.
+const ENTITY = {};   // route -> anchor -> { name, sub, text }
+try {
+  for (const [, name, sub, text, href] of JSON.parse(CONTENT['/search.json'].toString()).items) {
+    const [route, anchor] = href.split('#');
+    if (!anchor || !/^[a-z0-9-]+$/.test(anchor) || !(PAGES[route] || '').endsWith('.html')) continue;
+    (ENTITY[route] ||= {})[anchor] ||= { name, sub, text };
+  }
+} catch (e) {
+  console.error(`entity map: ${e.message}`);
+}
+const escapeHtml = (s) => String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
+function entityPage(path) {
+  const m = path.match(/^(\/fr)?(\/[a-z]+)\/([a-z0-9-]+)$/);
+  if (!m) return null;
+  const fr = m[1] || '', route = m[2], anchor = m[3];
+  const e = ENTITY[route] && ENTITY[route][anchor];
+  const base = CONTENT[fr + route];
+  if (!e || !base) return null;
+  const title = `${escapeHtml(e.name)} · Kosmos`;
+  const desc = escapeHtml((e.text || e.sub || '').slice(0, 200));
+  const url = SITE + path;
+  const sub = (re, s) => { html = html.replace(re, () => s); };
+  let html = base.toString();
+  sub(/<title>[^<]*<\/title>/, `<title>${title}</title>`);
+  sub(/<meta name="description" content="[^"]*">/, `<meta name="description" content="${desc}">`);
+  sub(/<meta property="og:title" content="[^"]*">/, `<meta property="og:title" content="${title}">`);
+  sub(/<meta property="og:description" content="[^"]*">/, `<meta property="og:description" content="${desc}">`);
+  sub(/<link rel="canonical" href="[^"]*">/, `<link rel="canonical" href="${url}">`);
+  sub(/<meta property="og:url" content="[^"]*">/, `<meta property="og:url" content="${url}">`);
+  // the page's own openHash() reads location.hash once its script runs; put it there first,
+  // and leave the address bar on the hash form every link on the site uses
+  sub(/<!--\/khead-->/, `<!--/khead--><script>history.replaceState(null, '', ${JSON.stringify(`${fr}${route}#${anchor}`)});</script>`);
+  const body = Buffer.from(html);
+  // the tag follows the page's: a redeploy that changes the section page changes every entity's
+  return { body, tag: etagOf(Buffer.from(ETAG[fr + route] + path)), type: TYPE(PAGES[route]) };
+}
 const hasKey = Boolean(process.env.ANTHROPIC_API_KEY);
 const client = hasKey ? new Anthropic() : null;
 
@@ -183,24 +228,27 @@ async function analyze(imageB64, mediaType) {
 
 const server = http.createServer(async (req, res) => {
   const route = (req.url || '/').split('?')[0].replace(/\/$/, '') || '/';
-  if ((req.method === 'GET' || req.method === 'HEAD') && CONTENT[route]) {
+  const reading = req.method === 'GET' || req.method === 'HEAD';
+  const page = reading && (CONTENT[route]
+    ? { body: CONTENT[route], tag: ETAG[route], type: TYPE(PAGES[route]) }
+    : entityPage(route));
+  if (page) {
     // no-cache means "ask before reusing", and the ETag is what makes asking cheap: a
     // 345KB page a reader already has costs a 304 and nothing else. nginx turns the tag
     // weak (W/) when it gzips the body, so the comparison ignores that prefix.
-    const tag = ETAG[route];
     const given = (req.headers['if-none-match'] || '').split(',').map((s) => s.trim().replace(/^W\//, ''));
-    if (given.includes(tag)) {
-      res.writeHead(304, { 'ETag': tag, 'Cache-Control': 'no-cache' });
+    if (given.includes(page.tag)) {
+      res.writeHead(304, { 'ETag': page.tag, 'Cache-Control': 'no-cache' });
       return res.end();
     }
     res.writeHead(200, {
-      'Content-Type': TYPE(PAGES[route]),
-      'Content-Length': CONTENT[route].length,
+      'Content-Type': page.type,
+      'Content-Length': page.body.length,
       'Cache-Control': 'no-cache',   // always revalidate so deploys show up immediately
-      'ETag': tag,
+      'ETag': page.tag,
       'Last-Modified': LAST_MODIFIED,
     });
-    return res.end(req.method === 'HEAD' ? undefined : CONTENT[route]);
+    return res.end(req.method === 'HEAD' ? undefined : page.body);
   }
   if ((req.method === 'GET' || req.method === 'HEAD') && ASSETS[route]) {
     const asset = ASSETS[route];

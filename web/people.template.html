@@ -1,0 +1,126 @@
+<title>Kosmos · People</title>
+<style>
+__SHARED__
+
+  .wrap { max-width: 1240px; }
+  .pctl { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin: 0 0 12px; }
+  .pctl input { flex: 1; min-width: 180px; background: var(--panel); border: 1px solid var(--hairline); border-radius: 8px; color: var(--ink); font: 12.5px system-ui, sans-serif; padding: 6px 10px; outline: 0; }
+  .pctl input:focus { border-color: var(--ink-2); }
+  .fchp { font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; background: var(--panel); border: 1px solid var(--hairline); border-left: 3px solid var(--dc, var(--muted)); color: var(--ink-2); border-radius: 5px; padding: 3px 8px; cursor: pointer; display: inline-flex; align-items: baseline; gap: 5px; }
+  .fchp:hover { color: var(--ink); border-color: var(--ink-2); }
+  .fchp .n { font-size: 9px; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .fchp[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--page); }
+  .fchp[aria-pressed="true"] .n { color: color-mix(in oklab, var(--page) 65%, var(--ink)); }
+  .count { font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; color: var(--muted); margin-left: auto; font-variant-numeric: tabular-nums; }
+
+  .people { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 10px; }
+  .person { padding: 10px 12px; border-left: 3px solid var(--dc, var(--muted)); scroll-margin-top: 16px; }
+  .person:target { outline: 2px solid var(--c-violet); outline-offset: 3px; }
+  .person[hidden] { display: none; }
+  .person .pn { font: 700 12.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; color: var(--ink); }
+  .person .pm { font: 10px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; color: var(--muted); margin: 2px 0 5px; font-variant-numeric: tabular-nums; }
+  .person .pk { font-size: 11.5px; color: var(--ink-2); line-height: 1.45; }
+  .person .nob { font: 9px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; letter-spacing: 0.08em; text-transform: uppercase; color: var(--c-gold); border: 1px solid var(--c-gold); border-radius: 99px; padding: 1px 6px; margin-left: 6px; white-space: nowrap; }
+  .lrow { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 7px; align-items: baseline; }
+  .lrow .lbl { font: 9px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-right: 3px; }
+  .lnk { font: 9.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; border: 1px solid var(--hairline); border-left: 3px solid var(--lc, var(--muted)); color: var(--ink-2); border-radius: 3px; padding: 1px 6px 1px 5px; text-decoration: none; white-space: nowrap; }
+  .lnk:hover { color: var(--ink); border-color: var(--ink-2); }
+  .empty { font-size: 13px; color: var(--muted); padding: 18px 0; }
+</style>
+
+<h1 class="ktitle">People</h1>
+<p class="klede">Everyone the shelves name — the discoverers on the <a href="/cosmos#discoveries">timeline</a>, the proponents of the <a href="/theories">theories</a>, the inventors of the <a href="/machines">machines</a>, the researchers whose work marks an <a href="/timeline">epoch</a> — with what each is known for, and what of theirs is on the site. One card a person; the chips are the links out.</p>
+
+<div class="wrap">
+  <div class="pctl" id="pctl"></div>
+  <div class="people" id="people"></div>
+  <p class="empty" id="empty" hidden>Nobody matches — try a surname, a field, or a prize.</p>
+</div>
+
+<p class="kfoot">From the Researchers &amp; Scientists database in Notion. A person appears here when a theory, discovery, machine or epoch on the site names them; the field is theirs as catalogued, the domain is the site's grouping of it.</p>
+
+<script id="data" type="application/json">__DATA__</script>
+<script>
+  const D = JSON.parse(document.getElementById('data').textContent);
+  const fold = (s) => (s || '').toLowerCase().normalize('NFKD').replace(/[̀-ͯ]/g, '');
+  const DOMAIN_COLOR = { Sky: 'var(--c-violet)', Physics: 'var(--c-pink)', 'Chemistry & Earth': 'var(--c-teal)', Life: 'var(--c-green)', Engineering: 'var(--c-amber)', Mathematics: 'var(--c-slate)', Other: 'var(--muted)' };
+  // one row of chips per kind of thing a person is attached to; the label is the row's heading
+  const LINKS = [
+    { key: 'theories', label: 'theories', color: 'var(--c-pink)', href: (x) => '/theories#' + x.slug },
+    { key: 'discoveries', label: 'discoveries', color: 'var(--c-cyan)', href: (x) => '/cosmos#disc-' + x.slug },
+    { key: 'machines', label: 'machines', color: 'var(--c-amber)', href: (x) => '/machines#' + x.slug },
+    { key: 'events', label: 'epochs', color: 'var(--c-bronze)', href: (x) => '/timeline#' + x.slug },
+  ];
+
+  const grid = document.getElementById('people');
+  const cards = [];
+  for (const r of D.people) {
+    const card = document.createElement('div');
+    card.className = 'kcard person';
+    card.id = r.slug;
+    card.style.setProperty('--dc', DOMAIN_COLOR[r.domain] || 'var(--muted)');
+    const n = document.createElement('div'); n.className = 'pn'; n.textContent = r.name;
+    if (r.nobel) { const b = document.createElement('span'); b.className = 'nob'; b.textContent = 'Nobel ' + r.nobel; b.title = 'Nobel Prize'; n.appendChild(b); }
+    card.appendChild(n);
+    const meta = [r.life, vocab(r.field), r.nat].filter(Boolean).join(' · ');
+    if (meta) { const m = document.createElement('div'); m.className = 'pm'; m.textContent = meta; card.appendChild(m); }
+    if (r.known) { const k = document.createElement('div'); k.className = 'pk'; k.textContent = r.known; card.appendChild(k); }
+    for (const L of LINKS) {
+      const items = r[L.key] || [];
+      if (!items.length) continue;
+      const row = document.createElement('div'); row.className = 'lrow';
+      const l = document.createElement('span'); l.className = 'lbl'; l.textContent = L.label; row.appendChild(l);
+      for (const x of items) {
+        const a = document.createElement('a'); a.className = 'lnk'; a.href = L.href(x); a.textContent = x.name;
+        a.style.setProperty('--lc', L.color); row.appendChild(a);
+      }
+      card.appendChild(row);
+    }
+    grid.appendChild(card);
+    cards.push([r, card]);
+  }
+
+  // filter: a search box, one chip per domain, and the laureates
+  {
+    const ctl = document.getElementById('pctl');
+    const q = document.createElement('input'); q.type = 'search'; q.placeholder = `filter ${D.people.length} people…`; q.setAttribute('aria-label', 'Filter people by name, field, nationality or what they are known for');
+    ctl.appendChild(q);
+    let domain = null, onlyNobel = false;
+    const chips = [];
+    for (const d of D.domains) {
+      const b = document.createElement('button'); b.className = 'fchp'; b.type = 'button'; b.setAttribute('aria-pressed', 'false');
+      b.style.setProperty('--dc', DOMAIN_COLOR[d.name] || 'var(--muted)');
+      b.innerHTML = '<span></span><span class="n"></span>'; b.firstChild.textContent = vocab(d.name); b.lastChild.textContent = d.n;
+      b.addEventListener('click', () => { domain = domain === d.name ? null : d.name; for (const [c, nm] of chips) c.setAttribute('aria-pressed', String(nm === domain)); apply(); });
+      ctl.appendChild(b); chips.push([b, d.name]);
+    }
+    const nob = document.createElement('button'); nob.className = 'fchp'; nob.type = 'button'; nob.setAttribute('aria-pressed', 'false'); nob.style.setProperty('--dc', 'var(--c-gold)');
+    const nN = D.people.filter((r) => r.nobel).length;
+    nob.innerHTML = '<span>Nobel laureates</span><span class="n"></span>'; nob.lastChild.textContent = nN;
+    nob.addEventListener('click', () => { onlyNobel = !onlyNobel; nob.setAttribute('aria-pressed', String(onlyNobel)); apply(); });
+    ctl.appendChild(nob);
+    const count = document.createElement('span'); count.className = 'count'; ctl.appendChild(count);
+    const apply = () => {
+      const needle = fold(q.value.trim());
+      let shown = 0;
+      for (const [r, card] of cards) {
+        const hit = !needle || [r.name, r.field, r.nat, r.known, r.nobel].some((s) => fold(s).includes(needle));
+        const on = hit && (!domain || r.domain === domain) && (!onlyNobel || r.nobel);
+        card.hidden = !on; if (on) shown++;
+      }
+      count.textContent = `${shown} of ${D.people.length}`;
+      document.getElementById('empty').hidden = shown > 0;
+    };
+    q.addEventListener('input', apply);
+    apply();
+  }
+
+  // the cards are built by script, so the browser's fragment jump can fire before the
+  // target exists — jump again now that it does (search results and the chips on other pages deep-link here)
+  function openHash() {
+    const el = location.hash.length > 1 && document.getElementById(decodeURIComponent(location.hash.slice(1)));
+    if (el) { el.hidden = false; el.scrollIntoView({ block: 'center', behavior: 'smooth' }); }
+  }
+  openHash();
+  addEventListener('hashchange', openHash);
+</script>
