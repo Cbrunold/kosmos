@@ -209,6 +209,9 @@
     gap: 3px;
     min-width: 1000px;
   }
+  /* narrower than the table: it scrolls inside .tablewrap, and this says so */
+  .scrollhint { display: none; font: 11px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; color: var(--muted); margin: 6px 0 0; }
+  @media (max-width: 1060px) { .scrollhint { display: block; } }
   .glabel, .plabel {
     font: 9px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
     color: var(--muted);
@@ -812,6 +815,7 @@ window.KosmosSearch = (() => {
   if (q) KosmosSearch.attach({ input: q, box: hdr.querySelector('.kh-results'), prefix: 'kh-' });
 })();
 </script>
+<script>const VOCAB = window.__VOCAB__ || {}; const vocab = (s) => (s == null ? s : (VOCAB[s] || s));</script>
 
 <header class="top">
   <h1>Periodic Table</h1>
@@ -850,6 +854,7 @@ window.KosmosSearch = (() => {
     <div class="tablewrap">
       <div class="ptable" id="ptable"></div>
     </div>
+    <p class="scrollhint">Swipe sideways to see all 18 columns.</p>
     <div class="legend" id="legend"></div>
   </div>
   <aside class="detail" id="detail" aria-live="polite">
@@ -1088,7 +1093,7 @@ window.KosmosSearch = (() => {
     b.innerHTML = `<span class="z">${e.z}</span><span class="sym"></span><span class="nm"></span>`;
     b.querySelector('.sym').textContent = e.sym;
     b.querySelector('.nm').textContent = e.name;
-    b.addEventListener('click', () => select(e.z));
+    b.addEventListener('click', () => select(e.z, true));
     b.addEventListener('mousemove', (ev) => tipShow(e, ev));
     b.addEventListener('mouseleave', tipHide);
     tiles[e.z] = b;
@@ -1184,7 +1189,11 @@ window.KosmosSearch = (() => {
 
   // ---------- tooltip ----------
   const tip = document.getElementById('tip');
+  // a touch screen synthesises mousemove after a tap and never sends mouseleave, so
+  // the tooltip would land under the finger and stay
+  const NO_HOVER = matchMedia('(hover: none)').matches;
   function tipShow(e, ev) {
+    if (NO_HOVER) return;
     const L = LENSES[lens];
     tip.innerHTML = `<div class="t1"></div><div class="t2"></div>`;
     tip.children[0].textContent = `${e.sym} · ${e.name} · ${e.z}`;
@@ -1198,11 +1207,15 @@ window.KosmosSearch = (() => {
 
   // ---------- detail panel ----------
   let sel = null;
-  function select(z) {
+  function select(z, scroll = false) {
     if (sel) tiles[sel].classList.remove('sel');
     sel = z;
     tiles[z].classList.add('sel');
     renderDetail(byZ[z]);
+    // one column: the panel sits under the table, off the screen a tap was made on
+    if (scroll && matchMedia('(max-width: 1120px)').matches) {
+      document.getElementById('detail').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   }
   addEventListener('keydown', (ev) => {
     if (ev.key === 'Escape' && sel) {

@@ -40,6 +40,8 @@ __SHARED__
   .pin circle { fill: var(--pc, var(--c-bronze)); stroke: var(--panel); stroke-width: 1.2; transition: r 0.1s; }
   .pin:hover circle, .pin.on circle { r: 6.5; stroke: var(--ink); }
   .pin.dim { opacity: 0.18; pointer-events: none; }
+  /* an invisible disc under every pin: 4.5 units is 1.5px on a phone, and no finger hits that */
+  .pin circle.hit, .pin:hover circle.hit, .pin.on circle.hit { r: 11; fill: transparent; stroke: none; }
   .pin.dev circle { fill: var(--panel); stroke: var(--pc, var(--c-bronze)); stroke-width: 1.8; }
   .pin.closed circle { fill: color-mix(in oklab, var(--pc, var(--c-bronze)) 40%, var(--panel)); }
   .maplegend { display: flex; flex-wrap: wrap; gap: 12px; padding: 8px 12px; border-top: 1px solid var(--hairline); font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; color: var(--muted); }
@@ -72,6 +74,15 @@ __SHARED__
   }
   .elch:hover { color: var(--ink); border-color: var(--ink-2); }
   .empty { font-size: 13px; color: var(--muted); padding: 18px 0; }
+
+  /* a phone: the fifty commodity chips become one strip to swipe rather than a screenful,
+     and the map keeps a width its pins can be tapped at, scrolling inside its frame */
+  @media (max-width: 720px) {
+    .comms { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 6px; scrollbar-width: thin; }
+    .cchip { flex: none; }
+    .mapwrap { overflow-x: auto; }
+    .mapwrap svg { min-width: 720px; }
+  }
 </style>
 
 <nav class="knav"><a href="/">KOSMOS</a><span>/</span><span class="cur">Mines &amp; Extraction</span></nav>
@@ -99,6 +110,8 @@ __SHARED__
   const M = D.mines, EXT = D.extraction || {};
   const svg = document.getElementById('map');
   const tip = document.getElementById('tip');
+  // a touch screen synthesises mousemove after a tap and never sends mouseleave: the tip would stick
+  const NO_HOVER = matchMedia('(hover: none)').matches;
   const list = document.getElementById('list');
   const empty = document.getElementById('empty');
   const W = 1000, H = 500;
@@ -137,8 +150,10 @@ __SHARED__
     const fam = FAMILY(m.syms);
     const g = el('g', { class: 'pin' + (m.status === 'Development' ? ' dev' : m.status === 'Closed' ? ' closed' : ''), transform: `translate(${x.toFixed(1)} ${y.toFixed(1)})` });
     g.style.setProperty('--pc', FCOLOR[fam]);
+    g.appendChild(el('circle', { class: 'hit', r: 11 }));
     g.appendChild(el('circle', { r: 4.5 }));
     g.addEventListener('mousemove', (ev) => {
+      if (NO_HOVER) return;
       const r = svg.getBoundingClientRect();
       tip.style.left = ((x / W) * r.width) + 'px';
       tip.style.top = ((y / H) * r.height) + 'px';

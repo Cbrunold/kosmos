@@ -31,6 +31,10 @@ import i18n  # noqa: E402
 SCRIPT = re.compile(r"""<script(?![^>]*\btype=(?!["'](?:text/javascript|module)))[^>]*>(.*?)</script>""", re.S)
 
 
+def _reject(tok):
+    raise ValueError(f"{tok} is not JSON a browser will parse")
+
+
 def node_bin():
     n = shutil.which("node")
     if n:
@@ -66,9 +70,11 @@ def main():
             fails.append(f"{page}: {len(fb)} data blocks, English has {len(eb)}")
         for a, b in zip(fb, eb):
             try:
-                fd, ed = json.loads(a.group(2)), json.loads(b.group(2))
-            except json.JSONDecodeError as e:
-                fails.append(f"{page}: a data block does not parse — {e}"); continue
+                # parse like a browser: Python would accept Infinity and NaN, JSON.parse
+                # throws on them, and the page's script dies with it
+                fd, ed = json.loads(a.group(2), parse_constant=_reject), json.loads(b.group(2), parse_constant=_reject)
+            except (json.JSONDecodeError, ValueError) as e:
+                fails.append(f"{page}: a data block does not parse in a browser — {e}"); continue
             if isinstance(fd, list) and isinstance(ed, list) and len(fd) != len(ed):
                 fails.append(f"{page}: data block has {len(fd)} records, English has {len(ed)}")
         if 'class="klang"' not in html:

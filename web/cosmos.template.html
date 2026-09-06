@@ -67,6 +67,13 @@ __SHARED__
   .lgdot circle { fill: var(--gc, var(--muted)); stroke: var(--panel); stroke-width: 0.8; transition: r .1s; }
   .lgdot:hover circle, .lgdot.on circle { stroke: var(--ink); stroke-width: 1.4; }
   .lgdot.dim { opacity: .15; pointer-events: none; }
+  /* an invisible disc under every dot: a 3-unit dot is 2px on a phone, and no finger hits that */
+  .lgdot circle.hit, .lgdot:hover circle.hit, .lgdot.on circle.hit { r: 14; fill: transparent; stroke: none; }
+  @media (max-width: 640px) {
+    .lglab { font-size: 12px; }
+    .lgrl { font-size: 12px; }
+    .lgdot circle { stroke-width: 1.2; }
+  }
   .lgnote { font-size: 11px; color: var(--muted); line-height: 1.6; margin: 10px 0 0; max-width: 62ch; }
   .open {
     margin: 30px 0 0; padding: 16px 18px;
@@ -283,6 +290,8 @@ __SHARED__
     const GC = { 'Milky Way': 'var(--c-amber)', 'Andromeda': 'var(--c-violet)', 'Independent': 'var(--c-cyan)', 'Outlying': 'var(--c-slate)' };
     const SUBS = ['Milky Way', 'Andromeda', 'Independent', 'Outlying'];
     const svg = document.getElementById('lgmap'), tip = document.getElementById('lgtip');
+    // a touch screen synthesises mousemove after a tap and never sends mouseleave: the tip would stick
+    const NO_HOVER = matchMedia('(hover: none)').matches;
     const listBox = document.getElementById('lglist'), chips = document.getElementById('lgchips');
     if (LG.length) {
       const C = 310, RMAX = 288, D_MIN = 2e4, D_MAX = 1e7;
@@ -326,8 +335,10 @@ __SHARED__
         const [x, y] = pos.get(g.slug);
         const d = el('g', { class: 'lgdot', transform: `translate(${x.toFixed(1)} ${y.toFixed(1)})` });
         d.style.setProperty('--gc', GC[g.sub] || 'var(--muted)');
+        d.appendChild(el('circle', { class: 'hit', r: 14 }));
         d.appendChild(el('circle', { r: size(g) }));
         d.addEventListener('mousemove', () => {
+          if (NO_HOVER) return;
           const b = svg.getBoundingClientRect();
           tip.style.left = ((x / 620) * b.width) + 'px'; tip.style.top = ((y / 620) * b.height) + 'px';
           tip.innerHTML = '<b></b> · <span></span>'; tip.firstChild.textContent = g.name; tip.lastChild.textContent = fmtD(g.dist);

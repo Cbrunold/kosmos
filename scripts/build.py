@@ -39,7 +39,11 @@ SYNC_DATE = max([e["lastEdited"] for e in elements if e.get("lastEdited")]
 
 
 def compact(obj) -> str:
-    return json.dumps(obj, separators=(",", ":"), ensure_ascii=False).replace("</", "<\\/")
+    """JSON for a page's data block. allow_nan=False because Python would otherwise
+    write Infinity and NaN, read them back without complaint, and leave the browser
+    to throw on the page's first JSON.parse — which is exactly what took /cosmos down
+    from 2026-08-20 to 2026-09-06 while every check stayed green."""
+    return json.dumps(obj, separators=(",", ":"), ensure_ascii=False, allow_nan=False).replace("</", "<\\/")
 
 
 def term_pattern(term: str):
@@ -110,6 +114,9 @@ def copy_assets():
 def emit(out: str, html: str):
     """Every page leaves through here, so every page gets the shared chrome — the head a
     phone and a crawler need, the header with the section nav and the search box."""
+    # vocab() goes on here rather than in write_page: the periodic table skips write_page,
+    # and from 2026-08-23 its detail panel called vocab() on a page that never defined it
+    html = html.replace("</style>", "</style>\n" + VOCAB_JS, 1)
     html = chrome.inject(html, out)
     (PUB / out).write_text(html)
     print(f"wrote {len(html):>7} bytes -> public/{out}")
@@ -118,7 +125,6 @@ def emit(out: str, html: str):
 def write_page(template: str, out: str, data=None, extra: dict | None = None):
     tpl = (WEB / template).read_text()
     tpl = tpl.replace("__SHARED__", SHARED)
-    tpl = tpl.replace("</style>", "</style>\n" + VOCAB_JS, 1)
     if data is not None:
         tpl = tpl.replace("__DATA__", compact(data))
     for k, v in (extra or {}).items():
@@ -397,6 +403,10 @@ def build_cosmos_page():
             sp_gaps.append(f"{a['letter']} and {b['letter']} overlap below {a['band'][1]:g} K")
     for g in sp_gaps:
         print(f"  cosmos: spectral sequence — {g}")
+    # the band is this check's working, not the page's data: open-ended bands hold
+    # an infinity the page could not parse
+    for sp in spectral:
+        sp.pop("band", None)
 
     groups = defaultdict(list)
     for t in notion["celestialTypes"]:

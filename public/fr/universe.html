@@ -730,6 +730,10 @@ window.KosmosSearch = (() => {
   };
 
   const css = () => ({ w: cv.width, h: cv.height });
+  // the canvas is 2x the stage; on a phone-width stage that leaves the type at 8px, so it grows
+  const uiScale = () => (cv.width < 1000 ? 1.3 : 1);
+  // concatenation, not a template literal: scripts/i18n.py reads template literals as prose
+  const mono = (px, weight = '') => weight + Math.round(px * uiScale()) + 'px ui-monospace, Menlo, monospace';
   const theme = () => getComputedStyle(document.body);
 
   // Direction unit vector from right ascension and declination.
@@ -965,7 +969,7 @@ window.KosmosSearch = (() => {
     // dozen pixels across, and a name on it points at nothing you can see.
     const span = drawn.length ? drawn[drawn.length - 1].r - drawn[0].r : 0;
     if (showLabels && span > 150) {
-      ctx.font = '16px ui-monospace, Menlo, monospace';
+      ctx.font = mono(16);
       const taken = [];
       const clear = (b) => !taken.some((t) => b[0] < t[0] + t[2] && t[0] < b[0] + b[2]
                                            && b[1] < t[1] + t[3] && t[1] < b[1] + b[3]);
@@ -1030,7 +1034,7 @@ window.KosmosSearch = (() => {
       // label also waits until the last one has ended.
       if (cx + r + 96 < w) {
         ctx.fillStyle = muted;
-        ctx.font = '17px ui-monospace, Menlo, monospace';
+        ctx.font = mono(17);
         ctx.textAlign = 'left';
         const txt = ly(Math.pow(10, d));
         if (cx + r + 7 >= decadeEnd) {
@@ -1118,7 +1122,7 @@ window.KosmosSearch = (() => {
     // labels, biggest first, skipping any that would collide
     if (showLabels) {
       const taken = [];
-      ctx.font = '600 18px ui-monospace, Menlo, monospace';
+      ctx.font = mono(18, '600 ');
       ctx.textAlign = 'left';
       const byBig = pts.slice().sort((a, b) => (b.it.size || 0) - (a.it.size || 0));
       for (const p of byBig) {
@@ -1146,7 +1150,7 @@ window.KosmosSearch = (() => {
     // false — at that scale it is the Sun, and we are on the third ring out.
     const home = (SS.orbits || []).find((o) => o.home);
     const solarScale = showSolar && home && (Math.log10(home.ly) - LO) * S > 40;
-    ctx.fillStyle = muted; ctx.font = '16px ui-monospace, Menlo, monospace';
+    ctx.fillStyle = muted; ctx.font = mono(16);
     ctx.fillText(solarScale ? SUN_LABEL : HERE_LABEL, cx + 9, cy - 8);
 
     document.getElementById('hud').innerHTML =
@@ -1198,10 +1202,20 @@ window.KosmosSearch = (() => {
     }
   });
 
+  let lastTap = null;
   const endPtr = (e) => {
     const p = ptrs.get(e.pointerId);
     // a quick press that barely moved is a tap, not a drag
-    if (!multi && p && Date.now() - p.t < 400 && Math.hypot(p.x - p.x0, p.y - p.y0) < 6) pick(e, true);
+    if (!multi && p && Date.now() - p.t < 400 && Math.hypot(p.x - p.x0, p.y - p.y0) < 6) {
+      if (e.pointerType === 'touch') {
+        // no hover on a touch screen: the first tap names the object, the second opens it
+        const it = nearest(e);
+        if (it && it === lastTap) pick(e, true);
+        else { hover(e); lastTap = it; }
+      } else {
+        pick(e, true);
+      }
+    }
     ptrs.delete(e.pointerId);
     if (ptrs.size < 2) last2 = null;
     if (!ptrs.size) { stage.classList.remove('drag'); multi = false; }
