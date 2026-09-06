@@ -1311,10 +1311,33 @@ if (typeof module !== 'undefined') module.exports = kosmosBilliardsPhysics;
   const svg = $('lab');
   const SX = 900 / TABLE_L, SY = 470 / TABLE_W;   // near-isotropic; the table is 2:1
   const px = (p) => [p[0] * SX, p[1] * SY];
-  const el = (tag, attrs, parent = svg) => { const e = document.createElementNS('http://www.w3.org/2000/svg', tag); for (const k in attrs) e.setAttribute(k, attrs[k]); parent.appendChild(e); return e; };
-  const poly = (pts, attrs) => el('polyline', { points: pts.map(px).map((p) => p.join(',')).join(' '), fill: 'none', ...attrs });
-  const line = (a, b, attrs) => { const [x1, y1] = px(a), [x2, y2] = px(b); return el('line', { x1, y1, x2, y2, ...attrs }); };
-  const ball = (p, attrs) => { const [cx, cy] = px(p); return el('circle', { cx, cy, r: R * SX, ...attrs }); };
+  // ---- one set of SVG helpers for every drawing on the page, bound to a surface: el(tag, attrs)
+  // makes an element on it, and poly, line, ball and text take table metres through px(). Every
+  // tab used to carry its own copy of these under its own names; now each binds the one set.
+  const draw = (surface) => {
+    const el = (tag, attrs, parent = surface) => { const e = document.createElementNS('http://www.w3.org/2000/svg', tag); for (const k in attrs) e.setAttribute(k, attrs[k]); parent.appendChild(e); return e; };
+    const poly = (pts, attrs) => el('polyline', { points: pts.map(px).map((p) => p.join(',')).join(' '), fill: 'none', ...attrs });
+    const line = (a, b, attrs) => { const [x1, y1] = px(a), [x2, y2] = px(b); return el('line', { x1, y1, x2, y2, ...attrs }); };
+    const ball = (p, attrs) => { const [cx, cy] = px(p); return el('circle', { cx, cy, r: R * SX, ...attrs }); };
+    const text = (p, str, attrs) => { const [x, y] = px(p); const e = el('text', { x, y, ...attrs }); e.textContent = str; return e; };
+    return { el, poly, line, ball, text };
+  };
+  const { el, poly, line, ball, text } = draw(svg);
+  // the one label style, at a size
+  const MONO = (size = 11) => ({ 'font-family': 'ui-monospace, "SF Mono", Consolas, monospace', 'font-size': size, fill: 'var(--muted)' });
+  // ---- the view down the cue: a pinhole at eye height above the cloth looking along dir, the
+  // horizon `hor` down the frame, focal length `fpx`; z is a point's height. Two tabs draw this
+  // view and used to carry the projection twice; they differ only in where they stand.
+  const povProjector = (eye, dir, { hor, eyeH, fpx, near, xGuard = Infinity }) => {
+    const pd = perp(dir);
+    return (p, z) => {
+      const rel = vsub(p, eye), fd = vdot(rel, dir);
+      if (fd < near) return null;
+      const sc = fpx / fd, x = 450 + vdot(rel, pd) * sc;
+      if (Math.abs(x - 450) > xGuard) return null;
+      return [x, hor + (eyeH - z) * sc, sc];
+    };
+  };
   const ballGlyph = (p, num, cls) => {   // a numbered ball: cue plain white, solids coloured, stripes ringed
     const [cx, cy] = px(p), r = R * SX;
     if (num === 0) { el('circle', { cx, cy, r, fill: 'var(--panel)', stroke: 'var(--ink)', 'stroke-width': 1.5, class: cls || '', style: 'cursor:grab' }); return; }
@@ -1323,7 +1346,6 @@ if (typeof module !== 'undefined') module.exports = kosmosBilliardsPhysics;
     el('circle', { cx, cy, r: r * 0.5, fill: '#fff', opacity: 0.92, class: cls || '', style: 'pointer-events:none' });
     const tn = el('text', { x: cx, y: cy + 2.4, 'text-anchor': 'middle', 'font-family': 'ui-monospace, monospace', 'font-size': 7, 'font-weight': 700, fill: '#222', class: cls || '', style: 'pointer-events:none' }); tn.textContent = num;
   };
-  const text = (p, s, attrs) => { const [x, y] = px(p); const e = el('text', { x, y, ...attrs }); e.textContent = s; return e; };
   const clipLine = (p, dir, len) => vadd(p, vmul(dir, len));
 
   // A break-speed cue ball really does cross the table six or seven times, and drawn at one weight that
@@ -1348,7 +1370,7 @@ if (typeof module !== 'undefined') module.exports = kosmosBilliardsPhysics;
       const [cx, cy] = px(q.p), sel = i === S.pkI;
       el('circle', { cx, cy, r: RP * SX, fill: 'color-mix(in oklab, #000 55%, var(--c-felt))', stroke: sel ? 'var(--c-amber)' : 'color-mix(in oklab, var(--c-felt) 45%, var(--hairline))', 'stroke-width': sel ? 2.5 : 1.5, style: 'cursor:pointer' });
     });
-    const mono = { 'font-family': 'ui-monospace, "SF Mono", Consolas, monospace', 'font-size': 11, fill: 'var(--muted)' };
+    const mono = MONO();
     if (!S.feasible) {
       ball(S.ob0, { fill: 'var(--c-amber)', stroke: 'var(--page)', 'stroke-width': 1.5, style: 'cursor:grab' });
       ball(S.pre ? S.pre[0] : state.cb, { fill: 'var(--panel)', stroke: 'var(--ink)', 'stroke-width': 1.5, style: 'cursor:grab' });
@@ -1434,7 +1456,7 @@ if (typeof module !== 'undefined') module.exports = kosmosBilliardsPhysics;
     el('rect', { x: 0, y: 0, width: 900, height: 470, fill: 'color-mix(in oklab, var(--c-felt) 9%, var(--panel))' });
     el('rect', { x: 0.5, y: 0.5, width: 899, height: 469, fill: 'none', stroke: 'color-mix(in oklab, var(--c-felt) 40%, var(--hairline))', 'stroke-width': 3 });
     for (const q of POCKETS) { const [cx, cy] = px(q.p); el('circle', { cx, cy, r: RP * SX, fill: 'color-mix(in oklab, #000 55%, var(--c-felt))', stroke: 'color-mix(in oklab, var(--c-felt) 45%, var(--hairline))', 'stroke-width': 1.5 }); }
-    const mono = { 'font-family': 'ui-monospace, "SF Mono", Consolas, monospace', 'font-size': 11, fill: 'var(--muted)' };
+    const mono = MONO();
     const a = rad(state.aimDeg), dir = [Math.cos(a), Math.sin(a)];
     line(vsub(state.cb, vmul(dir, R + 0.62)), vsub(state.cb, vmul(dir, R + 0.015)), { stroke: 'color-mix(in oklab, var(--c-amber) 45%, var(--ink))', 'stroke-width': 5, 'stroke-linecap': 'round', opacity: 0.9 });
     for (const b of state.balls) ballGlyph(b.p, b.n, 'bball');
@@ -1587,11 +1609,11 @@ if (typeof module !== 'undefined') module.exports = kosmosBilliardsPhysics;
   const pov = $('pov');
   function drawView(dir, tip, side, ghost, fromP, roster) {
     pov.innerHTML = '';
-    const vel = (tag, attrs) => el(tag, attrs, pov);
+    const vel = draw(pov).el;
     const HOR = 90, EYEH = 0.14, FPX = 430, BACK = 0.30;
-    const eye = vsub(fromP || state.cb, vmul(dir, BACK)), pd = perp(dir);
-    const proj = (p, z) => { const rel = vsub(p, eye); const fd = vdot(rel, dir); if (fd < 0.04) return null; const sc = FPX / fd; const x = 450 + vdot(rel, pd) * sc; if (Math.abs(x - 450) > 1600) return null; return [x, HOR + (EYEH - z) * sc, sc]; };
-    const mono = { 'font-family': 'ui-monospace, "SF Mono", Consolas, monospace', 'font-size': 11, fill: 'var(--muted)' };
+    const eye = vsub(fromP || state.cb, vmul(dir, BACK));
+    const proj = povProjector(eye, dir, { hor: HOR, eyeH: EYEH, fpx: FPX, near: 0.04, xGuard: 1600 });
+    const mono = MONO();
     vel('rect', { x: 0, y: 0, width: 900, height: 260, fill: 'var(--panel)' });
     vel('rect', { x: 0, y: HOR, width: 900, height: 260 - HOR, fill: 'color-mix(in oklab, var(--c-felt) 13%, var(--panel))' });
     // pocket mouths: heavily foreshortened slivers at the rail base, visible through the cushion gaps
@@ -1765,9 +1787,9 @@ if (typeof module !== 'undefined') module.exports = kosmosBilliardsPhysics;
     const st = slideState(v0, tip, d), so = slideOut(v0, tip);
     // ---- chart one: how far the slide lasts, against power
     ssvg.innerHTML = '';
-    const sel = (tag, attrs) => el(tag, attrs, ssvg);
+    const sel = draw(ssvg).el;
     sel('rect', { x: 0, y: 0, width: 900, height: 300, fill: 'color-mix(in oklab, var(--c-felt) 9%, var(--panel))' });
-    const mono = { 'font-family': 'ui-monospace, "SF Mono", Consolas, monospace', 'font-size': 11, fill: 'var(--muted)' };
+    const mono = MONO();
     const X0 = 52, X1 = 888, Y0 = 266, Y1 = 18, DMAX = 2.6;
     const X = (v) => X0 + (v - 0.5) / 9.5 * (X1 - X0), Y = (q) => Y0 - Math.min(q, DMAX) / DMAX * (Y0 - Y1);
     for (let g = 1; g <= 10; g++) { sel('line', { x1: X(g), x2: X(g), y1: Y0, y2: Y0 + 4, stroke: 'var(--muted)' }); const tx = sel('text', { x: X(g), y: Y0 + 16, ...mono, 'text-anchor': 'middle' }); tx.textContent = g; }
@@ -1789,7 +1811,7 @@ if (typeof module !== 'undefined') module.exports = kosmosBilliardsPhysics;
     sel('circle', { cx: X(v0), cy: Y(Math.min(so.d, DMAX)), r: 4, fill: 'var(--c-felt)' });
     // ---- chart two: what the spin is doing along the way
     spsvg.innerHTML = '';
-    const pe = (tag, attrs) => el(tag, attrs, spsvg);
+    const pe = draw(spsvg).el;
     pe('rect', { x: 0, y: 0, width: 900, height: 300, fill: 'color-mix(in oklab, var(--c-felt) 9%, var(--panel))' });
     const PX0 = 104, PX1 = 888, PY0 = 262, PY1 = 22, PMAX = 2.6;   // room for the words on the left
     const PX = (q) => PX0 + Math.min(q, PMAX) / PMAX * (PX1 - PX0), PY = (r2) => PY1 + (1 - r2) / 2 * (PY0 - PY1);
@@ -1880,10 +1902,10 @@ if (typeof module !== 'undefined') module.exports = kosmosBilliardsPhysics;
   const csvg = $('cushion');
   function drawCushion(C, aDeg) {
     csvg.innerHTML = '';
-    const cel = (tag, attrs) => el(tag, attrs, csvg);
+    const cel = draw(csvg).el;
     cel('rect', { x: 0, y: 0, width: 900, height: 300, fill: 'color-mix(in oklab, var(--c-felt) 9%, var(--panel))' });
     cel('rect', { x: 0, y: 0, width: 900, height: 26, fill: 'color-mix(in oklab, var(--c-felt) 40%, var(--hairline))' });
-    const mono = { 'font-family': 'ui-monospace, "SF Mono", Consolas, monospace', 'font-size': 11, fill: 'var(--muted)' };
+    const mono = MONO();
     const cx = 450, cy = 26 + R * SX, L = 230;
     const inA = rad(aDeg);
     const p0 = [cx - L * Math.cos(inA), cy + L * Math.sin(inA)];
@@ -1994,12 +2016,12 @@ if (typeof module !== 'undefined') module.exports = kosmosBilliardsPhysics;
   const TB_C = 60, TB_R = 48, TB_LIM = 0.5;                    // face radius in pixels; limit in b/R
   function drawTipBall(tip, side) {
     tball.innerHTML = '';
-    const te = (tag, a) => el(tag, a, tball);
+    const te = draw(tball).el;
     te('circle', { cx: TB_C, cy: TB_C, r: TB_R, fill: 'var(--panel)', stroke: 'var(--ink)', 'stroke-width': 1.6 });
     te('line', { x1: TB_C - TB_R, y1: TB_C, x2: TB_C + TB_R, y2: TB_C, stroke: 'var(--hairline)' });
     te('line', { x1: TB_C, y1: TB_C - TB_R, x2: TB_C, y2: TB_C + TB_R, stroke: 'var(--hairline)' });
     te('circle', { cx: TB_C, cy: TB_C, r: TB_R * TB_LIM, fill: 'none', stroke: 'var(--c-red)', 'stroke-width': 1, 'stroke-dasharray': '3 3', opacity: 0.65 });
-    const mono = { 'font-family': 'ui-monospace, "SF Mono", Consolas, monospace', 'font-size': 8.5, fill: 'var(--muted)' };
+    const mono = MONO(8.5);
     const t1 = te('text', { x: TB_C, y: 11, ...mono, 'text-anchor': 'middle' }); t1.textContent = 'follow';
     const t2 = te('text', { x: TB_C, y: 115, ...mono, 'text-anchor': 'middle' }); t2.textContent = 'draw';
     const t3 = te('text', { x: 3, y: TB_C + 3, ...mono }); t3.textContent = 'L';
@@ -3071,12 +3093,8 @@ if (typeof module !== 'undefined') module.exports = kosmosBilliardsPhysics;
     return best;
   }
 
-  const dmono = { 'font-family': 'ui-monospace, "SF Mono", Consolas, monospace', 'font-size': 11, fill: 'var(--muted)' };
-  const de = (tag, attrs) => el(tag, attrs, dsvg);
-  const dline = (a, b, attrs) => { const [x1, y1] = px(a), [x2, y2] = px(b); return de('line', { x1, y1, x2, y2, ...attrs }); };
-  const dtext = (p, s, attrs) => { const [x, y] = px(p); const e2 = de('text', { x, y, ...attrs }); e2.textContent = s; return e2; };
-  const dpoly = (pts, attrs) => de('polyline', { points: pts.map(px).map((q) => q.join(',')).join(' '), fill: 'none', ...attrs });
-  const dball = (p, attrs) => { const [cx, cy] = px(p); return de('circle', { cx, cy, r: R * SX, ...attrs }); };
+  const dmono = MONO();
+  const { el: de, line: dline, text: dtext, poly: dpoly, ball: dball } = draw(dsvg);
 
   function drawSysTable(flip) {
     dsvg.innerHTML = '';
@@ -3444,13 +3462,13 @@ if (typeof module !== 'undefined') module.exports = kosmosBilliardsPhysics;
     ctsvg.setAttribute('viewBox', `-16 -16 ${900 + 32} ${470 + 32}`);
     const cpx = (q) => [(q[0] - ox) * sc, (q[1] - oy) * sc];
     ctsvg.innerHTML = '';
-    const ce = (tag, a) => el(tag, a, ctsvg);
+    const ce = draw(ctsvg).el;
     const cl = (a, b, at) => { const [x1b, y1b] = cpx(a), [x2b, y2b] = cpx(b); return ce('line', { x1: x1b, y1: y1b, x2: x2b, y2: y2b, ...at }); };
     const cpoly = (pts, at) => ce('polyline', { points: pts.map(cpx).map((q) => q.join(',')).join(' '), fill: 'none', ...at });
     const cball = (q, at) => { const [cx, cy] = cpx(q); return ce('circle', { cx, cy, r: R * sc, ...at }); };
     const ctext = (q, t2, at) => { const [x, y] = cpx(q); const e2 = ce('text', { x, y, ...at }); e2.textContent = t2; return e2; };
     ce('rect', { x: -16, y: -16, width: 932, height: 502, fill: 'color-mix(in oklab, var(--c-felt) 9%, var(--panel))', rx: 8 });
-    const mono = { 'font-family': 'ui-monospace, "SF Mono", Consolas, monospace', 'font-size': 11, fill: 'var(--muted)' };
+    const mono = MONO();
     // the aim line, the ghost ball, the line of centres and the tangent
     cl(CB, vadd(ghost, vmul(dAim, 0.02)), { stroke: 'var(--muted)', 'stroke-width': 1, 'stroke-dasharray': '6 5', opacity: 0.55 });
     cball(ghost, { fill: 'none', stroke: 'var(--ink)', 'stroke-width': 1.2, 'stroke-dasharray': '2 3', opacity: 0.75 });
@@ -3509,17 +3527,12 @@ if (typeof module !== 'undefined') module.exports = kosmosBilliardsPhysics;
   // centre, and the red dot is where the tip meets it.
   function drawContactPov(CB, OB, ghost, dAim, tip, side, frac) {
     const g = $('ctpov'); g.innerHTML = '';
-    const ge = (tag, a) => el(tag, a, g);
+    const ge = draw(g).el;
     ge('rect', { x: 0, y: 0, width: 900, height: 250, fill: 'color-mix(in oklab, var(--c-felt) 12%, var(--panel))' });
-    const mono = { 'font-family': 'ui-monospace, "SF Mono", Consolas, monospace', 'font-size': 11, fill: 'var(--muted)' };
+    const mono = MONO();
     const HOR = 74, EYEH = 0.15, FPX = 430, BACK = 0.34;
-    const eye = vsub(CB, vmul(dAim, BACK)), pd = perp(dAim);
-    const proj = (q, z) => {
-      const rel = vsub(q, eye), fd = vdot(rel, dAim);
-      if (fd < 0.05) return null;
-      const sc = FPX / fd;
-      return [450 + vdot(rel, pd) * sc, HOR + (EYEH - z) * sc, sc];
-    };
+    const eye = vsub(CB, vmul(dAim, BACK));
+    const proj = povProjector(eye, dAim, { hor: HOR, eyeH: EYEH, fpx: FPX, near: 0.05 });
     ge('line', { x1: 0, y1: HOR, x2: 900, y2: HOR, stroke: 'var(--hairline)' });
     const po = proj(OB, R), pg = proj(ghost, R);
     if (pg) ge('circle', { cx: pg[0], cy: pg[1], r: R * pg[2], fill: 'none', stroke: 'var(--ink)', 'stroke-width': 1.4, 'stroke-dasharray': '3 3', opacity: 0.85 });
@@ -3540,9 +3553,9 @@ if (typeof module !== 'undefined') module.exports = kosmosBilliardsPhysics;
   // throw against strike: the curve every player feels and few can name
   function drawThrowCurve(cfg, dist, v0) {
     const g = $('ctcurve'); g.innerHTML = '';
-    const ge = (tag, a) => el(tag, a, g);
+    const ge = draw(g).el;
     ge('rect', { x: 0, y: 0, width: 900, height: 300, fill: 'color-mix(in oklab, var(--c-felt) 9%, var(--panel))' });
-    const mono = { 'font-family': 'ui-monospace, "SF Mono", Consolas, monospace', 'font-size': 11, fill: 'var(--muted)' };
+    const mono = MONO();
     const X0 = 54, X1 = 880, Y0 = 258, Y1 = 20;
     if (!cfg) { const t = ge('text', { x: 450, y: 150, ...mono, 'text-anchor': 'middle' }); t.textContent = 'no contact at this cut'; return; }
     const pts = [];
