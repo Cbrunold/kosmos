@@ -644,6 +644,9 @@ window.KosmosSearch = (() => {
     <div class="row"><label>mode</label>
       <div class="modes"><button id="mprac" type="button" class="on">practice — guides live</button><button id="mpro" type="button">pro — just the balls</button></div>
       <div class="hint pro-only">No guides, neutral defaults. The aim must pay for throw, squirt and swerve.</div></div>
+    <div class="row"><label>the table — cloth and rails</label>
+      <div class="modes" id="tables"></div>
+      <div class="hint" id="tablenote"></div></div>
     <div class="row"><label>the shot</label><div id="shotinfo"></div>
       <div class="hint prac-only">Drag either ball; click a pocket to aim there. The outcome maps live under the table.</div>
       <div class="hint pro-only">Drag the empty cloth to point the cue; drag a ball to move it.</div>
@@ -701,12 +704,12 @@ window.KosmosSearch = (() => {
     <div class="row"><label>outcome by strike — this shot, every strength</label>
       <svg id="vstrip" viewBox="0 0 550 22" preserveAspectRatio="none"></svg>
       <div class="hint" id="potv"></div>
-      <div class="hint"><b>solid amber</b>: the object ball drops · <b>mid amber</b>: it hangs in the jaws · <b>faint amber</b>: it stays up · <b>grey</b>: the cue ball never gets there · <b>red strip</b>: the cue ball scratches</div></div>
+      <div class="hint"><b>solid amber</b>: the object ball drops · <b>mid amber</b>: it hangs in the jaws · <b>rust</b>: it rattles out of the jaws · <b>faint amber</b>: it stays up · <b>grey</b>: the cue ball never gets there · <b>red strip</b>: the cue ball scratches</div></div>
   </div>
   <div class="kcard ctl">
     <div class="row"><label>solution space — aim × strike, this layout</label>
       <canvas id="hmap" width="486" height="120" style="width:100%;height:120px;grid-column:1/-1;border:1px solid var(--hairline);border-radius:4px"></canvas>
-      <div class="hint">Every pixel is a simulated shot: <b>amber</b> pots · <b>dim amber</b> hangs · <b>red-edged</b> pots but scratches · <b>red</b> scratches · x: aim ±5° around the ghost-ball line (centre tick) · y: strike 0.5→10 (line = yours). The pot window drifting off centre is the compensation you must aim.</div></div>
+      <div class="hint">Every pixel is a simulated shot: <b>amber</b> pots · <b>dim amber</b> hangs · <b>rust</b> rattles out · <b>red-edged</b> pots but scratches · <b>red</b> scratches · x: aim ±5° around the ghost-ball line (centre tick) · y: strike 0.5→10 (line = yours). The pot window drifting off centre is the compensation you must aim.</div></div>
   </div>
 </div>
 <div class="out">
@@ -838,7 +841,7 @@ window.KosmosSearch = (() => {
   <li><strong>Balls stay on the cloth.</strong> No hop on a firm draw stroke, no jump; the cushion returns the ball in the plane.</li>
   <li><strong>Friction is Coulomb's</strong> — a constant coefficient, except ball–ball friction for throw, which uses Alciatore's measured fit μ = 0.01 + 0.108 e<sup>−1.088 v</sup> because slow shots really do throw more.</li>
   <li><strong>Spin doesn't cross a collision.</strong> Every ball on the table is live — collisions between any two balls, both possibly moving, carry the full impulse-and-throw model — but the friction nudge each contact gives the striker's spin is dropped, and a struck ball leaves without spin of its own.</li>
-  <li><strong>Pockets are a mouth and a shelf, not jaws.</strong> Six 4½″ mouths on a 9-ft table, each with a shelf depth (1⅝″ corner, ⅜″ side — variables in the model): a ball whose centre crosses a mouth drops if it has that much roll left, and hangs in the jaws if not. No rattles or lip-outs — speed never rejects a ball the way a real corner does. Rails rebound live in the main sim with the cushion lab's model — restitution √0.75 at a soft touch, deadening with pace to a floor of 0.55, plus friction and the ball's side transferring — so banks, kicks and multi-rail routes are real and hard shots die in a few rails instead of ricocheting forever; the jaw region bounces like plain rail.</li>
+  <li><strong>Pockets are a mouth, a shelf and a pair of jaws.</strong> Six 4½″ mouths on a 9-ft table, each with a shelf depth (1⅝″ corner, ⅜″ side — variables in the model): a ball whose centre crosses a mouth drops if it has that much roll left, and hangs in the jaws if not. But the mouth a pocket offers narrows with pace — 10 % of it per m/s, to a floor of 40 % — measured against how far the ball's path passes from the pocket point, and a side pocket refuses anything more than 42° off the perpendicular, narrowing likewise; a refused ball <em>rattles</em>, rebounding off the pocket's axis like rail and losing a bite to the jaw. Speed rejects a ball the way a real corner does; the rattle itself is a coarse bounce, not a jaw geometry. Rails rebound live in the main sim with the cushion lab's model — restitution √0.75 at a soft touch, deadening with pace to a floor of 0.55, plus friction and the ball's side transferring — so banks, kicks and multi-rail routes are real and hard shots die in a few rails instead of ricocheting forever. The <b>table</b> control swaps the cloth and the rubber (never the geometry) between four presets listed on the numbers tab.</li>
 </ul>
 
 </section>
@@ -849,7 +852,7 @@ window.KosmosSearch = (() => {
 </section>
 <p class="kfoot">Physics from the Equations shelf; constants from pool-sauce-engine. Coriolis, <em>Théorie mathématique des effets du jeu de billard</em>, 1835, had most of this; the throw model follows Alciatore (<em>The Illustrated Principles of Pool and Billiards</em>, technical proofs). Nothing here is a substitute for a table.</p>
 
-<script id="data" type="application/json">{"equations":[{"name":"Cushion Rebound","slug":"cushion-rebound","field":"Billiards","equation":"v_n,out = e_c v_n,in;  the tangential component and side spin lose to cushion friction","significance":"The rail gives back most of the speed that hit it square and slows what ran along it, so the ball leaves at a shorter angle than it arrived — more so when it arrives fast. Side spin adds or subtracts to that along-rail component: running english lengthens the angle and keeps the ball moving, reverse shortens it and kills speed. Cushions are rubber, not physics constants; every table plays a little differently, and players test them before a match.","year":1835,"requires":3},{"name":"Ghost-Ball Aim","slug":"ghost-ball-aim","field":"Billiards","equation":"aim the cue ball's centre at the point 2R from the object ball's centre, on the line to the pocket;  ball-hit fraction f = 1 − sin θ","significance":"Picture the cue ball frozen where it must be at contact — touching the object ball on the far side from the pocket. Its centre is one ball's diameter from the object ball's centre along the pocket line; send the real cue ball there. The fraction the two overlap when seen from the cue is 1 − sin θ, which is why a half-ball hit is a 30° cut and a quarter-ball is 48.6°. Pure geometry; throw adds a correction on top.","year":1835,"requires":2},{"name":"Ninety-Degree Rule","slug":"ninety-degree-rule","field":"Billiards","equation":"v_OB = v cos θ  (along the line of centres);  v_CB = v sin θ  (along the tangent line)","significance":"Two equal balls, one at rest, no spin: after the hit they separate at a right angle. The object ball leaves along the line of centres — always, whatever else you do — and the cue ball keeps whatever was perpendicular to that. It is momentum and energy conservation with equal masses, and it is a projection: cos θ of the speed goes one way, sin θ the other, cos²θ of the energy to the object ball. A half-ball hit (θ = 30°) sends 75 % of the energy on. Coriolis set it down in 1835. Real balls bend it a degree or two (restitution, throw), and spin bends the cue ball's path afterwards — but the tangent line is where every cue-ball plan starts.","year":1835,"requires":4},{"name":"Slide to Roll","slug":"slide-to-roll","field":"Billiards","equation":"rolling when v = ω R;  a stunned ball rolls after t = 2 v₀ / (7 μ_s g), at 5/7 of its speed","significance":"A ball struck at centre skids first — no spin, so the cloth drags its bottom and spins it up while slowing it down — until the surface speed matches the ball's speed and it rolls. It loses two-sevenths of its speed getting there, in a distance that scales with v₀². Topspin shortens the skid, backspin reverses it: a drawn cue ball skids backward-spinning, stops spinning, then rolls back the way it came. Every follow and draw shot is this transition happening after the collision instead of before it.","year":1835,"requires":4},{"name":"Tip Offset and Spin","slug":"tip-offset-and-spin","field":"Billiards","equation":"ω = (5/2) v b / R²  ;  miscue beyond b ≈ R/2","significance":"Hit off-centre and the impulse has a lever arm; the ball's moment of inertia is ⅖ mR², so the spin is 5/2 · v · b / R². Half a radius of offset — the practical limit before the tip slides off — gives a ball spinning about as fast as it would if it were already rolling at that speed. Above the centre it is follow, below it draw, to the side it is english (and squirt: the cue ball leaves a little off the cue's line, by an amount that is a property of the cue, not the table).","year":1835,"requires":3},{"name":"Cue-to-Ball Speed Transfer","slug":"cue-to-ball-speed-transfer","field":"Billiards","equation":"v_ball ≈ v_cue · 2 m_cue / (m_cue + m_ball) · (1 + e)/2","significance":"A heavy cue on a light ball gives the ball more speed than the cue had: with a 540 g cue and a 170 g ball the ideal is about 1.5 times, less the tip's losses. Which is why a firm stroke is about cue speed, not muscle, and why the grip's tightness changes the effective mass but not much else. Momentum conservation and Newton's law of impact, nothing more.","year":null,"requires":2},{"name":"Thirty-Degree Rule","slug":"thirty-degree-rule","field":"Billiards","equation":"a rolling cue ball leaves a ¼- to ¾-ball hit at about 30° from its original line","significance":"Not a law but a consequence: the ninety-degree rule sends the cue ball down the tangent line, then its topspin — which the collision did not touch — bends it forward as it takes up roll again. Over the middle range of cuts that bend lands the ball near 30° from where it was going, which is why a peace sign held at the object ball predicts where the cue ball ends up. Faster shots and thinner or fuller hits break it; stun (no roll) keeps the ninety.","year":null,"requires":2},{"name":"Throw","slug":"throw","field":"Billiards","equation":"throw angle ≈ atan(μ v_t / v_n), up to about 5°","significance":"During the fifth of a millisecond the balls touch, friction drags the object ball a little off the line of centres, toward the direction the cue ball's surface was sliding. A cut throws the object ball forward of the geometric line (cut-induced throw); side spin throws it left or right (spin-induced throw). Slow shots throw more — the friction has more time relative to the speed — and it saturates once the surfaces stop slipping. Chalk on the contact point can double it. Nobody pockets long, slow cuts without allowing for it.","year":null,"requires":3},{"name":"Coefficient of Restitution","slug":"coefficient-of-restitution","field":"Mechanics","equation":"e = v_separation / v_approach;  energy of the relative motion kept = e²","significance":"Newton's experimental law of 1687: how much of the closing speed survives a collision. What e² measures is the energy in the relative motion — the collision's own energy, seen from the centre of mass — and not the total, because the momentum the pair carries between them cannot be lost. For equal balls, one at rest, the fraction of the original kinetic energy still there afterwards is (1 + e²)/2. Phenolic pool balls run about 0.92: the object ball leaves with 96 % of the cue ball's speed and 92 % of its energy, the cue ball creeps forward carrying under a fifth of a percent, and about 8 % of the energy has gone into sound and deformation. A cushion returns roughly 0.75 of the energy, so the ball comes off at 87 % of its speed. Steel on steel is 0.9-ish, a superball 0.9, a lump of clay near 0. It is why the ninety-degree rule is really eighty-eight, and why a stop shot needs a touch of draw.","year":1687,"requires":2},{"name":"Rolling Resistance","slug":"rolling-resistance","field":"Mechanics","equation":"d = v₀² / (2 μ_r g)","significance":"A rolling body loses energy slowly, to the deformation of the surface and of the ball, and the deceleration is nearly constant at μ_r g. On a pool table that is about a quarter of a metre per second per second, so a ball at 1 m/s rolls a little over two metres and speed control is a matter of a few percent. Coulomb measured rolling friction in 1781; the work–energy theorem does the rest.","year":1781,"requires":2}],"skills":[{"name":"Using Side","slug":"using-side","summary":"English — side spin — and the four things it does at once, three of which you did not ask for.","difficulty":"Advanced"},{"name":"Follow, Draw and Stun","slug":"follow-draw-and-stun","summary":"Where the cue ball ends up: controlling it with the height of the tip on the ball.","difficulty":"Intermediate"},{"name":"The Cut Shot","slug":"the-cut-shot","summary":"Pocketing a ball that is not straight in — where to send the cue ball, and where it goes afterwards.","difficulty":"Beginner"}],"table":{"caption":"The numbers a pool table runs on — the same values the Pool Sauce engine (pool-sauce-engine, poolsauce/constants.py) integrates with, so the shelf and the engine never disagree on one.","columns":["Quantity","Value","Enters","Note"],"rows":[["Ball radius R","28.575 mm","ghost-ball aim, tip offset, slide-to-roll","A 2¼-inch ball. Snooker's are 52.5 mm; carom 61.5 mm."],["Ball mass m","170 g","speed transfer, momentum","Phenolic resin; matched to a gram in a set."],["Gravity g","9.81 m/s²","every friction deceleration — μ·g","Standard gravity. The cloth slows a ball at μ_s·g while it slides and μ_r·g once it rolls."],["Ball–ball restitution e","0.92","restitution, ninety-degree rule","So a stun stop shot still creeps forward — a touch of draw fixes it."],["Ball–ball friction μ","≈ 0.06 (0.01–0.12 with speed)","throw","Alciatore's fit, μ = 0.01 + 0.108·e^(−1.088·v) with v the surface slip in m/s. Clean balls; chalk on the contact point can double it. — literature, not in constants.py"],["Cloth sliding friction μ_s","0.2","slide-to-roll, draw distance","Worsted tournament cloth; napped cloth is higher."],["Cloth rolling resistance μ_r","0.025","rolling resistance","A ball at 1 m/s runs about 2 m. The 0.01 often quoted gives 5 m and ten seconds of it, which no table does."],["Cloth spinning friction","0.044","how long side spin lasts","Torque on a ball spinning in place about a vertical axis."],["Cushion efficiency","0.75 of energy → 0.87 of speed","cushion rebound","Rubber; varies table to table and with speed. Test before a match. The soft limit — see the two rows below."],["Cushion deadening with pace","e_c = 0.87 − 0.04·v","rebound speed","v is the speed into the rail. The rubber gives less back the harder it is hit; the engine's √0.75 is what a soft touch gets. — a modelling choice, not a measurement"],["Cushion restitution floor","0.55","rebound speed at a break","Where the deadening stops — about what a break shot gets back from a rail. — a modelling choice, not a measurement"],["Cushion friction μ_c","≈ 0.2","cushion rebound with side","How much of the side spin the rail takes hold of; running side shortens the angle, reverse widens it. — literature, not in constants.py"],["9-ft playing surface","2.54 × 1.27 m","distance, speed control","Inside the cushion noses; a 7-ft bar table is 1.98 × 0.99 m."],["Pocket mouth","4½ in = 0.1143 m","when a ball is down","Corner spec; the lab drops a ball whose centre crosses the mouth — a capture radius of half the mouth, 0.0572 m, on the ball's centre. — WPA specification"],["Pocket shelf","corner 1⅝ in · side ⅜ in","hang or drop","Typicals, a variable per pocket; a ball at the mouth needs that much roll left to fall, or it hangs. — WPA specification"],["Squirt","5° per unit of side — 2.5° at full side","side's cost on the aim","A cue constant, not a table one; a low-deflection shaft roughly halves it. — literature, not in constants.py"],["Swerve","k = 0.08","the curve back while the ball slides","Lateral g-fraction at full side, from the cue's slight natural elevation. — a modelling choice, not a measurement"]],"note":"Where the engine and the literature differ the engine's value is quoted, because that is the number the shots on the channel are computed with."},"constants":{"R":0.028575,"M":0.17,"G":9.81,"E_BB":0.92,"MU_BB_FIT":[0.01,0.108,1.088],"MU_S":0.2,"MU_R":0.025,"MU_SP":0.044,"CUSHION_ENERGY":0.75,"CUSHION_DEADEN":0.04,"CUSHION_E_MIN":0.55,"MU_C":0.2,"TABLE":[2.54,1.27],"RP":0.05715,"SHELF":[0.0413,0.0095],"SQUIRT_DEG_PER_BR":5,"SW_K":0.08}}</script>
+<script id="data" type="application/json">{"equations":[{"name":"Cushion Rebound","slug":"cushion-rebound","field":"Billiards","equation":"v_n,out = e_c v_n,in;  the tangential component and side spin lose to cushion friction","significance":"The rail gives back most of the speed that hit it square and slows what ran along it, so the ball leaves at a shorter angle than it arrived — more so when it arrives fast. Side spin adds or subtracts to that along-rail component: running english lengthens the angle and keeps the ball moving, reverse shortens it and kills speed. Cushions are rubber, not physics constants; every table plays a little differently, and players test them before a match.","year":1835,"requires":3},{"name":"Ghost-Ball Aim","slug":"ghost-ball-aim","field":"Billiards","equation":"aim the cue ball's centre at the point 2R from the object ball's centre, on the line to the pocket;  ball-hit fraction f = 1 − sin θ","significance":"Picture the cue ball frozen where it must be at contact — touching the object ball on the far side from the pocket. Its centre is one ball's diameter from the object ball's centre along the pocket line; send the real cue ball there. The fraction the two overlap when seen from the cue is 1 − sin θ, which is why a half-ball hit is a 30° cut and a quarter-ball is 48.6°. Pure geometry; throw adds a correction on top.","year":1835,"requires":2},{"name":"Ninety-Degree Rule","slug":"ninety-degree-rule","field":"Billiards","equation":"v_OB = v cos θ  (along the line of centres);  v_CB = v sin θ  (along the tangent line)","significance":"Two equal balls, one at rest, no spin: after the hit they separate at a right angle. The object ball leaves along the line of centres — always, whatever else you do — and the cue ball keeps whatever was perpendicular to that. It is momentum and energy conservation with equal masses, and it is a projection: cos θ of the speed goes one way, sin θ the other, cos²θ of the energy to the object ball. A half-ball hit (θ = 30°) sends 75 % of the energy on. Coriolis set it down in 1835. Real balls bend it a degree or two (restitution, throw), and spin bends the cue ball's path afterwards — but the tangent line is where every cue-ball plan starts.","year":1835,"requires":4},{"name":"Slide to Roll","slug":"slide-to-roll","field":"Billiards","equation":"rolling when v = ω R;  a stunned ball rolls after t = 2 v₀ / (7 μ_s g), at 5/7 of its speed","significance":"A ball struck at centre skids first — no spin, so the cloth drags its bottom and spins it up while slowing it down — until the surface speed matches the ball's speed and it rolls. It loses two-sevenths of its speed getting there, in a distance that scales with v₀². Topspin shortens the skid, backspin reverses it: a drawn cue ball skids backward-spinning, stops spinning, then rolls back the way it came. Every follow and draw shot is this transition happening after the collision instead of before it.","year":1835,"requires":4},{"name":"Tip Offset and Spin","slug":"tip-offset-and-spin","field":"Billiards","equation":"ω = (5/2) v b / R²  ;  miscue beyond b ≈ R/2","significance":"Hit off-centre and the impulse has a lever arm; the ball's moment of inertia is ⅖ mR², so the spin is 5/2 · v · b / R². Half a radius of offset — the practical limit before the tip slides off — gives a ball spinning about as fast as it would if it were already rolling at that speed. Above the centre it is follow, below it draw, to the side it is english (and squirt: the cue ball leaves a little off the cue's line, by an amount that is a property of the cue, not the table).","year":1835,"requires":3},{"name":"Cue-to-Ball Speed Transfer","slug":"cue-to-ball-speed-transfer","field":"Billiards","equation":"v_ball ≈ v_cue · 2 m_cue / (m_cue + m_ball) · (1 + e)/2","significance":"A heavy cue on a light ball gives the ball more speed than the cue had: with a 540 g cue and a 170 g ball the ideal is about 1.5 times, less the tip's losses. Which is why a firm stroke is about cue speed, not muscle, and why the grip's tightness changes the effective mass but not much else. Momentum conservation and Newton's law of impact, nothing more.","year":null,"requires":2},{"name":"Thirty-Degree Rule","slug":"thirty-degree-rule","field":"Billiards","equation":"a rolling cue ball leaves a ¼- to ¾-ball hit at about 30° from its original line","significance":"Not a law but a consequence: the ninety-degree rule sends the cue ball down the tangent line, then its topspin — which the collision did not touch — bends it forward as it takes up roll again. Over the middle range of cuts that bend lands the ball near 30° from where it was going, which is why a peace sign held at the object ball predicts where the cue ball ends up. Faster shots and thinner or fuller hits break it; stun (no roll) keeps the ninety.","year":null,"requires":2},{"name":"Throw","slug":"throw","field":"Billiards","equation":"throw angle ≈ atan(μ v_t / v_n), up to about 5°","significance":"During the fifth of a millisecond the balls touch, friction drags the object ball a little off the line of centres, toward the direction the cue ball's surface was sliding. A cut throws the object ball forward of the geometric line (cut-induced throw); side spin throws it left or right (spin-induced throw). Slow shots throw more — the friction has more time relative to the speed — and it saturates once the surfaces stop slipping. Chalk on the contact point can double it. Nobody pockets long, slow cuts without allowing for it.","year":null,"requires":3},{"name":"Coefficient of Restitution","slug":"coefficient-of-restitution","field":"Mechanics","equation":"e = v_separation / v_approach;  energy of the relative motion kept = e²","significance":"Newton's experimental law of 1687: how much of the closing speed survives a collision. What e² measures is the energy in the relative motion — the collision's own energy, seen from the centre of mass — and not the total, because the momentum the pair carries between them cannot be lost. For equal balls, one at rest, the fraction of the original kinetic energy still there afterwards is (1 + e²)/2. Phenolic pool balls run about 0.92: the object ball leaves with 96 % of the cue ball's speed and 92 % of its energy, the cue ball creeps forward carrying under a fifth of a percent, and about 8 % of the energy has gone into sound and deformation. A cushion returns roughly 0.75 of the energy, so the ball comes off at 87 % of its speed. Steel on steel is 0.9-ish, a superball 0.9, a lump of clay near 0. It is why the ninety-degree rule is really eighty-eight, and why a stop shot needs a touch of draw.","year":1687,"requires":2},{"name":"Rolling Resistance","slug":"rolling-resistance","field":"Mechanics","equation":"d = v₀² / (2 μ_r g)","significance":"A rolling body loses energy slowly, to the deformation of the surface and of the ball, and the deceleration is nearly constant at μ_r g. On a pool table that is about a quarter of a metre per second per second, so a ball at 1 m/s rolls a little over two metres and speed control is a matter of a few percent. Coulomb measured rolling friction in 1781; the work–energy theorem does the rest.","year":1781,"requires":2}],"skills":[{"name":"Using Side","slug":"using-side","summary":"English — side spin — and the four things it does at once, three of which you did not ask for.","difficulty":"Advanced"},{"name":"Follow, Draw and Stun","slug":"follow-draw-and-stun","summary":"Where the cue ball ends up: controlling it with the height of the tip on the ball.","difficulty":"Intermediate"},{"name":"The Cut Shot","slug":"the-cut-shot","summary":"Pocketing a ball that is not straight in — where to send the cue ball, and where it goes afterwards.","difficulty":"Beginner"}],"table":{"caption":"The numbers a pool table runs on — the same values the Pool Sauce engine (pool-sauce-engine, poolsauce/constants.py) integrates with, so the shelf and the engine never disagree on one.","columns":["Quantity","Value","Enters","Note"],"rows":[["Ball radius R","28.575 mm","ghost-ball aim, tip offset, slide-to-roll","A 2¼-inch ball. Snooker's are 52.5 mm; carom 61.5 mm."],["Ball mass m","170 g","speed transfer, momentum","Phenolic resin; matched to a gram in a set."],["Gravity g","9.81 m/s²","every friction deceleration — μ·g","Standard gravity. The cloth slows a ball at μ_s·g while it slides and μ_r·g once it rolls."],["Ball–ball restitution e","0.92","restitution, ninety-degree rule","So a stun stop shot still creeps forward — a touch of draw fixes it."],["Ball–ball friction μ","≈ 0.06 (0.01–0.12 with speed)","throw","Alciatore's fit, μ = 0.01 + 0.108·e^(−1.088·v) with v the surface slip in m/s. Clean balls; chalk on the contact point can double it. — literature, not in constants.py"],["Cloth sliding friction μ_s","0.2","slide-to-roll, draw distance","Worsted tournament cloth; napped cloth is higher."],["Cloth rolling resistance μ_r","0.025","rolling resistance","A ball at 1 m/s runs about 2 m. The 0.01 often quoted gives 5 m and ten seconds of it, which no table does."],["Cloth spinning friction","0.044","how long side spin lasts","Torque on a ball spinning in place about a vertical axis."],["Cushion efficiency","0.75 of energy → 0.87 of speed","cushion rebound","Rubber; varies table to table and with speed. Test before a match. The soft limit — see the two rows below."],["Cushion deadening with pace","e_c = 0.87 − 0.04·v","rebound speed","v is the speed into the rail. The rubber gives less back the harder it is hit; the engine's √0.75 is what a soft touch gets. — a modelling choice, not a measurement"],["Cushion restitution floor","0.55","rebound speed at a break","Where the deadening stops — about what a break shot gets back from a rail. — a modelling choice, not a measurement"],["Cushion friction μ_c","≈ 0.2","cushion rebound with side","How much of the side spin the rail takes hold of; running side shortens the angle, reverse widens it. — literature, not in constants.py"],["9-ft playing surface","2.54 × 1.27 m","distance, speed control","Inside the cushion noses; a 7-ft bar table is 1.98 × 0.99 m."],["Pocket mouth","4½ in = 0.1143 m","when a ball is down","Corner spec; the lab drops a ball whose centre crosses the mouth — a capture radius of half the mouth, 0.0572 m, on the ball's centre. — WPA specification"],["Pocket shelf","corner 1⅝ in · side ⅜ in","hang or drop","Typicals, a variable per pocket; a ball at the mouth needs that much roll left to fall, or it hangs. — WPA specification"],["Squirt","5° per unit of side — 2.5° at full side","side's cost on the aim","A cue constant, not a table one; a low-deflection shaft roughly halves it. — literature, not in constants.py"],["Swerve","k = 0.08","the curve back while the ball slides","Lateral g-fraction at full side, from the cue's slight natural elevation. — a modelling choice, not a measurement"],["Pocket narrowing with pace","mouth × (1 − 0.10·v)","whether the jaws take a ball or throw it back","The mouth a pocket offers shrinks as the ball comes faster, measured against how far its path passes from the pocket point. A ball down the diagonal always drops; one hugging the rail into a corner passes half a mouth off, and rattles above 5 m/s. v is the arriving speed. — a modelling choice, not a measurement"],["Pocket narrowing floor","0.40 of the mouth","the fastest shots","Where the narrowing stops — a break-speed ball still drops if it is dead centre. — a modelling choice, not a measurement"],["Side-pocket acceptance","±42° off the perpendicular, narrowing with pace","side pockets","A side pocket only takes a ball coming in near the perpendicular; along the rail it hits the far jaw and comes out. Corners take any angle short of the rail. — a modelling choice, not a measurement"]],"note":"Where the engine and the literature differ the engine's value is quoted, because that is the number the shots on the channel are computed with."},"constants":{"R":0.028575,"M":0.17,"G":9.81,"E_BB":0.92,"MU_BB_FIT":[0.01,0.108,1.088],"MU_S":0.2,"MU_R":0.025,"MU_SP":0.044,"CUSHION_ENERGY":0.75,"CUSHION_DEADEN":0.04,"CUSHION_E_MIN":0.55,"MU_C":0.2,"TABLE":[2.54,1.27],"RP":0.05715,"SHELF":[0.0413,0.0095],"SQUIRT_DEG_PER_BR":5,"SW_K":0.08,"POCKET_NARROW":0.1,"POCKET_NARROW_FLOOR":0.4,"SIDE_ACCEPT_DEG":42},"tables":[{"id":"tournament","name":"tournament table","over":{},"note":"The engine's numbers: worsted cloth, lively rails. Everything above is measured on this."},{"id":"fast","name":"new cloth, fast","over":{"MU_R":0.018,"MU_S":0.18,"MU_SP":0.04,"CUSHION_ENERGY":0.78},"note":"Fresh worsted, freshly brushed: a ball runs a third further, draw survives longer, rails give a touch more back."},{"id":"slow","name":"worn cloth, slow","over":{"MU_R":0.035,"MU_S":0.24,"MU_SP":0.05,"CUSHION_ENERGY":0.7},"note":"Napped or worn: the roll dies early and draw with it; positional shots need more than they look."},{"id":"bar","name":"bar table","over":{"MU_R":0.04,"MU_S":0.28,"MU_SP":0.055,"CUSHION_ENERGY":0.62},"note":"Cheap cloth and dead rails on the same 9-ft geometry — the 7-ft bar box is a different table, not a different cloth."}]}</script>
 <script>
   const D = JSON.parse(document.getElementById('data').textContent);
   // ---- the physics: web/billiards/physics.js, inlined by build.py — every function that moves a
@@ -866,8 +869,18 @@ function kosmosBilliardsPhysics(C, opts = {}) {
   const roster = opts.roster || (() => null);
   const R = C.R, M = C.M, G = C.G;
   const E_BB = C.E_BB;                 // ball–ball restitution
-  const MU_S = C.MU_S, MU_R = C.MU_R, MU_SP = C.MU_SP;   // cloth: sliding, rolling, spinning
-  const E_C = Math.sqrt(C.CUSHION_ENERGY);       // cushion keeps 3/4 of the energy → 0.87 of the speed
+  let MU_S = C.MU_S, MU_R = C.MU_R, MU_SP = C.MU_SP;   // cloth: sliding, rolling, spinning
+  let E_C = Math.sqrt(C.CUSHION_ENERGY);       // cushion keeps 3/4 of the energy → 0.87 of the speed
+  // ---- what a table preset may change under a running page: the cloth and the rubber, never the
+  // geometry. set() returns what is in force; current() reads it without touching anything.
+  let K = { MU_S, MU_R, MU_SP, CUSHION_ENERGY: C.CUSHION_ENERGY };
+  function set(over) {
+    K = { MU_S: C.MU_S, MU_R: C.MU_R, MU_SP: C.MU_SP, CUSHION_ENERGY: C.CUSHION_ENERGY, ...(over || {}) };
+    MU_S = K.MU_S; MU_R = K.MU_R; MU_SP = K.MU_SP; E_C = Math.sqrt(K.CUSHION_ENERGY);
+    bankCache.clear();   // a bank plan is the sim's own rail model, which just changed
+    return K;
+  }
+  const current = () => K;
   const MU_C = C.MU_C;                  // cushion friction — literature, not in constants.py
   const muBB = (v) => C.MU_BB_FIT[0] + C.MU_BB_FIT[1] * Math.exp(-C.MU_BB_FIT[2] * v);   // Alciatore's fit — literature
   const TABLE_L = C.TABLE[0], TABLE_W = C.TABLE[1];
@@ -877,6 +890,11 @@ function kosmosBilliardsPhysics(C, opts = {}) {
     { p: [0, 0], name: 'top-left corner', shelf: SHELF_C }, { p: [TABLE_L / 2, 0], name: 'top side', shelf: SHELF_S }, { p: [TABLE_L, 0], name: 'top-right corner', shelf: SHELF_C },
     { p: [0, TABLE_W], name: 'bottom-left corner', shelf: SHELF_C }, { p: [TABLE_L / 2, TABLE_W], name: 'bottom side', shelf: SHELF_S }, { p: [TABLE_L, TABLE_W], name: 'bottom-right corner', shelf: SHELF_C },
   ];
+  // the axis points into the pocket: the line a ball is judged against at the mouth
+  for (const P of POCKETS) {
+    P.side = P.p[0] === TABLE_L / 2;
+    P.axis = P.side ? [0, P.p[1] === 0 ? -1 : 1] : [P.p[0] === 0 ? -Math.SQRT1_2 : Math.SQRT1_2, P.p[1] === 0 ? -Math.SQRT1_2 : Math.SQRT1_2];
+  }
   const SQ_R = C.SQUIRT_DEG_PER_BR * Math.PI / 180;    // squirt: radians of cue-ball deflection per unit b/R of side (2.5° at max side) — a cue constant
   const SW_K = C.SW_K;                 // swerve: lateral g-fraction at full side while the ball slides — the cue's slight natural elevation
 
@@ -959,12 +977,45 @@ function kosmosBilliardsPhysics(C, opts = {}) {
     const t = 2 * Math.abs(u) / (7 * MU_S * G);
     return { t, d: v * t - Math.sign(u) * 0.5 * MU_S * G * t * t, vRoll: 5 * v * (1 + tip) / 7 };
   };
+  // ---- the mouth. A ball at a mouth drops if it has the roll to clear the shelf and hangs if not — but
+  // first the jaws decide whether to take it at all. The mouth a pocket offers narrows with pace
+  // (POCKET_NARROW per m/s, to POCKET_NARROW_FLOOR), measured against how far the ball's path passes
+  // from the pocket point; a side pocket also refuses a ball more than SIDE_ACCEPT_DEG off the
+  // perpendicular, narrowing likewise. A refused ball rattles: it rebounds off the pocket's axis like
+  // rail, loses a bite to the jaw, and is put back outside the mouth to carry on.
+  function atMouth(b, pk) {   // -> 'drop' | 'hang' | 'rattle' | 'pass' (not really arriving)
+    const P0 = POCKETS[pk], v = vlen(b.v);
+    if (v > 1e-6) {
+      const dir = vmul(b.v, 1 / v);
+      const into = vdot(dir, P0.axis);
+      if (into <= 0.05) return 'pass';
+      const narrow = Math.max(C.POCKET_NARROW_FLOOR, 1 - C.POCKET_NARROW * v);
+      const off = Math.abs(dir[0] * (P0.p[1] - b.p[1]) - dir[1] * (P0.p[0] - b.p[0]));   // the path's miss of the pocket point
+      const tooWide = off > RP * narrow;
+      const tooShallow = P0.side && into < Math.cos(rad(C.SIDE_ACCEPT_DEG * narrow));
+      if (tooWide || tooShallow) return 'rattle';
+    }
+    return stopDistance(b) >= P0.shelf ? 'drop' : 'hang';
+  }
+  function rattle(b, pk) {
+    const P0 = POCKETS[pk], n = P0.axis;
+    const vn = vdot(b.v, n);
+    if (vn > 0) {
+      const e = Math.max(C.CUSHION_E_MIN, E_C - C.CUSHION_DEADEN * vn);
+      b.v = vmul(vsub(b.v, vmul(n, (1 + e) * vn)), 1 - MU_C);   // rail restitution along the axis, and the jaw's bite
+      b.s = b.v.slice(); b.z *= 0.5;
+    }
+    const away = vsub(b.p, P0.p), d = vlen(away);
+    b.p = vadd(P0.p, vmul(d > 1e-6 ? vmul(away, 1 / d) : vmul(n, -1), RP + 1e-3));
+    b.rattled = (b.rattled || 0) + 1; b.rattleAt = pk;
+  }
+
   // roll a ball until it stops or reaches a mouth, rebounding off the rails on the way; track path length
   // and the closest approach to the target pocket. At a mouth it drops only with the roll left to carry
   // that pocket's shelf — else it hangs in the jaws.
   const trace = (b, dt, keep, P, maxI = 9000) => {
     const pts = keep ? [b.p.slice()] : null;
-    let pocket = null, hang = null, dropSpeed = 0, len = 0, minPD = P ? dist2(b.p, P) : Infinity;
+    let pocket = null, hang = null, dropSpeed = 0, len = 0, minPD = P ? dist2(b.p, P) : Infinity, rattles = 0;
     for (let i = 0; i < maxI; i++) {
       const px0 = b.p[0], py0 = b.p[1];
       step(b, dt);
@@ -972,11 +1023,16 @@ function kosmosBilliardsPhysics(C, opts = {}) {
       if (keep) pts.push(b.p.slice());
       if (P) { const dd = dist2(b.p, P); if (dd < minPD) minPD = dd; }
       const pk = pocketAt(b.p);
-      if (pk >= 0) { if (stopDistance(b) >= POCKETS[pk].shelf) { pocket = pk; dropSpeed = vlen(b.v); } else hang = pk; break; }
+      if (pk >= 0) {
+        const m = atMouth(b, pk);
+        if (m === 'drop') { pocket = pk; dropSpeed = vlen(b.v); break; }
+        if (m === 'hang') { hang = pk; break; }
+        if (m === 'rattle') { rattle(b, pk); rattles++; continue; }
+      }
       bounce(b);
       if (vlen(b.v) < 1e-3) break;
     }
-    return { pts, pocket, hang, dropSpeed, len, minPD, slid: b.slid, dt };
+    return { pts, pocket, hang, dropSpeed, len, minPD, slid: b.slid, dt, rattles };
   };
 
   // ---- two balls meeting, both possibly moving: normal impulse with restitution in the relative frame,
@@ -1145,16 +1201,21 @@ function kosmosBilliardsPhysics(C, opts = {}) {
         if (!b.moving) continue;
         const pk = pocketAt(b.p);
         if (pk >= 0) {
-          if (stopDistance(b) >= POCKETS[pk].shelf) { b.pocket = pk; b.dropSpeed = vlen(b.v); } else b.hang = pk;
-          b.potStep = i; b.moving = false; b.v = [0, 0];
-          continue;
+          const m = atMouth(b, pk);
+          if (m === 'rattle') { rattle(b, pk); continue; }
+          if (m !== 'pass') {
+            if (m === 'drop') { b.pocket = pk; b.dropSpeed = vlen(b.v); } else b.hang = pk;
+            b.potStep = i; b.moving = false; b.v = [0, 0];
+            continue;
+          }
         }
         if (bounce(b)) b.rails++;
       }
       if (!any) break;
     }
     const cs = contactStep == null ? null : contactStep + 1;
-    const mkTrace = (b, from) => ({ pts: lite ? null : b.pts.slice(from), pocket: b.pocket, hang: b.hang, dropSpeed: b.dropSpeed, len: b.len, minPD: b.minPD, slid: b.slid, dt, potStep: b.potStep });
+    const mkTrace = (b, from) => ({ pts: lite ? null : b.pts.slice(from), pocket: b.pocket, hang: b.hang, dropSpeed: b.dropSpeed, len: b.len, minPD: b.minPD, slid: b.slid, dt, potStep: b.potStep,
+                                    rattled: b.rattled || 0, rattleAt: b.rattleAt ?? null });
     if (hit == null) {
       return { ...base, pre: lite ? [cbP] : cue.pts, preDt: dt, dt, reached: false, cbPre: cue.pocket, cbPreHang: cue.hang, simBalls: bodies, tgtIdx: tgt, cueContacts, cueRails: cue.rails, cueRailsPre: cue.rails };
     }
@@ -1213,13 +1274,13 @@ function kosmosBilliardsPhysics(C, opts = {}) {
     return { vx, vy, vx2, vy2, e, out: deg(Math.atan2(vy2, Math.abs(vx2))), reversed: vx2 < 0, speed: Math.hypot(vx2, vy2) / v, noSide: deg(Math.atan2(e * vy, Math.max(1e-6, vx - Math.min(MU_C * (1 + e) * vy, (2 / 7) * Math.abs(vx))))) };
   }
 
-  return { R, M, G, E_BB, MU_S, MU_R, MU_SP, E_C, MU_C, muBB, TABLE_L, TABLE_W, RP, SHELF_C, SHELF_S, POCKETS, SQ_R, SW_K, deg, rad, vadd, vsub, vmul, vlen, vdot, vunit, perp, dist2, pocketAt, inside, RAILS, bounce, step, stopDistance, slideOut, trace, collide, bankCandidates, planBank, shoot, slideState, cushion };
+  return { set, current, atMouth, R, M, G, E_BB, MU_S, MU_R, MU_SP, E_C, MU_C, muBB, TABLE_L, TABLE_W, RP, SHELF_C, SHELF_S, POCKETS, SQ_R, SW_K, deg, rad, vadd, vsub, vmul, vlen, vdot, vunit, perp, dist2, pocketAt, inside, RAILS, bounce, step, stopDistance, slideOut, trace, collide, bankCandidates, planBank, shoot, slideState, cushion };
 }
 if (typeof module !== 'undefined') module.exports = kosmosBilliardsPhysics;
 
   const C = D.constants;
   const P = kosmosBilliardsPhysics(C, { roster: () => state });   // state is declared below; read when a shot runs
-  const { R, M, G, E_BB, MU_S, MU_R, MU_SP, E_C, MU_C, muBB, TABLE_L, TABLE_W, RP, SHELF_C, SHELF_S, POCKETS, SQ_R, SW_K, deg, rad, vadd, vsub, vmul, vlen, vdot, vunit, perp, dist2, pocketAt, inside, RAILS, bounce, step, stopDistance, slideOut, trace, collide, bankCandidates, planBank, shoot, slideState, cushion } = P;
+  const { R, M, G, E_BB, MU_C, muBB, TABLE_L, TABLE_W, RP, SHELF_C, SHELF_S, POCKETS, SQ_R, SW_K, deg, rad, vadd, vsub, vmul, vlen, vdot, vunit, perp, dist2, pocketAt, inside, RAILS, bounce, step, stopDistance, slideOut, trace, collide, bankCandidates, planBank, shoot, slideState, cushion } = P;
   const BALL_COL = { 1: '#f2b705', 2: '#2c5db0', 3: '#d34a3a', 4: '#7b4fae', 5: '#e07b2a', 6: '#2e8b57', 7: '#8b4040', 8: '#2b2b2b', 9: '#f2b705', 10: '#2c5db0', 11: '#d34a3a', 12: '#7b4fae', 13: '#e07b2a', 14: '#2e8b57', 15: '#8b4040' };
 
   const $ = (id) => document.getElementById(id);
@@ -1477,7 +1538,7 @@ if (typeof module !== 'undefined') module.exports = kosmosBilliardsPhysics;
     const endOB = S.obTrace.pts[S.obTrace.pts.length - 1], endCB = S.cbTrace.pts[S.cbTrace.pts.length - 1];
     const dn = S.simBalls.filter((b, i) => i !== 0 && i !== S.tgtIdx && b.pocket != null);
     $('ob').innerHTML = dl([
-      ['outcome', pot ? `<b>POTTED</b> — drops in the ${POCKETS[S.obTrace.pocket].name} at ${fmt(S.obTrace.dropSpeed, 2)} m/s` : hang ? `hangs in the jaws of the ${POCKETS[S.obTrace.hang].name}` : `stays up — ${zone(endOB)}`, pot ? 'good' : 'warn'],
+      ['outcome', pot ? `<b>POTTED</b> — drops in the ${POCKETS[S.obTrace.pocket].name} at ${fmt(S.obTrace.dropSpeed, 2)} m/s` : hang ? `hangs in the jaws of the ${POCKETS[S.obTrace.hang].name}` : S.obTrace.rattled ? `<b>rattles out</b> of the ${POCKETS[S.obTrace.rattleAt].name} — too fast for how far off centre it arrived — and ${zone(endOB)}` : `stays up — ${zone(endOB)}`, pot ? 'good' : 'warn'],
       ['the contact', `${S.firstIsTarget ? '' : `ball ${S.firstBall} first! `}cut ${fmt(deg(S.th), 1)}° · ball-hit fraction ${fmt(S.fraction, 2)} · arriving at ${fmt(S.vc, 2)} m/s`, S.firstIsTarget ? undefined : 'warn'],
       ['throw', `${fmt(S.throwDeg, 2)}° off the line of centres`],
       ...(dn.length ? [['also down', dn.map((b) => `${b.n} in the ${POCKETS[b.pocket].name}`).join(' · ')]] : []),
@@ -1628,7 +1689,7 @@ if (typeof module !== 'undefined') module.exports = kosmosBilliardsPhysics;
       ['direction', `${S.bank ? `bank line, off the ${S.bank.rail} rail` : 'pocket line'}${S.throwDeg > 0.05 ? ` rotated ${fmt(S.throwDeg, 1)}° ${toward === null ? 'by the side spin' : toward ? 'toward the cue ball\'s line <small>plays fuller than aimed</small>' : 'away from the cue ball\'s line <small>plays thinner than aimed</small>'}` : ' — no throw'}`],
       ['throw', `${fmt(S.throwDeg, 2)}° <small>μ = ${fmt(S.mu, 3)} at ${fmt(S.ul, 2)} m/s surface slip${S.Jh >= M * Math.abs(S.vt - S.cbz) / 7 - 1e-9 && S.Jh > 0 ? ' · gearing limit' : ''}</small>`],
       ['ball-hit fraction', `${fmt(S.fraction, 2)} <small>1 − sin θ</small>`],
-      ['the pocket', potted ? `<b>drops</b> — falls in the ${S.name} at ${fmt(S.obTrace.dropSpeed, 2)} m/s` : S.obTrace.pocket != null ? `falls in the <em>wrong</em> pocket — the ${POCKETS[S.obTrace.pocket].name}` : S.obTrace.hang != null ? `<b>hangs in the jaws</b> of the ${POCKETS[S.obTrace.hang].name} — reaches the mouth without the roll to carry its ${fmt(1000 * POCKETS[S.obTrace.hang].shelf, 0)} mm shelf` : `stays up — dies after ${fmt(S.obTrace.len, 2)} m of cloth, ${missCm} cm from the mouth at its closest`, potted ? 'good' : 'warn'],
+      ['the pocket', potted ? `<b>drops</b> — falls in the ${S.name} at ${fmt(S.obTrace.dropSpeed, 2)} m/s` : S.obTrace.pocket != null ? `falls in the <em>wrong</em> pocket — the ${POCKETS[S.obTrace.pocket].name}` : S.obTrace.rattled && S.obTrace.hang == null ? `<b>rattles out</b> of the ${POCKETS[S.obTrace.rattleAt].name} — the jaws refused it at that pace` : S.obTrace.hang != null ? `<b>hangs in the jaws</b> of the ${POCKETS[S.obTrace.hang].name} — reaches the mouth without the roll to carry its ${fmt(1000 * POCKETS[S.obTrace.hang].shelf, 0)} mm shelf` : `stays up — dies after ${fmt(S.obTrace.len, 2)} m of cloth, ${missCm} cm from the mouth at its closest`, potted ? 'good' : 'warn'],
       ...(S.firstIsTarget ? [] : [['first contact', `the ${S.firstBall} ball, not the target — everything above describes that hit`, 'warn']]),
       ...((() => { const dn = S.simBalls.filter((b, i) => i !== 0 && i !== S.tgtIdx && b.pocket != null); return dn.length ? [['also down', dn.map((b) => `${b.n} in the ${POCKETS[b.pocket].name}`).join(' · ')]] : []; })()),
     ]);
@@ -1653,6 +1714,7 @@ if (typeof module !== 'undefined') module.exports = kosmosBilliardsPhysics;
         v,
         pot: !!S.reached && S.obTrace.pocket === S.pkI,
         hang: !!S.reached && S.obTrace.hang === S.pkI,
+        rattle: !!S.reached && S.obTrace.pocket == null && S.obTrace.hang == null && S.obTrace.rattleAt === S.pkI,
         scratch: S.cbPre != null || (!!S.reached && S.cbTrace.pocket != null),
         reached: !!S.reached,
       });
@@ -1666,17 +1728,18 @@ if (typeof module !== 'undefined') module.exports = kosmosBilliardsPhysics;
     if (!sw) { $('potv').textContent = '—'; return; }
     for (const o of sw) {
       const x0 = x(o.v - 0.05);
-      el('rect', { x: x0, y: 0, width: w, height: 15, fill: o.pot ? 'var(--c-amber)' : o.hang ? 'color-mix(in oklab, var(--c-amber) 55%, transparent)' : o.reached ? 'color-mix(in oklab, var(--c-amber) 22%, transparent)' : 'color-mix(in oklab, var(--muted) 25%, transparent)' }, s);
+      el('rect', { x: x0, y: 0, width: w, height: 15, fill: o.pot ? 'var(--c-amber)' : o.hang ? 'color-mix(in oklab, var(--c-amber) 55%, transparent)' : o.rattle ? 'var(--c-rust)' : o.reached ? 'color-mix(in oklab, var(--c-amber) 22%, transparent)' : 'color-mix(in oklab, var(--muted) 25%, transparent)' }, s);
       if (o.scratch) el('rect', { x: x0, y: 16, width: w, height: 6, fill: 'var(--c-red)' }, s);
     }
     el('line', { x1: x(cur), x2: x(cur), y1: 0, y2: 22, stroke: 'var(--ink)', 'stroke-width': 1.5 }, s);
     const ranges = []; let a = null, b = null;
     for (const o of sw) { if (o.pot) { if (a == null) a = o.v; b = o.v; } else if (a != null) { ranges.push([a, b]); a = null; } }
     if (a != null) ranges.push([a, b]);
-    const scr = sw.filter((o) => o.pot && o.scratch).length, hangs = sw.filter((o) => o.hang).length;
+    const scr = sw.filter((o) => o.pot && o.scratch).length, hangs = sw.filter((o) => o.hang).length, rattles = sw.filter((o) => o.rattle).length;
     $('potv').textContent = ranges.length
-      ? `pots at strike ${ranges.map(([p, q]) => p === q ? `${fmt(p, 1)}` : `${fmt(p, 1)}–${fmt(q, 1)}`).join(', ')}${scr ? ` — but scratches on ${scr} of those strikes` : ''}${hangs ? ` · hangs in the jaws on ${hangs}` : ''}`
+      ? `pots at strike ${ranges.map(([p, q]) => p === q ? `${fmt(p, 1)}` : `${fmt(p, 1)}–${fmt(q, 1)}`).join(', ')}${scr ? ` — but scratches on ${scr} of those strikes` : ''}${hangs ? ` · hangs in the jaws on ${hangs}` : ''}${rattles ? ` · rattles out on ${rattles}` : ''}`
       : hangs ? 'no strike drops it — the best of them hang in the jaws, short of the shelf'
+      : rattles ? 'no strike drops it — it reaches the mouth but the jaws throw it back at every pace that gets it there'
       : 'no strike on the scale pots this shot as aimed — throw, or the angle, carries it wide';
   }
 
@@ -1685,7 +1748,7 @@ if (typeof module !== 'undefined') module.exports = kosmosBilliardsPhysics;
   const slideDist1 = (v, tip) => slideOut(v, tip).d;
   const drawDist1 = (v, tip) => {          // how far the backspin itself survives, which is not the same thing
     if (tip >= -1e-9) return 0;
-    const a = MU_S * G, t = -v * tip / a;  // spin surface speed reaches zero here: the stun point
+    const a = P.current().MU_S * G, t = -v * tip / a;  // spin surface speed reaches zero here: the stun point
     return Math.max(0, v * t - 0.5 * a * t * t);
   };
   const ssvg = $('slide'), spsvg = $('spincurve');
@@ -1773,7 +1836,7 @@ if (typeof module !== 'undefined') module.exports = kosmosBilliardsPhysics;
     const cv = $('hmap'), ctx = cv.getContext('2d');
     const css = getComputedStyle(document.body);
     const col = (n, fb) => (css.getPropertyValue(n) || '').trim() || fb;
-    const amber = col('--c-amber', '#e39a00'), red = col('--c-red', '#c23434'), mutedC = col('--muted', '#888'), ink = col('--ink', '#222');
+    const amber = col('--c-amber', '#e39a00'), red = col('--c-red', '#c23434'), mutedC = col('--muted', '#888'), ink = col('--ink', '#222'), rust = col('--c-rust', '#bd5b1c');
     ctx.clearRect(0, 0, HW, HH);
     let j = 0;
     const rows = () => {
@@ -1785,9 +1848,10 @@ if (typeof module !== 'undefined') module.exports = kosmosBilliardsPhysics;
           const S = shoot(state.cb, state.ob, { pk: state.pk, off: -5 + i * (10 / (AIMN - 1)) }, v, tip, side, true);
           const pot = S.reached && S.obTrace.pocket === state.pk;
           const hang = S.reached && S.obTrace.hang === state.pk;
+          const rat = S.reached && S.obTrace.pocket == null && S.obTrace.hang == null && S.obTrace.rattleAt === state.pk;
           const scr = S.cbPre != null || (S.reached && S.cbTrace.pocket != null);
-          ctx.globalAlpha = pot ? 1 : hang ? 0.55 : scr ? 0.4 : 0.1;
-          ctx.fillStyle = pot || hang ? amber : scr ? red : mutedC;
+          ctx.globalAlpha = pot ? 1 : hang ? 0.55 : rat ? 0.6 : scr ? 0.4 : 0.1;
+          ctx.fillStyle = pot || hang ? amber : rat ? rust : scr ? red : mutedC;
           ctx.fillRect(i * CW, y, CW, CH);
           if (pot && scr) { ctx.globalAlpha = 0.9; ctx.fillStyle = red; ctx.fillRect(i * CW, y + CH - 1.5, CW, 1.5); }
         }
@@ -1865,10 +1929,20 @@ if (typeof module !== 'undefined') module.exports = kosmosBilliardsPhysics;
     nums.innerHTML = '<thead><tr>' + D.table.columns.map((c) => `<th>${c}</th>`).join('') + '</tr></thead><tbody></tbody>';
     const tb = nums.querySelector('tbody');
     for (const r of D.table.rows) { const tr = document.createElement('tr'); r.forEach((c, i) => { const td = document.createElement('td'); td.className = i === 0 ? 'k' : i === 1 ? 'v' : ''; td.textContent = c; tr.appendChild(td); }); tb.appendChild(tr); }
+    // the four tables the lab can be set to: what each changes, against the tournament numbers above
+    const tt = document.createElement('table'); tt.className = 'nums'; tt.style.marginTop = '18px';
+    tt.innerHTML = '<thead><tr><th>Table</th><th>μ_s</th><th>μ_r</th><th>μ_sp</th><th>Cushion energy</th><th>Note</th></tr></thead><tbody></tbody>';
+    for (const t of D.tables) {
+      const k = { MU_S: C.MU_S, MU_R: C.MU_R, MU_SP: C.MU_SP, CUSHION_ENERGY: C.CUSHION_ENERGY, ...t.over };
+      const tr = document.createElement('tr');
+      [t.name, k.MU_S, k.MU_R, k.MU_SP, k.CUSHION_ENERGY, t.note].forEach((c, i) => { const td = document.createElement('td'); td.className = i === 0 ? 'k' : i < 5 ? 'v' : ''; td.textContent = c; tr.appendChild(td); });
+      tt.querySelector('tbody').appendChild(tr);
+    }
+    nums.after(tt);
   }
 
   // ---- wiring: ball positions, the aimed pocket (practice) and the aim line (pro) live in state
-  const state = { balls: [{ n: 0, p: [0.9, 0.56] }, { n: 1, p: [1.75, 0.5] }], pk: 2, mode: 'practice', aimDeg: 0, aimOff: 0, drill: null, dlevel: 1 };
+  const state = { table: 'tournament', balls: [{ n: 0, p: [0.9, 0.56] }, { n: 1, p: [1.75, 0.5] }], pk: 2, mode: 'practice', aimDeg: 0, aimOff: 0, drill: null, dlevel: 1 };
   state.tgtIdx = function () { let bi = 1, bn = 1e9; for (let i = 1; i < this.balls.length; i++) if (this.balls[i].n < bn) { bn = this.balls[i].n; bi = i; } return bi; };
   // cb/ob stay as the cue ball and the target (lowest number up) — the rest of the roster rides along
   Object.defineProperties(state, {
@@ -2053,17 +2127,39 @@ if (typeof module !== 'undefined') module.exports = kosmosBilliardsPhysics;
     showScore();
   }
 
-  // ---- a shot as a link: #s=mode,cbx,cby,obx,oby,pocket,aim,strike,tip,side
+  // ---- the table: four presets of cloth and rubber, swapped live under every tab. The lab's physics
+  // reads them through P.set(); nothing on the page keeps its own copy of a cloth number.
+  function setTable(id, rerun = true) {
+    const t = D.tables.find((x) => x.id === id) || D.tables[0];
+    state.table = t.id;
+    P.set(t.over);
+    for (const b of $('tables').children) b.classList.toggle('on', b.dataset.id === t.id);
+    $('tablenote').textContent = t.note;
+    if (rerun) {
+      run();
+      for (const f of [typeof runContact === 'function' && runContact, typeof runC === 'function' && runC, typeof runSlide === 'function' && runSlide, typeof runSystems === 'function' && runSystems]) if (f) f();
+    }
+  }
+  for (const t of D.tables) {
+    const b = document.createElement('button'); b.type = 'button'; b.dataset.id = t.id; b.textContent = t.name;
+    b.classList.toggle('on', t.id === state.table);
+    b.addEventListener('click', () => setTable(t.id));
+    $('tables').appendChild(b);
+  }
+  $('tablenote').textContent = D.tables[0].note;
+
+  // ---- a shot as a link: #s=mode,cbx,cby,obx,oby,pocket,aim,strike,tip,side[~table]
   function shotHash() {
     const v = sliders();
     const tgt = state.tgtIdx();
     const parts = [state.mode === 'pro' ? 1 : 0, fmt(state.cb[0], 3), fmt(state.cb[1], 3), fmt(state.ob[0], 3), fmt(state.ob[1], 3), state.pk, fmt(state.mode === 'pro' ? state.aimDeg : state.aimOff, 2), v.spd, v.tip, v.side];
     state.balls.forEach((b, i) => { if (i !== 0 && i !== tgt) parts.push(b.n, fmt(b.p[0], 3), fmt(b.p[1], 3)); });
-    return '#s=' + parts.join(',') + (state.conds.size ? '!' + [...state.conds].join('.') : '');
+    return '#s=' + parts.join(',') + (state.conds.size ? '!' + [...state.conds].join('.') : '') + (state.table && state.table !== 'tournament' ? '~' + state.table : '');
   }
   function loadHash(src) {
-    const m = (src || location.hash).match(/^#s=([^!]+)(?:!([a-z0-9.]+))?$/);
+    const m = (src || location.hash).match(/^#s=([^!~]+)(?:!([a-z0-9.]+))?(?:~([a-z]+))?$/);
     if (!m) return false;
+    if (m[3] && D.tables.some((t) => t.id === m[3])) setTable(m[3], false);
     if (m[2]) for (const id of m[2].split('.')) if (CONDITIONS.some((c) => c.id === id)) state.conds.add(id);
     const a = m[1].split(',').map(Number);
     if (a.length < 10 || a.some((x) => Number.isNaN(x))) return false;

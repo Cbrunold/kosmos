@@ -6,7 +6,8 @@
 // rule is exact at e = 1 and "4% short" at the engine's 0.92; momentum is kept through a
 // collision and energy never made; the integrator's slide distance is the closed form's;
 // throw peaks near a half-ball hit; running side rebounds long and reverse short; a straight
-// shot at pot weight drops. A change that breaks a claim breaks here, not on the table.
+// shot at pot weight drops; the jaws take a slow ball and refuse a fast one; a table preset
+// changes the cloth and nothing else. A change that breaks a claim breaks here, not on the table.
 const { test } = require('node:test');
 const assert = require('node:assert/strict');
 // package.json says type: module, so physics.js is read as text and evaluated — the page
@@ -16,7 +17,8 @@ const path = require('node:path');
 const make = new Function(fs.readFileSync(path.join(__dirname, '../../web/billiards/physics.js'), 'utf8')
                           + '\nreturn kosmosBilliardsPhysics;')();
 
-const C = Object.fromEntries(require('../../data/billiards/constants.json').constants.map((c) => [c.key, c.value]));
+const CONSTANTS = require('../../data/billiards/constants.json');
+const C = Object.fromEntries(CONSTANTS.constants.map((c) => [c.key, c.value]));
 const P = make(C);                                                  // the table as the page has it
 const IDEAL = make({ ...C, E_BB: 1, MU_BB_FIT: [0, 0, 0] });          // elastic balls, no friction between them
 
@@ -42,7 +44,7 @@ test('the ninety-degree rule: at e = 1 with no friction a stun cue ball leaves a
 });
 
 test('at the engine\'s e = 0.92 the separation falls a few degrees short of ninety — the "4% short" the page reports', () => {
-  const { A, B } = meet(IDEAL === P ? P : make({ ...C, MU_BB_FIT: [0, 0, 0] }), 30);   // restitution alone, no throw
+  const { A, B } = meet(make({ ...C, MU_BB_FIT: [0, 0, 0] }), 30);   // restitution alone, no throw
   const cos = (A.v[0] * B.v[0] + A.v[1] * B.v[1]) / (Math.hypot(...A.v) * Math.hypot(...B.v));
   const sep = Math.acos(cos) * 180 / Math.PI;
   assert.ok(sep < 90 && sep > 80, `separation ${sep}° should be a little under ninety`);
@@ -130,7 +132,7 @@ test('the cushion: straight in comes straight back at the deadened restitution; 
   // with no side the rail's friction takes from the speed along it while restitution takes from the speed
   // into it, and friction wins: the rebound is steeper than a mirror. (The roll a ball carries into a rail,
   // which bends a rebound long again, is the main sim's business, not this tab's.)
-  assert.ok(none.out > 45, );
+  assert.ok(none.out > 45, `no side: the cushion checks the ball, ${none.out}° should be steeper than a mirror`);
 });
 
 test('bounce() keeps a ball on the table and takes the restitution off its normal speed', () => {
@@ -158,4 +160,67 @@ test('shoot(): a straight stun shot at pot weight pots the ball and leaves the c
   assert.equal(S.obTrace.pocket, 0, 'the object ball dropped in the top-left corner');
   assert.ok(Math.hypot(...S.vCB) < 0.15 * 2, `stun: the cue ball keeps ${Math.hypot(...S.vCB)} m/s of 2`);
   assert.equal(S.firstBall, 1); assert.ok(S.firstIsTarget);
+});
+
+// ---- the jaws, and the table presets
+
+test('the jaws: a centred ball drops at any pace, an off-centre ball drops slow and rattles fast', () => {
+  const pk = 0, P0 = P.POCKETS[pk];
+  const arrive = (off, v) => {   // a ball at the mouth heading into the corner along its axis, its path `off` from the pocket point
+    const along = P.vmul(P0.axis, -P.RP * 0.9), aside = P.vmul([-P0.axis[1], P0.axis[0]], off);
+    const p = P.vadd(P.vadd(P0.p, along), aside);
+    return P.atMouth({ p, v: P.vmul(P0.axis, v), s: P.vmul(P0.axis, v), z: 0, slid: 0 }, pk);
+  };
+  assert.equal(arrive(0, 1.5), 'drop');
+  assert.equal(arrive(0, 8), 'drop', 'dead centre drops at break speed');
+  assert.equal(arrive(P.RP * 0.8, 1.5), 'drop', 'off centre and slow: in');
+  assert.equal(arrive(P.RP * 0.8, 6), 'rattle', 'the same path at pace: out');
+  assert.equal(arrive(0, 0.05), 'hang', 'no roll left: hangs on the shelf');
+});
+
+test('a side pocket refuses a ball coming along the rail, a corner does not', () => {
+  const side = P.POCKETS[1], corner = P.POCKETS[0];
+  const shallow = (P0, angleDeg, v = 2) => {   // heading `angleDeg` off the pocket axis, path through the pocket point
+    const a = Math.atan2(P0.axis[1], P0.axis[0]) + angleDeg * Math.PI / 180;
+    const dir = [Math.cos(a), Math.sin(a)];
+    const p = P.vsub(P0.p, P.vmul(dir, P.RP * 0.9));
+    return P.atMouth({ p, v: P.vmul(dir, v), s: P.vmul(dir, v), z: 0, slid: 0 }, P.POCKETS.indexOf(P0));
+  };
+  assert.equal(shallow(side, 10), 'drop');
+  assert.equal(shallow(side, 60), 'rattle', 'sixty degrees off the perpendicular into a side pocket');
+  assert.equal(shallow(corner, 40), 'drop', 'a corner takes forty degrees off its diagonal');
+});
+
+test('a ball hugging the rail into a corner drops at pot weight and rattles out at pace', () => {
+  // along the top rail into the top-left corner: its path passes half a mouth from the pocket point,
+  // which the jaws take at 2 m/s and refuse at 6 — a corner refuses only what comes off the diagonal
+  const hug = (v) => P.trace({ p: [0.3, P.R], v: [-v, 0], s: [-v, 0], z: 0, slid: 0 }, 0.002, false, P.POCKETS[0].p, 20000);
+  const slow = hug(2), fast = hug(6);
+  assert.equal(slow.pocket, 0, 'at pot weight it drops');
+  assert.ok(fast.rattles >= 1 && fast.pocket !== 0, 'at pace it should rattle: ' + JSON.stringify({ r: fast.rattles, p: fast.pocket, h: fast.hang }));
+  // and a ball standing half a mouth off the axis at pace is refused on the spot
+  const P0 = P.POCKETS[0];
+  const b = { p: P.vadd(P.vadd(P0.p, P.vmul(P0.axis, -P.RP * 0.5)), P.vmul([-P0.axis[1], P0.axis[0]], P.RP * 0.6)),
+              v: P.vmul(P0.axis, 6), s: P.vmul(P0.axis, 6), z: 0, slid: 0 };
+  assert.equal(P.atMouth(b, 0), 'rattle');
+});
+
+test('set(): a slow table stops a rolling ball sooner, and the geometry does not move', () => {
+  const Q = make(C);
+  const roll = () => { const b = { p: [0, 0], v: [1, 0], s: [1, 0], z: 0, slid: 0 }; return Q.stopDistance(b); };
+  const tournament = roll();
+  Q.set({ MU_R: 0.04 });
+  assert.ok(roll() < tournament * 0.7, 'worn cloth shortens the roll-out');
+  assert.equal(Q.current().MU_R, 0.04);
+  Q.set({});
+  near(roll(), tournament, 1e-12, 'back to the engine numbers');
+  assert.equal(Q.TABLE_L, C.TABLE[0]);
+});
+
+test('every table preset only overrides cloth and rubber, with values in a sane range', () => {
+  assert.ok(CONSTANTS.tables.some((t) => t.id === 'tournament' && Object.keys(t.over).length === 0));
+  for (const t of CONSTANTS.tables) for (const [k, v] of Object.entries(t.over)) {
+    assert.ok(['MU_S', 'MU_R', 'MU_SP', 'CUSHION_ENERGY'].includes(k), `${t.id} overrides ${k}`);
+    assert.ok(v > 0 && v < 1, `${t.id}.${k} = ${v}`);
+  }
 });

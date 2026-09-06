@@ -10,8 +10,18 @@ function kosmosBilliardsPhysics(C, opts = {}) {
   const roster = opts.roster || (() => null);
   const R = C.R, M = C.M, G = C.G;
   const E_BB = C.E_BB;                 // ball–ball restitution
-  const MU_S = C.MU_S, MU_R = C.MU_R, MU_SP = C.MU_SP;   // cloth: sliding, rolling, spinning
-  const E_C = Math.sqrt(C.CUSHION_ENERGY);       // cushion keeps 3/4 of the energy → 0.87 of the speed
+  let MU_S = C.MU_S, MU_R = C.MU_R, MU_SP = C.MU_SP;   // cloth: sliding, rolling, spinning
+  let E_C = Math.sqrt(C.CUSHION_ENERGY);       // cushion keeps 3/4 of the energy → 0.87 of the speed
+  // ---- what a table preset may change under a running page: the cloth and the rubber, never the
+  // geometry. set() returns what is in force; current() reads it without touching anything.
+  let K = { MU_S, MU_R, MU_SP, CUSHION_ENERGY: C.CUSHION_ENERGY };
+  function set(over) {
+    K = { MU_S: C.MU_S, MU_R: C.MU_R, MU_SP: C.MU_SP, CUSHION_ENERGY: C.CUSHION_ENERGY, ...(over || {}) };
+    MU_S = K.MU_S; MU_R = K.MU_R; MU_SP = K.MU_SP; E_C = Math.sqrt(K.CUSHION_ENERGY);
+    bankCache.clear();   // a bank plan is the sim's own rail model, which just changed
+    return K;
+  }
+  const current = () => K;
   const MU_C = C.MU_C;                  // cushion friction — literature, not in constants.py
   const muBB = (v) => C.MU_BB_FIT[0] + C.MU_BB_FIT[1] * Math.exp(-C.MU_BB_FIT[2] * v);   // Alciatore's fit — literature
   const TABLE_L = C.TABLE[0], TABLE_W = C.TABLE[1];
@@ -21,6 +31,11 @@ function kosmosBilliardsPhysics(C, opts = {}) {
     { p: [0, 0], name: 'top-left corner', shelf: SHELF_C }, { p: [TABLE_L / 2, 0], name: 'top side', shelf: SHELF_S }, { p: [TABLE_L, 0], name: 'top-right corner', shelf: SHELF_C },
     { p: [0, TABLE_W], name: 'bottom-left corner', shelf: SHELF_C }, { p: [TABLE_L / 2, TABLE_W], name: 'bottom side', shelf: SHELF_S }, { p: [TABLE_L, TABLE_W], name: 'bottom-right corner', shelf: SHELF_C },
   ];
+  // the axis points into the pocket: the line a ball is judged against at the mouth
+  for (const P of POCKETS) {
+    P.side = P.p[0] === TABLE_L / 2;
+    P.axis = P.side ? [0, P.p[1] === 0 ? -1 : 1] : [P.p[0] === 0 ? -Math.SQRT1_2 : Math.SQRT1_2, P.p[1] === 0 ? -Math.SQRT1_2 : Math.SQRT1_2];
+  }
   const SQ_R = C.SQUIRT_DEG_PER_BR * Math.PI / 180;    // squirt: radians of cue-ball deflection per unit b/R of side (2.5° at max side) — a cue constant
   const SW_K = C.SW_K;                 // swerve: lateral g-fraction at full side while the ball slides — the cue's slight natural elevation
 
@@ -103,12 +118,45 @@ function kosmosBilliardsPhysics(C, opts = {}) {
     const t = 2 * Math.abs(u) / (7 * MU_S * G);
     return { t, d: v * t - Math.sign(u) * 0.5 * MU_S * G * t * t, vRoll: 5 * v * (1 + tip) / 7 };
   };
+  // ---- the mouth. A ball at a mouth drops if it has the roll to clear the shelf and hangs if not — but
+  // first the jaws decide whether to take it at all. The mouth a pocket offers narrows with pace
+  // (POCKET_NARROW per m/s, to POCKET_NARROW_FLOOR), measured against how far the ball's path passes
+  // from the pocket point; a side pocket also refuses a ball more than SIDE_ACCEPT_DEG off the
+  // perpendicular, narrowing likewise. A refused ball rattles: it rebounds off the pocket's axis like
+  // rail, loses a bite to the jaw, and is put back outside the mouth to carry on.
+  function atMouth(b, pk) {   // -> 'drop' | 'hang' | 'rattle' | 'pass' (not really arriving)
+    const P0 = POCKETS[pk], v = vlen(b.v);
+    if (v > 1e-6) {
+      const dir = vmul(b.v, 1 / v);
+      const into = vdot(dir, P0.axis);
+      if (into <= 0.05) return 'pass';
+      const narrow = Math.max(C.POCKET_NARROW_FLOOR, 1 - C.POCKET_NARROW * v);
+      const off = Math.abs(dir[0] * (P0.p[1] - b.p[1]) - dir[1] * (P0.p[0] - b.p[0]));   // the path's miss of the pocket point
+      const tooWide = off > RP * narrow;
+      const tooShallow = P0.side && into < Math.cos(rad(C.SIDE_ACCEPT_DEG * narrow));
+      if (tooWide || tooShallow) return 'rattle';
+    }
+    return stopDistance(b) >= P0.shelf ? 'drop' : 'hang';
+  }
+  function rattle(b, pk) {
+    const P0 = POCKETS[pk], n = P0.axis;
+    const vn = vdot(b.v, n);
+    if (vn > 0) {
+      const e = Math.max(C.CUSHION_E_MIN, E_C - C.CUSHION_DEADEN * vn);
+      b.v = vmul(vsub(b.v, vmul(n, (1 + e) * vn)), 1 - MU_C);   // rail restitution along the axis, and the jaw's bite
+      b.s = b.v.slice(); b.z *= 0.5;
+    }
+    const away = vsub(b.p, P0.p), d = vlen(away);
+    b.p = vadd(P0.p, vmul(d > 1e-6 ? vmul(away, 1 / d) : vmul(n, -1), RP + 1e-3));
+    b.rattled = (b.rattled || 0) + 1; b.rattleAt = pk;
+  }
+
   // roll a ball until it stops or reaches a mouth, rebounding off the rails on the way; track path length
   // and the closest approach to the target pocket. At a mouth it drops only with the roll left to carry
   // that pocket's shelf — else it hangs in the jaws.
   const trace = (b, dt, keep, P, maxI = 9000) => {
     const pts = keep ? [b.p.slice()] : null;
-    let pocket = null, hang = null, dropSpeed = 0, len = 0, minPD = P ? dist2(b.p, P) : Infinity;
+    let pocket = null, hang = null, dropSpeed = 0, len = 0, minPD = P ? dist2(b.p, P) : Infinity, rattles = 0;
     for (let i = 0; i < maxI; i++) {
       const px0 = b.p[0], py0 = b.p[1];
       step(b, dt);
@@ -116,11 +164,16 @@ function kosmosBilliardsPhysics(C, opts = {}) {
       if (keep) pts.push(b.p.slice());
       if (P) { const dd = dist2(b.p, P); if (dd < minPD) minPD = dd; }
       const pk = pocketAt(b.p);
-      if (pk >= 0) { if (stopDistance(b) >= POCKETS[pk].shelf) { pocket = pk; dropSpeed = vlen(b.v); } else hang = pk; break; }
+      if (pk >= 0) {
+        const m = atMouth(b, pk);
+        if (m === 'drop') { pocket = pk; dropSpeed = vlen(b.v); break; }
+        if (m === 'hang') { hang = pk; break; }
+        if (m === 'rattle') { rattle(b, pk); rattles++; continue; }
+      }
       bounce(b);
       if (vlen(b.v) < 1e-3) break;
     }
-    return { pts, pocket, hang, dropSpeed, len, minPD, slid: b.slid, dt };
+    return { pts, pocket, hang, dropSpeed, len, minPD, slid: b.slid, dt, rattles };
   };
 
   // ---- two balls meeting, both possibly moving: normal impulse with restitution in the relative frame,
@@ -289,16 +342,21 @@ function kosmosBilliardsPhysics(C, opts = {}) {
         if (!b.moving) continue;
         const pk = pocketAt(b.p);
         if (pk >= 0) {
-          if (stopDistance(b) >= POCKETS[pk].shelf) { b.pocket = pk; b.dropSpeed = vlen(b.v); } else b.hang = pk;
-          b.potStep = i; b.moving = false; b.v = [0, 0];
-          continue;
+          const m = atMouth(b, pk);
+          if (m === 'rattle') { rattle(b, pk); continue; }
+          if (m !== 'pass') {
+            if (m === 'drop') { b.pocket = pk; b.dropSpeed = vlen(b.v); } else b.hang = pk;
+            b.potStep = i; b.moving = false; b.v = [0, 0];
+            continue;
+          }
         }
         if (bounce(b)) b.rails++;
       }
       if (!any) break;
     }
     const cs = contactStep == null ? null : contactStep + 1;
-    const mkTrace = (b, from) => ({ pts: lite ? null : b.pts.slice(from), pocket: b.pocket, hang: b.hang, dropSpeed: b.dropSpeed, len: b.len, minPD: b.minPD, slid: b.slid, dt, potStep: b.potStep });
+    const mkTrace = (b, from) => ({ pts: lite ? null : b.pts.slice(from), pocket: b.pocket, hang: b.hang, dropSpeed: b.dropSpeed, len: b.len, minPD: b.minPD, slid: b.slid, dt, potStep: b.potStep,
+                                    rattled: b.rattled || 0, rattleAt: b.rattleAt ?? null });
     if (hit == null) {
       return { ...base, pre: lite ? [cbP] : cue.pts, preDt: dt, dt, reached: false, cbPre: cue.pocket, cbPreHang: cue.hang, simBalls: bodies, tgtIdx: tgt, cueContacts, cueRails: cue.rails, cueRailsPre: cue.rails };
     }
@@ -357,6 +415,6 @@ function kosmosBilliardsPhysics(C, opts = {}) {
     return { vx, vy, vx2, vy2, e, out: deg(Math.atan2(vy2, Math.abs(vx2))), reversed: vx2 < 0, speed: Math.hypot(vx2, vy2) / v, noSide: deg(Math.atan2(e * vy, Math.max(1e-6, vx - Math.min(MU_C * (1 + e) * vy, (2 / 7) * Math.abs(vx))))) };
   }
 
-  return { R, M, G, E_BB, MU_S, MU_R, MU_SP, E_C, MU_C, muBB, TABLE_L, TABLE_W, RP, SHELF_C, SHELF_S, POCKETS, SQ_R, SW_K, deg, rad, vadd, vsub, vmul, vlen, vdot, vunit, perp, dist2, pocketAt, inside, RAILS, bounce, step, stopDistance, slideOut, trace, collide, bankCandidates, planBank, shoot, slideState, cushion };
+  return { set, current, atMouth, R, M, G, E_BB, MU_S, MU_R, MU_SP, E_C, MU_C, muBB, TABLE_L, TABLE_W, RP, SHELF_C, SHELF_S, POCKETS, SQ_R, SW_K, deg, rad, vadd, vsub, vmul, vlen, vdot, vunit, perp, dist2, pocketAt, inside, RAILS, bounce, step, stopDistance, slideOut, trace, collide, bankCandidates, planBank, shoot, slideState, cushion };
 }
 if (typeof module !== 'undefined') module.exports = kosmosBilliardsPhysics;

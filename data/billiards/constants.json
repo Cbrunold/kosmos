@@ -65,6 +65,27 @@
      "note": "A cue constant, not a table one; a low-deflection shaft roughly halves it.", "source": "literature"},
     {"key": "SW_K", "name": "Swerve", "value": 0.08, "unit": "", "display": "k = 0.08",
      "enters": "the curve back while the ball slides",
-     "note": "Lateral g-fraction at full side, from the cue's slight natural elevation.", "source": "model"}
+     "note": "Lateral g-fraction at full side, from the cue's slight natural elevation.", "source": "model"},
+    {"key": "POCKET_NARROW", "name": "Pocket narrowing with pace", "value": 0.1, "unit": "per m/s", "display": "mouth × (1 − 0.10·v)",
+     "enters": "whether the jaws take a ball or throw it back",
+     "note": "The mouth a pocket offers shrinks as the ball comes faster, measured against how far its path passes from the pocket point. A ball down the diagonal always drops; one hugging the rail into a corner passes half a mouth off, and rattles above 5 m/s. v is the arriving speed.",
+     "source": "model"},
+    {"key": "POCKET_NARROW_FLOOR", "name": "Pocket narrowing floor", "value": 0.4, "unit": "", "display": "0.40 of the mouth",
+     "enters": "the fastest shots",
+     "note": "Where the narrowing stops — a break-speed ball still drops if it is dead centre.", "source": "model"},
+    {"key": "SIDE_ACCEPT_DEG", "name": "Side-pocket acceptance", "value": 42, "unit": "°", "display": "±42° off the perpendicular, narrowing with pace",
+     "enters": "side pockets",
+     "note": "A side pocket only takes a ball coming in near the perpendicular; along the rail it hits the far jaw and comes out. Corners take any angle short of the rail.",
+     "source": "model"}
+  ],
+  "tables": [
+    {"id": "tournament", "name": "tournament table", "over": {},
+     "note": "The engine's numbers: worsted cloth, lively rails. Everything above is measured on this."},
+    {"id": "fast", "name": "new cloth, fast", "over": {"MU_R": 0.018, "MU_S": 0.18, "MU_SP": 0.040, "CUSHION_ENERGY": 0.78},
+     "note": "Fresh worsted, freshly brushed: a ball runs a third further, draw survives longer, rails give a touch more back."},
+    {"id": "slow", "name": "worn cloth, slow", "over": {"MU_R": 0.035, "MU_S": 0.24, "MU_SP": 0.050, "CUSHION_ENERGY": 0.70},
+     "note": "Napped or worn: the roll dies early and draw with it; positional shots need more than they look."},
+    {"id": "bar", "name": "bar table", "over": {"MU_R": 0.040, "MU_S": 0.28, "MU_SP": 0.055, "CUSHION_ENERGY": 0.62},
+     "note": "Cheap cloth and dead rails on the same 9-ft geometry — the 7-ft bar box is a different table, not a different cloth."}
   ]
 }

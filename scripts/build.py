@@ -863,6 +863,7 @@ def build_billiards_page():
         "table": EQUATION_TABLES.get("Ninety-Degree Rule"),
         # what the lab reads — key: value only; the prose stays in the table it is rendered into
         "constants": {c["key"]: c["value"] for c in BILLIARDS["constants"]},
+        "tables": BILLIARDS["tables"],
     }, extra={"__PHYSICS__": (WEB / "billiards" / "physics.js").read_text()})
     return len(eqs), len(skills)
 
