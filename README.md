@@ -36,6 +36,9 @@ truth for code and the normalised data snapshots. Sync is one-way, Notion → re
 ```
 server.js                     Node server: static pages, sitemap.xml, robots.txt + POST /api/analyze
 public/                       Built pages, search.json, sitemap.xml, robots.txt (generated — see scripts/build.py)
+web/billiards/physics.js      Everything that moves a ball on /billiards — cloth, cushion, collision, throw,
+                              the shot — as a factory over the constants; the page inlines it and only draws.
+                              test/billiards/physics.test.cjs runs it under node against the closed forms.
 web/people.template.html      /people — every researcher, with the theories, discoveries, machines and epochs of
                               theirs on the site; where the search index and the people chips point
 scripts/notion.py             The one copy of the Notion plumbing — token, call (with retries), pagination,

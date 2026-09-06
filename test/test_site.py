@@ -200,11 +200,14 @@ def test_billiards_constants_have_one_source():
     lab reads every key, the table is rendered from the list, and no constant is typed twice."""
     cj = json.loads((ROOT / "data/billiards/constants.json").read_text())["constants"]
     tpl = (ROOT / "web/billiards.template.html").read_text()
+    physics = (ROOT / "web/billiards/physics.js").read_text()
     for c in cj:
-        assert f"C.{c['key']}" in tpl, f"{c['key']} is in the table but the lab never reads it"
-    typed = re.findall(r"const (?:R|M|G|E_BB|MU_S|MU_R|MU_SP|MU_C|TABLE_L|TABLE_W|RP|SHELF_C|SHELF_S|SW_K) = [0-9]", tpl)
-    typed += re.findall(r"E_C = Math\.sqrt\([0-9]", tpl)
+        assert f"C.{c['key']}" in physics, f"{c['key']} is in the table but the physics never reads it"
+    typed = re.findall(r"const (?:R|M|G|E_BB|MU_S|MU_R|MU_SP|MU_C|TABLE_L|TABLE_W|RP|SHELF_C|SHELF_S|SW_K) = [0-9]", tpl + physics)
+    typed += re.findall(r"E_C = Math\.sqrt\([0-9]", tpl + physics)
     assert not typed, f"constants typed into the lab again: {typed}"
+    for fn in ("function step(", "function collide(", "function shoot(", "function bounce(", "function cushion("):
+        assert fn not in tpl, f"{fn} belongs in web/billiards/physics.js, not the template"
     page = (PUB / "billiards.html").read_text()
     data = json.loads(next(b.group(2) for b in i18n.JSON_BLOCK.finditer(page)))
     assert data["constants"] == {c["key"]: c["value"] for c in cj}
@@ -258,3 +261,13 @@ def test_entity_url_serves_the_section_page_as_that_entity(server):
     assert status == 200 and '<html lang="fr">' in html and "/fr/people#albert-einstein" in html
     assert _get(server + "/equations/no-such-thing")[0] == 404
     assert _get(server + "/nope/pythagorean-theorem")[0] == 404
+
+
+@pytest.mark.skipif(NODE is None, reason="node not found")
+def test_billiards_physics_under_node():
+    """The physics core lives in web/billiards/physics.js so node can run it against closed
+    forms: the ninety-degree rule at e = 1, momentum kept, energy never made, the slide
+    distance the integrator finds against the formula, throw peaking near half-ball, the
+    cushion running long and reverse short, a straight shot that drops."""
+    r = subprocess.run([NODE, "--test", str(ROOT / "test/billiards/physics.test.cjs")], capture_output=True, text=True, cwd=ROOT)
+    assert r.returncode == 0, r.stdout[-3000:] + r.stderr[-2000:]
