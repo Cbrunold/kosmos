@@ -20,7 +20,7 @@
 #   5. build     — build.py, then check_fr.py: the French pages' scripts must parse
 #                  and their data blocks must match the English ones, because a
 #                  translated apostrophe inside a JS literal breaks a page silently
-#   6. ship      — public/*.html + *.json + *.xml + *.txt + public/fr + public/assets -> $APP_DIR/public/,
+#   6. ship      — public/*.html + *.json + *.xml + *.txt + public/fr + public/entities + public/assets -> $APP_DIR/public/,
 #                  server.js -> $APP_DIR/
 #   7. restart   — $RESTART, then poll /health until it answers ok:true with
 #                  no missing pages
@@ -159,6 +159,11 @@ mkdir -p "$APP_DIR/public"
 cp public/*.html public/*.json public/*.xml public/*.txt "$APP_DIR/public/"
 mkdir -p "$APP_DIR/public/fr"
 cp public/fr/*.html "$APP_DIR/public/fr/"
+# public/entities: one page per entity per language, written by the build, never committed
+if [ -d public/entities ]; then
+  rm -rf "$APP_DIR/public/entities"
+  cp -r public/entities "$APP_DIR/public/entities"
+fi
 # public/assets: binaries build.py copies rather than writes (the home banner).
 # server.js reads this directory at boot, so a deploy that skipped it would serve
 # a page whose hero 404s.

@@ -1,0 +1,319 @@
+  :root {
+    color-scheme: light;
+    --page: #f2f4f5;
+    --panel: #fbfcfc;
+    --ink: #17212b;
+    --ink-2: #4c5a66;
+    --muted: #8595a1;
+    --hairline: #dde4e8;
+    --ring: rgba(23, 33, 43, 0.85);
+    --c-blue: #2a78d6;
+    --c-teal: #0f9b9b;
+    --c-red: #c23434;
+    --c-amber: #e39a00;
+    --c-green: #33a047;
+    --c-violet: #6b50c8;
+    --c-pink: #e05e8f;
+    --c-bronze: #8a5314;
+    --c-cyan: #0b87b8;
+    --c-indigo: #4a58c8;
+    --c-olive: #737a16;
+    --c-rust: #bd5b1c;
+    --c-plum: #a23a9a;
+    --c-slate: #52688a;
+    --c-wine: #8f2b4e;
+    --c-forest: #1f7050;
+    --c-steel: #4a6474;
+    --c-fuchsia: #b81f7a;
+    --c-lime: #5f9e14;
+    --c-yellow: #a89a00;
+    --c-aubergine: #702f9e;
+    --c-navy: #24457e;
+    --c-mint: #0c8f66;
+    --c-mauve: #8d5765;
+    --c-coral: #c14f36;
+    --c-periwinkle: #5e6fd0;
+    --c-ice: #2f93bb;
+    --c-storm: #5c5a7a;
+    --c-ochre: #96690f;
+    --c-tangerine: #d4700a;
+    --c-clay: #9c6249;
+    --c-deepsea: #14586e;
+    --c-cerulean: #1a7fc4;
+    --c-gold: #b07d12;
+    --c-ember: #c8461a;
+    --c-terracotta: #a8502f;
+    --c-silver: #6b7884;
+    --c-moss: #4f7a1e;
+    --c-lavender: #7d5fc0;
+    --c-magenta: #b3268e;
+    --c-cobalt: #2f4bb0;
+    --c-felt: #2e7d4f;
+    --heat: #2a78d6;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --page: #0e1116;
+      --panel: #14181d;
+      --ink: #e9edf2;
+      --ink-2: #aab8c4;
+      --muted: #74828e;
+      --hairline: #242b33;
+      --ring: rgba(233, 237, 242, 0.9);
+      --c-blue: #4a90e8;
+      --c-teal: #0aa085;
+      --c-red: #e75570;
+      --c-amber: #b98800;
+      --c-green: #46a850;
+      --c-violet: #8b74e0;
+      --c-pink: #dc5f83;
+      --c-bronze: #a4671f;
+      --c-cyan: #38a8d8;
+      --heat: #5598e7;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --page: #0e1116;
+    --panel: #14181d;
+    --ink: #e9edf2;
+    --ink-2: #aab8c4;
+    --muted: #74828e;
+    --hairline: #242b33;
+    --ring: rgba(233, 237, 242, 0.9);
+    --c-blue: #4a90e8;
+    --c-teal: #0aa085;
+    --c-red: #e75570;
+    --c-amber: #b98800;
+    --c-green: #46a850;
+    --c-violet: #8b74e0;
+    --c-pink: #dc5f83;
+    --c-bronze: #a4671f;
+    --c-cyan: #38a8d8;
+    --c-indigo: #7b87e8;
+    --c-olive: #9aa32e;
+    --c-rust: #d97a3c;
+    --c-plum: #c85fc0;
+    --c-slate: #8ca3c0;
+    --c-wine: #c25572;
+    --c-forest: #3f9a72;
+    --c-steel: #83a0b2;
+    --c-fuchsia: #d94fa3;
+    --c-lime: #93bf3a;
+    --c-yellow: #ccc039;
+    --c-aubergine: #a374d6;
+    --c-navy: #7f9bd4;
+    --c-mint: #3fbd92;
+    --c-mauve: #bd8a98;
+    --c-coral: #e58a76;
+    --c-periwinkle: #98a5ef;
+    --c-ice: #8ed2ea;
+    --c-storm: #918fb5;
+    --c-ochre: #bb8f2e;
+    --c-tangerine: #ee9440;
+    --c-clay: #c9967e;
+    --c-deepsea: #4c9cb4;
+    --c-cerulean: #5fb0f0;
+    --c-gold: #d9a441;
+    --c-ember: #e8683a;
+    --c-terracotta: #d1795a;
+    --c-silver: #a4b0bc;
+    --c-moss: #7fa84a;
+    --c-lavender: #b49ae6;
+    --c-magenta: #e06ac4;
+    --c-cobalt: #7a8ee6;
+    --c-felt: #5fb083;
+    --heat: #5598e7;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--page);
+    color: var(--ink);
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    margin: 0;
+    padding: 20px clamp(14px, 3vw, 40px) 56px;
+  }
+  .mono { font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; }
+
+  .knav {
+    font: 11px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 18px;
+    display: flex;
+    gap: 8px;
+    align-items: baseline;
+  }
+  .knav a { color: var(--ink-2); text-decoration: none; }
+  .knav a:hover { color: var(--ink); }
+  .knav .cur { color: var(--ink); }
+
+  h1.ktitle {
+    font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    font-size: clamp(22px, 3vw, 30px);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin: 0 0 6px;
+    text-wrap: balance;
+  }
+  .klede { font-size: 14px; color: var(--ink-2); max-width: 62ch; line-height: 1.55; margin: 0 0 22px; }
+  .klede a { color: inherit; }
+
+  h2.ksec {
+    font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 34px 0 12px;
+    border-bottom: 1px solid var(--hairline);
+    padding-bottom: 7px;
+  }
+
+  .kcard {
+    background: var(--panel);
+    border: 1px solid var(--hairline);
+    border-radius: 10px;
+    padding: 16px;
+  }
+  .kchip {
+    font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    border: 1px solid var(--hairline);
+    color: var(--ink-2);
+    border-radius: 99px;
+    padding: 2px 9px;
+    white-space: nowrap;
+  }
+  .knote { font-size: 11px; color: var(--muted); line-height: 1.5; }
+  .kfoot { margin-top: 42px; font-size: 11px; color: var(--muted); border-top: 1px solid var(--hairline); padding-top: 12px; }
+  .kfoot a { color: inherit; }
+  a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; }
+
+  /* ---- the shared header (scripts/chrome.py). Relies only on the theme variables every
+     page defines: --page --panel --ink --ink-2 --muted --hairline --ring ---- */
+  .khdr {
+    position: relative;
+    z-index: 50;
+    margin: -6px 0 18px;
+    padding: 4px 0 8px;
+    border-bottom: 1px solid var(--hairline);
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  .khdr[data-page="home"] { margin-bottom: 14px; }
+  .kh-row { display: flex; align-items: center; gap: 10px 14px; flex-wrap: wrap; }
+  .kh-crumb {
+    display: flex; align-items: baseline; gap: 8px; min-width: 0; flex: 1 1 auto;
+    font: 11px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted);
+  }
+  .kh-brand { color: var(--ink); text-decoration: none; font-weight: 700; letter-spacing: 0.22em; flex: none; }
+  .kh-brand:hover { color: var(--ink-2); }
+  .kh-cur { color: var(--ink); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .kh-tools { display: flex; align-items: center; gap: 8px; margin-left: auto; flex-wrap: wrap; }
+
+  .kh-search { position: relative; }
+  .kh-q {
+    width: clamp(160px, 22vw, 320px);
+    border: 1px solid var(--hairline); border-radius: 8px;
+    background: var(--panel); color: var(--ink);
+    font: 13px system-ui, -apple-system, "Segoe UI", sans-serif;
+    padding: 6px 10px;
+  }
+  .kh-q::placeholder { color: var(--muted); }
+  .kh-q:focus { outline: 2px solid var(--ring); outline-offset: 1px; }
+  .kh-results {
+    position: absolute; right: 0; top: calc(100% + 6px); z-index: 60;
+    width: min(92vw, 560px);
+    background: var(--panel); border: 1px solid var(--hairline); border-radius: 10px;
+    box-shadow: 0 12px 34px rgba(0, 0, 0, 0.18);
+    max-height: min(70vh, 600px); overflow-y: auto; padding: 6px 0;
+    text-align: left;
+  }
+  .kh-results[hidden] { display: none; }
+  .kh-rgroup { padding: 4px 0 2px; }
+  .kh-rgroup + .kh-rgroup { border-top: 1px solid var(--hairline); margin-top: 4px; }
+  .kh-rhead {
+    display: flex; align-items: center; gap: 7px; padding: 4px 14px 3px;
+    font: 9.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted);
+  }
+  .kh-rhead .kh-dot { width: 7px; height: 7px; border-radius: 50%; flex: none; }
+  .kh-rhead .kh-n { margin-left: auto; letter-spacing: 0; }
+  .kh-rrow { display: grid; grid-template-columns: 1fr; gap: 1px; padding: 6px 14px; text-decoration: none; color: var(--ink); cursor: pointer; }
+  .kh-rrow:hover, .kh-rrow[aria-selected="true"] { background: color-mix(in oklab, var(--ink) 6%, var(--panel)); }
+  .kh-rn { font-size: 13.5px; font-weight: 600; display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+  .kh-rn mark { background: color-mix(in oklab, var(--heat, var(--ink-2)) 28%, transparent); color: inherit; border-radius: 2px; padding: 0 1px; }
+  .kh-rs { font: 11px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+  .kh-rt { font-size: 11.5px; color: var(--muted); line-height: 1.4; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+  .kh-rmore { padding: 3px 14px 6px; font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; color: var(--muted); }
+  .kh-rempty, .kh-rfoot { padding: 10px 14px; font-size: 12px; color: var(--muted); }
+  .kh-rfoot { border-top: 1px solid var(--hairline); font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; }
+
+  .kh-menu {
+    appearance: none; cursor: pointer;
+    border: 1px solid var(--hairline); border-radius: 8px;
+    background: var(--panel); color: var(--ink-2);
+    font: 11px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 6px 10px;
+  }
+  .kh-menu::after { content: " ▾"; color: var(--muted); }
+  .kh-menu[aria-expanded="true"] { color: var(--ink); border-color: var(--ink-2); }
+  .kh-menu[aria-expanded="true"]::after { content: " ▴"; }
+  .kh-menu:hover { color: var(--ink); }
+
+  .khdr .klang {
+    display: flex; gap: 0; overflow: hidden; flex: none;
+    border: 1px solid var(--hairline); border-radius: 99px; background: var(--panel);
+    font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; letter-spacing: 0.08em;
+  }
+  .khdr .klang a { color: var(--muted); text-decoration: none; padding: 5px 9px; }
+  .khdr .klang a.on { color: var(--page); background: var(--ink); }
+  .khdr .klang a:hover:not(.on) { color: var(--ink); }
+
+  .kh-panel {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 14px 24px;
+    margin-top: 10px; padding: 12px 0 4px;
+    border-top: 1px solid var(--hairline);
+  }
+  .kh-panel[hidden] { display: none; }
+  .kh-ghead {
+    font: 700 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted);
+    margin: 0 0 4px;
+  }
+  .kh-list { list-style: none; margin: 0; padding: 0; }
+  .kh-list a { display: block; padding: 4px 0; color: var(--ink-2); text-decoration: none; font-size: 13.5px; line-height: 1.35; }
+  .kh-list a:hover { color: var(--ink); }
+  .kh-list a[aria-current="page"] { color: var(--ink); font-weight: 600; }
+  .kh-list a[aria-current="page"] div::before { content: "› "; color: var(--muted); }
+
+  @media (max-width: 720px) {
+    .kh-tools { margin-left: 0; width: 100%; }
+    .kh-search { flex: 1 1 100%; order: 3; }
+    .kh-q { width: 100%; }
+    .kh-results { left: 0; right: 0; width: auto; }
+    .kh-panel { grid-template-columns: 1fr 1fr; gap: 12px 16px; }
+  }
+  @media (max-width: 440px) { .kh-panel { grid-template-columns: 1fr; } }
+  @media print { .khdr { display: none; } }
+
+  .ent { max-width: 860px; }
+  .ent .kcrumb { font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin: 0 0 8px; }
+  .ent .kcrumb a { color: var(--ink-2); text-decoration: none; }
+  .ent .facts { display: grid; grid-template-columns: max-content 1fr; gap: 6px 18px; margin: 0 0 22px; font-size: 13px; }
+  .ent .facts dt { color: var(--muted); font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; letter-spacing: 0.08em; text-transform: uppercase; padding-top: 2px; }
+  .ent .facts dd { margin: 0; color: var(--ink); font-variant-numeric: tabular-nums; }
+  .ent .prose p { font-size: 14px; line-height: 1.6; color: var(--ink-2); max-width: 66ch; margin: 0 0 10px; }
+  .ent .chips { display: flex; flex-wrap: wrap; gap: 5px; margin: 0 0 6px; }
+  .ent .chips a.kchip { text-decoration: none; }
+  .ent .chips a.kchip:hover { color: var(--ink); border-color: var(--ink-2); }
+  .ent .refs .lbl { font: 10px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin: 8px 0 4px; }
+  .ent .kback { margin: 26px 0 0; font-size: 13px; }
+  .ent .kback a { color: var(--ink); }
+  @media (max-width: 560px) { .ent .facts { grid-template-columns: 1fr; gap: 2px 0; } .ent .facts dd { margin-bottom: 8px; } }

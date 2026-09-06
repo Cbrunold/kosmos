@@ -51,7 +51,9 @@ const TYPE = (file) => ({ json: 'application/json; charset=utf-8', xml: 'applica
 // page is not — the rest of the site still serves. The filename carries its own
 // version (kosmos-banner-v2.webp), so unlike the pages these can be cached hard.
 const ASSET_TYPE = { '.webp': 'image/webp', '.png': 'image/png', '.jpg': 'image/jpeg',
-                     '.svg': 'image/svg+xml', '.avif': 'image/avif' };
+                     '.svg': 'image/svg+xml', '.avif': 'image/avif',
+                     // the entity pages' shared stylesheet and script, content-hashed by the build
+                     '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8' };
 const ASSETS = {};
 try {
   for (const name of readdirSync(join(here, 'public', 'assets'))) {
@@ -67,6 +69,19 @@ const CONTENT = {};
 const ETAG = {};       // per route, from the bytes: a redeploy that changes nothing keeps the tag
 const missing = [];
 const etagOf = (buf) => '"' + createHash('sha1').update(buf).digest('base64url').slice(0, 22) + '"';
+// ---- the entity pages: public/entities/<route>/<slug>.html and public/entities/fr/…, one file per
+// entity per language, written by the build and never committed. A few kilobytes each; all in memory.
+let nEntities = 0;
+try {
+  for (const rel of readdirSync(join(here, 'public', 'entities'), { recursive: true })) {
+    if (!rel.endsWith('.html')) continue;
+    const route = '/' + rel.replace(/\\/g, '/').replace(/\.html$/, '');
+    PAGES[route] = 'entities/' + rel.replace(/\\/g, '/');
+    nEntities++;
+  }
+} catch (e) {
+  console.error(`no entity pages (${e.message}) — the build writes them; server.js falls back to rewriting the shelf`);
+}
 for (const [route, file] of Object.entries(PAGES)) {
   try {
     CONTENT[route] = readFileSync(join(here, 'public', file));
@@ -303,6 +318,6 @@ const server = http.createServer(async (req, res) => {
 });
 
 server.listen(PORT, '127.0.0.1', () => {
-  console.log(`kosmos listening on 127.0.0.1:${PORT} — ${Object.keys(CONTENT).length}/${Object.keys(PAGES).length} pages, ${Object.keys(ASSETS).length} assets (analyzer: ${hasKey ? 'enabled' : 'DISABLED — set ANTHROPIC_API_KEY'})`);
+  console.log(`kosmos listening on 127.0.0.1:${PORT} — ${Object.keys(CONTENT).length}/${Object.keys(PAGES).length} pages (${nEntities} entity pages), ${Object.keys(ASSETS).length} assets (analyzer: ${hasKey ? 'enabled' : 'DISABLED — set ANTHROPIC_API_KEY'})`);
   if (missing.length) console.error(`MISSING PAGES, serving 404 for: ${missing.join(', ')}`);
 });

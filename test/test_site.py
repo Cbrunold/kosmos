@@ -255,10 +255,11 @@ def test_entity_url_serves_the_section_page_as_that_entity(server):
     assert "<title>Pythagorean Theorem · Kosmos</title>" in html
     assert '<link rel="canonical" href="https://kosmos.yeahborhood.com/equations/pythagorean-theorem">' in html
     assert '<meta property="og:title" content="Pythagorean Theorem · Kosmos">' in html
-    assert "history.replaceState(null, '', \"/equations#pythagorean-theorem\")" in html
+    assert 'href="/equations#pythagorean-theorem"' in html, "the page links to its card on the shelf"
+    assert 'class="ent"' in html, "a static entity page, not the shelf rewritten"
     assert _get(server + "/equations/pythagorean-theorem", **{"If-None-Match": h["ETag"]})[0] == 304
     status, html, _ = _get(server + "/fr/people/albert-einstein")
-    assert status == 200 and '<html lang="fr">' in html and "/fr/people#albert-einstein" in html
+    assert status == 200 and '<html lang="fr">' in html and 'href="/fr/people#albert-einstein"' in html
     assert _get(server + "/equations/no-such-thing")[0] == 404
     assert _get(server + "/nope/pythagorean-theorem")[0] == 404
 
@@ -271,3 +272,49 @@ def test_billiards_physics_under_node():
     cushion running long and reverse short, a straight shot that drops."""
     r = subprocess.run([NODE, "--test", str(ROOT / "test/billiards/physics.test.cjs")], capture_output=True, text=True, cwd=ROOT)
     assert r.returncode == 0, r.stdout[-3000:] + r.stderr[-2000:]
+
+
+# ---------------------------------------------------------------- the entity pages
+ENT = PUB / "entities"
+
+
+def test_every_search_result_has_a_static_page():
+    """Every slug-anchored search result, and every element, is a page of its own in both
+    languages: the row rendered, with its name, its canonical, and the link to its card."""
+    import entities
+    idx = json.loads((PUB / "search.json").read_text())
+    symbols = {e["notation"]: e["notation"].lower() for e in build.elements}
+    paged = {k[3] for k in entities.KINDS} | {"galaxy", "element"}   # minerals and the lookup tables stay on their shelves
+    missing, bad = [], []
+    for kind, name, sub, text, href in idx["items"]:
+        route, _, anchor = href.partition("#")
+        if kind not in paged:
+            continue
+        if kind == "element":
+            slug = symbols.get(anchor)
+        elif re.fullmatch(r"[a-z0-9-]+", anchor or ""):
+            slug = anchor
+        else:
+            continue
+        for lang in ("", "fr/"):
+            f = ENT / lang / route.lstrip("/") / f"{slug}.html"
+            if not f.exists():
+                missing.append(str(f.relative_to(PUB))); continue
+            html = f.read_text()
+            want_canon = f'{chrome.SITE}/{lang}{route.lstrip("/")}/{slug}"'
+            if want_canon not in html or f'#{anchor}"' not in html or "<!doctype html>" not in html:
+                bad.append(str(f.relative_to(PUB)))
+    assert not missing, f"{len(missing)} entity pages missing, e.g. {missing[:5]}"
+    assert not bad, f"{len(bad)} entity pages malformed, e.g. {bad[:5]}"
+
+
+def test_entity_pages_share_assets_and_the_sitemap_lists_them():
+    css = sorted((PUB / "assets").glob("site-*.css")); js = sorted((PUB / "assets").glob("chrome-*.js"))
+    assert len(css) == 1 and len(js) == 1, "one hashed stylesheet and one script"
+    sample = next(ENT.glob("equations/*.html"))
+    html = sample.read_text()
+    assert f'href="/assets/{css[0].name}"' in html and f'src="/assets/{js[0].name}"' in html
+    assert "window.KosmosSearch" not in html, "the chrome is linked, not inlined"
+    sitemap = (PUB / "sitemap.xml").read_text()
+    assert f"<loc>{chrome.SITE}/equations/{sample.stem}</loc>" in sitemap
+    assert f"<loc>{chrome.SITE}/fr/equations/{sample.stem}</loc>" in sitemap

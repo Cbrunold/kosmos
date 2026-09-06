@@ -2,3 +2,5 @@
 node_modules/
 __pycache__/
 *.pyc
+# one page per entity per language, written by the build (scripts/entities.py)
+public/entities/

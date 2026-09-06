@@ -35,8 +35,11 @@ def main(argv):
     tr = i18n.Translator()
     live = set()
     per_page = []
-    for page in i18n.PAGE_FILES:
-        f = ROOT / "public" / page
+    # the shelves, then every entity page — under its shelf's rules, and only counted once per string
+    pages = [(p, ROOT / "public" / p) for p in i18n.PAGE_FILES]
+    for f in sorted((ROOT / "public" / "entities").glob("*/*.html")):
+        pages.append((f.parent.name + ".html" if f.parent.name != "elements" else "index.html", f))
+    for page, f in pages:
         if not f.exists():
             continue
         html = f.read_text()
@@ -51,8 +54,12 @@ def main(argv):
                 tr.want(t, "vocab" if t in voc else "prose"); new += 1
         per_page.append((page, len(texts), new))
     pruned = tr.prune(live)
-    for page, n, new in per_page:
+    shelves = [x for x in per_page if "/" not in x[0]]
+    for page, n, new in shelves[:len(i18n.PAGE_FILES)]:
         print(f"  {page:16} {n:5} strings · {new:5} new")
+    ent = per_page[len(i18n.PAGE_FILES):]
+    if ent:
+        print(f"  {'entity pages':16} {sum(n for _, n, _ in ent):5} strings · {sum(x for _, _, x in ent):5} new  ({len(ent)} pages)")
     chars = sum(len(s) for s in tr.pending.values())
     print(f"{len(tr.cache)} cached · {len(tr.pending)} to translate ({chars:,} chars) · {pruned} stale dropped")
     if dry:

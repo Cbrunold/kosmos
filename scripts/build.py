@@ -21,6 +21,7 @@ from collections import Counter, defaultdict
 from pathlib import Path
 
 import chrome
+import entities
 
 ROOT = Path(__file__).resolve().parent.parent
 WEB = ROOT / "web"
@@ -1664,6 +1665,8 @@ def build_search_index():
             add("force", nm, " · ".join(filter(None, [f.get("Range"), f.get("Relative Strength")])),
                 f.get("Description"), f"/forces#{slugify(nm)}")
 
+    global SEARCH_ROWS
+    SEARCH_ROWS = rows   # the entity pages take their lead and description from here
     out = {"built": max((r["lastEdited"] for rows_ in notion.values() for r in rows_ if r.get("lastEdited")), default="")[:10],
            "kinds": sorted({r[0] for r in rows}), "items": rows}
     text = compact(out)
@@ -1853,4 +1856,10 @@ if __name__ == "__main__":
                n_expl, n_expl_terms, n_imp, n_imp_terms, n_bill_eq, n_bill_skills, n_nobel)
     copy_assets()
     build_fr()
-    chrome.write_sitemap(PUB, SYNC_DATE)
+    # a page for every entity, in both languages, sharing one stylesheet and one script
+    import i18n
+    assets = chrome.write_shared_assets(PUB, SHARED, entities.CSS)
+    cat = entities.Catalogue(notion, elements, slugify, obj_name, SEARCH_ROWS)
+    ent_paths = cat.write_all(PUB, assets, i18n.Translator(), i18n.apply)
+    print(f"wrote {len(ent_paths)} entity pages x 2 languages -> public/entities/  ({assets['css']}, {assets['js']})")
+    chrome.write_sitemap(PUB, SYNC_DATE, ent_paths)

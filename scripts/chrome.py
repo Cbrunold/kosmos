@@ -124,12 +124,14 @@ def _urls(route: str):
     return SITE + tail, SITE + "/fr" + tail
 
 
-def head_html(page_file: str, lang: str, title: str, lookup=identity) -> str:
-    """Everything between the doctype and the template's own <title>."""
+def head_html(page_file: str, lang: str, title: str, lookup=identity, path: str | None = None,
+              description: str | None = None) -> str:
+    """Everything between the doctype and the template's own <title>. `path` and
+    `description` override the section's for an entity page (/equations/<slug>)."""
     route = route_of(page_file)
-    en, fr = _urls(route)
+    en, fr = _urls(path or route)
     url = fr if lang == "fr" else en
-    desc = lookup(DESCRIPTIONS.get(route, DESCRIPTIONS["/"]))
+    desc = lookup(description or DESCRIPTIONS.get(route, DESCRIPTIONS["/"]))
     return (
         f'<!--khead--><html lang="{lang}"><meta charset="utf-8">\n'
         '<meta name="viewport" content="width=device-width, initial-scale=1">\n'
@@ -203,33 +205,69 @@ def header_html(page_file: str, lang: str, lookup=identity) -> str:
     )
 
 
-def inject(html: str, page_file: str, lang: str = "en", lookup=identity) -> str:
+def inject(html: str, page_file: str, lang: str = "en", lookup=identity, external: dict | None = None,
+           path: str | None = None, description: str | None = None) -> str:
     """A built page, with the head and the header on. The CSS goes into the page's first
     <style>; the header and its script go right after it, before any page script, so a
-    template may call KosmosSearch synchronously."""
+    template may call KosmosSearch synchronously. With `external` — {css, js} URLs from
+    write_shared_assets — the page links them instead of carrying them: the entity pages
+    do, being fourteen hundred of them."""
     html = KNAV.sub("", html, count=1)
     html = EYEBROW.sub("", html, count=1)
     m = TITLE.search(html)
     title = lookup(m.group(1)) if m else "Kosmos"
     i = html.find("</style>")
     assert i >= 0, f"{page_file}: no <style> to hang the chrome on"
-    html = html[:i] + "\n" + CSS + html[i:]
+    if not external:
+        html = html[:i] + "\n" + CSS + html[i:]
     j = html.find("</style>") + len("</style>")
-    html = (html[:j] + "\n" + header_html(page_file, lang, lookup)
-            + "\n<script>" + JS + "</script>" + html[j:])
-    return "<!doctype html>" + head_html(page_file, lang, title, lookup) + html
+    script = f'<script src="{external["js"]}"></script>' if external else "<script>" + JS + "</script>"
+    html = html[:j] + "\n" + header_html(page_file, lang, lookup) + "\n" + script + html[j:]
+    link = f'<link rel="stylesheet" href="{external["css"]}">\n' if external else ""
+    return "<!doctype html>" + head_html(page_file, lang, title, lookup, path, description) + link + html
+
+
+def write_shared_assets(pub: Path, shared_css: str, extra_css: str = "") -> dict:
+    """One stylesheet (shared.css + the chrome + `extra_css`) and one script (the chrome),
+    content-hashed into public/assets/ so server.js can serve them immutable; the entity
+    pages link them. Returns their URLs."""
+    import hashlib
+    out = {}
+    for name, body, ext in (("site", shared_css + CSS + extra_css, "css"), ("chrome", JS, "js")):
+        h = hashlib.sha1(body.encode()).hexdigest()[:10]
+        fname = f"{name}-{h}.{ext}"
+        d = pub / "assets"
+        d.mkdir(parents=True, exist_ok=True)
+        for stale in d.glob(f"{name}-*.{ext}"):
+            if stale.name != fname:
+                stale.unlink()
+        (d / fname).write_text(body)
+        out[ext] = f"/assets/{fname}"
+    return out
+
+
+CANONICAL = re.compile(r'<link rel="canonical" href="' + re.escape(SITE) + r'(?:/fr)?(/[^"]*)">')
+DESCRIPTION = re.compile(r'<meta name="description" content="([^"]*)">')
 
 
 def replace_blocks(html: str, page_file: str, lang: str, title: str, lookup=identity) -> str:
     """Swap both fenced blocks for their versions in another language — what the French
-    build does after it has translated and rewritten everything else."""
-    html = KHEAD.sub(lambda _: head_html(page_file, lang, title, lookup).rstrip("\n"), html, count=1)
+    build does after it has translated and rewritten everything else. The page's own
+    canonical says which path it is (an entity page is not its section), and its
+    description is carried over through the lookup."""
+    m = CANONICAL.search(html)
+    path = m.group(1) if m else None
+    if path in ("", "/"):
+        path = None
+    d = DESCRIPTION.search(html)
+    desc = d.group(1) if d else None
+    html = KHEAD.sub(lambda _: head_html(page_file, lang, title, lookup, path, desc).rstrip("\n"), html, count=1)
     html = KCHROME.sub(lambda _: header_html(page_file, lang, lookup), html, count=1)
     return html
 
 
-def sitemap_xml(lastmod: str) -> str:
-    routes = sorted({r for r in PAGE_FILES.values()}, key=lambda r: (r != "/", r))
+def sitemap_xml(lastmod: str, extra: list | None = None) -> str:
+    routes = sorted({r for r in PAGE_FILES.values()}, key=lambda r: (r != "/", r)) + sorted(extra or [])
     rows = []
     for route in routes:
         en, fr = _urls(route)
@@ -245,7 +283,7 @@ def sitemap_xml(lastmod: str) -> str:
 ROBOTS = f"User-agent: *\nAllow: /\nDisallow: /api/\nSitemap: {SITE}/sitemap.xml\n"
 
 
-def write_sitemap(pub: Path, lastmod: str) -> None:
-    (pub / "sitemap.xml").write_text(sitemap_xml(lastmod))
+def write_sitemap(pub: Path, lastmod: str, extra: list | None = None) -> None:
+    (pub / "sitemap.xml").write_text(sitemap_xml(lastmod, extra))
     (pub / "robots.txt").write_text(ROBOTS)
-    print(f"wrote public/sitemap.xml ({2 * len(PAGE_FILES)} urls) and public/robots.txt")
+    print(f"wrote public/sitemap.xml ({2 * (len(PAGE_FILES) + len(extra or []))} urls) and public/robots.txt")

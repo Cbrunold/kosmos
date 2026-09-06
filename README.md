@@ -39,6 +39,7 @@ public/                       Built pages, search.json, sitemap.xml, robots.txt 
 web/billiards/physics.js      Everything that moves a ball on /billiards — cloth, cushion, collision, throw,
                               the shot — as a factory over the constants; the page inlines it and only draws.
                               test/billiards/physics.test.cjs runs it under node against the closed forms.
+scripts/entities.py           A page per entity, both languages, into public/entities/ — the row rendered
 web/people.template.html      /people — every researcher, with the theories, discoveries, machines and epochs of
                               theirs on the site; where the search index and the people chips point
 scripts/notion.py             The one copy of the Notion plumbing — token, call (with retries), pagination,
@@ -240,11 +241,16 @@ Runs on the yeahborhood VPS as `kosmos.service` (port 3002) behind nginx with
 its own Let's Encrypt cert — configs in `deploy/`. Secrets live in
 `/opt/kosmos/.env` (see `.env.example`), never in this repo.
 
-Every search result also has a URL of its own — `/equations/pythagorean-theorem`,
-`/people/albert-einstein`, `/fr/machines/steam-engine` — which server.js answers with
-the section page carrying that entity's title and description (so a shared link
-unfurls as the thing, not the shelf) and landing the reader on its card. The map is
-`search.json`; anything not in it is a 404.
+Every entity has a page of its own — `/equations/pythagorean-theorem`,
+`/people/albert-einstein`, `/fr/machines/steam-engine`, `/elements/fe` — a static file
+written by `scripts/entities.py` at build time into `public/entities/` (gitignored:
+2,600 files that change whenever a sentence in Notion does). Each is its Notion row
+rendered: every property, relations as links to the other entities' pages, a
+"referenced by" section computed across every table, the link to its card on the
+shelf, and its provenance. They share one stylesheet and one script from `/assets/`
+instead of inlining the chrome. server.js loads the directory at boot; the sitemap
+lists them all; anything search.json names that the build did not render falls back
+to the section page with that entity's head.
 
 Pages are served `Cache-Control: no-cache` with an ETag from their bytes, so a
 browser that already has a page gets a 304 instead of the 200–350KB again; a
