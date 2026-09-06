@@ -29,10 +29,19 @@ SHARED = (WEB / "shared.css").read_text()
 
 SKY_FIELD = re.compile(r"Astronom|Astrophys|Cosmolog|Gravitat|Relativity|Celestial", re.I)
 
+
+def on_cosmos(r) -> bool:
+    """Whether /cosmos lists this researcher: a field of the sky, or a discovery in its
+    timeline. The others have no page yet (a /people page is the standing fix), so
+    nothing may link to them — the search index included, or a result scrolls to
+    nothing: 114 of them did, until a test looked."""
+    return bool(r.get("Name")) and (r["id"] in DISCOVERERS or bool(SKY_FIELD.search(r.get("Field") or "")))
+
 elements = json.load(open(ROOT / "data" / "chemistry" / "elements.json"))
 notion = json.load(open(ROOT / "data" / "notion-all.json"))
 # the newest edit anywhere in the data: the home footer, the search index and the
 # sitemap all quote it, so it is computed once
+DISCOVERERS = {i for x in notion["discoveries"] for i in (x.get("Discoverer") or [])}
 SYNC_DATE = max([e["lastEdited"] for e in elements if e.get("lastEdited")]
                 + [r["lastEdited"] for rows in notion.values() for r in rows if r.get("lastEdited")],
                 default="?")[:10]
@@ -209,7 +218,7 @@ def build_minerals_page():
             by_symbol[s].append((bool(m.get("Formula")), m.get("Mohs Hardness") or 0, name))
         # Specific Gravity is a measurement; Calculated Density and Molar Mass were
         # derived from the broken import and are only trustworthy on rows that carry a
-        # Formula (i.e. that seed_minerals_fix.py has rewritten from the source)
+        # Formula (i.e. that scripts/migrations/seed_minerals_fix.py has rewritten from the source)
         sg = m.get("Specific Gravity") or None
         verified = bool(m.get("Formula"))
         rows.append([
@@ -428,12 +437,10 @@ def build_cosmos_page():
     # found something in the timeline below whatever their field, because
     # listing a discovery without its discoverer is the worse inconsistency.
     # (The rest are not homeless for long — /people is the standing fix.)
-    discoverers = {i for x in notion["discoveries"] for i in (x.get("Discoverer") or [])}
     researchers = sorted(
         ({"name": r["Name"], "slug": slugify(r["Name"]), "life": r.get("Lifespan"),
           "field": r.get("Field"), "known": r.get("Known For"), "nobel": r.get("Nobel")}
-         for r in notion["researchers"]
-         if r.get("Name") and (r["id"] in discoverers or SKY_FIELD.search(r.get("Field") or ""))),
+         for r in notion["researchers"] if on_cosmos(r)),
         key=lambda r: r["name"].split()[-1])   # by surname, as a card index would be
 
     obs_by_id = {}
@@ -537,7 +544,8 @@ def build_timeline_page():
                  for t in notion["theories"] if t.get("Name")}
     # people whose work is about an epoch — chips link to their card on /cosmos
     people = {r["id"]: {"name": r["Name"], "slug": slugify(r["Name"]), "life": r.get("Lifespan"),
-                        "field": r.get("Field"), "known": r.get("Known For")}
+                        "field": r.get("Field"), "known": r.get("Known For"),
+                        "href": f"/cosmos#{slugify(r['Name'])}" if on_cosmos(r) else None}
               for r in notion["researchers"] if r.get("Name")}
     events = []
     for r in rows:
@@ -771,8 +779,11 @@ def cycle_diagram(cycle: str):
 def build_machines_page():
     by_id_eq = eq_lookup_all()
     el_by_id = {e["pageId"]: {"sym": e["notation"], "name": e["name"]} for e in elements}
+    # href only where /cosmos has the person; an inventor of an engine mostly is not there
     people = {r["id"]: {"name": r["Name"], "slug": slugify(r["Name"]), "life": r.get("Lifespan"),
-                        "known": r.get("Known For")} for r in notion["researchers"] if r.get("Name")}
+                        "known": r.get("Known For"),
+                        "href": f"/cosmos#{slugify(r['Name'])}" if on_cosmos(r) else None}
+              for r in notion["researchers"] if r.get("Name")}
     skills_by_id = {s["id"]: {"name": s["Name"], "slug": slugify(s["Name"])}
                     for s in notion.get("skills", []) if s.get("Name")}
     rows = []
@@ -1495,7 +1506,7 @@ def build_search_index():
                 t.get("Summary"), f"/theories#{slugify(t['Name'])}")
 
     for r in notion["researchers"]:
-        if r.get("Name"):
+        if on_cosmos(r):   # the others have nowhere to land yet — see on_cosmos
             add("researcher", r["Name"], " · ".join(filter(None, [r.get("Lifespan"), r.get("Field")])),
                 r.get("Known For"), f"/cosmos#{slugify(r['Name'])}")
 

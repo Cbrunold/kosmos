@@ -25,7 +25,7 @@ Run on the VPS:  ./deploy.sh seed_cosmos_fix
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))   # scripts/, one up from migrations/
 from seed_theories import call, query_all  # noqa: E402
 
 DS = "6128c15c-25dd-47fb-bf00-ce737ca1d3e6"      # Spectral Types [DB]

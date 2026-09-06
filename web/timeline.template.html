@@ -241,9 +241,10 @@ __SHARED__
     l.className = 'lbl'; l.textContent = label;
     row.appendChild(l);
     for (const it of items) {
-      const a = document.createElement('a');
+      // no href: nowhere to go yet (a person /cosmos does not list) — a chip, not a link
+      const a = document.createElement(it.href ? 'a' : 'span');
       a.className = 'lnk';
-      a.href = it.href;
+      if (it.href) a.href = it.href;
       a.textContent = it.name;
       if (it.title) a.title = it.title;
       a.style.setProperty('--lc', color);
@@ -309,7 +310,7 @@ __SHARED__
       // people whose work is about this epoch — not its proposers, that is the theory row
       const who = (e.people || []).map((id) => PEOPLE[id]).filter(Boolean)
         .sort((a, b) => a.name.split(' ').pop().localeCompare(b.name.split(' ').pop()))
-        .map((p) => ({ name: p.name, href: '/cosmos#' + p.slug,
+        .map((p) => ({ name: p.name, href: p.href,
                        title: [p.life, vocab(p.field), p.known].filter(Boolean).join(' · ') }));
       if (who.length) card.appendChild(chipRow('the people', who, 'var(--c-violet)'));
 

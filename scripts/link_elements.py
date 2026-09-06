@@ -13,6 +13,8 @@ import sys
 import urllib.error
 import urllib.request
 from pathlib import Path
+from notion import token, call, query_all  # noqa: E402
+
 
 ROOT = Path(__file__).resolve().parent.parent
 EQ_DS = "638fda32-4a6d-4d65-8349-433ce4f0b698"   # Equations [DB] data source
@@ -22,37 +24,7 @@ EL_DB = "7e97fd4c-8266-46b6-80f9-cb4494817914"   # All Periodical Elements datab
 PROP = "Elements"
 
 
-def token() -> str:
-    if os.environ.get("NOTION_TOKEN"):
-        return os.environ["NOTION_TOKEN"]
-    for p in (ROOT / ".env", Path("/srv/kosmos/.env")):
-        if p.exists():
-            for line in p.read_text().splitlines():
-                if line.startswith("NOTION_TOKEN="):
-                    return line.split("=", 1)[1].strip().strip("\"'")
-    sys.exit("NOTION_TOKEN not set")
-
-
 H = {"Authorization": f"Bearer {token()}", "Notion-Version": "2025-09-03", "Content-Type": "application/json"}
-
-
-def call(method, url, body=None):
-    req = urllib.request.Request(url, data=json.dumps(body).encode() if body else None, headers=H, method=method)
-    return json.load(urllib.request.urlopen(req))
-
-
-def query_all(ds):
-    out, cursor = [], None
-    while True:
-        body = {"page_size": 100}
-        if cursor:
-            body["start_cursor"] = cursor
-        d = call("POST", f"https://api.notion.com/v1/data_sources/{ds}/query", body)
-        out += d["results"]
-        if not d.get("has_more"):
-            break
-        cursor = d["next_cursor"]
-    return out
 
 
 # --------------------------------------------------------------------------

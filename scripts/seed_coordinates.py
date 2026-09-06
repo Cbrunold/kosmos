@@ -27,6 +27,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+from notion import find_ds  # noqa: E402
 from seed_theories import call, ensure_props, query_all  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -50,15 +51,6 @@ def sexagesimal(ra: float, dec: float) -> str:
     a = abs(dec)
     dd = int(a); am = int((a - dd) * 60); asec = ((a - dd) * 60 - am) * 60
     return f"{hh:02d}h {mm:02d}m {ss:04.1f}s  {sign}{dd:02d}° {am:02d}′ {asec:04.1f}″"
-
-
-def find_ds(title):
-    d = call("POST", "https://api.notion.com/v1/search",
-             {"query": title, "filter": {"property": "object", "value": "data_source"}, "page_size": 50})
-    for r in d.get("results", []):
-        if "".join(x.get("plain_text", "") for x in r.get("title", [])).strip() == title:
-            return r["id"]
-    return None
 
 
 def title_of(page):

@@ -16,53 +16,13 @@ import urllib.request
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+from notion import token, headers, call, query_all, title_of  # noqa: E402
 from seed_theories import THEORIES, THEORY_EQUATIONS, EXISTING_PROPONENTS  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 THEORY_DS = "215048ed-e6a6-4b9a-858b-73e8c801629e"
 RESEARCHER_DS = "4cc8d7c4-9008-4017-a09b-7087720aebd3"
 EQ_DS = "638fda32-4a6d-4d65-8349-433ce4f0b698"
-
-
-def token() -> str:
-    if os.environ.get("NOTION_TOKEN"):
-        return os.environ["NOTION_TOKEN"]
-    for p in (ROOT / ".env", Path("/srv/kosmos/.env")):
-        if p.exists():
-            for line in p.read_text().splitlines():
-                if line.startswith("NOTION_TOKEN="):
-                    return line.split("=", 1)[1].strip().strip("\"'")
-    sys.exit("NOTION_TOKEN not set")
-
-
-def headers() -> dict:
-    return {"Authorization": f"Bearer {token()}", "Notion-Version": "2025-09-03",
-            "Content-Type": "application/json"}
-
-
-def call(method, url, body=None):
-    req = urllib.request.Request(url, data=json.dumps(body).encode() if body else None,
-                                 headers=headers(), method=method)
-    return json.load(urllib.request.urlopen(req))
-
-
-def query_all(ds):
-    out, cursor = [], None
-    while True:
-        body = {"page_size": 100}
-        if cursor:
-            body["start_cursor"] = cursor
-        d = call("POST", f"https://api.notion.com/v1/data_sources/{ds}/query", body)
-        out += d["results"]
-        if not d.get("has_more"):
-            break
-        cursor = d["next_cursor"]
-    return out
-
-
-def title_of(page, prop="Name") -> str:
-    p = page["properties"].get(prop) or {}
-    return "".join(x["plain_text"] for x in p.get("title", [])).strip()
 
 
 def ensure_relation(ds_id, prop, target_ds, synced_name):

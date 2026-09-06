@@ -75,7 +75,8 @@ __SHARED__
     const row = document.createElement('div'); row.className = 'lrow';
     const l = document.createElement('span'); l.className = 'lbl'; l.textContent = label; row.appendChild(l);
     for (const it of items) {
-      const a = document.createElement('a'); a.className = 'lnk'; a.href = hrefOf(it);
+      const href = hrefOf(it);   // null: nowhere to go yet (a person /cosmos does not list) — a chip, not a link
+      const a = document.createElement(href ? 'a' : 'span'); a.className = 'lnk'; if (href) a.href = href;
       a.textContent = it.name || `${it.sym} · ${it.name2 || ''}`; if (titleOf) a.title = titleOf(it) || '';
       a.style.setProperty('--lc', color); row.appendChild(a);
     }
@@ -132,7 +133,7 @@ __SHARED__
       const dt = document.createElement('dt'); dt.textContent = k; const dd = document.createElement('dd'); dd.textContent = v; dl.append(dt, dd);
     }
     if (dl.children.length) left.appendChild(dl);
-    const inv = chips('built first by', m.inventors, 'var(--c-violet)', (p) => '/cosmos#' + p.slug, (p) => [p.life, p.known].filter(Boolean).join(' · '));
+    const inv = chips('built first by', m.inventors, 'var(--c-violet)', (p) => p.href, (p) => [p.life, p.known].filter(Boolean).join(' · '));
     if (inv) left.appendChild(inv);
     const eq = chips('the mathematics', m.equations, 'var(--c-amber)', (q) => '/equations#' + q.slug, (q) => vocab(q.field));
     if (eq) left.appendChild(eq);

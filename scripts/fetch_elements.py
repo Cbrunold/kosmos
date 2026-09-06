@@ -10,42 +10,16 @@ import os
 import sys
 import urllib.request
 from pathlib import Path
+from notion import token, query_all  # noqa: E402
+
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA_SOURCE_ID = "f01d2f3f-9698-4757-85f0-7cb7b2869dab"  # All Periodical Elements
 NOTION_VERSION = "2025-09-03"
 
 
-def token() -> str:
-    if os.environ.get("NOTION_TOKEN"):
-        return os.environ["NOTION_TOKEN"]
-    env = ROOT / ".env"
-    if env.exists():
-        for line in env.read_text().splitlines():
-            if line.startswith("NOTION_TOKEN="):
-                return line.split("=", 1)[1].strip().strip("\"'")
-    sys.exit("NOTION_TOKEN not set (env var or .env)")
-
-
 def fetch_all() -> list:
-    url = f"https://api.notion.com/v1/data_sources/{DATA_SOURCE_ID}/query"
-    headers = {
-        "Authorization": f"Bearer {token()}",
-        "Notion-Version": NOTION_VERSION,
-        "Content-Type": "application/json",
-    }
-    results, cursor = [], None
-    while True:
-        body = {"page_size": 100}
-        if cursor:
-            body["start_cursor"] = cursor
-        req = urllib.request.Request(url, data=json.dumps(body).encode(), headers=headers)
-        d = json.load(urllib.request.urlopen(req))
-        results += d["results"]
-        if not d.get("has_more"):
-            break
-        cursor = d["next_cursor"]
-    return results
+    return query_all(DATA_SOURCE_ID)
 
 
 def normalise(results: list) -> list:

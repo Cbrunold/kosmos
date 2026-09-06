@@ -9,6 +9,8 @@ import os
 import sys
 import urllib.request
 from pathlib import Path
+from notion import token, query_all, find_ds, value, flatten  # noqa: E402
+
 
 ROOT = Path(__file__).resolve().parent.parent
 NOTION_VERSION = "2025-09-03"
@@ -46,85 +48,14 @@ SOURCES = {
 }
 
 
-def token() -> str:
-    if os.environ.get("NOTION_TOKEN"):
-        return os.environ["NOTION_TOKEN"]
-    env = ROOT / ".env"
-    if env.exists():
-        for line in env.read_text().splitlines():
-            if line.startswith("NOTION_TOKEN="):
-                return line.split("=", 1)[1].strip().strip("\"'")
-    sys.exit("NOTION_TOKEN not set (env var or .env)")
-
-
-HEADERS = {
-    "Notion-Version": NOTION_VERSION,
-    "Content-Type": "application/json",
-}
-
-
 def query(ds_id: str) -> list:
-    url = f"https://api.notion.com/v1/data_sources/{ds_id}/query"
-    results, cursor = [], None
-    while True:
-        body = {"page_size": 100}
-        if cursor:
-            body["start_cursor"] = cursor
-        req = urllib.request.Request(url, data=json.dumps(body).encode(),
-                                     headers={**HEADERS, "Authorization": f"Bearer {token()}"})
-        d = json.load(urllib.request.urlopen(req))
-        results += d["results"]
-        if not d.get("has_more"):
-            break
-        cursor = d["next_cursor"]
-    return results
+    return query_all(ds_id)
 
 
 def resolve(ds) -> str | None:
     """A source may be given as an id, or as {"title": ...} to look up by name —
     for databases a seed script creates, whose id is not known in advance."""
-    if isinstance(ds, str):
-        return ds
-    body = {"query": ds["title"], "filter": {"property": "object", "value": "data_source"}, "page_size": 50}
-    req = urllib.request.Request("https://api.notion.com/v1/search", data=json.dumps(body).encode(),
-                                 headers={**HEADERS, "Authorization": f"Bearer {token()}"})
-    for r in json.load(urllib.request.urlopen(req)).get("results", []):
-        if "".join(x.get("plain_text", "") for x in r.get("title", [])).strip() == ds["title"]:
-            return r["id"]
-    return None
-
-
-def value(p: dict):
-    t = p["type"]
-    if t == "title":
-        return "".join(x["plain_text"] for x in p["title"]) or None
-    if t == "rich_text":
-        return "".join(x["plain_text"] for x in p["rich_text"]) or None
-    if t == "number":
-        return p["number"]
-    if t == "select":
-        return p["select"]["name"] if p["select"] else None
-    if t == "status":
-        return p["status"]["name"] if p["status"] else None
-    if t == "multi_select":
-        return [o["name"] for o in p["multi_select"]]
-    if t == "date":
-        return p["date"]["start"] if p["date"] else None
-    if t == "relation":
-        return [r["id"] for r in p["relation"]]
-    if t == "formula":
-        f = p["formula"]
-        return f.get("string") if f.get("type") == "string" else f.get("number")
-    if t in ("url", "email", "checkbox"):
-        return p[t]
-    return None
-
-
-def flatten(page: dict) -> dict:
-    row = {"id": page["id"], "url": page.get("url"), "lastEdited": page.get("last_edited_time")}
-    for name, prop in page["properties"].items():
-        row[name] = value(prop)
-    return row
+    return ds if isinstance(ds, str) else find_ds(ds["title"])
 
 
 if __name__ == "__main__":

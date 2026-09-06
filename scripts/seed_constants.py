@@ -13,37 +13,14 @@ import sys
 import urllib.error
 import urllib.request
 from pathlib import Path
+from notion import token, call, find_ds  # noqa: E402
+
 
 ROOT = Path(__file__).resolve().parent.parent
 PARENT_PAGE = "278879ef-bfcb-46e1-bdfb-7f9beb7b7197"   # Physical Sciences
 
 
-def token() -> str:
-    if os.environ.get("NOTION_TOKEN"):
-        return os.environ["NOTION_TOKEN"]
-    for p in (ROOT / ".env", Path("/srv/kosmos/.env")):
-        if p.exists():
-            for line in p.read_text().splitlines():
-                if line.startswith("NOTION_TOKEN="):
-                    return line.split("=", 1)[1].strip().strip("\"'")
-    sys.exit("NOTION_TOKEN not set")
-
-
 H = {"Authorization": f"Bearer {token()}", "Notion-Version": "2025-09-03", "Content-Type": "application/json"}
-
-
-def call(method, url, body=None):
-    req = urllib.request.Request(url, data=json.dumps(body).encode() if body else None, headers=H, method=method)
-    return json.load(urllib.request.urlopen(req))
-
-
-def find_ds(title):
-    d = call("POST", "https://api.notion.com/v1/search",
-             {"query": title, "filter": {"property": "object", "value": "data_source"}, "page_size": 50})
-    for r in d.get("results", []):
-        if "".join(x.get("plain_text", "") for x in r.get("title", [])).strip() == title:
-            return r["id"]
-    return None
 
 
 def create_db(title, properties):

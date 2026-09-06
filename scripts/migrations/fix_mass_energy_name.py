@@ -20,7 +20,7 @@ Run on the VPS:  ./deploy.sh fix_mass_energy_name
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))   # scripts/, one up from migrations/
 from seed_theories import call, query_all, title_of  # noqa: E402
 from seed_engineering import EQ_DS  # noqa: E402
 

@@ -29,6 +29,8 @@ import os
 import sys
 import urllib.request
 from pathlib import Path
+from notion import token, headers, call, query_all, title_of, find_ds  # noqa: E402
+
 
 ROOT = Path(__file__).resolve().parent.parent
 PARENT_PAGE = "278879ef-bfcb-46e1-bdfb-7f9beb7b7197"   # Physical Sciences
@@ -338,57 +340,6 @@ EVENTS = [
        "Cosmological Equation of State"],
       ["Statistical Mechanics", "Dark Energy", "Big Bang Cosmology"]),
 ]
-
-
-def token() -> str:
-    if os.environ.get("NOTION_TOKEN"):
-        return os.environ["NOTION_TOKEN"]
-    for p in (ROOT / ".env", Path("/srv/kosmos/.env")):
-        if p.exists():
-            for line in p.read_text().splitlines():
-                if line.startswith("NOTION_TOKEN="):
-                    return line.split("=", 1)[1].strip().strip("\"'")
-    sys.exit("NOTION_TOKEN not set")
-
-
-def headers() -> dict:
-    return {"Authorization": f"Bearer {token()}", "Notion-Version": "2025-09-03",
-            "Content-Type": "application/json"}
-
-
-def call(method, url, body=None):
-    req = urllib.request.Request(url, data=json.dumps(body).encode() if body else None,
-                                 headers=headers(), method=method)
-    return json.load(urllib.request.urlopen(req))
-
-
-def query_all(ds):
-    out, cursor = [], None
-    while True:
-        body = {"page_size": 100}
-        if cursor:
-            body["start_cursor"] = cursor
-        d = call("POST", f"https://api.notion.com/v1/data_sources/{ds}/query", body)
-        out += d["results"]
-        if not d.get("has_more"):
-            break
-        cursor = d["next_cursor"]
-    return out
-
-
-def title_of(page, prop) -> str:
-    p = page["properties"].get(prop) or {}
-    return "".join(x["plain_text"] for x in p.get("title", [])).strip()
-
-
-def find_ds(title):
-    d = call("POST", "https://api.notion.com/v1/search",
-             {"query": title, "filter": {"property": "object", "value": "data_source"},
-              "page_size": 50})
-    for r in d.get("results", []):
-        if "".join(x.get("plain_text", "") for x in r.get("title", [])).strip() == title:
-            return r["id"]
-    return None
 
 
 def create_db():

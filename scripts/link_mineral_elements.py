@@ -19,6 +19,8 @@ import time
 import urllib.error
 import urllib.request
 from pathlib import Path
+from notion import token, call, query_all  # noqa: E402
+
 
 ROOT = Path(__file__).resolve().parent.parent
 MIN_DS = "a2db78db-efb7-4952-b8bc-e4ab98d42264"   # Minerals [DB] data source
@@ -42,46 +44,7 @@ NAME_FIXUPS = {"Aluminium": "Al", "Aluminum": "Al", "Cesium": "Cs", "Caesium": "
                "Sulphur": "S", "Nitrogen": "N"}
 
 
-def token() -> str:
-    if os.environ.get("NOTION_TOKEN"):
-        return os.environ["NOTION_TOKEN"]
-    for p in (ROOT / ".env", Path("/srv/kosmos/.env")):
-        if p.exists():
-            for line in p.read_text().splitlines():
-                if line.startswith("NOTION_TOKEN="):
-                    return line.split("=", 1)[1].strip().strip("\"'")
-    sys.exit("NOTION_TOKEN not set")
-
-
 H = {"Authorization": f"Bearer {token()}", "Notion-Version": "2025-09-03", "Content-Type": "application/json"}
-
-
-def call(method, url, body=None, tries=5):
-    for attempt in range(tries):
-        try:
-            req = urllib.request.Request(url, data=json.dumps(body).encode() if body else None,
-                                         headers=H, method=method)
-            return json.load(urllib.request.urlopen(req))
-        except urllib.error.HTTPError as e:
-            if e.code in (429, 502, 503, 504) and attempt < tries - 1:
-                wait = float(e.headers.get("Retry-After", 2 ** attempt))
-                time.sleep(wait)
-                continue
-            raise
-
-
-def query_all(ds):
-    out, cursor = [], None
-    while True:
-        body = {"page_size": 100}
-        if cursor:
-            body["start_cursor"] = cursor
-        d = call("POST", f"https://api.notion.com/v1/data_sources/{ds}/query", body)
-        out += d["results"]
-        if not d.get("has_more"):
-            break
-        cursor = d["next_cursor"]
-    return out
 
 
 def prop_value(p):

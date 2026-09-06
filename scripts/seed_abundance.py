@@ -23,6 +23,8 @@ import os
 import sys
 import urllib.request
 from pathlib import Path
+from notion import token, headers, call, query_all  # noqa: E402
+
 
 ROOT = Path(__file__).resolve().parent.parent
 ELEMENTS_DS = "f01d2f3f-9698-4757-85f0-7cb7b2869dab"   # All Periodical Elements
@@ -57,42 +59,6 @@ ABUNDANCE = {
     "Ds": None, "Rg": None, "Cn": None, "Nh": None, "Fl": None,
     "Mc": None, "Lv": None, "Ts": None, "Og": None,
 }
-
-
-def token() -> str:
-    if os.environ.get("NOTION_TOKEN"):
-        return os.environ["NOTION_TOKEN"]
-    for p in (ROOT / ".env", Path("/srv/kosmos/.env")):
-        if p.exists():
-            for line in p.read_text().splitlines():
-                if line.startswith("NOTION_TOKEN="):
-                    return line.split("=", 1)[1].strip().strip("\"'")
-    sys.exit("NOTION_TOKEN not set")
-
-
-def headers() -> dict:
-    return {"Authorization": f"Bearer {token()}", "Notion-Version": "2025-09-03",
-            "Content-Type": "application/json"}
-
-
-def call(method, url, body=None):
-    req = urllib.request.Request(url, data=json.dumps(body).encode() if body else None,
-                                 headers=headers(), method=method)
-    return json.load(urllib.request.urlopen(req))
-
-
-def query_all(ds):
-    out, cursor = [], None
-    while True:
-        body = {"page_size": 100}
-        if cursor:
-            body["start_cursor"] = cursor
-        d = call("POST", f"https://api.notion.com/v1/data_sources/{ds}/query", body)
-        out += d["results"]
-        if not d.get("has_more"):
-            break
-        cursor = d["next_cursor"]
-    return out
 
 
 def main():

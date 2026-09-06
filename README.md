@@ -36,6 +36,15 @@ truth for code and the normalised data snapshots. Sync is one-way, Notion → re
 ```
 server.js                     Node server: static pages, sitemap.xml, robots.txt + POST /api/analyze
 public/                       Built pages, search.json, sitemap.xml, robots.txt (generated — see scripts/build.py)
+scripts/notion.py             The one copy of the Notion plumbing — token, call (with retries), pagination,
+                              find a data source by title, ensure_props / sync_rows for the seeds, and the
+                              row flattening fetch_all uses. seed_theories.py re-exports it for its importers.
+test/test_site.py             pytest: the invariants that have already broken once — Python slugify against
+                              every page's JS slug(), data blocks a browser can parse, every page defining
+                              what its scripts call, every search result landing on an anchor its page will
+                              have, the chrome on every page, the deploy checks, and one notion.py only.
+                              .github/workflows/test.yml runs it on every push, after checking that the
+                              committed pages are exactly what build.py makes.  python3 -m pytest -q
 scripts/readership.py         Who reads the site, from nginx's own access log (deploy/nginx-kosmos.conf
                               writes /var/log/nginx/kosmos.access.log): views and visitors by day, pages,
                               languages, phone share, referrers. Bots dropped, no address printed.
@@ -112,7 +121,8 @@ scripts/make_basemap.py       Natural Earth 110m land → web/land-110m.svgpath 
 scripts/fetch_webmineral.py   Formula, molecular weight, density, hardness and mass-% composition
                               for every mineral from webmineral.com → data/chemistry/webmineral.json
                               (committed; the Minerals DB was a broken parse of this very source)
-scripts/seed_minerals_fix.py  Rewrites the Minerals DB from that file — Formula, true Molar Mass,
+scripts/migrations/           One-shot scripts, run once and kept for the record (see its README)
+  seed_minerals_fix.py        Rewrites the Minerals DB from that file — Formula, true Molar Mass,
                               per-element MASS % (replacing counts that were wrong), clears the
                               derived columns — and adds the ore minerals the DB lacked
 scripts/seed_engineering.py   The engineering half: ~30 machines and ~22 hands-on skills into two

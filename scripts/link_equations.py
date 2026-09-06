@@ -14,29 +14,15 @@ import sys
 import urllib.error
 import urllib.request
 from pathlib import Path
+from notion import token, call  # noqa: E402
+
 
 ROOT = Path(__file__).resolve().parent.parent
 DS = "638fda32-4a6d-4d65-8349-433ce4f0b698"   # Equations [DB] data source
 DB = "300fc8ac-ca04-429d-a732-406181d9f4b9"   # Equations [DB] database
 
 
-def token() -> str:
-    if os.environ.get("NOTION_TOKEN"):
-        return os.environ["NOTION_TOKEN"]
-    for p in (ROOT / ".env", Path("/srv/kosmos/.env")):
-        if p.exists():
-            for line in p.read_text().splitlines():
-                if line.startswith("NOTION_TOKEN="):
-                    return line.split("=", 1)[1].strip().strip("\"'")
-    sys.exit("NOTION_TOKEN not set")
-
-
 H = {"Authorization": f"Bearer {token()}", "Notion-Version": "2025-09-03", "Content-Type": "application/json"}
-
-
-def call(method, url, body=None):
-    req = urllib.request.Request(url, data=json.dumps(body).encode() if body else None, headers=H, method=method)
-    return json.load(urllib.request.urlopen(req))
 
 
 # --------------------------------------------------------------------------

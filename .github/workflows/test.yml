@@ -1,0 +1,30 @@
+# The one lint+test workflow: the committed pages must be exactly what build.py makes
+# from the committed data (so a build anywhere reproduces the site, and nothing shipped
+# is stale), and the invariants in test/ must hold. Needs no token: the build reads
+# data/ and data/i18n/fr.json, both committed.
+name: Test
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: pip install pytest
+      - name: The committed pages are what the build makes
+        run: |
+          python3 scripts/build.py
+          git diff --stat --exit-code -- public
+      - name: Tests
+        run: python3 -m pytest -q

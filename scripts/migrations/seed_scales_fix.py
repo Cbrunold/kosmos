@@ -40,7 +40,8 @@ Run on the VPS:  ./deploy.sh seed_scales_fix
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))   # scripts/, one up from migrations/
+from notion import find_ds  # noqa: E402
 from seed_theories import call, query_all, title_of  # noqa: E402
 
 TITLE = "Cosmic Structures [DB]"
@@ -65,15 +66,6 @@ FIXES = {
         "Notes": "The nearest large cluster and the gravitational anchor of our supercluster, with the giant elliptical M87 — and its imaged black hole — at the centre. Catalogued as a knot of nebulae by Messier long before anyone knew what it was. Its distance is measured directly, by Cepheids and the tip of the red giant branch, and disagrees with its redshift by about a quarter: we are falling toward it at some 300 km/s, which subtracts from its apparent recession.",
     },
 }
-
-
-def find_ds(title):
-    d = call("POST", "https://api.notion.com/v1/search",
-             {"query": title, "filter": {"property": "object", "value": "data_source"}, "page_size": 50})
-    for r in d.get("results", []):
-        if "".join(x.get("plain_text", "") for x in r.get("title", [])).strip() == title:
-            return r["id"]
-    return None
 
 
 def current(page, prop):

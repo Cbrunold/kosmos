@@ -28,6 +28,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+from notion import find_ds  # noqa: E402
 from seed_theories import call, ensure_props, ensure_select_options, sync_rows  # noqa: E402
 
 PARENT_PAGE = "278879ef-bfcb-46e1-bdfb-7f9beb7b7197"
@@ -143,15 +144,6 @@ NEW_PROPS = {
     "Recognised": {"number": {"format": "number"}},
     "Notes": {"rich_text": {}},
 }
-
-
-def find_ds(title):
-    d = call("POST", "https://api.notion.com/v1/search",
-             {"query": title, "filter": {"property": "object", "value": "data_source"}, "page_size": 50})
-    for r in d.get("results", []):
-        if "".join(x.get("plain_text", "") for x in r.get("title", [])).strip() == title:
-            return r["id"]
-    return None
 
 
 def main():

@@ -3,36 +3,16 @@ pyrite, galena. Sets composition columns, physical properties, and the
 Chemical Properties relation to the element pages. Skips any that exist.
 """
 import json
+import sys
 import urllib.request
+from pathlib import Path
 
-TOKEN = None
-for line in open("/srv/kosmos/.env"):
-    if line.startswith("NOTION_TOKEN="):
-        TOKEN = line.split("=", 1)[1].strip().strip("\"'")
-assert TOKEN
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))   # scripts/, one up from migrations/
+from notion import call, headers, query_all  # noqa: E402
 
-H = {"Authorization": f"Bearer {TOKEN}", "Notion-Version": "2025-09-03", "Content-Type": "application/json"}
+H = headers()
 MIN_DS = "a2db78db-efb7-4952-b8bc-e4ab98d42264"
 EL_DS = "f01d2f3f-9698-4757-85f0-7cb7b2869dab"
-
-
-def call(m, u, b=None):
-    req = urllib.request.Request(u, data=json.dumps(b).encode() if b else None, headers=H, method=m)
-    return json.load(urllib.request.urlopen(req))
-
-
-def query_all(ds):
-    out, cursor = [], None
-    while True:
-        body = {"page_size": 100}
-        if cursor:
-            body["start_cursor"] = cursor
-        d = call("POST", f"https://api.notion.com/v1/data_sources/{ds}/query", body)
-        out += d["results"]
-        if not d.get("has_more"):
-            break
-        cursor = d["next_cursor"]
-    return out
 
 
 el_id = {}

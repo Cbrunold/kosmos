@@ -36,7 +36,7 @@ Run on the VPS:  ./deploy.sh seed_timeline_fix
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))   # scripts/, one up from migrations/
 from seed_theories import call, query_all  # noqa: E402
 
 DS = "3c1ab928-8ffa-48e7-b0bc-b90e16480a46"      # Cosmic Timeline [DB]
