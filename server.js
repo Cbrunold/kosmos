@@ -29,16 +29,19 @@ const PAGES = {
   '/billiards': 'billiards.html',
   '/equations': 'equations.html',
   '/constants': 'constants.html',
-  '/search.json': 'search.json',   // the index behind the home-page search bar, fetched on first keystroke
+  '/search.json': 'search.json',   // the index behind the search box, fetched on first keystroke
+  '/sitemap.xml': 'sitemap.xml',   // both written by scripts/build.py (see scripts/chrome.py)
+  '/robots.txt': 'robots.txt',
 };
 // The French mirror: /fr and /fr/<route> serve public/fr/<file>, which scripts/build.py derives
 // from the English pages through data/i18n/fr.json. Same health rules: a missing file 404s alone.
 for (const [route, file] of Object.entries({ ...PAGES })) {
-  if (file.endsWith('.json')) continue;
+  if (!file.endsWith('.html')) continue;
   PAGES[route === '/' ? '/fr' : '/fr' + route] = 'fr/' + file;
 }
 PAGES['/fr/'] = 'fr/home.html';
-const TYPE = (file) => (file.endsWith('.json') ? 'application/json; charset=utf-8' : 'text/html; charset=utf-8');
+const TYPE = (file) => ({ json: 'application/json; charset=utf-8', xml: 'application/xml; charset=utf-8',
+                          txt: 'text/plain; charset=utf-8' }[file.split('.').pop()] || 'text/html; charset=utf-8');
 
 // Static assets (public/assets): the home banner and anything else binary the build
 // copies rather than writes. Read once at boot like the pages, so a request never

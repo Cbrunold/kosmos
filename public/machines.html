@@ -1,3 +1,23 @@
+<!doctype html><!--khead--><html lang="en"><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="The canonical engines and machines — how each works, its cycle drawn as a p–V loop, efficiency, materials and inventors.">
+<meta name="theme-color" content="#f2f4f5" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0e1116" media="(prefers-color-scheme: dark)">
+<link rel="canonical" href="https://kosmos.yeahborhood.com/machines">
+<link rel="alternate" hreflang="en" href="https://kosmos.yeahborhood.com/machines">
+<link rel="alternate" hreflang="fr" href="https://kosmos.yeahborhood.com/fr/machines">
+<link rel="alternate" hreflang="x-default" href="https://kosmos.yeahborhood.com/machines">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Kosmos">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="Kosmos · Machines">
+<meta property="og:description" content="The canonical engines and machines — how each works, its cycle drawn as a p–V loop, efficiency, materials and inventors.">
+<meta property="og:url" content="https://kosmos.yeahborhood.com/machines">
+<meta property="og:image" content="https://kosmos.yeahborhood.com/assets/kosmos-banner-v2.webp">
+<meta property="og:image:width" content="1800">
+<meta property="og:image:height" content="514">
+<meta name="twitter:card" content="summary_large_image">
+<!--/khead-->
 <title>Kosmos · Machines</title>
 <style>
   :root {
@@ -238,16 +258,320 @@
   .diag ol { margin: 8px 0 0; padding-left: 0; list-style: none; font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; color: var(--ink-2); line-height: 1.5; }
   .diag .note { font-size: 10.5px; color: var(--muted); margin: 6px 0 0; line-height: 1.45; }
 
-  .klang { position: fixed; top: 9px; right: 12px; z-index: 60; display: flex; gap: 0; border: 1px solid var(--hairline); border-radius: 99px; background: color-mix(in oklab, var(--panel) 88%, transparent); backdrop-filter: blur(4px); overflow: hidden; font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; letter-spacing: 0.08em; }
-  .klang a { color: var(--muted); text-decoration: none; padding: 4px 9px; }
-  .klang a.on { color: var(--page); background: var(--ink); }
-  .klang a:hover:not(.on) { color: var(--ink); }
-  @media print { .klang { display: none; } }
+
+  /* ---- the shared header (scripts/chrome.py). Relies only on the theme variables every
+     page defines: --page --panel --ink --ink-2 --muted --hairline --ring ---- */
+  .khdr {
+    position: relative;
+    z-index: 50;
+    margin: -6px 0 18px;
+    padding: 4px 0 8px;
+    border-bottom: 1px solid var(--hairline);
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  .khdr[data-page="home"] { margin-bottom: 14px; }
+  .kh-row { display: flex; align-items: center; gap: 10px 14px; flex-wrap: wrap; }
+  .kh-crumb {
+    display: flex; align-items: baseline; gap: 8px; min-width: 0; flex: 1 1 auto;
+    font: 11px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted);
+  }
+  .kh-brand { color: var(--ink); text-decoration: none; font-weight: 700; letter-spacing: 0.22em; flex: none; }
+  .kh-brand:hover { color: var(--ink-2); }
+  .kh-cur { color: var(--ink); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .kh-tools { display: flex; align-items: center; gap: 8px; margin-left: auto; flex-wrap: wrap; }
+
+  .kh-search { position: relative; }
+  .kh-q {
+    width: clamp(160px, 22vw, 320px);
+    border: 1px solid var(--hairline); border-radius: 8px;
+    background: var(--panel); color: var(--ink);
+    font: 13px system-ui, -apple-system, "Segoe UI", sans-serif;
+    padding: 6px 10px;
+  }
+  .kh-q::placeholder { color: var(--muted); }
+  .kh-q:focus { outline: 2px solid var(--ring); outline-offset: 1px; }
+  .kh-results {
+    position: absolute; right: 0; top: calc(100% + 6px); z-index: 60;
+    width: min(92vw, 560px);
+    background: var(--panel); border: 1px solid var(--hairline); border-radius: 10px;
+    box-shadow: 0 12px 34px rgba(0, 0, 0, 0.18);
+    max-height: min(70vh, 600px); overflow-y: auto; padding: 6px 0;
+    text-align: left;
+  }
+  .kh-results[hidden] { display: none; }
+  .kh-rgroup { padding: 4px 0 2px; }
+  .kh-rgroup + .kh-rgroup { border-top: 1px solid var(--hairline); margin-top: 4px; }
+  .kh-rhead {
+    display: flex; align-items: center; gap: 7px; padding: 4px 14px 3px;
+    font: 9.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted);
+  }
+  .kh-rhead .kh-dot { width: 7px; height: 7px; border-radius: 50%; flex: none; }
+  .kh-rhead .kh-n { margin-left: auto; letter-spacing: 0; }
+  .kh-rrow { display: grid; grid-template-columns: 1fr; gap: 1px; padding: 6px 14px; text-decoration: none; color: var(--ink); cursor: pointer; }
+  .kh-rrow:hover, .kh-rrow[aria-selected="true"] { background: color-mix(in oklab, var(--ink) 6%, var(--panel)); }
+  .kh-rn { font-size: 13.5px; font-weight: 600; display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+  .kh-rn mark { background: color-mix(in oklab, var(--heat, var(--ink-2)) 28%, transparent); color: inherit; border-radius: 2px; padding: 0 1px; }
+  .kh-rs { font: 11px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+  .kh-rt { font-size: 11.5px; color: var(--muted); line-height: 1.4; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+  .kh-rmore { padding: 3px 14px 6px; font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; color: var(--muted); }
+  .kh-rempty, .kh-rfoot { padding: 10px 14px; font-size: 12px; color: var(--muted); }
+  .kh-rfoot { border-top: 1px solid var(--hairline); font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; }
+
+  .kh-menu {
+    appearance: none; cursor: pointer;
+    border: 1px solid var(--hairline); border-radius: 8px;
+    background: var(--panel); color: var(--ink-2);
+    font: 11px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 6px 10px;
+  }
+  .kh-menu::after { content: " ▾"; color: var(--muted); }
+  .kh-menu[aria-expanded="true"] { color: var(--ink); border-color: var(--ink-2); }
+  .kh-menu[aria-expanded="true"]::after { content: " ▴"; }
+  .kh-menu:hover { color: var(--ink); }
+
+  .khdr .klang {
+    display: flex; gap: 0; overflow: hidden; flex: none;
+    border: 1px solid var(--hairline); border-radius: 99px; background: var(--panel);
+    font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; letter-spacing: 0.08em;
+  }
+  .khdr .klang a { color: var(--muted); text-decoration: none; padding: 5px 9px; }
+  .khdr .klang a.on { color: var(--page); background: var(--ink); }
+  .khdr .klang a:hover:not(.on) { color: var(--ink); }
+
+  .kh-panel {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 14px 24px;
+    margin-top: 10px; padding: 12px 0 4px;
+    border-top: 1px solid var(--hairline);
+  }
+  .kh-panel[hidden] { display: none; }
+  .kh-ghead {
+    font: 700 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted);
+    margin: 0 0 4px;
+  }
+  .kh-list { list-style: none; margin: 0; padding: 0; }
+  .kh-list a { display: block; padding: 4px 0; color: var(--ink-2); text-decoration: none; font-size: 13.5px; line-height: 1.35; }
+  .kh-list a:hover { color: var(--ink); }
+  .kh-list a[aria-current="page"] { color: var(--ink); font-weight: 600; }
+  .kh-list a[aria-current="page"] div::before { content: "› "; color: var(--muted); }
+
+  @media (max-width: 720px) {
+    .kh-tools { margin-left: 0; width: 100%; }
+    .kh-search { flex: 1 1 100%; order: 3; }
+    .kh-q { width: 100%; }
+    .kh-results { left: 0; right: 0; width: auto; }
+    .kh-panel { grid-template-columns: 1fr 1fr; gap: 12px 16px; }
+  }
+  @media (max-width: 440px) { .kh-panel { grid-template-columns: 1fr; } }
+  @media print { .khdr { display: none; } }
 </style>
-<div class="klang" aria-label="Language · Langue"><a href="/machines" hreflang="en" lang="en" class="on">EN</a><a href="/fr/machines" hreflang="fr" lang="fr">FR</a></div>
+<!--kchrome--><header class="khdr" data-page="machines">
+<div class="kh-row">
+<nav class="kh-crumb" aria-label="Kosmos"><a class="kh-brand" href="/"><div>KOSMOS</div></a><span class="kh-sep" aria-hidden="true">/</span><div class="kh-cur">Machines</div></nav>
+<div class="kh-tools"><div class="kh-search"><input class="kh-q" id="kh-q" type="search" autocomplete="off" spellcheck="false" placeholder="search Kosmos…" aria-label="Search Kosmos" aria-controls="kh-results" aria-expanded="false"><div class="kh-results" id="kh-results" role="listbox" hidden></div></div><button class="kh-menu" type="button" aria-expanded="false" aria-controls="kh-panel">Sections</button><div class="klang" aria-label="Language · Langue"><a href="/machines" hreflang="en" lang="en" class="on"><div>EN</div></a><a href="/fr/machines" hreflang="fr" lang="fr"><div>FR</div></a></div></div>
+</div>
+<nav class="kh-panel" id="kh-panel" aria-label="Sections" hidden><div class="kh-group"><div class="kh-ghead">Matter &amp; Earth</div><ul class="kh-list"><li><a href="/elements"><div>Periodic Table</div></a></li><li><a href="/minerals"><div>Minerals &amp; Gemstones</div></a></li><li><a href="/mines"><div>Mines &amp; Extraction</div></a></li><li><a href="/impacts"><div>Mining Impacts</div></a></li><li><a href="/life"><div>Life</div></a></li></ul></div><div class="kh-group"><div class="kh-ghead">Cosmos &amp; Physics</div><ul class="kh-list"><li><a href="/cosmos"><div>Cosmic Exploration</div></a></li><li><a href="/forces"><div>Forces</div></a></li><li><a href="/theories"><div>Theories</div></a></li><li><a href="/universe"><div>The Universe in Three Dimensions</div></a></li><li><a href="/solar"><div>The Solar System, Running</div></a></li><li><a href="/scales"><div>The Ladder of Scale</div></a></li><li><a href="/timeline"><div>Timeline of the Universe</div></a></li></ul></div><div class="kh-group"><div class="kh-ghead">Making &amp; Doing</div><ul class="kh-list"><li><a href="/machines" aria-current="page"><div>Machines</div></a></li><li><a href="/skills"><div>Skills</div></a></li><li><a href="/billiards"><div>Billiards</div></a></li></ul></div><div class="kh-group"><div class="kh-ghead">Reference</div><ul class="kh-list"><li><a href="/equations"><div>Equations</div></a></li><li><a href="/constants"><div>Constants &amp; Units</div></a></li><li><a href="/glossary"><div>Glossary</div></a></li><li><a href="/explainers"><div>Explainers</div></a></li></ul></div></nav>
+</header><!--/kchrome-->
+<script>
+// ---- the shared header (scripts/chrome.py): the sections panel, and one search engine
+// for every page. The index (/search.json) is fetched on the first keystroke, never on
+// load. KosmosSearch.attach() wires an input + results box; the home page's hero search
+// uses it too, so there is one scorer and one renderer for the whole site.
+window.KosmosSearch = (() => {
+  const KINDS = {
+    page:           ['section',       'var(--ink-2)'],
+    element:        ['elements',      'var(--c-blue)'],
+    mineral:        ['minerals',      'var(--c-teal)'],
+    gemstone:       ['gemstones',     'var(--c-teal)'],
+    equation:       ['equations',     'var(--c-amber)'],
+    constant:       ['constants',     'var(--c-teal)'],
+    unit:           ['units',         'var(--c-teal)'],
+    theory:         ['theories',      'var(--c-pink)'],
+    event:          ['timeline',      'var(--c-bronze)'],
+    researcher:     ['researchers',   'var(--c-violet)'],
+    discovery:      ['discoveries',   'var(--c-cyan)'],
+    observatory:    ['observatories', 'var(--c-bronze)'],
+    mission:        ['missions',      'var(--c-blue)'],
+    instrument:     ['instruments',   'var(--c-violet)'],
+    object:         ['objects',       'var(--c-amber)'],
+    'spectral type':['spectral types','var(--c-violet)'],
+    'object class': ['object classes','var(--c-violet)'],
+    mine:           ['mines',         'var(--c-bronze)'],
+    machine:        ['machines',      'var(--c-amber)'],
+    skill:          ['skills',        'var(--c-green)'],
+    term:           ['glossary',      'var(--c-slate)'],
+    explainer:      ['explainers',    'var(--c-red)'],
+    impact:         ['impacts',       'var(--c-cyan)'],
+    life:           ['life',          'var(--c-green)'],
+    force:          ['forces',        'var(--c-red)'],
+  };
+  const KIND_ORDER = Object.keys(KINDS);
+  // the French mirror: every result stays inside /fr/
+  const LANG_PREFIX = document.documentElement.lang === 'fr' ? '/fr' : '';
+
+  // NFKD, not NFD: it also folds subscripts and superscripts, so "H₀" is searchable as "h0"
+  const fold = (s) => (s || '').toLowerCase().normalize('NFKD').replace(/[\u0300-\u036f]/g, '');
+  const words = (s) => s.split(/[^a-z0-9]+/).filter(Boolean);
+
+  let INDEX = null, loading = null;
+
+  function load(stat) {
+    if (INDEX) return Promise.resolve(INDEX);
+    if (loading) return loading;
+    if (stat) stat.textContent = 'loading…';
+    loading = fetch('/search.json').then((r) => r.json()).then((d) => {
+      INDEX = d.items.map(([kind, name, sub, text, href]) => ({
+        kind, name, sub, text, href,
+        fn: fold(name), fs: fold(sub), ft: fold(text),
+      }));
+      if (stat) stat.textContent = `${INDEX.length.toLocaleString('en')} entries`;
+      return INDEX;
+    }).catch(() => { if (stat) stat.textContent = 'index unavailable'; loading = null; });
+    return loading;
+  }
+
+  function score(it, tokens) {
+    let s = 0;
+    for (const t of tokens) {
+      if (it.fn === t) s += 12;                                  // "gold" → Gold
+      else if (words(it.fn).includes(t)) s += 10;                // "einstein" → Albert Einstein, not Einsteinium
+      else if (words(it.fs).includes(t)) s += 10;                // "fe" → Iron: the symbol lives in the subtitle
+      else if (it.fn.startsWith(t)) s += 8;
+      else if (words(it.fn).some((w) => w.startsWith(t))) s += 6;
+      else if (it.fn.includes(t)) s += 4;
+      else if (it.fs.includes(t)) s += 2.5;
+      else if (it.ft.includes(t)) s += 1;
+      else return 0;                                             // every token must hit somewhere
+    }
+    if (it.kind === 'page') s += 1.5;      // a section is usually what a one-word query means
+    return s + Math.max(0, 2 - it.fn.length / 30);   // nudge shorter names up on ties
+  }
+
+  function highlight(name, tokens) {
+    const el = document.createElement('span');
+    const f = fold(name);
+    // mark the first token's first occurrence — enough to show why it matched.
+    // Folding can change the string length (ligatures, ℃ → °C); only mark when it did not.
+    const t = tokens.find((x) => f.includes(x));
+    const i = t && f.length === name.length ? f.indexOf(t) : -1;
+    if (i < 0) { el.textContent = name; return el; }
+    el.append(name.slice(0, i));
+    const m = document.createElement('mark'); m.textContent = name.slice(i, i + t.length); el.appendChild(m);
+    el.append(name.slice(i + t.length));
+    return el;
+  }
+
+  // input: the <input>; box: the results container; stat: an optional element that
+  // shows the index size; prefix: class prefix for the rows ('' on home, 'kh-' in the
+  // header); shortcut: whether "/" focuses this box (home only — other pages have their
+  // own filter boxes on that key)
+  function attach({ input, box, stat = null, prefix = '', shortcut = false }) {
+    const PER_GROUP = 5;
+    const q = input;
+    const cls = (n) => prefix + n;
+    let rows = [], active = -1, timer = null;
+
+    function close() { box.hidden = true; q.setAttribute('aria-expanded', 'false'); }
+
+    function render(query) {
+      const tokens = fold(query).split(/\s+/).filter(Boolean);
+      box.textContent = ''; rows = []; active = -1;
+      if (!tokens.length || !INDEX) { close(); return; }
+      const hits = [];
+      for (const it of INDEX) { const sc = score(it, tokens); if (sc > 0) hits.push([sc, it]); }
+      hits.sort((a, b) => b[0] - a[0] || a[1].name.localeCompare(b[1].name));
+      box.hidden = false; q.setAttribute('aria-expanded', 'true');
+      if (!hits.length) {
+        const e = document.createElement('div'); e.className = cls('rempty'); e.textContent = `Nothing matches “${query.trim()}”.`;
+        box.appendChild(e); return;
+      }
+      const groups = new Map();
+      for (const [, it] of hits) { if (!groups.has(it.kind)) groups.set(it.kind, []); groups.get(it.kind).push(it); }
+      for (const kind of KIND_ORDER) {
+        const list = groups.get(kind); if (!list) continue;
+        const [label, color] = KINDS[kind];
+        const g = document.createElement('div'); g.className = cls('rgroup');
+        const h = document.createElement('div'); h.className = cls('rhead');
+        const dot = document.createElement('span'); dot.className = cls('dot'); dot.style.background = color;
+        const n = document.createElement('span'); n.className = cls('n'); n.textContent = list.length;
+        h.append(dot, document.createTextNode(label), n);
+        g.appendChild(h);
+        for (const it of list.slice(0, PER_GROUP)) {
+          const a = document.createElement('a');
+          a.className = cls('rrow'); a.href = LANG_PREFIX + it.href; a.setAttribute('role', 'option'); a.dataset.i = rows.length;
+          const rn = document.createElement('div'); rn.className = cls('rn'); rn.appendChild(highlight(it.name, tokens));
+          if (it.sub) { const rs = document.createElement('span'); rs.className = cls('rs'); rs.textContent = it.sub; rn.appendChild(rs); }
+          a.appendChild(rn);
+          if (it.text) { const rt = document.createElement('div'); rt.className = cls('rt'); rt.textContent = it.text; a.appendChild(rt); }
+          a.addEventListener('mousemove', () => setActive(+a.dataset.i));
+          g.appendChild(a); rows.push(a);
+        }
+        if (list.length > PER_GROUP) {
+          const m = document.createElement('div'); m.className = cls('rmore');
+          m.textContent = `+ ${list.length - PER_GROUP} more ${label} — keep typing to narrow`;
+          g.appendChild(m);
+        }
+        box.appendChild(g);
+      }
+      const f = document.createElement('div'); f.className = cls('rfoot');
+      f.textContent = `${hits.length.toLocaleString('en')} result${hits.length === 1 ? '' : 's'} across ${groups.size} section${groups.size === 1 ? '' : 's'} · ↑↓ to move · Enter to open · Esc to clear`;
+      box.appendChild(f);
+    }
+
+    function setActive(i) {
+      if (active >= 0 && rows[active]) rows[active].setAttribute('aria-selected', 'false');
+      active = i;
+      if (active >= 0 && rows[active]) { rows[active].setAttribute('aria-selected', 'true'); rows[active].scrollIntoView({ block: 'nearest' }); }
+    }
+
+    q.addEventListener('input', () => {
+      clearTimeout(timer);
+      const v = q.value;
+      if (!v.trim()) { render(''); return; }
+      if (INDEX) { timer = setTimeout(() => render(v), 40); return; }   // loaded: debounce
+      load(stat).then(() => { if (q.value === v) render(v); });        // loading: render the latest query once it lands
+    });
+    q.addEventListener('focus', () => { load(stat); if (q.value.trim() && INDEX) render(q.value); });
+    q.addEventListener('keydown', (ev) => {
+      if (ev.key === 'ArrowDown') { ev.preventDefault(); if (rows.length) setActive(Math.min(rows.length - 1, active + 1)); }
+      else if (ev.key === 'ArrowUp') { ev.preventDefault(); if (rows.length) setActive(Math.max(0, active - 1)); }
+      else if (ev.key === 'Enter') { if (active >= 0 && rows[active]) { ev.preventDefault(); location.href = rows[active].href; } else if (rows.length) { ev.preventDefault(); location.href = rows[0].href; } }
+      else if (ev.key === 'Escape') { q.value = ''; render(''); q.blur(); }
+    });
+    if (shortcut) {
+      document.addEventListener('keydown', (ev) => {
+        if (ev.key === '/' && !ev.metaKey && !ev.ctrlKey && !ev.altKey && document.activeElement !== q
+            && !/^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement?.tagName || '')) {
+          ev.preventDefault(); q.focus();
+        }
+      });
+    }
+    document.addEventListener('click', (ev) => { if (!q.parentElement.contains(ev.target)) close(); });
+    return { render, load: () => load(stat) };
+  }
+
+  return { attach };
+})();
+
+(() => {
+  const hdr = document.querySelector('.khdr');
+  if (!hdr) return;
+  const btn = hdr.querySelector('.kh-menu'), panel = hdr.querySelector('.kh-panel');
+  const setOpen = (on) => { panel.hidden = !on; btn.setAttribute('aria-expanded', String(on)); };
+  btn.addEventListener('click', () => setOpen(panel.hidden));
+  document.addEventListener('keydown', (ev) => { if (ev.key === 'Escape' && !panel.hidden) { setOpen(false); btn.focus(); } });
+  document.addEventListener('click', (ev) => { if (!panel.hidden && !hdr.contains(ev.target)) setOpen(false); });
+  const q = hdr.querySelector('.kh-q');
+  if (q) KosmosSearch.attach({ input: q, box: hdr.querySelector('.kh-results'), prefix: 'kh-' });
+})();
+</script>
 <script>const VOCAB = window.__VOCAB__ || {}; const vocab = (s) => (s == null ? s : (VOCAB[s] || s));</script>
 
-<nav class="knav"><a href="/">KOSMOS</a><span>/</span><span class="cur">Machines</span></nav>
 <h1 class="ktitle">Machines</h1>
 <p class="klede">The engines and machines that turn heat, motion and chemistry into work and back — how each one does it, the cycle it runs on, what it manages to keep of the energy it is given, and what it is made of. Every heat engine here carries its cycle drawn on a p–V diagram: the area inside the loop is the work you get per cycle, and the shape is the whole story.</p>
 

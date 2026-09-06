@@ -334,7 +334,7 @@ def _js_spans(html: str, page: str):
             if (s, e) in seen:
                 continue
             seen.add((s, e)); out.append((s, e, t, lm.group(1)))
-        for extra in PAGE_JS_EXTRA.get(page, []):
+        for extra in PAGE_JS_EXTRA.get(page, []) + CHROME_JS_EXTRA:
             for lm in re.finditer(extra, body, re.S | re.M):
                 s, e, txt = base + lm.start(1), base + lm.end(1), lm.group(1)
                 if (s, e) in seen or not HAS_LETTERS.search(txt):
@@ -345,8 +345,10 @@ def _js_spans(html: str, page: str):
 
 
 # per-template literal spots the generic contexts cannot see: group 1 is the text
+# web/chrome.js is on every page: the KINDS map's group labels ("elements", "spectral
+# types") are what the search results are headed by
+CHROME_JS_EXTRA = [r"""^\s+(?:[a-z]+|'[a-z ]+'):\s*\['([^']+)',\s*'var\(--"""]
 PAGE_JS_EXTRA = {
-    "home.html": [r"""^\s+(?:[a-z]+|'[a-z ]+'):\s*\['([^']+)',\s*'var\(--"""],          # KINDS labels
     "equations.html": [r"""\b(?:object|spectral|instrument|theory):\s*'([^']+)'""",   # KIND_LABEL
                        r"""const SORTS = \{ year: '([^']+)'""", r"""\bdepth: '([^']+)' \}""",
                        r"""lv\.textContent = d === 0 \? '([^']+)'""",
@@ -517,6 +519,11 @@ def extract(html: str, page: str):
     m = re.search(r"<title>(.*?)</title>", html, re.S)
     if m and HAS_LETTERS.search(m.group(1)):
         spans.append((m.start(1), m.end(1), m.group(1), None))
+    # the description meta (scripts/chrome.py) is the one content= attribute a reader sees —
+    # in a link preview and a search result
+    m = re.search(r'<meta name="description" content="([^"]*)"', html)
+    if m and HAS_LETTERS.search(m.group(1)):
+        spans.append((m.start(1), m.end(1), m.group(1), '"attr'))
     strings = vocab_values(html)          # the filter vocabulary is translated for display only
     for jm in JSON_BLOCK.finditer(html):
         try:
@@ -597,6 +604,13 @@ def apply(html: str, page: str, tr: Translator) -> str:
         out = out.replace("</style>", "</style>\n<script>window.__VOCAB__ = "
                           + json.dumps(vocab, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
                           + ";</script>", 1)
+    if "<!--khead-->" in out:
+        # the shared chrome (scripts/chrome.py) is regenerated in French from the same
+        # functions that wrote the English one, after the link rewriting above — its EN
+        # link in the switch must stay an EN link
+        import chrome
+        t = re.search(r"<title>(.*?)</title>", html, re.S)
+        return chrome.replace_blocks(out, page, "fr", tr.lookup(t.group(1)) if t else "Kosmos", tr.lookup)
     out = add_switch(out, page, "fr")
     return '<!doctype html><html lang="fr"><meta charset="utf-8">\n' + out
 

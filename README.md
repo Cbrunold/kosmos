@@ -34,8 +34,14 @@ truth for code and the normalised data snapshots. Sync is one-way, Notion → re
 ## Layout
 
 ```
-server.js                     Node server: static pages + POST /api/analyze
-public/                       Built pages + search.json (generated — see scripts/build.py)
+server.js                     Node server: static pages, sitemap.xml, robots.txt + POST /api/analyze
+public/                       Built pages, search.json, sitemap.xml, robots.txt (generated — see scripts/build.py)
+scripts/chrome.py             What every page shares, injected by build.py's emit(): the <head> a phone
+                              and a crawler need (viewport, description, canonical, hreflang, Open Graph),
+                              the header (breadcrumb, search box, the sections panel, EN · FR), and the
+                              sitemap. i18n.apply() regenerates it in French from the same functions.
+web/chrome.css, web/chrome.js The header's style, and the one search engine every page runs — the
+                              home page's hero search calls KosmosSearch.attach() too
 web/billiards.template.html   The shot lab: the billiards equations integrated in the browser (sliding→rolling,
                               restitution, throw with Alciatore's μ(v), cushion impulse) on the constants below
 web/                          Page sources: templates, shared.css, analyzer parts

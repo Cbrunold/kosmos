@@ -20,6 +20,8 @@ import shutil
 from collections import Counter, defaultdict
 from pathlib import Path
 
+import chrome
+
 ROOT = Path(__file__).resolve().parent.parent
 WEB = ROOT / "web"
 PUB = ROOT / "public"
@@ -29,6 +31,11 @@ SKY_FIELD = re.compile(r"Astronom|Astrophys|Cosmolog|Gravitat|Relativity|Celesti
 
 elements = json.load(open(ROOT / "data" / "chemistry" / "elements.json"))
 notion = json.load(open(ROOT / "data" / "notion-all.json"))
+# the newest edit anywhere in the data: the home footer, the search index and the
+# sitemap all quote it, so it is computed once
+SYNC_DATE = max([e["lastEdited"] for e in elements if e.get("lastEdited")]
+                + [r["lastEdited"] for rows in notion.values() for r in rows if r.get("lastEdited")],
+                default="?")[:10]
 
 
 def compact(obj) -> str:
@@ -100,6 +107,14 @@ def copy_assets():
     return n
 
 
+def emit(out: str, html: str):
+    """Every page leaves through here, so every page gets the shared chrome — the head a
+    phone and a crawler need, the header with the section nav and the search box."""
+    html = chrome.inject(html, out)
+    (PUB / out).write_text(html)
+    print(f"wrote {len(html):>7} bytes -> public/{out}")
+
+
 def write_page(template: str, out: str, data=None, extra: dict | None = None):
     tpl = (WEB / template).read_text()
     tpl = tpl.replace("__SHARED__", SHARED)
@@ -108,8 +123,7 @@ def write_page(template: str, out: str, data=None, extra: dict | None = None):
         tpl = tpl.replace("__DATA__", compact(data))
     for k, v in (extra or {}).items():
         tpl = tpl.replace(k, str(v))
-    (PUB / out).write_text(tpl)
-    print(f"wrote {len(tpl):>7} bytes -> public/{out}")
+    emit(out, tpl)
 
 
 # ---------------- periodic table (public/index.html) ----------------
@@ -136,8 +150,7 @@ def build_elements_page():
     tpl = tpl.replace("__EQUATIONS__", compact(eq_lookup))
     tpl = tpl.replace("__MINERALS__", compact(ELEMENT_MINERALS))
     tpl = tpl.replace("__MINESITES__", compact(mine_lookup()))
-    (PUB / "index.html").write_text(tpl)
-    print(f"wrote {len(tpl):>7} bytes -> public/index.html")
+    emit("index.html", tpl)
 
 
 # ---------------- element-name -> symbol mapping for minerals ----------------
@@ -1766,3 +1779,4 @@ if __name__ == "__main__":
                n_expl, n_expl_terms, n_imp, n_imp_terms, n_bill_eq, n_bill_skills)
     copy_assets()
     build_fr()
+    chrome.write_sitemap(PUB, SYNC_DATE)
