@@ -22,6 +22,8 @@ jobs:
         with:
           node-version: "22"
       - run: pip install pytest
+      # server.js imports the Anthropic SDK at load; the entity-URL test boots the real server
+      - run: npm ci --omit=dev
       - name: The committed pages are what the build makes
         run: |
           python3 scripts/build.py
