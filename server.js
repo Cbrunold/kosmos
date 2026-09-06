@@ -1,5 +1,6 @@
 import http from 'node:http';
 import { readFileSync, readdirSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { dirname, extname, join } from 'node:path';
 import Anthropic from '@anthropic-ai/sdk';
@@ -62,16 +63,20 @@ try {
 // PAGES and deploying the HTML to the wrong directory put the process into a
 // crash loop, and every other page went with it.
 const CONTENT = {};
+const ETAG = {};       // per route, from the bytes: a redeploy that changes nothing keeps the tag
 const missing = [];
+const etagOf = (buf) => '"' + createHash('sha1').update(buf).digest('base64url').slice(0, 22) + '"';
 for (const [route, file] of Object.entries(PAGES)) {
   try {
     CONTENT[route] = readFileSync(join(here, 'public', file));
+    ETAG[route] = etagOf(CONTENT[route]);
   } catch (e) {
     missing.push(`${route} (${file}: ${e.code || e.message})`);
   }
 }
 
 const STARTED_AT = Date.now();   // /health reports it, so a deploy can tell a fresh process from a stale one
+const LAST_MODIFIED = new Date(STARTED_AT).toUTCString();   // pages are loaded at boot, so that is when they changed
 const hasKey = Boolean(process.env.ANTHROPIC_API_KEY);
 const client = hasKey ? new Anthropic() : null;
 
@@ -179,11 +184,23 @@ async function analyze(imageB64, mediaType) {
 const server = http.createServer(async (req, res) => {
   const route = (req.url || '/').split('?')[0].replace(/\/$/, '') || '/';
   if ((req.method === 'GET' || req.method === 'HEAD') && CONTENT[route]) {
+    // no-cache means "ask before reusing", and the ETag is what makes asking cheap: a
+    // 345KB page a reader already has costs a 304 and nothing else. nginx turns the tag
+    // weak (W/) when it gzips the body, so the comparison ignores that prefix.
+    const tag = ETAG[route];
+    const given = (req.headers['if-none-match'] || '').split(',').map((s) => s.trim().replace(/^W\//, ''));
+    if (given.includes(tag)) {
+      res.writeHead(304, { 'ETag': tag, 'Cache-Control': 'no-cache' });
+      return res.end();
+    }
     res.writeHead(200, {
       'Content-Type': TYPE(PAGES[route]),
+      'Content-Length': CONTENT[route].length,
       'Cache-Control': 'no-cache',   // always revalidate so deploys show up immediately
+      'ETag': tag,
+      'Last-Modified': LAST_MODIFIED,
     });
-    return res.end(CONTENT[route]);
+    return res.end(req.method === 'HEAD' ? undefined : CONTENT[route]);
   }
   if ((req.method === 'GET' || req.method === 'HEAD') && ASSETS[route]) {
     const asset = ASSETS[route];

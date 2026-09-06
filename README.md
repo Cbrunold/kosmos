@@ -36,6 +36,10 @@ truth for code and the normalised data snapshots. Sync is one-way, Notion → re
 ```
 server.js                     Node server: static pages, sitemap.xml, robots.txt + POST /api/analyze
 public/                       Built pages, search.json, sitemap.xml, robots.txt (generated — see scripts/build.py)
+scripts/readership.py         Who reads the site, from nginx's own access log (deploy/nginx-kosmos.conf
+                              writes /var/log/nginx/kosmos.access.log): views and visitors by day, pages,
+                              languages, phone share, referrers. Bots dropped, no address printed.
+                              Run it on the VPS:  ssh root@<vps> 'python3 /srv/kosmos/scripts/readership.py --days 30'
 scripts/chrome.py             What every page shares, injected by build.py's emit(): the <head> a phone
                               and a crawler need (viewport, description, canonical, hreflang, Open Graph),
                               the header (breadcrumb, search box, the sections panel, EN · FR), and the
@@ -220,6 +224,12 @@ python3 scripts/build.py
 Runs on the yeahborhood VPS as `kosmos.service` (port 3002) behind nginx with
 its own Let's Encrypt cert — configs in `deploy/`. Secrets live in
 `/opt/kosmos/.env` (see `.env.example`), never in this repo.
+
+Pages are served `Cache-Control: no-cache` with an ETag from their bytes, so a
+browser that already has a page gets a 304 instead of the 200–350KB again; a
+deploy that changes a page changes its tag. The nginx site config is not shipped
+by `deploy.sh` — after editing `deploy/nginx-kosmos.conf`, copy it to
+`/etc/nginx/sites-available/kosmos` on the VPS, `nginx -t`, `systemctl reload nginx`.
 
 To ship an update, from the VPS clone at `/srv/kosmos`:
 
