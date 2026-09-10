@@ -848,8 +848,8 @@ def build_skills_page():
 # ---------------- billiards ----------------
 def build_billiards_page():
     """The physics of the pool table: the lab runs the equations in the browser; the page
-    lists the Billiards-field rows plus the two Mechanics rows the game needs, the three
-    Cue sports skills, and the constants table that quotes pool-sauce-engine."""
+    lists the Billiards-field rows plus the two Mechanics rows the game needs, the Cue
+    sports skills (one per tome), and the constants table that quotes pool-sauce-engine."""
     GENERAL = {"Coefficient of Restitution", "Rolling Resistance"}
     eqs = [e for e in notion.get("equations", [])
            if e.get("Name") and (e.get("Field") == "Billiards" or e["Name"] in GENERAL)]

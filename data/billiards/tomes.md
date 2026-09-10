@@ -247,12 +247,13 @@ or at least a rule for a ball that arrives airborne. (1) and (2) give 10.1–10.
 | Layouts: nine-ball rack, eight-ball rack; the run-out | VIII, IX |
 | Conditions: clean hit, no rail, kick first, three rails, called pocket, pocket speed, carom, nothing else moves, safety | VI, VII, VIII |
 
-## Skills DB rows the tomes ask for
+## Skills DB rows
 
-Seven new rows in the Cue sports category, one per tome that has no skill page yet
-(Tome 0 *The Stroke*; V *The Bank*; VI *The Kick*; VII *Combinations and Caroms*;
-VIII *The Safety*; IX *The Break*; X *Massé and Jump* — the last flagged coming
-soon), plus a *Tome* select property on the Skills DB so the shelf can group them.
-The three existing rows keep their names and take Tome I–IV. The seed lives in
-`scripts/seed_billiards.py`, which is idempotent; the rows would be appended to its
-`SKILLS` list in the same ten-field shape.
+Ten rows in the Cue sports category, one per tome, all in `scripts/seed_billiards.py`:
+Tome 0 *The Stroke*; I *Follow, Draw and Stun* (with III); II *The Cut Shot*;
+IV *Using Side*; V *The Bank*; VI *The Kick*; VII *Combinations and Caroms*;
+VIII *The Safety*; IX *The Break*; X *Massé and Jump* (flagged as the tome the lab
+does not integrate). Each row carries a *Tome* select so the shelf can group them.
+The seed is idempotent and backfills only empty fields, so a row edited by hand in
+Notion keeps its edits. Run on the VPS: `./deploy.sh seed_billiards`, then
+`fetch_all` and `build`.

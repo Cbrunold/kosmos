@@ -18,7 +18,7 @@ truth for code and the normalised data snapshots. Sync is one-way, Notion → re
 | `/forces`    | The four fundamental interactions |
 | `/mines`     | World map of ~90 flagship mines, and for each raw material its ore minerals, typical grade, concentration factor, and ore-to-product process |
 | `/machines`  | The canonical engines and machines — how each works, its cycle drawn as a p–V loop, efficiency, materials, inventors; cross-linked to equations, elements and skills |
-| `/skills`    | Hands-on techniques with the science behind them — tools, steps, safety, how it fails, how you know it worked; linked to elements, equations and machines. Includes three cue-sports skills that run on the billiards equations |
+| `/skills`    | Hands-on techniques with the science behind them — tools, steps, safety, how it fails, how you know it worked; linked to elements, equations and machines. Includes the cue-sports skills — one per tome of `data/billiards/tomes.md` — that run on the billiards equations |
 | `/billiards` | The physics of the pool table — a live shot lab (cut angle, speed, tip height, side, distance → tangent line, ghost ball, throw, slide-to-roll, stop distances), a cushion lab, the constants quoted from pool-sauce-engine, and the equations and skills it rests on |
 | `/glossary`  | The terms the site uses, defined once and traced at build time to every page whose text uses them |
 | `/explainers`| The people, channels and organisations that explain this material — with the glossary terms each covers, computed from the same matcher |
@@ -179,8 +179,10 @@ scripts/seed_billiards.py     The physics of the pool table — companion to the
                               spin, slide-to-roll, thirty-degree rule, cushion rebound, cue-to-ball
                               speed transfer in a Billiards field; restitution and rolling resistance
                               in Mechanics), all with Requires edges onto momentum, energy, friction,
-                              torque and projection; and three Skills in a Cue sports category (The
-                              Cut Shot, Follow Draw and Stun, Using Side). build.py attaches a lookup
+                              torque and projection; and ten Skills in a Cue sports category, one per
+                              tome of data/billiards/tomes.md (The Stroke, The Cut Shot, Follow Draw
+                              and Stun, Using Side, The Bank, The Kick, Combinations and Caroms, The
+                              Safety, The Break, Massé and Jump), each carrying its Tome. build.py attaches a lookup
                               table to the ninety-degree rule quoting poolsauce/constants.py, so the
                               shelf and the engine never disagree on a number
 scripts/seed_explainers.py    Creates + seeds Explainers [DB] (~40 people, channels and organisations
