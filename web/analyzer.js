@@ -119,6 +119,7 @@
     LENSES.analysis = {
       name: 'Analysis',
       seq: true,
+      absent: 'not in this object',
       solid: true,
       t: (e) => {
         const m = analysisMap[e.z];

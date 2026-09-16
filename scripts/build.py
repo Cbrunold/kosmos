@@ -2,7 +2,7 @@
 
     python3 scripts/build.py
 
-Inputs:  web/*.template.html + web/shared.css + web/analyzer.{css,html,js}
+Inputs:  web/*.template.html + web/shared.css + web/analyzer.{css,html,js} + web/molecule.{css,html,js}
          data/chemistry/elements.json   (scripts/fetch_elements.py)
          data/notion-all.json           (scripts/fetch_all.py)
 Outputs: public/index.html   (periodic table, served at /elements)
@@ -171,6 +171,10 @@ def build_elements_page():
     css = (WEB / "analyzer.css").read_text()
     html = (WEB / "analyzer.html").read_text()
     js = (WEB / "analyzer.js").read_text()
+    # the molecule view rides on the analyzer's scope (symToZ, analysisLensBtn), so it goes in after it
+    css += (WEB / "molecule.css").read_text()
+    html += "\n" + (WEB / "molecule.html").read_text()
+    js += (WEB / "molecule.js").read_text()
     for old, new in [
         ("q.addEventListener('input', paint);", "q.addEventListener('input', () => paint());"),
         ("matchMedia('(prefers-color-scheme: dark)').addEventListener('change', paint);",
@@ -189,6 +193,7 @@ def build_elements_page():
     tpl = tpl.replace("__EQUATIONS__", compact(eq_lookup))
     tpl = tpl.replace("__MINERALS__", compact(ELEMENT_MINERALS))
     tpl = tpl.replace("__MINESITES__", compact(mine_lookup()))
+    tpl = tpl.replace("__MOLECULES__", compact(json.loads((ROOT / "data" / "chemistry" / "molecules.json").read_text())))
     emit("index.html", tpl)
 
 

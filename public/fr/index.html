@@ -503,6 +503,113 @@
     @keyframes adots { 0% { content: ''; } 25% { content: '.'; } 50% { content: '..'; } 75% { content: '...'; } }
   }
 
+  /* ---------- molecule ---------- */
+  .mstrip {
+    display: none;
+    background: var(--panel);
+    border: 1px solid var(--hairline);
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 12px;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .mstrip.on { display: flex; }
+  .mhead { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
+  .mlabel {
+    font: 11px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .mformula, .mpick {
+    background: var(--page);
+    border: 1px solid var(--hairline);
+    border-radius: 6px;
+    padding: 6px 10px;
+    font: 13px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    color: var(--ink);
+  }
+  .mformula { width: 200px; }
+  .mformula::placeholder { color: var(--muted); }
+  .mpick { max-width: 100%; }
+  .mclear {
+    font: 11px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    background: transparent;
+    border: 1px solid var(--hairline);
+    color: var(--ink-2);
+    border-radius: 6px;
+    padding: 4px 9px;
+    cursor: pointer;
+    margin-left: auto;
+  }
+  .mbody { display: flex; flex-wrap: wrap; gap: 16px 28px; align-items: flex-start; }
+  .mdraw { flex: 0 1 auto; max-width: 100%; }
+  .mdraw svg { max-width: 100%; height: auto; display: block; }
+  .mdraw line { stroke: var(--ink); stroke-width: 1.6; stroke-linecap: round; }
+  .matom {
+    font: 12.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    fill: var(--ink);
+    paint-order: stroke;
+    stroke: var(--panel);
+    stroke-width: 5px;
+    stroke-linejoin: round;
+    text-anchor: middle;
+    dominant-baseline: central;
+    cursor: pointer;
+  }
+  .matom:hover { fill: var(--heat); }
+  .mnodraw { font-size: 11px; color: var(--muted); max-width: 220px; line-height: 1.5; margin: 0; }
+  .mmain { flex: 1 1 300px; min-width: 260px; }
+  .mname {
+    font: 700 16px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    margin: 0 0 2px;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .mform { font-weight: 400; font-size: 13px; color: var(--ink-2); }
+  .mkind {
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border: 1px solid var(--hairline);
+    border-radius: 99px;
+    padding: 2px 8px;
+    color: var(--ink-2);
+  }
+  .mkind:empty { display: none; }
+  .mnote { font-size: 13px; color: var(--ink-2); margin: 2px 0 10px; line-height: 1.5; }
+  .mcomp { display: flex; flex-direction: column; gap: 6px; max-width: 440px; }
+  .mel {
+    display: grid;
+    grid-template-columns: 2.4em 1fr auto auto;
+    gap: 0 10px;
+    align-items: baseline;
+    font-size: 11.5px;
+    color: var(--ink-2);
+  }
+  .mel .msym {
+    font: 700 12px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    color: var(--ink);
+    background: none;
+    border: 0;
+    padding: 0;
+    text-align: left;
+    cursor: pointer;
+  }
+  .mel .msym:hover { color: var(--heat); }
+  .mel .mn, .mel .mpct { font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; font-variant-numeric: tabular-nums; }
+  .mel .mpct { color: var(--ink); }
+  .mel .mbar { grid-column: 1 / -1; height: 5px; border-radius: 3px; background: color-mix(in oklab, var(--heat) 14%, var(--panel)); margin-top: 2px; overflow: hidden; }
+  .mel .mbar > div { height: 100%; border-radius: 3px; background: var(--heat); }
+  .mstatus { font: 12px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; color: var(--ink-2); margin: 6px 0 0; }
+  .mstatus:empty { display: none; }
+  .mstatus.err { color: var(--cat-alkali); }
+  .mcaveat { font-size: 10.5px; color: var(--muted); line-height: 1.5; margin: 0; }
+
 
   /* ---- the shared header (scripts/chrome.py). Relies only on the theme variables every
      page defines: --page --panel --ink --ink-2 --muted --hairline --ring ---- */
@@ -850,6 +957,25 @@ window.KosmosSearch = (() => {
   <button class="aclear" id="aclear">analyse claire</button>
 </div>
 
+<div class="mstrip" id="mstrip">
+  <div class="mhead">
+    <label class="mlabel" for="mformula">molecule</label>
+    <input class="mformula" id="mformula" type="text" placeholder="a formula, e.g. C8H10N4O2" aria-label="Chemical formula" autocapitalize="off" autocorrect="off" spellcheck="false" />
+    <select class="mpick" id="mpick" aria-label="Pick a molecule from the shelf"></select>
+    <button class="mclear" id="mclear">clear molecule</button>
+  </div>
+  <div class="mbody">
+    <div class="mdraw" id="mdraw"></div>
+    <div class="mmain">
+      <p class="mname"><span id="mname"></span><span class="mform" id="mform"></span><span class="mkind" id="mkind"></span></p>
+      <p class="mnote" id="mnote"></p>
+      <div class="mcomp" id="mcomp"></div>
+      <p class="mstatus" id="mstatus"></p>
+    </div>
+  </div>
+  <p class="mcaveat">A molecule is counted, not weighed: the shares are computed from the formula and the atomic masses in Notion. The structure is drawn for the molecules on the shelf; any formula lights the table.</p>
+</div>
+
 <div class="layout">
   <div>
     <div class="tablewrap">
@@ -869,6 +995,7 @@ window.KosmosSearch = (() => {
 <script id="minesites" type="application/json">{"3bee5275-7b5c-81f7-b056-f1265b55c1f9":{"name":"Nueva Victoria","country":"Chile","type":"Open pit","slug":"nueva-victoria"},"3bee5275-7b5c-8171-a45c-c59637b5d835":{"name":"Fugu","country":"China","type":"Quarry","slug":"fugu"},"3bee5275-7b5c-8168-8af2-dbc3caaebe88":{"name":"Spruce Pine","country":"United States","type":"Quarry","slug":"spruce-pine"},"3bee5275-7b5c-81da-979e-c811ab280533":{"name":"Ras Laffan","country":"Qatar","type":"Gas field","slug":"ras-laffan"},"3bee5275-7b5c-814b-9a71-c701da26de40":{"name":"Bush Dome / Cliffside","country":"United States","type":"Gas field","slug":"bush-dome-cliffside"},"3bee5275-7b5c-81f7-a941-c626c21adb59":{"name":"Cerrejón","country":"Colombia","type":"Open pit","slug":"cerrejon"},"3bee5275-7b5c-8113-bb94-f4b7400c56ee":{"name":"North Antelope Rochelle","country":"United States","type":"Open pit","slug":"north-antelope-rochelle"},"3bee5275-7b5c-81a7-a491-fdf0e6f9783f":{"name":"Mir","country":"Russia","type":"Open pit + underground","slug":"mir"},"3bee5275-7b5c-8120-86d2-d0a5b83b0ed6":{"name":"Jwaneng","country":"Botswana","type":"Open pit","slug":"jwaneng"},"3bee5275-7b5c-810a-ab20-c5f16ab16238":{"name":"Balama","country":"Mozambique","type":"Open pit","slug":"balama"},"3bee5275-7b5c-812c-a4b1-d601dd8e2499":{"name":"Las Cuevas","country":"Mexico","type":"Underground","slug":"las-cuevas"},"3bee5275-7b5c-8131-948e-f3a0eea5fcd9":{"name":"Kırka","country":"Turkey","type":"Open pit","slug":"k-rka"},"3bee5275-7b5c-81ee-bd64-de477b8c5efc":{"name":"Boron","country":"United States","type":"Open pit","slug":"boron"},"3bee5275-7b5c-81dd-bc54-fb731237f029":{"name":"Khouribga","country":"Morocco","type":"Open pit","slug":"khouribga"},"3bee5275-7b5c-8187-8388-fa6d9d177d23":{"name":"Esterhazy","country":"Canada","type":"Underground","slug":"esterhazy"},"3bee5275-7b5c-81a0-8320-ce5f2639933d":{"name":"Dead Sea Works","country":"Israel","type":"Brine","slug":"dead-sea-works"},"3bee5275-7b5c-8106-96f1-eec99cd209f3":{"name":"Goderich","country":"Canada","type":"Underground","slug":"goderich"},"3bee5275-7b5c-818b-961d-f897af1c78aa":{"name":"Panzhihua","country":"China","type":"Open pit","slug":"panzhihua"},"3bee5275-7b5c-8126-9e3c-ff170f3993ca":{"name":"Almadén","country":"Spain","type":"Underground","slug":"almaden"},"3bee5275-7b5c-81d1-a174-c43eb8675761":{"name":"Xikuangshan","country":"China","type":"Underground","slug":"xikuangshan"},"3bee5275-7b5c-8191-a78a-e6911ab5055e":{"name":"Spor Mountain","country":"United States","type":"Open pit","slug":"spor-mountain"},"3bee5275-7b5c-813c-b5ac-daff3fb5dfe1":{"name":"Araxá (CBMM)","country":"Brazil","type":"Open pit","slug":"araxa-cbmm"},"3bee5275-7b5c-8149-aa34-f898527be676":{"name":"Climax","country":"United States","type":"Open pit","slug":"climax"},"3bee5275-7b5c-8138-9286-f5323103ad82":{"name":"Shizhuyuan","country":"China","type":"Underground","slug":"shizhuyuan"},"3bee5275-7b5c-816e-b987-df42e30a7129":{"name":"San Rafael","country":"Peru","type":"Underground","slug":"san-rafael"},"3bee5275-7b5c-8199-97bd-ddee8f7631f2":{"name":"Bangka Island","country":"Indonesia","type":"Placer","slug":"bangka-island"},"3bee5275-7b5c-8142-990d-cfb611af4b00":{"name":"Ganzhou ionic clays","country":"China","type":"In-situ leach","slug":"ganzhou-ionic-clays"},"3bee5275-7b5c-814a-878f-e6fa2817545d":{"name":"Mount Weld","country":"Australia","type":"Open pit","slug":"mount-weld"},"3bee5275-7b5c-816f-8c7b-f5dbb2a14cec":{"name":"Mountain Pass","country":"United States","type":"Open pit","slug":"mountain-pass"},"3bee5275-7b5c-814e-918d-ca35cfdd4047":{"name":"Bayan Obo","country":"China","type":"Open pit","slug":"bayan-obo"},"3bee5275-7b5c-8134-a42b-d681a0525782":{"name":"Groote Eylandt","country":"Australia","type":"Open pit","slug":"groote-eylandt"},"3bee5275-7b5c-8173-b528-d27bea485edc":{"name":"Kalahari Manganese Field","country":"South Africa","type":"Open pit + underground","slug":"kalahari-manganese-field"},"3bee5275-7b5c-8164-a9aa-c919a3a49741":{"name":"Kemi","country":"Finland","type":"Open pit + underground","slug":"kemi"},"3bee5275-7b5c-81dd-84f2-d7b9910f7deb":{"name":"Stillwater","country":"United States","type":"Underground","slug":"stillwater"},"3bee5275-7b5c-817d-a0f2-ca413f71e1e8":{"name":"Mogalakwena","country":"South Africa","type":"Open pit","slug":"mogalakwena"},"3bee5275-7b5c-8122-a78b-fcd0cfe27d8d":{"name":"Impala Rustenburg","country":"South Africa","type":"Underground","slug":"impala-rustenburg"},"3bee5275-7b5c-81c7-946e-cccda7b7b5a7":{"name":"Tellnes","country":"Norway","type":"Open pit","slug":"tellnes"},"3bee5275-7b5c-8162-a7e0-ea61948a2e2f":{"name":"Richards Bay Minerals","country":"South Africa","type":"Placer","slug":"richards-bay-minerals"},"3bee5275-7b5c-81a7-b57d-eb04b5f0dc99":{"name":"Ranger","country":"Australia","type":"Open pit","slug":"ranger"},"3bee5275-7b5c-817a-b74f-eeb982035fd8":{"name":"Rössing","country":"Namibia","type":"Open pit","slug":"rossing"},"3bee5275-7b5c-8169-b370-f05654e9f931":{"name":"Inkai","country":"Kazakhstan","type":"In-situ leach","slug":"inkai"},"3bee5275-7b5c-8174-9c2c-f5100d350a10":{"name":"McArthur River","country":"Canada","type":"Underground","slug":"mcarthur-river"},"3bee5275-7b5c-8196-8550-f8fbc7679bfe":{"name":"Cigar Lake","country":"Canada","type":"Underground","slug":"cigar-lake"},"3bee5275-7b5c-8145-887e-e1ba9e82cd7b":{"name":"Pilgangoora","country":"Australia","type":"Open pit","slug":"pilgangoora"},"3bee5275-7b5c-8161-94ff-c9a7488b256c":{"name":"Salar de Uyuni","country":"Bolivia","type":"Brine","slug":"salar-de-uyuni"},"3bee5275-7b5c-812d-b6f6-c02538f7ea08":{"name":"Salar del Hombre Muerto","country":"Argentina","type":"Brine","slug":"salar-del-hombre-muerto"},"3bee5275-7b5c-8135-8833-c924537f4c7f":{"name":"Salar de Atacama","country":"Chile","type":"Brine","slug":"salar-de-atacama"},"3bee5275-7b5c-8166-b905-d2b886983458":{"name":"Greenbushes","country":"Australia","type":"Open pit","slug":"greenbushes"},"3bee5275-7b5c-8182-af80-e3cb14f04f3f":{"name":"Voisey's Bay","country":"Canada","type":"Open pit + underground","slug":"voisey-s-bay"},"3bee5275-7b5c-81c7-aeb0-c281b20393ad":{"name":"Tenke Fungurume","country":"DR Congo","type":"Open pit","slug":"tenke-fungurume"},"3bee5275-7b5c-81a0-b9e7-d53ba9b76fee":{"name":"Mutanda","country":"DR Congo","type":"Open pit","slug":"mutanda"},"3bee5275-7b5c-8192-acd7-c909142391fd":{"name":"Sorowako","country":"Indonesia","type":"Open pit","slug":"sorowako"},"3bee5275-7b5c-8150-83f1-ddd9a13482a5":{"name":"Sudbury Basin","country":"Canada","type":"Underground","slug":"sudbury-basin"},"3bee5275-7b5c-8192-a3ad-e6ccb1102b10":{"name":"Broken Hill","country":"Australia","type":"Underground","slug":"broken-hill"},"3bee5275-7b5c-81f5-81a3-dfd961fd3a84":{"name":"Mount Isa","country":"Australia","type":"Underground","slug":"mount-isa"},"3bee5275-7b5c-815b-b10f-e738a326858c":{"name":"Rampura Agucha","country":"India","type":"Open pit + underground","slug":"rampura-agucha"},"3bee5275-7b5c-81fa-a7e2-d89a26ed13ce":{"name":"Red Dog","country":"United States","type":"Open pit","slug":"red-dog"},"3bee5275-7b5c-8128-95c6-eb8988b57ae3":{"name":"Cerro Rico de Potosí","country":"Bolivia","type":"Underground","slug":"cerro-rico-de-potosi"},"3bee5275-7b5c-81f2-b39e-d6dcb0ba70a1":{"name":"Cannington","country":"Australia","type":"Underground","slug":"cannington"},"3bee5275-7b5c-817a-858d-c57826dc3d51":{"name":"Fresnillo","country":"Mexico","type":"Underground","slug":"fresnillo"},"3bee5275-7b5c-81b6-ba93-e90ba76981db":{"name":"Yanacocha","country":"Peru","type":"Open pit","slug":"yanacocha"},"3bee5275-7b5c-81bd-b39b-e30c9a001d17":{"name":"Pueblo Viejo","country":"Dominican Republic","type":"Open pit","slug":"pueblo-viejo"},"3bee5275-7b5c-810e-ae90-da3e201b37b1":{"name":"Kalgoorlie Super Pit","country":"Australia","type":"Open pit","slug":"kalgoorlie-super-pit"},"3bee5275-7b5c-8164-ac78-d05784be1db6":{"name":"Boddington","country":"Australia","type":"Open pit","slug":"boddington"},"3bee5275-7b5c-81a8-a80e-e47a4b753f20":{"name":"Mponeng","country":"South Africa","type":"Underground","slug":"mponeng"},"3bee5275-7b5c-81a9-9e35-c6f1457b184d":{"name":"Carlin Trend","country":"United States","type":"Open pit + underground","slug":"carlin-trend"},"3bee5275-7b5c-81f0-b6a5-fa6bb4918918":{"name":"Muruntau","country":"Uzbekistan","type":"Open pit","slug":"muruntau"},"3bee5275-7b5c-81cd-b867-eca84307d934":{"name":"Huntly","country":"Australia","type":"Open pit","slug":"huntly"},"3bee5275-7b5c-81df-b3c3-c95a50c0e5d9":{"name":"Sangarédi (CBG)","country":"Guinea","type":"Open pit","slug":"sangaredi-cbg"},"3bee5275-7b5c-811b-88a1-c2c47283945a":{"name":"Weipa","country":"Australia","type":"Open pit","slug":"weipa"},"3bee5275-7b5c-812f-9879-e8ca67acbef7":{"name":"Hull–Rust–Mahoning","country":"United States","type":"Open pit","slug":"hull-rust-mahoning"},"3bee5275-7b5c-8120-9d44-cc289023382b":{"name":"Sishen","country":"South Africa","type":"Open pit","slug":"sishen"},"3bee5275-7b5c-819d-aa57-ed5342b8b035":{"name":"Kiruna","country":"Sweden","type":"Underground","slug":"kiruna"},"3bee5275-7b5c-8163-96db-db4caf23a455":{"name":"Carajás","country":"Brazil","type":"Open pit","slug":"carajas"},"3bee5275-7b5c-817b-a63f-d9f08f0f2012":{"name":"Mount Whaleback","country":"Australia","type":"Open pit","slug":"mount-whaleback"},"3bee5275-7b5c-814b-9e75-e259f331d532":{"name":"Norilsk–Talnakh","country":"Russia","type":"Underground","slug":"norilsk-talnakh"},"3bee5275-7b5c-8190-abdd-e3a813b897d0":{"name":"Olympic Dam","country":"Australia","type":"Underground","slug":"olympic-dam"},"3bee5275-7b5c-8128-a37c-e67cf4fa9570":{"name":"Kansanshi","country":"Zambia","type":"Open pit","slug":"kansanshi"},"3bee5275-7b5c-81f4-8662-de282ed21aef":{"name":"Kamoa-Kakula","country":"DR Congo","type":"Underground","slug":"kamoa-kakula"},"3bee5275-7b5c-815f-940a-c87c82da4158":{"name":"Oyu Tolgoi","country":"Mongolia","type":"Open pit + underground","slug":"oyu-tolgoi"},"3bee5275-7b5c-810d-aaa2-e459f3621518":{"name":"Morenci","country":"United States","type":"Open pit","slug":"morenci"},"3bee5275-7b5c-81d0-9b5c-fbbae81593c1":{"name":"Cerro Verde","country":"Peru","type":"Open pit","slug":"cerro-verde"},"3bee5275-7b5c-814a-b45c-f590537961ca":{"name":"Collahuasi","country":"Chile","type":"Open pit","slug":"collahuasi"},"3bee5275-7b5c-8189-a40b-f4ef46fcb8cf":{"name":"El Teniente","country":"Chile","type":"Underground","slug":"el-teniente"},"3bee5275-7b5c-81b7-896b-f94437bf9b56":{"name":"Bingham Canyon","country":"United States","type":"Open pit","slug":"bingham-canyon"},"3bee5275-7b5c-8196-8029-e6037838827d":{"name":"Grasberg","country":"Indonesia","type":"Open pit + underground","slug":"grasberg"},"3bee5275-7b5c-8178-a933-dddafba56794":{"name":"Chuquicamata","country":"Chile","type":"Open pit + underground","slug":"chuquicamata"},"3bee5275-7b5c-8132-b745-da632bc4470d":{"name":"Escondida","country":"Chile","type":"Open pit","slug":"escondida"}}</script>
 <script id="eqdata" type="application/json">{"3c8e5275-7b5c-810a-9fc4-c8bb305d233d":{"name":"Figure de diffraction d'Airy","field":"Waves & Optics","slug":"airy-diffraction-pattern"},"3c8e5275-7b5c-81cc-be5f-d381c8363626":{"name":"Tenseur de courbure de Riemann","field":"General Relativity","slug":"riemann-curvature-tensor"},"3c8e5275-7b5c-8197-836a-e618ca31b4a6":{"name":"Relation de Hall–Petch","field":"Materials Science","slug":"hall-petch-relationship"},"3c8e5275-7b5c-81ec-8220-f054a89bfaad":{"name":"Paramètre de Zener–Hollomon","field":"Materials Science","slug":"zener-hollomon-parameter"},"3c0e5275-7b5c-81ee-8da9-eee84aad7342":{"name":"Transfert de vitesse de la queue à la bille","field":"Billiards","slug":"cue-to-ball-speed-transfer"},"3c0e5275-7b5c-81ae-acad-fd4201783434":{"name":"Rebond sur la bande","field":"Billiards","slug":"cushion-rebound"},"3c0e5275-7b5c-81bc-8253-e138a0e8e378":{"name":"Résistance au roulement","field":"Mechanics","slug":"rolling-resistance"},"3c0e5275-7b5c-815f-b1cf-f6b2424a10f5":{"name":"Règle des trente degrés","field":"Billiards","slug":"thirty-degree-rule"},"3c0e5275-7b5c-8152-92cb-d7594f28f2ed":{"name":"Du glissement au roulement","field":"Billiards","slug":"slide-to-roll"},"3c0e5275-7b5c-8110-a346-c3cff4711197":{"name":"Décentrage du procédé et effet","field":"Billiards","slug":"tip-offset-and-spin"},"3c0e5275-7b5c-81dc-9186-cd5eba92c994":{"name":"Déviation par frottement","field":"Billiards","slug":"throw"},"3c0e5275-7b5c-8130-ae4d-d929818a0900":{"name":"Coefficient de restitution","field":"Mechanics","slug":"coefficient-of-restitution"},"3c0e5275-7b5c-8177-a2c0-d20741b851cb":{"name":"Visée à la bille fantôme","field":"Billiards","slug":"ghost-ball-aim"},"3c0e5275-7b5c-81bd-8cd3-f9a2363b0c47":{"name":"Règle des quatre-vingt-dix degrés","field":"Billiards","slug":"ninety-degree-rule"},"3c0e5275-7b5c-813f-9898-c79e692ca2ac":{"name":"Échelle des décibels","field":"Acoustics","slug":"decibel-scale"},"3c0e5275-7b5c-81dc-8645-c26e23417e74":{"name":"Critère de Rayleigh","field":"Waves & Optics","slug":"rayleigh-criterion"},"3c0e5275-7b5c-81f6-8c60-d01cd1aa9b5c":{"name":"Loi de l'inverse du carré pour l'intensité","field":"Waves & Optics","slug":"inverse-square-law-of-intensity"},"3c0e5275-7b5c-8177-a2fb-fdc2170b2401":{"name":"Équation des lentilles minces","field":"Waves & Optics","slug":"thin-lens-equation"},"3c0e5275-7b5c-8163-bff2-f6cc55e9a90a":{"name":"Indice de réfraction","field":"Waves & Optics","slug":"refractive-index"},"3c0e5275-7b5c-81e9-81ee-c1b0db6c1249":{"name":"Ondes stationnaires","field":"Waves & Optics","slug":"standing-waves"},"3c0e5275-7b5c-81de-9fb6-f2ec61468944":{"name":"Vitesse de l'onde","field":"Waves & Optics","slug":"wave-speed"},"3c0e5275-7b5c-81ba-9b00-d48bf3cd9936":{"name":"Ascension capillaire","field":"Fluid Dynamics","slug":"capillary-rise"},"3c0e5275-7b5c-8168-9f58-e868d30da92e":{"name":"Puissance hydraulique","field":"Fluid Dynamics","slug":"hydraulic-power"},"3c0e5275-7b5c-815c-be60-d2a80ee3b254":{"name":"Loi de Torricelli","field":"Fluid Dynamics","slug":"torricelli-s-law"},"3c0e5275-7b5c-81d6-b1de-ec9081641f42":{"name":"Équation de la traînée","field":"Fluid Dynamics","slug":"drag-equation"},"3c0e5275-7b5c-81d7-bcee-d6ab697a2df4":{"name":"Loi de Darcy","field":"Fluid Dynamics","slug":"darcy-s-law"},"3c0e5275-7b5c-81e2-968a-c4a8f0f00d29":{"name":"Loi de Stokes","field":"Fluid Dynamics","slug":"stokes-law"},"3c0e5275-7b5c-811a-82e0-ea124828f2df":{"name":"Loi de Poiseuille","field":"Fluid Dynamics","slug":"poiseuille-s-law"},"3c0e5275-7b5c-81b6-92ea-fb5e9b0a93fd":{"name":"Nombre de Reynolds","field":"Fluid Dynamics","slug":"reynolds-number"},"3c0e5275-7b5c-81f8-8913-f1c2456baa65":{"name":"Viscosité newtonienne","field":"Fluid Dynamics","slug":"newtonian-viscosity"},"3c0e5275-7b5c-8112-9969-c5a9611652d7":{"name":"Principe d'Archimède","field":"Fluid Dynamics","slug":"archimedes-principle"},"3c0e5275-7b5c-815d-a2a4-fec7a35a5f85":{"name":"Principe de Pascal","field":"Fluid Dynamics","slug":"pascal-s-principle"},"3c0e5275-7b5c-812f-9604-d1e8723865d9":{"name":"Pression hydrostatique","field":"Fluid Dynamics","slug":"hydrostatic-pressure"},"3c0e5275-7b5c-8102-8d87-ff81e12cd1da":{"name":"Avantage mécanique","field":"Mechanics","slug":"mechanical-advantage"},"3c0e5275-7b5c-81e7-9f96-c61ef04a9ff8":{"name":"Frottement","field":"Mechanics","slug":"friction"},"3c0e5275-7b5c-8122-bd48-c1cd0374b2c8":{"name":"Période du pendule","field":"Mechanics","slug":"pendulum-period"},"3c0e5275-7b5c-81f4-8604-d240bc46db20":{"name":"Mouvement harmonique simple","field":"Mechanics","slug":"simple-harmonic-motion"},"3c0e5275-7b5c-811e-99c3-e3cea4de8e52":{"name":"Accélération centripète","field":"Mechanics","slug":"centripetal-acceleration"},"3c0e5275-7b5c-818b-97c8-d52070d30162":{"name":"Moment cinétique","field":"Mechanics","slug":"angular-momentum"},"3c0e5275-7b5c-8189-8821-d72a42bf2463":{"name":"Moment d'inertie","field":"Mechanics","slug":"moment-of-inertia"},"3c0e5275-7b5c-81a3-855d-d1d1c3821e1f":{"name":"Couple","field":"Mechanics","slug":"torque"},"3c0e5275-7b5c-814f-b307-cb20271300f2":{"name":"Puissance","field":"Mechanics","slug":"power"},"3c0e5275-7b5c-8173-a3f1-e7c3bd697946":{"name":"Conservation de l'énergie mécanique","field":"Mechanics","slug":"conservation-of-mechanical-energy"},"3c0e5275-7b5c-8127-b7f0-fb3910ec4fef":{"name":"Énergie potentielle gravitationnelle","field":"Mechanics","slug":"gravitational-potential-energy"},"3c0e5275-7b5c-81b5-88e0-fe12756b2975":{"name":"Théorème de l'énergie cinétique","field":"Mechanics","slug":"work-energy-theorem"},"3c0e5275-7b5c-813b-8d2e-da5484cf3b1c":{"name":"Énergie cinétique","field":"Mechanics","slug":"kinetic-energy"},"3c0e5275-7b5c-8129-9711-d8261f03fa1d":{"name":"Travail","field":"Mechanics","slug":"work"},"3c0e5275-7b5c-81e5-a7d4-c8ba74770b4d":{"name":"Conservation de la quantité de mouvement","field":"Mechanics","slug":"conservation-of-momentum"},"3c0e5275-7b5c-81c1-928d-f024f2a2484f":{"name":"Quantité de mouvement et impulsion","field":"Mechanics","slug":"momentum-and-impulse"},"3c0e5275-7b5c-8105-911a-ceb8efc94b5f":{"name":"Troisième loi de Newton","field":"Mechanics","slug":"newton-s-third-law"},"3c0e5275-7b5c-812b-8ec5-dae78166d0f7":{"name":"Équations de la cinématique","field":"Mechanics","slug":"kinematic-equations"},"3c0e5275-7b5c-8163-90ac-c7ca1f4531ec":{"name":"Théorème de Stokes","field":"Calculus","slug":"stokes-theorem"},"3c0e5275-7b5c-817d-9d6f-f7324c248b09":{"name":"Théorème de la divergence","field":"Calculus","slug":"divergence-theorem"},"3c0e5275-7b5c-81fb-9731-efee92cee113":{"name":"Gradient","field":"Calculus","slug":"gradient"},"3c0e5275-7b5c-8189-b7b0-c947c0dfc027":{"name":"Approximation des petits angles","field":"Calculus","slug":"small-angle-approximation"},"3c0e5275-7b5c-8152-b372-ca6ffe82ebd1":{"name":"Série de Taylor","field":"Calculus","slug":"taylor-series"},"3c0e5275-7b5c-812c-9b0d-ecfcca65b013":{"name":"Règle de la chaîne","field":"Calculus","slug":"chain-rule"},"3c0e5275-7b5c-81d8-88da-e294d72318ab":{"name":"Théorème fondamental de l'analyse","field":"Calculus","slug":"fundamental-theorem-of-calculus"},"3c0e5275-7b5c-8107-b848-c04b61f7a12f":{"name":"Dérivée","field":"Calculus","slug":"derivative"},"3c0e5275-7b5c-8106-ba68-c7e036dd2cc4":{"name":"Courbure","field":"Vectors & Geometry","slug":"curvature"},"3c0e5275-7b5c-8113-a40c-d10739e6515a":{"name":"Formule des polyèdres d'Euler","field":"Vectors & Geometry","slug":"euler-s-polyhedron-formula"},"3c0e5275-7b5c-81f0-ab8c-d50afd756730":{"name":"Déterminant","field":"Vectors & Geometry","slug":"determinant"},"3c0e5275-7b5c-814c-bf1b-f26ae2aa38f6":{"name":"Angle solide","field":"Vectors & Geometry","slug":"solid-angle"},"3c0e5275-7b5c-8154-a8e1-f1e60b5aaa5e":{"name":"Longueur d'arc et radians","field":"Vectors & Geometry","slug":"arc-length-and-radians"},"3c0e5275-7b5c-81e8-9036-d1ef2290ec4f":{"name":"Sphère : surface et volume","field":"Vectors & Geometry","slug":"sphere-surface-and-volume"},"3c0e5275-7b5c-81f4-af22-d5443c14c83c":{"name":"Cercle : circonférence et aire","field":"Vectors & Geometry","slug":"circle-circumference-and-area"},"3c0e5275-7b5c-8167-a257-dc5fa4805309":{"name":"Loi des cosinus","field":"Vectors & Geometry","slug":"law-of-cosines"},"3c0e5275-7b5c-8110-a5c1-c471f72f8383":{"name":"Rapports trigonométriques","field":"Vectors & Geometry","slug":"trigonometric-ratios"},"3c0e5275-7b5c-81cf-9fb5-e2d5973d2c9d":{"name":"Projection vectorielle","field":"Vectors & Geometry","slug":"vector-projection"},"3c0e5275-7b5c-8142-9190-e1a6552eec12":{"name":"Produit vectoriel","field":"Vectors & Geometry","slug":"cross-product"},"3c0e5275-7b5c-8125-8c12-e1861f26c3f3":{"name":"Produit scalaire","field":"Vectors & Geometry","slug":"dot-product"},"3c0e5275-7b5c-8131-95e8-c78e021c5f36":{"name":"Norme d'un vecteur","field":"Vectors & Geometry","slug":"vector-magnitude"},"3bee5275-7b5c-8166-8a64-fd5e2ad2d5dc":{"name":"Limite de Betz","field":"Fluid Dynamics","slug":"betz-limit"},"3bee5275-7b5c-81c4-8e92-d3d7679e0227":{"name":"Équation du transformateur","field":"Electromagnetism","slug":"transformer-equation"},"3bee5275-7b5c-8151-bb92-d29a483dff47":{"name":"Force de Lorentz","field":"Electromagnetism","slug":"lorentz-force"},"3bee5275-7b5c-810d-bb53-d6c1cec88ac3":{"name":"Relation adiabatique","field":"Thermodynamics","slug":"adiabatic-relation"},"3bee5275-7b5c-813f-a53f-daa662c95798":{"name":"Coefficient de performance","field":"Thermodynamics","slug":"coefficient-of-performance"},"3bee5275-7b5c-8141-afc3-f466a7435bf6":{"name":"Rendement du cycle de Brayton","field":"Thermodynamics","slug":"brayton-cycle-efficiency"},"3bee5275-7b5c-81b5-ad2f-c01c197e6fa2":{"name":"Rendement du cycle Diesel","field":"Thermodynamics","slug":"diesel-cycle-efficiency"},"3bee5275-7b5c-81a0-98bb-f16eb9526a4c":{"name":"Rendement du cycle d'Otto","field":"Thermodynamics","slug":"otto-cycle-efficiency"},"3bee5275-7b5c-8179-b2e5-ed3b9ea12888":{"name":"Rendement thermique","field":"Thermodynamics","slug":"thermal-efficiency"},"3bee5275-7b5c-814b-883f-f3a911e3d4e1":{"name":"Rendement de Carnot","field":"Thermodynamics","slug":"carnot-efficiency"},"3bde5275-7b5c-816d-b136-f19a8ec27287":{"name":"Équation d'ionisation de Saha","field":"Astrophysics","slug":"saha-ionization-equation"},"3bde5275-7b5c-81b6-8a2d-f530d01d6412":{"name":"Croissance linéaire des perturbations","field":"Cosmology","slug":"linear-perturbation-growth"},"3bde5275-7b5c-8197-a885-cf717e19fea0":{"name":"Équation d'état cosmologique","field":"Cosmology","slug":"cosmological-equation-of-state"},"3bde5275-7b5c-81bc-a558-cbf2f89a2f06":{"name":"Équation du fluide cosmologique","field":"Cosmology","slug":"cosmological-fluid-equation"},"3bde5275-7b5c-8120-9d3f-eb637591139f":{"name":"Densité critique","field":"Cosmology","slug":"critical-density"},"3bde5275-7b5c-81c4-9445-fc85582c4e1d":{"name":"Métrique FLRW","field":"Cosmology","slug":"flrw-metric"},"3bde5275-7b5c-811c-8470-d8ecfce3c2de":{"name":"Décalage vers le rouge cosmologique","field":"Cosmology","slug":"cosmological-redshift"},"3bde5275-7b5c-81fc-a041-fc08a0416af7":{"name":"Niveaux d'énergie du modèle de Bohr","field":"Atomic Physics","slug":"bohr-model-energy-levels"},"3bde5275-7b5c-81e2-9c2a-cf03ccc6c865":{"name":"Diffusion de Rutherford","field":"Atomic Physics","slug":"rutherford-scattering"},"3bde5275-7b5c-81a3-914b-f108cd62b10b":{"name":"Formule de Rydberg","field":"Atomic Physics","slug":"rydberg-formula"},"3bde5275-7b5c-8114-ad1b-ec55a8511049":{"name":"Équation de Van 't Hoff","field":"Chemical Thermodynamics","slug":"van-t-hoff-equation"},"3bde5275-7b5c-81f9-ae2a-db2af4f7a127":{"name":"Isotherme de réaction","field":"Chemical Thermodynamics","slug":"reaction-isotherm"},"3bde5275-7b5c-8166-90de-d0f25022b160":{"name":"Énergie libre de Gibbs","field":"Chemical Thermodynamics","slug":"gibbs-free-energy"},"3bde5275-7b5c-8170-823e-d1ba85205e8b":{"name":"Transfert de Hohmann","field":"Rocketry","slug":"hohmann-transfer"},"3bde5275-7b5c-81b5-b5ba-ef8abb9338cb":{"name":"Impulsion spécifique","field":"Rocketry","slug":"specific-impulse"},"3bde5275-7b5c-81e1-aac4-cc21b9d77b07":{"name":"Équation de la fusée de Tsiolkovsky","field":"Rocketry","slug":"tsiolkovsky-rocket-equation"},"3bde5275-7b5c-810f-bed8-fee488db4170":{"name":"Équation de la chaleur","field":"Heat Transfer","slug":"heat-equation"},"3bde5275-7b5c-81af-b4b4-ef52a39887e9":{"name":"Loi de Fourier de la conduction thermique","field":"Heat Transfer","slug":"fourier-s-law-of-heat-conduction"},"3bde5275-7b5c-8144-b755-d881fbf879cb":{"name":"Loi du refroidissement de Newton","field":"Heat Transfer","slug":"newton-s-law-of-cooling"},"3bde5275-7b5c-81a4-b00c-d76959634aaf":{"name":"Théorème de Cauchy sur les contraintes","field":"Materials Science","slug":"cauchy-s-stress-theorem"},"3bde5275-7b5c-811f-9033-f21e2c8a2791":{"name":"Loi de Planck","field":"Radiation","slug":"planck-s-law"},"3bde5275-7b5c-8131-93f6-c15c214946b1":{"name":"Loi du déplacement de Wien","field":"Radiation","slug":"wien-s-displacement-law"},"3bde5275-7b5c-8183-9b80-de90c00b2fbc":{"name":"Loi de Kirchhoff sur le rayonnement thermique","field":"Radiation","slug":"kirchhoff-s-law-of-thermal-radiation"},"3bde5275-7b5c-81eb-8234-c87a6700bc0d":{"name":"Équation de Poisson","field":"Electrostatics","slug":"poisson-s-equation"},"3bde5275-7b5c-812a-8607-ff86ea48402d":{"name":"Champ électrique","field":"Electrostatics","slug":"electric-field"},"3bde5275-7b5c-814b-9628-f090f0207a42":{"name":"Loi de Coulomb","field":"Electrostatics","slug":"coulomb-s-law"},"3bde5275-7b5c-8138-9544-ccde8523931c":{"name":"Théorème de Noether","field":"Classical Field Theory","slug":"noether-s-theorem"},"3bde5275-7b5c-814c-82d8-d3e6acd9cfda":{"name":"Équation d'Euler–Lagrange","field":"Classical Field Theory","slug":"euler-lagrange-equation"},"3bde5275-7b5c-814b-b847-fa3b302cf50e":{"name":"Principe de moindre action","field":"Classical Field Theory","slug":"principle-of-least-action"},"3bde5275-7b5c-8134-baec-df28e10bc16c":{"name":"Transformée de Fourier","field":"Mathematics","slug":"fourier-transform"},"3bde5275-7b5c-8157-88dd-ea46b41f1776":{"name":"Loi normale","field":"Mathematics","slug":"normal-distribution"},"3bde5275-7b5c-810f-908a-e09a4a0699e1":{"name":"Théorème de Bayes","field":"Mathematics","slug":"bayes-theorem"},"3bbe5275-7b5c-8120-a62d-fa870a7c75bb":{"name":"Application logistique","field":"Nonlinear Dynamics","slug":"logistic-map"},"3bbe5275-7b5c-813e-af26-d6744c7f4db2":{"name":"Constante de Feigenbaum","field":"Nonlinear Dynamics","slug":"feigenbaum-constant"},"3bbe5275-7b5c-8132-a437-e09561425c4c":{"name":"Système de Lorenz","field":"Nonlinear Dynamics","slug":"lorenz-system"},"3bbe5275-7b5c-81b4-84fa-eccd5252bf7c":{"name":"Équation de Goldman–Hodgkin–Katz","field":"Biophysics","slug":"goldman-hodgkin-katz-equation"},"3bbe5275-7b5c-81ee-97dc-c7e65a4e1ad2":{"name":"Équation de Michaelis–Menten","field":"Biophysics","slug":"michaelis-menten-equation"},"3bbe5275-7b5c-81b2-9ec2-d967f8695b7e":{"name":"Équation de Nernst","field":"Biophysics","slug":"nernst-equation"},"3bbe5275-7b5c-8174-8c31-eda1293e8fe6":{"name":"Divergence d'un faisceau gaussien","field":"Photonics","slug":"gaussian-beam-divergence"},"3bbe5275-7b5c-816e-831d-e184b1a1f659":{"name":"Équations de bilan du laser","field":"Photonics","slug":"laser-rate-equations"},"3bbe5275-7b5c-818e-8ccf-c5b952277817":{"name":"Coefficients A et B d'Einstein","field":"Photonics","slug":"einstein-a-and-b-coefficients"},"3bbe5275-7b5c-812d-b464-f7799b61cce9":{"name":"Facteur de mérite thermoélectrique","field":"Thermoelectrics","slug":"thermoelectric-figure-of-merit"},"3bbe5275-7b5c-8110-a092-dab2770885be":{"name":"Effet Peltier","field":"Thermoelectrics","slug":"peltier-effect"},"3bbe5275-7b5c-814d-8154-c3d16384df7f":{"name":"Effet Seebeck","field":"Thermoelectrics","slug":"seebeck-effect"},"3bbe5275-7b5c-8103-81ff-e3a91328a314":{"name":"Nombre de Reynolds magnétique","field":"Magnetohydrodynamics","slug":"magnetic-reynolds-number"},"3bbe5275-7b5c-81c5-abe1-d9f8b479e14f":{"name":"Vitesse d'Alfvén","field":"Magnetohydrodynamics","slug":"alfven-velocity"},"3bbe5275-7b5c-814d-9bc3-ef9ce2d272dc":{"name":"Équation d'induction MHD","field":"Magnetohydrodynamics","slug":"mhd-induction-equation"},"3bbe5275-7b5c-81de-99a6-fb82df0033a9":{"name":"Effet Josephson","field":"Superconductivity","slug":"josephson-effect"},"3bbe5275-7b5c-8149-a0e6-d2bf67397229":{"name":"Gap énergétique BCS","field":"Superconductivity","slug":"bcs-energy-gap"},"3bbe5275-7b5c-81b2-ae34-f800aecd57e1":{"name":"Équations de London","field":"Superconductivity","slug":"london-equations"},"3bbe5275-7b5c-81d1-abad-c2702fa3abb0":{"name":"Théorème de Bloch","field":"Condensed Matter","slug":"bloch-s-theorem"},"3bbe5275-7b5c-81e1-96c0-c6157aaee509":{"name":"Distribution de Fermi–Dirac","field":"Condensed Matter","slug":"fermi-dirac-distribution"},"3bbe5275-7b5c-81ee-9b16-dcfba043e1f3":{"name":"Conductivité de Drude","field":"Condensed Matter","slug":"drude-conductivity"},"3bbe5275-7b5c-817f-80a4-f6e36ff9d306":{"name":"Critère de Lawson","field":"Plasma Physics","slug":"lawson-criterion"},"3bbe5275-7b5c-819d-a258-d3e7dec3b639":{"name":"Fréquence plasma","field":"Plasma Physics","slug":"plasma-frequency"},"3bbe5275-7b5c-816c-8a1d-c37099e0ec76":{"name":"Longueur de Debye","field":"Plasma Physics","slug":"debye-length"},"3bbe5275-7b5c-813a-84a7-ea08528b3c93":{"name":"Vitesse de libération","field":"Celestial Mechanics","slug":"escape-velocity"},"3bbe5275-7b5c-810a-8065-f03f5253cda9":{"name":"Équation de vis-viva","field":"Celestial Mechanics","slug":"vis-viva-equation"},"3bbe5275-7b5c-8103-8865-faee50cc9c18":{"name":"État du qubit","field":"Quantum Computing","slug":"qubit-state"},"3bbe5275-7b5c-810e-a378-ea77aa50d6f6":{"name":"Théorème de non-clonage","field":"Quantum Computing","slug":"no-cloning-theorem"},"3bbe5275-7b5c-810f-8c8d-d0d1ca4da44e":{"name":"État de Bell","field":"Quantum Computing","slug":"bell-state"},"3bbe5275-7b5c-8113-9b17-e6d7efc091ea":{"name":"Loi de Bragg","field":"Waves & Optics","slug":"bragg-s-law"},"3bbe5275-7b5c-8130-a1e2-d4d1fefda7d8":{"name":"Équation des réseaux de diffraction","field":"Waves & Optics","slug":"diffraction-grating-equation"},"3bbe5275-7b5c-815f-8f49-fde9509c1e77":{"name":"Action d'Einstein–Hilbert","field":"General Relativity","slug":"einstein-hilbert-action"},"3bbe5275-7b5c-813b-aa6c-dd6ce2e33cbf":{"name":"Équation des géodésiques","field":"General Relativity","slug":"geodesic-equation"},"3bbe5275-7b5c-81ef-b92b-d35cea11b9be":{"name":"Dilatation gravitationnelle du temps","field":"General Relativity","slug":"gravitational-time-dilation"},"3bbe5275-7b5c-815d-b970-fb2a7877db25":{"name":"Intégrale de chemin de Feynman","field":"Quantum Field Theory","slug":"feynman-path-integral"},"3bbe5275-7b5c-812f-8b13-c3f401ee3a47":{"name":"Équation de Klein–Gordon","field":"Quantum Field Theory","slug":"klein-gordon-equation"},"3bbe5275-7b5c-811f-8db4-cc95acf776dd":{"name":"Constante de structure fine","field":"Quantum Field Theory","slug":"fine-structure-constant"},"3bbe5275-7b5c-81d4-81e7-d91b9c8c327c":{"name":"Lois de Kirchhoff pour les circuits","field":"Circuits","slug":"kirchhoff-s-circuit-laws"},"3bbe5275-7b5c-816d-9734-c149c749519c":{"name":"Effet Joule","field":"Circuits","slug":"joule-heating"},"3bbe5275-7b5c-8154-bcd6-c1cd26ae1a20":{"name":"Loi d'Ohm","field":"Circuits","slug":"ohm-s-law"},"3bbe5275-7b5c-81f8-8be6-c617460fd271":{"name":"Capacité de canal de Shannon–Hartley","field":"Information Theory","slug":"shannon-hartley-channel-capacity"},"3bbe5275-7b5c-81f7-a591-c741011f5a20":{"name":"Entropie de Shannon","field":"Information Theory","slug":"shannon-entropy"},"3bbe5275-7b5c-81f5-a5b1-f6059d15a3b7":{"name":"Équation d'Eyring","field":"Chemical Kinetics","slug":"eyring-equation"},"3bbe5275-7b5c-8150-9b6b-de88bc1b1910":{"name":"Équation d'Arrhenius","field":"Chemical Kinetics","slug":"arrhenius-equation"},"3bbe5275-7b5c-81e3-87bd-e3fd8345d1e5":{"name":"Loi d'action de masse","field":"Chemical Kinetics","slug":"law-of-mass-action"},"3bbe5275-7b5c-819e-ae2b-d24ec3193fe8":{"name":"Critère de rupture de Griffith","field":"Materials Science","slug":"griffith-fracture-criterion"},"3bbe5275-7b5c-81f5-bb78-d159340dd03f":{"name":"Module de Young","field":"Materials Science","slug":"young-s-modulus"},"3bbe5275-7b5c-8144-9213-c057e1f3e5ab":{"name":"Loi de Hooke","field":"Materials Science","slug":"hooke-s-law"},"3bbe5275-7b5c-8183-8228-de82d104194f":{"name":"Vitesses des ondes sismiques","field":"Geophysics","slug":"seismic-wave-speeds"},"3bbe5275-7b5c-818c-81f5-e08330c436f3":{"name":"Équation des ondes élastiques","field":"Geophysics","slug":"elastic-wave-equation"},"3bbe5275-7b5c-813f-974b-c000af0892df":{"name":"Fonction de partition","field":"Statistical Mechanics","slug":"partition-function"},"3bbe5275-7b5c-816e-b97a-fdbc445f99b7":{"name":"Distribution de Boltzmann","field":"Statistical Mechanics","slug":"boltzmann-distribution"},"3bbe5275-7b5c-81ea-b557-e046acec2182":{"name":"Théorème d'équipartition","field":"Statistical Mechanics","slug":"equipartition-theorem"},"3bbe5275-7b5c-8125-8857-cffce0164fef":{"name":"Lagrangien du Modèle standard","field":"Particle Physics","slug":"standard-model-lagrangian"},"3bbe5275-7b5c-8189-b87c-e1e5b2e563de":{"name":"Potentiel de Higgs","field":"Particle Physics","slug":"higgs-potential"},"3bbe5275-7b5c-81ce-aa9b-fb9384fc46ee":{"name":"Équation de Dirac","field":"Particle Physics","slug":"dirac-equation"},"3bbe5275-7b5c-81dd-a75c-d703f0a640b3":{"name":"Limite de Chandrasekhar","field":"Astrophysics","slug":"chandrasekhar-limit"},"3bbe5275-7b5c-811a-baed-c686bb16bbc3":{"name":"Rayon de Schwarzschild","field":"Astrophysics","slug":"schwarzschild-radius"},"3bbe5275-7b5c-8120-863e-cd94384e0239":{"name":"Loi de Stefan–Boltzmann","field":"Astrophysics","slug":"stefan-boltzmann-law"},"3bbe5275-7b5c-813e-a03e-dacece1e6c35":{"name":"Demi-vie","field":"Nuclear Physics","slug":"half-life"},"3bbe5275-7b5c-8157-a64b-eb73eeb53735":{"name":"Loi de décroissance radioactive","field":"Nuclear Physics","slug":"radioactive-decay-law"},"3bbe5275-7b5c-814d-83e6-ee6df24eacca":{"name":"Effet Doppler","field":"Acoustics","slug":"doppler-effect"},"3bbe5275-7b5c-8179-9734-eea3fa4e014c":{"name":"Vitesse du son de Newton–Laplace","field":"Acoustics","slug":"newton-laplace-speed-of-sound"},"3bbe5275-7b5c-81d8-b63d-d44990bf2054":{"name":"Équation d'onde","field":"Acoustics","slug":"wave-equation"},"3bbe5275-7b5c-8197-8da5-de06c7641cc3":{"name":"Équations de Navier–Stokes","field":"Fluid Dynamics","slug":"navier-stokes-equations"},"3bbe5275-7b5c-8189-9f06-e3de324e0af4":{"name":"Équation de continuité","field":"Fluid Dynamics","slug":"continuity-equation"},"3bbe5275-7b5c-819b-ba4e-f3c3031b13f1":{"name":"Équation de Bernoulli","field":"Fluid Dynamics","slug":"bernoulli-s-equation"},"3bbe5275-7b5c-813d-86cf-c29a346fe2f8":{"name":"Loi de Snell","field":"Waves & Optics","slug":"snell-s-law"},"3bbe5275-7b5c-8184-9e26-ff4ad04b3ed8":{"name":"Loi de Hubble","field":"Cosmology","slug":"hubble-s-law"},"3bbe5275-7b5c-81bf-b306-fdf6fa438de8":{"name":"Théorème de Pythagore","field":"Mathematics","slug":"pythagorean-theorem"},"3bbe5275-7b5c-815f-9d30-c0e44b4a7608":{"name":"Facteur de Lorentz","field":"Special Relativity","slug":"lorentz-factor"},"3bbe5275-7b5c-81e7-b649-f021e6e295c6":{"name":"Transformations de Lorentz","field":"Special Relativity","slug":"lorentz-transformations"},"3bbe5275-7b5c-8127-96bd-f72be5a740f4":{"name":"Troisième principe de la thermodynamique","field":"Thermodynamics","slug":"third-law-of-thermodynamics"},"3bbe5275-7b5c-8147-a393-dbf10b5befde":{"name":"Deuxième principe de la thermodynamique","field":"Thermodynamics","slug":"second-law-of-thermodynamics"},"3bbe5275-7b5c-819a-8209-e94b6436d16a":{"name":"Premier principe de la thermodynamique","field":"Thermodynamics","slug":"first-law-of-thermodynamics"},"3bbe5275-7b5c-8153-8923-ca0655445379":{"name":"Principe zéro de la thermodynamique","field":"Thermodynamics","slug":"zeroth-law-of-thermodynamics"},"3bbe5275-7b5c-8109-a4a6-c5b903b6e05f":{"name":"Principe d'incertitude de Heisenberg","field":"Quantum","slug":"heisenberg-uncertainty-principle"},"3bbe5275-7b5c-8170-bd5f-c796d7589e08":{"name":"Longueur d'onde de De Broglie","field":"Quantum","slug":"de-broglie-wavelength"},"3bbe5275-7b5c-817c-96dd-ec4cb629f30c":{"name":"Loi d'Ampère–Maxwell","field":"Electromagnetism","slug":"ampere-maxwell-law"},"3bbe5275-7b5c-81c9-a5d1-eaa911ffb7cd":{"name":"Loi de l'induction de Faraday","field":"Electromagnetism","slug":"faraday-s-law-of-induction"},"3bbe5275-7b5c-81d1-8a3c-df143adffbc5":{"name":"Théorème de Gauss pour le magnétisme","field":"Electromagnetism","slug":"gauss-s-law-for-magnetism"},"3bbe5275-7b5c-81c8-8eb1-cdc2179de58e":{"name":"Troisième loi de Kepler","field":"Celestial Mechanics","slug":"kepler-s-third-law"},"3bbe5275-7b5c-8193-83a5-f551fd37b47c":{"name":"Deuxième loi de Kepler","field":"Celestial Mechanics","slug":"kepler-s-second-law"},"3bbe5275-7b5c-81da-b2e6-ed931eca7217":{"name":"Première loi de Kepler","field":"Celestial Mechanics","slug":"kepler-s-first-law"},"3bbe5275-7b5c-810c-8fb5-f469f876c99a":{"name":"Équation de Van der Waals","field":"Chemistry","slug":"van-der-waals-equation"},"3bbe5275-7b5c-815b-8970-f54f46005b20":{"name":"Loi d'effusion de Graham","field":"Chemistry","slug":"graham-s-law-of-effusion"},"3bbe5275-7b5c-8144-82d8-d6e4bd0f0f2d":{"name":"Loi de Dalton des pressions partielles","field":"Chemistry","slug":"dalton-s-law-of-partial-pressures"},"3bbe5275-7b5c-819d-afd0-d0876756a85c":{"name":"Loi d'Avogadro","field":"Chemistry","slug":"avogadro-s-law"},"3bbe5275-7b5c-812a-9168-d2a25b3fe20f":{"name":"Loi de Gay-Lussac","field":"Chemistry","slug":"gay-lussac-s-law"},"3bbe5275-7b5c-8101-9ffd-d15e28719c53":{"name":"Loi de Charles","field":"Chemistry","slug":"charles-s-law"},"3bbe5275-7b5c-8186-884a-ed5996715fc4":{"name":"Loi de Boyle","field":"Chemistry","slug":"boyle-s-law"},"3bbe5275-7b5c-81a1-9543-ed416dd7caa2":{"name":"Deuxième équation de Friedmann","field":"Cosmology","slug":"second-friedmann-equation"},"3bbe5275-7b5c-818c-bf76-d40ebcb485e3":{"name":"Première équation de Friedmann","field":"Cosmology","slug":"first-friedmann-equation"},"3bbe5275-7b5c-81fb-9558-e243bfa28227":{"name":"Identité d'Euler","field":"Mathematics","slug":"euler-s-identity"},"3bbe5275-7b5c-81eb-b7d4-f57536a2a230":{"name":"Théorème de Gauss","field":"Electromagnetism","slug":"gauss-s-law"},"3bbe5275-7b5c-8140-a1d4-f7bff1df0334":{"name":"Relation de Planck–Einstein","field":"Quantum","slug":"planck-einstein-relation"},"3bbe5275-7b5c-8122-95c0-f19b5930072e":{"name":"Entropie de Boltzmann","field":"Thermodynamics","slug":"boltzmann-entropy"},"3bbe5275-7b5c-81a2-9653-e0a84065d7fa":{"name":"Loi des gaz parfaits","field":"Thermodynamics","slug":"ideal-gas-law"},"3bbe5275-7b5c-81c7-b3a7-decb4402d1ab":{"name":"Équations du champ d'Einstein","field":"General Relativity","slug":"einstein-field-equations"},"3bbe5275-7b5c-811a-a60d-eddf236c3a8c":{"name":"Équation de Schrödinger","field":"Quantum","slug":"schrodinger-equation"},"3bbe5275-7b5c-811b-8297-ce47b2c5d614":{"name":"Loi de la gravitation universelle","field":"Mechanics","slug":"law-of-universal-gravitation"},"3bbe5275-7b5c-8183-bbd5-ff733704a984":{"name":"Deuxième loi de Newton","field":"Mechanics","slug":"newton-s-second-law"},"3bbe5275-7b5c-819b-8730-c682ecb3e756":{"name":"Équivalence masse–énergie","field":"Special Relativity","slug":"mass-energy-equivalence"}}</script>
 <script id="mindata" type="application/json">{"Cd":{"n":11,"examples":["Keyite","Greenockite","Andyrobertsite","Birchite","Burnsite","Goldquarryite"]},"S":{"n":415,"examples":["Melanophlogite","Pyrite","Danalite","Hauyne","Vishnevite","Lazurite"]},"C":{"n":284,"examples":["Diamond","Melanophlogite","Cancrinite","Kainosite-(Y)","Meionite","Vishnevite"]},"Ca":{"n":1109,"examples":["Painite","Lawsonite","Loveringite","Danburite","Calderite","Uvarovite"]},"Mg":{"n":756,"examples":["Spinel","Grandidierite","Loveringite","Sapphirine","Boracite","Cordierite"]},"O":{"n":3033,"examples":["Stishovite","Bromellite","Corundum","Chrysoberyl","Eskolaite","Painite"]},"Ni":{"n":59,"examples":["Roaldite","Bunsenite","Gaspeite","Carrollite","Aerugite","Cooperite"]},"Pd":{"n":2,"examples":["Cooperite","Palladinite"]},"Pt":{"n":2,"examples":["Sperrylite","Cooperite"]},"As":{"n":298,"examples":["Sperrylite","Arsenoclasite","Reinerite","Arsenopyrite","Cabalzarite","Talmessite"]},"Ag":{"n":3,"examples":["Acanthite","Chlorargyrite","Argentojarosite"]},"Fe":{"n":935,"examples":["Grandidierite","Hercynite","Loveringite","Majorite","Sekaninaite","Staurolite"]},"Ta":{"n":47,"examples":["Simpsonite","Tantite","Euxenite-(Y)","Tantalite-(Fe)","Alumotantite","Bariomicrolite"]},"Co":{"n":41,"examples":["Carrollite","Nichromite","Roselite","Magnesiopascoite","Carminite","Erythrite"]},"Cu":{"n":311,"examples":["Marthozite","Plancheite","Delafossite","Turquoise","Papagoite","Dioptase"]},"Al":{"n":913,"examples":["Corundum","Chrysoberyl","Painite","Pezzottaite","Topaz","Beryl"]},"H":{"n":2017,"examples":["Pezzottaite","Topaz","Dumortierite","Euclase","Hambergite","Lawsonite"]},"Sr":{"n":160,"examples":["Tausonite","Lulzacite","Kochite","Samuelsonite","Svanbergite","Mckelveyite-(Y)"]},"Hg":{"n":9,"examples":["Cinnabar","Belendorffite","Chursinite","Edgarbaileyite","Eglestonite","Kuznetsovite"]},"Sb":{"n":51,"examples":["Ordonezite","Romeite","Cervantite","Sarabauite","Valentinite","Chapmanite"]},"Mo":{"n":27,"examples":["Kamiokite","Lindgrenite","Powellite","Molybdite","Molybdenite","Bamfordite"]},"W":{"n":40,"examples":["Hübnerite","Ferberite","Scheelite","Russellite","Hubnerite","Tungstite"]},"Mn":{"n":585,"examples":["Calderite","Chambersite","Spessartine","Chloritoid","Manganvesuvianite","Nambulite"]},"Ti":{"n":387,"examples":["Painite","Loveringite","Schreyerite","Kornerupine","Benitoite","Narsarsukite"]},"Ce":{"n":132,"examples":["Loveringite","Dollaseite-(Ce)","Stillwellite-(Ce)","Euxenite-(Y)","Eudialyte","Kainosite-(Y)"]},"F":{"n":428,"examples":["Topaz","Jeremejevite","Zunyite","Dollaseite-(Ce)","Hsianghualite","Kornerupine"]},"Si":{"n":1270,"examples":["Stishovite","Pezzottaite","Topaz","Beryl","Dumortierite","Phenakite"]},"U":{"n":138,"examples":["Marthozite","Coffinite","Uraninite","Curite","Cuprosklodowskite","Boltwoodite"]},"Zn":{"n":240,"examples":["Ordonezite","Zincochromite","Aenigmatite","Clinohedrite","Jerrygibbsite","Willemite"]},"Pb":{"n":221,"examples":["Changbaiite","Esperite","Hollandite","Alamosite","Curite","Beudantite"]},"Au":{"n":1,"examples":["Gold"]},"La":{"n":81,"examples":["Stillwellite-(Ce)","Kochite","Hibonite","Parisite-(Ce)","Agardite-(Ce)","Allanite-(La)"]},"P":{"n":418,"examples":["Berlinite","Scorzalite","Amblygonite","Beryllonite","Lazulite","Lulzacite"]},"N":{"n":76,"examples":["Carlsbergite","Roaldite","Bararite","Boussingaultite","Niter","Stercorite"]},"B":{"n":231,"examples":["Painite","Dumortierite","Grandidierite","Hambergite","Boracite","Danburite"]},"Na":{"n":882,"examples":["Painite","Pezzottaite","Jadeite","Banalsite","Kornerupine","Nambulite"]},"Cl":{"n":275,"examples":["Boracite","Chambersite","Zunyite","Baotite","Sodalite","Alluaivite"]},"K":{"n":540,"examples":["Pezzottaite","Cryptomelane","Anorthoclase","Nepheline","Orthoclase","Tinaksite"]},"Nb":{"n":133,"examples":["Simpsonite","Baotite","Euxenite-(Y)","Alluaivite","Changbaiite","Oneillite"]},"Gd":{"n":19,"examples":["Agardite-(Ce)","Bussyite-(Ce)","Caysichite-(Y)","Hingganite-(Ce)","Hingganite-(Y)","Johnsenite-(Ce)"]},"Nd":{"n":54,"examples":["Stillwellite-(Ce)","Agardite-(Ce)","Allanite-(La)","Biraite-(Ce)","Britholite-(Ce)","Bussyite-(Ce)"]},"Pr":{"n":6,"examples":["Ferriakasakaite-(La)","Ferriandrosite-(La)","Fluocerite-(Pr)","Mendeleevite-(Ce)","Tantalaeschynite-(Pr)","Vanadoallanite-(La)"]},"V":{"n":161,"examples":["Loveringite","Schreyerite","Kassite","Kochite","Cavansite","Pentagonite"]},"Ba":{"n":227,"examples":["Banalsite","Benitoite","Celsian","Romanechite","Baotite","Pabstite"]},"Be":{"n":103,"examples":["Bromellite","Chrysoberyl","Pezzottaite","Beryl","Phenakite","Euclase"]},"Cs":{"n":27,"examples":["Pezzottaite","Avogadrite","Dachiardite-Ca","Gainesite","Kupletskite-(Cs)","Londonite"]},"Rb":{"n":16,"examples":["Pezzottaite","Faizievite","Londonite","Poppiite","Ramanite-(Rb)","Rubicline"]},"Zr":{"n":114,"examples":["Painite","Loveringite","Zircon","Baddeleyite","Vlasovite","Zektzerite"]},"Sn":{"n":36,"examples":["Cassiterite","Pabstite","Malayaite","Abhurite","Aluminomagnesiohulsite","Asbecasite"]},"Li":{"n":129,"examples":["Pezzottaite","Staurolite","Spodumene","Eucryptite","Hsianghualite","Kornerupine"]},"Y":{"n":108,"examples":["Euxenite-(Y)","Eudialyte","Kainosite-(Y)","Thortveitite","Kochite","Mckelveyite-(Y)"]},"Th":{"n":32,"examples":["Huttonite","Allanite-(La)","Althupite","Britholite-(Ce)","Bussyite-(Ce)","Chevkinite-(Ce)"]},"Se":{"n":30,"examples":["Marthozite","Carlosruizite","Ahlfeldite","Allochalcoselite","Burnsite","Chalcomenite"]},"Sm":{"n":24,"examples":["Agardite-(Ce)","Biraite-(Ce)","Bussyite-(Ce)","Francoisite-(Nd)","Gatelite-(Ce)","Hingganite-(Ce)"]},"I":{"n":12,"examples":["Carlosruizite","Bellingerite","Bruggenite","Dietzeite","Fuenzalidaite","George-ericksenite"]},"Tl":{"n":6,"examples":["Lanmuchangite","Perlialite","Edingtonite-(Tl)","Evdokimovite","Karpovite","Markhininite"]},"Te":{"n":40,"examples":["Emmonsite","Rodalquilarite","Tellurite","Balyakinite","Carlfriesite","Chekhovichite"]},"Tb":{"n":2,"examples":["Hingganite-(Y)","Tantalaeschynite-(Tb)"]},"Bi":{"n":44,"examples":["Ximengite","Gananite","Mixite","Russellite","Bismutite","Aiolosite"]},"Sc":{"n":15,"examples":["Bazzite","Thortveitite","Arrojadite-(SrFe)","Cascandite","Davisite","Jervisite"]},"Ga":{"n":7,"examples":["Krieselite","Ferrohogbomite-2N2S","Gallobeudantite","Fluoro-eckermannite","Fluoro-magnesio-aluminokatopho","Galloplumbogummite"]},"Ge":{"n":12,"examples":["Argutite","Krieselite","Bartelkeite","Brunogeierite","Carraraite","Fleischerite"]},"Cr":{"n":68,"examples":["Eskolaite","Painite","Loveringite","Carlsbergite","Schreyerite","Uvarovite"]},"Eu":{"n":4,"examples":["Agardite-(Ce)","Bussyite-(Ce)","Hexacelsian","Tantalaeschynite-(Eu)"]},"Br":{"n":6,"examples":["Panichiite","Argesite","Barlowite","Bromcarnallite","Brontesite","Northupite (Br)"]},"Dy":{"n":10,"examples":["Agardite-(Ce)","Hingganite-(Ce)","Hingganite-(Y)","Johnsenite-(Ce)","Mineevite-(Y)","Percleveite-(Ce)"]},"Hf":{"n":12,"examples":["Zircon","Kochite","Bobtraillite","Dovyrenite","Georgbarsanovite","Ikranite"]},"Ne":{"n":1,"examples":["Neon"]},"Er":{"n":3,"examples":["Hingganite-(Y)","Yakovenchukite-(Y)","Yftisite-(Y)"]},"Ho":{"n":2,"examples":["Hingganite-(Y)","Tanteuxenite-(Ho)"]},"Lu":{"n":2,"examples":["Hingganite-(Y)","Tanteuxenite-(Lu)"]},"Tm":{"n":3,"examples":["Hingganite-(Y)","Yakovenchukite-(Y)","Tanteuxenite-(Tm)"]},"Yb":{"n":8,"examples":["Hingganite-(Y)","Hingganite-(Yb)","Stornesite-(Y)","Tassieite","Vyuntspakhkite-(Y)","Yakovenchukite-(Y)"]},"In":{"n":1,"examples":["Indium-fluor-eckermannite"]},"Ar":{"n":1,"examples":["Argon"]},"Kr":{"n":1,"examples":["Krypton"]},"Xe":{"n":1,"examples":["Xenon"]},"He":{"n":1,"examples":["Helium"]}}</script>
+<script id="moldata" type="application/json">{"_about":"The molecule shelf for /elements: a formula, one note, and a hand-laid skeletal drawing (y up, bond length 1). Unlabelled atoms are carbons; a label names what is written at that vertex. Composition is not stored here — the page computes it from the formula and the atomic masses in Notion.","molecules":[{"slug":"caffeine","name":"Caffeine","formula":"C8H10N4O2","kind":"Alkaloid","note":"The molecule on the coffee T-shirt: a xanthine core (a six-membered ring fused to a five-membered one) carrying three methyl groups. About 1 % of a roasted arabica bean by mass, twice that in robusta; also in tea, cacao and guarana.","atoms":[{"el":"N","x":-0.866,"y":0.5},{"el":"C","x":-0.866,"y":-0.5},{"el":"N","x":0,"y":-1},{"el":"C","x":0.866,"y":-0.5},{"el":"C","x":0.866,"y":0.5},{"el":"C","x":0,"y":1},{"el":"N","x":1.817,"y":0.809},{"el":"C","x":2.405,"y":0.0},{"el":"N","x":1.817,"y":-0.809},{"el":"O","x":0,"y":2},{"el":"O","x":-1.732,"y":-1},{"el":"C","x":-1.732,"y":1,"lbl":"H₃C"},{"el":"C","x":0,"y":-2,"lbl":"CH₃"},{"el":"C","x":2.126,"y":1.76,"lbl":"CH₃"}],"bonds":[[0,1,1],[1,2,1],[2,3,1],[3,4,2],[4,5,1],[5,0,1],[4,6,1],[6,7,1],[7,8,2],[8,3,1],[5,9,2],[1,10,2],[0,11,1],[2,12,1],[6,13,1]]},{"slug":"theobromine","name":"Theobromine","formula":"C7H8N4O2","kind":"Alkaloid","note":"Caffeine with one methyl group fewer — the same two fused rings, an N–H where caffeine has N–CH₃. The bitter stimulant of cacao (1–2 % of the dry bean), and why chocolate is dangerous to dogs.","atoms":[{"el":"N","x":-0.866,"y":0.5,"lbl":"HN"},{"el":"C","x":-0.866,"y":-0.5},{"el":"N","x":0,"y":-1},{"el":"C","x":0.866,"y":-0.5},{"el":"C","x":0.866,"y":0.5},{"el":"C","x":0,"y":1},{"el":"N","x":1.817,"y":0.809},{"el":"C","x":2.405,"y":0.0},{"el":"N","x":1.817,"y":-0.809},{"el":"O","x":0,"y":2},{"el":"O","x":-1.732,"y":-1},{"el":"C","x":0,"y":-2,"lbl":"CH₃"},{"el":"C","x":2.126,"y":1.76,"lbl":"CH₃"}],"bonds":[[0,1,1],[1,2,1],[2,3,1],[3,4,2],[4,5,1],[5,0,1],[4,6,1],[6,7,1],[7,8,2],[8,3,1],[5,9,2],[1,10,2],[2,11,1],[6,12,1]]},{"slug":"water","name":"Eau","formula":"H2O","kind":"Inorganic","note":"Two hydrogens on one oxygen at 104.5°, which is why the molecule is bent and polar, and why ice floats. About 11 % hydrogen and 89 % oxygen by mass — the hydrogen weighs almost nothing.","atoms":[{"el":"O","x":0,"y":0,"lbl":"O"},{"el":"H","x":-0.8,"y":-0.6,"lbl":"H"},{"el":"H","x":0.8,"y":-0.6,"lbl":"H"}],"bonds":[[0,1,1],[0,2,1]]},{"slug":"carbon-dioxide","name":"Carbon dioxide","formula":"CO2","kind":"Inorganic","note":"Linear, O=C=O. What roasting drives out of a coffee bean by the litre, and what a bean's carbon becomes when it is burnt or breathed.","atoms":[{"el":"O","x":-1.2,"y":0,"lbl":"O"},{"el":"C","x":0,"y":0,"lbl":"C"},{"el":"O","x":1.2,"y":0,"lbl":"O"}],"bonds":[[0,1,2],[1,2,2]]},{"slug":"dioxygen","name":"Oxygen (O₂)","formula":"O2","kind":"Inorganic","note":"The molecule the air carries, a fifth of it: two oxygens sharing a double bond.","atoms":[{"el":"O","x":-0.6,"y":0,"lbl":"O"},{"el":"O","x":0.6,"y":0,"lbl":"O"}],"bonds":[[0,1,2]]},{"slug":"dinitrogen","name":"Nitrogen (N₂)","formula":"N2","kind":"Inorganic","note":"Four fifths of the air, held together by a triple bond so strong that only lightning, nitrogenase and the Haber process break it.","atoms":[{"el":"N","x":-0.6,"y":0,"lbl":"N"},{"el":"N","x":0.6,"y":0,"lbl":"N"}],"bonds":[[0,1,3]]},{"slug":"methane","name":"Methane","formula":"CH4","kind":"Hydrocarbon","note":"One carbon, four hydrogens, a tetrahedron flattened onto the page. The simplest hydrocarbon and the main part of natural gas.","atoms":[{"el":"C","x":0,"y":0,"lbl":"C"},{"el":"H","x":0,"y":1,"lbl":"H"},{"el":"H","x":1,"y":0,"lbl":"H"},{"el":"H","x":0,"y":-1,"lbl":"H"},{"el":"H","x":-1,"y":0,"lbl":"H"}],"bonds":[[0,1,1],[0,2,1],[0,3,1],[0,4,1]]},{"slug":"ammonia","name":"Ammonia","formula":"NH3","kind":"Inorganic","note":"A nitrogen with three hydrogens and a lone pair; the Haber process makes 150 million tonnes a year of it, mostly for fertiliser.","atoms":[{"el":"N","x":0,"y":0,"lbl":"N"},{"el":"H","x":0,"y":1,"lbl":"H"},{"el":"H","x":-0.866,"y":-0.5,"lbl":"H"},{"el":"H","x":0.866,"y":-0.5,"lbl":"H"}],"bonds":[[0,1,1],[0,2,1],[0,3,1]]},{"slug":"ethanol","name":"Ethanol","formula":"C2H6O","kind":"Alcohol","note":"Drawn the skeletal way: each unlabelled vertex is a carbon with as many hydrogens as it needs. Two carbons and a hydroxyl group.","atoms":[{"el":"C","x":0,"y":0},{"el":"C","x":0.866,"y":0.5},{"el":"O","x":1.732,"y":0,"lbl":"OH"}],"bonds":[[0,1,1],[1,2,1]]},{"slug":"acetic-acid","name":"Acetic acid","formula":"C2H4O2","kind":"Carboxylic acid","note":"Vinegar's acid: a methyl group on a carboxyl group. The C=O and the O–H on the same carbon are what makes it an acid.","atoms":[{"el":"C","x":0,"y":0},{"el":"C","x":0.866,"y":0.5},{"el":"O","x":0.866,"y":1.5},{"el":"O","x":1.732,"y":0,"lbl":"OH"}],"bonds":[[0,1,1],[1,2,2],[1,3,1]]},{"slug":"urea","name":"Urea","formula":"CH4N2O","kind":"Amide","note":"The first organic molecule made from inorganic starting materials (Wöhler, 1828), and how mammals excrete nitrogen. Half nitrogen by mass.","atoms":[{"el":"C","x":0,"y":0},{"el":"O","x":0,"y":1},{"el":"N","x":-0.866,"y":-0.5,"lbl":"H₂N"},{"el":"N","x":0.866,"y":-0.5,"lbl":"NH₂"}],"bonds":[[0,1,2],[0,2,1],[0,3,1]]},{"slug":"benzene","name":"Benzene","formula":"C6H6","kind":"Aromatic hydrocarbon","note":"Six carbons in a ring, drawn with alternating double bonds although the six electrons are really shared around the whole ring. The parent of the aromatic compounds.","atoms":[{"el":"C","x":0,"y":1},{"el":"C","x":0.866,"y":0.5},{"el":"C","x":0.866,"y":-0.5},{"el":"C","x":0,"y":-1},{"el":"C","x":-0.866,"y":-0.5},{"el":"C","x":-0.866,"y":0.5}],"bonds":[[0,1,2],[1,2,1],[2,3,2],[3,4,1],[4,5,2],[5,0,1]]},{"slug":"aspirin","name":"Aspirin","formula":"C9H8O4","kind":"Carboxylic acid","note":"Acetylsalicylic acid: a benzene ring carrying a carboxylic acid and, next to it, an acetyl ester. Willow-bark chemistry, tamed by Bayer in 1897.","atoms":[{"el":"C","x":0,"y":1},{"el":"C","x":0.866,"y":0.5},{"el":"C","x":0.866,"y":-0.5},{"el":"C","x":0,"y":-1},{"el":"C","x":-0.866,"y":-0.5},{"el":"C","x":-0.866,"y":0.5},{"el":"C","x":0,"y":2},{"el":"O","x":-0.866,"y":2.5},{"el":"O","x":0.866,"y":2.5,"lbl":"OH"},{"el":"O","x":1.732,"y":1,"lbl":"O"},{"el":"C","x":2.598,"y":0.5},{"el":"O","x":2.598,"y":-0.5},{"el":"C","x":3.464,"y":1,"lbl":"CH₃"}],"bonds":[[0,1,2],[1,2,1],[2,3,2],[3,4,1],[4,5,2],[5,0,1],[0,6,1],[6,7,2],[6,8,1],[1,9,1],[9,10,1],[10,11,2],[10,12,1]]}]}</script>
 <script>
   const RAW = JSON.parse(document.getElementById('data').textContent);
   const EQ = JSON.parse(document.getElementById('eqdata').textContent);
@@ -1148,7 +1275,7 @@ window.KosmosSearch = (() => {
       const mk = (t) => { const s = document.createElement('span'); s.className = 'mono-val mono'; s.textContent = t; return s; };
       lg.append(mk(lo), bar, mk(hi));
       const n = E.filter((e) => L.t(e) == null).length;
-      if (n) { const s = document.createElement('span'); s.innerHTML = `<span class="chip"><span class="dot hollowdot"></span>aucune donnée (${n})</span>`; lg.append(s); }
+      if (n) { const s = document.createElement('span'); s.innerHTML = `<span class="chip"><span class="dot hollowdot"></span>${L.absent || 'no data'} (${n})</span>`; lg.append(s); }
       if (lens === 'disc') { const s = document.createElement('span'); s.textContent = 'faites glisser l\'année pour remonter le temps'; lg.append(s); }
     } else {
       for (const item of L.legend()) {
@@ -1530,6 +1657,7 @@ window.KosmosSearch = (() => {
     LENSES.analysis = {
       name: 'Analysis',
       seq: true,
+      absent: 'not in this object',
       solid: true,
       t: (e) => {
         const m = analysisMap[e.z];
@@ -1580,4 +1708,293 @@ window.KosmosSearch = (() => {
     lens = 'cat';
     lensesBox.children[0].click();
   });
+
+  // ---------- molecule: a formula -> its atoms on the table, and a drawn structure for the shelf ----------
+  // The analyzer above answers "what is this heap made of, by mass". This answers the other
+  // question a chemistry T-shirt asks: "which atoms, and how many, make one molecule". The
+  // composition is computed here from the formula and the atomic masses in Notion; the drawing
+  // is hand-laid in data/chemistry/molecules.json and exists only for the shelf.
+  const MOLS = JSON.parse(document.getElementById('moldata').textContent).molecules;
+  const SUBS = '₀₁₂₃₄₅₆₇₈₉';
+  const subscript = (s) => String(s).replace(/\d/g, (d) => SUBS[+d]);
+  const massOf = Object.fromEntries(E.map((e) => [e.sym, e.atomicMass]));
+
+  // "C8H10N4O2", "Ca(OH)2", "CH₃COOH" -> {C: 8, H: 10, ...}; throws on anything that is not a formula
+  function parseFormula(str) {
+    const s = str.replace(/[₀-₉]/g, (c) => SUBS.indexOf(c)).replace(/\s+/g, '');
+    let i = 0;
+    const num = () => { let n = ''; while (i < s.length && /\d/.test(s[i])) n += s[i++]; return n ? +n : 1; };
+    const group = (close) => {
+      const out = {};
+      while (i < s.length) {
+        const c = s[i];
+        if (c === close) { i++; return out; }
+        let part;
+        if (c === '(' || c === '[') { i++; part = group(c === '(' ? ')' : ']'); }
+        else if (/[A-Z]/.test(c)) {
+          let sym = c; i++;
+          if (/[a-z]/.test(s[i] || '')) sym += s[i++];
+          if (!(sym in symToZ)) throw new Error(`${sym} is not an element`);
+          part = { [sym]: 1 };
+        } else throw new Error(`unexpected “${c}”`);
+        const n = num();
+        for (const [k, v] of Object.entries(part)) out[k] = (out[k] || 0) + v * n;
+      }
+      if (close) throw new Error('a parenthesis is not closed');
+      return out;
+    };
+    const counts = group(null);
+    if (!Object.keys(counts).length) throw new Error('nothing to read');
+    return counts;
+  }
+  // Hill order: C, then H, then the rest alphabetically — everything alphabetical without carbon.
+  // One key per compound, so "CH3COOH" finds acetic acid on the shelf.
+  const hill = (counts) => {
+    const first = counts.C ? ['C', ...(counts.H ? ['H'] : [])] : [];
+    const rest = Object.keys(counts).filter((k) => !first.includes(k)).sort();
+    return [...first, ...rest].map((k) => k + (counts[k] > 1 ? counts[k] : '')).join('');
+  };
+  const shelfByKey = new Map(MOLS.map((m) => [hill(parseFormula(m.formula)), m]));
+
+  function composition(counts) {
+    const atoms = Object.values(counts).reduce((s, n) => s + n, 0);
+    const known = Object.keys(counts).every((k) => massOf[k] != null);
+    const total = known ? Object.entries(counts).reduce((s, [k, n]) => s + massOf[k] * n, 0) : null;
+    const rows = Object.entries(counts)
+      .map(([sym, n]) => ({ sym, n, z: symToZ[sym], name: byZ[symToZ[sym]].name, pct: total ? (massOf[sym] * n / total) * 100 : null }))
+      .sort((a, b) => (b.pct ?? 0) - (a.pct ?? 0) || b.n - a.n);
+    return { rows, total, atoms };
+  }
+
+  // ---- the drawing: a skeletal formula, the convention the T-shirt uses. Unlabelled vertices are
+  // carbons; hydrogens on carbon are implied; a double bond is a second line on the ring side.
+  const BOND = 34, PAD = 22, LABEL_R = 9, GAP = 4.2;
+  function drawMolecule(mol) {
+    const NS = 'http://www.w3.org/2000/svg';
+    const pts = mol.atoms.map((a) => ({ x: a.x * BOND, y: -a.y * BOND }));
+    const xs = pts.map((p) => p.x), ys = pts.map((p) => p.y);
+    const x0 = Math.min(...xs) - PAD, y0 = Math.min(...ys) - PAD;
+    const w = Math.max(...xs) - Math.min(...xs) + 2 * PAD, h = Math.max(...ys) - Math.min(...ys) + 2 * PAD;
+    const svg = document.createElementNS(NS, 'svg');
+    svg.setAttribute('viewBox', `${x0.toFixed(1)} ${y0.toFixed(1)} ${w.toFixed(1)} ${h.toFixed(1)}`);
+    svg.setAttribute('width', Math.round(w));
+    svg.setAttribute('height', Math.round(h));
+    svg.setAttribute('role', 'img');
+    svg.setAttribute('aria-label', `${mol.name}, skeletal formula`);
+    const label = (a) => (a.lbl != null ? a.lbl : a.el === 'C' ? '' : a.el);
+    const nbrs = mol.atoms.map(() => []);
+    for (const [a, b] of mol.bonds) { nbrs[a].push(b); nbrs[b].push(a); }
+    const line = (x1, y1, x2, y2) => {
+      const l = document.createElementNS(NS, 'line');
+      l.setAttribute('x1', x1.toFixed(1)); l.setAttribute('y1', y1.toFixed(1));
+      l.setAttribute('x2', x2.toFixed(1)); l.setAttribute('y2', y2.toFixed(1));
+      svg.appendChild(l);
+    };
+    for (const [a, b, order] of mol.bonds) {
+      const A = pts[a], B = pts[b];
+      const len = Math.hypot(B.x - A.x, B.y - A.y);
+      const ux = (B.x - A.x) / len, uy = (B.y - A.y) / len;   // along the bond
+      const px = -uy, py = ux;                                 // across it
+      // pull each end back from a written label so the line does not run through the letters
+      const ta = label(mol.atoms[a]) ? LABEL_R : 0, tb = label(mol.atoms[b]) ? LABEL_R : 0;
+      const ax = A.x + ux * ta, ay = A.y + uy * ta, bx = B.x - ux * tb, by = B.y - uy * tb;
+      const offset = (s, shrink = 0) => line(ax + px * GAP * s + ux * shrink, ay + py * GAP * s + uy * shrink,
+                                             bx + px * GAP * s - ux * shrink, by + py * GAP * s - uy * shrink);
+      if (order === 1) line(ax, ay, bx, by);
+      else if (order === 3) { line(ax, ay, bx, by); offset(-1); offset(1); }
+      else if (nbrs[a].length === 1 || nbrs[b].length === 1) { offset(-0.5); offset(0.5); }   // C=O: two symmetric lines
+      else {
+        // the second line goes on the side the other neighbours are — inside a ring
+        const others = [...nbrs[a].filter((k) => k !== b), ...nbrs[b].filter((k) => k !== a)];
+        const cx = others.reduce((s, k) => s + pts[k].x, 0) / others.length - (A.x + B.x) / 2;
+        const cy = others.reduce((s, k) => s + pts[k].y, 0) / others.length - (A.y + B.y) / 2;
+        line(ax, ay, bx, by);
+        offset(cx * px + cy * py >= 0 ? 1 : -1, 5);
+      }
+    }
+    mol.atoms.forEach((a, i) => {
+      const txt = label(a);
+      if (!txt) return;
+      const t = document.createElementNS(NS, 'text');
+      t.setAttribute('x', pts[i].x.toFixed(1));
+      t.setAttribute('y', pts[i].y.toFixed(1));
+      t.setAttribute('class', 'matom');
+      t.textContent = txt;
+      const z = symToZ[a.el];
+      if (z) {
+        const title = document.createElementNS(NS, 'title');
+        title.textContent = byZ[z].name;
+        t.appendChild(title);
+        t.addEventListener('click', () => select(z, true));
+      }
+      svg.appendChild(t);
+    });
+    return svg;
+  }
+
+  // ---- the strip
+  const mstrip = document.getElementById('mstrip');
+  const mformula = document.getElementById('mformula');
+  const mpick = document.getElementById('mpick');
+  const mstatus = document.getElementById('mstatus');
+  let molMap = null;        // z -> {n, pct}
+  let molLensBtn = null;
+  mpick.append(new Option('from the shelf…', ''));
+  for (const m of MOLS) mpick.append(new Option(`${m.name} · ${subscript(m.formula)}`, m.slug));
+
+  const mbtn = document.createElement('button');
+  mbtn.className = 'abtn';
+  mbtn.textContent = '⌬ draw a molecule';
+  mbtn.title = 'Type a formula or pick a molecule — its atoms light up on the table, with the structure drawn';
+  document.querySelector('header.top').append(mbtn);
+  mbtn.addEventListener('click', () => {
+    if (!molMap) showShelf(MOLS[0]);
+    mstrip.classList.add('on');
+    mstrip.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  });
+
+  function setMStatus(msg, cls) {
+    mstatus.textContent = msg || '';
+    mstatus.className = 'mstatus' + (cls ? ' ' + cls : '');
+  }
+
+  function showShelf(m) {
+    mpick.value = m.slug;
+    mformula.value = m.formula;
+    showMolecule({ name: m.name, formula: m.formula, kind: m.kind, note: m.note, counts: parseFormula(m.formula), shelf: m });
+  }
+
+  function tryFormula(raw) {
+    const v = raw.trim();
+    if (!v) return;
+    mstrip.classList.add('on');
+    let counts;
+    try { counts = parseFormula(v); } catch (e) { setMStatus(`Could not read “${v}” — ${e.message}.`, 'err'); return; }
+    const shelf = shelfByKey.get(hill(counts));
+    if (shelf) { showShelf(shelf); return; }
+    mpick.value = '';
+    showMolecule({ name: subscript(v), formula: null, counts });
+  }
+
+  function showMolecule({ name, formula, kind, note, counts, shelf }) {
+    mstrip.classList.add('on');
+    setMStatus('');
+    const comp = composition(counts);
+    document.getElementById('mname').textContent = name;
+    const mass = comp.total ? `${+comp.total.toFixed(2)} g/mol` : '';
+    document.getElementById('mform').textContent = [formula && subscript(formula), mass].filter(Boolean).join(' · ');
+    document.getElementById('mkind').textContent = kind ? vocab(kind) : '';
+    document.getElementById('mnote').textContent = note || '';
+
+    const draw = document.getElementById('mdraw');
+    draw.innerHTML = '';
+    if (shelf) draw.appendChild(drawMolecule(shelf));
+    else {
+      const p = document.createElement('p');
+      p.className = 'mnodraw';
+      p.textContent = 'No drawing for this formula — the shelf holds the structures. The table still shows its atoms.';
+      draw.appendChild(p);
+    }
+
+    const box = document.getElementById('mcomp');
+    box.innerHTML = '';
+    for (const r of comp.rows) {
+      const d = document.createElement('div');
+      d.className = 'mel';
+      const sym = document.createElement('button');
+      sym.className = 'msym';
+      sym.textContent = r.sym;
+      sym.title = `inspect ${r.name}`;
+      sym.addEventListener('click', () => select(r.z, true));
+      const nm = document.createElement('span');
+      nm.textContent = r.name;
+      const n = document.createElement('span');
+      n.className = 'mn';
+      n.textContent = `${r.n} atom${r.n === 1 ? '' : 's'}`;
+      const pct = document.createElement('span');
+      pct.className = 'mpct';
+      pct.textContent = r.pct == null ? 'no mass in Notion' : `${+r.pct.toPrecision(3)}%`;
+      const bar = document.createElement('div');
+      bar.className = 'mbar';
+      const fill = document.createElement('div');
+      fill.style.width = Math.min(100, Math.max(2, r.pct ?? 0)) + '%';
+      bar.appendChild(fill);
+      d.append(sym, nm, n, pct, bar);
+      box.appendChild(d);
+    }
+    if (!comp.total) setMStatus('Some atomic masses are missing from Notion, so only the atom counts are shown.');
+
+    molMap = {};
+    for (const r of comp.rows) molMap[r.z] = { n: r.n, pct: r.pct };
+    registerMolLens(comp.atoms);
+    molLensBtn.click();
+    history.replaceState(null, '', `?molecule=${encodeURIComponent(shelf ? shelf.slug : hill(counts))}${location.hash}`);
+  }
+
+  function registerMolLens(atoms) {
+    const max = Math.max(...Object.values(molMap).map((v) => v.pct ?? 0)) || 1;
+    LENSES.molecule = {
+      name: 'Molecule',
+      seq: true,
+      solid: true,
+      absent: 'not in the molecule',
+      t: (e) => { const m = molMap[e.z]; return m ? (m.pct == null ? 1 : m.pct / max) : null; },
+      color: (e) => { const t = LENSES.molecule.t(e); return t == null ? null : heat(t); },
+      value: (e) => {
+        const m = molMap[e.z];
+        if (!m) return 'not in this molecule';
+        return `${m.n} of ${atoms} atoms` + (m.pct == null ? '' : ` · ${+m.pct.toPrecision(3)}% of mass`);
+      },
+      range: () => ['0%', `${+max.toPrecision(3)}% of mass`],
+    };
+    if (!molLensBtn) {
+      molLensBtn = document.createElement('button');
+      molLensBtn.className = 'lens';
+      molLensBtn.textContent = 'Molecule';
+      molLensBtn.setAttribute('aria-pressed', 'false');
+      molLensBtn.addEventListener('click', () => {
+        lens = 'molecule';
+        for (const x of lensesBox.children) x.setAttribute('aria-pressed', 'false');
+        molLensBtn.setAttribute('aria-pressed', 'true');
+        document.getElementById('tempwrap').classList.remove('on');
+        document.getElementById('yearwrap').classList.remove('on');
+        paint();
+        if (sel) renderDetail(byZ[sel]);
+      });
+      lensesBox.appendChild(molLensBtn);
+    }
+  }
+
+  // ghost the elements the molecule has none of while its lens is active
+  const paintBeforeMolecule = paint;
+  paint = function () {
+    paintBeforeMolecule();
+    if (lens === 'molecule' && molMap) {
+      for (const e of E) if (!molMap[e.z]) tiles[e.z].classList.add('ghost');
+    }
+  };
+
+  mformula.addEventListener('change', () => tryFormula(mformula.value));
+  mformula.addEventListener('keydown', (ev) => { if (ev.key === 'Enter') { ev.preventDefault(); tryFormula(mformula.value); } });
+  mpick.addEventListener('change', () => {
+    const m = MOLS.find((x) => x.slug === mpick.value);
+    if (m) showShelf(m);
+  });
+  document.getElementById('mclear').addEventListener('click', () => {
+    mstrip.classList.remove('on');
+    molMap = null;
+    delete LENSES.molecule;
+    if (molLensBtn) { molLensBtn.remove(); molLensBtn = null; }
+    mformula.value = '';
+    mpick.value = '';
+    if (lens === 'molecule') (analysisLensBtn || lensesBox.children[0]).click();
+    history.replaceState(null, '', location.pathname + location.hash);
+  });
+
+  // deep link: /elements?molecule=caffeine, or any formula: /elements?molecule=C8H10N4O2
+  const wantedMolecule = new URLSearchParams(location.search).get('molecule');
+  if (wantedMolecule) {
+    const m = MOLS.find((x) => x.slug === wantedMolecule.toLowerCase());
+    if (m) showShelf(m); else tryFormula(wantedMolecule);
+  }
 </script>

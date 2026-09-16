@@ -12,7 +12,7 @@ truth for code and the normalised data snapshots. Sync is one-way, Notion → re
 | Route        | What's there |
 |--------------|--------------|
 | `/`          | Tile launcher in four groups (Matter & Earth, Cosmos & Physics, Making & Doing, Reference) with live stats per section, and a search bar over everything the site holds (`/` to focus, `?q=` to deep-link a query) |
-| `/elements`  | Interactive periodic table (11 lenses incl. crustal rarity and concentration factor, temperature + discovery sliders), sources & extraction per element, and the AI photo analyzer |
+| `/elements`  | Interactive periodic table (11 lenses incl. crustal rarity and concentration factor, temperature + discovery sliders), sources & extraction per element, the AI photo analyzer (a heap, by mass), and the molecule view (a formula or a shelf molecule: its atoms on the table, its skeletal structure drawn; `?molecule=caffeine` deep-links) |
 | `/minerals`  | 3,100+ minerals with formula, elemental makeup (mass %), hardness and density, filterable by contained element; gemstone shelf, rock families, silicate classes |
 | `/cosmos`    | The Local Group mapped by true distance (log-radial, 44 members), celestial object classes, the stellar spectral sequence, observatories, a discovery timeline, missions, instruments and researchers |
 | `/forces`    | The four fundamental interactions |
@@ -64,6 +64,10 @@ web/chrome.css, web/chrome.js The header's style, and the one search engine ever
 web/billiards.template.html   The shot lab: the billiards equations integrated in the browser (sliding→rolling,
                               restitution, throw with Alciatore's μ(v), cushion impulse) on the constants below
 web/                          Page sources: templates, shared.css, analyzer parts
+web/molecule.{css,html,js}    The molecule view on /elements: formula parser (Hill order for the shelf lookup),
+                              composition from the atomic masses in Notion, and an SVG skeletal-formula renderer
+data/chemistry/molecules.json The molecule shelf — formula, one note, and a hand-laid drawing (atoms in bond
+                              lengths, y up; unlabelled vertices are carbons). Not in Notion: a drawing is code
 data/chemistry/elements.json  Normalised element data (scripts/fetch_elements.py)
 data/notion-all.json          All other Notion sources (scripts/fetch_all.py)
 scripts/build.py              web/ + data → public/*.html, then public/fr/*.html (build_fr)

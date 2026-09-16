@@ -446,6 +446,7 @@
 <script id="minesites" type="application/json">__MINESITES__</script>
 <script id="eqdata" type="application/json">__EQUATIONS__</script>
 <script id="mindata" type="application/json">__MINERALS__</script>
+<script id="moldata" type="application/json">__MOLECULES__</script>
 <script>
   const RAW = JSON.parse(document.getElementById('data').textContent);
   const EQ = JSON.parse(document.getElementById('eqdata').textContent);
@@ -725,7 +726,7 @@
       const mk = (t) => { const s = document.createElement('span'); s.className = 'mono-val mono'; s.textContent = t; return s; };
       lg.append(mk(lo), bar, mk(hi));
       const n = E.filter((e) => L.t(e) == null).length;
-      if (n) { const s = document.createElement('span'); s.innerHTML = `<span class="chip"><span class="dot hollowdot"></span>no data (${n})</span>`; lg.append(s); }
+      if (n) { const s = document.createElement('span'); s.innerHTML = `<span class="chip"><span class="dot hollowdot"></span>${L.absent || 'no data'} (${n})</span>`; lg.append(s); }
       if (lens === 'disc') { const s = document.createElement('span'); s.textContent = 'drag the year to travel back in time'; lg.append(s); }
     } else {
       for (const item of L.legend()) {

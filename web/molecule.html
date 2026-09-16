@@ -1,0 +1,18 @@
+<div class="mstrip" id="mstrip">
+  <div class="mhead">
+    <label class="mlabel" for="mformula">molecule</label>
+    <input class="mformula" id="mformula" type="text" placeholder="a formula, e.g. C8H10N4O2" aria-label="Chemical formula" autocapitalize="off" autocorrect="off" spellcheck="false" />
+    <select class="mpick" id="mpick" aria-label="Pick a molecule from the shelf"></select>
+    <button class="mclear" id="mclear">clear molecule</button>
+  </div>
+  <div class="mbody">
+    <div class="mdraw" id="mdraw"></div>
+    <div class="mmain">
+      <p class="mname"><span id="mname"></span><span class="mform" id="mform"></span><span class="mkind" id="mkind"></span></p>
+      <p class="mnote" id="mnote"></p>
+      <div class="mcomp" id="mcomp"></div>
+      <p class="mstatus" id="mstatus"></p>
+    </div>
+  </div>
+  <p class="mcaveat">A molecule is counted, not weighed: the shares are computed from the formula and the atomic masses in Notion. The structure is drawn for the molecules on the shelf; any formula lights the table.</p>
+</div>

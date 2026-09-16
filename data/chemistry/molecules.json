@@ -1,0 +1,905 @@
+{
+ "_about": "The molecule shelf for /elements: a formula, one note, and a hand-laid skeletal drawing (y up, bond length 1). Unlabelled atoms are carbons; a label names what is written at that vertex. Composition is not stored here — the page computes it from the formula and the atomic masses in Notion.",
+ "molecules": [
+  {
+   "slug": "caffeine",
+   "name": "Caffeine",
+   "formula": "C8H10N4O2",
+   "kind": "Alkaloid",
+   "note": "The molecule on the coffee T-shirt: a xanthine core (a six-membered ring fused to a five-membered one) carrying three methyl groups. About 1 % of a roasted arabica bean by mass, twice that in robusta; also in tea, cacao and guarana.",
+   "atoms": [
+    {
+     "el": "N",
+     "x": -0.866,
+     "y": 0.5
+    },
+    {
+     "el": "C",
+     "x": -0.866,
+     "y": -0.5
+    },
+    {
+     "el": "N",
+     "x": 0,
+     "y": -1
+    },
+    {
+     "el": "C",
+     "x": 0.866,
+     "y": -0.5
+    },
+    {
+     "el": "C",
+     "x": 0.866,
+     "y": 0.5
+    },
+    {
+     "el": "C",
+     "x": 0,
+     "y": 1
+    },
+    {
+     "el": "N",
+     "x": 1.817,
+     "y": 0.809
+    },
+    {
+     "el": "C",
+     "x": 2.405,
+     "y": 0.0
+    },
+    {
+     "el": "N",
+     "x": 1.817,
+     "y": -0.809
+    },
+    {
+     "el": "O",
+     "x": 0,
+     "y": 2
+    },
+    {
+     "el": "O",
+     "x": -1.732,
+     "y": -1
+    },
+    {
+     "el": "C",
+     "x": -1.732,
+     "y": 1,
+     "lbl": "H₃C"
+    },
+    {
+     "el": "C",
+     "x": 0,
+     "y": -2,
+     "lbl": "CH₃"
+    },
+    {
+     "el": "C",
+     "x": 2.126,
+     "y": 1.76,
+     "lbl": "CH₃"
+    }
+   ],
+   "bonds": [
+    [
+     0,
+     1,
+     1
+    ],
+    [
+     1,
+     2,
+     1
+    ],
+    [
+     2,
+     3,
+     1
+    ],
+    [
+     3,
+     4,
+     2
+    ],
+    [
+     4,
+     5,
+     1
+    ],
+    [
+     5,
+     0,
+     1
+    ],
+    [
+     4,
+     6,
+     1
+    ],
+    [
+     6,
+     7,
+     1
+    ],
+    [
+     7,
+     8,
+     2
+    ],
+    [
+     8,
+     3,
+     1
+    ],
+    [
+     5,
+     9,
+     2
+    ],
+    [
+     1,
+     10,
+     2
+    ],
+    [
+     0,
+     11,
+     1
+    ],
+    [
+     2,
+     12,
+     1
+    ],
+    [
+     6,
+     13,
+     1
+    ]
+   ]
+  },
+  {
+   "slug": "theobromine",
+   "name": "Theobromine",
+   "formula": "C7H8N4O2",
+   "kind": "Alkaloid",
+   "note": "Caffeine with one methyl group fewer — the same two fused rings, an N–H where caffeine has N–CH₃. The bitter stimulant of cacao (1–2 % of the dry bean), and why chocolate is dangerous to dogs.",
+   "atoms": [
+    {
+     "el": "N",
+     "x": -0.866,
+     "y": 0.5,
+     "lbl": "HN"
+    },
+    {
+     "el": "C",
+     "x": -0.866,
+     "y": -0.5
+    },
+    {
+     "el": "N",
+     "x": 0,
+     "y": -1
+    },
+    {
+     "el": "C",
+     "x": 0.866,
+     "y": -0.5
+    },
+    {
+     "el": "C",
+     "x": 0.866,
+     "y": 0.5
+    },
+    {
+     "el": "C",
+     "x": 0,
+     "y": 1
+    },
+    {
+     "el": "N",
+     "x": 1.817,
+     "y": 0.809
+    },
+    {
+     "el": "C",
+     "x": 2.405,
+     "y": 0.0
+    },
+    {
+     "el": "N",
+     "x": 1.817,
+     "y": -0.809
+    },
+    {
+     "el": "O",
+     "x": 0,
+     "y": 2
+    },
+    {
+     "el": "O",
+     "x": -1.732,
+     "y": -1
+    },
+    {
+     "el": "C",
+     "x": 0,
+     "y": -2,
+     "lbl": "CH₃"
+    },
+    {
+     "el": "C",
+     "x": 2.126,
+     "y": 1.76,
+     "lbl": "CH₃"
+    }
+   ],
+   "bonds": [
+    [
+     0,
+     1,
+     1
+    ],
+    [
+     1,
+     2,
+     1
+    ],
+    [
+     2,
+     3,
+     1
+    ],
+    [
+     3,
+     4,
+     2
+    ],
+    [
+     4,
+     5,
+     1
+    ],
+    [
+     5,
+     0,
+     1
+    ],
+    [
+     4,
+     6,
+     1
+    ],
+    [
+     6,
+     7,
+     1
+    ],
+    [
+     7,
+     8,
+     2
+    ],
+    [
+     8,
+     3,
+     1
+    ],
+    [
+     5,
+     9,
+     2
+    ],
+    [
+     1,
+     10,
+     2
+    ],
+    [
+     2,
+     11,
+     1
+    ],
+    [
+     6,
+     12,
+     1
+    ]
+   ]
+  },
+  {
+   "slug": "water",
+   "name": "Water",
+   "formula": "H2O",
+   "kind": "Inorganic",
+   "note": "Two hydrogens on one oxygen at 104.5°, which is why the molecule is bent and polar, and why ice floats. About 11 % hydrogen and 89 % oxygen by mass — the hydrogen weighs almost nothing.",
+   "atoms": [
+    {
+     "el": "O",
+     "x": 0,
+     "y": 0,
+     "lbl": "O"
+    },
+    {
+     "el": "H",
+     "x": -0.8,
+     "y": -0.6,
+     "lbl": "H"
+    },
+    {
+     "el": "H",
+     "x": 0.8,
+     "y": -0.6,
+     "lbl": "H"
+    }
+   ],
+   "bonds": [
+    [
+     0,
+     1,
+     1
+    ],
+    [
+     0,
+     2,
+     1
+    ]
+   ]
+  },
+  {
+   "slug": "carbon-dioxide",
+   "name": "Carbon dioxide",
+   "formula": "CO2",
+   "kind": "Inorganic",
+   "note": "Linear, O=C=O. What roasting drives out of a coffee bean by the litre, and what a bean's carbon becomes when it is burnt or breathed.",
+   "atoms": [
+    {
+     "el": "O",
+     "x": -1.2,
+     "y": 0,
+     "lbl": "O"
+    },
+    {
+     "el": "C",
+     "x": 0,
+     "y": 0,
+     "lbl": "C"
+    },
+    {
+     "el": "O",
+     "x": 1.2,
+     "y": 0,
+     "lbl": "O"
+    }
+   ],
+   "bonds": [
+    [
+     0,
+     1,
+     2
+    ],
+    [
+     1,
+     2,
+     2
+    ]
+   ]
+  },
+  {
+   "slug": "dioxygen",
+   "name": "Oxygen (O₂)",
+   "formula": "O2",
+   "kind": "Inorganic",
+   "note": "The molecule the air carries, a fifth of it: two oxygens sharing a double bond.",
+   "atoms": [
+    {
+     "el": "O",
+     "x": -0.6,
+     "y": 0,
+     "lbl": "O"
+    },
+    {
+     "el": "O",
+     "x": 0.6,
+     "y": 0,
+     "lbl": "O"
+    }
+   ],
+   "bonds": [
+    [
+     0,
+     1,
+     2
+    ]
+   ]
+  },
+  {
+   "slug": "dinitrogen",
+   "name": "Nitrogen (N₂)",
+   "formula": "N2",
+   "kind": "Inorganic",
+   "note": "Four fifths of the air, held together by a triple bond so strong that only lightning, nitrogenase and the Haber process break it.",
+   "atoms": [
+    {
+     "el": "N",
+     "x": -0.6,
+     "y": 0,
+     "lbl": "N"
+    },
+    {
+     "el": "N",
+     "x": 0.6,
+     "y": 0,
+     "lbl": "N"
+    }
+   ],
+   "bonds": [
+    [
+     0,
+     1,
+     3
+    ]
+   ]
+  },
+  {
+   "slug": "methane",
+   "name": "Methane",
+   "formula": "CH4",
+   "kind": "Hydrocarbon",
+   "note": "One carbon, four hydrogens, a tetrahedron flattened onto the page. The simplest hydrocarbon and the main part of natural gas.",
+   "atoms": [
+    {
+     "el": "C",
+     "x": 0,
+     "y": 0,
+     "lbl": "C"
+    },
+    {
+     "el": "H",
+     "x": 0,
+     "y": 1,
+     "lbl": "H"
+    },
+    {
+     "el": "H",
+     "x": 1,
+     "y": 0,
+     "lbl": "H"
+    },
+    {
+     "el": "H",
+     "x": 0,
+     "y": -1,
+     "lbl": "H"
+    },
+    {
+     "el": "H",
+     "x": -1,
+     "y": 0,
+     "lbl": "H"
+    }
+   ],
+   "bonds": [
+    [
+     0,
+     1,
+     1
+    ],
+    [
+     0,
+     2,
+     1
+    ],
+    [
+     0,
+     3,
+     1
+    ],
+    [
+     0,
+     4,
+     1
+    ]
+   ]
+  },
+  {
+   "slug": "ammonia",
+   "name": "Ammonia",
+   "formula": "NH3",
+   "kind": "Inorganic",
+   "note": "A nitrogen with three hydrogens and a lone pair; the Haber process makes 150 million tonnes a year of it, mostly for fertiliser.",
+   "atoms": [
+    {
+     "el": "N",
+     "x": 0,
+     "y": 0,
+     "lbl": "N"
+    },
+    {
+     "el": "H",
+     "x": 0,
+     "y": 1,
+     "lbl": "H"
+    },
+    {
+     "el": "H",
+     "x": -0.866,
+     "y": -0.5,
+     "lbl": "H"
+    },
+    {
+     "el": "H",
+     "x": 0.866,
+     "y": -0.5,
+     "lbl": "H"
+    }
+   ],
+   "bonds": [
+    [
+     0,
+     1,
+     1
+    ],
+    [
+     0,
+     2,
+     1
+    ],
+    [
+     0,
+     3,
+     1
+    ]
+   ]
+  },
+  {
+   "slug": "ethanol",
+   "name": "Ethanol",
+   "formula": "C2H6O",
+   "kind": "Alcohol",
+   "note": "Drawn the skeletal way: each unlabelled vertex is a carbon with as many hydrogens as it needs. Two carbons and a hydroxyl group.",
+   "atoms": [
+    {
+     "el": "C",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "el": "C",
+     "x": 0.866,
+     "y": 0.5
+    },
+    {
+     "el": "O",
+     "x": 1.732,
+     "y": 0,
+     "lbl": "OH"
+    }
+   ],
+   "bonds": [
+    [
+     0,
+     1,
+     1
+    ],
+    [
+     1,
+     2,
+     1
+    ]
+   ]
+  },
+  {
+   "slug": "acetic-acid",
+   "name": "Acetic acid",
+   "formula": "C2H4O2",
+   "kind": "Carboxylic acid",
+   "note": "Vinegar's acid: a methyl group on a carboxyl group. The C=O and the O–H on the same carbon are what makes it an acid.",
+   "atoms": [
+    {
+     "el": "C",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "el": "C",
+     "x": 0.866,
+     "y": 0.5
+    },
+    {
+     "el": "O",
+     "x": 0.866,
+     "y": 1.5
+    },
+    {
+     "el": "O",
+     "x": 1.732,
+     "y": 0,
+     "lbl": "OH"
+    }
+   ],
+   "bonds": [
+    [
+     0,
+     1,
+     1
+    ],
+    [
+     1,
+     2,
+     2
+    ],
+    [
+     1,
+     3,
+     1
+    ]
+   ]
+  },
+  {
+   "slug": "urea",
+   "name": "Urea",
+   "formula": "CH4N2O",
+   "kind": "Amide",
+   "note": "The first organic molecule made from inorganic starting materials (Wöhler, 1828), and how mammals excrete nitrogen. Half nitrogen by mass.",
+   "atoms": [
+    {
+     "el": "C",
+     "x": 0,
+     "y": 0
+    },
+    {
+     "el": "O",
+     "x": 0,
+     "y": 1
+    },
+    {
+     "el": "N",
+     "x": -0.866,
+     "y": -0.5,
+     "lbl": "H₂N"
+    },
+    {
+     "el": "N",
+     "x": 0.866,
+     "y": -0.5,
+     "lbl": "NH₂"
+    }
+   ],
+   "bonds": [
+    [
+     0,
+     1,
+     2
+    ],
+    [
+     0,
+     2,
+     1
+    ],
+    [
+     0,
+     3,
+     1
+    ]
+   ]
+  },
+  {
+   "slug": "benzene",
+   "name": "Benzene",
+   "formula": "C6H6",
+   "kind": "Aromatic hydrocarbon",
+   "note": "Six carbons in a ring, drawn with alternating double bonds although the six electrons are really shared around the whole ring. The parent of the aromatic compounds.",
+   "atoms": [
+    {
+     "el": "C",
+     "x": 0,
+     "y": 1
+    },
+    {
+     "el": "C",
+     "x": 0.866,
+     "y": 0.5
+    },
+    {
+     "el": "C",
+     "x": 0.866,
+     "y": -0.5
+    },
+    {
+     "el": "C",
+     "x": 0,
+     "y": -1
+    },
+    {
+     "el": "C",
+     "x": -0.866,
+     "y": -0.5
+    },
+    {
+     "el": "C",
+     "x": -0.866,
+     "y": 0.5
+    }
+   ],
+   "bonds": [
+    [
+     0,
+     1,
+     2
+    ],
+    [
+     1,
+     2,
+     1
+    ],
+    [
+     2,
+     3,
+     2
+    ],
+    [
+     3,
+     4,
+     1
+    ],
+    [
+     4,
+     5,
+     2
+    ],
+    [
+     5,
+     0,
+     1
+    ]
+   ]
+  },
+  {
+   "slug": "aspirin",
+   "name": "Aspirin",
+   "formula": "C9H8O4",
+   "kind": "Carboxylic acid",
+   "note": "Acetylsalicylic acid: a benzene ring carrying a carboxylic acid and, next to it, an acetyl ester. Willow-bark chemistry, tamed by Bayer in 1897.",
+   "atoms": [
+    {
+     "el": "C",
+     "x": 0,
+     "y": 1
+    },
+    {
+     "el": "C",
+     "x": 0.866,
+     "y": 0.5
+    },
+    {
+     "el": "C",
+     "x": 0.866,
+     "y": -0.5
+    },
+    {
+     "el": "C",
+     "x": 0,
+     "y": -1
+    },
+    {
+     "el": "C",
+     "x": -0.866,
+     "y": -0.5
+    },
+    {
+     "el": "C",
+     "x": -0.866,
+     "y": 0.5
+    },
+    {
+     "el": "C",
+     "x": 0,
+     "y": 2
+    },
+    {
+     "el": "O",
+     "x": -0.866,
+     "y": 2.5
+    },
+    {
+     "el": "O",
+     "x": 0.866,
+     "y": 2.5,
+     "lbl": "OH"
+    },
+    {
+     "el": "O",
+     "x": 1.732,
+     "y": 1,
+     "lbl": "O"
+    },
+    {
+     "el": "C",
+     "x": 2.598,
+     "y": 0.5
+    },
+    {
+     "el": "O",
+     "x": 2.598,
+     "y": -0.5
+    },
+    {
+     "el": "C",
+     "x": 3.464,
+     "y": 1,
+     "lbl": "CH₃"
+    }
+   ],
+   "bonds": [
+    [
+     0,
+     1,
+     2
+    ],
+    [
+     1,
+     2,
+     1
+    ],
+    [
+     2,
+     3,
+     2
+    ],
+    [
+     3,
+     4,
+     1
+    ],
+    [
+     4,
+     5,
+     2
+    ],
+    [
+     5,
+     0,
+     1
+    ],
+    [
+     0,
+     6,
+     1
+    ],
+    [
+     6,
+     7,
+     2
+    ],
+    [
+     6,
+     8,
+     1
+    ],
+    [
+     1,
+     9,
+     1
+    ],
+    [
+     9,
+     10,
+     1
+    ],
+    [
+     10,
+     11,
+     2
+    ],
+    [
+     10,
+     12,
+     1
+    ]
+   ]
+  }
+ ]
+}
