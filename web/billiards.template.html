@@ -48,8 +48,42 @@ __SHARED__
   .ctl details summary:hover { color: var(--ink); }
   .ctl details summary .cnt { color: var(--c-amber); }
   .ctl details .row { margin-top: 9px; }
-  #solspace { margin-top: 14px; }
-  #solspace[hidden] { display: none; }
+  /* the shot lab: table and readouts down the left, the controls down the right. The controls span
+     both rows and the second row is 1fr, so their length never stretches the gap under the table */
+  .shotlab { grid-template-rows: auto 1fr; }
+  .shotlab > .tblwrap { grid-column: 1; grid-row: 1; }
+  .shotlab > #ctlbox { grid-column: 2; grid-row: 1 / span 2; }
+  .shotlab > .widgets { grid-column: 1; grid-row: 2; min-width: 0; }
+  @media (max-width: 860px) { .shotlab > .tblwrap, .shotlab > #ctlbox, .shotlab > .widgets { grid-column: 1; grid-row: auto; } }
+  .widgets .legend { margin: 0 0 10px; }
+  .out.wgrid { grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); margin-top: 0; max-width: none; }
+  .wcard { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+  .whead { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+  .wcard .whead h3 { margin: 0; flex-wrap: wrap; }
+  .whead h3 small { font-weight: 400; letter-spacing: 0.06em; color: var(--muted); font-size: 10px; }
+  .wx { flex: none; width: 24px; height: 24px; border: 1px solid transparent; border-radius: 5px; background: transparent; color: var(--muted); font-size: 15px; line-height: 1; cursor: pointer; }
+  .wx:hover { color: var(--ink); border-color: var(--hairline); }
+  .wnote { font-size: 11.5px; color: var(--muted); line-height: 1.45; }
+  #hmap { width: 100%; height: 120px; border: 1px solid var(--hairline); border-radius: 4px; display: block; }
+  .key { display: flex; flex-wrap: wrap; gap: 3px 12px; font: 10px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; color: var(--muted); }
+  .key span::before { content: ""; display: inline-block; width: 9px; height: 9px; border-radius: 2px; margin-right: 5px; vertical-align: -1px; background: var(--k); }
+  /* what the lab shows: one row of switches, remembered in this browser */
+  .wbar { display: flex; flex-wrap: wrap; align-items: center; gap: 5px; margin: 0 0 12px; }
+  .wbar > span { font: 10px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-right: 3px; }
+  .wbar button { font: 10.5px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; border: 1px dashed var(--hairline); background: transparent; color: var(--muted); border-radius: 99px; padding: 3px 10px; cursor: pointer; }
+  .wbar button::before { content: "+ "; }
+  .wbar button.on { border-style: solid; border-color: var(--c-felt); color: var(--ink); background: color-mix(in oklab, var(--c-felt) 12%, transparent); }
+  .wbar button.on::before { content: "✓ "; color: var(--c-felt); }
+  #pane-shot.nohelp .help { display: none; }
+  /* execute floats bottom-right while the shot lab is open: on a phone the button used to sit two
+     screens below the table it plays */
+  .exec.fab { position: fixed; right: max(16px, env(safe-area-inset-right)); bottom: max(16px, env(safe-area-inset-bottom)); z-index: 20; width: auto; padding: 12px 18px; border-radius: 99px; font-size: 13px; background: color-mix(in oklab, var(--c-felt) 22%, var(--panel)); box-shadow: 0 4px 16px color-mix(in oklab, #000 28%, transparent); }
+  .exec.fab:hover { background: color-mix(in oklab, var(--c-felt) 36%, var(--panel)); }
+  .exec.fab[aria-busy="true"] { opacity: 0.6; cursor: progress; }
+  .exec.fab[disabled] { opacity: 0.45; cursor: not-allowed; }
+  @media (max-width: 640px) { .exec.fab { padding: 10px 15px; font-size: 12px; } .exec.fab .long { display: none; } }
+  #pane-shot { padding-bottom: 64px; }   /* room to scroll the last card out from under the button */
+  #ctlbox .row > .v { display: none; }   /* the number box beside each slider already says it */
   .tblwrap { min-width: 0; }
   .tblwrap #pov { margin-top: 10px; }
   .out { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 14px; max-width: 1240px; }
@@ -60,6 +94,11 @@ __SHARED__
     svg.felt text[font-size="11"] { font-size: 19px; }
     svg.felt text[font-size="8.5"] { font-size: 15px; }
     svg.felt text[font-size="15"] { font-size: 24px; }
+    /* the sight-picture inset is laid out to the unit: grow it whole, not its type */
+    svg.felt g.inset { transform: scale(1.45); }
+    svg.felt g.inset text[font-size="11"] { font-size: 11px; }
+    svg.felt g.inset text[font-size="15"] { font-size: 15px; }
+    svg.felt text.cap { display: none; }
   }
   @media (max-width: 860px) { .out { grid-template-columns: 1fr; } }
   .out h3 { font: 700 12px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; letter-spacing: 0.1em; text-transform: uppercase; margin: 0 0 8px; display: flex; align-items: center; gap: 8px; }
@@ -109,8 +148,9 @@ __SHARED__
 <nav class="tabs" id="tabs"></nav>
 <section class="tabpane" id="pane-shot">
 <h2 class="ksec">The shot lab</h2>
-<p class="knote" style="max-width:72ch;margin:0 0 10px">Drag the cue ball or the object ball anywhere on the cloth; click one of the six 4½″ pockets to aim at it. The cue is always aimed at the <a href="/glossary#ghost-ball" style="color:inherit">ghost ball</a> — and when the cue ball is on the wrong side for a direct pot, the lab aims a one-rail <b>bank</b> instead, with the cushion's real rebound (not a mirror) solved into the contact point. Whether the shot actually drops is then up to speed, spin and throw.</p>
-<div class="lab">
+<div class="wbar" id="wbar" role="group" aria-label="What the shot lab shows"><span>show</span><button type="button" data-k="ob">object ball</button><button type="button" data-k="cb">cue ball</button><button type="button" data-k="strip">outcome by strike</button><button type="button" data-k="space">solution space</button><button type="button" data-k="help">explanations</button></div>
+<p class="knote help" style="max-width:72ch;margin:0 0 10px">Drag the cue ball or the object ball anywhere on the cloth; click one of the six 4½″ pockets to aim at it. The cue is always aimed at the <a href="/glossary#ghost-ball" style="color:inherit">ghost ball</a> — and when the cue ball is on the wrong side for a direct pot, the lab aims a one-rail <b>bank</b> instead, with the cushion's real rebound (not a mirror) solved into the contact point. Whether the shot actually drops is then up to speed, spin and throw.</p>
+<div class="lab shotlab">
   <div class="tblwrap">
     <svg class="felt" id="lab" viewBox="0 0 900 470" role="img" aria-label="Top view of a pool table with six pockets: drag the cue ball and object ball; in practice mode all guides are drawn, in pro mode only the balls"></svg>
     <svg class="felt" id="pov" viewBox="0 0 900 260" role="img" aria-label="The view from behind the cue ball, down on the shot — the object ball ahead, the pockets on the horizon, and the tip's contact point on the cue ball"></svg>
@@ -118,78 +158,76 @@ __SHARED__
   <div class="kcard ctl" id="ctlbox">
     <div class="row"><label>mode</label>
       <div class="modes"><button id="mprac" type="button" class="on">practice — guides live</button><button id="mpro" type="button">pro — just the balls</button></div>
-      <div class="hint pro-only">No guides, neutral defaults. The aim must pay for throw, squirt and swerve.</div></div>
+      <div class="hint help pro-only">No guides, neutral defaults. The aim must pay for throw, squirt and swerve.</div></div>
     <div class="row"><label>the table — cloth and rails</label>
       <div class="modes" id="tables"></div>
-      <div class="hint" id="tablenote"></div></div>
+      <div class="hint help" id="tablenote"></div></div>
     <div class="row"><label>the shot</label><div id="shotinfo"></div>
-      <div class="hint prac-only">Drag either ball; click a pocket to aim there. The outcome maps live under the table.</div>
-      <div class="hint pro-only">Drag the empty cloth to point the cue; drag a ball to move it.</div>
+      <div class="hint help prac-only">Drag either ball; click a pocket to aim there. The outcome maps live under the table.</div>
+      <div class="hint help pro-only">Drag the empty cloth to point the cue; drag a ball to move it.</div>
       <div class="presets" style="grid-column:1/-1"><button id="share" type="button">copy a link to this shot</button></div></div>
     <div class="row"><label>aim — fine trim</label>
       <div class="aimbtns"><button type="button" data-n="-1">−1°</button><button type="button" data-n="-0.1">−0.1°</button><span class="v" id="aimv"></span><button type="button" data-n="0.1">+0.1°</button><button type="button" data-n="1">+1°</button></div>
-      <div class="hint"><b>← →</b> a degree a press, <b>shift</b> for a tenth. In practice this walks the aim off the ghost-ball line, so you can see what a degree of error costs; in pro it is the whole aim.</div></div>
+      <div class="hint help"><b>← →</b> a degree a press, <b>shift</b> for a tenth. In practice this walks the aim off the ghost-ball line, so you can see what a degree of error costs; in pro it is the whole aim.</div></div>
     <div class="row"><label for="spd">strike — 1 soft, 10 break</label><input id="spd" type="range" min="0.5" max="10" step="0.1" value="2.5"><span class="v" id="spdv"></span>
-      <div class="hint">Also the cue ball's speed in m/s: 2–3 pot weight, 5 firm, 8+ a break.</div></div>
+      <div class="hint help">Also the cue ball's speed in m/s: 2–3 pot weight, 5 firm, 8+ a break.</div></div>
     <div class="row"><label>where you strike the cue ball</label>
       <div style="grid-column:1/-1;display:flex;gap:12px;align-items:center">
         <svg id="tipball" viewBox="0 0 120 120" style="width:120px;height:120px;flex:0 0 120px;cursor:crosshair;touch-action:none" role="img" aria-label="The face of the cue ball: click or drag to choose where the tip meets it"></svg>
         <div style="flex:1;min-width:0">
           <div id="tipballv" style="font:12px ui-monospace,monospace;color:var(--ink);line-height:1.5"></div>
-          <div class="hint" style="margin-top:4px">Poke the ball. The sliders below follow, and so does the shot. Outside the inner ring the tip slides off the ball — that is a miscue, and the ring is where it starts.</div>
+          <div class="hint help" style="margin-top:4px">Poke the ball. The sliders below follow, and so does the shot. Outside the inner ring the tip slides off the ball — that is a miscue, and the ring is where it starts.</div>
         </div>
       </div></div>
     <div class="row"><label for="tip">tip height, b/R</label><input id="tip" type="range" min="-0.5" max="0.5" step="0.02" value="0.4"><span class="v" id="tipv"></span>
-      <div class="hint">+0.4 natural roll · 0 stun · −0.5 draw · ±0.5 is the miscue limit.</div></div>
+      <div class="hint help">+0.4 natural roll · 0 stun · −0.5 draw · ±0.5 is the miscue limit.</div></div>
     <div class="row"><label for="side">side, b/R</label><input id="side" type="range" min="-0.5" max="0.5" step="0.02" value="0"><span class="v" id="sidev"></span>
-      <div class="hint">Negative is left of centre. Side squirts the cue ball off the aim, swerves it back while it slides, and throws the object ball.</div></div>
-    <div class="row"><button id="exec" type="button" class="exec">▶ execute the shot</button>
-      <div class="hint pro-only" id="score"></div></div>
-    <div class="presets prac-only" id="presets"></div>
+      <div class="hint help">Negative is left of centre. Side squirts the cue ball off the aim, swerves it back while it slides, and throws the object ball.</div></div>
+    <div class="row pro-only"><div class="hint" id="score"></div></div>
+    <details class="prac-only"><summary>shots to try</summary>
+      <div class="presets" id="presets" style="margin-top:9px"></div></details>
     <details><summary>balls on the table</summary>
       <div class="row">
         <div class="aimbtns"><button type="button" id="rack9">9-ball</button><button type="button" id="rack8">8-ball</button><button type="button" id="ballplus">+ ball</button><button type="button" id="ballminus">− ball</button><button type="button" id="justtwo">just two</button></div>
         <div class="presets" style="grid-column:1/-1"><button type="button" id="photobtn">replicate a real table from a photo…</button></div>
         <input type="file" id="photofile" accept="image/*" hidden>
-        <div class="hint">Every ball is live — combos, caroms, full breaks. Practice aims at the lowest number still up (ringed).</div></div></details>
+        <div class="hint help">Every ball is live — combos, caroms, full breaks. Practice aims at the lowest number still up (ringed).</div></div></details>
     <details id="condbox"><summary>conditions — the contract <span class="cnt" id="condsum"></span></summary>
       <div class="row">
         <div class="presets" id="conds"></div>
         <div class="hint" id="condres"></div>
-        <div class="hint">Practice grades live, pro on execute. Conditions that fight each other make the best shots.</div></div></details>
+        <div class="hint help">Practice grades live, pro on execute. Conditions that fight each other make the best shots.</div></div></details>
 
   </div>
+  <div class="widgets">
+    <div class="legend help prac-card">
+      <span style="--lc:var(--ink)">cue ball, before</span>
+      <span style="--lc:var(--c-felt)">cue ball, after — sliding then rolling</span>
+      <span style="--lc:var(--c-amber)">object ball</span>
+      <span style="--lc:var(--muted); --ls:dashed">tangent line · line of centres · aim line</span>
+      <span style="--lc:var(--c-red); --ls:dotted">object ball with no throw</span>
+    </div>
+    <div class="out wgrid">
+      <div class="kcard wcard" data-w="ob"><div class="whead"><h3><span class="dot" style="background:var(--c-amber)"></span>Object ball</h3><button type="button" class="wx" data-hide="ob" aria-label="hide the object ball">×</button></div><dl id="ob"></dl></div>
+      <div class="kcard wcard" data-w="cb"><div class="whead"><h3><span class="dot" style="background:var(--c-felt)"></span>Cue ball</h3><button type="button" class="wx" data-hide="cb" aria-label="hide the cue ball">×</button></div><dl id="cb"></dl></div>
+      <div class="kcard wcard prac-card" data-w="strip"><div class="whead"><h3>Outcome by strike <small>this shot, every strength</small></h3><button type="button" class="wx" data-hide="strip" aria-label="hide the outcome by strike">×</button></div>
+        <svg id="vstrip" viewBox="0 0 550 22" preserveAspectRatio="none"></svg>
+        <div class="wnote" id="potv"></div>
+        <div class="key"><span style="--k:var(--c-amber)">drops</span><span style="--k:color-mix(in oklab, var(--c-amber) 55%, transparent)">hangs</span><span style="--k:var(--c-rust)">rattles out</span><span style="--k:color-mix(in oklab, var(--c-amber) 22%, transparent)">stays up</span><span style="--k:color-mix(in oklab, var(--muted) 25%, transparent)">never gets there</span><span style="--k:var(--c-red)">cue ball scratches (lower strip)</span></div></div>
+      <div class="kcard wcard prac-card" data-w="space"><div class="whead"><h3>Solution space <small>aim × strike, this layout</small></h3><button type="button" class="wx" data-hide="space" aria-label="hide the solution space">×</button></div>
+        <canvas id="hmap" width="486" height="120"></canvas>
+        <div class="key"><span style="--k:var(--c-amber)">pots</span><span style="--k:color-mix(in oklab, var(--c-amber) 55%, transparent)">hangs</span><span style="--k:var(--c-rust)">rattles out</span><span style="--k:color-mix(in oklab, var(--c-red) 45%, transparent)">scratches</span></div>
+        <div class="wnote help">Every pixel is a simulated shot. Across: aim ±5° around the ghost-ball line (centre tick). Up: strike 0.5→10 (the line is yours). A red lower edge means it pots but scratches. The pot window drifting off centre is the compensation you must aim.</div></div>
+    </div>
+  </div>
 </div>
+<button id="exec" type="button" class="exec fab" aria-label="execute the shot">▶ execute<span class="long"> the shot</span></button>
 <div class="kcard ctl" id="photobox" hidden style="max-width:1240px;margin-top:14px">
   <div class="row"><label>replicate a table from a photo</label>
     <div class="presets" style="grid-column:1/-1"><button type="button" id="phapply">place on the table</button><button type="button" id="phfind">find the balls again</button><button type="button" id="phfewer">− fewer</button><button type="button" id="phmore">+ more</button><button type="button" id="phclear">clear the balls</button><button type="button" id="phreset">redo the corners</button><button type="button" id="phclose">close</button></div>
     <canvas id="phcv" style="grid-column:1/-1;width:100%;border:1px solid var(--hairline);border-radius:6px;cursor:crosshair;touch-action:none"></canvas>
     <div class="presets" id="phnums" style="grid-column:1/-1"></div>
     <div class="hint" id="phhint"></div></div>
-</div>
-<div class="legend">
-  <span style="--lc:var(--ink)">cue ball, before</span>
-  <span style="--lc:var(--c-felt)">cue ball, after — sliding then rolling</span>
-  <span style="--lc:var(--c-amber)">object ball</span>
-  <span style="--lc:var(--muted); --ls:dashed">tangent line · line of centres · aim line</span>
-  <span style="--lc:var(--c-red); --ls:dotted">object ball with no throw</span>
-</div>
-<div class="out" id="solspace">
-  <div class="kcard ctl">
-    <div class="row"><label>outcome by strike — this shot, every strength</label>
-      <svg id="vstrip" viewBox="0 0 550 22" preserveAspectRatio="none"></svg>
-      <div class="hint" id="potv"></div>
-      <div class="hint"><b>solid amber</b>: the object ball drops · <b>mid amber</b>: it hangs in the jaws · <b>rust</b>: it rattles out of the jaws · <b>faint amber</b>: it stays up · <b>grey</b>: the cue ball never gets there · <b>red strip</b>: the cue ball scratches</div></div>
-  </div>
-  <div class="kcard ctl">
-    <div class="row"><label>solution space — aim × strike, this layout</label>
-      <canvas id="hmap" width="486" height="120" style="width:100%;height:120px;grid-column:1/-1;border:1px solid var(--hairline);border-radius:4px"></canvas>
-      <div class="hint">Every pixel is a simulated shot: <b>amber</b> pots · <b>dim amber</b> hangs · <b>rust</b> rattles out · <b>red-edged</b> pots but scratches · <b>red</b> scratches · x: aim ±5° around the ghost-ball line (centre tick) · y: strike 0.5→10 (line = yours). The pot window drifting off centre is the compensation you must aim.</div></div>
-  </div>
-</div>
-<div class="out">
-  <div class="kcard"><h3><span class="dot" style="background:var(--c-amber)"></span>Object ball</h3><dl id="ob"></dl></div>
-  <div class="kcard"><h3><span class="dot" style="background:var(--c-felt)"></span>Cue ball</h3><dl id="cb"></dl></div>
 </div>
 
 </section>
@@ -354,6 +392,26 @@ __PHYSICS__
     const v = r.parentElement.querySelector('.v');
     if (v) new MutationObserver(() => { if (document.activeElement !== n) n.value = r.value; }).observe(v, { childList: true, characterData: true, subtree: true });
   }
+  const WKEY = 'kosmos-billiards-widgets';
+  const W = (() => { const d = { ob: 1, cb: 1, strip: 1, space: 1, help: 0 }; try { return { ...d, ...JSON.parse(localStorage.getItem(WKEY) || '{}') }; } catch (e) { return d; } })();
+  function applyWidgets() {
+    const pro = state.mode === 'pro';
+    for (const c of document.querySelectorAll('#pane-shot [data-w], #pane-shot .prac-card')) c.hidden = (c.dataset.w && !W[c.dataset.w]) || (pro && c.classList.contains('prac-card'));
+    for (const b of $('wbar').querySelectorAll('button')) {
+      const k = b.dataset.k;
+      b.classList.toggle('on', !!W[k]); b.setAttribute('aria-pressed', W[k] ? 'true' : 'false');
+      b.hidden = pro && (k === 'strip' || k === 'space');   // pro draws no guides, so no maps either
+    }
+    $('pane-shot').classList.toggle('nohelp', !W.help);
+  }
+  function setWidget(k, on) {
+    W[k] = on ? 1 : 0;
+    try { localStorage.setItem(WKEY, JSON.stringify(W)); } catch (e) {}
+    applyWidgets();
+    if (on && (k === 'strip' || k === 'space')) run();   // skipped while hidden: draw it now
+  }
+  for (const b of $('wbar').querySelectorAll('button')) b.addEventListener('click', () => setWidget(b.dataset.k, !W[b.dataset.k]));
+  for (const b of document.querySelectorAll('#pane-shot .wx')) b.addEventListener('click', () => setWidget(b.dataset.hide, false));
   const fmt = (x, d = 2) => (Math.round(x * 10 ** d) / 10 ** d).toFixed(d);
   // one naming for the ball-hit fraction, everywhere it is spoken: the nearest of the eighths a
   // player calls. The contact tab used to bin it on thresholds of its own and could call the
@@ -533,6 +591,7 @@ __PHYSICS__
   function stopAnim() {
     clearTimeout(resetTimer);
     if (animId) { cancelAnimationFrame(animId); animId = null; }
+    $('exec').removeAttribute('aria-busy');
     for (const b of svg.querySelectorAll('.bball')) b.style.opacity = '';
   }
   let resetTimer = 0;
@@ -718,24 +777,25 @@ __PHYSICS__
     vel('line', { x1: c[0] - r, x2: c[0] + r, y1: c[1], y2: c[1], stroke: 'var(--hairline)', 'stroke-width': 1 });
     vel('line', { x1: c[0], x2: c[0], y1: c[1] - r, y2: c[1] + r, stroke: 'var(--hairline)', 'stroke-width': 1 });
     vel('circle', { cx: c[0] + side * r, cy: c[1] - tip * r, r: 4.5, fill: 'var(--c-red)' });
-    const cap = vel('text', { x: 12, y: 254, ...mono, opacity: 0.8 }); cap.textContent = 'down on the shot · red dot = your tip contact on the cue ball';
+    const cap = vel('text', { x: 12, y: 254, ...mono, opacity: 0.8, class: 'cap' }); cap.textContent = 'down on the shot · red dot = your tip contact on the cue ball';
     // the sight picture, top-left: the overlap this cue line offers, with its fraction and clock call
     if (roster && roster.cue) { const cp = proj(roster.cue, R); if (cp && cp[2] > 0) vel('circle', { cx: cp[0], cy: cp[1], r: Math.min(240, R * cp[2]), fill: 'var(--panel)', stroke: 'var(--ink)', 'stroke-width': 1.5 }); }
     const sp = sightPicture(dir);
-    vel('rect', { x: 10, y: 10, width: 236, height: 66, rx: 6, fill: 'var(--panel)', stroke: 'var(--hairline)' });
+    const ins = vel('g', { class: 'inset' }), iel = (tag, attrs) => vel(tag, attrs, ins);
+    iel('rect', { x: 10, y: 10, width: 236, height: 66, rx: 6, fill: 'var(--panel)', stroke: 'var(--hairline)' });
     if (!sp) {
-      const t = vel('text', { x: 22, y: 46, ...mono }); t.textContent = 'no ball ahead of the cue';
+      const t = iel('text', { x: 22, y: 46, ...mono }); t.textContent = 'no ball ahead of the cue';
     } else if (sp.miss) {
-      const t = vel('text', { x: 22, y: 40, ...mono, fill: 'var(--c-red)' }); t.textContent = 'no contact on this line';
-      const t2 = vel('text', { x: 22, y: 56, ...mono }); t2.textContent = `misses by ${fmt(100 * sp.by, 1)} cm`;
+      const t = iel('text', { x: 22, y: 40, ...mono, fill: 'var(--c-red)' }); t.textContent = 'no contact on this line';
+      const t2 = iel('text', { x: 22, y: 56, ...mono }); t2.textContent = `misses by ${fmt(100 * sp.by, 1)} cm`;
     } else {
       const bx = 52, by2 = 43, br = 22;
-      vel('circle', { cx: bx + sp.s * 2 * br, cy: by2, r: br, fill: 'var(--c-amber)' });
-      vel('circle', { cx: bx, cy: by2, r: br, fill: 'color-mix(in oklab, var(--panel) 82%, #fff)', stroke: 'var(--ink)', 'stroke-width': 1.3 });
-      vel('line', { x1: bx, x2: bx, y1: by2 - br - 6, y2: by2 + br + 6, stroke: 'var(--muted)', 'stroke-width': 1, 'stroke-dasharray': '2 3' });
-      const t1 = vel('text', { x: 118, y: 30, ...mono, fill: 'var(--ink)' }); t1.textContent = `cut ${fmt(deg(sp.th), 1)}°`;
-      const t2 = vel('text', { x: 118, y: 47, ...mono, fill: 'var(--ink)' }); t2.textContent = `${sp.name} · f ${fmt(sp.f, 2)}`;
-      const t3 = vel('text', { x: 118, y: 64, 'font-family': 'ui-monospace, "SF Mono", Consolas, monospace', 'font-size': 15, 'font-weight': 700, fill: 'var(--c-amber)' }); t3.textContent = sp.clock;
+      iel('circle', { cx: bx + sp.s * 2 * br, cy: by2, r: br, fill: 'var(--c-amber)' });
+      iel('circle', { cx: bx, cy: by2, r: br, fill: 'color-mix(in oklab, var(--panel) 82%, #fff)', stroke: 'var(--ink)', 'stroke-width': 1.3 });
+      iel('line', { x1: bx, x2: bx, y1: by2 - br - 6, y2: by2 + br + 6, stroke: 'var(--muted)', 'stroke-width': 1, 'stroke-dasharray': '2 3' });
+      const t1 = iel('text', { x: 118, y: 30, ...mono, fill: 'var(--ink)' }); t1.textContent = `cut ${fmt(deg(sp.th), 1)}°`;
+      const t2 = iel('text', { x: 118, y: 47, ...mono, fill: 'var(--ink)' }); t2.textContent = `${sp.name} · f ${fmt(sp.f, 2)}`;
+      const t3 = iel('text', { x: 118, y: 64, 'font-family': 'ui-monospace, "SF Mono", Consolas, monospace', 'font-size': 15, 'font-weight': 700, fill: 'var(--c-amber)' }); t3.textContent = sp.clock;
     }
   }
 
@@ -1040,8 +1100,9 @@ __PHYSICS__
     if (state.mode === 'practice') {
       const S = currentShot(false);
       drawShot(S); report(S);
-      drawStrip(sweepOutcomes(v.tip, v.side), v.spd);
-      if (S.feasible) scheduleHeatmap(v.tip, v.side, v.spd); else { hmToken++; $('hmap').getContext('2d').clearRect(0, 0, HW, HH); }
+      $('exec').disabled = !S.feasible;
+      if (W.strip) drawStrip(sweepOutcomes(v.tip, v.side), v.spd);          // 96 full sims: only when shown
+      if (W.space && S.feasible) scheduleHeatmap(v.tip, v.side, v.spd); else { hmToken++; clearTimeout(hmTimer); $('hmap').getContext('2d').clearRect(0, 0, HW, HH); }
       const spP = S.feasible ? sightPicture(S.dAim) : null;
       $('shotinfo').textContent = S.feasible
         ? `cut ${fmt(deg(Math.acos(Math.max(-1, Math.min(1, vdot(S.dAim, S.n))))), 1)}°${spP && !spP.miss ? ` · ${spP.name} (${spP.clock})` : ''} · ${fmt(S.dst, 2)} m to the ball · ${S.bank ? `banked off the ${S.bank.rail} rail into` : 'aimed at'} the ${S.name} pocket${state.aimOff ? ` · trimmed ${state.aimOff > 0 ? '+' : ''}${fmt(state.aimOff, 1)}° off the ghost line` : ''}`
@@ -1051,6 +1112,7 @@ __PHYSICS__
       drawView(S.feasible ? S.dAim : vunit(vsub(state.ob, state.cb)), v.tip, v.side, S.feasible ? S.ghost : null);
     } else {
       drawProTable();
+      $('exec').disabled = false;
       $('ob').innerHTML = dl([['—', 'prepare the sauce, then execute']]);
       $('cb').innerHTML = dl([['—', 'the table will tell']]);
       const a2 = rad(state.aimDeg), spQ = sightPicture([Math.cos(a2), Math.sin(a2)]);
@@ -1172,14 +1234,16 @@ __PHYSICS__
     if (animId) return;
     const S = currentShot(false);
     if (!S.feasible) return;
-    playback(S, () => { if (state.mode === 'pro') reportPro(S); finishRunout(S); });
+    const x = $('exec');
+    playback(S, () => { x.removeAttribute('aria-busy'); if (state.mode === 'pro') reportPro(S); finishRunout(S); });
+    x.setAttribute('aria-busy', 'true');   // after playback(): it starts with stopAnim(), which clears this
   });
   function setMode(m) {
     if (state.mode === m) return;
     state.mode = m; stopAnim();
     $('mprac').classList.toggle('on', m === 'practice'); $('mpro').classList.toggle('on', m === 'pro');
     $('ctlbox').classList.toggle('pro', m === 'pro');
-    $('solspace').hidden = m === 'pro';
+    applyWidgets();
     if (m === 'pro') {   // neutral hit: centre ball, no side, medium strike; aim at the object ball's centre
       $('tip').value = 0; $('side').value = 0; $('spd').value = 2.5;
       const dv = vsub(state.ob, state.cb); state.aimDeg = deg(Math.atan2(dv[1], dv[0]));
@@ -1247,7 +1311,7 @@ __PHYSICS__
     state.pk = Math.min(5, Math.max(0, a[5] | 0));
     if (state.mode === 'pro') { state.aimDeg = a[6]; state.aimOff = 0; } else { state.aimOff = Math.max(-15, Math.min(15, a[6])); state.aimDeg = 0; }
     $('spd').value = Math.min(10, Math.max(0.5, a[7])); $('tip').value = Math.min(0.5, Math.max(-0.5, a[8])); $('side').value = Math.min(0.5, Math.max(-0.5, a[9]));
-    if (state.mode === 'pro') { $('mprac').classList.remove('on'); $('mpro').classList.add('on'); $('ctlbox').classList.add('pro'); $('solspace').hidden = true; }
+    if (state.mode === 'pro') { $('mprac').classList.remove('on'); $('mpro').classList.add('on'); $('ctlbox').classList.add('pro'); }
     return true;
   }
   $('share').addEventListener('click', () => {
@@ -2707,8 +2771,9 @@ __PHYSICS__
     if (!loadHash(hash)) return;
     showTab('shot');
     syncCondBtns();
-    if (state.mode === 'pro') { $('mprac').classList.remove('on'); $('mpro').classList.add('on'); $('ctlbox').classList.add('pro'); $('solspace').hidden = true; }
-    else { $('mprac').classList.add('on'); $('mpro').classList.remove('on'); $('ctlbox').classList.remove('pro'); $('solspace').hidden = false; }
+    $('mprac').classList.toggle('on', state.mode !== 'pro'); $('mpro').classList.toggle('on', state.mode === 'pro');
+    $('ctlbox').classList.toggle('pro', state.mode === 'pro');
+    applyWidgets();
     run();
   }
   function card(name, note, onPlay, onDrop) {
@@ -2788,5 +2853,6 @@ __PHYSICS__
   let startTab = 'shot';
   try { const st = localStorage.getItem('kosmos-billiards-tab'); if (st && TABS.some(([t]) => t === st)) startTab = st; } catch (e) {}
   if (location.hash.startsWith('#s=')) startTab = 'shot';       // a shared shot always opens on the table
+  applyWidgets();
   showTab(startTab);
 </script>
