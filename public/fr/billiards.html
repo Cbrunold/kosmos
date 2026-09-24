@@ -777,6 +777,11 @@ window.KosmosSearch = (() => {
       <div class="hint">Déplacez l'une ou l'autre bille où vous voulez, et faites tourner la poignée ambre autour de la bille visée pour choisir l'endroit de la frappe. L'angle de coupe et la fraction de bille touchée en découlent ; la distance découle des billes.</div></div>
     <div class="row"><label for="ctcut">point de contact — de la bille pleine au bord</label><input id="ctcut" type="range" min="-89" max="89" step="1" value="30"><span class="v" id="ctcutv"></span></div>
     <div class="row"><label for="ctspd">frappe — 1 douce, 10 casse</label><input id="ctspd" type="range" min="0.5" max="10" step="0.1" value="2.5"><span class="v" id="ctspdv"></span></div>
+    <div class="row"><label>où vous frappez la bille blanche</label>
+      <div style="grid-column:1/-1;display:flex;gap:12px;align-items:center">
+        <svg id="cttipball" viewBox="0 0 120 120" style="width:120px;height:120px;flex:0 0 120px;cursor:crosshair;touch-action:none" role="img" aria-label="The face of the cue ball: click or drag to choose where the tip meets it"></svg>
+        <div id="cttipballv" style="flex:1;min-width:0;font:12px ui-monospace,monospace;color:var(--ink);line-height:1.5"></div>
+      </div></div>
     <div class="row"><label for="cttip">hauteur du procédé, b/R</label><input id="cttip" type="range" min="-0.5" max="0.5" step="0.02" value="0.4"><span class="v" id="cttipv"></span></div>
     <div class="row"><label for="ctside">côté, b/R</label><input id="ctside" type="range" min="-0.5" max="0.5" step="0.02" value="0"><span class="v" id="ctsidev"></span>
       <div class="hint">L'effet latéral fait trois choses ici : il dévie la bille blanche de la visée dès le procédé, la ramène en courbe pendant qu'elle glisse, et frotte la bille visée au contact — ce dernier point est la <b>déviation par frottement</b>, et c'est lui qui écarte la bille visée de la ligne que vous aviez visée.</div></div>
@@ -3636,6 +3641,7 @@ if (typeof module !== 'undefined') module.exports = kosmosBilliardsPhysics;
     return best;
   }
   const FRACNAME = fracName;
+  const ctTip = tipPicker($('cttipball'), $('cttipballv'), 'cttip', 'ctside', () => runContact());   // side here is left/right, as in the shot lab
   function runContact() {
     const cut = +$('ctcut').value, v0 = +$('ctspd').value, tip = +$('cttip').value, side = +$('ctside').value;
     let dist = +$('ctdist').value;
@@ -3643,6 +3649,7 @@ if (typeof module !== 'undefined') module.exports = kosmosBilliardsPhysics;
     $('ctspdv').textContent = `${fmt(v0, 1)} / 10`;
     $('cttipv').textContent = `${tip >= 0 ? '+' : ''}${fmt(tip, 2)}`;
     $('ctsidev').textContent = `${side >= 0 ? '+' : ''}${fmt(side, 2)}`;
+    ctTip.paint(tip, side);
     $('ctdistv').textContent = `${fmt(dist, 2)} m`;
     if (CT.fromSlider) {                                       // the slider slides the cue ball, it does not teleport it
       const b2 = vunit(vsub(CTC.OB, CTC.CB));

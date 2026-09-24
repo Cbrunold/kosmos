@@ -251,6 +251,11 @@ __SHARED__
       <div class="hint">Drag either ball anywhere, and drag the amber handle round the object ball to choose where you strike it. The cut angle and the ball-hit fraction follow from that; the distance follows from the balls.</div></div>
     <div class="row"><label for="ctcut">contact point — full ball to edge</label><input id="ctcut" type="range" min="-89" max="89" step="1" value="30"><span class="v" id="ctcutv"></span></div>
     <div class="row"><label for="ctspd">strike — 1 soft, 10 break</label><input id="ctspd" type="range" min="0.5" max="10" step="0.1" value="2.5"><span class="v" id="ctspdv"></span></div>
+    <div class="row"><label>where you strike the cue ball</label>
+      <div style="grid-column:1/-1;display:flex;gap:12px;align-items:center">
+        <svg id="cttipball" viewBox="0 0 120 120" style="width:120px;height:120px;flex:0 0 120px;cursor:crosshair;touch-action:none" role="img" aria-label="The face of the cue ball: click or drag to choose where the tip meets it"></svg>
+        <div id="cttipballv" style="flex:1;min-width:0;font:12px ui-monospace,monospace;color:var(--ink);line-height:1.5"></div>
+      </div></div>
     <div class="row"><label for="cttip">tip height, b/R</label><input id="cttip" type="range" min="-0.5" max="0.5" step="0.02" value="0.4"><span class="v" id="cttipv"></span></div>
     <div class="row"><label for="ctside">side, b/R</label><input id="ctside" type="range" min="-0.5" max="0.5" step="0.02" value="0"><span class="v" id="ctsidev"></span>
       <div class="hint">Side does three things here: it squirts the cue ball off the aim at the tip, swerves it back while it slides, and rubs the object ball at contact — that last one is <b>throw</b>, and it is the one that moves the object ball off the line you aimed.</div></div>
@@ -2690,6 +2695,7 @@ __PHYSICS__
     return best;
   }
   const FRACNAME = fracName;
+  const ctTip = tipPicker($('cttipball'), $('cttipballv'), 'cttip', 'ctside', () => runContact());   // side here is left/right, as in the shot lab
   function runContact() {
     const cut = +$('ctcut').value, v0 = +$('ctspd').value, tip = +$('cttip').value, side = +$('ctside').value;
     let dist = +$('ctdist').value;
@@ -2697,6 +2703,7 @@ __PHYSICS__
     $('ctspdv').textContent = `${fmt(v0, 1)} / 10`;
     $('cttipv').textContent = `${tip >= 0 ? '+' : ''}${fmt(tip, 2)}`;
     $('ctsidev').textContent = `${side >= 0 ? '+' : ''}${fmt(side, 2)}`;
+    ctTip.paint(tip, side);
     $('ctdistv').textContent = `${fmt(dist, 2)} m`;
     if (CT.fromSlider) {                                       // the slider slides the cue ball, it does not teleport it
       const b2 = vunit(vsub(CTC.OB, CTC.CB));
