@@ -276,6 +276,10 @@
   .whead h3 small { font-weight: 400; letter-spacing: 0.06em; color: var(--muted); font-size: 10px; }
   .wx { flex: none; width: 24px; height: 24px; border: 1px solid transparent; border-radius: 5px; background: transparent; color: var(--muted); font-size: 15px; line-height: 1; cursor: pointer; }
   .wx:hover { color: var(--ink); border-color: var(--hairline); }
+  .wtog { flex: none; margin-left: auto; font: 10px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; border: 1px solid var(--hairline); background: transparent; color: var(--muted); border-radius: 99px; padding: 2px 8px; cursor: pointer; }
+  .wtog:hover, .wtog.on { color: var(--ink); border-color: var(--ink-2); }
+  .hmaxis { position: relative; height: 13px; margin-top: -4px; font: 10px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .hmaxis span { position: absolute; top: 0; white-space: nowrap; }
   .wnote { font-size: 11.5px; color: var(--muted); line-height: 1.45; }
   #hmap { width: 100%; height: 120px; border: 1px solid var(--hairline); border-radius: 4px; display: block; }
   .key { display: flex; flex-wrap: wrap; gap: 3px 12px; font: 10px ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; color: var(--muted); }
@@ -739,10 +743,11 @@ window.KosmosSearch = (() => {
         <svg id="vstrip" viewBox="0 0 550 22" preserveAspectRatio="none"></svg>
         <div class="wnote" id="potv"></div>
         <div class="key"><span style="--k:var(--c-amber)">drops</span><span style="--k:color-mix(in oklab, var(--c-amber) 55%, transparent)">hangs</span><span style="--k:var(--c-rust)">rattles out</span><span style="--k:color-mix(in oklab, var(--c-amber) 22%, transparent)">stays up</span><span style="--k:color-mix(in oklab, var(--muted) 25%, transparent)">never gets there</span><span style="--k:var(--c-red)">cue ball scratches (lower strip)</span></div></div>
-      <div class="kcard wcard prac-card" data-w="space"><div class="whead"><h3>Solution space <small>aim × strike, this layout</small></h3><button type="button" class="wx" data-hide="space" aria-label="hide the solution space">×</button></div>
+      <div class="kcard wcard prac-card" data-w="space"><div class="whead"><h3>Solution space <small>aim × strike, this layout</small></h3><button type="button" class="wtog" id="hmzoom" title="zoom to the window where it drops, or show ±5° around the ghost-ball line">±5°</button><button type="button" class="wx" data-hide="space" aria-label="hide the solution space">×</button></div>
         <canvas id="hmap" width="486" height="120"></canvas>
+        <div class="hmaxis" id="hmaxis"></div>
         <div class="key"><span style="--k:var(--c-amber)">pots</span><span style="--k:color-mix(in oklab, var(--c-amber) 55%, transparent)">hangs</span><span style="--k:var(--c-rust)">rattles out</span><span style="--k:color-mix(in oklab, var(--c-red) 45%, transparent)">scratches</span></div>
-        <div class="wnote help">Every pixel is a simulated shot. Across: aim ±5° around the ghost-ball line (centre tick). Up: strike 0.5→10 (the line is yours). A red lower edge means it pots but scratches. The pot window drifting off centre is the compensation you must aim.</div></div>
+        <div class="wnote help">Every pixel is a simulated shot. Across: aim either side of the ghost-ball line (the dark tick), zoomed to the window where the ball drops — often a tenth of a degree — or ±5° with the toggle. Up: strike 0.5→10 (the line is yours; the amber tick is your trim). A red lower edge means it pots but scratches. The window sitting off the ghost line is the compensation you must aim.</div></div>
     </div>
   </div>
 </div>
@@ -1338,7 +1343,7 @@ if (typeof module !== 'undefined') module.exports = kosmosBilliardsPhysics;
     if (v) new MutationObserver(() => { if (document.activeElement !== n) n.value = r.value; }).observe(v, { childList: true, characterData: true, subtree: true });
   }
   const WKEY = 'kosmos-billiards-widgets';
-  const W = (() => { const d = { ob: 1, cb: 1, strip: 1, space: 1, help: 0 }; try { return { ...d, ...JSON.parse(localStorage.getItem(WKEY) || '{}') }; } catch (e) { return d; } })();
+  const W = (() => { const d = { ob: 1, cb: 1, strip: 1, space: 1, help: 0, hmwide: 0 }; try { return { ...d, ...JSON.parse(localStorage.getItem(WKEY) || '{}') }; } catch (e) { return d; } })();
   function applyWidgets() {
     const pro = state.mode === 'pro';
     for (const c of document.querySelectorAll('#pane-shot [data-w], #pane-shot .prac-card')) c.hidden = (c.dataset.w && !W[c.dataset.w]) || (pro && c.classList.contains('prac-card'));
@@ -1348,14 +1353,16 @@ if (typeof module !== 'undefined') module.exports = kosmosBilliardsPhysics;
       b.hidden = pro && (k === 'strip' || k === 'space');   // pro draws no guides, so no maps either
     }
     $('pane-shot').classList.toggle('nohelp', !W.help);
+    $('hmzoom').classList.toggle('on', !!W.hmwide); $('hmzoom').setAttribute('aria-pressed', W.hmwide ? 'true' : 'false');
   }
   function setWidget(k, on) {
     W[k] = on ? 1 : 0;
     try { localStorage.setItem(WKEY, JSON.stringify(W)); } catch (e) {}
     applyWidgets();
-    if (on && (k === 'strip' || k === 'space')) run();   // skipped while hidden: draw it now
+    if (k === 'hmwide' || (on && (k === 'strip' || k === 'space'))) run();   // skipped while hidden: draw it now
   }
   for (const b of $('wbar').querySelectorAll('button')) b.addEventListener('click', () => setWidget(b.dataset.k, !W[b.dataset.k]));
+  $('hmzoom').addEventListener('click', () => setWidget('hmwide', !W.hmwide));
   for (const b of document.querySelectorAll('#pane-shot .wx')) b.addEventListener('click', () => setWidget(b.dataset.hide, false));
   const fmt = (x, d = 2) => (Math.round(x * 10 ** d) / 10 ** d).toFixed(d);
   // one naming for the ball-hit fraction, everywhere it is spoken: the nearest of the eighths a
@@ -1913,6 +1920,53 @@ if (typeof module !== 'undefined') module.exports = kosmosBilliardsPhysics;
   // filled progressively so dragging stays smooth. The pot window's drift off centre IS the aim compensation.
   const AIMN = 81, STRN = 20, HW = 486, HH = 120, CW = HW / AIMN, CH = HH / STRN;
   let hmToken = 0, hmTimer = 0;
+  // Where it drops is usually a sliver: a tenth of a degree either side of the ghost line on an
+  // ordinary cut, a couple of degrees on a short one. Drawn over ±5° that sliver was one column of
+  // 81, and the rest of the map was the speckle of shots that drop by luck off two rails. So the map
+  // first walks out from the ghost line at a few strikes, 0.05° a step, until each run of pots ends;
+  // takes the biggest cluster of what it found (a lone lucky pot does not move the frame); and
+  // spans that, the ghost line always in view, with room either side to see the edges.
+  const HM_STEP = 0.05, HM_REACH = 2.5, HM_WIDE = 5;
+  function* findWindow(tip, side, spd) {
+    const strikes = [...new Set([spd, 2.5, 5].map((v) => Math.round(v * 10) / 10))];
+    const hits = [];
+    for (const v of strikes) for (const dir of [1, -1]) {
+      let seen = false, miss = 0;
+      for (let k = dir > 0 ? 0 : 1; k * HM_STEP <= HM_REACH + 1e-9; k++) {
+        const off = dir * k * HM_STEP;
+        const S = shoot(state.cb, state.ob, { pk: state.pk, off }, v, tip, side, true);
+        yield;
+        if (S.reached && (S.obTrace.pocket === state.pk || S.obTrace.hang === state.pk)) { hits.push(off); seen = true; miss = 0; }
+        else if (seen && ++miss >= 2) break;         // this run is over; what lies beyond is luck
+      }
+    }
+    if (!hits.length) return null;
+    hits.sort((a, b) => a - b);
+    let best = null;
+    for (let i = 0, j = 0; i < hits.length; i = j) {
+      for (j = i + 1; j < hits.length && hits[j] - hits[j - 1] <= 2.5 * HM_STEP; j++);
+      const c = { lo: hits[i], hi: hits[j - 1], n: j - i };
+      const d = (x) => Math.min(Math.abs(x.lo), Math.abs(x.hi));
+      if (!best || c.n > best.n || (c.n === best.n && d(c) < d(best))) best = c;
+    }
+    return best;
+  }
+  function hmSpan(win) {
+    if (W.hmwide || !win) return [-HM_WIDE, HM_WIDE];
+    const lo = Math.min(win.lo, 0), hi = Math.max(win.hi, 0), pad = Math.max(0.2, 0.8 * (hi - lo));
+    return [Math.max(-HM_WIDE, lo - pad), Math.min(HM_WIDE, hi + pad)];
+  }
+  function hmAxis(lo, hi, note) {
+    const ax = $('hmaxis'), at = (x) => `${(100 * (x - lo) / (hi - lo)).toFixed(1)}%`;
+    const deg1 = (x) => `${x > 0 ? '+' : x < 0 ? '−' : ''}${fmt(Math.abs(x), Math.abs(hi - lo) < 2 ? 2 : 1)}°`;
+    ax.innerHTML = '';
+    const put = (txt, x, how) => { const e = document.createElement('span'); e.textContent = txt; e.style.left = at(x); e.style.transform = how; ax.appendChild(e); };
+    if (note) { put(note, (lo + hi) / 2, 'translateX(-50%)'); return; }
+    put(deg1(lo), lo, 'none');
+    put(deg1(hi), hi, 'translateX(-100%)');
+    const z = (0 - lo) / (hi - lo);
+    if (z > 0.18 && z < 0.82) put('ghost line', 0, 'translateX(-50%)');
+  }
   function computeHeatmap(tip, side, spd) {
     const tok = ++hmToken;
     const cv = $('hmap'), ctx = cv.getContext('2d');
@@ -1920,14 +1974,26 @@ if (typeof module !== 'undefined') module.exports = kosmosBilliardsPhysics;
     const col = (n, fb) => (css.getPropertyValue(n) || '').trim() || fb;
     const amber = col('--c-amber', '#e39a00'), red = col('--c-red', '#c23434'), mutedC = col('--muted', '#888'), ink = col('--ink', '#222'), rust = col('--c-rust', '#bd5b1c');
     ctx.clearRect(0, 0, HW, HH);
+    let search = W.hmwide ? null : findWindow(tip, side, spd);
+    let lo = -HM_WIDE, hi = HM_WIDE, noWin = false;
+    if (search) hmAxis(lo, hi, 'finding the window…'); else hmAxis(lo, hi);
     let j = 0;
     const rows = () => {
       if (tok !== hmToken) return;
       const t1 = performance.now();
+      if (search) {                                   // first the window, in the same frame budget
+        let r;
+        while (performance.now() - t1 < 13 && !(r = search.next()).done);
+        if (!r || !r.done) { requestAnimationFrame(rows); return; }
+        [lo, hi] = hmSpan(r.value); noWin = !r.value;
+        hmAxis(lo, hi, noWin ? `nothing drops within ${HM_REACH}° — showing ±${HM_WIDE}°` : null);
+        if (noWin) setTimeout(() => { if (tok === hmToken) hmAxis(lo, hi); }, 2500);
+        search = null;
+      }
       while (j < STRN && performance.now() - t1 < 13) {
         const v = 0.5 + j * (9.5 / (STRN - 1)), y = (STRN - 1 - j) * CH;
         for (let i = 0; i < AIMN; i++) {
-          const S = shoot(state.cb, state.ob, { pk: state.pk, off: -5 + i * (10 / (AIMN - 1)) }, v, tip, side, true);
+          const S = shoot(state.cb, state.ob, { pk: state.pk, off: lo + (i + 0.5) * ((hi - lo) / AIMN) }, v, tip, side, true);
           const pot = S.reached && S.obTrace.pocket === state.pk;
           const hang = S.reached && S.obTrace.hang === state.pk;
           const rat = S.reached && S.obTrace.pocket == null && S.obTrace.hang == null && S.obTrace.rattleAt === state.pk;
@@ -1940,14 +2006,15 @@ if (typeof module !== 'undefined') module.exports = kosmosBilliardsPhysics;
         j++;
       }
       if (j < STRN) requestAnimationFrame(rows);
-      else {   // markers: the ghost-ball aim, and the strike the slider holds
+      else {   // markers: the ghost-ball aim, the strike the slider holds, and your trim
+        const xOf = (off) => HW * (off - lo) / (hi - lo);
         ctx.globalAlpha = 0.55; ctx.fillStyle = ink;
-        ctx.fillRect(HW / 2 - 0.5, 0, 1, HH);
+        if (lo <= 0 && hi >= 0) ctx.fillRect(xOf(0) - 0.5, 0, 1, HH);
+        ctx.fillRect(0, HH - ((spd - 0.5) / 9.5) * HH - 0.5, HW, 1);
         if (state.aimOff) {                                    // where your trim sits in that window
-          const ax = HW / 2 + (state.aimOff / 5) * (HW / 2);
+          const ax = xOf(state.aimOff);
           if (ax >= 0 && ax <= HW) { ctx.globalAlpha = 0.9; ctx.fillStyle = amber; ctx.fillRect(ax - 1, 0, 2, HH); }
         }
-        ctx.fillRect(0, HH - ((spd - 0.5) / 9.5) * HH - 0.5, HW, 1);
         ctx.globalAlpha = 1;
       }
     };
@@ -2047,7 +2114,7 @@ if (typeof module !== 'undefined') module.exports = kosmosBilliardsPhysics;
       drawShot(S); report(S);
       $('exec').disabled = !S.feasible;
       if (W.strip) drawStrip(sweepOutcomes(v.tip, v.side), v.spd);          // 96 full sims: only when shown
-      if (W.space && S.feasible) scheduleHeatmap(v.tip, v.side, v.spd); else { hmToken++; clearTimeout(hmTimer); $('hmap').getContext('2d').clearRect(0, 0, HW, HH); }
+      if (W.space && S.feasible) scheduleHeatmap(v.tip, v.side, v.spd); else { hmToken++; clearTimeout(hmTimer); $('hmap').getContext('2d').clearRect(0, 0, HW, HH); $('hmaxis').innerHTML = ''; }
       const spP = S.feasible ? sightPicture(S.dAim) : null;
       $('shotinfo').textContent = S.feasible
         ? `cut ${fmt(deg(Math.acos(Math.max(-1, Math.min(1, vdot(S.dAim, S.n))))), 1)}°${spP && !spP.miss ? ` · ${spP.name} (${spP.clock})` : ''} · ${fmt(S.dst, 2)} m to the ball · ${S.bank ? `banked off the ${S.bank.rail} rail into` : 'aimed at'} the ${S.name} pocket${state.aimOff ? ` · trimmed ${state.aimOff > 0 ? '+' : ''}${fmt(state.aimOff, 1)}° off the ghost line` : ''}`
