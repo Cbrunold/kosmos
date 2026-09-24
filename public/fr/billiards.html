@@ -3108,11 +3108,15 @@ if (typeof module !== 'undefined') module.exports = kosmosBilliardsPhysics;
   // the spin it leaves with, as in the shot lab (+0.4 is rolling from the start, which the systems assume).
   // Given a `ball`, that ball is on the table: the cue ball collides with it through the shot lab's own
   // collide(), and from then both run to rest — a kick that arrives moves what it hits.
-  function railRun(p0, dir, v, o = {}) {
+  // Squirt as in the shot lab: the tip pushes the cue ball off the line you aimed, away from the side you
+  // put on — SQ_R a unit of b/R. Running and reverse are read about the first cushion, so the side is
+  // turned into the shot lab's left/right before it deflects anything; swerve then bends it back as it slides.
+  function railRun(p0, aimDir, v, o = {}) {
     const { side = 0, tip = 0.4, keep = false, stopAfter = 0, extra = 0, goal = null, after = 0, ball = null } = o;
-    const b = { p: p0.slice(), v: vmul(dir, v), s: vmul(dir, 2.5 * v * tip), z: 0, slid: 0 };
-    const f = nextRail(p0, dir);
-    if (f && side) { const ta = 1 - f.r.ax; b.z = -Math.sign(b.v[ta] || 1) * zsOf(f.r) * 2.5 * v * side; }
+    const f = nextRail(p0, aimDir);
+    const lr = f && side ? -Math.sign(aimDir[1 - f.r.ax] || 1) * zsOf(f.r) * side : 0;   // + is right of centre
+    const sq = -SQ_R * lr, dir = [aimDir[0] * Math.cos(sq) - aimDir[1] * Math.sin(sq), aimDir[0] * Math.sin(sq) + aimDir[1] * Math.cos(sq)];
+    const b = { p: p0.slice(), v: vmul(dir, v), s: vmul(dir, 2.5 * v * tip), z: 2.5 * v * lr, slid: 0 };
     const ob = ball ? { p: ball.slice(), v: [0, 0], s: [0, 0], z: 0, slid: 0 } : null;
     const pts = keep ? [b.p.slice()] : null, obPts = keep && ob ? [ob.p.slice()] : null;
     const hits = [];
@@ -3152,7 +3156,7 @@ if (typeof module !== 'undefined') module.exports = kosmosBilliardsPhysics;
       if (keep) { pts.push(b.p.slice()); if (obPts) obPts.push(ob.p.slice()); }
       if (!cueLive && !obLive) break;
     }
-    return { pts, hits, end: b.p.slice(), pocket, stopped, minGoal, hit, obPts, obPocket, obRails, obEnd: ob ? ob.p.slice() : null };
+    return { pts, hits, end: b.p.slice(), pocket, stopped, minGoal, hit, obPts, obPocket, obRails, obEnd: ob ? ob.p.slice() : null, squirt: deg(Math.abs(sq)) };
   }
 
   // corner five's scales: the corner is 5, the long rail falls half a unit a diamond, the short rail climbs one
@@ -3365,6 +3369,7 @@ if (typeof module !== 'undefined') module.exports = kosmosBilliardsPhysics;
           : patternOK ? `third rail at <b>${fmt(arrived, 1)}</b> — ${Math.abs(err) < 0.15 ? 'the system is right here' : `${fmt(Math.abs(err), 1)} diamond${Math.abs(err) > 0.95 && Math.abs(err) < 1.05 ? '' : 's'} ${err > 0 ? 'long' : 'short'}`}${S.pocket != null ? ` <small>— and rolls on into the ${POCKETS[S.pocket].name} pocket</small>` : ''}`
           : S.pocket != null ? `<span class="warn">la bille tombe dans la poche ${POCKETS[S.pocket].name} avant la troisième bande</span>`
           : `<span class="warn">not the system's path — the ball took the ${S.hits.slice(0, 3).map((h) => h.r.name).join(', then the ') || 'no'} rail${S.hits.length === 1 ? '' : 's'}</span>`, patternOK && Math.abs(err) < 0.5 ? 'good' : 'warn'],
+        ...dsSquirt(K || S),
         ['the system holds', 'with running side at a firm pace. It is a fit to a real table, not a theorem — the numbers were measured, and they hold only near the stroke they were measured with.'],
       ]);
       $('dshelp').innerHTML = 'Faites glisser la bille blanche n\'importe où sur le tapis. Hors de la bande, son numéro de position se lit là où la ligne de tir, prolongée en arrière, rencontre les bandes proches — la fine ligne pointillée. Réglez l\'arrivée voulue et le système fait la soustraction.';
@@ -3402,6 +3407,7 @@ if (typeof module !== 'undefined') module.exports = kosmosBilliardsPhysics;
         ['la poche', `la <b>${target.name}</b> — cliquez-en une autre sur la table, ou utilisez les pastilles`],
         ['the line', sol ? `visée ${fmt(deg(Math.atan2(sol.dir[1], sol.dir[0])), 1)}° · ${sol.rails} bande${sol.rails === 1 ? '' : 's'} à l'aller` : `<span class="warn">aucune trajectoire à trois bandes vers cette poche à cette vitesse — essayez une autre poche, une autre allure, ou déplacez la bille blanche</span>`],
         ['in corner five', five ? `position <b>${fmt(five.pos, 1)}</b> − visée <b>${fmt(five.aim, 1)}</b> = arrivée <b>${fmt(five.arr, 1)}</b> <small>— il emprunte la route propre du système, si bien que les nombres le décrivent</small>` : 'the route does not follow the system\'s three rails, so its numbers do not describe this one'],
+        ...dsSquirt(S),
         ['the drill', 'Pick a pocket, execute, and watch it go. Then move the cue ball and do it again — scratching on purpose is the cheapest way to learn where the cue ball goes when you did not mean to.', sol ? 'good' : 'warn'],
       ]);
       $('dshelp').innerHTML = 'Placez la bille blanche où vous voulez ; cliquez sur une poche de la table (ou sur une pastille) pour l\'annoncer. La visée est cherchée contre les vraies bandes — il n\'y a pas d\'arithmétique des losanges pour une blanche empochée.';
@@ -3452,7 +3458,8 @@ if (typeof module !== 'undefined') module.exports = kosmosBilliardsPhysics;
           : miss != null ? (died ? `<span class="warn">la bille manque de souffle, ${fmt(100 * (miss - 2 * R), 1)} cm trop court — la ligne est bonne, la vitesse ne l'est pas</span>` : `misses by ${fmt(100 * (miss - 2 * R), 1)} cm of gap${S.pocket != null ? `, then drops in the ${POCKETS[S.pocket].name} pocket` : ''}`)
           : S.pocket != null ? `<span class="warn">la bille tombe dans la poche ${POCKETS[S.pocket].name} avant la deuxième bande</span>`
           : '<span class="warn">la bille s\'est arrêtée avant la deuxième bande</span>', hit ? 'good' : 'warn'],
-        ['why it misses', 'Le miroir suppose que la bande restitue l\'angle qu\'on lui a donné. Le caoutchouc ne le fait pas : il ne garde que <em>e</em> de la vitesse entrant dans la bande et le frottement entraîne le reste le long de celle-ci, si bien que tout rebond réel repart plus plat que ne l\'annonce l\'image — d\'autant plus que l\'on frappe fort. L\'effet latéral naturel en rend une partie.'],
+        ...dsSquirt(S),
+        ['why it misses', 'The mirror assumes the rail gives back the angle it was handed. Rubber does not: it keeps only <em>e</em> of the speed into the cushion and friction drags the rest along the rail, so every real rebound comes off flatter than the image says — more so the harder you hit it. Running side pays some of that back — and squirts the ball off the mirror\'s line before it reaches a rail.'],
       ]);
       $('dshelp').innerHTML = 'Déplacez l\'une ou l\'autre bille. Le labo choisit le trajet le plus court à deux bandes et construit l\'image miroir ; la ligne pleine est ce que le tapis en fait réellement.';
     }
@@ -3467,6 +3474,9 @@ if (typeof module !== 'undefined') module.exports = kosmosBilliardsPhysics;
     const u = q.matrixTransform(m.inverse());
     return [u.x / SX, u.y / SY];
   };
+  // what the side cost at the tip, when there was side to cost anything
+  const dsSquirt = (run) => (run && run.squirt > 0.005
+    ? [['squirt', `the cue ball leaves <b>${fmt(run.squirt, 2)}°</b> off the line you aim, away from the side — about ${fmt(100 * Math.tan(rad(run.squirt)), 1)} cm per metre, which swerve pays some of back while the ball slides`]] : []);
   // a kick that connects, in words: after how many rails, how full, and where the ball went
   function dsHitWords(run, need) {
     const h = run.hit, early = h.rails < need;

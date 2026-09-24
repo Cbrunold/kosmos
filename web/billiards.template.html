@@ -2162,11 +2162,15 @@ __PHYSICS__
   // the spin it leaves with, as in the shot lab (+0.4 is rolling from the start, which the systems assume).
   // Given a `ball`, that ball is on the table: the cue ball collides with it through the shot lab's own
   // collide(), and from then both run to rest — a kick that arrives moves what it hits.
-  function railRun(p0, dir, v, o = {}) {
+  // Squirt as in the shot lab: the tip pushes the cue ball off the line you aimed, away from the side you
+  // put on — SQ_R a unit of b/R. Running and reverse are read about the first cushion, so the side is
+  // turned into the shot lab's left/right before it deflects anything; swerve then bends it back as it slides.
+  function railRun(p0, aimDir, v, o = {}) {
     const { side = 0, tip = 0.4, keep = false, stopAfter = 0, extra = 0, goal = null, after = 0, ball = null } = o;
-    const b = { p: p0.slice(), v: vmul(dir, v), s: vmul(dir, 2.5 * v * tip), z: 0, slid: 0 };
-    const f = nextRail(p0, dir);
-    if (f && side) { const ta = 1 - f.r.ax; b.z = -Math.sign(b.v[ta] || 1) * zsOf(f.r) * 2.5 * v * side; }
+    const f = nextRail(p0, aimDir);
+    const lr = f && side ? -Math.sign(aimDir[1 - f.r.ax] || 1) * zsOf(f.r) * side : 0;   // + is right of centre
+    const sq = -SQ_R * lr, dir = [aimDir[0] * Math.cos(sq) - aimDir[1] * Math.sin(sq), aimDir[0] * Math.sin(sq) + aimDir[1] * Math.cos(sq)];
+    const b = { p: p0.slice(), v: vmul(dir, v), s: vmul(dir, 2.5 * v * tip), z: 2.5 * v * lr, slid: 0 };
     const ob = ball ? { p: ball.slice(), v: [0, 0], s: [0, 0], z: 0, slid: 0 } : null;
     const pts = keep ? [b.p.slice()] : null, obPts = keep && ob ? [ob.p.slice()] : null;
     const hits = [];
@@ -2206,7 +2210,7 @@ __PHYSICS__
       if (keep) { pts.push(b.p.slice()); if (obPts) obPts.push(ob.p.slice()); }
       if (!cueLive && !obLive) break;
     }
-    return { pts, hits, end: b.p.slice(), pocket, stopped, minGoal, hit, obPts, obPocket, obRails, obEnd: ob ? ob.p.slice() : null };
+    return { pts, hits, end: b.p.slice(), pocket, stopped, minGoal, hit, obPts, obPocket, obRails, obEnd: ob ? ob.p.slice() : null, squirt: deg(Math.abs(sq)) };
   }
 
   // corner five's scales: the corner is 5, the long rail falls half a unit a diamond, the short rail climbs one
@@ -2419,6 +2423,7 @@ __PHYSICS__
           : patternOK ? `third rail at <b>${fmt(arrived, 1)}</b> — ${Math.abs(err) < 0.15 ? 'the system is right here' : `${fmt(Math.abs(err), 1)} diamond${Math.abs(err) > 0.95 && Math.abs(err) < 1.05 ? '' : 's'} ${err > 0 ? 'long' : 'short'}`}${S.pocket != null ? ` <small>— and rolls on into the ${POCKETS[S.pocket].name} pocket</small>` : ''}`
           : S.pocket != null ? `<span class="warn">the ball drops in the ${POCKETS[S.pocket].name} pocket before the third rail</span>`
           : `<span class="warn">not the system's path — the ball took the ${S.hits.slice(0, 3).map((h) => h.r.name).join(', then the ') || 'no'} rail${S.hits.length === 1 ? '' : 's'}</span>`, patternOK && Math.abs(err) < 0.5 ? 'good' : 'warn'],
+        ...dsSquirt(K || S),
         ['the system holds', 'with running side at a firm pace. It is a fit to a real table, not a theorem — the numbers were measured, and they hold only near the stroke they were measured with.'],
       ]);
       $('dshelp').innerHTML = 'Drag the cue ball anywhere on the cloth. Off the cushion its position number is read where the shot line, run back, meets the near rails — the faint dotted line. Set the arrival you want and the system does the subtraction.';
@@ -2456,6 +2461,7 @@ __PHYSICS__
         ['the pocket', `the <b>${target.name}</b> — click another on the table, or use the chips`],
         ['the line', sol ? `aim ${fmt(deg(Math.atan2(sol.dir[1], sol.dir[0])), 1)}° · ${sol.rails} rail${sol.rails === 1 ? '' : 's'} on the way in` : `<span class="warn">no three-rail route into that pocket at this speed — try another pocket, another pace, or move the cue ball</span>`],
         ['in corner five', five ? `position <b>${fmt(five.pos, 1)}</b> − aim <b>${fmt(five.aim, 1)}</b> = arrival <b>${fmt(five.arr, 1)}</b> <small>— it takes the system's own route, so the numbers describe it</small>` : 'the route does not follow the system\'s three rails, so its numbers do not describe this one'],
+        ...dsSquirt(S),
         ['the drill', 'Pick a pocket, execute, and watch it go. Then move the cue ball and do it again — scratching on purpose is the cheapest way to learn where the cue ball goes when you did not mean to.', sol ? 'good' : 'warn'],
       ]);
       $('dshelp').innerHTML = 'Drag the cue ball anywhere; click a pocket on the table (or a chip) to call it. The aim is searched against the real cushions — there is no diamond arithmetic for a scratch.';
@@ -2506,7 +2512,8 @@ __PHYSICS__
           : miss != null ? (died ? `<span class="warn">the ball runs out of legs ${fmt(100 * (miss - 2 * R), 1)} cm short — the line is fine, the pace isn't</span>` : `misses by ${fmt(100 * (miss - 2 * R), 1)} cm of gap${S.pocket != null ? `, then drops in the ${POCKETS[S.pocket].name} pocket` : ''}`)
           : S.pocket != null ? `<span class="warn">the ball drops in the ${POCKETS[S.pocket].name} pocket before the second rail</span>`
           : '<span class="warn">the ball died before the second rail</span>', hit ? 'good' : 'warn'],
-        ['why it misses', 'The mirror assumes the rail gives back the angle it was handed. Rubber does not: it keeps only <em>e</em> of the speed into the cushion and friction drags the rest along the rail, so every real rebound comes off flatter than the image says — more so the harder you hit it. Running side pays some of that back.'],
+        ...dsSquirt(S),
+        ['why it misses', 'The mirror assumes the rail gives back the angle it was handed. Rubber does not: it keeps only <em>e</em> of the speed into the cushion and friction drags the rest along the rail, so every real rebound comes off flatter than the image says — more so the harder you hit it. Running side pays some of that back — and squirts the ball off the mirror\'s line before it reaches a rail.'],
       ]);
       $('dshelp').innerHTML = 'Drag either ball. The lab picks the shortest two-rail route and builds the mirror image; the solid line is what the cloth actually does with it.';
     }
@@ -2521,6 +2528,9 @@ __PHYSICS__
     const u = q.matrixTransform(m.inverse());
     return [u.x / SX, u.y / SY];
   };
+  // what the side cost at the tip, when there was side to cost anything
+  const dsSquirt = (run) => (run && run.squirt > 0.005
+    ? [['squirt', `the cue ball leaves <b>${fmt(run.squirt, 2)}°</b> off the line you aim, away from the side — about ${fmt(100 * Math.tan(rad(run.squirt)), 1)} cm per metre, which swerve pays some of back while the ball slides`]] : []);
   // a kick that connects, in words: after how many rails, how full, and where the ball went
   function dsHitWords(run, need) {
     const h = run.hit, early = h.rails < need;
