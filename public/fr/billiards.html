@@ -806,6 +806,13 @@ window.KosmosSearch = (() => {
       <div class="presets" id="dspockets"></div></div>
     <div class="row sys3-only"><label for="darr">arrivée — là où vous voulez la troisième bande</label><input id="darr" type="range" min="0.4" max="5" step="0.1" value="2"><span class="v" id="darrv"></span></div>
     <div class="row"><label for="dspd">vitesse à la première bande</label><input id="dspd" type="range" min="1" max="6" step="0.1" value="2.8"><span class="v" id="dspdv"></span></div>
+    <div class="row"><label>où vous frappez la bille blanche</label>
+      <div style="grid-column:1/-1;display:flex;gap:12px;align-items:center">
+        <svg id="dtipball" viewBox="0 0 120 120" style="width:120px;height:120px;flex:0 0 120px;cursor:crosshair;touch-action:none" role="img" aria-label="The face of the cue ball: click or drag to choose where the tip meets it — sideways is running or reverse side"></svg>
+        <div id="dtipballv" style="flex:1;min-width:0;font:12px ui-monospace,monospace;color:var(--ink);line-height:1.5"></div>
+      </div>
+      <div class="hint">Top is what the systems assume: the ball arrives at the first rail already rolling. Stun or draw reaches the rubber still sliding, and the cloth bends it after every cushion until it rolls again.</div></div>
+    <div class="row"><label for="dtip">hauteur du procédé, b/R</label><input id="dtip" type="range" min="-0.5" max="0.5" step="0.02" value="0.4"><span class="v" id="dtipv"></span></div>
     <div class="row"><label for="dside">effet latéral — naturel (+) ou contraire (−)</label><input id="dside" type="range" min="-0.5" max="0.5" step="0.02" value="0.3"><span class="v" id="dsidev"></span>
       <div class="hint">Le coin cinq s'enseigne avec effet latéral porteur, à un rythme ferme et régulier — cet effet fait partie du système, ce n'est pas un ornement. Annulez-le et regardez les chiffres cesser de fonctionner.</div></div>
     <dl id="dsout" style="margin-top:4px"></dl>
@@ -2110,7 +2117,7 @@ if (typeof module !== 'undefined') module.exports = kosmosBilliardsPhysics;
     stopAnim();
     const v = sliders();
     for (const k of ids) $(k + 'v').textContent = units[k](v[k]);
-    drawTipBall(v.tip, v.side);
+    shotTip.paint(v.tip, v.side);
     $('drilllvl').textContent = state.drill == null ? '—' : `L${state.dlevel}/10`;
     if (state.mode === 'practice') {
       const S = currentShot(false);
@@ -2144,50 +2151,55 @@ if (typeof module !== 'undefined') module.exports = kosmosBilliardsPhysics;
   // ---- the cue ball's face. Every player picks the strike by looking at the ball, not by reading two
   // numbers, so this is the control and the sliders are the fine adjustment. The inner ring is the
   // miscue limit: past half a radius from centre the tip cannot hold the ball and slides off it.
-  const tball = $('tipball');
+  // One picker, two tabs: the shot lab's side is left/right of the cue ball; the rails tab's is running or
+  // reverse about the first cushion, so each binds its own words for the horizontal axis.
   const TB_C = 60, TB_R = 48, TB_LIM = 0.5;                    // face radius in pixels; limit in b/R
-  function drawTipBall(tip, side) {
-    tball.innerHTML = '';
-    const te = draw(tball).el;
-    te('circle', { cx: TB_C, cy: TB_C, r: TB_R, fill: 'var(--panel)', stroke: 'var(--ink)', 'stroke-width': 1.6 });
-    te('line', { x1: TB_C - TB_R, y1: TB_C, x2: TB_C + TB_R, y2: TB_C, stroke: 'var(--hairline)' });
-    te('line', { x1: TB_C, y1: TB_C - TB_R, x2: TB_C, y2: TB_C + TB_R, stroke: 'var(--hairline)' });
-    te('circle', { cx: TB_C, cy: TB_C, r: TB_R * TB_LIM, fill: 'none', stroke: 'var(--c-red)', 'stroke-width': 1, 'stroke-dasharray': '3 3', opacity: 0.65 });
-    const mono = MONO(8.5);
-    const t1 = te('text', { x: TB_C, y: 11, ...mono, 'text-anchor': 'middle' }); t1.textContent = 'coulé';
-    const t2 = te('text', { x: TB_C, y: 115, ...mono, 'text-anchor': 'middle' }); t2.textContent = 'rétro';
-    const t3 = te('text', { x: 3, y: TB_C + 3, ...mono }); t3.textContent = 'L';
-    const t4 = te('text', { x: 117, y: TB_C + 3, ...mono, 'text-anchor': 'end' }); t4.textContent = 'R';
-    const x = TB_C + side * TB_R, y = TB_C - tip * TB_R;
-    te('line', { x1: TB_C, y1: TB_C, x2: x, y2: y, stroke: 'var(--c-red)', 'stroke-width': 1, opacity: 0.5 });
-    te('circle', { cx: x, cy: y, r: 5, fill: 'var(--c-red)', stroke: 'var(--page)', 'stroke-width': 1.2 });
-    const off = Math.hypot(side, tip);
-    const words = [];
-    if (tip > 0.05) words.push(tip > 0.38 ? 'top' : 'a little top'); else if (tip < -0.05) words.push(tip < -0.38 ? 'deep draw' : 'draw'); else words.push('centre height');
-    if (side > 0.05) words.push(side > 0.38 ? 'full right' : 'right'); else if (side < -0.05) words.push(side < -0.38 ? 'full left' : 'left'); else words.push('no side');
-    $('tipballv').innerHTML = `<b>${words.join(' · ')}</b><br>hauteur ${tip >= 0 ? '+' : ''}${fmt(tip, 2)} · latéral ${side >= 0 ? '+' : ''}${fmt(side, 2)} · ${fmt(off, 2)} du centre`
-      + (off > TB_LIM + 1e-9 ? ' <span class="warn">— au-delà de la limite de fausse queue</span>' : '');
+  function tipPicker(svgEl, readEl, tipId, sideId, onPick, sw = ['L', 'R', 'left', 'right']) {
+    function paint(tip, side) {
+      svgEl.innerHTML = '';
+      const te = draw(svgEl).el;
+      te('circle', { cx: TB_C, cy: TB_C, r: TB_R, fill: 'var(--panel)', stroke: 'var(--ink)', 'stroke-width': 1.6 });
+      te('line', { x1: TB_C - TB_R, y1: TB_C, x2: TB_C + TB_R, y2: TB_C, stroke: 'var(--hairline)' });
+      te('line', { x1: TB_C, y1: TB_C - TB_R, x2: TB_C, y2: TB_C + TB_R, stroke: 'var(--hairline)' });
+      te('circle', { cx: TB_C, cy: TB_C, r: TB_R * TB_LIM, fill: 'none', stroke: 'var(--c-red)', 'stroke-width': 1, 'stroke-dasharray': '3 3', opacity: 0.65 });
+      const mono = MONO(8.5);
+      const t1 = te('text', { x: TB_C, y: 11, ...mono, 'text-anchor': 'middle' }); t1.textContent = 'coulé';
+      const t2 = te('text', { x: TB_C, y: 115, ...mono, 'text-anchor': 'middle' }); t2.textContent = 'rétro';
+      const t3 = te('text', { x: 3, y: TB_C + 3, ...mono }); t3.textContent = sw[0];
+      const t4 = te('text', { x: 117, y: TB_C + 3, ...mono, 'text-anchor': 'end' }); t4.textContent = sw[1];
+      const x = TB_C + side * TB_R, y = TB_C - tip * TB_R;
+      te('line', { x1: TB_C, y1: TB_C, x2: x, y2: y, stroke: 'var(--c-red)', 'stroke-width': 1, opacity: 0.5 });
+      te('circle', { cx: x, cy: y, r: 5, fill: 'var(--c-red)', stroke: 'var(--page)', 'stroke-width': 1.2 });
+      const off = Math.hypot(side, tip);
+      const words = [];
+      if (tip > 0.05) words.push(tip > 0.38 ? 'top' : 'a little top'); else if (tip < -0.05) words.push(tip < -0.38 ? 'deep draw' : 'draw'); else words.push('centre height');
+      if (side > 0.05) words.push(side > 0.38 ? `full ${sw[3]}` : sw[3]); else if (side < -0.05) words.push(side < -0.38 ? `full ${sw[2]}` : sw[2]); else words.push('no side');
+      readEl.innerHTML = `<b>${words.join(' · ')}</b><br>hauteur ${tip >= 0 ? '+' : ''}${fmt(tip, 2)} · latéral ${side >= 0 ? '+' : ''}${fmt(side, 2)} · ${fmt(off, 2)} du centre`
+        + (off > TB_LIM + 1e-9 ? ' <span class="warn">— au-delà de la limite de fausse queue</span>' : '');
+    }
+    function pick(e) {
+      const m2 = svgEl.getScreenCTM();
+      if (!m2) return;
+      const q = svgEl.createSVGPoint(); q.x = e.clientX; q.y = e.clientY;
+      const u = q.matrixTransform(m2.inverse());
+      let sx = (u.x - TB_C) / TB_R, sy = -(u.y - TB_C) / TB_R;
+      const m3 = Math.hypot(sx, sy);
+      if (m3 > TB_LIM) { sx = sx / m3 * TB_LIM; sy = sy / m3 * TB_LIM; }   // the tip cannot hold it past here
+      // snap to the slider's step by truncating toward the centre: rounding outward can put a point that
+      // was just inside the ring back outside it, and then no amount of rescaling settles
+      const snap = (v) => Math.sign(v) * Math.floor(Math.abs(v) / 0.02 + 1e-9) * 0.02;
+      $(sideId).value = snap(sx);
+      $(tipId).value = snap(sy);
+      onPick();
+    }
+    let dragging = false;
+    svgEl.addEventListener('pointerdown', (e) => { dragging = true; pick(e); svgEl.setPointerCapture(e.pointerId); e.preventDefault(); });
+    svgEl.addEventListener('pointermove', (e) => { if (dragging) pick(e); });
+    svgEl.addEventListener('pointerup', () => { dragging = false; });
+    svgEl.addEventListener('pointercancel', () => { dragging = false; });
+    return { paint };
   }
-  function tipBallPick(e) {
-    const m2 = tball.getScreenCTM();
-    if (!m2) return;
-    const q = tball.createSVGPoint(); q.x = e.clientX; q.y = e.clientY;
-    const u = q.matrixTransform(m2.inverse());
-    let sx = (u.x - TB_C) / TB_R, sy = -(u.y - TB_C) / TB_R;
-    const m3 = Math.hypot(sx, sy);
-    if (m3 > TB_LIM) { sx = sx / m3 * TB_LIM; sy = sy / m3 * TB_LIM; }   // the tip cannot hold it past here
-    // snap to the slider's step by truncating toward the centre: rounding outward can put a point that
-    // was just inside the ring back outside it, and then no amount of rescaling settles
-    const snap = (v) => Math.sign(v) * Math.floor(Math.abs(v) / 0.02 + 1e-9) * 0.02;
-    $('side').value = snap(sx);
-    $('tip').value = snap(sy);
-    schedule();
-  }
-  let tbDrag = false;
-  tball.addEventListener('pointerdown', (e) => { tbDrag = true; tipBallPick(e); tball.setPointerCapture(e.pointerId); e.preventDefault(); });
-  tball.addEventListener('pointermove', (e) => { if (tbDrag) tipBallPick(e); });
-  tball.addEventListener('pointerup', () => { tbDrag = false; });
-  tball.addEventListener('pointercancel', () => { tbDrag = false; });
+  const shotTip = tipPicker($('tipball'), $('tipballv'), 'tip', 'side', () => schedule());
 
   let raf = 0;
   const schedule = () => { if (!raf) raf = requestAnimationFrame(() => { raf = 0; run(); }); };
@@ -3091,31 +3103,56 @@ if (typeof module !== 'undefined') module.exports = kosmosBilliardsPhysics;
   }
   const mirrorPt = (p, r) => { const q = p.slice(); q[r.ax] = 2 * r.lim - q[r.ax]; return q; };
 
-  // the real thing: a rolling ball sent down a line, every rail live. Side is applied as running (+)
-  // about the first cushion it will meet, so the slider's sign means the same whichever way the shot goes.
-  function railRun(p0, dir, v, side, keep, stopAfter, extra, goal, after) {
-    const b = { p: p0.slice(), v: vmul(dir, v), s: vmul(dir, v), z: 0, slid: 0 };
+  // the real thing: a ball sent down a line, every rail live. Side is applied as running (+) about the
+  // first cushion it will meet, so the slider's sign means the same whichever way the shot goes; tip sets
+  // the spin it leaves with, as in the shot lab (+0.4 is rolling from the start, which the systems assume).
+  // Given a `ball`, that ball is on the table: the cue ball collides with it through the shot lab's own
+  // collide(), and from then both run to rest — a kick that arrives moves what it hits.
+  function railRun(p0, dir, v, o = {}) {
+    const { side = 0, tip = 0.4, keep = false, stopAfter = 0, extra = 0, goal = null, after = 0, ball = null } = o;
+    const b = { p: p0.slice(), v: vmul(dir, v), s: vmul(dir, 2.5 * v * tip), z: 0, slid: 0 };
     const f = nextRail(p0, dir);
     if (f && side) { const ta = 1 - f.r.ax; b.z = -Math.sign(b.v[ta] || 1) * zsOf(f.r) * 2.5 * v * side; }
-    const pts = keep ? [b.p.slice()] : null;
+    const ob = ball ? { p: ball.slice(), v: [0, 0], s: [0, 0], z: 0, slid: 0 } : null;
+    const pts = keep ? [b.p.slice()] : null, obPts = keep && ob ? [ob.p.slice()] : null;
     const hits = [];
-    let pocket = null, stopped = false, tail = 0, minGoal = Infinity;
-    for (let i = 0; i < 6000; i++) {
-      const q0 = b.p.slice();
-      step(b, 0.003);
-      if (keep) pts.push(b.p.slice());
-      const pk = pocketAt(b.p);
-      if (pk >= 0) { pocket = pk; break; }
-      const r = bounce(b);
-      if (r) hits.push({ r, p: b.p.slice(), idx: keep ? pts.length - 1 : i });
-      if (goal && hits.length >= (after || 0)) { const d = dist2(b.p, goal); if (d < minGoal) minGoal = d; }
-      if (vlen(b.v) < 1e-3) { stopped = true; break; }
-      if (stopAfter && hits.length >= stopAfter) {   // the system's rails are shot — draw a tail, then stop
-        tail += dist2(q0, b.p);
-        if (tail > (extra || 0.3)) break;
+    let pocket = null, stopped = false, tail = 0, minGoal = Infinity, hit = null, obPocket = null, obRails = 0;
+    let cueLive = true, obLive = false;
+    for (let i = 0; i < 9000; i++) {
+      if (cueLive) {
+        const q0 = b.p.slice();
+        step(b, 0.003);
+        const pk = pocketAt(b.p);
+        if (pk >= 0) { pocket = pk; cueLive = false; }
+        else {
+          const r = bounce(b);
+          if (r) hits.push({ r, p: b.p.slice(), idx: keep ? pts.length : i });
+          if (goal && !hit && hits.length >= after) { const d = dist2(b.p, goal); if (d < minGoal) minGoal = d; }
+          if (vlen(b.v) < 1e-3) { stopped = true; cueLive = false; }
+          else if (stopAfter && !hit && hits.length >= stopAfter) {   // the system's rails are shot — a tail, then stop
+            tail += dist2(q0, b.p);
+            if (tail > extra) cueLive = false;
+          }
+        }
       }
+      if (obLive) {
+        step(ob, 0.003);
+        const pk = pocketAt(ob.p);
+        if (pk >= 0) { obPocket = pk; obLive = false; }
+        else { if (bounce(ob)) obRails++; if (vlen(ob.v) < 1e-3) obLive = false; }
+      }
+      if (ob && pocket == null && obPocket == null && dist2(b.p, ob.p) < 2 * R) {
+        const ev = collide(b, ob);
+        if (ev) {
+          if (!hit) hit = { rails: hits.length, th: ev.th, fraction: 1 - Math.sin(ev.th), idx: keep ? pts.length : i };
+          obLive = vlen(ob.v) > 1e-3;
+          if (!cueLive && vlen(b.v) > 1e-3) cueLive = true;
+        }
+      }
+      if (keep) { pts.push(b.p.slice()); if (obPts) obPts.push(ob.p.slice()); }
+      if (!cueLive && !obLive) break;
     }
-    return { pts, hits, end: b.p.slice(), pocket, stopped, minGoal };
+    return { pts, hits, end: b.p.slice(), pocket, stopped, minGoal, hit, obPts, obPocket, obRails, obEnd: ob ? ob.p.slice() : null };
   }
 
   // corner five's scales: the corner is 5, the long rail falls half a unit a diamond, the short rail climbs one
@@ -3155,14 +3192,14 @@ if (typeof module !== 'undefined') module.exports = kosmosBilliardsPhysics;
   // Corner five predicts where the cue ball crosses the third rail. On its own that is a number with no
   // reason attached — so the reason is a ball you want to reach, and this finds the arrival that gets
   // there. Sweep the numbers, run each one on the real cushions, keep whichever passes closest.
-  function solveArrival(cbP, tgtP, v, side, flip) {
+  function solveArrival(cbP, tgtP, v, side, tip, flip) {
     let best = null;
     for (let i = 0; i <= 46; i++) {
       const N = 0.4 + i * 0.1;
       const CF = cornerFive(cF(cbP), N);
       if (!CF.dirC || !(CF.A > 0.15 && CF.A < 7.85)) continue;
       const dir = flip ? [-CF.dirC[0], CF.dirC[1]] : CF.dirC;
-      const S = railRun(cbP, dir, v, side, false, 4, 0.05, tgtP, 3);
+      const S = railRun(cbP, dir, v, { side, tip, stopAfter: 4, extra: 0.05, goal: tgtP, after: 3 });
       if (S.hits.length < 3 || !isFinite(S.minGoal)) continue;
       if (!best || S.minGoal < best.miss) best = { N, miss: S.minGoal, A: CF.A };
     }
@@ -3170,11 +3207,11 @@ if (typeof module !== 'undefined') module.exports = kosmosBilliardsPhysics;
   }
   // A three-rail scratch: send the cue ball round the table and into a named pocket. There is no
   // arithmetic for this one — the aim is searched for against the same cushions the shot will meet.
-  function solveScratch(cb, pk, v, side) {
+  function solveScratch(cb, pk, v, side, tip) {
     let best = null;
     const test = (a) => {
       const dir = [Math.cos(a), Math.sin(a)];
-      const S = railRun(cb, dir, v, side, false, 7, 0.02);
+      const S = railRun(cb, dir, v, { side, tip, stopAfter: 7, extra: 0.02 });
       if (S.pocket !== pk || S.hits.length < 3) return null;
       return { a, dir, rails: S.hits.length };
     };
@@ -3256,9 +3293,12 @@ if (typeof module !== 'undefined') module.exports = kosmosBilliardsPhysics;
     const a = rad(DS.aim);
     return [Math.cos(a), Math.sin(a)];
   }
+  const dsTip = tipPicker($('dtipball'), $('dtipballv'), 'dtip', 'dside', () => runSystems(), ['rev', 'run', 'reverse side', 'running side']);
   function runSystems() {
-    const v = +$('dspd').value, side = +$('dside').value;
+    const v = +$('dspd').value, side = +$('dside').value, tip = +$('dtip').value;
     DS.arr = +$('darr').value;
+    $('dtipv').textContent = `${tip >= 0 ? '+' : ''}${fmt(tip, 2)}`;
+    dsTip.paint(tip, side);
     $('dspdv').textContent = `${fmt(v, 1)} m/s`;
     $('dsidev').textContent = `${side >= 0 ? '+' : ''}${fmt(side, 2)}`;
     $('darrv').textContent = `${fmt(DS.arr, 1)} · diamants`;
@@ -3276,7 +3316,7 @@ if (typeof module !== 'undefined') module.exports = kosmosBilliardsPhysics;
       : '<span style="--lc:var(--muted); --ls:dashed">le trajet du miroir</span><span style="--lc:var(--c-red); --ls:dotted">la ligne vers l\'image, droit à travers les bandes</span><span style="--lc:var(--c-felt)">ce que le tapis fait réellement</span>';
     if (DS.sys === 3) {
       // the reason for the number: a ball you are hooked on and must reach off three cushions
-      const solvedN = solveArrival(DS.cb, DS.tgt3, v, side, flip);
+      const solvedN = solveArrival(DS.cb, DS.tgt3, v, side, tip, flip);
       if (DS.follow && solvedN) { DS.arr = Math.round(solvedN.N * 10) / 10; $('darr').value = DS.arr; $('darrv').textContent = `${fmt(DS.arr, 1)} · diamants`; }
       const cbC = cF(DS.cb), N = DS.arr;
       const CF = cornerFive(cbC, N), P = CF.P, A = CF.A;
@@ -3292,30 +3332,33 @@ if (typeof module !== 'undefined') module.exports = kosmosBilliardsPhysics;
       const [nx2, ny2] = px(promised); de('circle', { cx: nx2, cy: ny2, r: 6, fill: 'none', stroke: 'var(--c-amber)', 'stroke-width': 1.8, 'stroke-dasharray': '2 2' });
       const inRange = A > 0.15 && A < 7.85;
       const useDir = dsAim(dir);
-      const S = inRange ? railRun(DS.cb, useDir, v, side, true, 3, 0.34) : null;
+      const S = inRange ? railRun(DS.cb, useDir, v, { side, tip, keep: true, stopAfter: 3, extra: 0.34 }) : null;
       let arrived = null, patternOK = false;
+      // the shot with the ball there to hit: when it connects, that is the path worth drawing
+      const K = inRange ? railRun(DS.cb, useDir, v, { side, tip, keep: true, stopAfter: 4, extra: 0.05, goal: DS.tgt3, after: 3, ball: DS.tgt3 }) : null;
+      if (K && K.hit) {
+        dpoly(K.pts, { stroke: 'var(--c-felt)', 'stroke-width': 2.2, opacity: 0.95 });
+        dpoly(K.obPts.slice(K.hit.idx), { stroke: 'var(--c-amber)', 'stroke-width': 2.2, opacity: 0.95 });
+      } else if (S) dpoly(S.pts, { stroke: 'var(--c-felt)', 'stroke-width': 2.2, opacity: 0.95 });
       if (S) {
-        dpoly(S.pts, { stroke: 'var(--c-felt)', 'stroke-width': 2.2, opacity: 0.95 });
-        S.hits.slice(0, 4).forEach((h, i) => { const [hx, hy] = px(h.p); de('circle', { cx: hx, cy: hy, r: 8, fill: 'none', stroke: 'var(--ink-2)', 'stroke-width': 1 }); const t2 = de('text', { x: hx, y: hy + 3.5, ...dmono, fill: 'var(--ink)', 'text-anchor': 'middle' }); t2.textContent = i + 1; });
+        (K && K.hit ? K.hits.slice(0, K.hit.rails) : S.hits.slice(0, 4)).forEach((h, i) => { const [hx, hy] = px(h.p); de('circle', { cx: hx, cy: hy, r: 8, fill: 'none', stroke: 'var(--ink-2)', 'stroke-width': 1 }); const t2 = de('text', { x: hx, y: hy + 3.5, ...dmono, fill: 'var(--ink)', 'text-anchor': 'middle' }); t2.textContent = i + 1; });
         const want = [RY0, flip ? RX1 : RX0, RY1];
         patternOK = S.hits.length >= 3 && S.hits.slice(0, 3).every((h, i) => h.r.lim === want[i]);
         if (patternOK) arrived = cF(S.hits[2].p)[0] / DIA;
       }
-      dball(DS.tgt3, { fill: 'var(--c-amber)', stroke: 'var(--page)', 'stroke-width': 1.2, style: 'cursor:grab' });
+      dball(DS.tgt3, { fill: 'var(--c-amber)', stroke: 'var(--page)', 'stroke-width': 1.2, style: 'cursor:grab', class: 'dsobj' });
       dtext(vadd(DS.tgt3, [0, -0.055]), 'kick at this one — drag it', { ...dmono, fill: 'var(--c-amber)', 'text-anchor': 'middle', opacity: 0.9 });
       dball(DS.cb, { fill: 'var(--panel)', stroke: 'var(--ink)', 'stroke-width': 1.5, style: 'cursor:grab' });
       const err = arrived == null ? null : arrived - N;
-      // does this shot actually reach the ball?
-      const K = inRange ? railRun(DS.cb, useDir, v, side, true, 4, 0.05, DS.tgt3, 3) : null;
       const kick = K && isFinite(K.minGoal) ? K.minGoal : null;
-      DS.play = K && K.pts ? K.pts : (S && S.pts ? S.pts : null);
+      DS.play = K && K.hit ? K : S;
       $('dsout').innerHTML = dl([
         ['le but', `Vous ne voyez pas la bille ambre, vous la jouez donc en bricole sur trois bandes. Faites-la glisser là où se trouve votre problème ; faites glisser la bille blanche là où vous êtes. Le numéro d'arrivée indique <em>l'endroit où la bille blanche franchit la troisième bande</em> — choisissez celui dont la trajectoire ultérieure rencontre la bille.`],
         ['to reach the ball', solvedN ? (solvedN.miss < 2 * R
             ? `<b>arrivée ${fmt(solvedN.N, 1)}</b> — celle-là la touche`
             : `la plus proche est <b>arrivée ${fmt(solvedN.N, 1)}</b>, et elle manque encore de ${fmt(100 * (solvedN.miss - 2 * R), 0)} cm — aucune bricole trois bandes n'atteint cette bille depuis ici`)
           : '<span class="warn">aucun trajet trois bandes ne l\'atteint depuis ici — déplacez l\'une ou l\'autre bille</span>', solvedN && solvedN.miss < 2 * R ? 'good' : 'warn'],
-        ['this shot', kick == null ? 'never gets past the third rail' : kick < 2 * R ? `<b>touche la bille</b> — ${fmt(1000 * kick, 0)} mm de centre à centre` : `passe à ${fmt(100 * (kick - 2 * R), 0)} cm`, kick != null && kick < 2 * R ? 'good' : undefined],
+        ['this shot', K && K.hit ? `${dsHitWords(K, 3)}` : kick == null ? 'never gets past the third rail' : `passe à ${fmt(100 * (kick - 2 * R), 0)} cm`, K && K.hit && K.hit.rails >= 3 ? 'good' : K && K.hit ? 'warn' : undefined],
         ['l\'arithmétique', `position <b>${fmt(P, 1)}</b> − visée <b>${fmt(A, 1)}</b> = arrivée <b>${fmt(N, 1)}</b>`],
         ['aim at', inRange ? `le <b>${fmt(A, 1)}</b> sur la longue bande opposée — ${fmt(A, 1)} losange${A === 1 ? '' : 's'} depuis le coin opposé, et visez <em>à travers</em> le losange` : `<span class="warn">hors de la table — la position ${fmt(P, 1)} ne peut pas atteindre l'arrivée ${fmt(N, 1)}. Déplacez la bille blanche ou le repère d'arrivée.</span>`],
         ['the cloth says', !S ? '—'
@@ -3329,11 +3372,11 @@ if (typeof module !== 'undefined') module.exports = kosmosBilliardsPhysics;
       const pk = DS.pk, target = POCKETS[pk];
       const [tx2, ty2] = px(target.p);
       de('circle', { cx: tx2, cy: ty2, r: RP * SX + 5, fill: 'none', stroke: 'var(--c-red)', 'stroke-width': 2.5 });
-      const sol = solveScratch(DS.cb, pk, v, side);
+      const sol = solveScratch(DS.cb, pk, v, side, tip);
       let S = null;
       if (sol) {
         const uD = dsAim(sol.dir);
-        S = railRun(DS.cb, uD, v, side, true, 7, 0.02);
+        S = railRun(DS.cb, uD, v, { side, tip, keep: true, stopAfter: 7, extra: 0.02 });
         dline(DS.cb, vadd(DS.cb, vmul(uD, 0.34)), { stroke: 'var(--muted)', 'stroke-width': 1.2, 'stroke-dasharray': '6 5', opacity: 0.8 });
         dpoly(S.pts, { stroke: 'var(--c-felt)', 'stroke-width': 2.2, opacity: 0.95 });
         S.hits.slice(0, 5).forEach((h, i) => {
@@ -3342,7 +3385,7 @@ if (typeof module !== 'undefined') module.exports = kosmosBilliardsPhysics;
           const t3 = de('text', { x: hx, y: hy + 3.5, ...dmono, fill: 'var(--ink)', 'text-anchor': 'middle' }); t3.textContent = i + 1;
         });
       }
-      DS.play = S && S.pts ? S.pts : null;
+      DS.play = S;
       dball(DS.cb, { fill: 'var(--panel)', stroke: 'var(--ink)', 'stroke-width': 1.5, style: 'cursor:grab' });
       // read the same shot in corner five's numbers, where the route is the system's own
       const cbC = cF(DS.cb);
@@ -3384,34 +3427,36 @@ if (typeof module !== 'undefined') module.exports = kosmosBilliardsPhysics;
           lab[0] = Math.min(Math.max(lab[0], 0.42), TABLE_L - 0.42);
           dtext(lab, `image : ${fmt(far - dist2(DS.cb2, sol.h1), 2)} m sur`, { ...dmono, fill: 'var(--c-red)', 'text-anchor': 'middle', opacity: 0.85 });
         }
-        S = railRun(DS.cb2, dsAim(sol.dir), v, side, true, 3, 0.05);   // two rails and the whole leg to the target
+        S = railRun(DS.cb2, dsAim(sol.dir), v, { side, tip, keep: true, stopAfter: 3, extra: 0.05, ball: DS.tgt });   // two rails and the leg to the target — which is there to be hit
         dpoly(S.pts, { stroke: 'var(--c-felt)', 'stroke-width': 2.2, opacity: 0.95 });
+        if (S.hit) dpoly(S.obPts.slice(S.hit.idx), { stroke: 'var(--c-amber)', 'stroke-width': 2.2, opacity: 0.95 });
         S.hits.slice(0, 2).forEach((h, i) => { const [hx, hy] = px(h.p); de('circle', { cx: hx, cy: hy, r: 8, fill: 'none', stroke: 'var(--ink-2)', 'stroke-width': 1 }); const t2 = de('text', { x: hx, y: hy + 3.5, ...dmono, fill: 'var(--ink)', 'text-anchor': 'middle' }); t2.textContent = i + 1; });
-        if (S.hits.length >= 2) {
+        if (S.hits.length >= 2 && !S.hit) {
           miss = Infinity;
           let mk = 0;
           for (let k = S.hits[1].idx; k < S.pts.length; k++) { const dd = dist2(S.pts[k], DS.tgt); if (dd < miss) { miss = dd; missP = S.pts[k]; mk = k; } }
           died = S.stopped && mk >= S.pts.length - 2;   // closest where it came to rest: it stalled, it didn't miss
         }
       }
-      dball(DS.tgt, { fill: 'var(--c-amber)', stroke: 'var(--page)', 'stroke-width': 1.2, style: 'cursor:grab' });
+      dball(DS.tgt, { fill: 'var(--c-amber)', stroke: 'var(--page)', 'stroke-width': 1.2, style: 'cursor:grab', class: 'dsobj' });
       dtext(vadd(DS.tgt, [0, -0.055]), 'kick at this one — drag it', { ...dmono, fill: 'var(--c-amber)', 'text-anchor': 'middle', opacity: 0.9 });
       dball(DS.cb2, { fill: 'var(--panel)', stroke: 'var(--ink)', 'stroke-width': 1.5, style: 'cursor:grab' });
-      const hit = miss != null && miss < 2 * R;
-      DS.play = S && S.pts ? S.pts : null;
+      const hit = !!(S && S.hit && S.hit.rails >= 2);
+      DS.play = S;
       $('dsout').innerHTML = dl([
         ['the goal', 'You cannot see the amber ball. Kick off two cushions and hit it. Drag the ball to wherever you are hooked, drag the cue ball to where you sit, and the mirror gives you the line.'],
         ['the construction', sol ? `reflétez la cible à travers la bande <b>${sol.r2.name}</b>, puis à travers la <b>${sol.r1.name}</b> — et visez cette image` : '<span class="warn">aucune trajectoire à deux bandes d\'ici — déplacez l\'une ou l\'autre bille</span>'],
         ['the rails', sol ? `${sol.r1.name}, puis ${sol.r2.name} · ${fmt(sol.len, 2)} m de tapis sur la ligne idéale` : '—'],
         ['the cloth says', !S ? '—'
-          : miss != null ? (hit ? `<b>elle touche</b> — ${fmt(1000 * miss, 0)} mm de centre à centre au plus près` : died ? `<span class="warn">la bille manque de souffle, ${fmt(100 * (miss - 2 * R), 1)} cm trop court — la ligne est bonne, la vitesse ne l'est pas</span>` : `misses by ${fmt(100 * (miss - 2 * R), 1)} cm of gap${S.pocket != null ? `, then drops in the ${POCKETS[S.pocket].name} pocket` : ''}`)
+          : S.hit ? dsHitWords(S, 2)
+          : miss != null ? (died ? `<span class="warn">la bille manque de souffle, ${fmt(100 * (miss - 2 * R), 1)} cm trop court — la ligne est bonne, la vitesse ne l'est pas</span>` : `misses by ${fmt(100 * (miss - 2 * R), 1)} cm of gap${S.pocket != null ? `, then drops in the ${POCKETS[S.pocket].name} pocket` : ''}`)
           : S.pocket != null ? `<span class="warn">la bille tombe dans la poche ${POCKETS[S.pocket].name} avant la deuxième bande</span>`
           : '<span class="warn">la bille s\'est arrêtée avant la deuxième bande</span>', hit ? 'good' : 'warn'],
         ['why it misses', 'Le miroir suppose que la bande restitue l\'angle qu\'on lui a donné. Le caoutchouc ne le fait pas : il ne garde que <em>e</em> de la vitesse entrant dans la bande et le frottement entraîne le reste le long de celle-ci, si bien que tout rebond réel repart plus plat que ne l\'annonce l\'image — d\'autant plus que l\'on frappe fort. L\'effet latéral naturel en rend une partie.'],
       ]);
       $('dshelp').innerHTML = 'Déplacez l\'une ou l\'autre bille. Le labo choisit le trajet le plus court à deux bandes et construit l\'image miroir ; la ligne pleine est ce que le tapis en fait réellement.';
     }
-    $('dsexec').disabled = !(DS.play && DS.play.length > 1);
+    $('dsexec').disabled = !(DS.play && DS.play.pts && DS.play.pts.length > 1);
   }
 
   let dsDrag = null;
@@ -3422,20 +3467,40 @@ if (typeof module !== 'undefined') module.exports = kosmosBilliardsPhysics;
     const u = q.matrixTransform(m.inverse());
     return [u.x / SX, u.y / SY];
   };
-  let dsAnim = 0;
-  function dsPlay(pts) {                                    // send it round, at something like real pace
+  // a kick that connects, in words: after how many rails, how full, and where the ball went
+  function dsHitWords(run, need) {
+    const h = run.hit, early = h.rails < need;
+    return `<b>hits the ball</b> after ${h.rails} rail${h.rails === 1 ? '' : 's'} — ${fracName(h.fraction)} hit`
+      + (early ? ` <span class="warn">— before rail ${need}, so this is not the kick you are practising</span>` : '')
+      + (run.obPocket != null ? ` · it drops in the ${POCKETS[run.obPocket].name} pocket` : ` · it rolls ${fmt(dist2(run.obPts[h.idx], run.obEnd), 2)} m${run.obRails ? ` and ${run.obRails} rail${run.obRails === 1 ? '' : 's'}` : ''}`)
+      + (run.pocket != null ? ` · <span class="warn">the cue ball scratches in the ${POCKETS[run.pocket].name}</span>` : '');
+  }
+  let dsAnim = 0, dsReset = 0;
+  function dsPlay(run) {                                    // send it round, at something like real pace
     if (dsAnim) cancelAnimationFrame(dsAnim);
+    clearTimeout(dsReset);
     $('dsexec').removeAttribute('aria-busy');
+    for (const o of dsvg.querySelectorAll('.dsobj')) o.style.visibility = '';
+    const pts = run && run.pts;
     if (!pts || pts.length < 2) return;
     $('dsexec').setAttribute('aria-busy', 'true');
+    // the object ball rides along when it is on the table: hide the one at rest, move a copy
+    const obPts = run.obPts && run.hit ? run.obPts : null;
+    const still = obPts ? dsvg.querySelector('.dsobj') : null;
+    if (still) still.style.visibility = 'hidden';
+    const obDot = obPts ? de('circle', { r: R * SX, fill: 'var(--c-amber)', stroke: 'var(--page)', 'stroke-width': 1.2 }) : null;
     const dot = de('circle', { r: R * SX, fill: 'var(--panel)', stroke: 'var(--ink)', 'stroke-width': 1.5 });
     const T = Math.min(6000, pts.length * 3), t0 = performance.now();
     const frame = (now) => {
-      const f = Math.max(0, Math.min(1, (now - t0) / T));
-      const [qx, qy] = px(pts[Math.round(f * (pts.length - 1))]);
+      const f = Math.max(0, Math.min(1, (now - t0) / T)), k = Math.round(f * (pts.length - 1));
+      const [qx, qy] = px(pts[k]);
       dot.setAttribute('cx', qx); dot.setAttribute('cy', qy);
+      if (obDot) { const [ox, oy] = px(obPts[Math.min(k, obPts.length - 1)]); obDot.setAttribute('cx', ox); obDot.setAttribute('cy', oy); }
       dsAnim = f < 1 ? requestAnimationFrame(frame) : 0;
-      if (!dsAnim) $('dsexec').removeAttribute('aria-busy');
+      if (!dsAnim) {   // let it sit a second where it finished, then put the table back as it was set
+        $('dsexec').removeAttribute('aria-busy');
+        dsReset = setTimeout(() => { dot.remove(); if (obDot) obDot.remove(); if (still) still.style.visibility = ''; }, 1000);
+      }
     };
     dsAnim = requestAnimationFrame(frame);
   }
@@ -3477,7 +3542,7 @@ if (typeof module !== 'undefined') module.exports = kosmosBilliardsPhysics;
   dsvg.addEventListener('pointerup', () => { dsDrag = null; });
   dsvg.addEventListener('pointercancel', () => { dsDrag = null; });
   $('darr').addEventListener('input', () => { DS.follow = false; });
-  for (const k of ['dspd', 'dside', 'darr']) $(k).addEventListener('input', runSystems);
+  for (const k of ['dspd', 'dside', 'dtip', 'darr']) $(k).addEventListener('input', runSystems);
   const setSys = (n) => {
     DS.sys = n;
     $('dsysb2').classList.toggle('on', n === 2); $('dsysb3').classList.toggle('on', n === 3); $('dsysb4').classList.toggle('on', n === 4);
